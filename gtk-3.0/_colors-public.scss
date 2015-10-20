@@ -1,0 +1,63 @@
+//apps rely on some named colors to be exported
+/* GTK NAMED COLORS */
+
+// Sass thinks we're using the colors in the variables as strings and may shoot
+// warning, it's innocuous and can be defeated by using "" + $var
+@define-color theme_fg_color #{$fg_color};
+@define-color theme_bg_color #{$bg_color};
+@define-color theme_base_color #{"" + $base_color};
+@define-color theme_selected_bg_color #{$selected_bg_color};
+@define-color theme_selected_fg_color #{"" + $selected_fg_color};
+@define-color insensitive_bg_color #{$bg_color};
+@define-color insensitive_fg_color #{$insensitive_fg_color};
+@define-color insensitive_base_color #{"" + $insensitive_base_color};
+@define-color theme_unfocused_fg_color #{$backdrop_fg_color};
+@define-color theme_unfocused_bg_color #{$bg_color};
+@define-color theme_unfocused_base_color #{"" + $base_color};
+@define-color theme_unfocused_selected_bg_color #{$selected_bg_color};
+@define-color theme_unfocused_selected_fg_color #{"" + $backdrop_selected_fg_color};
+@define-color borders #{$borders_color};
+@define-color unfocused_borders #{$borders_color};
+
+@define-color warning_color #{$warning_color};
+@define-color error_color #{$error_color};
+@define-color success_color #{$success_color};
+//@define-color desctructive_color #{$destructive_color}
+
+//WM
+
+$wm_button_focused_color: mix($fg_color, $bg_color, 60%);
+$wm_button_unfocused_color: mix($fg_color, $bg_color, 48%);
+
+@define-color wm_button_focused_color #{$wm_button_focused_color};
+@define-color wm_button_unfocused_color #{$wm_button_unfocused_color};
+
+$wm_button_hover_color: transparentize($fg_color, 0.9);
+$wm_button_active_color: transparentize($fg_color, 0.8);
+
+@define-color wm_button_hover_color #{$wm_button_hover_color};
+@define-color wm_button_active_color #{$wm_button_active_color};
+
+@define-color wm_title #{$fg_color};
+@define-color wm_unfocused_title #{$backdrop_fg_color};
+@define-color wm_highlight transparent;
+@define-color wm_borders_edge transparent;
+
+@define-color wm_bg_color #{$dark_color};
+
+@define-color wm_bg_a #{$bg_color};
+@define-color wm_bg_b #{$bg_color};
+
+@define-color wm_shadow #{"" + $borders_color};
+@define-color wm_border #{$borders_color};
+
+@define-color wm_button_hover_color_a #{$wm_button_hover_color};
+@define-color wm_button_hover_color_b #{$wm_button_hover_color};
+@define-color wm_button_active_color_a #{$wm_button_active_color};
+@define-color wm_button_active_color_b #{$wm_button_active_color};
+@define-color wm_button_active_color_c #{$wm_button_active_color};
+
+//FIXME this is really an API
+
+@define-color content_view_bg #{"" + $light_color};
+

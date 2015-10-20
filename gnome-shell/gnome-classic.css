@@ -1,0 +1,288 @@
+@import url("gnome-shell.css");
+
+/* FIXME:
+   - white edge highlight with text-shadow and icon-shadow for panel-button
+   - better shading of the panel (dark 5%) - impossible without multipoint gradients, image-bg is a hack
+*/
+
+#panel {
+    background-color: #e9e9e9 !important;
+    background-gradient-direction: vertical;
+    background-gradient-end: #d0d0d0;
+    border-top-color: #666; /* we don't support non-uniform border-colors and
+                               use the top border color for any border, so we
+                               need to set it even if all we want is a bottom
+                               border */
+    border-bottom: 1px solid #666;
+    app-icon-bottom-clip: 0px;
+
+/* hrm, still no multipoint gradients
+    background-image: linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0)) !important;*/
+}
+
+  #panel:overview {
+    background-color: #000 !important;
+    background-gradient-end: #000 !important;
+    border-top-color: #000;
+    border-bottom: 1px solid #000 !important;
+}
+
+  #panel.lock-screen {
+    background-color: rgba(0,0,0,0.3) !important;
+    background-gradient-end: rgba(0,0,0,0.3) !important;
+    border-top-color: transparent;
+}
+
+  #panel.unlock-screen {
+    background-color: transparent !important;
+    background-gradient-end: transparent !important;
+    border-top-color: transparent;
+}
+
+.tile-preview-left.on-primary,
+.tile-preview-right.on-primary,
+.tile-preview-left.tile-preview-right.on-primary {
+    /* keep in sync with -panel-corner-radius */
+    border-radius: 0;
+}
+
+/* TOP BAR */
+
+.panel-corner,
+.panel-corner:active,
+.panel-corner:overview,
+.panel-corner:focus {
+    -panel-corner-radius: 0 !important;
+}
+
+.panel-button {
+    color: #555 !important;
+    -natural-hpadding: 6px !important;
+    -minimum-hpadding: 3px !important;
+  }
+
+  #panel:overview .panel-button,
+  #panel.lock-screen .panel-button,
+  #panel.unlock-screen .panel-button {
+    color: #ccc !important;
+  }
+
+  .panel-button:hover {
+    color: #000 !important;
+  }
+
+  #panel:overview .panel-button:hover,
+  #panel:overview .panel-button:active {
+    color: white !important;
+  }
+
+  .panel-button > .system-status-icon {
+    icon-shadow: #fff 0 1px 0 !important; /* FIXME */
+  }
+
+  .panel-button:hover,
+  .panel-button:active,
+  .panel-button:overview,
+  .panel-button:focus {
+    text-shadow: 0 0 0 transparent !important; /* FIXME: why can't I do none ? */
+  }
+
+  .panel-button:active,
+  .panel-button:overview,
+  .panel-button:focus {
+     background-color: #4a90d9 !important; /* FIXME */
+     color: #fff !important;
+     border: none !important;
+     border-image: none !important;
+     background-image: none !important;
+  }
+
+  #panelUserMenu {
+    padding: 0 10px 0 10px !important;
+  }
+
+  #appMenu {
+    text-shadow: 0 0 0 transparent !important;
+    spinner-image: url("process-working-symbolic.svg");
+  }
+
+  /* used for the app menu header only */
+  .label-shadow {
+      color: rgba(0,0,0,0.5);
+  }
+
+.label-shadow {
+    color: rgba(255,255,255,.5) !important;
+}
+  .panel-button:active .label-shadow,
+  .panel-button:focus .label-shadow {
+    color: rgba(0,0,0,.5) !important;
+  }
+
+.popup-menu-boxpointer {
+    -arrow-background-color: #e9e9e9 !important;
+    -arrow-border-width: 1px !important;
+    -arrow-border-color: #aaa !important;
+    -arrow-border-radius: 3px !important;
+    color: #000 !important;
+    -arrow-base: 11px !important;
+    -arrow-rise: 5px !important;
+}
+
+  .popup-combo-menu {
+    background-color: #e9e9e9 !important;
+    border: 1px solid #aaa !important;
+    color: #000 !important;
+  }
+
+  .popup-menu-item:active {
+    background-color: #4a90d9 !important;
+    color: #fff !important;
+  }
+
+  .popup-menu-item:insensitive {
+    color: #888;
+  }
+
+  .popup-separator-menu-item {
+    -gradient-height: 1px;
+    -gradient-start: rgba(0,0,0,0.0);
+    -gradient-end: rgba(0,0,0,0.15);
+    -margin-horizontal: 24px;
+    height: 1px;
+    padding: 8px 0px;
+  }
+
+  .popup-menu-item:hover .popup-status-menu-item {
+    color: #fff;
+  }
+
+  .popup-subtitle-menu-item, .popup-subtitle-menu-item:insensitive {
+    color: #000;
+  }
+
+  .popup-submenu-menu-item:open {
+    background-color: #888;
+    color: #fff;
+  }
+
+  .popup-sub-menu {
+      background-gradient-start: #ddd;
+      background-gradient-end: #dfdfdf;
+      background-gradient-direction: vertical;
+      box-shadow: inset 0px 1px 3px rgba(0,0,0,0.4);
+  }
+
+  /*  SCROLLBARS for POPUP MENU  */
+
+  .popup-menu StScrollBar StBin#trough {
+    background-color: transparent;
+  }
+
+  .popup-menu StScrollBar StButton#vhandle, .popup-menu StScrollBar StButton#hhandle {
+    border-color: #e9e9e9;
+    background-color: #888;
+  }
+  .popup-menu StScrollBar StButton#vhandle:hover,
+  .popup-menu StScrollBar StButton#hhandle:hover {
+    background-color: #666;
+  }
+  .popup-menu StScrollBar StButton#vhandle:active,
+  .popup-menu StScrollBar StButton#hhandle:active {
+    background-color: #4a90d9;
+  }
+
+/* CALENDAR */
+
+.calendar {}
+  .calendar-month-label {
+    color: #333 !important;
+  }
+  .datemenu-date-label,
+  .events-day-header {
+    color: #666 !important;
+  }
+  .calendar-day-base:active {
+    color: #fff !important;
+    background-color: #4a90d9 !important;
+    background-image: none !important;
+    border-image: none !important;
+  }
+  .calendar-today {
+    background-color: #4a90d9 !important;
+    background-image: none !important;
+    border-image: none !important;
+  }
+  .calendar-day-base {
+    color: #666 !important;
+  }
+    .calendar-day-base:hover {
+      background-color: #666 !important;
+      color: #fff !important;
+    }
+  .calendar-nonwork-day {
+    color: #999 !important;
+  }
+  .events-day-dayname,
+  .events-day-time {
+    color: #666 !important;
+  }
+
+/* SYSTEM MENU */
+
+.system-menu-action {
+    color: #e6e6e6;
+    border: 2px solid #ddd; /* using rgba() is flaky unfortunately */
+}
+
+.system-menu-action:hover,
+.system-menu-action:focus,
+.system-menu-action:active {
+    color: white;
+    background-color: #4a90d9;
+    border: none;
+}
+
+/* VOLUME SLIDER */
+
+.slider {
+    -slider-background-color: #e9e9e9;
+    -slider-border-color: #999;
+    -slider-active-background-color: #76b0ec;
+    -slider-active-border-color: #1f6dbc;
+    -slider-handle-border-color: #888;
+    -slider-handle-border-width: 1px;
+}
+
+.popup-menu-icon {
+    color: #000 !important;
+}
+
+/* ON OFF switch */
+
+.toggle-switch-us {
+    background-image: url("switch-off.svg");
+    background-size: contain;
+}
+.toggle-switch-us:checked {
+    background-image: url("switch-on.svg");
+    background-size: contain;
+}
+
+.toggle-switch-intl {
+    background-image: url("switch-off.svg");
+    background-size: contain;
+}
+.toggle-switch-intl:checked {
+    background-image: url("switch-on.svg");
+    background-size: contain;
+}
+
+.system-menu-action {
+    color: #555 !important;
+}
+
+.system-menu-action:hover,
+.system-menu-action:focus {
+    color: black !important;
+}
