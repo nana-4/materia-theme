@@ -1,0 +1,267 @@
+// Drawing mixins
+
+// generic drawing of more complex things
+
+%clickable_fg {
+  color: transparentize($fg_color, 1 - 0.6);
+  &:hover { color: transparentize($fg_color, 1 - 0.8); }
+  &:active, &:active:hover { color: transparentize($fg_color, 1 - 1); }
+  &:insensitive { color: transparentize($fg_color, 1 - 0.6 * 0.4); }
+  &:selected {
+    color: transparentize($selected_fg_color, 1 - 0.6);
+    &:hover { color: transparentize($selected_fg_color, 1 - 0.8); }
+    &:active, &:active:hover { color: transparentize($selected_fg_color, 1 - 1); }
+    &:insensitive { color: transparentize($selected_fg_color, 1 - 0.6 * 0.4); }
+  }
+  &:backdrop {
+    color: transparentize($fg_color, 1 - 0.6 * 0.8);
+    &:hover { color: transparentize($fg_color, 1 - 0.8 * 0.8); }
+    &:active, &:active:hover { color: transparentize($fg_color, 1 - 1 * 0.8); }
+    &:insensitive { color: transparentize($fg_color, 1 - 0.6 * 0.4 * 0.8); }
+    &:selected {
+      color: transparentize($selected_fg_color, 1 - 0.6 * 0.8);
+      &:hover { color: transparentize($selected_fg_color, 1 - 0.8 * 0.8); }
+      &:active, &:active:hover { color: transparentize($selected_fg_color, 1 - 1 * 0.8); }
+      &:insensitive { color: transparentize($selected_fg_color, 1 - 0.6 * 0.4 * 0.8); }
+    }
+  }
+}
+
+%fg_states {
+  &:insensitive {
+    opacity: 0.4;
+  }
+  &:backdrop {
+    opacity: 0.8;
+  }
+  &:backdrop:insensitive {
+    opacity: 0.8 * 0.4;
+  }
+}
+
+// entries
+@mixin entry($t, $fc:$selected_bg_color) {
+//
+// Entries drawing function
+//
+// $t: entry type
+// $fc: focus color
+//
+// possible $t values:
+// normal, focus, insensitive, backdrop, backdrop-insensitive;
+//
+  @if $t==normal {
+    border-color: $borders_color;
+    background-color: $base_color;
+  }
+  @if $t==focus {
+    border-color: $fc;
+    box-shadow: 0 0 4px transparentize($fc, 0.5);
+  }
+  @if $t==insensitive {
+    color: $insensitive_fg_color;
+    border-color: $borders_color;
+    background-color: $insensitive_base_color;
+  }
+  @if $t==backdrop {
+    color: $backdrop_fg_color;
+  }
+  @if $t==backdrop-insensitive {
+    color: $backdrop_insensitive_fg_color;
+  }
+}
+
+// buttons
+@mixin button($t, $c:$bg_color) {
+//
+// Button drawing function
+//
+// $t:    button type,
+// $c:    base button color for colored* types
+//
+// possible $t values:
+// normal, hover, active, active-hover, insensitive, insensitive-active,
+// backdrop, backdrop-insensitive, undecorated;
+//
+  @if $t==normal {
+    border-color: if($c!=$bg_color, transparent, $borders_color);
+    background-color: if($c!=$bg_color,
+                      lighten($c,4%),
+                      if($variant =='light', lighten($c,2.4%), lighten($c,4.8%))
+                      );
+    background-clip: if($c!=$bg_color, border-box, padding-box);
+    color: if($c!=$bg_color, $selected_fg_color, $fg_color);
+  }
+  @else if $t==hover {
+    border-color: if($c!=$bg_color, transparent, $borders_color);
+    background-color: if($c!=$bg_color,
+                      lighten($c,8%),
+                      if($variant =='light', lighten($c,4.8%), lighten($c,9.6%))
+                      );
+    background-clip: if($c!=$bg_color, border-box, padding-box);
+    color: if($c!=$bg_color, $selected_fg_color, $fg_color);
+  }
+  @else if $t==active {
+    border-color: if($c!=$bg_color, transparent, $borders_color);
+    background-color: if($c!=$bg_color,
+                      darken($c,8%),
+                      if($variant =='light', darken($c,6.4%), darken($c,3.2%))
+                      );
+    background-clip: if($c!=$bg_color, border-box, padding-box);
+    color: if($c!=$bg_color, $selected_fg_color, $fg_color);
+  }
+  @else if $t==active-hover {
+    border-color: if($c!=$bg_color, transparent, $borders_color);
+    background-color: if($c!=$bg_color,
+                      darken($c,6%),
+                      if($variant =='light', darken($c,4.8%), darken($c,2.4%))
+                      );
+    background-clip: if($c!=$bg_color, border-box, padding-box);
+    color: if($c!=$bg_color, $selected_fg_color, $fg_color);
+  }
+  @else if $t==insensitive {
+    border-color: if($c!=$bg_color, transparent, $borders_color);
+    background-color: if($c!=$bg_color,
+                      lighten($c,0%),
+                      if($variant =='light', lighten($c,0%), lighten($c,0%))
+                      );
+    background-clip: if($c!=$bg_color, border-box, padding-box);
+    color: if($c!=$bg_color, transparentize($selected_fg_color, 0.6), $insensitive_fg_color);
+    > GtkLabel { color: inherit; }
+  }
+  @else if $t==insensitive-active {
+    border-color: if($c!=$bg_color, transparent, $borders_color);
+    background-color: if($c!=$bg_color,
+                      darken($c,4%),
+                      if($variant =='light', darken($c,3.2%), darken($c,1.6%))
+                      );
+    background-clip: if($c!=$bg_color, border-box, padding-box);
+    color: if($c!=$bg_color, transparentize($selected_fg_color, 0.6), $insensitive_fg_color);
+    > GtkLabel { color: inherit; }
+  }
+  @else if $t==backdrop {
+    color: if($c!=$bg_color, transparentize($selected_fg_color, 0.2), $backdrop_fg_color);
+  }
+  @else if $t==backdrop-insensitive {
+    color: if($c!=$bg_color, transparentize($selected_fg_color, 0.6), $backdrop_insensitive_fg_color);
+    > GtkLabel { color: inherit; }
+  }
+  @else if $t==primary {
+    border-color: if($c!=$bg_color, transparent, $borders_color);
+    background-color: $c;
+    background-clip: if($c!=$bg_color, border-box, padding-box);
+    color: if($c!=$bg_color, $selected_fg_color, $fg_color);
+  }
+  @else if $t==undecorated {
+  //
+  // reset
+  //
+    border-color: transparentize($borders_color,1);
+    background-color: transparentize($c,1);
+  }
+}
+
+// round buttons
+@mixin round($c:$selected_bg_color) {
+//
+// Round button drawing function
+//
+// $c:    base button color
+//
+// possible $t values:
+// normal, hover, active, active-hover, insensitive, insensitive-active,
+// backdrop, backdrop-insensitive, undecorated;
+//
+  background-color: transparent;
+  background-image: -gtk-gradient(radial,
+                                  center center, 0,
+                                  center center, 0.01,
+                                  to(transparentize($c, 0.5)),
+                                  to(transparent));
+  color: transparentize($fg_color, 1 - 0.6);
+  &:backdrop { color: transparentize($fg_color, 1 - 0.6 * 0.8); }
+  &:hover {
+    background-color: transparent;
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.5,
+                                    to(transparentize($c, 0.5)),
+                                    to(transparent));
+    color: $fg_color;
+    &:backdrop { color: transparentize($fg_color, 1 - 0.8); }
+  }
+  &:active, &:active:hover {
+    background-color: transparent;
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.5,
+                                    to($c),
+                                    to(transparent));
+    color: $selected_fg_color;
+    &:backdrop { color: transparentize($selected_fg_color, 1 - 0.8); }
+  }
+  &:insensitive {
+    background-color: transparent;
+    background-image: none;
+    color: transparentize($fg_color, 1 - 0.6 * 0.4);
+    &:backdrop { color: transparentize($fg_color, 1 - 0.6 * 0.4 * 0.8); }
+  }
+  &:selected {
+    background-color: transparent;
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.01,
+                                    to(transparentize($selected_fg_color, 0.5)),
+                                    to(transparent));
+    color: transparentize($selected_fg_color, 1 - 0.6);
+    &:backdrop { color: transparentize($fg_color, 1 - 0.6 * 0.8); }
+    &:hover {
+      background-color: transparent;
+      background-image: -gtk-gradient(radial,
+                                      center center, 0,
+                                      center center, 0.5,
+                                      to(transparentize($selected_fg_color, 0.5)),
+                                      to(transparent));
+      color: $selected_fg_color;
+      &:backdrop { color: transparentize($selected_fg_color, 1 - 0.8); }
+    }
+    &:active, &:active:hover {
+      background-color: transparent;
+      background-image: -gtk-gradient(radial,
+                                      center center, 0,
+                                      center center, 0.5,
+                                      to($selected_fg_color),
+                                      to(transparent));
+      color: $c;
+      &:backdrop { color: transparentize($c, 1 - 0.8); }
+    }
+    &:insensitive {
+      background-color: transparent;
+      background-image: none;
+      color: transparentize($selected_fg_color, 1 - 0.6 * 0.4);
+      &:backdrop { color: transparentize($selected_fg_color, 1 - 0.6 * 0.4 * 0.8); }
+    }
+  }
+}
+
+%row {
+  background-color: transparentize($light_color,1); // for the transition
+  &:hover {
+    background-color: mix($bg_color, $light_color, 50%);
+  }
+  &:active, &:active:hover {
+    background-color: $bg_color;
+  }
+  &:selected {
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+    &:hover {
+      background-color: lighten($selected_bg_color,4%);
+      color: $selected_fg_color;
+    }
+    &:active, &:active:hover {
+      background-color: darken($selected_bg_color,4%);
+      color: $selected_fg_color;
+    }
+  }
+}
