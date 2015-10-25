@@ -285,16 +285,23 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
 .button {
   padding: 7px 10px 8px;
   border-radius: 2px;
+  background-repeat: no-repeat;
+  background-position: center, center;
+  background-size: 36px * 2 / 0.8 36px * 2 / 0.8, auto;
   font-weight: 500;
   @include button(normal);
   &:hover { @include button(hover); }
   &:active { @include button(active); }
   &:insensitive { @include button(insensitive); }
+  &:checked { @include button(checked); }
+  &:checked:insensitive { @include button(checked-insensitive); }
   &.flat {
     @include button(flat);
     &:hover { @include button(flat-hover); }
     &:active { @include button(flat-active); }
     &:insensitive { @include button(flat-insensitive); }
+    &:checked { @include button(flat-checked); }
+    &:checked:insensitive { @include button(flat-checked-insensitive); }
     .linked > & {
       border-radius: 2px;
       &.image-button {
@@ -303,8 +310,6 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
       }
     }
   }
-  &:checked { @include button(checked); }
-  &:checked:insensitive { @include button(checked-insensitive); }
   // big standalone buttons like in Documents pager
   &.osd {
     &.image-button { padding: 16px; }
@@ -312,46 +317,31 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
   }
   //overlay / OSD style
   .osd & {
-    // there's a problem with sass which prevents it to extend the linked
-    // placeholder as expected, it should just be "@extend %linked;", the
-    // placeholder is basically replicated here
-    //
-    // Workaround START
-  //  border-radius: 0;
-    &:first-child {
-    //  border-radius: 2px 0 0 2px;
-    }
-    &:last-child {
-    //  border-radius: 0 2px 2px 0;
-    }
-    &:only-child {
-    //  border-radius: 2px;
-    }
-    // Workaround END
   }
 
   // Suggested and Destructive Action buttons
   @each $b_type, $b_color in (suggested-action, $selected_bg_color),
                              (destructive-action, $destructive_color) {
     &.#{$b_type} {
-      @include button(normal, $b_color, white);
-      &:hover { @include button(hover, $b_color, white); }
-      &:active, &:checked { @include button(active, $b_color, white); }
-      &:insensitive { @include button(insensitive); }
+      background-color: $b_color;
+      color: $selected_fg_color;
+    //  @include button(normal, $b_color, white);
+    //  &:hover { @include button(hover, $b_color, white); }
+    //  &:active, &:checked { @include button(active, $b_color, white); }
+      &:insensitive { @include button(insensitive, $b_color, white); }
+      &:checked { background-color: mix($selected_fg_color, $b_color, 20%); }
       &.flat {
-        @include button(flat, $b_color, white);
-        &:hover { @include button(flat-hover, $b_color, white); }
-        &:active, &:checked { @include button(flat-active, $b_color, white); }
-        &:insensitive { @include button(flat-insensitive); }
+        background-color: transparent;
+        color: $b_color;
+      //  @include button(flat, $b_color, white);
+      //  &:hover { @include button(flat-hover, $b_color, white); }
+      //  &:active, &:checked { @include button(flat-active, $b_color, white); }
+        &:insensitive { @include button(flat-insensitive, $b_color, white); }
       }
     }
   }
 
-  &.image-button {
-    padding: 10px;
-    outline-radius: 100px;
-    border-radius: 100px;
-  }
+  &.image-button { @extend %image_button; }
 
   &.text-button {
     padding-left: 16px;
@@ -366,6 +356,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
     padding: 7px 10px 8px; // same as .button
     outline-radius: 2px;
     border-radius: 2px;
+    background-size: 36px * 2 / 0.8 36px * 2 / 0.8, auto;
     .label:first-child { padding-left: 6px; }
     .label:last-child { padding-right: 6px; }
   }
@@ -407,7 +398,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
   //inline-toolbar buttons
   .inline-toolbar & {
     @extend .button.flat;
-    @extend .image-button;
+    @extend %image_button;
   }
 
   .primary-toolbar & { icon-shadow: none; } // tango icons don't need shadows
@@ -415,6 +406,13 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
   .linked > &:not(.flat):not(:only-child) { @extend %linked; }
 
   .linked.vertical > &:not(.flat):not(:only-child) { @extend %linked_vertical; }
+}
+
+%image_button {
+  padding: 10px;
+  outline-radius: 100px;
+  border-radius: 100px;
+  background-size: 36px * 1 / 0.8 36px * 1 / 0.8, auto;
 }
 
 %needs_attention {
@@ -493,7 +491,7 @@ GtkColorButton.button {
   GtkColorSwatch:first-child:last-child { // :first-child:last-child for a specificity bump, it gets overridden by the
                                           // colorpicker style, otherwise
     border-radius: 2px;
-    @include shadow(1);
+    box-shadow: $z-depth-1;
   }
 }
 
@@ -526,7 +524,7 @@ GtkColorButton.button {
   .button {
     padding: 4px;
     border: solid 6px transparent;
-    @extend .image-button;
+    @extend %image_button;
   //  @extend .button.flat;
     @include button(flat);
     &:hover { @include button(flat-hover); }
@@ -648,13 +646,13 @@ GtkComboBox {
                               url("assets/osd-shadow#{$asset_suffix}@2.png"))
                   10 / 10px stretch;
     border-radius: 2px;
-  //  @include shadow(2);
+  //  box-shadow: $z-depth-2;
     background-color: $base_color;
     &:backdrop {
       border-image: -gtk-scaled(url("assets/osd-shadow-backdrop#{$asset_suffix}.png"),
                                 url("assets/osd-shadow-backdrop#{$asset_suffix}@2.png"))
                     10 / 10px stretch;
-    //  @include shadow(1);
+    //  box-shadow: $z-depth-1;
     }
     & .button {
       @extend .button.flat;
@@ -731,14 +729,15 @@ GtkComboBox {
     &:checked {
       border-image: -gtk-gradient(radial,
                                   center bottom, 0,
-                                  center bottom, 0.75,
+                                  center bottom, 0.5,
                                   to($selected_bg_color),
                                   to(transparent))
                                   0 0 2 / 0 0 2px;
+    //  box-shadow: inset 0 -2px $selected_bg_color;
       background-color: transparent;
       color: $fg_color;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-image 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0;
-      &:active { transition: none; }
+    //  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0 cubic-bezier(0.4, 0, 0.2, 1) 0.2s, color 0;
+    //  &:active { transition: none; }
       &:insensitive {
         background-color: transparent;
         color: $insensitive_fg_color;
@@ -767,7 +766,6 @@ GtkComboBox {
       &:hover, &:active, &:checked {
         color: $selected_fg_color;
       }
-    //  &.flat { @include button(undecorated); }
 
       &:insensitive {
       }
@@ -775,10 +773,11 @@ GtkComboBox {
       &:checked {
         border-image: -gtk-gradient(radial,
                                     center bottom, 0,
-                                    center bottom, 0.75,
+                                    center bottom, 0.5,
                                     to($selected_fg_color),
                                     to(transparent))
                                     0 0 2 / 0 0 2px;
+      //  box-shadow: inset 0 -2px $selected_fg_color;
         color: $selected_fg_color;
         &:insensitive {
           color: $insensitive_selected_fg_color;
@@ -786,7 +785,11 @@ GtkComboBox {
         }
       }
       &.suggested-action {
-        @extend .button;
+        // NOTE: do not use @extend .button;
+        @include button(normal);
+        &:hover { @include button(hover); }
+        &:active { @include button(active); }
+        &:insensitive { @include button(insensitive); }
       }
     }
 
@@ -992,8 +995,8 @@ column-header.button.dnd { // for treeview-like derive widgets
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.3);
   border-radius: 2px + 1px;
   background-color: $insensitive_base_color;
-  @include shadow(2);
-  &:backdrop { @include shadow(1); }
+  box-shadow:  $z-depth-2;
+  &:backdrop { box-shadow: $z-depth-1; }
 
   > .list,
   > .view,
@@ -1007,6 +1010,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   .button.flat {
     padding: 5px 8px 6px;
     background-color: transparent;
+    background-size: 128px * 1 / 0.8 128px * 1 / 0.8, auto;
     color: $text_color;
     font: initial;
   }
@@ -1215,7 +1219,8 @@ column-header.button.dnd { // for treeview-like derive widgets
     .button { //tab close button
     //  &:not(:hover):not(:active) > GtkImage { opacity: 0.6; }
       padding: 0;
-      @extend .image-button;
+      @extend %image_button;
+      background-size: 24px * 1 / 0.8 24px * 1 / 0.8, auto;
     //  @extend .button.flat;
     @include button(flat);
     &:hover { @include button(flat-hover); }
@@ -1426,8 +1431,8 @@ GtkSwitch {
     .#{$w}#{$s} {
       -gtk-icon-source: -gtk-scaled(url("assets/#{$a}#{$as}#{$asset_suffix}.png"),
                                     url("assets/#{$a}#{$as}#{$asset_suffix}@2.png"));
-      icon-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-      &:hover, &:active { icon-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23); }
+      icon-shadow: $z-depth-1;
+      &:hover, &:active { icon-shadow: $z-depth-2; }
       &:insensitive { icon-shadow: none; }
       &.button.flat {  }
     }
@@ -1504,9 +1509,10 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
   outline-radius: 100px;
 
   &.fine-tune {
-    outline-offset: -10px;
+  //  outline-offset: -6px;
+    &.slider { background-size: 80%; }
     &.trough {
-      margin: 8px;
+    //  margin: 8px;
     //  border-radius: 100px;
     }
   }
@@ -1681,7 +1687,7 @@ GtkProgressBar {
  *************/
 
 .level-bar {
-  @include shadow(1); // needs to be set here to avoid clipping
+  box-shadow: $z-depth-1; // needs to be set here to avoid clipping
   -GtkLevelBar-min-block-width: 36;
   -GtkLevelBar-min-block-height: 4;
   &.vertical {
@@ -1773,20 +1779,23 @@ GtkScrolledWindow {
   // let's take care of background colors
   background-image: -gtk-gradient(radial,
                                     center center, 0,
-                                    center center, 0.75,
+                                    center center, 0.5,
                                     to(gtkalpha(currentColor, 0)),
                                     to(transparent)),
                       linear-gradient(to bottom, gtkalpha(currentColor, 0));
+  background-repeat: no-repeat;
+  background-position: center, center;
+  background-size: 192px * 1 / 0.8 192px * 1 / 0.8, auto;
   &:hover {
     background-image: -gtk-gradient(radial,
                                     center center, 0,
-                                    center center, 0.75,
+                                    center center, 0.5,
                                     to(gtkalpha(currentColor, 0)),
                                     to(transparent)),
                       linear-gradient(to bottom, gtkalpha(currentColor, 0.05));
   }
   &:active {
-    animation: list_ripple_effect 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: list_ripple_effect 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 }
 
@@ -1804,12 +1813,11 @@ GtkScrolledWindow {
 .list-row:selected {
   @extend %selected_items;
   .button {
+    &:insensitive { color: $insensitive_secondary_selected_fg_color; }
     &.flat {
-      color: $selected_fg_color;
-    }
-    &.flat:backdrop {
-      @include button(undecorated);
-      color: if($variant=='light', $backdrop_base_color, $backdrop_fg_color);
+      color: $secondary_selected_fg_color;
+      &:hover, &:active { color: $selected_fg_color; }
+      &:insensitive { color: $insensitive_secondary_selected_fg_color; }
     }
   }
 }
@@ -1903,8 +1911,11 @@ GtkCalendar {
       padding: 9px 16px 10px;
       border-top: 1px solid $borders_color;
       border-radius: 0;
-      &:first-child{ border-bottom-left-radius: 2px; }
-      &:last-child { border-bottom-right-radius: 2px; }
+      background-size: 192px * 1 / 0.8 192px * 1 / 0.8, auto;
+    //  &:first-child{ border-bottom-left-radius: 2px; }
+    //  &:last-child { border-bottom-right-radius: 2px; }
+      &:first-child{ border-radius: 0 0 0 2px; }
+      &:last-child { border-radius: 0 0 2px 0; }
     }
   }
 }
@@ -2011,6 +2022,13 @@ GtkInfoBar {
   background-color: $selected_bg_color;
   color: $selected_fg_color;
   .button {
+  //  @extend .list-row:selected.button;
+    &:insensitive { color: $insensitive_secondary_selected_fg_color; }
+    &.flat {
+      color: $secondary_selected_fg_color;
+      &:hover, &:active { color: $selected_fg_color; }
+      &:insensitive { color: $insensitive_secondary_selected_fg_color; }
+    }
   }
   .label:selected,
   .label:selected:focus,
@@ -2056,7 +2074,7 @@ GtkColorSwatch {
   // is GtkColorSwatch > .overlay {}, GtkColorSwatch has the programmatically set background, so most of the style
   // is applied to the overlay box.
 
-  @include shadow(1);
+  box-shadow: $z-depth-1;
 
   // we need to re-set the shadow here since it get axed by the previous bit
   &:selected { }
@@ -2105,13 +2123,12 @@ GtkColorSwatch {
   &:only-child > .overlay { border-radius: 2px; }
 
   // hover effect
-  &:hover {
-    @include shadow(2);
-  }
+  &:hover { box-shadow: $z-depth-2; }
 
   // no hover effect for the colorswatch in the color editor
   GtkColorEditor & {
     border-radius: 2px; // same radius as the entry
+    &:hover { box-shadow: $z-depth-1; }
   }
 
   // indicator and keynav outline colors
@@ -2173,7 +2190,7 @@ GtkScaleButton.button,
 GtkVolumeButton.button {
   // I assume both are image-button *by default*
   // with the image-button/text-button classes automagically applied depending on the button child these selectors can be deleted.
-  @extend .image-button;
+  @extend %image_button;
 
   &.text-button { @extend .text-button }
 }
@@ -2189,14 +2206,14 @@ GtkVolumeButton.button {
 
 .floating-bar.bottom.left { /* axes left border and border radius */
   border-width: 1px 1px 0 0;
-  border-radius: 0 3px 0 0;
+  border-radius: 0 2px + 1px 0 0;
 //  border-width: 8px 8px 0 0;
 //  border-image-width: 10px 10px 0 0;
 }
 
 .floating-bar.bottom.right { /* axes right border and border radius */
   border-width: 1px 0 0 1px;
-  border-radius: 3px 0 0 0;
+  border-radius: 2px + 1px 0 0 0;
 //  border-width: 8px 0 0 8px;
 //  border-image-width: 10px 0 0 10px;
 }
@@ -2215,7 +2232,7 @@ NautilusListView .view {
 .window-frame {
   transition: none;
   border-radius: 2px 2px 0 0;
-  @include shadow(4);
+  box-shadow: $z-depth-4;
 
   // FIXME rationalize window-frame shadows
 
@@ -2223,7 +2240,7 @@ NautilusListView .view {
   margin: 8px;
 
   &:backdrop {
-    @include shadow(2);
+    box-shadow: $z-depth-2;
   }
   &.tiled {
     border-radius: 0;
@@ -2238,16 +2255,16 @@ NautilusListView .view {
   &.csd {
     &.popup {
       border-radius: 0;
-      @include shadow(2);
+      box-shadow: $z-depth-2;
     }
     &.tooltip {
       border-radius: 2px;
-      @include shadow(2);
+      box-shadow: $z-depth-2;
     }
     &.message-dialog {
       border-radius: 2px;
-      @include shadow(4);
-      &:backdrop { @include shadow(2); }
+      box-shadow: $z-depth-4;
+      &:backdrop { box-shadow: $z-depth-2; }
     }
   }
   &.solid-csd {
@@ -2263,7 +2280,7 @@ NautilusListView .view {
 .header-bar .button.titlebutton,
 .titlebar .button.titlebutton {
  // @extend .button.flat;
-  @extend .image-button;
+  @extend %image_button;
  // &:not(:hover):not(:active) > GtkImage { opacity: 0.6; }
 }
 
@@ -2282,7 +2299,7 @@ NautilusListView .view {
   &:backdrop {
   //  color: $backdrop_selected_fg_color;
     &:insensitive {
-    //  color: mix($backdrop_selected_fg_color, $selected_bg_color, 30%);
+      color: $insensitive_selected_fg_color;
     }
   }
 }
@@ -2334,8 +2351,8 @@ NautilusListView .view {
   font: initial;
   color: $fg_color;
   background-color: $base_color;
-  @include shadow(2);
-  &:backdrop { @include shadow(1); }
+  box-shadow: $z-depth-2;
+  &:backdrop { box-shadow: $z-depth-1; }
   .button {
   }
 }
