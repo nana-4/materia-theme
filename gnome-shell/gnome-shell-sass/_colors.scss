@@ -24,6 +24,7 @@ $success_color: if($variant =='light', #2ecc71, #27ae60);
 $destructive_color: if($variant =='light', #e74c3c, #c0392b);
 
 $osd_fg_color: white;
+$osd_secondary_fg_color: scale-color($osd_fg_color, $alpha: -20%);
 $osd_base_color: scale-color($osd_fg_color, $alpha: -90%);
 $osd_bg_color: scale-color(black, $alpha: -50%);
 $osd_dim_fg_color: scale-color($osd_fg_color, $alpha: -50%);
@@ -38,6 +39,10 @@ $tooltip_borders_color: $osd_outer_borders_color;
 //insensitive state derived colors
 $insensitive_fg_color: scale-color($fg_color, $alpha: -60%);
 $insensitive_secondary_fg_color: scale-color($secondary_fg_color, $alpha: -60%);
+$insensitive_fill_color: scale-color($fill_color, $alpha: -60%);
+$insensitive_osd_fg_color: scale-color($osd_fg_color, $alpha: -60%);
+$insensitive_osd_secondary_fg_color: scale-color($osd_secondary_fg_color, $alpha: -60%);
+$insensitive_osd_fill_color: scale-color($osd_fill_color, $alpha: -60%);
 $insensitive_bg_color: mix($bg_color, $base_color, 60%);
 $insensitive_borders_color: $borders_color;
 

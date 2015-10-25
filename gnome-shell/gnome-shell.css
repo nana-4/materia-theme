@@ -84,7 +84,7 @@ StEntry {
   StEntry:insensitive {
     color: rgba(0, 0, 0, 0.32);
     border-color: transparent;
-    box-shadow: inset 0 -1px rgba(0, 0, 0, 0.08); }
+    box-shadow: inset 0 -1px rgba(0, 0, 0, 0.064); }
   StEntry StIcon.capslock-warning {
     icon-size: 16px;
     warning-color: #e67e22;
@@ -1515,19 +1515,19 @@ StScrollBar {
   spacing: 15px; }
 
 .keyboard-key {
-  color: rgba(0, 0, 0, 0.64);
-  background-color: rgba(255, 255, 255, 0.95);
-  border-color: transparent;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  text-shadow: none;
-  icon-shadow: none;
   min-height: 2em;
   min-width: 2em;
   font-size: 2em;
   font-weight: bold;
   border-radius: 2px;
   border: none;
-  color: inherit; }
+  color: inherit;
+  color: rgba(0, 0, 0, 0.64);
+  background-color: rgba(255, 255, 255, 0.95);
+  border-color: transparent;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  text-shadow: none;
+  icon-shadow: none; }
   .keyboard-key:focus {
     color: rgba(0, 0, 0, 0.8);
     text-shadow: none;
@@ -1612,7 +1612,7 @@ StScrollBar {
 /* Auth Dialogs & Screen Shield */
 .framed-user-icon {
   background-size: contain;
-  border: 2px solid white;
+  border: none;
   color: white;
   border-radius: 2px; }
   .framed-user-icon:hover {
@@ -1626,34 +1626,76 @@ StScrollBar {
 .login-dialog {
   border: none;
   background-color: transparent; }
+  .login-dialog StEntry {
+    color: white;
+    selection-background-color: rgba(255, 255, 255, 0.4);
+    selected-color: white;
+    background-color: rgba(0, 0, 0, 0.01);
+    border-color: transparent;
+    box-shadow: inset 0 -1px rgba(255, 255, 255, 0.2); }
+    .login-dialog StEntry:focus {
+      border-color: transparent;
+      box-shadow: inset 0 -2px rgba(255, 255, 255, 0.8); }
+    .login-dialog StEntry:insensitive {
+      color: rgba(0, 0, 0, 0.32);
+      border-color: transparent;
+      box-shadow: inset 0 -1px rgba(255, 255, 255, 0.16);
+      color: rgba(255, 255, 255, 0.4); }
   .login-dialog .modal-dialog-button-box {
     spacing: 3px; }
   .login-dialog .modal-dialog-button {
-    padding: 7px 16px 8px; }
+    padding: 7px 16px 8px;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: 0 0 transparent;
+    text-shadow: none;
+    icon-shadow: none; }
+    .login-dialog .modal-dialog-button:hover, .login-dialog .modal-dialog-button:focus {
+      color: white;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: transparent;
+      box-shadow: 0 0 transparent;
+      text-shadow: none;
+      icon-shadow: none; }
+    .login-dialog .modal-dialog-button:active {
+      color: white;
+      background-color: rgba(255, 255, 255, 0.4);
+      border-color: transparent;
+      box-shadow: 0 0 transparent;
+      text-shadow: none;
+      icon-shadow: none; }
+    .login-dialog .modal-dialog-button:insensitive {
+      color: rgba(255, 255, 255, 0.32);
+      background-color: transparent;
+      border-color: transparent;
+      box-shadow: 0 0 transparent;
+      text-shadow: none;
+      icon-shadow: none; }
     .login-dialog .modal-dialog-button:default {
-      color: rgba(0, 0, 0, 0.64);
+      color: white;
       background-color: #3498db;
       border-color: transparent;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
       text-shadow: none;
       icon-shadow: none; }
       .login-dialog .modal-dialog-button:default:hover, .login-dialog .modal-dialog-button:default:focus {
-        color: rgba(0, 0, 0, 0.8);
+        color: white;
         background-color: #3498db;
         border-color: transparent;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.24), 0 3px 6px rgba(0, 0, 0, 0.345);
         text-shadow: none;
         icon-shadow: none; }
       .login-dialog .modal-dialog-button:default:active {
-        color: rgba(0, 0, 0, 0.8);
-        background-color: rgba(45, 130, 188, 0.96);
+        color: white;
+        background-color: #5dade2;
         border-color: transparent;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.24), 0 3px 6px rgba(0, 0, 0, 0.345);
         text-shadow: none;
         icon-shadow: none; }
       .login-dialog .modal-dialog-button:default:insensitive {
-        color: rgba(0, 0, 0, 0.256);
-        background-color: rgba(0, 0, 0, 0.08);
+        color: rgba(255, 255, 255, 0.4);
+        background-color: rgba(255, 255, 255, 0.16);
         border-color: transparent;
         box-shadow: 0 0 transparent;
         text-shadow: none;
@@ -1663,7 +1705,7 @@ StScrollBar {
   padding: 24px 0px; }
 
 .login-dialog-banner {
-  color: #e6e6e6; }
+  color: rgba(255, 255, 255, 0.8); }
 
 .login-dialog-button-box {
   spacing: 5px; }
@@ -1685,8 +1727,12 @@ StScrollBar {
 .login-dialog-not-listed-label {
   font-size: 90%;
   font-weight: bold;
-  color: #b3b3b3;
+  color: rgba(255, 255, 255, 0.8);
   padding-top: 1em; }
+  .login-dialog-not-listed-label:hover {
+    color: white; }
+  .login-dialog-not-listed-label:focus {
+    background-color: rgba(255, 255, 255, 0.2); }
 
 .login-dialog-user-list-view {
   -st-vfade-offset: 1em; }
@@ -1696,21 +1742,30 @@ StScrollBar {
   padding: .2em;
   width: 23em; }
   .login-dialog-user-list:expanded .login-dialog-user-list-item:focus {
-    background-color: #3498db;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white; }
+  .login-dialog-user-list:expanded .login-dialog-user-list-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white; }
+  .login-dialog-user-list:expanded .login-dialog-user-list-item:active {
+    background-color: rgba(255, 255, 255, 0.4);
     color: white; }
   .login-dialog-user-list:expanded .login-dialog-user-list-item:logged-in {
-    border-right: 2px solid #3498db; }
+    border-right: 2px solid rgba(255, 255, 255, 0.8); }
 
 .login-dialog-user-list-item {
   border-radius: 2px;
   padding: .2em;
-  color: #b3b3b3; }
+  color: rgba(255, 255, 255, 0.8); }
   .login-dialog-user-list-item:ltr {
     padding-right: 1em; }
   .login-dialog-user-list-item:rtl {
     padding-left: 1em; }
   .login-dialog-user-list-item:hover {
-    background-color: #3498db;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white; }
+  .login-dialog-user-list-item:active {
+    background-color: rgba(255, 255, 255, 0.4);
     color: white; }
   .login-dialog-user-list-item .login-dialog-timed-login-indicator {
     height: 2px;
@@ -1739,19 +1794,19 @@ StScrollBar {
   width: 23em; }
 
 .login-dialog-prompt-label {
-  color: #cccccc;
-  font-size: 110%;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1em;
   padding-top: 1em; }
 
 .login-dialog-session-list-button StIcon {
   icon-size: 1.25em; }
 
 .login-dialog-session-list-button {
-  color: #b3b3b3; }
+  color: rgba(255, 255, 255, 0.8); }
   .login-dialog-session-list-button:hover, .login-dialog-session-list-button:focus {
     color: white; }
   .login-dialog-session-list-button:active {
-    color: gray; }
+    color: white; }
 
 .screen-shield-arrows {
   padding-bottom: 3em; }
@@ -1761,21 +1816,22 @@ StScrollBar {
   width: 80px;
   height: 48px;
   -arrow-thickness: 12px;
-  -arrow-shadow: 0 1px 1px rgba(0, 0, 0, 0.4); }
+  -arrow-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
 
 .screen-shield-clock {
   color: white;
-  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
-  font-weight: bold;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  font-weight: normal;
   text-align: center;
   padding-bottom: 1.5em; }
 
 .screen-shield-clock-time {
-  font-size: 72pt;
-  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4); }
+  font-size: 112px;
+  font-weight: 300;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
 
 .screen-shield-clock-date {
-  font-size: 28pt; }
+  font-size: 45px; }
 
 .screen-shield-notifications-container {
   spacing: 6px;
@@ -1807,18 +1863,18 @@ StScrollBar {
 
 .screen-shield-background {
   background: black;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4); }
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.45), 0 15px 12px rgba(0, 0, 0, 0.33); }
 
 #lockDialogGroup {
-  background: #2e3436 url(noise-texture.png);
+  background: #333333 url(noise-texture.png);
   background-repeat: repeat; }
 
 #screenShieldNotifications StButton#vhandle, #screenShieldNotifications StButton#hhandle {
-  background-color: rgba(255, 255, 255, 0.25); }
+  background-color: rgba(255, 255, 255, 0.6); }
   #screenShieldNotifications StButton#vhandle:hover, #screenShieldNotifications StButton#vhandle:focus, #screenShieldNotifications StButton#hhandle:hover, #screenShieldNotifications StButton#hhandle:focus {
-    background-color: rgba(255, 255, 255, 0.45); }
+    background-color: rgba(255, 255, 255, 0.8); }
   #screenShieldNotifications StButton#vhandle:active, #screenShieldNotifications StButton#hhandle:active {
-    background-color: rgba(52, 152, 219, 0.5); }
+    background-color: white; }
 
 #LookingGlassDialog {
   background-color: rgba(255, 255, 255, 0.95);
