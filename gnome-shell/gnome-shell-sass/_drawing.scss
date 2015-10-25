@@ -42,24 +42,18 @@
   @if $t==normal {
     background-color: rgba(0, 0, 0, 0.01);
     border-color: transparent;
-    box-shadow: inset 0 -1px if($fc==$selected_bg_color,
-                                $fill_color,
-                                $osd_semi_fill_color);
+    box-shadow: inset 0 -1px if($fc!=$selected_bg_color, $fc, $fill_color);
 
   }
   @if $t==focus {
     border-color: transparent;
-    box-shadow: inset 0 -2px if($fc==$selected_bg_color,
-                                $selected_bg_color,
-                                $osd_indicator_color);
+    box-shadow: inset 0 -2px if($fc!=$selected_bg_color, $fc, $selected_bg_color);
   }
   @if $t==hover { }
   @if $t==insensitive {
     color: $insensitive_fg_color;
     border-color: transparent;
-    box-shadow: inset 0 -1px if($fc==$selected_bg_color,
-                                $semi_fill_color,
-                                $osd_semi_fill_color);
+    box-shadow: inset 0 -1px if($fc!=$selected_bg_color, $fc, $insensitive_fill_color);
   }
 }
 
@@ -115,7 +109,7 @@
   // pushed button
   //
     color: if($tc!=$fg_color, $tc, $fg_color);
-    background-color: mix($tc,$c,20%);
+    background-color: mix($tc, $c, 20%);
     border-color: transparent;
     @include shadow(2);
     text-shadow: none;
@@ -125,8 +119,8 @@
   //
   // insensitive button
   //
-    color: if($tc!=$fg_color, $insensitive_fg_color, $insensitive_secondary_fg_color);
-    background-color: $semi_fill_color;
+    color: if($tc!=$fg_color, $tc, $insensitive_secondary_fg_color);
+    background-color: if($c!=$bg_color, $c, $insensitive_fill_color);
     border-color: transparent;
     box-shadow: 0 0 transparent;
     text-shadow: none;
@@ -159,7 +153,7 @@
   // hovered flat button
   //
     color: if($tc!=$fg_color, $tc, $fg_color);
-    background-color: $semi_fill_color;
+    background-color: if($c!=$bg_color, $c, $semi_fill_color);
     border-color: transparent;
     box-shadow: 0 0 transparent;
     text-shadow: none;
@@ -171,7 +165,7 @@
   // pushed flat button
   //
     color: if($tc!=$fg_color, $tc, $fg_color);
-    background-color: $fill_color;
+    background-color: if($c!=$bg_color, $c, $fill_color);
     border-color: transparent;
     box-shadow: 0 0 transparent;
     text-shadow: none;
@@ -181,7 +175,7 @@
   //
   // insensitive flat button
   //
-    color: if($tc!=$fg_color, $insensitive_fg_color, $insensitive_secondary_fg_color);
+    color: if($tc!=$fg_color, $tc, $insensitive_secondary_fg_color);
     background-color: transparent;
     border-color: transparent;
     box-shadow: 0 0 transparent;
