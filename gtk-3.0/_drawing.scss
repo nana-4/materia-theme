@@ -197,7 +197,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   // checked insensitive button
   //
     background-color: $fill_color;
-    color: transparentize($selected_bg_color, 0.6);
+    color: gtkopacity($selected_bg_color, 0.4);
     > .label { color: inherit; }
   }
 
@@ -291,7 +291,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   background-image: -gtk-gradient(radial,
                                   $_position, 0,
                                   $_position, 0.75,
-                                  to(transparentize($c, 0.8)),
+                                  to(gtkopacity($c, 0.2)),
                                   to(transparent));
 
   background-repeat: no-repeat;
@@ -312,8 +312,8 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 // top, bottom, right, left
 //
 
-  $_undershoot_color_dark: transparentize(black, 0.8);
-  $_undershoot_color_light: transparentize(white, 0.8);
+  $_undershoot_color_dark: gtkopacity(black, 0.2);
+  $_undershoot_color_light: gtkopacity(white, 0.2);
 
   $_gradient_dir: left;
   $_dash_bg_size: 16px 2px;

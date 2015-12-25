@@ -120,7 +120,7 @@ $asset_suffix: if($variant=='dark', '-dark', '');
 
 .rubberband {
   border: 1px solid $selected_bg_color;
-  background-color: transparentize($selected_bg_color, 0.8);
+  background-color: gtkopacity($selected_bg_color, 0.2);
 }
 
 .label {
@@ -748,7 +748,7 @@ GtkComboBox {
   }
 
   &.selection-mode {
-    box-shadow: inset 0 1px transparentize(white, 0.8);
+    box-shadow: inset 0 1px gtkopacity(white, 0.2);
     background-color: $selected_bg_color;
     color: $selected_fg_color;
     &:backdrop {
@@ -867,7 +867,7 @@ GtkTreeView.view {
     &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
     &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
     &:selected {
-      color: transparentize($selected_fg_color, 0.4);
+      color: gtkopacity($selected_fg_color, 0.6);
       &:hover, &:active { color: $selected_fg_color; }
     }
   }
@@ -883,7 +883,7 @@ GtkTreeView.view {
   &.trough { // progress bar trough in treeviews
     @extend .entry.progressbar;
     border-width: 4px;
-    border-color: transparentize($selected_bg_color, 0.8);
+    border-color: gtkopacity($selected_bg_color, 0.2);
     &:selected {
       border-color: $fill_color;
     }
@@ -1260,7 +1260,7 @@ column-header.button.dnd { // for treeview-like derive widgets
 
       .slider {
         margin: 2px;
-        border: 2px solid if($variant==light, transparentize(white, 0.8), transparentize(black, 0.8));
+        border: 2px solid if($variant==light, gtkopacity(white, 0.2), gtkopacity(black, 0.2));
       //  background-clip: padding-box;
       }
 
@@ -1294,7 +1294,7 @@ column-header.button.dnd { // for treeview-like derive widgets
 
   // slider coloring
   .slider {
-    background-color: scale-color($fg_color, $alpha: -40%);
+    background-color: gtkopacity($fg_color, 0.6);
     &:hover { background-color: $secondary_fg_color; }
     &:active { background-color: $fg_color; }
     &:insensitive {
@@ -1630,7 +1630,7 @@ GtkProgressBar {
   }
   &.trough {  // background
     border-radius: 0;
-    background-color: transparentize($selected_bg_color, 0.8);
+    background-color: gtkopacity($selected_bg_color, 0.2);
     &.osd {
       border-style: none;
       box-shadow: none;
@@ -2057,7 +2057,7 @@ GtkInfoBar {
   &.background {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
-    background-color: transparentize($base_color, 0.1);
+    background-color: gtkopacity($base_color, 0.9);
   }
 
  // @extend %osd;
@@ -2148,7 +2148,7 @@ GtkColorSwatch {
     color: white;
   }
   &.color-light {
-    color: transparentize(black, 0.2);
+    color: gtkopacity(black, 0.8);
   }
 
   // border color
