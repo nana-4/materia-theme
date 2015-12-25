@@ -1046,11 +1046,11 @@ column-header.button.dnd, column-header .button.dnd {
  * Scrollbars *
  **************/
 .scrollbar {
-  -GtkRange-slider-width: 17;
+  -GtkRange-slider-width: 17px;
   -GtkRange-trough-border: 0;
   -GtkScrollbar-has-backward-stepper: false;
   -GtkScrollbar-has-forward-stepper: false;
-  -GtkScrollbar-min-slider-length: 32;
+  -GtkScrollbar-min-slider-length: 32px;
   -GtkRange-stepper-spacing: 0;
   -GtkRange-trough-under-steppers: 1; }
   .scrollbar .button {
@@ -1063,8 +1063,8 @@ column-header.button.dnd, column-header .button.dnd {
     .scrollbar.overlay-indicator:not(.dragging):not(.hovering) .trough {
       border-style: none;
       background-color: transparent; }
-  .scrollbar.overlay-indicator.dragging, .scrollbar.overlay-indicator.hovering {
-    opacity: 0.8; }
+  .scrollbar.overlay-indicator.dragging .trough, .scrollbar.overlay-indicator.hovering .trough {
+    background-color: rgba(255, 255, 255, 0.8); }
   .scrollbar .trough {
     background-color: #ffffff;
     border: 1px none rgba(0, 0, 0, 0.1); }
@@ -1075,7 +1075,7 @@ column-header.button.dnd, column-header .button.dnd {
     .scrollbar .slider:active {
       background-color: rgba(0, 0, 0, 0.8); }
     .scrollbar .slider:insensitive {
-      background-color: transparent; }
+      opacity: 0.4; }
   .scrollbar .slider {
     border-radius: 100px;
     margin: 4px; }
@@ -1598,7 +1598,7 @@ GtkProgressBar {
   -GtkProgressBar-min-vertical-bar-width: 4;
   padding: 0;
   font-size: smaller;
-  color: rgba(0, 0, 0, 0.6); }
+  color: rgba(0, 0, 0, 0.48); }
   GtkProgressBar.osd {
     -GtkProgressBar-xspacing: 0;
     -GtkProgressBar-yspacing: 0;

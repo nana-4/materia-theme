@@ -1235,19 +1235,20 @@ column-header.button.dnd { // for treeview-like derive widgets
  * Scrollbars *
  **************/
 
+$_slider_margin: 4px;
+$_slider_fine_tune_margin: 6px;
+
 .scrollbar {
-  -GtkRange-slider-width: 17;
+  -GtkRange-slider-width: 8 + $_slider_margin * 2 + 1;
   -GtkRange-trough-border: 0;
   -GtkScrollbar-has-backward-stepper: false;
   -GtkScrollbar-has-forward-stepper: false;
-  -GtkScrollbar-min-slider-length: 32; // minimum size for the slider.
+  -GtkScrollbar-min-slider-length: 24 + $_slider_margin * 2;
+                                       // minimum size for the slider.
                                        // sadly can't be in '.slider'
                                        // where it belongs
   -GtkRange-stepper-spacing: 0;
   -GtkRange-trough-under-steppers: 1;
-
-  $_slider_margin: 4px;
-  $_slider_fine_tune_margin: 6px;
 
   .button {
     border: none;
@@ -1259,7 +1260,7 @@ column-header.button.dnd { // for treeview-like derive widgets
 
       .slider {
         margin: 2px;
-        border: 2px solid if($variant==light, gtkopacity(white, 0.2), gtkopacity(black, 0.2));
+        border: 2px solid gtkopacity($base_color, 0.2);
       //  background-clip: padding-box;
       }
 
@@ -1282,7 +1283,11 @@ column-header.button.dnd { // for treeview-like derive widgets
     }
 
     &.dragging,
-    &.hovering { opacity: 0.8; }
+    &.hovering {
+      .trough {
+        background-color: gtkopacity($base_color, 0.8);
+      }
+    }
   }
 
   // trough coloring
@@ -1297,7 +1302,7 @@ column-header.button.dnd { // for treeview-like derive widgets
     &:hover { background-color: $secondary_fg_color; }
     &:active { background-color: $fg_color; }
     &:insensitive {
-      background-color: transparent;
+      opacity: 0.4;
     }
   }
 
