@@ -95,7 +95,7 @@
 
 .dim-label, .label.separator, .titlebar .subtitle,
 .header-bar .subtitle {
-  opacity: 0.4; }
+  opacity: 0.6; }
 
 GtkAssistant .sidebar {
   padding: 6px 0;
@@ -107,7 +107,7 @@ GtkAssistant .sidebar {
 GtkAssistant.csd .sidebar {
   border-top-style: none; }
 GtkAssistant .sidebar .label {
-  opacity: 0.5;
+  opacity: 0.75;
   padding: 5px 12px 6px;
   font-weight: bold; }
 GtkAssistant .sidebar .label.highlight {
@@ -230,9 +230,9 @@ GtkTextView {
         background-color: transparent;
         color: rgba(0, 0, 0, 0.32); }
   .entry.image:not(:hover):not(:active) {
-    color: alpha(currentColor, 0.8); }
+    color: alpha(currentColor, 0.75); }
   .entry.image:insensitive {
-    color: alpha(currentColor, 0.4); }
+    color: alpha(currentColor, 0.6); }
 
 /***********
  * Buttons *
@@ -252,7 +252,7 @@ GtkTextView {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   background-color: #fafafa;
   background-image: -gtk-gradient(radial, center center, 0, center center, 0.5, to(alpha(currentColor, 0)), to(transparent)), linear-gradient(to bottom, alpha(currentColor, 0));
-  color: rgba(0, 0, 0, 0.64); }
+  color: rgba(0, 0, 0, 0.6); }
   .button:hover {
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
     background-image: -gtk-gradient(radial, center center, 0, center center, 0.5, to(alpha(currentColor, 0)), to(transparent)), linear-gradient(to bottom, alpha(currentColor, 0));
@@ -265,16 +265,16 @@ GtkTextView {
   .button:insensitive {
     box-shadow: none;
     background-color: alpha(currentColor, 0.2);
-    color: rgba(0, 0, 0, 0.256); }
+    color: rgba(0, 0, 0, 0.24); }
     .button:insensitive > .label {
       color: inherit; }
   .button:checked {
     background-color: #3498db;
     color: #ffffff; }
     .button:checked:not(:hover):not(:active) > .label {
-      opacity: 0.8; }
+      opacity: 0.75; }
     .button:checked:not(:hover):not(:active) > GtkImage {
-      opacity: 0.8; }
+      opacity: 0.75; }
   .button:checked:insensitive {
     background-color: alpha(currentColor, 0.2);
     color: rgba(52, 152, 219, 0.4); }
@@ -608,7 +608,7 @@ GtkComboBox {
     .titlebar.selection-mode .button,
     .header-bar.selection-mode .button {
       border-image: -gtk-gradient(radial, center bottom, 0, center bottom, 0.001, to(#ffffff), to(transparent)) 0 0 0/0 0 0px;
-      color: rgba(255, 255, 255, 0.8); }
+      color: rgba(255, 255, 255, 0.75); }
       .titlebar.selection-mode .button:hover, .titlebar.selection-mode .button:active, .titlebar.selection-mode .button:checked,
       .header-bar.selection-mode .button:hover,
       .header-bar.selection-mode .button:active,
@@ -629,7 +629,7 @@ GtkComboBox {
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
         background-color: #fafafa;
         background-image: -gtk-gradient(radial, center center, 0, center center, 0.5, to(alpha(currentColor, 0)), to(transparent)), linear-gradient(to bottom, alpha(currentColor, 0));
-        color: rgba(0, 0, 0, 0.64); }
+        color: rgba(0, 0, 0, 0.6); }
         .titlebar.selection-mode .button.suggested-action:hover,
         .header-bar.selection-mode .button.suggested-action:hover {
           box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
@@ -645,7 +645,7 @@ GtkComboBox {
         .header-bar.selection-mode .button.suggested-action:insensitive {
           box-shadow: none;
           background-color: alpha(currentColor, 0.2);
-          color: rgba(0, 0, 0, 0.256); }
+          color: rgba(0, 0, 0, 0.24); }
           .titlebar.selection-mode .button.suggested-action:insensitive > .label,
           .header-bar.selection-mode .button.suggested-action:insensitive > .label {
             color: inherit; }
@@ -717,7 +717,7 @@ GtkTreeView.view {
     GtkTreeView.view.expander:checked {
       -gtk-icon-source: -gtk-icontheme("pan-down-symbolic"); }
     GtkTreeView.view.expander:selected {
-      color: rgba(255, 255, 255, 0.6); }
+      color: rgba(255, 255, 255, 0.75); }
       GtkTreeView.view.expander:selected:hover, GtkTreeView.view.expander:selected:active {
         color: #ffffff; }
   GtkTreeView.view.progressbar {
@@ -759,7 +759,7 @@ column-header.button.dnd, column-header .button.dnd {
   background-color: #e4e4e4; }
   .menubar > .menuitem {
     padding: 4px 8px;
-    color: rgba(0, 0, 0, 0.64); }
+    color: rgba(0, 0, 0, 0.6); }
     .menubar > .menuitem:hover {
       box-shadow: inset 0 -2px #3498db;
       color: rgba(0, 0, 0, 0.8); }
@@ -804,7 +804,7 @@ column-header.button.dnd, column-header .button.dnd {
       border-color: transparent; }
 
 .menuitem .accelerator {
-  color: alpha(currentColor, 0.4); }
+  color: alpha(currentColor, 0.6); }
 
 /***************
  * Popovers   *
@@ -850,9 +850,9 @@ column-header.button.dnd, column-header .button.dnd {
       background-color: #3498db;
       color: #ffffff; }
       .popover .linked > .button:checked:not(:hover):not(:active) > .label {
-        opacity: 0.8; }
+        opacity: 0.75; }
       .popover .linked > .button:checked:not(:hover):not(:active) > GtkImage {
-        opacity: 0.8; }
+        opacity: 0.75; }
     .popover .linked > .button:checked:insensitive {
       background-color: alpha(currentColor, 0.2);
       color: rgba(52, 152, 219, 0.4); }
@@ -1015,7 +1015,7 @@ column-header.button.dnd, column-header .button.dnd {
     .notebook tab .label {
       padding: 0 2px;
       font-weight: bold;
-      color: rgba(0, 0, 0, 0.64); }
+      color: rgba(0, 0, 0, 0.6); }
     .notebook tab .prelight-page .label, .notebook tab .label.prelight-page {
       color: rgba(0, 0, 0, 0.8); }
     .notebook tab .active-page .label, .notebook tab .label.active-page {
@@ -1038,7 +1038,7 @@ column-header.button.dnd, column-header .button.dnd {
       .notebook tab .button > GtkImage {
         padding: 4px; }
   .notebook.arrow:not(:hover):not(:active) {
-    color: alpha(currentColor, 0.8); }
+    color: alpha(currentColor, 0.75); }
   .notebook.arrow:insensitive {
     color: rgba(0, 0, 0, 0.32); }
 
@@ -1071,7 +1071,7 @@ column-header.button.dnd, column-header .button.dnd {
   .scrollbar .slider {
     background-color: rgba(0, 0, 0, 0.48); }
     .scrollbar .slider:hover {
-      background-color: rgba(0, 0, 0, 0.64); }
+      background-color: rgba(0, 0, 0, 0.6); }
     .scrollbar .slider:active {
       background-color: rgba(0, 0, 0, 0.8); }
     .scrollbar .slider:insensitive {
@@ -1457,6 +1457,10 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
     .scale.scale-has-marks-above.scale-has-marks-below.trough:insensitive,
     .scale.vertical.scale-has-marks-above.scale-has-marks-below.trough:insensitive {
       color: rgba(0, 0, 0, 0.32); }
+  .scale.separator,
+  .scale.scale-has-marks-above.scale-has-marks-below.separator,
+  .scale.vertical.scale-has-marks-above.scale-has-marks-below.separator {
+    color: alpha(currentColor, 0.2); }
 
 .scale.scale-has-marks-below {
   -GtkScale-slider-length: 20;
@@ -1594,7 +1598,7 @@ GtkProgressBar {
   -GtkProgressBar-min-vertical-bar-width: 4;
   padding: 0;
   font-size: smaller;
-  color: rgba(0, 0, 0, 0.64); }
+  color: rgba(0, 0, 0, 0.6); }
   GtkProgressBar.osd {
     -GtkProgressBar-xspacing: 0;
     -GtkProgressBar-yspacing: 0;
@@ -1710,11 +1714,11 @@ GtkScrolledWindow GtkViewport.frame {
     animation: list_ripple_effect 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
 
 .list-row:selected .button:insensitive {
-  color: rgba(0, 0, 0, 0.256); }
+  color: rgba(0, 0, 0, 0.24); }
 .list-row:selected .button.flat, .list-row:selected .inline-toolbar .button, .inline-toolbar .list-row:selected .button, .list-row:selected .osd .toolbar .button, .osd .toolbar .list-row:selected .button, .list-row:selected .toolbar.osd .button, .toolbar.osd .list-row:selected .button, .list-row:selected .app-notification .button, .app-notification .list-row:selected .button, .list-row:selected .titlebar .button:not(.suggested-action):not(.destructive-action), .titlebar .list-row:selected .button:not(.suggested-action):not(.destructive-action),
 .list-row:selected .header-bar .button:not(.suggested-action):not(.destructive-action),
 .header-bar .list-row:selected .button:not(.suggested-action):not(.destructive-action), .list-row:selected .message-dialog.csd .dialog-action-area .button, .message-dialog.csd .dialog-action-area .list-row:selected .button, .list-row:selected .sidebar-button.button {
-  color: rgba(255, 255, 255, 0.8); }
+  color: rgba(255, 255, 255, 0.75); }
   .list-row:selected .button.flat:hover, .list-row:selected .inline-toolbar .button:hover, .inline-toolbar .list-row:selected .button:hover, .list-row:selected .osd .toolbar .button:hover, .osd .toolbar .list-row:selected .button:hover, .list-row:selected .toolbar.osd .button:hover, .toolbar.osd .list-row:selected .button:hover, .list-row:selected .app-notification .button:hover, .app-notification .list-row:selected .button:hover, .list-row:selected .titlebar .button:hover:not(.suggested-action):not(.destructive-action), .titlebar .list-row:selected .button:hover:not(.suggested-action):not(.destructive-action),
   .list-row:selected .header-bar .button:hover:not(.suggested-action):not(.destructive-action),
   .header-bar .list-row:selected .button:hover:not(.suggested-action):not(.destructive-action), .list-row:selected .message-dialog.csd .dialog-action-area .button:hover, .message-dialog.csd .dialog-action-area .list-row:selected .button:hover, .list-row:selected .sidebar-button.button:hover, .list-row:selected .button.flat:active, .list-row:selected .inline-toolbar .button:active, .inline-toolbar .list-row:selected .button:active, .list-row:selected .osd .toolbar .button:active, .osd .toolbar .list-row:selected .button:active, .list-row:selected .toolbar.osd .button:active, .toolbar.osd .list-row:selected .button:active, .list-row:selected .app-notification .button:active, .app-notification .list-row:selected .button:active, .list-row:selected .titlebar .button:active:not(.suggested-action):not(.destructive-action), .titlebar .list-row:selected .button:active:not(.suggested-action):not(.destructive-action),
@@ -1724,7 +1728,7 @@ GtkScrolledWindow GtkViewport.frame {
   .list-row:selected .button.flat:insensitive, .list-row:selected .inline-toolbar .button:insensitive, .inline-toolbar .list-row:selected .button:insensitive, .list-row:selected .osd .toolbar .button:insensitive, .osd .toolbar .list-row:selected .button:insensitive, .list-row:selected .toolbar.osd .button:insensitive, .toolbar.osd .list-row:selected .button:insensitive, .list-row:selected .app-notification .button:insensitive, .app-notification .list-row:selected .button:insensitive, .list-row:selected .titlebar .button:insensitive:not(.suggested-action):not(.destructive-action), .titlebar .list-row:selected .button:insensitive:not(.suggested-action):not(.destructive-action),
   .list-row:selected .header-bar .button:insensitive:not(.suggested-action):not(.destructive-action),
   .header-bar .list-row:selected .button:insensitive:not(.suggested-action):not(.destructive-action), .list-row:selected .message-dialog.csd .dialog-action-area .button:insensitive, .message-dialog.csd .dialog-action-area .list-row:selected .button:insensitive, .list-row:selected .sidebar-button.button:insensitive {
-    color: rgba(0, 0, 0, 0.256); }
+    color: rgba(0, 0, 0, 0.24); }
 
 .list-row:hover {
   transition: none; }
@@ -1742,7 +1746,7 @@ GtkScrolledWindow GtkViewport.frame {
   .expander:checked {
     -gtk-icon-source: -gtk-icontheme("pan-down-symbolic"); }
   .expander:not(:hover):not(:active) {
-    color: alpha(currentColor, 0.6); }
+    color: alpha(currentColor, 0.75); }
   .expander:selected {
     color: #ffffff; }
 
@@ -1770,10 +1774,10 @@ GtkCalendar {
       box-shadow: none;
       background-color: transparent; }
   GtkCalendar:inconsistent {
-    color: alpha(currentColor, 0.5); }
+    color: alpha(currentColor, 0.6); }
   GtkCalendar.highlight {
     font-size: smaller;
-    color: alpha(currentColor, 0.5); }
+    color: alpha(currentColor, 0.6); }
 
 /***********
  * Dialogs *
@@ -1814,7 +1818,7 @@ GtkSidebarRow.list-row {
 GtkSidebarRow .sidebar-revealer {
   padding: 4px 14px 4px 12px; }
 GtkSidebarRow .sidebar-icon {
-  opacity: 0.8; }
+  opacity: 0.75; }
   GtkSidebarRow .sidebar-icon:dir(ltr) {
     padding-right: 8px; }
   GtkSidebarRow .sidebar-icon:dir(rtl) {
@@ -1830,8 +1834,6 @@ GtkPlacesSidebar.sidebar .sidebar-new-bookmark-row {
   color: #3498db; }
 .sidebar-button.button.image-button {
   padding: 4px; }
-.sidebar-button.button:not(:hover):not(:active) > GtkImage {
-  opacity: 0.8; }
 GtkPlacesSidebar.sidebar .has-open-popup {
   transition: none; }
 
@@ -1881,7 +1883,7 @@ GtkInfoBar {
   .question .button:insensitive,
   .warning .button:insensitive,
   .error .button:insensitive {
-    color: rgba(0, 0, 0, 0.256); }
+    color: rgba(0, 0, 0, 0.24); }
   .info .button.flat, .info .inline-toolbar .button, .inline-toolbar .info .button, .info .osd .toolbar .button, .osd .toolbar .info .button, .info .toolbar.osd .button, .toolbar.osd .info .button, .info .app-notification .button, .app-notification .info .button, .info .titlebar .button:not(.suggested-action):not(.destructive-action), .titlebar .info .button:not(.suggested-action):not(.destructive-action),
   .info .header-bar .button:not(.suggested-action):not(.destructive-action),
   .header-bar .info .button:not(.suggested-action):not(.destructive-action), .info .message-dialog.csd .dialog-action-area .button, .message-dialog.csd .dialog-action-area .info .button, .info .sidebar-button.button,
@@ -1933,7 +1935,7 @@ GtkInfoBar {
   .error .message-dialog.csd .dialog-action-area .button,
   .message-dialog.csd .dialog-action-area .error .button,
   .error .sidebar-button.button {
-    color: rgba(255, 255, 255, 0.8); }
+    color: rgba(255, 255, 255, 0.75); }
     .info .button.flat:hover, .info .inline-toolbar .button:hover, .inline-toolbar .info .button:hover, .info .osd .toolbar .button:hover, .osd .toolbar .info .button:hover, .info .toolbar.osd .button:hover, .toolbar.osd .info .button:hover, .info .app-notification .button:hover, .app-notification .info .button:hover, .info .titlebar .button:hover:not(.suggested-action):not(.destructive-action), .titlebar .info .button:hover:not(.suggested-action):not(.destructive-action),
     .info .header-bar .button:hover:not(.suggested-action):not(.destructive-action),
     .header-bar .info .button:hover:not(.suggested-action):not(.destructive-action), .info .message-dialog.csd .dialog-action-area .button:hover, .message-dialog.csd .dialog-action-area .info .button:hover, .info .sidebar-button.button:hover, .info .button.flat:active, .info .inline-toolbar .button:active, .inline-toolbar .info .button:active, .info .osd .toolbar .button:active, .osd .toolbar .info .button:active, .info .toolbar.osd .button:active, .toolbar.osd .info .button:active, .info .app-notification .button:active, .app-notification .info .button:active, .info .titlebar .button:active:not(.suggested-action):not(.destructive-action), .titlebar .info .button:active:not(.suggested-action):not(.destructive-action),
@@ -2087,7 +2089,7 @@ GtkInfoBar {
     .error .message-dialog.csd .dialog-action-area .button:insensitive,
     .message-dialog.csd .dialog-action-area .error .button:insensitive,
     .error .sidebar-button.button:insensitive {
-      color: rgba(0, 0, 0, 0.256); }
+      color: rgba(0, 0, 0, 0.24); }
   .info .label:selected,
   .info .label:selected:focus,
   .info .label:selected:hover,

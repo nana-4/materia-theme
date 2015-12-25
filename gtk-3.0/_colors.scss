@@ -16,11 +16,13 @@ $fg_color: if($variant == 'light', gtkopacity(black, 0.8), white);
 
 $light_color: if($variant =='light', darken($base_color,2%), lighten($base_color,4%));
 $dark_color: if($variant =='light', darken($bg_color,4%), darken($bg_color,2%));
-$secondary_fg_color: gtkopacity($fg_color, 0.8);
+$secondary_fg_color: gtkopacity($fg_color, 0.75);
+$tertiary_fg_color: gtkopacity($fg_color, 0.6);
 
 $selected_bg_color: if($variant == 'light', #3498db, #2980b9);
 $selected_fg_color: #ffffff;
-$secondary_selected_fg_color: gtkopacity($selected_fg_color, 0.8);
+$secondary_selected_fg_color: gtkopacity($selected_fg_color, 0.75);
+$tertiary_selected_fg_color: gtkopacity($selected_fg_color, 0.6);
 $fill_color: gtkalpha(currentColor, 0.2);
 $borders_color: if($variant == 'light', gtkopacity(black, 0.1), gtkopacity(black, 0.2));
 $link_color: if($variant == 'light', #3498db, #2980b9);
@@ -37,8 +39,10 @@ $destructive_color: if($variant =='light', #e74c3c, #c0392b);
 //insensitive state derived colors
 $insensitive_fg_color: gtkopacity($fg_color, 0.4);
 $insensitive_secondary_fg_color: gtkopacity($secondary_fg_color, 0.4);
+$insensitive_tertiary_fg_color: gtkopacity($tertiary_fg_color, 0.4);
 $insensitive_selected_fg_color: gtkopacity($fg_color, 0.4);
 $insensitive_secondary_selected_fg_color: gtkopacity($secondary_fg_color, 0.4);
+$insensitive_tertiary_selected_fg_color: gtkopacity($tertiary_fg_color, 0.4);
 $insensitive_base_color: mix($base_color, $bg_color, 50%);
 
 //colors for the backdrop state, derived from the main colors.

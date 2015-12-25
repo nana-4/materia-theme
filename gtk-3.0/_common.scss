@@ -139,7 +139,7 @@ $asset_suffix: if($variant=='dark', '-dark', '');
 }
 
 .dim-label {
-  opacity: 0.4;
+  opacity: 0.6;
 }
 
 GtkAssistant {
@@ -151,7 +151,7 @@ GtkAssistant {
   }
   &.csd .sidebar { border-top-style: none; }
   .sidebar .label {
-    opacity: 0.5;
+    opacity: 0.75;
     padding: 5px 12px 6px;
     font-weight: bold;
   }
@@ -250,8 +250,8 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
   }
 
   &.image { // entry icons colors
-    &:not(:hover):not(:active) { color: gtkalpha(currentColor, 0.8); }
-    &:insensitive { color: gtkalpha(currentColor, 0.4); }
+    &:not(:hover):not(:active) { color: gtkalpha(currentColor, 0.75); }
+    &:insensitive { color: gtkalpha(currentColor, 0.6); }
   }
 
   .osd & {
@@ -867,7 +867,7 @@ GtkTreeView.view {
     &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
     &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
     &:selected {
-      color: gtkopacity($selected_fg_color, 0.6);
+      color: gtkopacity($selected_fg_color, 0.75);
       &:hover, &:active { color: $selected_fg_color; }
     }
   }
@@ -983,7 +983,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   }
 }
 
-.menuitem .accelerator { color: gtkalpha(currentColor, 0.4); }
+.menuitem .accelerator { color: gtkalpha(currentColor, 0.6); }
 
 
 /***************
@@ -1207,7 +1207,6 @@ column-header.button.dnd { // for treeview-like derive widgets
       color: $fg_color;
     }
     .button { //tab close button
-    //  &:not(:hover):not(:active) > GtkImage { opacity: 0.6; }
       padding: 0;
       @extend %image_button;
       background-size: 24px * 1 / 0.8 24px * 1 / 0.8, auto;
@@ -1222,7 +1221,7 @@ column-header.button.dnd { // for treeview-like derive widgets
     }
   }
   &.arrow {
-    &:not(:hover):not(:active) { color: gtkalpha(currentColor, 0.8); }
+    &:not(:hover):not(:active) { color: gtkalpha(currentColor, 0.75); }
     &:insensitive {
       color: $insensitive_fg_color;
     }
@@ -1294,7 +1293,7 @@ column-header.button.dnd { // for treeview-like derive widgets
 
   // slider coloring
   .slider {
-    background-color: gtkopacity($fg_color, 0.6);
+    background-color: $tertiary_fg_color;
     &:hover { background-color: $secondary_fg_color; }
     &:active { background-color: $fg_color; }
     &:insensitive {
@@ -1441,7 +1440,7 @@ GtkSwitch {
                 //  (':checked:active', '-checked'),
                   (':checked:insensitive','-checked-insensitive') {
     .menu .menuitem.#{$w}#{$s} {
-    //  color: gtkalpha(currentColor, 0.8);
+    //  color: gtkalpha(currentColor, 0.75);
     //  -gtk-icon-source: -gtk-icontheme('#{$a}-symbolic');
     //  &:active, &:checked { -gtk-icon-source: -gtk-icontheme('#{$a}-checked-symbolic'); }
     //  &:inconsistent { -gtk-icon-source: -gtk-icontheme('#{$a}-mixed-symbolic'); }
@@ -1555,8 +1554,9 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
     .osd & {
     }
   }
+  // marks color
   &.separator {
-  //  color: gtkalpha(currentColor, 0.5);
+    color: $fill_color;
   }
   // scales on selected list rows
   .list-row:selected & {
@@ -1571,8 +1571,6 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
       -GtkScale-slider-length: 20;
       -GtkRange-slider-width: 25;
       -GtkRange-trough-border: 2;
-
-    //  color: gtkalpha(currentColor, 0.5); // marks color
 
       @extend %#{$we}_#{$dn};
 
@@ -1622,7 +1620,7 @@ GtkProgressBar {
   -GtkProgressBar-min-vertical-bar-width: 4;
   padding: 0;
   font-size: smaller;
-  color: $secondary_fg_color;
+  color: $tertiary_fg_color;
   &.osd {
     -GtkProgressBar-xspacing: 0;
     -GtkProgressBar-yspacing: 0;
@@ -1829,7 +1827,7 @@ GtkScrolledWindow {
   -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
   &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
   &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
-  &:not(:hover):not(:active) { color: gtkalpha(currentColor, 0.6); }
+  &:not(:hover):not(:active) { color: gtkalpha(currentColor, 0.75); }
   &:selected { color: $selected_fg_color; }
 }
 
@@ -1858,10 +1856,10 @@ GtkCalendar {
     &:insensitive { @include button(flat-insensitive); }
   }
 
-  &:inconsistent { color: gtkalpha(currentColor, 0.5); }
+  &:inconsistent { color: gtkalpha(currentColor, 0.6); }
   &.highlight {
     font-size: smaller;
-    color: gtkalpha(currentColor, 0.5);
+    color: gtkalpha(currentColor, 0.6);
   }
 }
 
@@ -1923,7 +1921,6 @@ GtkFileChooserDialog {
   }
 }
 
-$_placesidebar_icons_opacity: 0.8;
 GtkSidebarRow {
   // Needs overriding of the GtkListBoxRow padding
   &.list-row {
@@ -1935,7 +1932,7 @@ GtkSidebarRow {
     padding: 4px 14px 4px 12px;
   }
   .sidebar-icon {
-    opacity: $_placesidebar_icons_opacity; // dim the device icons
+    opacity: 0.75; // dim the device icons
     &:dir(ltr) { padding-right: 8px; }
     &:dir(rtl) { padding-left: 8px; }
   }
@@ -1970,7 +1967,6 @@ GtkPlacesSidebar.sidebar {
     @extend .button.flat;
   //  border-radius: 100%;
   //  outline-radius: 100%;
-    &:not(:hover):not(:active) > GtkImage { opacity: $_placesidebar_icons_opacity };
   }
   // this is for indicating which sidebar row generated a popover
   // see https://bugzilla.gnome.org/show_bug.cgi?id=754411
@@ -2286,7 +2282,6 @@ GtkVolumeButton.button {
 .titlebar .button.titlebutton {
  // @extend .button.flat;
   @extend %image_button;
- // &:not(:hover):not(:active) > GtkImage { opacity: 0.6; }
 }
 
 .header-bar.selection-mode .button.titlebutton,
