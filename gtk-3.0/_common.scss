@@ -48,7 +48,7 @@ $asset_suffix: if($variant=='dark', '-dark', '');
 
   outline-style: solid;
   outline-width: 2px;
-  outline-color: $fill_color;
+  outline-color: $track_color;
   outline-offset: -4px;
   outline-radius: 2px;
 }
@@ -102,25 +102,25 @@ $asset_suffix: if($variant=='dark', '-dark', '');
 .view {
   @extend .list-row.activatable;
   background-color: $base_color;
-  color: $text_color;
+  color: $fg_color;
 
   &:hover, &:active, &:selected { border-radius: 2px; }
 
   &:insensitive {
-  //  background-color: $insensitive_base_color;
+  //  background-color: $secondary_base_color;
     color: $insensitive_fg_color;
   }
 
   &:backdrop {
-  //  color: $backdrop_text_color;
+  //  color: $backdrop_fg_color;
   }
 
   &:selected { @extend %selected_items; }
 }
 
 .rubberband {
-  border: 1px solid $selected_bg_color;
-  background-color: gtkopacity($selected_bg_color, 0.2);
+  border: 1px solid $secondary_selected_bg_color;
+  background-color: gtkopacity($secondary_selected_bg_color, 0.2);
 }
 
 .label {
@@ -161,7 +161,7 @@ GtkAssistant {
 }
 
 GtkTextView { // This will get overridden by .view, needed by gedit line numbers
-  background-color: $insensitive_base_color;
+  background-color: $secondary_base_color;
 }
 
 .grid-child {
@@ -320,7 +320,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
   }
 
   // Suggested and Destructive Action buttons
-  @each $b_type, $b_color in (suggested-action, $selected_bg_color),
+  @each $b_type, $b_color in (suggested-action, $suggested_color),
                              (destructive-action, $destructive_color) {
     &.#{$b_type} {
       background-color: $b_color;
@@ -667,7 +667,7 @@ GtkComboBox {
   border-style: solid;
   border-width: 0 1px 1px;
   border-color: $borders_color;
-  background-color: $insensitive_base_color;
+  background-color: $secondary_base_color;
 }
 
 .search-bar, .location-bar {
@@ -749,7 +749,7 @@ GtkComboBox {
 
   &.selection-mode {
     box-shadow: inset 0 1px gtkopacity(white, 0.2);
-    background-color: $selected_bg_color;
+    background-color: $selection_color;
     color: $selected_fg_color;
     &:backdrop {
     }
@@ -847,7 +847,7 @@ GtkTreeView.view {
   -GtkTreeView-tree-line-pattern: '';
   -GtkTreeView-expander-size: 16;
 
-  border-left-color: $fill_color; // this is actually the tree lines color,
+  border-left-color: $track_color; // this is actually the tree lines color,
   border-top-color: $borders_color;                         // while this is the grid lines color, better then nothing
 
   &.rubberband { @extend .rubberband; } // to avoid borders being overridden by the previously set props
@@ -885,7 +885,7 @@ GtkTreeView.view {
     border-width: 4px;
     border-color: gtkopacity($selected_bg_color, 0.2);
     &:selected {
-      border-color: $fill_color;
+      border-color: $track_color;
     }
   }
 }
@@ -974,7 +974,7 @@ column-header.button.dnd { // for treeview-like derive widgets
     border-radius: 0;
     &.top { border-bottom: 1px solid $borders_color; }
     &.bottom { border-top: 1px solid $borders_color; }
-    &:hover { background-color: $fill_color; }
+    &:hover { background-color: $track_color; }
     &:insensitive {
       color: transparent;
       background-color: transparent;
@@ -995,7 +995,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   border: 1px solid;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.3);
   border-radius: 2px + 1px;
-  background-color: $insensitive_base_color;
+  background-color: $secondary_base_color;
   box-shadow:  $z-depth-2;
   &:backdrop { box-shadow: $z-depth-1; }
 
@@ -1168,7 +1168,7 @@ column-header.button.dnd { // for treeview-like derive widgets
 
     //here's the interesting stuff
     &:hover, &.prelight-page {
-      border-color: $fill_color;
+      border-color: $track_color;
     }
     &:active, &.active-page {
       border-color: $selected_bg_color;
@@ -1380,14 +1380,14 @@ GtkSwitch {
     // similar to the .scale
     border: 10px solid transparent;
     border-radius: 100px;
-    background-color: $fill_color;
+    background-color: $track_color;
     &:insensitive {
       color: $insensitive_fg_color;
     }
     &:active {
       background-color: $success_color;
       &:insensitive {
-        background-color: $fill_color;
+        background-color: $track_color;
         color: $success_color;
       }
     }
@@ -1549,10 +1549,10 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
   &.trough {
     margin: 10px;
     border-radius: 100px;
-    background-color: $fill_color;
+    background-color: $track_color;
     &.highlight {
       background-color: $success_color;
-      &:insensitive { background-color: $fill_color; }
+      &:insensitive { background-color: $track_color; }
     }
     &:insensitive { color: $insensitive_fg_color; }
     //OSD troughs
@@ -1561,7 +1561,7 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
   }
   // marks color
   &.separator {
-    color: $fill_color;
+    color: $track_color;
   }
   // scales on selected list rows
   .list-row:selected & {
@@ -1716,7 +1716,7 @@ GtkProgressBar {
       background-color: $warning_color;
     }
     &.empty-fill-block {
-      background-color: $fill_color;
+      background-color: $track_color;
     }
   }
 }
@@ -1841,7 +1841,7 @@ GtkScrolledWindow {
  ***********/
 GtkCalendar {
   border: 1px solid $borders_color;
-  color: $text_color;
+  color: $fg_color;
 
   &:selected {
     @extend .view:selected;
@@ -1919,7 +1919,7 @@ GtkFileChooserDialog {
 
 .sidebar {
   border: none;
-  background-color: $insensitive_base_color;
+  background-color: $secondary_base_color;
 
   &:selected {
     @extend %selected_items;
@@ -2028,11 +2028,26 @@ GtkInfoBar {
   border-style: none;
 }
 
+.info {
+  background-color: $info_bg_color;
+}
+
+.question {
+  background-color: $question_bg_color;
+}
+
+.warning {
+  background-color: $warning_bg_color;
+}
+
+.error {
+  background-color: $error_bg_color;
+}
+
 .info,
 .question,
 .warning,
 .error {
-  background-color: $selected_bg_color;
   color: $selected_fg_color;
   .button {
   //  @extend .list-row:selected.button;
@@ -2159,18 +2174,11 @@ GtkColorSwatch {
 
   // make the add color button looks like, well, a button
   &#add-color-button {
-  background-image: if($variant =='light',
-                    linear-gradient(to right,
-                                    #e74c3c 25%,
-                                    #f1c40f 25%, #f1c40f 50%,
-                                    #2ecc71 50%, #2ecc71 75%,
-                                    #3498db 75%),
-                    linear-gradient(to right,
-                                    #c0392b 25%,
-                                    #f39c12 25%, #f39c12 50%,
-                                    #27ae60 50%, #27ae60 75%,
-                                    #2980b9 75%)
-                    );
+  background-image: linear-gradient(to right,
+                                    $error_bg_color 25%,
+                                    $warning_bg_color 25%, $warning_bg_color 50%,
+                                    $info_bg_color 50%, $info_bg_color 75%,
+                                    $question_bg_color 75%);
   color: white;
   }
 }

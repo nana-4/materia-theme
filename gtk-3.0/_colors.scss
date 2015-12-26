@@ -9,51 +9,51 @@
   @return scale-color($c, $alpha: percentage(-1 + $a));
 }
 
-$base_color: if($variant == 'light', #ffffff, #444444);
-$text_color: if($variant == 'light', gtkopacity(black, 0.8), white);
-$bg_color: if($variant == 'light', #eeeeee, #333333);
-$fg_color: if($variant == 'light', gtkopacity(black, 0.8), white);
-
-$light_color: if($variant =='light', darken($base_color,2%), lighten($base_color,4%));
-$dark_color: if($variant =='light', darken($bg_color,4%), darken($bg_color,2%));
+//foreground colors
+$fg_color: if($variant == 'light', gtkopacity(#000000, 0.8), #FFFFFF);
 $secondary_fg_color: gtkopacity($fg_color, 0.75);
 $tertiary_fg_color: gtkopacity($fg_color, 0.6);
 
-$selected_bg_color: if($variant == 'light', #3498db, #2980b9);
-$selected_fg_color: #ffffff;
+$selected_fg_color: #FFFFFF;
 $secondary_selected_fg_color: gtkopacity($selected_fg_color, 0.75);
 $tertiary_selected_fg_color: gtkopacity($selected_fg_color, 0.6);
-$fill_color: gtkalpha(currentColor, 0.2);
-$borders_color: if($variant == 'light', gtkopacity(black, 0.1), gtkopacity(black, 0.2));
-$link_color: if($variant == 'light', #3498db, #2980b9);
-$link_visited_color: if($variant == 'light', #9b59b6, #8e44ad);
 
-$highlight_color: if($variant == 'light', gtkopacity(white, 0.4), gtkopacity(white, 0.1));
-
-$warning_color: if($variant =='light', #e67e22, #d35400);
-$error_color: if($variant =='light', #e74c3c, #c0392b);
-$success_color: if($variant =='light', #2ecc71, #27ae60);
-$suggested_color: if($variant =='light', #1cccaa, #16a085);
-$destructive_color: if($variant =='light', #e74c3c, #c0392b);
-
-//insensitive state derived colors
 $insensitive_fg_color: gtkopacity($fg_color, 0.4);
 $insensitive_secondary_fg_color: gtkopacity($secondary_fg_color, 0.4);
 $insensitive_tertiary_fg_color: gtkopacity($tertiary_fg_color, 0.4);
+
 $insensitive_selected_fg_color: gtkopacity($fg_color, 0.4);
 $insensitive_secondary_selected_fg_color: gtkopacity($secondary_fg_color, 0.4);
 $insensitive_tertiary_selected_fg_color: gtkopacity($tertiary_fg_color, 0.4);
-$insensitive_base_color: mix($base_color, $bg_color, 50%);
 
-//colors for the backdrop state, derived from the main colors.
-$backdrop_fg_color: gtkopacity($fg_color, 0.8);
-$backdrop_insensitive_fg_color: gtkopacity($insensitive_fg_color, 0.8);
-$backdrop_base_color: if($variant ==' light', darken($base_color, 1%), lighten($base_color, 1%));
-$backdrop_text_color: mix($text_color, $backdrop_base_color, 80%);
-$backdrop_bg_color: $bg_color;
-$backdrop_selected_fg_color: gtkopacity($selected_fg_color, 0.8);
-$backdrop_borders_color: mix($borders_color, $bg_color, 90%);
-$backdrop_dark_fill: mix($backdrop_borders_color, $backdrop_bg_color, 35%);
-$backdrop_sidebar_bg_color: mix($backdrop_bg_color, $backdrop_base_color, 50%);
+//background colors
+$bg_color: if($variant == 'light', #EEEEEE, #37474F);
+$base_color: if($variant == 'light', #FFFFFF, #455A64);
+$secondary_base_color: mix($base_color, $bg_color, 50%);
+$light_color: if($variant =='light', #FAFAFA, #546E7A);
+$dark_color: if($variant =='light', #E0E0E0, mix(#263238, #37474F, 50%));
 
-$backdrop_scrollbar_bg_color: darken($backdrop_bg_color, 3%);
+$selected_bg_color: #26A69A;
+$secondary_selected_bg_color: #00BFA5;
+
+//miscellaneous colors
+$track_color: gtkalpha(currentColor, 0.2);
+$borders_color: if($variant == 'light', gtkopacity(#000000, 0.1), gtkopacity(#000000, 0.2));
+$highlight_color: if($variant == 'light', gtkopacity(#FFFFFF, 0.4), gtkopacity(#FFFFFF, 0.1));
+
+$link_color: #448AFF;
+$link_visited_color: #E040FB;
+
+$warning_color: #FF6D00;
+$error_color: #DD2C00;
+$success_color: #00C853;
+
+$suggested_color: #FF4081;
+$destructive_color: #FF5252;
+$selection_color: #00BCD4;
+
+$info_bg_color: #66BB6A;
+$question_bg_color: #42A5F5;
+$warning_bg_color: #FFA726;
+$error_bg_color: #EF5350;
+

@@ -11,7 +11,7 @@ widget text/foreground color */
 
 /*
 text color for entries, views and content in general */
-@define-color theme_text_color #{"" +$text_color};
+@define-color theme_text_color #{"" +$fg_color};
 
 /*
 widget base background color */
@@ -39,7 +39,7 @@ text foreground color of insensitive widgets */
 
 /*
 insensitive text widgets and the like base background color */
-@define-color insensitive_base_color #{"" +$insensitive_base_color};
+@define-color insensitive_base_color #{"" +$secondary_base_color};
 
 /*
 widget text/foreground color on backdrop windows */
@@ -47,7 +47,7 @@ widget text/foreground color on backdrop windows */
 
 /*
 text color for entries, views and content in general on backdrop windows */
-@define-color theme_unfocused_text_color #{"" +$text_color};
+@define-color theme_unfocused_text_color #{"" +$fg_color};
 
 /*
 widget base background color on backdrop windows */
@@ -79,28 +79,6 @@ these are pretty self explicative */
 @define-color error_color #{"" +$error_color};
 @define-color success_color #{"" +$success_color};
 //@define-color destructive_color #{"" +$destructive_color}
-
-//WM
-
-/*
-these colors are exported for the window manager and shouldn't be used in applications,
-read if you used those and something break with a version upgrade you're on your own... */
-@define-color wm_title #{"" +$fg_color};
-@define-color wm_unfocused_title #{$backdrop_fg_color};
-@define-color wm_highlight #{"" + $highlight_color};
-@define-color wm_borders_edge #{"" + $highlight_color};
-
-@define-color wm_bg_a #{$dark_color};
-@define-color wm_bg_b #{$dark_color};
-
-@define-color wm_shadow alpha(black, 0.35);
-@define-color wm_border alpha(black, 0.18);
-
-@define-color wm_button_hover_color_a shade(#{$bg_color}, 1.3);
-@define-color wm_button_hover_color_b #{$bg_color};
-@define-color wm_button_active_color_a shade(#{$bg_color}, 0.85);
-@define-color wm_button_active_color_b shade(#{$bg_color}, 0.89);
-@define-color wm_button_active_color_c shade(#{$bg_color}, 0.9);
 
 //FIXME this is really an API
 

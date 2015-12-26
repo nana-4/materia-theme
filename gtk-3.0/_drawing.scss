@@ -83,14 +83,14 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   @if $t==normal {
     box-shadow: $z-depth-1;
     background-color: if($fc!=$selected_bg_color, $fc, $base_color);
-    color: if($fc!=$selected_bg_color, $selected_fg_color, $text_color);
+    color: if($fc!=$selected_bg_color, $selected_fg_color, $fg_color);
   }
   @if $t==focus {
     box-shadow: $z-depth-2;
   }
   @if $t==insensitive {
     color: $insensitive_fg_color;
-    background-color: $insensitive_base_color;
+    background-color: $secondary_base_color;
   }
   @if $t==flat {
     border-image: -gtk-gradient(radial,
@@ -100,9 +100,9 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
                                 to(transparent))
                                 0 0 0 / 0 0 0px;
     border-radius: 0;
-    box-shadow: inset 0 -1px if($fc!=$selected_bg_color, $fc, $fill_color);
+    box-shadow: inset 0 -1px if($fc!=$selected_bg_color, $fc, $track_color);
     background-color: transparent;
-    color: $text_color;
+    color: $fg_color;
   }
   @if $t==flat-focus {
     border-image: -gtk-gradient(radial,
@@ -115,7 +115,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0 cubic-bezier(0.4, 0, 0.2, 1) 0.2s, color 0;
   }
   @if $t==flat-insensitive {
-    box-shadow: inset 0 -1px $fill_color;
+    box-shadow: inset 0 -1px $track_color;
     background-color: transparent;
     color: $insensitive_fg_color;
   }
@@ -179,7 +179,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   // insensitive button
   //
     box-shadow: none;
-    background-color: $fill_color;
+    background-color: $track_color;
     color: if($tc!=$fg_color, $insensitive_fg_color, $insensitive_secondary_fg_color);
     > .label { color: inherit; }
   }
@@ -189,14 +189,12 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   //
     background-color: $selected_bg_color;
     color: $selected_fg_color;
-    &:not(:hover):not(:active) > .label { opacity: 0.75; }
-    &:not(:hover):not(:active) > GtkImage { opacity: 0.75; }
   }
   @else if $t==checked-insensitive {
   //
   // checked insensitive button
   //
-    background-color: $fill_color;
+    background-color: $track_color;
     color: gtkopacity($selected_bg_color, 0.4);
     > .label { color: inherit; }
   }
@@ -242,14 +240,14 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   }
   @else if $t==flat-checked {
   //
-  // backdrop pushed button FIXME no colors here!
+  // checked flat button
   //
-    background-color: $fill_color;
+    background-color: $track_color;
     color: $fg_color;
   }
   @else if $t==flat-checked-insensitive {
   //
-  // flat-checked insensitive button
+  // checked flat insensitive button
   //
     > .label { color: inherit; }
   }
@@ -267,7 +265,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   }
 }
 
-@mixin overshoot($p, $t:normal, $c:$selected_bg_color) {
+@mixin overshoot($p, $t:normal, $c:$secondary_selected_bg_color) {
 //
 // overshoot
 //
