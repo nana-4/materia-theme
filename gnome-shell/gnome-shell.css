@@ -1117,7 +1117,7 @@ StScrollBar {
   font-size: 9pt;
   color: white;
   background-color: rgba(255, 255, 255, 0.1);
-  padding: 4px 0;
+  padding: 3px 0;
   border: none;
   border-left: 0px;
   border-radius: 0px 2px 2px 0px; }
@@ -1132,7 +1132,7 @@ StScrollBar {
     height: 24px; }
 
 .dash-item-container > StWidget {
-  padding: 4px 8px; }
+  padding: 3px 6px; }
 
 .dash-label {
   border-radius: 2px;
@@ -1157,8 +1157,33 @@ StScrollBar {
 #dashtodockContainer.extended:overview #dash {
   background-color: transparent; }
 
-#dashtodockContainer.extended .dash-item-container > StWidget {
-  padding: 8px; }
+#dashtodockContainer.extended.left .dash-item-container > StWidget,
+#dashtodockContainer.extended.right .dash-item-container > StWidget,
+#dashtodockContainer.extended.left .dash-item-container:last-child > StWidget .app-well-app,
+#dashtodockContainer.extended.right .dash-item-container:last-child > StWidget .app-well-app {
+  padding: 3px 6px; }
+
+#dashtodockContainer.extended.left .dash-item-container:first-child > StWidget,
+#dashtodockContainer.extended.right .dash-item-container:first-child > StWidget {
+  padding: 6px 6px 3px 6px; }
+
+#dashtodockContainer.extended.left .dash-item-container:last-child > StWidget,
+#dashtodockContainer.extended.right .dash-item-container:last-child > StWidget {
+  padding: 3px 6px 6px 6px; }
+
+#dashtodockContainer.extended.top .dash-item-container > StWidget,
+#dashtodockContainer.extended.bottom .dash-item-container > StWidget,
+#dashtodockContainer.extended.top .dash-item-container:last-child > StWidget .app-well-app,
+#dashtodockContainer.extended.bottom .dash-item-container:last-child > StWidget .app-well-app {
+  padding: 6px 3px; }
+
+#dashtodockContainer.extended.top .dash-item-container:first-child > StWidget,
+#dashtodockContainer.extended.bottom .dash-item-container:first-child > StWidget {
+  padding: 6px 3px 6px 6px; }
+
+#dashtodockContainer.extended.top .dash-item-container:last-child > StWidget,
+#dashtodockContainer.extended.bottom .dash-item-container:last-child > StWidget {
+  padding: 6px 6px 6px 3px; }
 
 #dashtodockContainer .app-well-app-running-dot {
   background-color: transparent; }
