@@ -2340,35 +2340,38 @@ GtkColorSwatch {
   border: none;
   box-shadow: none; }
 
+
+@define-color undershoot_color #b0b0b0;
+
 .undershoot.top {
   background-color: transparent;
-  background-image: linear-gradient(to left, rgba(255, 255, 255, 0.2) 50%, rgba(0, 0, 0, 0.2) 50%);
+  background-image: linear-gradient(to bottom, @undershoot_color, alpha(@undershoot_color, 0.0));
   padding-top: 0;
-  background-size: 16px 2px;
+  background-size: 16px 5px;
   background-repeat: repeat-x;
   background-origin: content-box;
   background-position: center top; }
 .undershoot.bottom {
   background-color: transparent;
-  background-image: linear-gradient(to left, rgba(255, 255, 255, 0.2) 50%, rgba(0, 0, 0, 0.2) 50%);
+  background-image: linear-gradient(to top,@undershoot_color, alpha(@undershoot_color, 0.0));
   padding-bottom: 0;
-  background-size: 16px 2px;
+  background-size: 16px 5px;
   background-repeat: repeat-x;
   background-origin: content-box;
   background-position: center bottom; }
 .undershoot.left {
   background-color: transparent;
-  background-image: linear-gradient(to top, rgba(255, 255, 255, 0.2) 50%, rgba(0, 0, 0, 0.2) 50%);
+  background-image: linear-gradient(to right, @undershoot_color, alpha(@undershoot_color, 0.0));
   padding-left: 0;
-  background-size: 2px 16px;
+  background-size: 5px 16px;
   background-repeat: repeat-y;
   background-origin: content-box;
   background-position: left center; }
 .undershoot.right {
   background-color: transparent;
-  background-image: linear-gradient(to top, rgba(255, 255, 255, 0.2) 50%, rgba(0, 0, 0, 0.2) 50%);
+  background-image: linear-gradient(to left, @undershoot_color, alpha(@undershoot_color, 0.0));
   padding-right: 0;
-  background-size: 2px 16px;
+  background-size: 5px 16px;
   background-repeat: repeat-y;
   background-origin: content-box;
   background-position: right center; }
