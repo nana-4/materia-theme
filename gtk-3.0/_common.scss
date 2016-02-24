@@ -1,5 +1,7 @@
 $asset_suffix: if($variant=='dark', '-dark', '');
 
+$extra_background_clip: if($variant == 'light', padding-box, border-box);
+
 $small_size: 24px;
 $medium_size: 36px;
 $large_size: 48px;
@@ -691,6 +693,7 @@ GtkComboBox {
   border-width: 0 0 1px;
   border-color: $borders_color;
   background-color: $dark_color;
+  background-clip: border-box;
 }
 
 /***************
@@ -934,6 +937,7 @@ column-header {
 
 column-header.button.dnd { // for treeview-like derive widgets
   border-left-style: solid;
+  background-clip: $extra_background_clip;
   color: $selected_bg_color;
 }
 
@@ -1306,8 +1310,9 @@ $_slider_fine_tune_margin: 6px;
 
   // trough coloring
   .trough {
-    background-color: $base_color;
     border: 1px none $borders_color;
+    background-color: $base_color;
+    background-clip: $extra_background_clip;
   }
 
   // slider coloring
@@ -1395,6 +1400,7 @@ GtkSwitch {
     border: 10px solid transparent;
     border-radius: 100px;
     background-color: $track_color;
+  //  background-clip: padding-box;
     &:insensitive {
       color: $insensitive_fg_color;
     }
@@ -2226,6 +2232,7 @@ GtkVolumeButton.button {
   padding: 3px 0 4px;
   border: 1px solid $borders_color;
   background-color: $base_color;
+  background-clip: $extra_background_clip;
 }
 
 .floating-bar.bottom.left { /* axes left border and border radius */

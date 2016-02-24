@@ -553,7 +553,8 @@ GtkComboBox {
   border-style: solid;
   border-width: 0 0 1px;
   border-color: rgba(0, 0, 0, 0.2);
-  background-color: #2f3d44; }
+  background-color: #2f3d44;
+  background-clip: border-box; }
 
 /***************
  * Header bars *
@@ -748,6 +749,7 @@ column-header:last-child .button, column-header:last-child.button {
 
 column-header.button.dnd, column-header .button.dnd {
   border-left-style: solid;
+  background-clip: border-box;
   color: #00BCD4; }
 
 /*********
@@ -1066,8 +1068,9 @@ column-header.button.dnd, column-header .button.dnd {
   .scrollbar.overlay-indicator.dragging .trough, .scrollbar.overlay-indicator.hovering .trough {
     background-color: rgba(69, 90, 100, 0.9); }
   .scrollbar .trough {
+    border: 1px none rgba(0, 0, 0, 0.2);
     background-color: #455A64;
-    border: 1px none rgba(0, 0, 0, 0.2); }
+    background-clip: border-box; }
   .scrollbar .slider {
     background-color: rgba(255, 255, 255, 0.6); }
     .scrollbar .slider:hover {
@@ -2183,7 +2186,8 @@ GtkColorSwatch {
 .floating-bar {
   padding: 3px 0 4px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  background-color: #455A64; }
+  background-color: #455A64;
+  background-clip: border-box; }
 
 .floating-bar.bottom.left {
   /* axes left border and border radius */
