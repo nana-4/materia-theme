@@ -1505,12 +1505,7 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
   outline-radius: 100px;
 
   &.fine-tune {
-  //  outline-offset: -6px;
     &.slider { background-size: 80%; }
-    &.trough {
-    //  margin: 8px;
-    //  border-radius: 100px;
-    }
   }
 
   &.slider {
@@ -1547,14 +1542,14 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
     }
   }
   &.trough {
-    margin: 10px;
-    border-radius: 100px;
+    margin: 10px 12px;
     background-color: $track_color;
     &.highlight {
       background-color: $accent_bg_color;
       &:insensitive { background-color: $track_color; }
     }
     &:insensitive { color: $insensitive_fg_color; }
+    &.vertical { margin: 12px 10px; }
     //OSD troughs
     .osd & {
     }
@@ -1600,20 +1595,16 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
 }
 
 %scale_marks_above_horz {
-  .trough { margin: 15px 10px 10px; }
- // &.fine-tune .trough { margin: 13px 8px 8px; }
+  .trough { margin: 15px 12px 10px; }
 }
 %scale_marks_below_horz {
- .trough { margin: 10px 10px 15px; }
- // &.fine-tune .trough { margin: 8px 8px 13px; }
+ .trough { margin: 10px 12px 15px; }
 }
 %scale_marks_above_vert {
-  .trough { margin: 10px 10px 10px 15px; }
- // &.fine-tune .trough { margin: 8px 8px 8px 13px; }
+  .trough { margin: 12px 10px 12px 15px; }
 }
 %scale_marks_below_vert {
-  .trough { margin: 10px 15px 10px 10px; }
- // &.fine-tune .trough { margin: 8px 13px 8px 8px; }
+  .trough { margin: 12px 15px 12px 10px; }
 }
 
 /*****************
