@@ -112,7 +112,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
                                 to(transparent))
                                 0 0 2 / 0 0 2px;
     box-shadow: inset 0 -2px $fc;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0 cubic-bezier(0.4, 0, 0.2, 1) 0.2s, color 0;
+    transition: all $material_duration $material_timing_function, box-shadow 0 $material_timing_function $material_duration, color 0;
   }
   @if $t==flat-insensitive {
     box-shadow: inset 0 -1px $track_color;
@@ -172,7 +172,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     box-shadow: $z-depth-2;
     color: $fg_color;
     transition-duration: 0;
-    animation: ripple_effect 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: ripple_effect $material_duration $material_timing_function forwards;
   }
   @else if $t==insensitive {
   //
@@ -229,7 +229,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   // pushed flat button
   //
     box-shadow: none;
-    animation: flat_ripple_effect 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: flat_ripple_effect $material_duration $material_timing_function forwards;
   }
   @else if $t==flat-insensitive {
   //

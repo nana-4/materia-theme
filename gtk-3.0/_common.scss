@@ -1,10 +1,20 @@
 $asset_suffix: if($variant=='dark', '-dark', '');
 
+$small_size: 24px;
+$medium_size: 36px;
+$large_size: 48px;
+
+$container_padding: 6px;
+$material_radius: 2px;
+
+$material_duration: 0.2s;
+$material_timing_function: cubic-bezier(0.4, 0, 0.2, 1);
+
 * {
   padding: 0;
   background-clip: padding-box;
-//  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0; //FIXME: 
+//  transition: all $material_duration $material_timing_function;
+  transition: all $material_duration $material_timing_function, color 0; //FIXME: 
   -GtkToolButton-icon-spacing: 4;
   -GtkTextView-error-underline-color: $error_color;
 
@@ -287,7 +297,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
   border-radius: 2px;
   background-repeat: no-repeat;
   background-position: center, center;
-  background-size: 36px * 2 / 0.8 36px * 2 / 0.8, auto;
+  background-size: ($medium_size * 2 / 0.8) ($medium_size * 2 / 0.8), auto;
   font-weight: 500;
   @include button(normal);
   &:hover { @include button(hover); }
@@ -312,7 +322,10 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
   }
   // big standalone buttons like in Documents pager
   &.osd {
-    &.image-button { padding: 16px; }
+    &.image-button {
+      padding: 16px;
+      background-size: ($large_size / 0.8) ($large_size / 0.8), auto;
+    }
     &:insensitive { opacity: 0; }
   }
   //overlay / OSD style
@@ -356,7 +369,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
     padding: 7px 10px 8px; // same as .button
     outline-radius: 2px;
     border-radius: 2px;
-    background-size: 36px * 2 / 0.8 36px * 2 / 0.8, auto;
+    background-size: ($medium_size * 2 / 0.8) ($medium_size * 2 / 0.8), auto;
     .label:first-child { padding-left: 6px; }
     .label:last-child { padding-right: 6px; }
   }
@@ -412,12 +425,12 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
   padding: 10px;
   outline-radius: 100px;
   border-radius: 100px;
-  background-size: 36px * 1 / 0.8 36px * 1 / 0.8, auto;
+  background-size: ($medium_size / 0.8) ($medium_size / 0.8), auto;
 }
 
 %needs_attention {
   transition: none;
-  animation: needs_attention 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: needs_attention $material_duration $material_timing_function forwards;
   background-repeat: no-repeat;
   background-position: right 3px;
   background-size: 6px 6px;
@@ -526,7 +539,7 @@ GtkColorButton.button {
 .spinbutton {
   .button {
     padding: 4px;
-    border: solid 6px transparent;
+    border: solid $container_padding transparent;
     @extend %image_button;
   //  @extend .button.flat;
     @include button(flat);
@@ -640,7 +653,7 @@ GtkComboBox {
   padding: 4px;
   background-color: $bg_color;
   .osd &, &.osd {
-    padding: 6px;
+    padding: $container_padding;
     border-style: solid;
     border-width: 8px;
     border-image: -gtk-scaled(url("assets/osd-shadow#{$asset_suffix}.png"),
@@ -663,7 +676,7 @@ GtkComboBox {
 
 //searchbar, location-bar & inline-toolbar
 .inline-toolbar {
-  padding: 6px;
+  padding: $container_padding;
   border-style: solid;
   border-width: 0 1px 1px;
   border-color: $borders_color;
@@ -671,7 +684,7 @@ GtkComboBox {
 }
 
 .search-bar, .location-bar {
-  padding: 6px;
+  padding: $container_padding;
   border-style: solid;
   border-width: 0 0 1px;
   border-color: $borders_color;
@@ -684,7 +697,7 @@ GtkComboBox {
 
 .titlebar,
 .header-bar {
-  padding: 6px;
+  padding: $container_padding;
   border-width: 0 0 1px;
   border-style: solid;
   border-color: $borders_color;
@@ -737,7 +750,7 @@ GtkComboBox {
     //  box-shadow: inset 0 -2px $selected_bg_color;
       background-color: transparent;
       color: $fg_color;
-    //  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0 cubic-bezier(0.4, 0, 0.2, 1) 0.2s, color 0;
+    //  transition: all $material_duration $material_timing_function, box-shadow 0 $material_timing_function $material_duration, color 0;
     //  &:active { transition: none; }
       &:insensitive {
         background-color: transparent;
@@ -812,9 +825,9 @@ GtkComboBox {
   }
 
   &.default-decoration {
-    padding: 4px;
+    padding: $container_padding;
     border-width: 0;
-    .button { padding: 6px; }
+    .button { padding: 4px; }
   }
 }
 
@@ -1011,7 +1024,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   .button.flat {
     padding: 5px 8px 6px;
     background-color: transparent;
-    background-size: 128px * 1 / 0.8 128px * 1 / 0.8, auto;
+    background-size: (128px / 0.8) (128px / 0.8), auto;
     color: $fg_color;
     font: initial;
   }
@@ -1025,6 +1038,7 @@ column-header.button.dnd { // for treeview-like derive widgets
     &:insensitive { @include button(flat-insensitive); }
     &:checked { @include button(checked); }
     &:checked:insensitive { @include button(checked-insensitive); }
+    &.image-button { background-size: ($medium_size * 2 / 0.8) ($medium_size * 2 / 0.8), auto; }
   }
 
   &.osd { @extend %osd; }
@@ -1209,7 +1223,7 @@ column-header.button.dnd { // for treeview-like derive widgets
     .button { //tab close button
       padding: 0;
       @extend %image_button;
-      background-size: 24px * 1 / 0.8 24px * 1 / 0.8, auto;
+      background-size: ($small_size / 0.8) ($small_size / 0.8), auto;
     //  @extend .button.flat;
     @include button(flat);
     &:hover { @include button(flat-hover); }
@@ -1721,7 +1735,7 @@ GtkProgressBar {
   &.flat { border-style: none; }
   padding: 0;
   &.action-bar {
-    padding: 6px;
+    padding: $container_padding;
     border-width: 1px 0 0;
   }
 }
@@ -1771,7 +1785,7 @@ GtkScrolledWindow {
                       linear-gradient(to bottom, gtkalpha(currentColor, 0));
   background-repeat: no-repeat;
   background-position: center, center;
-  background-size: 192px * 1 / 0.8 192px * 1 / 0.8, auto;
+  background-size: (192px / 0.8) (192px / 0.8), auto;
   &:hover {
     background-image: -gtk-gradient(radial,
                                     center center, 0,
@@ -1781,7 +1795,7 @@ GtkScrolledWindow {
                       linear-gradient(to bottom, gtkalpha(currentColor, 0.05));
   }
   &:active {
-    animation: list_ripple_effect 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: list_ripple_effect $material_duration $material_timing_function forwards;
   }
 }
 
@@ -1885,7 +1899,7 @@ GtkCalendar {
       padding: 9px 16px 10px;
       border-top: 1px solid $borders_color;
       border-radius: 0;
-      background-size: 192px * 1 / 0.8 192px * 1 / 0.8, auto;
+      background-size: (192px / 0.8) (192px / 0.8), auto;
     //  &:first-child{ border-bottom-left-radius: 2px; }
     //  &:last-child { border-bottom-right-radius: 2px; }
       &:first-child{ border-radius: 0 0 0 2px; }
