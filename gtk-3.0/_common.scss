@@ -13,8 +13,10 @@ $material_timing_function: cubic-bezier(0.4, 0, 0.2, 1);
 * {
   padding: 0;
   background-clip: padding-box;
-//  transition: all $material_duration $material_timing_function;
-  transition: all $material_duration $material_timing_function, color 0; //FIXME: 
+  transition-property: opacity, border-color, border-image, box-shadow,
+                       background-color, background-image, text-shadow, icon-shadow;
+  transition-duration: $material_duration;
+  transition-timing-function: $material_timing_function;
   -GtkToolButton-icon-spacing: 4;
   -GtkTextView-error-underline-color: $error_color;
 
@@ -931,7 +933,6 @@ column-header {
 }
 
 column-header.button.dnd { // for treeview-like derive widgets
- // transition: none;
   border-left-style: solid;
   color: $selected_bg_color;
 }
@@ -1794,6 +1795,8 @@ GtkScrolledWindow {
                       linear-gradient(to bottom, gtkalpha(currentColor, 0.05));
   }
   &:active {
+    transition-property: opacity, border-color, border-image, box-shadow,
+                         background-color, text-shadow, icon-shadow; // Remove background-image
     animation: list_ripple_effect $material_duration $material_timing_function forwards;
   }
 }
@@ -1812,7 +1815,7 @@ GtkScrolledWindow {
 
 // transition
 .list-row {
-  &:hover { transition: none; }
+  &:hover { transition-duration: 0; }
 }
 
 
@@ -1979,7 +1982,7 @@ GtkPlacesSidebar.sidebar {
   }
   // this is for indicating which sidebar row generated a popover
   // see https://bugzilla.gnome.org/show_bug.cgi?id=754411
-  .has-open-popup { @extend .list-row.activatable:active; transition: none; }
+  .has-open-popup { @extend .list-row.activatable:active; }
 }
 
 .sidebar-item {
@@ -2223,7 +2226,6 @@ GtkVolumeButton.button {
   padding: 3px 0 4px;
   border: 1px solid $borders_color;
   background-color: $base_color;
-  transition: none;
 }
 
 .floating-bar.bottom.left { /* axes left border and border radius */

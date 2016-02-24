@@ -171,7 +171,8 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   //
     box-shadow: $z-depth-2;
     color: $fg_color;
-    transition-duration: 0;
+    transition-property: opacity, border-color, border-image, box-shadow,
+                         background-color, text-shadow, icon-shadow; // Remove background-image
     animation: ripple_effect $material_duration $material_timing_function forwards;
   }
   @else if $t==insensitive {
@@ -229,6 +230,8 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   // pushed flat button
   //
     box-shadow: none;
+    transition-property: opacity, border-color, border-image, box-shadow,
+                         background-color, text-shadow, icon-shadow; // Remove background-image
     animation: flat_ripple_effect $material_duration $material_timing_function forwards;
   }
   @else if $t==flat-insensitive {

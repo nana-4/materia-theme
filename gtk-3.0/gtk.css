@@ -16,7 +16,9 @@
 * {
   padding: 0;
   background-clip: padding-box;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0;
+  transition-property: opacity, border-color, border-image, box-shadow, background-color, background-image, text-shadow, icon-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   -GtkToolButton-icon-spacing: 4;
   -GtkTextView-error-underline-color: #DD2C00;
   -GtkCheckButton-indicator-size: 20;
@@ -260,7 +262,7 @@ GtkTextView {
   .button:active {
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
     color: rgba(0, 0, 0, 0.8);
-    transition-duration: 0;
+    transition-property: opacity, border-color, border-image, box-shadow, background-color, text-shadow, icon-shadow;
     animation: ripple_effect 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
   .button:insensitive {
     box-shadow: none;
@@ -289,6 +291,7 @@ GtkTextView {
     .button.flat:active, .inline-toolbar .button:active, .osd .toolbar .button:active, .toolbar.osd .button:active, .app-notification .button:active, .titlebar .button:active:not(.suggested-action):not(.destructive-action),
     .header-bar .button:active:not(.suggested-action):not(.destructive-action), .message-dialog.csd .dialog-action-area .button:active, .sidebar-button.button:active {
       box-shadow: none;
+      transition-property: opacity, border-color, border-image, box-shadow, background-color, text-shadow, icon-shadow;
       animation: flat_ripple_effect 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
     .button.flat:insensitive, .inline-toolbar .button:insensitive, .osd .toolbar .button:insensitive, .toolbar.osd .button:insensitive, .app-notification .button:insensitive, .titlebar .button:insensitive:not(.suggested-action):not(.destructive-action),
     .header-bar .button:insensitive:not(.suggested-action):not(.destructive-action), .message-dialog.csd .dialog-action-area .button:insensitive, .sidebar-button.button:insensitive {
@@ -479,6 +482,7 @@ GtkColorButton.button {
     background-image: -gtk-gradient(radial, center center, 0, center center, 0.5, to(alpha(currentColor, 0)), to(transparent)), linear-gradient(to bottom, alpha(currentColor, 0.15)); }
   .spinbutton .button:active {
     box-shadow: none;
+    transition-property: opacity, border-color, border-image, box-shadow, background-color, text-shadow, icon-shadow;
     animation: flat_ripple_effect 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
   .spinbutton .button:insensitive {
     box-shadow: none;
@@ -636,7 +640,7 @@ GtkComboBox {
         .header-bar.selection-mode .button.suggested-action:active {
           box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
           color: rgba(0, 0, 0, 0.8);
-          transition-duration: 0;
+          transition-property: opacity, border-color, border-image, box-shadow, background-color, text-shadow, icon-shadow;
           animation: ripple_effect 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
         .titlebar.selection-mode .button.suggested-action:insensitive,
         .header-bar.selection-mode .button.suggested-action:insensitive {
@@ -838,6 +842,7 @@ column-header.button.dnd, column-header .button.dnd {
       background-image: -gtk-gradient(radial, center center, 0, center center, 0.5, to(alpha(currentColor, 0)), to(transparent)), linear-gradient(to bottom, alpha(currentColor, 0.15)); }
     .popover .linked > .button:active {
       box-shadow: none;
+      transition-property: opacity, border-color, border-image, box-shadow, background-color, text-shadow, icon-shadow;
       animation: flat_ripple_effect 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
     .popover .linked > .button:insensitive {
       box-shadow: none;
@@ -1025,6 +1030,7 @@ column-header.button.dnd, column-header .button.dnd {
         background-image: -gtk-gradient(radial, center center, 0, center center, 0.5, to(alpha(currentColor, 0)), to(transparent)), linear-gradient(to bottom, alpha(currentColor, 0.15)); }
       .notebook tab .button:active {
         box-shadow: none;
+        transition-property: opacity, border-color, border-image, box-shadow, background-color, text-shadow, icon-shadow;
         animation: flat_ripple_effect 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
       .notebook tab .button:insensitive {
         box-shadow: none;
@@ -1708,6 +1714,7 @@ GtkScrolledWindow GtkViewport.frame {
   .list-row.activatable:hover, .view:hover, column-header .button:hover {
     background-image: -gtk-gradient(radial, center center, 0, center center, 0.5, to(alpha(currentColor, 0)), to(transparent)), linear-gradient(to bottom, alpha(currentColor, 0.05)); }
   .list-row.activatable:active, .view:active, column-header .button:active, GtkPlacesSidebar.sidebar .has-open-popup {
+    transition-property: opacity, border-color, border-image, box-shadow, background-color, text-shadow, icon-shadow;
     animation: list_ripple_effect 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
 
 .list-row:selected .button:insensitive {
@@ -1728,7 +1735,7 @@ GtkScrolledWindow GtkViewport.frame {
     color: rgba(0, 0, 0, 0.24); }
 
 .list-row:hover {
-  transition: none; }
+  transition-duration: 0; }
 
 /*********************
  * App Notifications *
@@ -1766,6 +1773,7 @@ GtkCalendar {
       background-image: -gtk-gradient(radial, center center, 0, center center, 0.5, to(alpha(currentColor, 0)), to(transparent)), linear-gradient(to bottom, alpha(currentColor, 0.15)); }
     GtkCalendar.button:active {
       box-shadow: none;
+      transition-property: opacity, border-color, border-image, box-shadow, background-color, text-shadow, icon-shadow;
       animation: flat_ripple_effect 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
     GtkCalendar.button:insensitive {
       box-shadow: none;
@@ -1831,8 +1839,6 @@ GtkPlacesSidebar.sidebar .sidebar-new-bookmark-row {
   color: #FF4081; }
 .sidebar-button.button.image-button {
   padding: 4px; }
-GtkPlacesSidebar.sidebar .has-open-popup {
-  transition: none; }
 
 .sidebar-item {
   padding: 10px 4px; }
@@ -2177,8 +2183,7 @@ GtkColorSwatch {
 .floating-bar {
   padding: 3px 0 4px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: #FFFFFF;
-  transition: none; }
+  background-color: #FFFFFF; }
 
 .floating-bar.bottom.left {
   /* axes left border and border radius */
