@@ -120,7 +120,7 @@ $asset_suffix: if($variant=='dark', '-dark', '');
 
 .rubberband {
   border: 1px solid $secondary_selected_bg_color;
-  background-color: gtkopacity($secondary_selected_bg_color, 0.2);
+  background-color: scale-alpha($secondary_selected_bg_color, 0.2);
 }
 
 .label {
@@ -748,7 +748,7 @@ GtkComboBox {
   }
 
   &.selection-mode {
-    box-shadow: inset 0 1px gtkopacity(white, 0.2);
+    box-shadow: inset 0 1px scale-alpha(white, 0.2);
     background-color: $selection_color;
     color: $selected_fg_color;
     &:backdrop {
@@ -867,7 +867,7 @@ GtkTreeView.view {
     &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
     &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
     &:selected {
-      color: gtkopacity($selected_fg_color, 0.75);
+      color: scale-alpha($selected_fg_color, 0.75);
       &:hover, &:active { color: $selected_fg_color; }
     }
   }
@@ -883,7 +883,7 @@ GtkTreeView.view {
   &.trough { // progress bar trough in treeviews
     @extend .entry.progressbar;
     border-width: 4px;
-    border-color: gtkopacity($selected_bg_color, 0.2);
+    border-color: scale-alpha($selected_bg_color, 0.2);
     &:selected {
       border-color: $track_color;
     }
@@ -1260,7 +1260,7 @@ $_slider_fine_tune_margin: 6px;
 
       .slider {
         margin: 2px;
-        border: 2px solid gtkopacity($base_color, 0.2);
+        border: 2px solid scale-alpha($base_color, 0.2);
       //  background-clip: padding-box;
       }
 
@@ -1285,7 +1285,7 @@ $_slider_fine_tune_margin: 6px;
     &.dragging,
     &.hovering {
       .trough {
-        background-color: gtkopacity($base_color, 0.8);
+        background-color: scale-alpha($base_color, 0.8);
       }
     }
   }
@@ -1633,7 +1633,7 @@ GtkProgressBar {
   }
   &.trough {  // background
     border-radius: 0;
-    background-color: gtkopacity($selected_bg_color, 0.2);
+    background-color: scale-alpha($selected_bg_color, 0.2);
     &.osd {
       border-style: none;
       box-shadow: none;
@@ -2073,7 +2073,7 @@ GtkInfoBar {
   &.background {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
-    background-color: gtkopacity($base_color, 0.9);
+    background-color: scale-alpha($base_color, 0.9);
   }
 
  // @extend %osd;
@@ -2164,7 +2164,7 @@ GtkColorSwatch {
     color: white;
   }
   &.color-light {
-    color: gtkopacity(black, 0.8);
+    color: scale-alpha(black, 0.8);
   }
 
   // border color
