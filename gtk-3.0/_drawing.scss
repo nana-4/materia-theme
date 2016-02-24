@@ -15,7 +15,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.001,
-                                    to(gtkalpha(currentColor, 0.1)),
+                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
                                     to(transparent)),
                       linear-gradient(to bottom, gtkalpha(currentColor, 0));
   }
@@ -23,9 +23,9 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.4,
-                                    to(gtkalpha(currentColor, 0.1)),
+                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
                                     to(transparent)),
-                      linear-gradient(to bottom, gtkalpha(currentColor, 0.1));
+                      linear-gradient(to bottom, gtkalpha(currentColor, $lower_opacity / 2));
   }
 }
 
@@ -34,17 +34,17 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.001,
-                                    to(gtkalpha(currentColor, 0.1)),
+                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
                                     to(transparent)),
-                      linear-gradient(to bottom, gtkalpha(currentColor, 0.1));
+                      linear-gradient(to bottom, gtkalpha(currentColor, $lower_opacity / 2));
   }
   to {
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.4,
-                                    to(gtkalpha(currentColor, 0.1)),
+                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
                                     to(transparent)),
-                      linear-gradient(to bottom, gtkalpha(currentColor, 0.1));
+                      linear-gradient(to bottom, gtkalpha(currentColor, $lower_opacity / 2));
   }
 }
 
@@ -61,9 +61,9 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.4,
-                                    to(gtkalpha(currentColor, 0.1)),
+                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
                                     to(transparent)),
-                      linear-gradient(to bottom, gtkalpha(currentColor, 0.1));
+                      linear-gradient(to bottom, gtkalpha(currentColor, $lower_opacity / 2));
   }
 }
 
@@ -195,7 +195,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   // checked insensitive button
   //
     background-color: $track_color;
-    color: scale-alpha($selected_bg_color, 0.4);
+    color: scale-alpha($selected_bg_color, $disabled_opacity);
     > .label { color: inherit; }
   }
 
@@ -222,7 +222,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
                                     center center, 0.5,
                                     to(gtkalpha(currentColor, 0)),
                                     to(transparent)),
-                      linear-gradient(to bottom, gtkalpha(currentColor, 0.1));
+                      linear-gradient(to bottom, gtkalpha(currentColor, $lower_opacity / 2));
   }
   @else if $t==flat-active {
   //
@@ -289,7 +289,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   background-image: -gtk-gradient(radial,
                                   $_position, 0,
                                   $_position, 0.75,
-                                  to(scale-alpha($c, 0.2)),
+                                  to(scale-alpha($c, $lower_opacity)),
                                   to(transparent));
 
   background-repeat: no-repeat;
@@ -310,8 +310,8 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 // top, bottom, right, left
 //
 
-  $_undershoot_color_dark: scale-alpha(black, 0.2);
-  $_undershoot_color_light: scale-alpha(white, 0.2);
+  $_undershoot_color_dark: scale-alpha($fg_color, $lower_opacity);
+  $_undershoot_color_light: scale-alpha($base_color, $lower_opacity);
 
   $_gradient_dir: left;
   $_dash_bg_size: 16px 2px;

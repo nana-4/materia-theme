@@ -120,7 +120,7 @@ $asset_suffix: if($variant=='dark', '-dark', '');
 
 .rubberband {
   border: 1px solid $secondary_selected_bg_color;
-  background-color: scale-alpha($secondary_selected_bg_color, 0.2);
+  background-color: scale-alpha($secondary_selected_bg_color, $lower_opacity);
 }
 
 .label {
@@ -139,7 +139,7 @@ $asset_suffix: if($variant=='dark', '-dark', '');
 }
 
 .dim-label {
-  opacity: 0.6;
+  opacity: $hint_opacity;
 }
 
 GtkAssistant {
@@ -151,7 +151,7 @@ GtkAssistant {
   }
   &.csd .sidebar { border-top-style: none; }
   .sidebar .label {
-    opacity: 0.75;
+    opacity: $hint_opacity;
     padding: 5px 12px 6px;
     font-weight: bold;
   }
@@ -171,7 +171,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
   &:selected { @extend %selected_items; }
 }
 
-%osd, .osd { opacity: 0.9; }
+%osd, .osd { opacity: $higher_opacity; }
 
 /*********************
  * Spinner Animation *
@@ -190,7 +190,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
     opacity: 1;
     animation: spin 1s linear infinite;
     &:insensitive {
-      opacity: 0.4;
+      opacity: $disabled_opacity;
     }
   }
 }
@@ -250,8 +250,8 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
   }
 
   &.image { // entry icons colors
-    &:not(:hover):not(:active) { color: gtkalpha(currentColor, 0.75); }
-    &:insensitive { color: gtkalpha(currentColor, 0.6); }
+    &:not(:hover):not(:active) { color: gtkalpha(currentColor, $enabled_opacity); }
+    &:insensitive { color: gtkalpha(currentColor, $hint_opacity); }
   }
 
   .osd & {
@@ -269,14 +269,14 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.001,
-                                    to($selected_bg_color),
+                                    to($accent_bg_color),
                                     to(transparent));
   }
   to {
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.5,
-                                    to($selected_bg_color),
+                                    to($accent_bg_color),
                                     to(transparent));
   }
 }
@@ -329,7 +329,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
     //  &:hover { @include button(hover, $b_color, white); }
     //  &:active, &:checked { @include button(active, $b_color, white); }
       &:insensitive { @include button(insensitive, $b_color, white); }
-      &:checked { background-color: mix($selected_fg_color, $b_color, 20%); }
+      &:checked { background-color: mix($selected_fg_color, $b_color, percentage($lower_opacity)); }
       &.flat {
         background-color: transparent;
         color: $b_color;
@@ -748,8 +748,8 @@ GtkComboBox {
   }
 
   &.selection-mode {
-    box-shadow: inset 0 1px scale-alpha(white, 0.2);
-    background-color: $selection_color;
+    box-shadow: inset 0 1px $secondary_highlight_color;
+    background-color: $selected_bg_color;
     color: $selected_fg_color;
     &:backdrop {
     }
@@ -867,7 +867,7 @@ GtkTreeView.view {
     &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
     &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
     &:selected {
-      color: scale-alpha($selected_fg_color, 0.75);
+      color: scale-alpha($selected_fg_color, $enabled_opacity);
       &:hover, &:active { color: $selected_fg_color; }
     }
   }
@@ -883,7 +883,7 @@ GtkTreeView.view {
   &.trough { // progress bar trough in treeviews
     @extend .entry.progressbar;
     border-width: 4px;
-    border-color: scale-alpha($selected_bg_color, 0.2);
+    border-color: scale-alpha($selected_bg_color, $lower_opacity);
     &:selected {
       border-color: $track_color;
     }
@@ -983,7 +983,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   }
 }
 
-.menuitem .accelerator { color: gtkalpha(currentColor, 0.6); }
+.menuitem .accelerator { color: gtkalpha(currentColor, $hint_opacity); }
 
 
 /***************
@@ -1221,7 +1221,7 @@ column-header.button.dnd { // for treeview-like derive widgets
     }
   }
   &.arrow {
-    &:not(:hover):not(:active) { color: gtkalpha(currentColor, 0.75); }
+    &:not(:hover):not(:active) { color: gtkalpha(currentColor, $enabled_opacity); }
     &:insensitive {
       color: $insensitive_fg_color;
     }
@@ -1260,7 +1260,7 @@ $_slider_fine_tune_margin: 6px;
 
       .slider {
         margin: 2px;
-        border: 2px solid scale-alpha($base_color, 0.2);
+        border: 2px solid scale-alpha($base_color, $lower_opacity);
       //  background-clip: padding-box;
       }
 
@@ -1285,7 +1285,7 @@ $_slider_fine_tune_margin: 6px;
     &.dragging,
     &.hovering {
       .trough {
-        background-color: scale-alpha($base_color, 0.8);
+        background-color: scale-alpha($base_color, $higher_opacity);
       }
     }
   }
@@ -1302,7 +1302,7 @@ $_slider_fine_tune_margin: 6px;
     &:hover { background-color: $secondary_fg_color; }
     &:active { background-color: $fg_color; }
     &:insensitive {
-      opacity: 0.4;
+      opacity: $disabled_opacity;
     }
   }
 
@@ -1385,10 +1385,10 @@ GtkSwitch {
       color: $insensitive_fg_color;
     }
     &:active {
-      background-color: $success_color;
+      background-color: $accent_bg_color;
       &:insensitive {
         background-color: $track_color;
-        color: $success_color;
+        color: $accent_bg_color;
       }
     }
   }
@@ -1445,7 +1445,7 @@ GtkSwitch {
                 //  (':checked:active', '-checked'),
                   (':checked:insensitive','-checked-insensitive') {
     .menu .menuitem.#{$w}#{$s} {
-    //  color: gtkalpha(currentColor, 0.75);
+    //  color: gtkalpha(currentColor, $hint_opacity);
     //  -gtk-icon-source: -gtk-icontheme('#{$a}-symbolic');
     //  &:active, &:checked { -gtk-icon-source: -gtk-icontheme('#{$a}-checked-symbolic'); }
     //  &:inconsistent { -gtk-icon-source: -gtk-icontheme('#{$a}-mixed-symbolic'); }
@@ -1517,7 +1517,7 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
     &:not(:hover):not(:active) { background-size: 80%; }
   //  @include entry(normal);
   //  border-radius: 50%;
-  //  background-color: $success_color;
+  //  background-color: $accent_bg_color;
       @each $s,$as in ('',''),
                     //  (':hover','-hover'),
                       (':active','-active'),
@@ -1551,7 +1551,7 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
     border-radius: 100px;
     background-color: $track_color;
     &.highlight {
-      background-color: $success_color;
+      background-color: $accent_bg_color;
       &:insensitive { background-color: $track_color; }
     }
     &:insensitive { color: $insensitive_fg_color; }
@@ -1633,7 +1633,7 @@ GtkProgressBar {
   }
   &.trough {  // background
     border-radius: 0;
-    background-color: scale-alpha($selected_bg_color, 0.2);
+    background-color: scale-alpha($selected_bg_color, $lower_opacity);
     &.osd {
       border-style: none;
       box-shadow: none;
@@ -1832,7 +1832,7 @@ GtkScrolledWindow {
   -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
   &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
   &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
-  &:not(:hover):not(:active) { color: gtkalpha(currentColor, 0.75); }
+  &:not(:hover):not(:active) { color: gtkalpha(currentColor, $enabled_opacity); }
   &:selected { color: $selected_fg_color; }
 }
 
@@ -1861,10 +1861,10 @@ GtkCalendar {
     &:insensitive { @include button(flat-insensitive); }
   }
 
-  &:inconsistent { color: gtkalpha(currentColor, 0.6); }
+  &:inconsistent { color: gtkalpha(currentColor, $hint_opacity); }
   &.highlight {
     font-size: smaller;
-    color: gtkalpha(currentColor, 0.6);
+    color: gtkalpha(currentColor, $hint_opacity);
   }
 }
 
@@ -1937,7 +1937,7 @@ GtkSidebarRow {
     padding: 4px 14px 4px 12px;
   }
   .sidebar-icon {
-    opacity: 0.75; // dim the device icons
+    opacity: $hint_opacity; // dim the device icons
     &:dir(ltr) { padding-right: 8px; }
     &:dir(rtl) { padding-left: 8px; }
   }
@@ -1960,7 +1960,7 @@ GtkPlacesSidebar.sidebar {
   }
 
   .sidebar-new-bookmark-row {
-    color: $selected_bg_color;
+    color: $accent_bg_color;
   }
 
   @at-root .sidebar-button.button { // @at-root needded to not change the specificity making button styling inheritance broken
@@ -2058,10 +2058,7 @@ GtkInfoBar {
       &:insensitive { color: $insensitive_secondary_selected_fg_color; }
     }
   }
-  .label:selected,
-  .label:selected:focus,
-  .label:selected:hover {
-    background-color: darken($selected_bg_color, 10%);
+  .label:selected {
   }
 }
 
@@ -2073,7 +2070,7 @@ GtkInfoBar {
   &.background {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
-    background-color: scale-alpha($base_color, 0.9);
+    background-color: scale-alpha($base_color, $higher_opacity);
   }
 
  // @extend %osd;
@@ -2328,7 +2325,7 @@ GtkVolumeButton.button {
 //touch selection handlebars for the Popover.osd above
 .entry.cursor-handle,
 .cursor-handle {
-  background-color: $success_color;
+  background-color: $accent_bg_color;
   background-image: none;
   box-shadow: none;
   border-style: none;
