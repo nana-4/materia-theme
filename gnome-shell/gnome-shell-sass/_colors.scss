@@ -1,55 +1,71 @@
 // When color definition differs for dark and light variant,
 // it gets @if ed depending on $variant
 
+$higher_opacity: 0.9;
+$middle_opacity: 0.6;
+$lower_opacity: 0.3;
 
-$base_color: if($variant =='light', #ffffff, #444444);
-$bg_color: scale-color($base_color, $alpha: -5%);
-$fg_color: if($variant == 'light', scale-color(black, $alpha: -20%), white);
-$secondary_fg_color: scale-color($fg_color, $alpha: -20%);
-$dim_fg_color: scale-color($fg_color, $alpha: -50%);
-$fill_color: scale-color($fg_color, $alpha: -80%);
-$semi_fill_color: scale-color($fg_color, $alpha: -90%);
+$enabled_opacity: 0.75;
+$hint_opacity: 0.6;
+$disabled_opacity: 0.4;
 
-$selected_fg_color: white;
-$selected_bg_color: if($variant == 'light', #3498db, #2980b9);
-$borders_color: if($variant =='light', scale-color(black, $alpha: -90%), scale-color(black, $alpha: -80%));
-$borders_edge: if($variant =='light', white, scale-color($fg_color, $alpha: -90%));
-$link_color: if($variant == 'light', #3498db, #2980b9);
-$link_visited_color: if($variant == 'light', #9b59b6, #8e44ad);
-$top_hilight: $borders_edge;
+@function scale-alpha($c, $a) {
+  @return scale-color($c, $alpha: percentage(-1 + $a));
+}
 
-$warning_color: if($variant =='light', #e67e22, #d35400);
-$error_color: if($variant =='light', #e74c3c, #c0392b);
-$success_color: if($variant =='light', #2ecc71, #27ae60);
-$destructive_color: if($variant =='light', #e74c3c, #c0392b);
+// Foreground colors
+$fg_color: if($variant == 'light', scale-alpha(#000000, 0.8), #FFFFFF);
+$secondary_fg_color: scale-alpha($fg_color, $enabled_opacity);
+$tertiary_fg_color: scale-alpha($fg_color, $hint_opacity);
 
-$osd_fg_color: white;
-$osd_secondary_fg_color: scale-color($osd_fg_color, $alpha: -20%);
-$osd_base_color: scale-color($osd_fg_color, $alpha: -90%);
-$osd_bg_color: scale-color(black, $alpha: -50%);
-$osd_dim_fg_color: scale-color($osd_fg_color, $alpha: -50%);
-$osd_fill_color: scale-color($osd_fg_color, $alpha: -60%);
-$osd_semi_fill_color: scale-color($osd_fg_color, $alpha: -80%);
-$osd_indicator_color: scale-color($osd_fg_color, $alpha: -20%);
-$osd_borders_color: scale-color(black, $alpha: -30%);
-$osd_outer_borders_color: scale-color(white, $alpha: -90%);
+$selected_fg_color: #FFFFFF;
+$secondary_selected_fg_color: scale-alpha($selected_fg_color, $enabled_opacity);
+$tertiary_selected_fg_color: scale-alpha($selected_fg_color, $hint_opacity);
 
-$tooltip_borders_color: $osd_outer_borders_color;
+$insensitive_fg_color: scale-alpha($fg_color, $disabled_opacity);
+$insensitive_secondary_fg_color: scale-alpha($secondary_fg_color, $disabled_opacity);
+$insensitive_tertiary_fg_color: scale-alpha($tertiary_fg_color, $disabled_opacity);
 
-//insensitive state derived colors
-$insensitive_fg_color: scale-color($fg_color, $alpha: -60%);
-$insensitive_secondary_fg_color: scale-color($secondary_fg_color, $alpha: -60%);
-$insensitive_fill_color: scale-color($fill_color, $alpha: -60%);
-$insensitive_osd_fg_color: scale-color($osd_fg_color, $alpha: -60%);
-$insensitive_osd_secondary_fg_color: scale-color($osd_secondary_fg_color, $alpha: -60%);
-$insensitive_osd_fill_color: scale-color($osd_fill_color, $alpha: -60%);
-$insensitive_bg_color: mix($bg_color, $base_color, 60%);
-$insensitive_borders_color: $borders_color;
+$insensitive_selected_fg_color: scale-alpha($fg_color, $disabled_opacity);
+$insensitive_secondary_selected_fg_color: scale-alpha($secondary_fg_color, $disabled_opacity);
+$insensitive_tertiary_selected_fg_color: scale-alpha($tertiary_fg_color, $disabled_opacity);
 
-//colors for the backdrop state, derived from the main colors.
-$backdrop_base_color: if($variant =='light', darken($base_color,1%), lighten($base_color,1%));
-$backdrop_bg_color: $bg_color;
-$backdrop_fg_color: mix($fg_color, $backdrop_bg_color, 80%);
-$backdrop_insensitive_color: if($variant =='light', darken($backdrop_bg_color,15%), lighten($backdrop_bg_color,15%));
-$backdrop_borders_color: mix($borders_color, $bg_color, 90%);
-$backdrop_dark_fill: mix($backdrop_borders_color,$backdrop_bg_color, 35%);
+// Background colors
+$base_color: scale-alpha(if($variant == 'light', #FFFFFF, #455A64), $higher_opacity + 0.05);
+$secondary_base_color: scale-alpha($fg_color, 0.05);
+$bg_color: scale-alpha(#000000, $middle_opacity);
+$osd_bg_color: scale-alpha(#000000, $lower_opacity);
+$overview_bg_color: scale-alpha(#FFFFFF, 0.1);
+
+$selected_bg_color: #00BCD4;
+$secondary_selected_bg_color: #00E5FF;
+$accent_bg_color: #FF4081;
+
+// Misc colors
+$track_color: scale-alpha($fg_color, $lower_opacity);
+$semi_track_color: scale-alpha($fg_color, $lower_opacity / 2);
+$insensitive_track_color: scale-alpha($insensitive_fg_color, $lower_opacity);
+
+$selected_track_color: scale-alpha($selected_fg_color, $lower_opacity);
+$selected_semi_track_color: scale-alpha($selected_fg_color, $lower_opacity / 2);
+$selected_insensitive_track_color: scale-alpha($insensitive_selected_fg_color, $lower_opacity);
+
+$borders_color: if($variant == 'light', scale-alpha(#000000, 0.1), scale-alpha(#000000, 0.2));
+$highlight_color: if($variant == 'light', scale-alpha(#FFFFFF, 0.4), scale-alpha(#FFFFFF, 0.1));
+$secondary_highlight_color: scale-alpha(#FFFFFF, 0.2);
+
+$link_color: $selected_bg_color;
+$link_visited_color: #E040FB;
+
+$warning_color: #FF6D00;
+$error_color: #DD2C00;
+$success_color: #00C853;
+
+$suggested_color: $accent_bg_color;
+$destructive_color: #FF5252;
+
+$info_bg_color: #66BB6A;
+$question_bg_color: #42A5F5;
+$warning_bg_color: #FFA726;
+$error_bg_color: #EF5350;
+
