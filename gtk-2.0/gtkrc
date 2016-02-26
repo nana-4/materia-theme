@@ -1,6 +1,6 @@
 # Bridge | ScionicSpectre
 
-gtk-color-scheme = "base_color:#ffffff\ntext_color:#333333\nbg_color:#eeeeee\nfg_color:#333333\ntooltip_bg_color:#ffffff\ntooltip_fg_color:#333333\nselected_bg_color:#3498db\nselected_fg_color:#ffffff"
+gtk-color-scheme = "base_color:#FFFFFF\ntext_color:#333333\nbg_color:#ECEFF1\nfg_color:#333333\ntooltip_bg_color:#FFFFFF\ntooltip_fg_color:#333333\nselected_bg_color:#00BCD4\nselected_fg_color:#FFFFFF\nlight_color:#FAFAFA\ndark_color:#dee4e7"
 
 gtk-auto-mnemonics = 1
 gtk-primary-button-warps-slider = 1
@@ -11,8 +11,8 @@ style "default" {
 
   # Style Properties
 
-  GtkWidget::link-color = "#2980b9"
-  GtkWidget::visited-link-color = "#8e44ad"
+  GtkWidget::link-color = "#00BCD4"
+  GtkWidget::visited-link-color = "#E040FB"
   GtkWidget::focus-line-width = 1
   GtkWidget::focus-padding = 1
   GtkMenuBar::window-dragging = 1
@@ -79,13 +79,13 @@ style "default" {
 
   text[NORMAL] = @text_color
   text[PRELIGHT] = @text_color
-  text[ACTIVE] = mix(0.8, @selected_fg_color, @selected_bg_color)
+  text[ACTIVE] = @text_color
   text[INSENSITIVE] = mix(0.4, @text_color, @base_color)
   text[SELECTED] = @selected_fg_color
 
   base[NORMAL] = @base_color
-  base[PRELIGHT] = mix(0.5, @base_color, @bg_color)
-  base[ACTIVE] = @selected_bg_color
+  base[PRELIGHT] = mix(0.15, @text_color, @base_color)
+  base[ACTIVE] = mix(0.3, @text_color, @base_color)
   base[INSENSITIVE] = mix(0.5, @base_color, @bg_color)
   base[SELECTED] = @selected_bg_color
 
@@ -96,8 +96,8 @@ style "default" {
   fg[SELECTED] = @selected_fg_color
 
   bg[NORMAL] = @bg_color
-  bg[PRELIGHT] = mix(0.1, @fg_color, @bg_color)
-  bg[ACTIVE] = mix(0.2, @fg_color, @bg_color)
+  bg[PRELIGHT] = mix(0.15, @fg_color, @bg_color)
+  bg[ACTIVE] = mix(0.3, @fg_color, @bg_color)
   bg[INSENSITIVE] = @bg_color
   bg[SELECTED] = @selected_bg_color
 
@@ -1111,7 +1111,7 @@ style "notebook_entry" {
 }
 
 style "button" {
-  fg[NORMAL] = mix(0.8, @fg_color, @bg_color)
+  fg[NORMAL] = mix(0.75, @fg_color, @bg_color)
         font_name = "Medium"
   xthickness = 5
   ythickness = 5
@@ -1878,7 +1878,7 @@ style "standalone_entry" {
 }
 
 style "menubar" {
-  bg[NORMAL] = shade(0.96, @bg_color)
+  bg[NORMAL] = @dark_color
  xthickness = 0
  ythickness = 0
 
@@ -1897,8 +1897,8 @@ style "menubar" {
 style "menubar_item" {
  xthickness = 3
  ythickness = 3
- fg[NORMAL] = mix(0.8, @fg_color, shade(0.96, @bg_color))
- bg[PRELIGHT] = shade(0.96, @bg_color)
+ fg[NORMAL] = mix(0.75, @fg_color, @dark_color)
+ bg[PRELIGHT] = @dark_color
  fg[PRELIGHT] = @fg_color
  engine "pixmap"
  {
@@ -2294,7 +2294,7 @@ style "notebook_viewport" {
 
 style "notebook_tab_label" {
 
-  fg[ACTIVE] = mix(0.6, @fg_color, @bg_color)
+  fg[ACTIVE] = mix(0.75, @fg_color, @bg_color)
         font_name = "Bold"
 }
 
@@ -2302,10 +2302,10 @@ style "treeview_header" {
         xthickness = 2
         ythickness = 1
 
-        fg[NORMAL] = mix(0.6, @text_color, @base_color)
-        fg[PRELIGHT] = mix(0.8, @text_color, @base_color)
+        fg[NORMAL] = mix(0.75, @text_color, @base_color)
+        fg[PRELIGHT] = @text_color
  fg[ACTIVE]  = @text_color
- fg[INSENSITIVE]  = mix(0.24, @text_color, @base_color)
+ fg[INSENSITIVE]  = mix(0.3, @text_color, @base_color)
         font_name = "Medium"
 
  engine "pixmap"
@@ -2543,18 +2543,18 @@ style "eclipse-tooltips" {
 
 # Chromium
 style "chrome-gtk-frame" {
- ChromeGtkFrame::frame-color = shade(0.96, @bg_color)
- ChromeGtkFrame::inactive-frame-color = shade(0.96, @bg_color)
- ChromeGtkFrame::incognito-frame-color = shade(0.96, @bg_color)
- ChromeGtkFrame::incognito-inactive-frame-color = shade(0.96, @bg_color)
+ ChromeGtkFrame::frame-color = @dark_color
+ ChromeGtkFrame::inactive-frame-color = @dark_color
+ ChromeGtkFrame::incognito-frame-color = @dark_color
+ ChromeGtkFrame::incognito-inactive-frame-color = @dark_color
 
  ChromeGtkFrame::frame-gradient-size = 0
- ChromeGtkFrame::frame-gradient-color = @bg_color
- ChromeGtkFrame::inactive-frame-gradient-color = @bg_color
- ChromeGtkFrame::incognito-frame-gradient-color = @bg_color
- ChromeGtkFrame::incognito-inactive-frame-gradient-color = @bg_color
+ ChromeGtkFrame::frame-gradient-color = @dark_color
+ ChromeGtkFrame::inactive-frame-gradient-color = @dark_color
+ ChromeGtkFrame::incognito-frame-gradient-color = @dark_color
+ ChromeGtkFrame::incognito-inactive-frame-gradient-color = @dark_color
 
- ChromeGtkFrame::scrollbar-slider-prelight-color = shade(1.05, @bg_color)
+ ChromeGtkFrame::scrollbar-slider-prelight-color = @light_color
  ChromeGtkFrame::scrollbar-slider-normal-color = @bg_color
  ChromeGtkFrame::scrollbar-trough-color = @base_color
 }
