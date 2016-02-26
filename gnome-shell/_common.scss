@@ -153,12 +153,12 @@ StScrollBar {
   StBin {
     width: 20px;
     height: 20px;
-    background-image: url("checkbox-off.svg");
+    background-image: url("assets/checkbox-off.svg");
     color: $secondary_fg_color;
   }
-  &:focus StBin { background-image: url("checkbox-off.svg"); }
-  &:checked StBin { background-image: url("checkbox.svg"); }
-  &:focus:checked StBin { background-image: url("checkbox.svg"); }
+  &:focus StBin { background-image: url("assets/checkbox-off.svg"); }
+  &:checked StBin { background-image: url("assets/checkbox.svg"); }
+  &:focus:checked StBin { background-image: url("assets/checkbox.svg"); }
 }
 
 /* Switches */
@@ -170,8 +170,8 @@ StScrollBar {
 
   @each $v in us, intl {
     .toggle-switch-#{$v} {
-      background-image: url("toggle-off.svg");
-      &:checked { background-image: url("toggle-on.svg"); }
+      background-image: url("assets/toggle-off.svg");
+      &:checked { background-image: url("assets/toggle-on.svg"); }
     }
   }
 
@@ -643,7 +643,7 @@ StScrollBar {
     height: 50px;
     background-color: $selected_bg_color;
     color: $selected_fg_color;
-    //background-image: url("ws-switch-arrow-up.png");
+    //background-image: url("assets/ws-switch-arrow-up.png");
     background-size: 32px;
     border-radius: 2px;
   }
@@ -841,12 +841,12 @@ StScrollBar {
     }
 
       .calendar-change-month-back { //arrow back
-        background-image: url("calendar-arrow-left.svg");
-        &:rtl { background-image: url("calendar-arrow-right.svg"); }
+        background-image: url("assets/calendar-arrow-left.svg");
+        &:rtl { background-image: url("assets/calendar-arrow-right.svg"); }
       }
       .calendar-change-month-forward { //arrow foreward
-        background-image: url("calendar-arrow-right.svg");
-        &:rtl { background-image: url("calendar-arrow-left.svg"); }
+        background-image: url("assets/calendar-arrow-right.svg");
+        &:rtl { background-image: url("assets/calendar-arrow-left.svg"); }
       }
 
     .calendar-day-base {
@@ -1011,7 +1011,7 @@ StScrollBar {
   }
 
   #appMenu {
-    spinner-image: url("process-working.svg");
+    spinner-image: url("assets/process-working.svg");
     spacing: 4px;
 
     .label-shadow { color: transparent; }
@@ -1044,12 +1044,12 @@ StScrollBar {
 .ripple-box {
   width: 52px;
   height: 52px;
-  background-image: url("corner-ripple-ltr.svg");
+  background-image: url("assets/corner-ripple-ltr.svg");
   background-size: contain;
 }
 
 .ripple-box:rtl {
-  background-image: url("corner-ripple-rtl.svg");
+  background-image: url("assets/corner-ripple-rtl.svg");
 }
 
 // not really top bar only
@@ -1062,10 +1062,10 @@ StScrollBar {
   height: 32px;
   width: 32px;
   -st-background-image-shadow: 0 1px 3px rgba(0,0,0,0.24), 0 1px 2px rgba(0,0,0,0.48);
-  background-image: url("window-close.svg");
+  background-image: url("assets/window-close.svg");
   background-size: 32px;
   &:hover { -st-background-image-shadow: 0 3px 6px rgba(0,0,0,0.32), 0 3px 6px rgba(0,0,0,0.46); }
-  &:active { background-image: url("window-close-active.svg"); }
+  &:active { background-image: url("assets/window-close-active.svg"); }
 }
   .window-close {
     -shell-close-overlap: 16px;
@@ -1210,7 +1210,7 @@ StScrollBar {
   .search-provider-icon-more {
     width: 16px;
     height: 16px;
-    background-image: url("more-results.svg");
+    background-image: url("assets/more-results.svg");
   }
 
 
@@ -1230,7 +1230,7 @@ StScrollBar {
     }
 
     .placeholder {
-      background-image: url("dash-placeholder.svg");
+      background-image: url("assets/dash-placeholder.svg");
       background-size: contain;
       height: 24px;
     }
@@ -1328,7 +1328,7 @@ StScrollBar {
     @each $f,$fc in ('',''),
                     ('.focused','-focused') {
       #dashtodockContainer#{$p} .dash-item-container > StWidget#{$n}#{$f} {
-          background-image: url("#{$pt}-#{$nb}#{$fc}.svg");
+          background-image: url("assets/#{$pt}-#{$nb}#{$fc}.svg");
       }
     }
   }
@@ -1993,7 +1993,7 @@ $legacy_icon_size: 24px;
 }
 
 #lockDialogGroup {
-  background: #333333 url(noise-texture.png);
+  background: #333333 url(assets/noise-texture.png);
   background-repeat: repeat;
 }
 
