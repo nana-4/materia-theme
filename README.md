@@ -42,4 +42,4 @@ Other Info
 http://mplus-fonts.sourceforge.jp/mplus-outline-fonts/index-en.html
 * Reference color scheme:
 http://flatuicolors.com/
-* License: GPLv3
+* License: GPL
