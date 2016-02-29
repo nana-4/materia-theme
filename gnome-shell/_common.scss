@@ -1672,10 +1672,10 @@ StScrollBar {
 $legacy_icon_size: 24px;
 
 .legacy-tray {
-  background-color: $base_color;
+  background-color: $bg_color;
+  color: $selected_fg_color;
   border: none;
   border-bottom-width: 0;
-  @include shadow(2);
   &:ltr { border-radius: 0 2px 0 0; border-left-width: 0; }
   &:rtl { border-radius: 2px 0 0 0; border-right-width: 0; }
 }
@@ -1684,8 +1684,8 @@ $legacy_icon_size: 24px;
 .legacy-tray-icon {
   padding: 6px;
   & StIcon { icon-size: $legacy_icon_size; }
-  &:hover,&:focus { background-color: $semi_track_color; }
-  &:active { background-color: $track_color; }
+  &:hover,&:focus { background-color: $selected_semi_track_color; }
+  &:active { background-color: $selected_track_color; }
 }
 
 .legacy-tray-icon-box {
