@@ -1150,17 +1150,25 @@ StScrollBar {
 #dashtodockContainer:overview #dash {
   background-color: rgba(255, 255, 255, 0.1); }
 
+#dashtodockContainer.extended:overview #dash {
+  background-color: transparent; }
+
+#dashtodockContainer.left #dash,
+#dashtodockContainer.right #dash {
+  padding: 3px 0; }
+
+#dashtodockContainer.top #dash,
+#dashtodockContainer.bottom #dash {
+  padding: 0 3px; }
+
 #dashtodockContainer.extended #dash {
   padding: 0;
   border-radius: 0; }
 
-#dashtodockContainer.extended:overview #dash {
-  background-color: transparent; }
-
+#dashtodockContainer.left .dash-item-container > StWidget,
+#dashtodockContainer.right .dash-item-container > StWidget,
 #dashtodockContainer.extended.left .dash-item-container > StWidget,
-#dashtodockContainer.extended.right .dash-item-container > StWidget,
-#dashtodockContainer.extended.left .dash-item-container:last-child > StWidget .app-well-app,
-#dashtodockContainer.extended.right .dash-item-container:last-child > StWidget .app-well-app {
+#dashtodockContainer.extended.right .dash-item-container > StWidget {
   padding: 3px 6px; }
 
 #dashtodockContainer.extended.left .dash-item-container:first-child > StWidget,
@@ -1171,10 +1179,10 @@ StScrollBar {
 #dashtodockContainer.extended.right .dash-item-container:last-child > StWidget {
   padding: 3px 6px 6px 6px; }
 
+#dashtodockContainer.top .dash-item-container > StWidget,
+#dashtodockContainer.bottom .dash-item-container > StWidget,
 #dashtodockContainer.extended.top .dash-item-container > StWidget,
-#dashtodockContainer.extended.bottom .dash-item-container > StWidget,
-#dashtodockContainer.extended.top .dash-item-container:last-child > StWidget .app-well-app,
-#dashtodockContainer.extended.bottom .dash-item-container:last-child > StWidget .app-well-app {
+#dashtodockContainer.extended.bottom .dash-item-container > StWidget {
   padding: 6px 3px; }
 
 #dashtodockContainer.extended.top .dash-item-container:first-child > StWidget,
@@ -1189,7 +1197,7 @@ StScrollBar {
   background-color: transparent; }
 
 #dashtodockContainer .dash-item-container > StWidget {
-  background-size: contain; }
+  background-size: cover; }
 
 #dashtodockContainer.left .dash-item-container > StWidget.running1 {
   background-image: url("assets/left-running1.svg"); }

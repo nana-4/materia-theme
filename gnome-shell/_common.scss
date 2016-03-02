@@ -1266,19 +1266,29 @@ StScrollBar {
     background-color: $overview_bg_color;
 }
 
+#dashtodockContainer.extended:overview #dash {
+    background-color: transparent;
+}
+
+#dashtodockContainer.left #dash,
+#dashtodockContainer.right #dash {
+    padding: 3px 0;
+}
+
+#dashtodockContainer.top #dash,
+#dashtodockContainer.bottom #dash {
+    padding: 0 3px;
+}
+
 #dashtodockContainer.extended #dash {
     padding: 0;
     border-radius: 0;
 }
 
-#dashtodockContainer.extended:overview #dash {
-    background-color: transparent;
-}
-
+#dashtodockContainer.left .dash-item-container > StWidget,
+#dashtodockContainer.right .dash-item-container > StWidget,
 #dashtodockContainer.extended.left .dash-item-container > StWidget,
-#dashtodockContainer.extended.right .dash-item-container > StWidget,
-#dashtodockContainer.extended.left .dash-item-container:last-child > StWidget .app-well-app,
-#dashtodockContainer.extended.right .dash-item-container:last-child > StWidget .app-well-app {
+#dashtodockContainer.extended.right .dash-item-container > StWidget {
    padding: 3px 6px;
 }
 
@@ -1292,10 +1302,10 @@ StScrollBar {
    padding: 3px 6px 6px 6px;
 }
 
+#dashtodockContainer.top .dash-item-container > StWidget,
+#dashtodockContainer.bottom .dash-item-container > StWidget,
 #dashtodockContainer.extended.top .dash-item-container > StWidget,
-#dashtodockContainer.extended.bottom .dash-item-container > StWidget,
-#dashtodockContainer.extended.top .dash-item-container:last-child > StWidget .app-well-app,
-#dashtodockContainer.extended.bottom .dash-item-container:last-child > StWidget .app-well-app {
+#dashtodockContainer.extended.bottom .dash-item-container > StWidget {
    padding: 6px 3px;
 }
 
@@ -1314,7 +1324,7 @@ StScrollBar {
 }
 
 #dashtodockContainer .dash-item-container > StWidget {
-    background-size: contain;
+    background-size: cover;
 }
 
 @each $p,$pt in ('.left', 'left'),
