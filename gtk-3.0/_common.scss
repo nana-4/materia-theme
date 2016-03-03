@@ -1362,16 +1362,15 @@ $_slider_fine_tune_margin: 6px;
  **********/
 
 GtkSwitch {
-  -GtkSwitch-slider-width: 28px; // 55px is the right value to make it as tall
-                                 // as buttons, not doing that for now
-  -GtkSwitch-slider-height: 28px;
+  -GtkSwitch-slider-width: $small_size;
+  -GtkSwitch-slider-height: $small_size;
 
   outline-offset: -4px;
   outline-radius: 100px;
   font-size: 0;
   &.trough {
     // similar to the .scale
-    border: 10px solid transparent;
+    border: 8px solid transparent;
     border-radius: 100px;
     background-color: $track_color;
     // background-clip: padding-box;
@@ -1379,10 +1378,11 @@ GtkSwitch {
       color: $insensitive_fg_color;
     }
     &:active {
-      background-color: $accent_bg_color;
+      background-color: scale-alpha($accent_bg_color, 0.5);
+      color: $selected_fg_color;
       &:insensitive {
-        background-color: $track_color;
-        color: $accent_bg_color;
+        background-color: scale-alpha($accent_bg_color, 0.5 * $disabled_opacity);
+        color: $insensitive_fg_color;
       }
     }
   }
@@ -1391,6 +1391,7 @@ GtkSwitch {
     border-radius: 100px;
     @include entry(normal);
     &:hover { @include entry(focus); }
+    &:active { background-color: $accent_bg_color; }
     &:insensitive { @include entry(insensitive); }
   }
   .list-row:selected & {

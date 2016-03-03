@@ -1118,22 +1118,23 @@ column-header.button.dnd, column-header .button.dnd {
  * Switch *
  **********/
 GtkSwitch {
-  -GtkSwitch-slider-width: 28px;
-  -GtkSwitch-slider-height: 28px;
+  -GtkSwitch-slider-width: 24px;
+  -GtkSwitch-slider-height: 24px;
   outline-offset: -4px;
   outline-radius: 100px;
   font-size: 0; }
   GtkSwitch.trough {
-    border: 10px solid transparent;
+    border: 8px solid transparent;
     border-radius: 100px;
     background-color: alpha(currentColor, 0.3); }
     GtkSwitch.trough:insensitive {
       color: rgba(0, 0, 0, 0.32); }
     GtkSwitch.trough:active {
-      background-color: #FF4081; }
+      background-color: rgba(255, 64, 129, 0.5);
+      color: #FFFFFF; }
       GtkSwitch.trough:active:insensitive {
-        background-color: alpha(currentColor, 0.3);
-        color: #FF4081; }
+        background-color: rgba(255, 64, 129, 0.2);
+        color: rgba(0, 0, 0, 0.32); }
   GtkSwitch.slider {
     padding: 4px;
     border-radius: 100px;
@@ -1142,6 +1143,8 @@ GtkSwitch {
     color: rgba(0, 0, 0, 0.8); }
     GtkSwitch.slider:hover {
       box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23); }
+    GtkSwitch.slider:active {
+      background-color: #FF4081; }
     GtkSwitch.slider:insensitive {
       color: rgba(0, 0, 0, 0.32);
       background-color: #f6f7f8; }
