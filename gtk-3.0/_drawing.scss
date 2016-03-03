@@ -3,7 +3,9 @@
 // generic drawing of more complex things
 
 // shadows
-//  $z-depth-1: 0 1px 1.5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+
+// FIXME: doesn't work 1.5px
+// $z-depth-1: 0 1px 1.5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
 $z-depth-1: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 $z-depth-2: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
 $z-depth-3: 0 10px 10px rgba(0, 0, 0, 0.19), 0 6px 3px rgba(0, 0, 0, 0.23);
@@ -77,7 +79,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 // $fc: focus color
 //
 // possible $t values:
-// normal, focus, insensitive, flat, flat-focus, flat-insensitive;
+// normal, focus, insensitive, flat-normal, flat-focus, flat-insensitive;
 //
 
   @if $t==normal {
@@ -92,7 +94,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     color: $insensitive_fg_color;
     background-color: $secondary_base_color;
   }
-  @if $t==flat {
+  @if $t==flat-normal {
     border-image: -gtk-gradient(radial,
                                 center bottom, 0,
                                 center bottom, 0.001,
@@ -133,7 +135,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 //
 // possible $t values:
 // normal, hover, active, insensitive, checked, checked-insensitive,
-// flat, flat-hover, flat-active, flat-insensitive, flat-checked, flat-checked-insensitive, undecorated
+// flat-normal, flat-hover, flat-active, flat-insensitive, flat-checked, flat-checked-insensitive;
 //
 
   @if $t==normal {
@@ -200,7 +202,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     > .label { color: inherit; }
   }
 
-  @else if $t==flat {
+  @else if $t==flat-normal {
   //
   // normal flat button
   //
@@ -253,18 +255,6 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   // checked flat insensitive button
   //
     > .label { color: inherit; }
-  }
-
-  @else if $t==undecorated {
-  //
-  // reset
-  //
-    border-color: transparent;
-    background-color: transparent;
-    background-image: none;
-    box-shadow: none;
-    text-shadow: none;
-    icon-shadow: none;
   }
 }
 
