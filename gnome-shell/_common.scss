@@ -32,12 +32,13 @@ $panel-corner-radius: 0;
 }
 
 /* GLOBALS */
-$font-size: 11;
-$font-family: "M+ 1c", Cantarell, Sans-Serif;
+$root-font-size: 14px;
+$font-family: "M+ 1c", Roboto, Cantarell, Sans-Serif;
+$large-font-family: Roboto, "M+ 1c", Cantarell, Sans-Serif;
 
 stage {
   font-family: $font-family;
-  @include fontsize($font-size);
+  @include font(body-1);
   color: $fg_color;
 }
 
@@ -48,7 +49,7 @@ stage {
   border-radius: 2px;
   border-width: 0;
   padding: 7px 16px 8px;
-  font-weight: 500;
+  @include font(button);
   @include button(flat-normal);
   &:hover { @include button(flat-hover); }
   &:active { @include button(flat-active); }
@@ -59,7 +60,7 @@ stage {
 
 .modal-dialog-linked-button {
   border-right-width: 0;
-  font-weight: 500;
+  @include font(button);
   border-top: 1px solid $borders_color !important;
   @include button(flat-normal);
   &:hover { @include button(flat-hover); }
@@ -89,6 +90,7 @@ StEntry {
   color: $fg_color;
   selection-background-color: $selected_bg_color;
   selected-color: $selected_fg_color;
+  @include font(subheading);
   @include entry(normal);
   //&:hover { @include entry(hover);}
   &:focus { @include entry(focus);}
@@ -185,7 +187,7 @@ StScrollBar {
 
 /* Modal Dialogs */
 
-.headline { font-size: 110%; }
+.headline { @include font(headline); }
 .lightbox { background-color: black; }
 .flashspot { background-color: white; }
 
@@ -205,7 +207,7 @@ StScrollBar {
   }
   .run-dialog-button-box { padding-top: 1em; }
   .run-dialog-label {
-    font-size: 11pt;
+    font-size: 1em;
     font-weight: normal;
     color: $tertiary_fg_color;
     padding-bottom: .4em;
@@ -216,7 +218,7 @@ StScrollBar {
   .show-processes-dialog-subject,
   .mount-question-dialog-subject,
   .end-session-dialog-subject { //this should be a generic header class
-    @include fontsize($font-size * 1.3);
+    @include font(headline);
   }
 
 /* End Session Dialog */
@@ -294,7 +296,7 @@ StScrollBar {
 
   .end-session-dialog-app-list-item-description {
     color: $tertiary_fg_color;
-    font-size: 10pt;
+    font-size: 1em;
   }
 
 /* ShellMountOperation Dialogs */
@@ -358,7 +360,7 @@ StScrollBar {
   }
 
   .show-processes-dialog-app-list-item-name {
-    font-size: 10pt;
+    font-size: 1em;
   }
 
 
@@ -380,8 +382,7 @@ StScrollBar {
   }
 
   .prompt-dialog-headline {
-    @include fontsize($font-size * 1.3);
-    font-weight: normal;
+    @include font(headline);
     color: $fg_color;
   }
 
@@ -395,13 +396,13 @@ StScrollBar {
   }
 
   .prompt-dialog-error-label {
-    font-size: 10pt;
+    font-size: 1em;
     color: $error_color;
     padding-bottom: 8px;
   }
 
   .prompt-dialog-info-label {
-    font-size: 10pt;
+    font-size: 1em;
     padding-bottom: 8px;
   }
 
@@ -410,7 +411,7 @@ StScrollBar {
   }
 
   .prompt-dialog-null-label {
-    font-size: 10pt;
+    font-size: 1em;
     padding-bottom: 8px;
   }
 
@@ -558,7 +559,7 @@ StScrollBar {
   min-width: 64px;
   min-height: 64px;
 
-  .osd-monitor-label { font-size: 3em; }
+  .osd-monitor-label { @include font(display-2); }
   .level {
     height: 0.6em;
     border-radius: 4px;
@@ -619,7 +620,7 @@ StScrollBar {
   }
 
   .input-source-switcher-symbol {
-    font-size: 34pt;
+    @include font(display-2);
     width: 96px;
     height: 96px;
   }
@@ -744,7 +745,7 @@ StScrollBar {
       & > .system-status-icon { icon-shadow: none; }
     }
 
-    .system-status-icon { icon-size: 1.09em; padding: 0 5px; }
+    .system-status-icon { @include px-to-em(16px); padding: 0 5px; }
     .unlock-screen &,
     .login-screen &,
     .lock-screen & {
@@ -809,7 +810,7 @@ StScrollBar {
     }
 
     .datemenu-today-button .date-label {
-      font-size: 1.5em;
+      @include font(headline);
     }
 
     .world-clocks-header,
@@ -849,7 +850,7 @@ StScrollBar {
       }
 
     .calendar-day-base {
-      font-size: smaller;
+      @include font(caption);
       text-align: center;
       width: 32px; height: 32px;
       padding: 0;
@@ -863,10 +864,10 @@ StScrollBar {
         border-color: transparent; //avoid jumparound due to today
       }
       &.calendar-day-heading {  //day of week heading
-        font-weight: bold;
         color: $tertiary_fg_color;
         margin-top: 1em;
-        font-size: smaller;
+        @include font(caption);
+        font-weight: bold;
       }
       &.calendar-week-number {  //day of week heading
         font-weight: bold;
@@ -897,8 +898,7 @@ StScrollBar {
         background-image: none;
       }
       .calendar-other-month-day {
-        color: $tertiary_fg_color;
-        opacity: 0.5;
+        color: $insensitive_fg_color;
       }
 
       /* Message list */
@@ -969,13 +969,14 @@ StScrollBar {
           }
 
           .message-title {
-            font-weight: bold;
-            font-size: 1.1em;
+            color: $fg_color;
+            @include font(subheading);
           }
 
           .message-content {
             padding: 8px;
-            font-size: .9em;
+            color: $secondary_fg_color;
+            @include font(body-1);
           }
 
           .message-content * > StIcon {
@@ -1053,7 +1054,7 @@ StScrollBar {
 
 // not really top bar only
 .popup-menu-arrow { width: 16px; height: 16px; }
-.popup-menu-icon { icon-size: 1.09em; }
+.popup-menu-icon { @include px-to-em(16px); }
 
 //close buttons
 
@@ -1098,7 +1099,7 @@ StScrollBar {
   .nm-dialog-header { font-weight: bold; }
 
   .nm-dialog-item {
-    font-size: 110%;
+    @include font(subheading);
     border-bottom: 1px solid $borders_color;
     padding: 12px;
     spacing: 20px;
@@ -1168,7 +1169,7 @@ StScrollBar {
       color: $selected_fg_color;
     }
 
-    .search-entry-icon { icon-size: 1.09em; padding: 0 2px; color: $tertiary_selected_fg_color; }
+    .search-entry-icon { icon-size: 16px; padding: 0 2px; color: $tertiary_selected_fg_color; }
 
     &:hover, &:focus {
       .search-entry-icon { color: $selected_fg_color; }
@@ -1203,7 +1204,7 @@ StScrollBar {
   }
 
   .list-search-result-content { spacing: 12px; padding: 12px; }
-  .list-search-result-title { font-size: 1.5em; color: $selected_fg_color; }
+  .list-search-result-title { @include font(headline); color: $selected_fg_color; }
   .list-search-result-description { color: $secondary_selected_fg_color; }
   .search-provider-icon { padding: 15px; }
   .search-provider-icon-more {
@@ -1216,7 +1217,7 @@ StScrollBar {
   /* DASHBOARD */
 
   #dash {
-    font-size: 9pt;
+    font-size: 1em;
     color: $selected_fg_color;
     background-color: $overview_bg_color;
     padding: 3px 0;
@@ -1531,8 +1532,7 @@ StScrollBar {
 }
 
 %status_text {
-  font-size: 2em;
-  font-weight: bold;
+  @include font(display-2);
   color: $tertiary_selected_fg_color;
 }
 
@@ -1564,7 +1564,7 @@ StScrollBar {
 
   // Banners
   .notification-banner {
-    font-size: 11pt;
+    font-size: 1em;
     width: 34em;
     margin: 5px;
     border-radius: 2px;
@@ -1577,7 +1577,7 @@ StScrollBar {
 
     .notification-icon { padding: 5px; }
     .notification-content { padding: 5px; spacing: 5px; }
-    .secondary-icon { icon-size: 1.09em; }
+    .secondary-icon { @include px-to-em(16px); }
     .notification-actions {
       background-color: transparent;
       padding-top: 0;
@@ -1596,7 +1596,7 @@ StScrollBar {
     }
   }
   .summary-source-counter {
-    font-size: 10pt;
+    font-size: 1em;
     font-weight: bold;
     height: 1.6em; width: 1.6em;
     -shell-counter-overlap-x: 3px;
@@ -1608,7 +1608,7 @@ StScrollBar {
     border-radius: 0.9em; // should be 0.8 but whatever; wish I could do 50%;
   }
 
-  .secondary-icon { icon-size: 1.09em; }
+  .secondary-icon { @include px-to-em(16px); }
 
   //chat bubbles
   .chat-body { spacing: 5px; }
@@ -1626,8 +1626,7 @@ StScrollBar {
   }
   .chat-meta-message {
     padding-left: 4px;
-    font-size: 9pt;
-    font-weight: bold;
+    @include font(caption);
     color: $tertiary_fg_color;
     &:rtl { padding-left: 0; padding-right: 4px; }
   }
@@ -1729,7 +1728,7 @@ $legacy_icon_size: 24px;
     min-height: 2em;
     min-width: 2em;
     font-size: 2em;
-    font-weight: bold;
+    font-weight: 500;
     border-radius: 2px;
     border: none;
     color: inherit;
@@ -1792,7 +1791,7 @@ $legacy_icon_size: 24px;
 
   .candidate-page-button-previous { border-radius: 2px; border-right-width: 0; }
   .candidate-page-button-next { border-radius: 2px;  }
-  .candidate-page-button-icon { icon-size: 1.09em; }
+  .candidate-page-button-icon { @include px-to-em(16px); }
 
 /* Auth Dialogs & Screen Shield */
 
@@ -1865,7 +1864,7 @@ $legacy_icon_size: 24px;
     }
   }
   .login-dialog-not-listed-label {
-    font-size: 90%;
+    @include font(body-2);
     font-weight: bold;
     color: $secondary_selected_fg_color;
     padding-top: 1em;
@@ -1902,8 +1901,7 @@ $legacy_icon_size: 24px;
   .login-dialog-username,
   .user-widget-label {
     color: $selected_fg_color;
-    font-size: 120%;
-    font-weight: bold;
+    @include font(title);
     text-align: left;
     padding-left: 15px;
   }
@@ -1958,12 +1956,11 @@ $legacy_icon_size: 24px;
 }
 
 .screen-shield-clock-time {
-  font-size: 112px;
-  font-weight: 300;
+  @include font(display-4);
   text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
-.screen-shield-clock-date { font-size: 45px; }
+.screen-shield-clock-date { @include font(display-2); }
 
 .screen-shield-notifications-container {
   spacing: 6px;
@@ -2069,7 +2066,7 @@ $legacy_icon_size: 24px;
   }
 
   .lg-completions-text {
-      font-size: .9em;
+      font-size: 1em;
       font-style: italic;
   }
 
@@ -2098,8 +2095,7 @@ $legacy_icon_size: 24px;
   }
 
   .lg-extension-name {
-      font-weight: bold;
-      font-size: 1.5em;
+      @include font(headline);
   }
 
   .lg-extension-meta {

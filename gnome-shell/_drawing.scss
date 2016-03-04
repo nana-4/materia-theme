@@ -2,10 +2,84 @@
 
 // generic drawing of more complex things
 
-// provide font size in rem, with px fallback
-@mixin fontsize($size: 24, $base: 16) {
-  font-size: round($size) + pt;
-  //font-size: ($size / $base) * 1rem;
+// provide font size in pt, with px fallback
+@mixin px-to-pt($size: $root-font-size) {
+  font-size: ($size * 0.75 / 1px) * 1pt;
+}
+
+// provide icon size in em, with px fallback
+@mixin px-to-em($size: 16px) {
+  icon-size: ($size / $root-font-size) * 1em;
+}
+
+// Typography
+@mixin font($typo) {
+  @if $typo==display-4 {
+    // font-family: $large-font-family;
+    font-size: 112px;
+    font-weight: 300;
+    line-height: 1;
+  }
+  @if $typo==display-3 {
+    // font-family: $large-font-family;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  @if $typo==display-2 {
+    // font-family: $large-font-family;
+    font-size: 45px;
+    font-weight: 400;
+    line-height: 48px;
+  }
+  @if $typo==display-1 {
+    // font-family: $large-font-family;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 40px;
+  }
+  @if $typo==headline {
+    // font-size: 24px;
+    @include px-to-pt(24px);
+    font-weight: 400;
+    line-height: 32px;
+  }
+  @if $typo==title {
+    // font-size: 20px;
+    @include px-to-pt(20px);
+    font-weight: 500;
+    line-height: 1;
+  }
+  @if $typo==subheading {
+    // font-size: 16px;
+    @include px-to-pt(16px);
+    font-weight: 400;
+    line-height: 24px;
+  }
+  @if $typo==body-2 {
+    // font-size: 14px;
+    @include px-to-pt($root-font-size);
+    font-weight: 500;
+    line-height: 24px;
+  }
+  @if $typo==body-1 {
+    // font-size: 14px;
+    @include px-to-pt($root-font-size);
+    font-weight: 400;
+    line-height: 24px;
+  }
+  @if $typo==caption {
+    // font-size: 12px;
+    @include px-to-pt(12px);
+    font-weight: 400;
+    line-height: 1;
+  }
+  @if $typo==button {
+    // font-size: 14px;
+    @include px-to-pt($root-font-size);
+    font-weight: 500;
+    line-height: 1;
+  }
 }
 
 // shadows
