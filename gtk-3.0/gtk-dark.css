@@ -501,6 +501,8 @@ GtkComboBox {
   -GtkComboBox-shadow-type: none; }
   GtkComboBox > .the-button-in-the-combobox {
     padding: 5px 6px 6px; }
+  GtkComboBox .menu {
+    padding: 2px 0; }
   GtkComboBox .menu .menuitem {
     padding: 5px 6px 6px; }
   GtkComboBox .separator.vertical {
@@ -768,12 +770,13 @@ column-header.button.dnd, column-header .button.dnd {
       box-shadow: none; }
 
 .menu {
-  margin: 4px;
-  padding: 0px;
+  margin: 4px 0;
+  padding: 4px 0;
   background-color: #455A64;
   border: 1px solid rgba(0, 0, 0, 0.2); }
   .csd .menu {
-    border: none; }
+    border: none;
+    border-radius: 2px; }
   .menu .menuitem {
     transition: none;
     padding: 3px 4px 4px;
@@ -790,20 +793,23 @@ column-header.button.dnd, column-header .button.dnd {
       -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl"); }
   .menu.button {
     border-style: none;
-    border-radius: 0; }
+    border-radius: 0;
+    box-shadow: none; }
     .menu.button.top {
       border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
     .menu.button.bottom {
       border-top: 1px solid rgba(0, 0, 0, 0.2); }
     .menu.button:hover {
-      background-color: alpha(currentColor, 0.3); }
+      background-color: alpha(currentColor, 0.15); }
     .menu.button:insensitive {
-      color: transparent;
       background-color: transparent;
       border-color: transparent; }
 
 .menuitem .accelerator {
   color: alpha(currentColor, 0.6); }
+
+.csd.popup {
+  border-radius: 2px; }
 
 /***************
  * Popovers   *
@@ -2200,7 +2206,7 @@ GtkColorSwatch {
   .window-frame.popup {
     box-shadow: none; }
   .window-frame.csd.popup {
-    border-radius: 0;
+    border-radius: 2px;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23); }
   .window-frame.csd.tooltip {
     border-radius: 2px;
