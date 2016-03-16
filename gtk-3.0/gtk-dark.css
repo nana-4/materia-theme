@@ -386,7 +386,7 @@ GtkTextView {
 
 .button.image-button, .inline-toolbar .button, .spinbutton .button, .notebook tab .button, GtkScaleButton.button,
 GtkVolumeButton.button, .header-bar .button.titlebutton,
-.titlebar .button.titlebutton {
+.titlebar .button.titlebutton, .nautilus-circular-button {
   padding: 10px;
   outline-radius: 100px;
   border-radius: 100px;
@@ -2184,22 +2184,6 @@ GtkColorSwatch {
 .scale-popup .button {
   padding: 10px; }
 
-.floating-bar {
-  padding: 3px 0 4px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  background-color: #455A64;
-  background-clip: border-box; }
-
-.floating-bar.bottom.left {
-  /* axes left border and border radius */
-  border-width: 1px 1px 0 0;
-  border-radius: 0 3px 0 0; }
-
-.floating-bar.bottom.right {
-  /* axes right border and border radius */
-  border-width: 1px 0 0 1px;
-  border-radius: 3px 0 0 0; }
-
 /**********************
  * Window Decorations *
  *********************/
@@ -2369,6 +2353,61 @@ GtkColorSwatch {
   background-origin: content-box;
   background-position: right center; }
 
+.floating-bar {
+  padding: 3px 0 4px;
+  border-width: 1px;
+  border-style: solid solid none;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px 3px 0 0;
+  background-color: #455A64;
+  background-clip: border-box; }
+  .floating-bar.left {
+    border-left-style: none;
+    border-top-left-radius: 0; }
+  .floating-bar.right {
+    border-right-style: none;
+    border-top-right-radius: 0; }
+  .floating-bar .button {
+    padding: 4px; }
+
+/************
+ * Nautilus *
+ ************/
+.nautilus-desktop.nautilus-canvas-item {
+  color: #FFFFFF;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+
+.nautilus-desktop.nautilus-canvas-item:selected {
+  text-shadow: none; }
+
+/* Toolbar */
+@keyframes needs_attention_keyframes {
+  0% {
+    background-color: transparent; }
+  50% {
+    background-color: alpha(currentColor, 0.3); }
+  100% {
+    background-color: transparent; } }
+.nautilus-operations-button-needs-attention {
+  color: #FF4081;
+  animation: needs_attention_keyframes 2s cubic-bezier(0.4, 0, 0.2, 1); }
+
+.nautilus-operations-button-needs-attention-multiple {
+  color: #FF4081;
+  animation: needs_attention_keyframes 2s cubic-bezier(0.4, 0, 0.2, 1);
+  animation-iteration-count: 2; }
+
+.disk-space-display.unknown {
+  background-color: #FF6D00; }
+
+.disk-space-display.used {
+  background-color: #00BCD4; }
+
+.disk-space-display.free {
+  background-color: alpha(currentColor, 0.3);
+  color: rgba(255, 255, 255, 0.4); }
+
+/* View */
 /* GTK NAMED COLORS
    ----------------
    use responsibly! */

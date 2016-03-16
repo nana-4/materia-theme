@@ -1,0 +1,96 @@
+// floating status bar
+.floating-bar {
+  @extend %osd;
+  // @extend .toolbar.osd;
+  padding: 3px 0 4px;
+  border-width: 1px;
+  border-style: solid solid none;
+  border-color: $borders_color;
+  border-radius: 2px + 1px 2px + 1px 0 0;
+  background-color: $base_color;
+  background-clip: $extra_background_clip;
+  &.left {
+    border-left-style: none;
+    border-top-left-radius: 0;
+  }
+  &.right {
+    border-right-style: none;
+    border-top-right-radius: 0;
+  }
+  .button {
+    padding: 4px;
+  }
+}
+
+/************
+ * Nautilus *
+ ************/
+
+.nautilus-canvas-item {
+  // border-radius: 2px;
+}
+
+.nautilus-canvas-item.dim-label,
+.nautilus-list-dim-label {
+  // @extend .dim-label;
+}
+
+.nautilus-canvas-item.dim-label:selected,
+.nautilus-list-dim-label:selected {
+}
+
+.nautilus-desktop.nautilus-canvas-item {
+  // background-color: scale-alpha(#000000, $lower_opacity);
+  color: $selected_fg_color;
+  text-shadow: $z-depth-1;
+}
+
+.nautilus-desktop.nautilus-canvas-item:selected {
+  // color: $selected_fg_color;
+  text-shadow: none;
+}
+
+.nautilus-circular-button {
+  @extend %image_button;
+}
+
+/* Toolbar */
+
+@keyframes needs_attention_keyframes {
+  0% {background-color: transparent; }
+  50% {background-color: $track_color; }
+  100% {background-color: transparent; }
+}
+.nautilus-operations-button-needs-attention {
+  color: $accent_bg_color;
+  animation: needs_attention_keyframes 2s $material_timing_function;
+}
+.nautilus-operations-button-needs-attention-multiple {
+  color: $accent_bg_color;
+  animation: needs_attention_keyframes 2s $material_timing_function;
+  animation-iteration-count: 2;
+}
+
+.disk-space-display {
+  // border-style: solid;
+  // border-width: 2px;
+}
+
+.disk-space-display.unknown {
+  background-color: $warning_color;
+}
+
+.disk-space-display.used {
+  background-color: $selected_bg_color;
+}
+
+.disk-space-display.free {
+  background-color: $track_color;
+  color: $insensitive_fg_color;
+}
+
+/* View */
+NautilusListView .view {
+  // border-bottom: 1px solid $borders_color;
+}
+
