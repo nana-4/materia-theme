@@ -487,6 +487,66 @@ StScrollBar {
     height: 48px;
   }
 
+/* Audio selection dialog */
+.audio-device-selection-dialog {
+  spacing: 30px;
+}
+
+  .audio-selection-content {
+    spacing: 20px;
+    padding: 24px;
+  }
+
+  .audio-selection-title {
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .audio-selection-box {
+    spacing: 20px;
+  }
+
+  .audio-selection-device {
+    border: 1px solid $borders_color;
+    border-radius: 2px;
+    &:active,&:hover,&:focus { background-color: $selected_bg_color; }
+  }
+
+  .audio-selection-device-box {
+    padding: 20px;
+    spacing: 20px;
+  }
+
+  .audio-selection-device-icon {
+    icon-size: 64px;
+  }
+
+/* Geolocation Dialog */
+.geolocation-dialog {
+  spacing: 30px;
+}
+
+  .geolocation-dialog-main-layout {
+    spacing: 12px;
+  }
+
+  .geolocation-dialog-content {
+    spacing: 20px;
+  }
+
+  .geolocation-dialog-icon {
+    icon-size: 48px;
+  }
+
+  .geolocation-dialog-title {
+    font-weight: bold;
+  }
+
+  .geolocation-dialog-reason {
+    color: $tertiary_fg_color;
+    font-weight: bold;
+  }
+
 /* Network Agent Dialog */
 
 .network-dialog-secret-table {
@@ -499,7 +559,7 @@ StScrollBar {
   spacing-columns: 1em;
 }
 
-/* Popvers/Menus */
+/* Popovers/Menus */
 
 .popup-menu {
   min-width: 200px;
@@ -810,6 +870,11 @@ StScrollBar {
     spacing: 2px;
   }
 
+  // spacing between power icon and (optional) percentage label
+  .power-status.panel-status-indicators-box {
+    spacing: 0;
+  }
+
   .screencast-indicator { color: $warning_color; }
 }
 
@@ -935,16 +1000,6 @@ StScrollBar {
         font-weight: bold;
         text-align: center;
       }
-      &.calendar-week-number {  //day of week heading
-        width: $menuitem_size; height: $menuitem_size - 7px;
-        margin: 2px;
-        padding: 7px 0 0;
-        border-radius: 100px;
-        background-color: transparent;
-        color: $tertiary_fg_color;
-        font-weight: bold;
-        text-align: center;
-      }
     }
       .calendar-day { //border collapse hack - see calendar.js
         border-width: 0;
@@ -971,6 +1026,18 @@ StScrollBar {
       }
       .calendar-other-month-day {
         color: $insensitive_fg_color;
+        opacity: 0.5;
+      }
+      .calendar-week-number {
+        width: $menuitem_size; height: $menuitem_size - 7px;
+        margin: 2px;
+        padding: 7px 0 0;
+        border-radius: 100px;
+        background-color: transparent;
+        color: $tertiary_fg_color;
+        font-size: 1em;
+        font-weight: bold;
+        text-align: center;
       }
 
       /* Message list */
@@ -1012,7 +1079,7 @@ StScrollBar {
         }
 
         .message {
-          // min-height: $menuitem_size * 2;
+          min-height: $menuitem_size * 2;
           background-color: transparent;
           &:hover,&:focus { background-color: $semi_track_color; }
           &:active { background-color: $track_color; }
@@ -1072,6 +1139,31 @@ StScrollBar {
           .message-content *:active > StIcon {
             color: $fg_color;
             background-color: $track_color;
+          }
+
+          .message-media-control {
+            margin: 16px 0;
+            padding: 8px;
+            border-radius: 100px;
+            color: $secondary_fg_color;
+            &:hover,&:focus { color: $fg_color; background-color: $semi_track_color; }
+            &:active { color: $fg_color; background-color: $track_color; }
+            &:insensitive { color: $insensitive_secondary_fg_color; }
+
+            &:last-child:ltr { margin-right: 16px; padding-right: 8px; }
+            &:last-child:rtl { margin-left: 16px; padding-left: 8px; }
+          }
+
+          .media-message-cover-icon {
+            icon-size: 32px;
+            &.fallback {
+              icon-size: 16px;
+              padding: 8px;
+              border: none;
+              border-radius: 2px;
+              background-color: $semi_track_color;
+              color: $tertiary_fg_color;
+            }
           }
 
 
@@ -1652,7 +1744,7 @@ StScrollBar {
   .notification-banner {
     font-size: 1em;
     width: 34em;
-    // min-height: $menuitem_size * 2;
+    min-height: $menuitem_size * 2;
     margin: 5px;
     border-radius: 2px;
     color: $fg_color;
