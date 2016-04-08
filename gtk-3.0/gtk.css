@@ -214,14 +214,14 @@ entry {
   entry.flat {
     border-radius: 0;
     transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), color 0;
-    border-image: radial-gradient(circle farthest-corner at center calc(100% - 1px), #00BCD4 0%, transparent 0%) 0 0 0/0 0 0px;
+    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #00BCD4 0%, transparent 0%) 0 0 0/0 0 0px;
     box-shadow: inset 0 -1px alpha(currentColor, 0.3);
     background-color: transparent;
     color: rgba(0, 0, 0, 0.8); }
     spinbutton.flat:focus:not(.vertical), notebook > stack:not(:only-child) entry:focus,
     notebook > stack:not(:only-child) spinbutton:focus:not(.vertical), colorchooser .popover.osd spinbutton:focus:not(.vertical),
     entry.flat:focus {
-      border-image: radial-gradient(circle farthest-corner at center calc(100% - 1px), #00BCD4 100%, transparent 0%) 0 0 2/0 0 2px;
+      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #00BCD4 100%, transparent 0%) 0 0 2/0 0 2px;
       box-shadow: inset 0 -1px alpha(currentColor, 0.3); }
     spinbutton.flat:disabled:not(.vertical), notebook > stack:not(:only-child) entry:disabled,
     notebook > stack:not(:only-child) spinbutton:disabled:not(.vertical), colorchooser .popover.osd spinbutton:disabled:not(.vertical),
@@ -294,14 +294,14 @@ entry {
     notebook > stack:not(:only-child) spinbutton.error:not(.vertical), colorchooser .popover.osd spinbutton.error:not(.vertical),
     entry.error.flat {
       transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), color 0;
-      border-image: radial-gradient(circle farthest-corner at center calc(100% - 1px), #DD2C00 0%, transparent 0%) 0 0 0/0 0 0px;
+      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #DD2C00 0%, transparent 0%) 0 0 0/0 0 0px;
       box-shadow: inset 0 -1px #DD2C00;
       background-color: transparent;
       color: rgba(0, 0, 0, 0.8); }
       spinbutton.error.flat:focus:not(.vertical), notebook > stack:not(:only-child) entry.error:focus,
       notebook > stack:not(:only-child) spinbutton.error:focus:not(.vertical), colorchooser .popover.osd spinbutton.error:focus:not(.vertical),
       entry.error.flat:focus {
-        border-image: radial-gradient(circle farthest-corner at center calc(100% - 1px), #DD2C00 100%, transparent 0%) 0 0 2/0 0 2px;
+        border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #DD2C00 100%, transparent 0%) 0 0 2/0 0 2px;
         box-shadow: inset 0 -1px #DD2C00; }
       spinbutton.error.flat:disabled:not(.vertical), notebook > stack:not(:only-child) entry.error:disabled,
       notebook > stack:not(:only-child) spinbutton.error:disabled:not(.vertical), colorchooser .popover.osd spinbutton.error:disabled:not(.vertical),
@@ -330,14 +330,14 @@ entry {
     notebook > stack:not(:only-child) spinbutton.warning:not(.vertical), colorchooser .popover.osd spinbutton.warning:not(.vertical),
     entry.warning.flat {
       transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), color 0;
-      border-image: radial-gradient(circle farthest-corner at center calc(100% - 1px), #FF6D00 0%, transparent 0%) 0 0 0/0 0 0px;
+      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #FF6D00 0%, transparent 0%) 0 0 0/0 0 0px;
       box-shadow: inset 0 -1px #FF6D00;
       background-color: transparent;
       color: rgba(0, 0, 0, 0.8); }
       spinbutton.warning.flat:focus:not(.vertical), notebook > stack:not(:only-child) entry.warning:focus,
       notebook > stack:not(:only-child) spinbutton.warning:focus:not(.vertical), colorchooser .popover.osd spinbutton.warning:focus:not(.vertical),
       entry.warning.flat:focus {
-        border-image: radial-gradient(circle farthest-corner at center calc(100% - 1px), #FF6D00 100%, transparent 0%) 0 0 2/0 0 2px;
+        border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #FF6D00 100%, transparent 0%) 0 0 2/0 0 2px;
         box-shadow: inset 0 -1px #FF6D00; }
       spinbutton.warning.flat:disabled:not(.vertical), notebook > stack:not(:only-child) entry.warning:disabled,
       notebook > stack:not(:only-child) spinbutton.warning:disabled:not(.vertical), colorchooser .popover.osd spinbutton.warning:disabled:not(.vertical),
@@ -981,10 +981,10 @@ headerbar {
     font-size: smaller; }
   .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
   headerbar button:not(.suggested-action):not(.destructive-action) {
-    border-image: radial-gradient(circle farthest-corner at center calc(100% - 1px), #00BCD4 0%, transparent 0%) 0 0 0/0 0 0px; }
+    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #00BCD4 0%, transparent 0%) 0 0 0/0 0 0px; }
     .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked,
     headerbar button:not(.suggested-action):not(.destructive-action):checked {
-      border-image: radial-gradient(circle farthest-corner at center calc(100% - 1px), #00BCD4 100%, transparent 0%) 0 0 2/0 0 2px;
+      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #00BCD4 100%, transparent 0%) 0 0 2/0 0 2px;
       background-color: transparent;
       color: rgba(0, 0, 0, 0.8); }
       .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled,
@@ -1001,7 +1001,7 @@ headerbar {
     color: #FFFFFF; }
     .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
     headerbar.selection-mode button:not(.suggested-action):not(.destructive-action) {
-      border-image: radial-gradient(circle farthest-corner at center calc(100% - 1px), #FFFFFF 0%, transparent 0%) 0 0 0/0 0 0px; }
+      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #FFFFFF 0%, transparent 0%) 0 0 0/0 0 0px; }
       .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action), .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):hover, .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):active, .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked,
       headerbar.selection-mode button:not(.suggested-action):not(.destructive-action),
       headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):hover,
@@ -1016,7 +1016,7 @@ headerbar {
           color: inherit; }
       .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked,
       headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):checked {
-        border-image: radial-gradient(circle farthest-corner at center calc(100% - 1px), #FFFFFF 100%, transparent 0%) 0 0 2/0 0 2px;
+        border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #FFFFFF 100%, transparent 0%) 0 0 2/0 0 2px;
         color: #FFFFFF; }
         .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled,
         headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):checked:disabled {
