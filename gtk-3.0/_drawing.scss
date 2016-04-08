@@ -113,6 +113,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 //
 
   @if $t==normal {
+    transition: $material_transition;
     border-image: none;
     box-shadow: $z-depth-1;
     background-color: if($fc!=$selected_bg_color, $fc, $base_color);
@@ -131,6 +132,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   }
 
   @if $t==flat-normal {
+    transition: $material_transition;
     border-image: radial-gradient(circle farthest-corner at center calc(100% - 1px),
                                   $fc 0%,
                                   transparent 0%)
@@ -175,6 +177,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   //
   // normal button
   //
+    transition: $material_transition;
     box-shadow: $z-depth-1;
     background-color: $c;
     background-image: radial-gradient(circle farthest-corner at center,
@@ -200,10 +203,10 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   //
   // pushed button
   //
+    transition: $material_transition, background-image 0;
+    animation: ripple_effect $material_duration $material_timing_function forwards;
     box-shadow: $z-depth-2;
     color: $fg_color;
-    transition: all $material_duration $material_timing_function, color 0, background-image 0;
-    animation: ripple_effect $material_duration $material_timing_function forwards;
   }
 
   @if $t==insensitive {
@@ -239,6 +242,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   //
   // normal flat button
   //
+    transition: $material_transition;
     box-shadow: none;
     background-color: transparent;
     background-image: radial-gradient(circle farthest-corner at center,
@@ -264,10 +268,10 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   //
   // pushed flat button
   //
+    transition: $material_transition, background-image 0;
+    animation: flat_ripple_effect $material_duration $material_timing_function forwards;
     box-shadow: none;
     color: $fg_color;
-    transition: all $material_duration $material_timing_function, color 0, background-image 0;
-    animation: flat_ripple_effect $material_duration $material_timing_function forwards;
   }
 
   @if $t==flat-insensitive {

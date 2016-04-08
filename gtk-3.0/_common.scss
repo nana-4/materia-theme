@@ -9,8 +9,10 @@ $menuitem_size: 28px;
 
 $container_padding: 6px;
 $material_radius: 2px;
-$material_duration: 0.2s;
-$material_timing_function: cubic-bezier(0.4, 0, 0.2, 1);
+$material_duration: 0.3s;
+$material_timing_function: cubic-bezier(0, 0, 0.2, 1);
+// FIXME: color's transition is too slow
+$material_transition: all $material_duration $material_timing_function, color 0;
 
 // fallback
 $header_borders_color: mix(#000000, $dark_color, percentage(alpha($borders_color)));
@@ -18,8 +20,6 @@ $header_borders_color: mix(#000000, $dark_color, percentage(alpha($borders_color
 * {
   padding: 0;
   background-clip: padding-box;
-  // FIXME: color's transition is too slow
-  transition: all $material_duration $material_timing_function, color 0;
 
   -GtkToolButton-icon-spacing: 4;
   -GtkTextView-error-underline-color: $error_color;
@@ -589,7 +589,6 @@ button {
 }
 
 %needs_attention {
-  transition: none;
   animation: needs_attention $material_duration $material_timing_function forwards;
   background-repeat: no-repeat;
   background-position: right 3px;
@@ -683,9 +682,9 @@ modelbutton.flat,
     &:active { animation: none; }
   }
 
-  check:not(:indeterminate):checked:active { animation: check_check $material_duration * 2 $material_timing_function; }
+  check:not(:indeterminate):checked:active { animation: check_check $material_duration $material_timing_function; }
 
-  check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $material_duration * 2 $material_timing_function; }
+  check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $material_duration $material_timing_function; }
 
   // FIXME: remove the following when the checks/radios rewrite lands
   check:last-child,
@@ -901,6 +900,7 @@ toolbar {
 
   // stand-alone OSD toolbars
   &.osd {
+    transition: box-shadow $material_duration $material_timing_function;
     padding: $container_padding;
     border-radius: 2px;
     box-shadow: $z-depth-2;
@@ -1008,11 +1008,10 @@ headerbar {
   }
 
   &.selection-mode {
+    animation: header_ripple_effect $material_duration $material_timing_function forwards;
     box-shadow: inset 0 1px $secondary_highlight_color;
     // background-color: $selected_bg_color;
     color: $selected_fg_color;
-    transition: all $material_duration $material_timing_function, color 0, background-image 0;
-    animation: header_ripple_effect $material_duration $material_timing_function forwards;
 
     &:backdrop {
     }
@@ -1274,6 +1273,7 @@ menubar,
   background-color: $dark_color;
 
   > menuitem {
+    transition: $material_transition;
     min-height: 20px;
     padding: 4px 8px;
     color: $secondary_fg_color;
@@ -1300,7 +1300,6 @@ menu,
   }
 
   menuitem {
-    transition: none;
     min-height: 20px;
     min-width: 40px;
     padding: 4px 8px;
@@ -1386,6 +1385,7 @@ menuitem {
  * Popovers   *
  ***************/
 popover.background {
+  transition: box-shadow $material_duration $material_timing_function;
   padding: 0;
   border-radius: 2px + 1px;
   box-shadow:  $z-depth-2;
@@ -1566,6 +1566,7 @@ notebook {
     }
 
     tab {
+      transition: $material_transition;
       min-height: 24px;
       min-width: 24px;
       padding: 6px 12px;
@@ -1690,6 +1691,7 @@ scrollbar {
     -GtkScrollbar-has-forward-stepper: false;
   }
 
+  transition: $material_transition;
   background-color: $base_color;
   background-clip: $extra_background_clip;
 
@@ -1701,13 +1703,13 @@ scrollbar {
 
   // slider
   slider {
+    transition: $material_transition, margin 0, border-width 0;
     min-width: 8px;
     min-height: 8px;
     border: 4px solid transparent;
     border-radius: 100px;
     background-clip: padding-box;
     background-color: $tertiary_fg_color;
-    transition: all $material_duration $material_timing_function, color 0, margin 0, border-width 0;
 
     &:hover { background-color: $secondary_fg_color; }
 
@@ -1718,9 +1720,9 @@ scrollbar {
 
   &.fine-tune {
     slider {
+      transition: $material_transition, margin 0, border-width 0, min-width 0, min-height 0;
       min-width: 4px;
       min-height: 4px;
-      transition: all $material_duration $material_timing_function, color 0, margin 0, border-width 0, min-width 0, min-height 0;
     }
 
     &.horizontal slider { margin: 2px 0; }
@@ -1806,6 +1808,7 @@ scrollbar {
  * Switch *
  **********/
 switch {
+  transition: $material_transition;
   margin: $container_padding 0;
   border: 4px solid transparent;
   border-radius: 100px;
@@ -1825,6 +1828,9 @@ switch {
   }
 
   slider {
+    @include entry(normal);
+
+    transition: $material_transition, margin 0;
     min-width: $small_size;
     min-height: $small_size;
     margin: -4px 0 -4px -4px;
@@ -1835,9 +1841,6 @@ switch {
                                     center center, 0.5,
                                     to(transparent),
                                     to(transparent));
-    transition: all $material_duration $material_timing_function, color 0, margin 0;
-
-    @include entry(normal);
   }
 
   &:hover slider { @include entry(focus); }
@@ -1845,11 +1848,11 @@ switch {
   &:disabled slider { @include entry(insensitive); }
 
   &:checked slider {
+    transition: $material_transition, margin 0, background-image 0;
+    animation: needs_attention $material_duration $material_timing_function forwards;
     margin: -4px -4px -4px 0;
     // background-color: $accent_bg_color;
     color: $selected_fg_color;
-    transition: all $material_duration $material_timing_function, color 0, margin 0, background-image 0;
-    animation: needs_attention $material_duration $material_timing_function forwards;
   }
 
   &:checked:disabled slider { animation: none; }
@@ -1928,8 +1931,8 @@ radio {
   }
 
   menu menuitem & {
-    margin: -16px -16px; // this is a workaround for a menu check/radio size allocation issue
     transition: none;
+    margin: -16px -16px; // this is a workaround for a menu check/radio size allocation issue
 
     &:not(:checked):not(:indeterminate):hover { color: gtkalpha(currentColor, $enabled_opacity); }
 
@@ -2012,15 +2015,15 @@ radio {
   to { -gtk-icon-transform: unset; }
 }
 
-check:not(:indeterminate):checked { animation: check_check $material_duration * 2 $material_timing_function; }
+check:not(:indeterminate):checked { animation: check_check $material_duration $material_timing_function; }
 
-check:not(:indeterminate):checked:active { animation: check_check $material_duration * 2 $material_timing_function, flat_ripple_effect $material_duration $material_timing_function forwards; }
+check:not(:indeterminate):checked:active { animation: check_check $material_duration $material_timing_function, flat_ripple_effect $material_duration $material_timing_function forwards; }
 
-// radio:not(:indeterminate):checked { animation: check_radio $material_duration * 2 $material_timing_function; }
+// radio:not(:indeterminate):checked { animation: check_radio $material_duration $material_timing_function; }
 
-check:indeterminate:checked, radio:indeterminate:checked { animation: check_indeterminate $material_duration * 2 $material_timing_function; }
+check:indeterminate:checked, radio:indeterminate:checked { animation: check_indeterminate $material_duration $material_timing_function; }
 
-check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $material_duration * 2 $material_timing_function, flat_ripple_effect $material_duration $material_timing_function forwards; }
+check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $material_duration $material_timing_function, flat_ripple_effect $material_duration $material_timing_function forwards; }
 
 // no animations in menus
 menu menuitem {
@@ -2082,6 +2085,8 @@ scale {
   min-height: 12px;
   min-width: 12px;
   padding: 12px;
+
+  * { transition: $material_transition; }
 
   // the slider is inside the trough, so to have make it bigger there's a negative margin
   slider {
@@ -2518,6 +2523,8 @@ list {
 }
 
 row {
+  transition: $material_transition;
+
   &:hover { transition: none; }
 
   &.activatable {
@@ -2535,7 +2542,7 @@ row {
 
     &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
     &:active {
-      transition: all $material_duration $material_timing_function, color 0, background-image 0;
+      transition: $material_transition, background-image 0;
       animation: row_ripple_effect $material_duration $material_timing_function forwards;
     }
   }
@@ -2564,6 +2571,7 @@ row {
  *************/
 expander {
   arrow {
+    transition: $material_transition;
     min-width: 16px;
     min-height: 16px;
     -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
@@ -2994,6 +3002,7 @@ colorswatch {
   }
 
   overlay {
+    transition: $material_transition;
     box-shadow: $z-depth-1;
 
     &:hover { box-shadow: $z-depth-2; }
@@ -3035,6 +3044,7 @@ colorswatch {
 
 // colorscale popup
 colorchooser .popover.osd {
+  transition: box-shadow $material_duration $material_timing_function;
   border-radius: 2px;
   box-shadow:  $z-depth-2;
   background-color: $base_color;
@@ -3072,9 +3082,9 @@ colorchooser .popover.osd {
  * Window Decorations *
  *********************/
 decoration {
+  transition: box-shadow $material_duration $material_timing_function;
   border-radius: 2px 2px 0 0;
-  box-shadow: $z-depth-4, 0 14px 14px transparent;
-  transition: none;
+  box-shadow: $z-depth-4, 0 16px 16px transparent;
 
   // FIXME rationalize shadows
 
@@ -3086,8 +3096,7 @@ decoration {
     // change when we go to backdrop, to prevent jumping windows.
     // The biggest shadow should be in the same order then in the active state
     // or the jumping will happen during the transition.
-    box-shadow: $z-depth-2, 0 14px 14px transparent;
-    transition: all $material_duration $material_timing_function, color 0;
+    box-shadow: $z-depth-2, 0 16px 16px transparent;
   }
 
   .fullscreen &,
@@ -3110,9 +3119,9 @@ decoration {
 
   messagedialog.csd & {
     border-radius: 2px;
-    // box-shadow: $z-depth-4, 0 14px 14px transparent;
+    // box-shadow: $z-depth-4, 0 16px 16px transparent;
 
-    // &:backdrop { box-shadow: $z-depth-2, 0 14px 14px transparent; }
+    // &:backdrop { box-shadow: $z-depth-2, 0 16px 16px transparent; }
   }
 
   .solid-csd & {
@@ -3206,6 +3215,7 @@ button.circular { // FIXME: aggregate to buttons
 }
 
 *:drop(active) { // FIXME needs to be done widget by widget, this wildcard should really die
+  transition: $material_transition;
   box-shadow: $z-depth-1, inset 0 0 0 2px $accent_bg_color;
   caret-color: $accent_bg_color;
 }
