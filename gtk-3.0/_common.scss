@@ -14,9 +14,6 @@ $material_timing_function: cubic-bezier(0, 0, 0.2, 1);
 // FIXME: color's transition is too slow
 $material_transition: all $material_duration $material_timing_function, color 0;
 
-// fallback
-$header_borders_color: mix(#000000, $dark_color, percentage(alpha($borders_color)));
-
 * {
   padding: 0;
   background-clip: padding-box;
@@ -1121,7 +1118,10 @@ headerbar {
     box-shadow: none;
   }
 
-  > separator { background-color: $header_borders_color; }
+  > separator {
+    background-color: $dark_color;
+    background-image: image($borders_color);
+  }
 
   @extend %titlebar;
 }
