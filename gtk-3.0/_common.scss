@@ -1433,18 +1433,13 @@ notebook {
 
     &.top {
       border-bottom-style: solid;
-      > tabs:not(.reorderable-page) { // FIXME: .reorderable-page doesn't work in `tabs`
-        margin-bottom: -1px;
-        > tab {
+      > tabs {
+        > tab:not(.reorderable-page) {
+          margin-bottom: -1px;
+
           &:hover { box-shadow: inset 0 -2px $track_color; }
 
           &:checked { box-shadow: inset 0 -2px $selected_bg_color; }
-
-          &.reorderable-page {
-            &:hover { box-shadow: inset 0 -1px $header_borders_color; }
-
-            &:checked { box-shadow: inset 0 -1px $header_borders_color; }
-          }
         }
       }
     }
@@ -1452,17 +1447,12 @@ notebook {
     &.bottom {
       border-top-style: solid;
       > tabs {
-        margin-top: -1px;
-        > tab {
+        > tab:not(.reorderable-page) {
+          margin-top: -1px;
+
           &:hover { box-shadow: inset 0 2px $track_color; }
 
           &:checked { box-shadow: inset 0 2px $selected_bg_color; }
-
-          &.reorderable-page {
-            &:hover { box-shadow: inset 0 1px $header_borders_color; }
-
-            &:checked { box-shadow: inset 0 1px $header_borders_color; }
-          }
         }
       }
     }
@@ -1470,17 +1460,12 @@ notebook {
     &.left {
       border-right-style: solid;
       > tabs {
-        margin-right: -1px;
-        > tab {
+        > tab:not(.reorderable-page) {
+          margin-right: -1px;
+
           &:hover { box-shadow: inset -2px 0 $track_color; }
 
           &:checked { box-shadow: inset -2px 0 $selected_bg_color; }
-
-          &.reorderable-page {
-            &:hover { box-shadow: inset -1px 0 $header_borders_color; }
-
-            &:checked { box-shadow: inset -1px 0 $header_borders_color; }
-          }
         }
       }
     }
@@ -1488,17 +1473,12 @@ notebook {
     &.right {
       border-left-style: solid;
       > tabs {
-        margin-left: -1px;
-        > tab {
+        > tab:not(.reorderable-page) {
+          margin-left: -1px;
+
           &:hover { box-shadow: inset 2px 0 $track_color; }
 
           &:checked { box-shadow: inset 2px 0 $selected_bg_color; }
-
-          &.reorderable-page {
-            &:hover { box-shadow: inset 1px 0 $header_borders_color; }
-
-            &:checked { box-shadow: inset 1px 0 $header_borders_color; }
-          }
         }
       }
     }
