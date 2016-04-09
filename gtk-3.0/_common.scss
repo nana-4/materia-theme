@@ -1073,6 +1073,13 @@ headerbar {
       min-width: $small_size;
       margin: 0;
       padding: 0;
+
+      &:active { // add fallback
+        background-image: radial-gradient(circle farthest-corner at center,
+                                          gtkalpha(currentColor, $lower_opacity / 2) 100%,
+                                          transparent 0%),
+                          image(gtkalpha(currentColor, $lower_opacity / 2));
+      }
     }
   }
 }
