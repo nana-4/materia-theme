@@ -2,10 +2,9 @@
 
 // generic drawing of more complex things
 
-
 // shadows
 
-// FIXME: 1.5px doesn't work in box-shadow
+// FIXME: doesn't work 1.5px
 // $z-depth-1: 0 1px 1.5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
 $z-depth-1: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 $z-depth-2: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
@@ -13,91 +12,62 @@ $z-depth-3: 0 10px 10px rgba(0, 0, 0, 0.19), 0 6px 3px rgba(0, 0, 0, 0.23);
 $z-depth-4: 0 14px 14px rgba(0, 0, 0, 0.25), 0 10px 5px rgba(0, 0, 0, 0.22);
 $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 
-
-// ripple effect animations
-
 @keyframes ripple_effect {
   from {
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, $lower_opacity / 2) 0%,
-                                      transparent 0%),
-                      image(gtkalpha(currentColor, 0));
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.001,
+                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
+                                    to(transparent)),
+                      linear-gradient(to bottom, gtkalpha(currentColor, 0));
   }
-
   to {
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, $lower_opacity / 2) 100%,
-                                      transparent 0%),
-                      image(gtkalpha(currentColor, $lower_opacity / 2));
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.4,
+                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
+                                    to(transparent)),
+                      linear-gradient(to bottom, gtkalpha(currentColor, $lower_opacity / 2));
   }
 }
 
 @keyframes flat_ripple_effect {
   from {
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, $lower_opacity / 2) 0%,
-                                      transparent 0%),
-                      image(gtkalpha(currentColor, $lower_opacity / 2));
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.001,
+                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
+                                    to(transparent)),
+                      linear-gradient(to bottom, gtkalpha(currentColor, $lower_opacity / 2));
   }
-
   to {
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, $lower_opacity / 2) 100%,
-                                      transparent 0%),
-                      image(gtkalpha(currentColor, $lower_opacity / 2));
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.4,
+                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
+                                    to(transparent)),
+                      linear-gradient(to bottom, gtkalpha(currentColor, $lower_opacity / 2));
   }
 }
 
-@keyframes row_ripple_effect {
+@keyframes list_ripple_effect {
   from {
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, $lower_opacity / 2) 0%,
-                                      transparent 0%),
-                      image(gtkalpha(currentColor, 0.05));
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.001,
+                                    to(gtkalpha(currentColor, 0)),
+                                    to(transparent)),
+                      linear-gradient(to bottom, gtkalpha(currentColor, 0.05));
   }
-
   to {
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, $lower_opacity / 2) 100%,
-                                      transparent 0%),
-                      image(gtkalpha(currentColor, $lower_opacity / 2));
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.4,
+                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
+                                    to(transparent)),
+                      linear-gradient(to bottom, gtkalpha(currentColor, $lower_opacity / 2));
   }
 }
-
-@keyframes tab_ripple_effect {
-  from {
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      scale-alpha($selected_bg_color, $middle_opacity) 0%,
-                                      transparent 0%);
-  }
-
-  50% {
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      scale-alpha($selected_bg_color, $middle_opacity) 100%,
-                                      transparent 0%);
-  }
-
-  to {
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      transparent 100%,
-                                      transparent 0%);
-  }
-}
-
-@keyframes header_ripple_effect {
-  from {
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      $selected_bg_color 0%,
-                                      transparent 0%);
-  }
-
-  to {
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      $selected_bg_color 100%,
-                                      transparent 0%);
-  }
-}
-
 
 // entries
 
@@ -113,50 +83,45 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 //
 
   @if $t==normal {
-    transition: $material_transition;
-    border-image: none;
     box-shadow: $z-depth-1;
     background-color: if($fc!=$selected_bg_color, $fc, $base_color);
     color: if($fc!=$selected_bg_color, $selected_fg_color, $fg_color);
   }
-
   @if $t==focus {
-    border-image: none;
     box-shadow: $z-depth-2;
   }
-
   @if $t==insensitive {
-    box-shadow: $z-depth-1;
-    background-color: $secondary_base_color;
     color: $insensitive_fg_color;
+    background-color: $secondary_base_color;
   }
-
   @if $t==flat-normal {
-    transition: $material_transition;
-    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  $fc 0%,
-                                  transparent 0%)
-                                  0 0 0 / 0 0 0px;
+    border-image: -gtk-gradient(radial,
+                                center bottom, 0,
+                                center bottom, 0.001,
+                                to($fc),
+                                to(transparent))
+                                0 0 0 / 0 0 0px;
+    border-radius: 0;
     box-shadow: inset 0 -1px if($fc!=$selected_bg_color, $fc, $track_color);
     background-color: transparent;
     color: $fg_color;
   }
-
   @if $t==flat-focus {
-    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  $fc 100%,
-                                  transparent 0%)
-                                  0 0 2 / 0 0 2px;
-    box-shadow: inset 0 -1px if($fc!=$selected_bg_color, $fc, $track_color);
+    border-image: -gtk-gradient(radial,
+                                center bottom, 0,
+                                center bottom, 0.5,
+                                to($fc),
+                                to(transparent))
+                                0 0 2 / 0 0 2px;
+    box-shadow: inset 0 -2px $fc;
+    transition: all $material_duration $material_timing_function, box-shadow 0 $material_timing_function $material_duration, color 0;
   }
-
   @if $t==flat-insensitive {
     box-shadow: inset 0 -1px $track_color;
     background-color: transparent;
     color: $insensitive_fg_color;
   }
 }
-
 
 // buttons
 
@@ -177,133 +142,121 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   //
   // normal button
   //
-    transition: $material_transition;
     box-shadow: $z-depth-1;
     background-color: $c;
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, 0) 100%,
-                                      transparent 0%),
-                      image(gtkalpha(currentColor, 0));
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.5,
+                                    to(gtkalpha(currentColor, 0)),
+                                    to(transparent)),
+                      linear-gradient(to bottom, gtkalpha(currentColor, 0));
     color: $secondary_fg_color;
   }
 
-  @if $t==hover {
+  @else if $t==hover {
   //
   // hovered button
   //
     box-shadow: $z-depth-2;
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, 0) 100%,
-                                      transparent 0%),
-                      image(gtkalpha(currentColor, 0));
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.5,
+                                    to(gtkalpha(currentColor, 0)),
+                                    to(transparent)),
+                      linear-gradient(to bottom, gtkalpha(currentColor, 0));
     color: $fg_color;
   }
 
-  @if $t==active {
+  @else if $t==active {
   //
   // pushed button
   //
-    transition: $material_transition, background-image 0;
-    animation: ripple_effect $material_duration $material_timing_function forwards;
     box-shadow: $z-depth-2;
     color: $fg_color;
+    transition-property: opacity, border-color, border-image, box-shadow,
+                         background-color, text-shadow, icon-shadow; // Remove background-image
+    animation: ripple_effect $material_duration $material_timing_function forwards;
   }
-
-  @if $t==insensitive {
+  @else if $t==insensitive {
   //
   // insensitive button
   //
     box-shadow: none;
     background-color: $track_color;
     color: if($tc!=$fg_color, $insensitive_fg_color, $insensitive_secondary_fg_color);
-
-    > label { color: inherit; }
+    > .label { color: inherit; }
   }
-
-  @if $t==checked {
+  @else if $t==checked {
   //
   // checked button
   //
     background-color: $selected_bg_color;
     color: $selected_fg_color;
   }
-
-  @if $t==checked-insensitive {
+  @else if $t==checked-insensitive {
   //
   // checked insensitive button
   //
     background-color: $track_color;
     color: scale-alpha($selected_bg_color, $disabled_opacity);
-
-    > label { color: inherit; }
+    > .label { color: inherit; }
   }
 
-  @if $t==flat-normal {
+  @else if $t==flat-normal {
   //
   // normal flat button
   //
-    transition: $material_transition;
     box-shadow: none;
     background-color: transparent;
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, 0) 100%,
-                                      transparent 0%),
-                      image(gtkalpha(currentColor, 0));
-    color: $secondary_fg_color;
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.5,
+                                    to(gtkalpha(currentColor, 0)),
+                                    to(transparent)),
+                      linear-gradient(to bottom, gtkalpha(currentColor, 0));
   }
-
-  @if $t==flat-hover {
+  @else if $t==flat-hover {
   //
   // hovered flat button
   //
     box-shadow: none;
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, 0) 100%,
-                                      transparent 0%),
-                      image(gtkalpha(currentColor, $lower_opacity / 2));
-    color: $fg_color;
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.5,
+                                    to(gtkalpha(currentColor, 0)),
+                                    to(transparent)),
+                      linear-gradient(to bottom, gtkalpha(currentColor, $lower_opacity / 2));
   }
-
-  @if $t==flat-active {
+  @else if $t==flat-active {
   //
   // pushed flat button
   //
-    transition: $material_transition, background-image 0;
-    animation: flat_ripple_effect $material_duration $material_timing_function forwards;
     box-shadow: none;
-    color: $fg_color;
+    transition-property: opacity, border-color, border-image, box-shadow,
+                         background-color, text-shadow, icon-shadow; // Remove background-image
+    animation: flat_ripple_effect $material_duration $material_timing_function forwards;
   }
-
-  @if $t==flat-insensitive {
+  @else if $t==flat-insensitive {
   //
   // insensitive flat button
   //
     box-shadow: none;
     background-color: transparent;
-    color: if($tc!=$fg_color, $insensitive_fg_color, $insensitive_secondary_fg_color);
-
-    > label { color: inherit; }
   }
-
-  @if $t==flat-checked {
+  @else if $t==flat-checked {
   //
   // checked flat button
   //
     background-color: $track_color;
     color: $fg_color;
   }
-
-  @if $t==flat-checked-insensitive {
+  @else if $t==flat-checked-insensitive {
   //
   // checked flat insensitive button
   //
-    background-color: $track_color;
-    color: $insensitive_fg_color;
-
-    > label { color: inherit; }
+    > .label { color: inherit; }
   }
 }
-
 
 @mixin overshoot($p, $t:normal, $c:$secondary_selected_bg_color) {
 //
@@ -339,7 +292,6 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   border: none;                  //
   box-shadow: none;              //
 }
-
 
 @mixin undershoot($p) {
 //
