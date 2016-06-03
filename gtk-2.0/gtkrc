@@ -1,6 +1,6 @@
 # Bridge | ScionicSpectre
 
-gtk-color-scheme = "base_color:#FFFFFF\ntext_color:#333333\nbg_color:#ECEFF1\nfg_color:#333333\ntooltip_bg_color:#FFFFFF\ntooltip_fg_color:#333333\nselected_bg_color:#00BCD4\nselected_fg_color:#FFFFFF\nlight_color:#FAFAFA\ndark_color:#dee4e7"
+gtk-color-scheme = "base_color:#FFFFFF\ntext_color:#333333\nbg_color:#F5F5F5\nfg_color:#333333\ntooltip_bg_color:#FFFFFF\ntooltip_fg_color:#333333\nselected_bg_color:#00BCD4\nselected_fg_color:#FFFFFF\nlight_color:#FAFAFA\nheaderbar_color:#455A64"
 
 gtk-auto-mnemonics = 1
 gtk-primary-button-warps-slider = 1
@@ -1878,7 +1878,7 @@ style "standalone_entry" {
 }
 
 style "menubar" {
-  bg[NORMAL] = @dark_color
+  bg[NORMAL] = @headerbar_color
  xthickness = 0
  ythickness = 0
 
@@ -1897,9 +1897,9 @@ style "menubar" {
 style "menubar_item" {
  xthickness = 3
  ythickness = 3
- fg[NORMAL] = mix(0.75, @fg_color, @dark_color)
- bg[PRELIGHT] = @dark_color
- fg[PRELIGHT] = @fg_color
+ fg[NORMAL] = mix(0.75, @selected_fg_color, @headerbar_color)
+ bg[PRELIGHT] = @headerbar_color
+ fg[PRELIGHT] = @selected_fg_color
  engine "pixmap"
  {
    image
@@ -2543,16 +2543,16 @@ style "eclipse-tooltips" {
 
 # Chromium
 style "chrome-gtk-frame" {
- ChromeGtkFrame::frame-color = @dark_color
- ChromeGtkFrame::inactive-frame-color = @dark_color
- ChromeGtkFrame::incognito-frame-color = @dark_color
- ChromeGtkFrame::incognito-inactive-frame-color = @dark_color
+ ChromeGtkFrame::frame-color = @headerbar_color
+ ChromeGtkFrame::inactive-frame-color = @headerbar_color
+ ChromeGtkFrame::incognito-frame-color = @headerbar_color
+ ChromeGtkFrame::incognito-inactive-frame-color = @headerbar_color
 
  ChromeGtkFrame::frame-gradient-size = 0
- ChromeGtkFrame::frame-gradient-color = @dark_color
- ChromeGtkFrame::inactive-frame-gradient-color = @dark_color
- ChromeGtkFrame::incognito-frame-gradient-color = @dark_color
- ChromeGtkFrame::incognito-inactive-frame-gradient-color = @dark_color
+ ChromeGtkFrame::frame-gradient-color = @headerbar_color
+ ChromeGtkFrame::inactive-frame-gradient-color = @headerbar_color
+ ChromeGtkFrame::incognito-frame-gradient-color = @headerbar_color
+ ChromeGtkFrame::incognito-inactive-frame-gradient-color = @headerbar_color
 
  ChromeGtkFrame::scrollbar-slider-prelight-color = @light_color
  ChromeGtkFrame::scrollbar-slider-normal-color = @bg_color

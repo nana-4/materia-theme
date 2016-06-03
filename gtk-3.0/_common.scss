@@ -944,7 +944,7 @@ searchbar,
   border-style: solid;
   border-width: 0 0 1px;
   border-color: $borders_color;
-  background-color: $dark_color;
+  background-color: $bg_color;
   background-clip: border-box;
 }
 
@@ -956,15 +956,12 @@ searchbar,
 headerbar {
   min-height: $large_size;
   padding: 0 $container_padding;
-  border-width: 0 0 1px;
-  border-style: solid;
-  border-color: $borders_color;
-  box-shadow: inset 0 1px $highlight_color;
-  background-color: $dark_color;
-  background-clip: border-box;
+  box-shadow: inset 0 1px $secondary_highlight_color, $z-depth-1;
+  background-color: $headerbar_color;
+  color: $selected_fg_color;
 
   &:backdrop {
-    // background-color: $dark_color;
+    // background-color: $headerbar_color;
   }
 
   .title {
@@ -985,30 +982,47 @@ headerbar {
     @extend %button_basic.flat;
 
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  $selected_bg_color 0%,
+                                  $selected_fg_color 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
+    color: $secondary_selected_fg_color;
+
+    &:hover, &:active, &:checked { color: $selected_fg_color; }
+
+    &:disabled {
+      color: $insensitive_secondary_selected_fg_color;
+
+      > label { color: inherit; }
+    }
 
     &:checked {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                    $selected_bg_color 100%,
+                                    $selected_fg_color 100%,
                                     transparent 0%)
                                     0 0 2 / 0 0 2px;
       background-color: transparent;
-      color: $fg_color;
+      color: $selected_fg_color;
 
       &:disabled {
         background-color: transparent;
-        color: $insensitive_fg_color;
+        color: $insensitive_selected_fg_color;
 
         > label { color: inherit; }
       }
     }
   }
 
+  button.suggested-action, button.destructive-action {
+    &:disabled {
+      color: $insensitive_secondary_selected_fg_color;
+
+      > label { color: inherit; }
+    }
+  }
+
   &.selection-mode {
     animation: header_ripple_effect $material_duration $material_timing_function forwards;
-    box-shadow: inset 0 1px $secondary_highlight_color;
+    // box-shadow: inset 0 1px $secondary_highlight_color;
     // background-color: $selected_bg_color;
     color: $selected_fg_color;
 
@@ -1128,7 +1142,7 @@ headerbar {
   }
 
   > separator {
-    background-color: $dark_color;
+    background-color: $headerbar_color;
     background-image: image($borders_color);
   }
 
@@ -1278,21 +1292,21 @@ menubar,
 .menubar {
   -GtkWidget-window-dragging: true;
   padding: 0;
-  box-shadow: inset 0 -1px $borders_color;
-  background-color: $dark_color;
+  // box-shadow: inset 0 -1px $borders_color;
+  background-color: $headerbar_color;
 
   > menuitem {
     transition: $material_transition;
     min-height: 20px;
     padding: 4px 8px;
-    color: $secondary_fg_color;
+    color: $secondary_selected_fg_color;
 
     &:hover { //Seems like it :hover even with keyboard focus
-      box-shadow: inset 0 -2px $selected_bg_color;
-      color: $fg_color;
+      box-shadow: inset 0 -2px $selected_fg_color;
+      color: $selected_fg_color;
     }
 
-    &:disabled { color: $insensitive_secondary_fg_color; }
+    &:disabled { color: $insensitive_secondary_selected_fg_color; }
   }
 }
 
@@ -1397,7 +1411,7 @@ popover.background {
   transition: box-shadow $material_duration $material_timing_function;
   padding: 0;
   box-shadow:  $z-depth-2;
-  background-color: $secondary_base_color;
+  background-color: $light_color;
 
   &:backdrop { box-shadow: $z-depth-1; }
 
@@ -1437,7 +1451,7 @@ notebook {
   > header {
     border-width: 1px;
     border-color: $borders_color;
-    background-color: $dark_color;
+    background-color: $bg_color;
     background-clip: border-box;
 
     &.top {
@@ -1573,7 +1587,7 @@ notebook {
 
         &.reorderable-page {
           border-color: $borders_color;
-          background-color: $bg_color;
+          background-color: $secondary_base_color;
         }
       }
 
@@ -1588,7 +1602,7 @@ notebook {
 
         &.reorderable-page {
           border-color: $borders_color;
-          background-color: $light_color;
+          background-color: $base_color;
         }
       }
 
@@ -2629,7 +2643,7 @@ messagedialog { // Message Dialog styling
   .titlebar {
     min-height: $small_size;
     border-style: none;
-    // box-shadow: inset 0 1px $highlight_color;
+    box-shadow: inset 0 1px $highlight_color;
     background-color: $light_color;
   }
 
@@ -2670,7 +2684,7 @@ filechooserbutton:drop(active) {
  ***********/
 .sidebar {
   border-style: none;
-  background-color: $secondary_base_color;
+  background-color: $light_color;
 
   @at-root %sidebar_left,
   &:dir(ltr),
