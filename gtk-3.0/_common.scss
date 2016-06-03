@@ -9,10 +9,13 @@ $menuitem_size: 28px;
 
 $container_padding: 6px;
 $material_radius: 2px;
-$material_duration: 0.3s;
-$material_timing_function: cubic-bezier(0, 0, 0.2, 1);
+$material_faster: 0.2s;
+$material_slower: 0.3s;
+$material_ease: cubic-bezier(0.4, 0.0, 0.2, 1);
+$material_ease_out: cubic-bezier(0.0, 0.0, 0.2, 1);
+$material_ease_in: cubic-bezier(0.4, 0.0, 1, 1);
 // FIXME: color's transition is too slow
-$material_transition: all $material_duration $material_timing_function, color 0;
+$material_transition: all $material_faster $material_ease_out, color 0;
 
 * {
   padding: 0;
@@ -588,7 +591,7 @@ button {
 }
 
 %needs_attention {
-  animation: needs_attention $material_duration $material_timing_function forwards;
+  animation: needs_attention $material_slower $material_ease_out forwards;
   background-repeat: no-repeat;
   background-position: right 3px;
   background-size: 6px 6px;
@@ -681,9 +684,9 @@ modelbutton.flat,
     &:active { animation: none; }
   }
 
-  check:not(:indeterminate):checked:active { animation: check_check $material_duration $material_timing_function; }
+  check:not(:indeterminate):checked:active { animation: check_check $material_slower $material_ease; }
 
-  check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $material_duration $material_timing_function; }
+  check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $material_slower $material_ease; }
 
   // FIXME: remove the following when the checks/radios rewrite lands
   check:last-child,
@@ -899,7 +902,7 @@ toolbar {
 
   // stand-alone OSD toolbars
   &.osd {
-    transition: box-shadow $material_duration $material_timing_function;
+    transition: box-shadow $material_faster $material_ease_out;
     padding: $container_padding;
     border-radius: 2px;
     box-shadow: $z-depth-2;
@@ -1021,7 +1024,7 @@ headerbar {
   }
 
   &.selection-mode {
-    animation: header_ripple_effect $material_duration $material_timing_function forwards;
+    animation: header_ripple_effect $material_slower $material_ease_out forwards;
     // box-shadow: inset 0 1px $secondary_highlight_color;
     // background-color: $selected_bg_color;
     color: $selected_fg_color;
@@ -1408,7 +1411,7 @@ menuitem {
  * Popovers   *
  ***************/
 popover.background {
-  transition: box-shadow $material_duration $material_timing_function;
+  transition: box-shadow $material_faster $material_ease_out;
   padding: 0;
   box-shadow:  $z-depth-2;
   background-color: $light_color;
@@ -1598,7 +1601,7 @@ notebook {
 
         &:disabled { color: $insensitive_fg_color; }
 
-        &:not(.reorderable-page) { animation: tab_ripple_effect $material_duration * 2 ease-in-out; }
+        &:not(.reorderable-page) { animation: tab_ripple_effect $material_slower * 2 $material_ease; }
 
         &.reorderable-page {
           border-color: $borders_color;
@@ -1852,7 +1855,7 @@ switch {
 
   &:checked slider {
     transition: $material_transition, margin 0, background-image 0;
-    animation: needs_attention $material_duration $material_timing_function forwards;
+    animation: needs_attention $material_slower $material_ease_out forwards;
     margin: -4px -4px -4px 0;
     // background-color: $accent_bg_color;
     color: $selected_fg_color;
@@ -2018,15 +2021,15 @@ radio {
   to { -gtk-icon-transform: unset; }
 }
 
-check:not(:indeterminate):checked { animation: check_check $material_duration $material_timing_function; }
+check:not(:indeterminate):checked { animation: check_check $material_slower $material_ease; }
 
-check:not(:indeterminate):checked:active { animation: check_check $material_duration $material_timing_function, flat_ripple_effect $material_duration $material_timing_function forwards; }
+check:not(:indeterminate):checked:active { animation: check_check $material_slower $material_ease, flat_ripple_effect $material_slower $material_ease_out forwards; }
 
-// radio:not(:indeterminate):checked { animation: check_radio $material_duration $material_timing_function; }
+// radio:not(:indeterminate):checked { animation: check_radio $material_slower $material_ease; }
 
-check:indeterminate:checked, radio:indeterminate:checked { animation: check_indeterminate $material_duration $material_timing_function; }
+check:indeterminate:checked, radio:indeterminate:checked { animation: check_indeterminate $material_slower $material_ease; }
 
-check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $material_duration $material_timing_function, flat_ripple_effect $material_duration $material_timing_function forwards; }
+check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $material_slower $material_ease, flat_ripple_effect $material_slower $material_ease_out forwards; }
 
 // no animations in menus
 menu menuitem {
@@ -2546,7 +2549,7 @@ row {
     &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
     &:active {
       transition: $material_transition, background-image 0;
-      animation: row_ripple_effect $material_duration $material_timing_function forwards;
+      animation: row_ripple_effect $material_slower $material_ease_out forwards;
     }
   }
 
@@ -3047,7 +3050,7 @@ colorswatch {
 
 // colorscale popup
 colorchooser .popover.osd {
-  transition: box-shadow $material_duration $material_timing_function;
+  transition: box-shadow $material_faster $material_ease_out;
   border-radius: 2px;
   box-shadow:  $z-depth-2;
   background-color: $base_color;
@@ -3085,7 +3088,7 @@ colorchooser .popover.osd {
  * Window Decorations *
  *********************/
 decoration {
-  transition: box-shadow $material_duration $material_timing_function;
+  transition: box-shadow $material_faster $material_ease_out;
   border-radius: 2px 2px 0 0;
   box-shadow: $z-depth-4, 0 16px 16px transparent;
 
