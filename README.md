@@ -74,8 +74,8 @@ sudo mv -f /usr/share/gnome-shell/gnome-shell-theme.gresource~ /usr/share/gnome-
 ## Planned Features
 
 * Supports of full dark theme (sorry for the delay...)
-* Re-supports Metacity theme
-* Totally rewrite the code and images for GTK2
+* Re-supports of Metacity theme
+* Total rewrite of the code and images for GTK2
 * Supports of Unity theme
 * Supports of Firefox theme
 * Supports of overlay scrollbars for Chrome extension
