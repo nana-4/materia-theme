@@ -43,23 +43,23 @@ Please **be careful** because if it fails, the desktop environment may not opera
 ### Install
 1. Backup the existing `.gresource` file. _(Skip this step if you just update it.)_
 ```bash
-    sudo cp /usr/share/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell/gnome-shell-theme.gresource~
+sudo cp /usr/share/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell/gnome-shell-theme.gresource~
 ```
 2. Replace it with the new one.
   * If you put this theme in `/usr/share/themes`:
 ```bash
-    sudo cp /usr/share/themes/Flat-Plat/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell
+sudo cp /usr/share/themes/Flat-Plat/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell
 ```
   * If you put this theme in `~/.themes`:
 ```bash
-    sudo cp ~/.themes/Flat-Plat/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell
+sudo cp ~/.themes/Flat-Plat/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell
 ```
 3. Restart GNOME Shell (press `Alt`+`F2`, then type `r`).
 
 ### Uninstall
 1. Restore to original theme from the backup.
 ```bash
-    sudo mv -f /usr/share/gnome-shell/gnome-shell-theme.gresource~ /usr/share/gnome-shell/gnome-shell-theme.gresource
+sudo mv -f /usr/share/gnome-shell/gnome-shell-theme.gresource~ /usr/share/gnome-shell/gnome-shell-theme.gresource
 ```
 2. Restart GNOME Shell (press `Alt`+`F2`, then type `r`).
 
