@@ -9,7 +9,8 @@ A Material Design-like flat theme for GTK3, GTK2, and GNOME Shell.
 * Supports both light and dark variants.
 * Supports [Dash to Dock](https://micheleg.github.io/dash-to-dock/) extension's theming.
 * Supports Chrome's theme and scrollbars extensions.
-* Appears more beautiful when you use a font family that including `Medium` and `Light` weight.
+* Appears more beautifully when you use a font family including `Medium` and `Light` weight.
+
 ## Requirements
 
 * GNOME/GTK+ 3.14, 3.16, 3.18 or 3.20
@@ -18,14 +19,14 @@ A Material Design-like flat theme for GTK3, GTK2, and GNOME Shell.
 
 > _If default Adwaita works fine, it should also works fine._
 
-1. Download a archive.
 ## Installation
 
+1. Download an archive.
   * [3.20.20160404](https://github.com/nana-4/Flat-Plat/releases/download/3.20.20160404/Flat-Plat-3.20.20160404.tar.gz) for GNOME 3.20
   * [3.18.20160404](https://github.com/nana-4/Flat-Plat/releases/download/3.18.20160404/Flat-Plat-3.18.20160404.tar.gz) for GNOME 3.18
   * [3.16.20151025](https://github.com/nana-4/Flat-Plat/releases/download/3.16.20151025/Flat-Plat-3.16.20151025.tar.gz) for GNOME 3.16
   * [3.14.20150419](https://github.com/nana-4/Flat-Plat/releases/download/3.14.20150419/Flat-Plat-3.14.20150419.tar.gz) for GNOME 3.14
-2. Extract it to the themes directory.
+2. Extract it to the theme directory.
   * For system-wide installation to `/usr/share/themes`
   * For user-specific installation to `~/.themes`
 3. Use `gnome-tweak-tool` to change the theme.
@@ -33,8 +34,8 @@ A Material Design-like flat theme for GTK3, GTK2, and GNOME Shell.
 
 ## GDM (Lock/Login Screen)
 
-To change the GDM theme, you need to rewrite a system file.  
-Please **be careful** because if it fails, desktop environment may not operate correctly.
+To change the GDM theme, you need to rewrite a system file.
+Please **be careful** because if it fails, the desktop environment may not operate correctly.
 > **Notes:**
 > * Not supported for GNOME 3.14, sorry.
 > * When applying this, other shell themes might look broken.
@@ -70,16 +71,17 @@ Please **be careful** because if it fails, desktop environment may not operate c
 ![Screenshot4](https://raw.githubusercontent.com/nana-4/Flat-Plat/master/img/Screenshot4.png)
 ![Screenshot5](https://raw.githubusercontent.com/nana-4/Flat-Plat/master/img/Screenshot5.png)
 
-* Supports full dark theme (sorry for the delay...)
 ## Planned Features
 
+* Supports of full dark theme (sorry for the delay...)
 * Re-supports Metacity theme
 * Totally rewrite the code and images for GTK2
-* Supports Unity theme
-* Supports Firefox theme
-* Supports overlay scrollbars for Chrome extension
+* Supports of Unity theme
+* Supports of Firefox theme
+* Supports of overlay scrollbars for Chrome extension
 * GNOME Terminal color pallet (if possible)
-* Material Design-like cursor theme
+* Material Design like cursor theme
+
 ## Other Info
 
 * License: GPL
