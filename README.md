@@ -29,7 +29,8 @@ A Material Design-like flat theme for GTK3, GTK2, and GNOME Shell.
   * For system-wide installation to `/usr/share/themes`
   * For user-specific installation to `~/.themes`
 3. Use `gnome-tweak-tool` to change the theme.
-4. Optionally, open the `chrome` folder and drag and drop the .crx files onto the Chrome's extensions page (`chrome://extensions/`).
+4. Optionally, open the `chrome` folder and drag and drop the `.crx` files onto the Chrome's extensions page (`chrome://extensions/`).
+
 ## GDM (Lock/Login Screen)
 
 To change the GDM theme, you need to rewrite a system file.  
@@ -39,22 +40,26 @@ Please **be careful** because if it fails, desktop environment may not operate c
 > * When applying this, other shell themes might look broken.
 
 ### Install
-1. Backup an existing .gresource file. _(Skip this step when you just update it.)_
-
-        sudo cp /usr/share/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell/gnome-shell-theme.gresource~
-2. Replace with the new one.
+1. Backup the existing `.gresource` file. _(Skip this step if you just update it.)_
+```bash
+    sudo cp /usr/share/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell/gnome-shell-theme.gresource~
+```
+2. Replace it with the new one.
   * If you put this theme in `/usr/share/themes`:
-
-          sudo cp /usr/share/themes/Flat-Plat/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell
+```bash
+    sudo cp /usr/share/themes/Flat-Plat/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell
+```
   * If you put this theme in `~/.themes`:
-
-          sudo cp ~/.themes/Flat-Plat/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell
+```bash
+    sudo cp ~/.themes/Flat-Plat/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell
+```
 3. Restart GNOME Shell (press `Alt`+`F2`, then type `r`).
 
 ### Uninstall
 1. Restore to original theme from the backup.
-
-        sudo mv -f /usr/share/gnome-shell/gnome-shell-theme.gresource~ /usr/share/gnome-shell/gnome-shell-theme.gresource
+```bash
+    sudo mv -f /usr/share/gnome-shell/gnome-shell-theme.gresource~ /usr/share/gnome-shell/gnome-shell-theme.gresource
+```
 2. Restart GNOME Shell (press `Alt`+`F2`, then type `r`).
 
 ## Screenshots
