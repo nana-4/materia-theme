@@ -1205,13 +1205,14 @@ menubar,
   background-color: #455A64; }
   menubar > menuitem,
   .menubar > menuitem {
-    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), color 0;
+    transition: background-color 0.2s cubic-bezier(0, 0, 0.2, 1);
     min-height: 20px;
     padding: 4px 8px;
     color: rgba(255, 255, 255, 0.75); }
     menubar > menuitem:hover,
     .menubar > menuitem:hover {
-      box-shadow: inset 0 -2px #FFFFFF;
+      transition: none;
+      background-color: alpha(currentColor, 0.15);
       color: #FFFFFF; }
     menubar > menuitem:disabled,
     .menubar > menuitem:disabled {
@@ -1229,6 +1230,7 @@ menu,
     border-radius: 2px; }
   menu menuitem,
   .menu menuitem {
+    transition: background-color 0.2s cubic-bezier(0, 0, 0.2, 1);
     min-height: 20px;
     min-width: 40px;
     padding: 4px 8px;
@@ -1236,8 +1238,8 @@ menu,
     text-shadow: none; }
     menu menuitem:hover,
     .menu menuitem:hover {
-      background-color: #42A5F5;
-      color: #FFFFFF; }
+      transition: none;
+      background-color: alpha(currentColor, 0.15); }
     menu menuitem:disabled,
     .menu menuitem:disabled {
       color: rgba(0, 0, 0, 0.32); }

@@ -1300,13 +1300,14 @@ menubar,
   background-color: $headerbar_color;
 
   > menuitem {
-    transition: $material_transition;
+    transition: background-color $material_faster $material_ease_out;
     min-height: 20px;
     padding: 4px 8px;
     color: $secondary_selected_fg_color;
 
     &:hover { //Seems like it :hover even with keyboard focus
-      box-shadow: inset 0 -2px $selected_fg_color;
+      transition: none;
+      background-color: gtkalpha(currentColor, $lower_opacity / 2);
       color: $selected_fg_color;
     }
 
@@ -1327,6 +1328,7 @@ menu,
   }
 
   menuitem {
+    transition: background-color $material_faster $material_ease_out;
     min-height: 20px;
     min-width: 40px;
     padding: 4px 8px;
@@ -1334,9 +1336,8 @@ menu,
     text-shadow: none;
 
     &:hover {
-      // background-color: gtkalpha(currentColor, $lower_opacity / 2);
-      background-color: $selected_bg_color;
-      color: $selected_fg_color;
+      transition: none;
+      background-color: gtkalpha(currentColor, $lower_opacity / 2);
     }
 
     &:disabled { color: $insensitive_fg_color; }
