@@ -1463,8 +1463,8 @@ notebook {
     &.top {
       border-bottom-style: solid;
       > tabs {
-        > tab:not(.reorderable-page) {
-          margin-bottom: -1px;
+        margin-bottom: -1px;
+        > tab {
 
           &:hover { box-shadow: inset 0 -2px $track_color; }
 
@@ -1476,8 +1476,8 @@ notebook {
     &.bottom {
       border-top-style: solid;
       > tabs {
-        > tab:not(.reorderable-page) {
-          margin-top: -1px;
+        margin-top: -1px;
+        > tab {
 
           &:hover { box-shadow: inset 0 2px $track_color; }
 
@@ -1489,8 +1489,8 @@ notebook {
     &.left {
       border-right-style: solid;
       > tabs {
-        > tab:not(.reorderable-page) {
-          margin-right: -1px;
+        margin-right: -1px;
+        > tab {
 
           &:hover { box-shadow: inset -2px 0 $track_color; }
 
@@ -1502,8 +1502,8 @@ notebook {
     &.right {
       border-left-style: solid;
       > tabs {
-        > tab:not(.reorderable-page) {
-          margin-left: -1px;
+        margin-left: -1px;
+        > tab {
 
           &:hover { box-shadow: inset 2px 0 $track_color; }
 
@@ -1600,11 +1600,10 @@ notebook {
       &:disabled { color: $insensitive_secondary_fg_color; }
 
       &:checked {
+        animation: tab_ripple_effect $material_slower * 3 $material_ease_out;
         color: $fg_color;
 
         &:disabled { color: $insensitive_fg_color; }
-
-        &:not(.reorderable-page) { animation: tab_ripple_effect $material_slower * 3 $material_ease_out; }
 
         &.reorderable-page {
           border-color: $borders_color;

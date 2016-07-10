@@ -1341,35 +1341,35 @@ notebook > header {
   background-clip: border-box; }
   notebook > header.top {
     border-bottom-style: solid; }
-    notebook > header.top > tabs > tab:not(.reorderable-page) {
+    notebook > header.top > tabs {
       margin-bottom: -1px; }
-      notebook > header.top > tabs > tab:not(.reorderable-page):hover {
+      notebook > header.top > tabs > tab:hover {
         box-shadow: inset 0 -2px alpha(currentColor, 0.3); }
-      notebook > header.top > tabs > tab:not(.reorderable-page):checked {
+      notebook > header.top > tabs > tab:checked {
         box-shadow: inset 0 -2px #42A5F5; }
   notebook > header.bottom {
     border-top-style: solid; }
-    notebook > header.bottom > tabs > tab:not(.reorderable-page) {
+    notebook > header.bottom > tabs {
       margin-top: -1px; }
-      notebook > header.bottom > tabs > tab:not(.reorderable-page):hover {
+      notebook > header.bottom > tabs > tab:hover {
         box-shadow: inset 0 2px alpha(currentColor, 0.3); }
-      notebook > header.bottom > tabs > tab:not(.reorderable-page):checked {
+      notebook > header.bottom > tabs > tab:checked {
         box-shadow: inset 0 2px #42A5F5; }
   notebook > header.left {
     border-right-style: solid; }
-    notebook > header.left > tabs > tab:not(.reorderable-page) {
+    notebook > header.left > tabs {
       margin-right: -1px; }
-      notebook > header.left > tabs > tab:not(.reorderable-page):hover {
+      notebook > header.left > tabs > tab:hover {
         box-shadow: inset -2px 0 alpha(currentColor, 0.3); }
-      notebook > header.left > tabs > tab:not(.reorderable-page):checked {
+      notebook > header.left > tabs > tab:checked {
         box-shadow: inset -2px 0 #42A5F5; }
   notebook > header.right {
     border-left-style: solid; }
-    notebook > header.right > tabs > tab:not(.reorderable-page) {
+    notebook > header.right > tabs {
       margin-left: -1px; }
-      notebook > header.right > tabs > tab:not(.reorderable-page):hover {
+      notebook > header.right > tabs > tab:hover {
         box-shadow: inset 2px 0 alpha(currentColor, 0.3); }
-      notebook > header.right > tabs > tab:not(.reorderable-page):checked {
+      notebook > header.right > tabs > tab:checked {
         box-shadow: inset 2px 0 #42A5F5; }
   notebook > header.top > tabs > arrow {
     border-top-style: none; }
@@ -1419,11 +1419,10 @@ notebook > header {
     notebook > header tab:disabled {
       color: rgba(255, 255, 255, 0.3); }
     notebook > header tab:checked {
+      animation: tab_ripple_effect 0.9s cubic-bezier(0, 0, 0.2, 1);
       color: #FFFFFF; }
       notebook > header tab:checked:disabled {
         color: rgba(255, 255, 255, 0.4); }
-      notebook > header tab:checked:not(.reorderable-page) {
-        animation: tab_ripple_effect 0.9s cubic-bezier(0, 0, 0.2, 1); }
       notebook > header tab:checked.reorderable-page {
         border-color: rgba(0, 0, 0, 0.2);
         background-color: #546E7A; }
