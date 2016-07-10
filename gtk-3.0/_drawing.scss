@@ -355,24 +355,24 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   $_undershoot_color_light: scale-alpha($base_color, $lower_opacity);
 
   $_gradient_dir: left;
-  $_dash_bg_size: 16px 2px;
+  $_dash_bg_size: 12px 1px;
   $_gradient_repeat: repeat-x;
-  $_bg_pos: center $p;
+  $_bg_pos: left $p;
 
   background-color: transparent; // shouldn't be needed, but better to be sure;
 
   @if ($p == left) or ($p == right) {
     $_gradient_dir: top;
-    $_dash_bg_size: 2px 16px;
+    $_dash_bg_size: 1px 12px;
     $_gradient_repeat: repeat-y;
-    $_bg_pos: $p center;
+    $_bg_pos: $p top;
   }
 
   background-image: linear-gradient(to $_gradient_dir, // this is the dashed line
                                     $_undershoot_color_light 50%,
                                     $_undershoot_color_dark 50%);
 
-  padding-#{$p}: 0;
+  padding-#{$p}: 1px;
   background-size: $_dash_bg_size;
   background-repeat: $_gradient_repeat;
   background-origin: content-box;
