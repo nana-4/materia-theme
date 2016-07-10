@@ -966,6 +966,9 @@ headerbar {
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   background-color: #37474F;
   color: #FFFFFF; }
+  .titlebar:backdrop:not(headerbar),
+  headerbar:backdrop {
+    color: rgba(255, 255, 255, 0.75); }
   .titlebar:not(headerbar) .title,
   headerbar .title {
     padding-left: 12px;
@@ -978,35 +981,34 @@ headerbar {
     font-size: smaller; }
   .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
   headerbar button:not(.suggested-action):not(.destructive-action) {
-    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #FFFFFF 0%, transparent 0%) 0 0 0/0 0 0px;
-    color: rgba(255, 255, 255, 0.75); }
-    .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):hover, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):active, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked,
+    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 0%, transparent 0%) 0 0 0/0 0 0px;
+    color: alpha(currentColor, 0.75); }
+    .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):hover, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):active,
     headerbar button:not(.suggested-action):not(.destructive-action):hover,
-    headerbar button:not(.suggested-action):not(.destructive-action):active,
-    headerbar button:not(.suggested-action):not(.destructive-action):checked {
-      color: #FFFFFF; }
+    headerbar button:not(.suggested-action):not(.destructive-action):active {
+      color: currentColor; }
     .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):disabled,
     headerbar button:not(.suggested-action):not(.destructive-action):disabled {
-      color: rgba(255, 255, 255, 0.3); }
+      color: alpha(currentColor, 0.3); }
       .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):disabled > label,
       headerbar button:not(.suggested-action):not(.destructive-action):disabled > label {
         color: inherit; }
     .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked,
     headerbar button:not(.suggested-action):not(.destructive-action):checked {
-      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #FFFFFF 100%, transparent 0%) 0 0 2/0 0 2px;
+      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 100%, transparent 0%) 0 0 2/0 0 2px;
       background-color: transparent;
-      color: #FFFFFF; }
+      color: currentColor; }
       .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled,
       headerbar button:not(.suggested-action):not(.destructive-action):checked:disabled {
         background-color: transparent;
-        color: rgba(255, 255, 255, 0.4); }
+        color: alpha(currentColor, 0.4); }
         .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled > label,
         headerbar button:not(.suggested-action):not(.destructive-action):checked:disabled > label {
           color: inherit; }
   .titlebar:not(headerbar) button.suggested-action:disabled, .titlebar:not(headerbar) button.destructive-action:disabled,
   headerbar button.suggested-action:disabled,
   headerbar button.destructive-action:disabled {
-    color: rgba(255, 255, 255, 0.3); }
+    color: alpha(currentColor, 0.4); }
     .titlebar:not(headerbar) button.suggested-action:disabled > label, .titlebar:not(headerbar) button.destructive-action:disabled > label,
     headerbar button.suggested-action:disabled > label,
     headerbar button.destructive-action:disabled > label {
@@ -1015,28 +1017,30 @@ headerbar {
   headerbar.selection-mode {
     animation: header_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
     color: #FFFFFF; }
+    .selection-mode.titlebar:backdrop:not(headerbar),
+    headerbar.selection-mode:backdrop {
+      color: rgba(255, 255, 255, 0.75); }
     .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
     headerbar.selection-mode button:not(.suggested-action):not(.destructive-action) {
-      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #FFFFFF 0%, transparent 0%) 0 0 0/0 0 0px; }
-      .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action), .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):hover, .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):active, .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked,
+      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 0%, transparent 0%) 0 0 0/0 0 0px; }
+      .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action), .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):hover, .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):active,
       headerbar.selection-mode button:not(.suggested-action):not(.destructive-action),
       headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):hover,
-      headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):active,
-      headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):checked {
-        color: #FFFFFF; }
+      headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):active {
+        color: currentColor; }
       .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):disabled,
       headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):disabled {
-        color: rgba(255, 255, 255, 0.4); }
+        color: alpha(currentColor, 0.4); }
         .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):disabled > label,
         headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):disabled > label {
           color: inherit; }
       .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked,
       headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):checked {
-        border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #FFFFFF 100%, transparent 0%) 0 0 2/0 0 2px;
-        color: #FFFFFF; }
+        border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 100%, transparent 0%) 0 0 2/0 0 2px;
+        color: currentColor; }
         .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled,
         headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):checked:disabled {
-          color: rgba(255, 255, 255, 0.4); }
+          color: alpha(currentColor, 0.4); }
           .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled > label,
           headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):checked:disabled > label {
             color: inherit; }

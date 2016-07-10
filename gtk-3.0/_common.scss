@@ -965,7 +965,7 @@ headerbar {
   color: $selected_fg_color;
 
   &:backdrop {
-    // background-color: $headerbar_color;
+    color: $secondary_selected_fg_color;
   }
 
   .title {
@@ -986,30 +986,30 @@ headerbar {
     @extend %button_basic.flat;
 
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  $selected_fg_color 0%,
+                                  currentColor 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
-    color: $secondary_selected_fg_color;
+    color: gtkalpha(currentColor, $enabled_opacity);
 
-    &:hover, &:active, &:checked { color: $selected_fg_color; }
+    &:hover, &:active { color: currentColor; }
 
     &:disabled {
-      color: $insensitive_secondary_selected_fg_color;
+      color: gtkalpha(currentColor, $enabled_opacity * $disabled_opacity);
 
       > label { color: inherit; }
     }
 
     &:checked {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                    $selected_fg_color 100%,
+                                    currentColor 100%,
                                     transparent 0%)
                                     0 0 2 / 0 0 2px;
       background-color: transparent;
-      color: $selected_fg_color;
+      color: currentColor;
 
       &:disabled {
         background-color: transparent;
-        color: $insensitive_selected_fg_color;
+        color: gtkalpha(currentColor, $disabled_opacity);
 
         > label { color: inherit; }
       }
@@ -1018,7 +1018,7 @@ headerbar {
 
   button.suggested-action, button.destructive-action {
     &:disabled {
-      color: $insensitive_secondary_selected_fg_color;
+      color: gtkalpha(currentColor, $disabled_opacity);
 
       > label { color: inherit; }
     }
@@ -1031,34 +1031,35 @@ headerbar {
     color: $selected_fg_color;
 
     &:backdrop {
+      color: $secondary_selected_fg_color;
     }
 
     .subtitle:link { @extend *:link:selected;  }
 
     button:not(.suggested-action):not(.destructive-action) {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                    $selected_fg_color 0%,
+                                    currentColor 0%,
                                     transparent 0%)
                                     0 0 0 / 0 0 0px;
-      // color: $secondary_selected_fg_color;
+      // color: gtkalpha(currentColor, $enabled_opacity);
 
-      &, &:hover, &:active, &:checked { color: $selected_fg_color; }
+      &, &:hover, &:active { color: currentColor; }
 
       &:disabled {
-        color: $insensitive_selected_fg_color;
+        color: gtkalpha(currentColor, $disabled_opacity);
 
         > label { color: inherit; }
       }
 
       &:checked {
         border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                      $selected_fg_color 100%,
+                                      currentColor 100%,
                                       transparent 0%)
                                       0 0 2 / 0 0 2px;
-        color: $selected_fg_color;
+        color: currentColor;
 
         &:disabled {
-          color: $insensitive_selected_fg_color;
+          color: gtkalpha(currentColor, $disabled_opacity);
 
           > label { color: inherit; }
         }
