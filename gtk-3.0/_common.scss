@@ -1844,11 +1844,6 @@ switch {
     margin: -4px 0 -4px -4px;
     -gtk-outline-radius: 100px;
     border-radius: 100px;
-    background-image: -gtk-gradient(radial,
-                                    center center, 0,
-                                    center center, 0.5,
-                                    to(transparent),
-                                    to(transparent));
   }
 
   &:hover slider { @include entry(focus); }
@@ -1856,10 +1851,10 @@ switch {
   &:disabled slider { @include entry(insensitive); }
 
   &:checked slider {
-    transition: $material_transition, margin 0, background-image 0;
-    animation: needs_attention $material_slower $material_ease_out forwards;
+    transition: $material_transition, margin 0, background-image 0, background-color 0 $material_slower;
+    animation: needs_attention $material_slower $material_ease_out;
     margin: -4px -4px -4px 0;
-    // background-color: $accent_bg_color;
+    background-color: $accent_bg_color;
     color: $selected_fg_color;
   }
 

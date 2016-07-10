@@ -1575,8 +1575,7 @@ switch {
     min-height: 24px;
     margin: -4px 0 -4px -4px;
     -gtk-outline-radius: 100px;
-    border-radius: 100px;
-    background-image: -gtk-gradient(radial, center center, 0, center center, 0.5, to(transparent), to(transparent)); }
+    border-radius: 100px; }
   switch:hover slider {
     border-image: none;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23); }
@@ -1585,9 +1584,10 @@ switch {
     background-color: #4d646f;
     color: rgba(255, 255, 255, 0.4); }
   switch:checked slider {
-    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), color 0, margin 0, background-image 0;
-    animation: needs_attention 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), color 0, margin 0, background-image 0, background-color 0 0.3s;
+    animation: needs_attention 0.3s cubic-bezier(0, 0, 0.2, 1);
     margin: -4px -4px -4px 0;
+    background-color: #FF4081;
     color: #FFFFFF; }
   switch:checked:disabled slider {
     animation: none; }
