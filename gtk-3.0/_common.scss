@@ -15,7 +15,8 @@ $material_ease: cubic-bezier(0.4, 0.0, 0.2, 1);
 $material_ease_out: cubic-bezier(0.0, 0.0, 0.2, 1);
 $material_ease_in: cubic-bezier(0.4, 0.0, 1, 1);
 // FIXME: color's transition is too slow
-$material_transition: all $material_faster $material_ease_out, color 0;
+$material_transition: all $material_slower $material_ease_out, color 0;
+$shadow_transition: box-shadow $material_faster $material_ease_out;
 
 * {
   padding: 0;
@@ -902,7 +903,7 @@ toolbar {
 
   // stand-alone OSD toolbars
   &.osd {
-    transition: box-shadow $material_faster $material_ease_out;
+    transition: $shadow_transition;
     padding: $container_padding;
     border-radius: 2px;
     box-shadow: $z-depth-2;
@@ -1411,7 +1412,7 @@ menuitem {
  * Popovers   *
  ***************/
 popover.background {
-  transition: box-shadow $material_faster $material_ease_out;
+  transition: $shadow_transition;
   padding: 0;
   box-shadow:  $z-depth-2;
   background-color: $light_color;
@@ -1601,7 +1602,7 @@ notebook {
 
         &:disabled { color: $insensitive_fg_color; }
 
-        &:not(.reorderable-page) { animation: tab_ripple_effect $material_slower * 2 $material_ease; }
+        &:not(.reorderable-page) { animation: tab_ripple_effect $material_slower * 3 $material_ease_out; }
 
         &.reorderable-page {
           border-color: $borders_color;
@@ -1709,7 +1710,7 @@ scrollbar {
 
   // slider
   slider {
-    transition: $material_transition, margin 0, border-width 0;
+    transition: all $material_faster $material_ease_out, margin 0, border-width 0;
     min-width: 8px;
     min-height: 8px;
     border: 4px solid transparent;
@@ -1726,7 +1727,7 @@ scrollbar {
 
   &.fine-tune {
     slider {
-      transition: $material_transition, margin 0, border-width 0, min-width 0, min-height 0;
+      transition: all $material_faster $material_ease_out, margin 0, border-width 0, min-width 0, min-height 0;
       min-width: 4px;
       min-height: 4px;
     }
@@ -2125,6 +2126,7 @@ scale {
   }
 
   slider {
+    transition: all $material_faster $material_ease;
     // border-radius: 100%;
     // background-color: $accent_bg_color;
     background-repeat: no-repeat;
@@ -2577,7 +2579,7 @@ row {
  *************/
 expander {
   arrow {
-    transition: $material_transition;
+    transition: all $material_faster $material_ease;
     min-width: 16px;
     min-height: 16px;
     -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
@@ -3008,7 +3010,7 @@ colorswatch {
   }
 
   overlay {
-    transition: $material_transition;
+    transition: $shadow_transition;
     box-shadow: $z-depth-1;
 
     &:hover { box-shadow: $z-depth-2; }
@@ -3050,7 +3052,7 @@ colorswatch {
 
 // colorscale popup
 colorchooser .popover.osd {
-  transition: box-shadow $material_faster $material_ease_out;
+  transition: $shadow_transition;
   border-radius: 2px;
   box-shadow:  $z-depth-2;
   background-color: $base_color;
@@ -3088,7 +3090,7 @@ colorchooser .popover.osd {
  * Window Decorations *
  *********************/
 decoration {
-  transition: box-shadow $material_faster $material_ease_out;
+  transition: $shadow_transition;
   border-radius: 2px 2px 0 0;
   box-shadow: $z-depth-4, 0 16px 16px transparent;
 

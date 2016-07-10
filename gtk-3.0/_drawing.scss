@@ -113,7 +113,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 //
 
   @if $t==normal {
-    transition: $material_transition;
+    transition: $material_transition, $shadow_transition;
     border-image: none;
     box-shadow: $z-depth-1;
     background-color: if($fc!=$selected_bg_color, $fc, $base_color);
@@ -177,7 +177,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   //
   // normal button
   //
-    transition: $material_transition;
+    transition: $material_transition, $shadow_transition;
     box-shadow: $z-depth-1;
     background-color: $c;
     background-image: radial-gradient(circle farthest-corner at center,
@@ -203,7 +203,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   //
   // pushed button
   //
-    transition: $material_transition, background-image 0;
+    transition: $material_transition, $shadow_transition, background-image 0;
     animation: ripple_effect $material_slower $material_ease_out forwards;
     box-shadow: $z-depth-2;
     color: $fg_color;
