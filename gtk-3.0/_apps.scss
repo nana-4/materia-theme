@@ -12,7 +12,7 @@
   border-radius: (2px + 1px) (2px + 1px) 0 0;
   background-color: $base_color;
   background-clip: $extra_background_clip;
-  transition: $material_transition, border-width 0;
+  transition: all $material_duration $material_timing_function, color 0, border-width 0;
 
   &.left {
     margin-right: 8px - 1px;
@@ -87,12 +87,12 @@
 
 .nautilus-operations-button-needs-attention {
   color: $accent_bg_color;
-  animation: needs_attention_keyframes 2s $material_ease;
+  animation: needs_attention_keyframes 2s $material_timing_function;
 }
 
 .nautilus-operations-button-needs-attention-multiple {
   color: $accent_bg_color;
-  animation: needs_attention_keyframes 2s $material_ease;
+  animation: needs_attention_keyframes 2s $material_timing_function;
   animation-iteration-count: 2;
 }
 
