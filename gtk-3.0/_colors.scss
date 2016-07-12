@@ -35,19 +35,19 @@ $insensitive_secondary_selected_fg_color: scale-alpha($secondary_selected_fg_col
 $insensitive_tertiary_selected_fg_color: scale-alpha($tertiary_selected_fg_color, $disabled_opacity);
 
 // Background colors
-$bg_color: if($variant == 'light', #ECEFF1, #303030);
+$bg_color: if($variant == 'light', #F5F5F5, #303030);
 $base_color: if($variant == 'light', #FFFFFF, #424242);
 $secondary_base_color: mix($base_color, $bg_color, 50%);
 $light_color: if($variant =='light', #FAFAFA, #616161);
-$dark_color: if($variant =='light', mix(#ECEFF1, #CFD8DC, 50%), #212121);
+$headerbar_color: if($variant =='light', #455A64, #212121);
 
-$selected_bg_color: #00BCD4;
-$secondary_selected_bg_color: #00E5FF;
+$selected_bg_color: #42A5F5;
+$secondary_selected_bg_color: #40C4FF;
 $accent_bg_color: #FF4081;
 
 // Misc colors
 $track_color: gtkalpha(currentColor, $lower_opacity);
-$borders_color: if($variant == 'light', scale-alpha(#000000, 0.1), #212121);
+$borders_color: if($variant == 'light', scale-alpha(#000000, 0.1), scale-alpha(#000000, 0.2));
 $highlight_color: if($variant == 'light', scale-alpha(#FFFFFF, 0.4), scale-alpha(#FFFFFF, 0.1));
 $secondary_highlight_color: scale-alpha(#FFFFFF, 0.2);
 
@@ -65,4 +65,3 @@ $info_bg_color: #66BB6A;
 $question_bg_color: #42A5F5;
 $warning_bg_color: #FFA726;
 $error_bg_color: #EF5350;
-

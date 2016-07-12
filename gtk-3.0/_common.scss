@@ -9,10 +9,14 @@ $menuitem_size: 28px;
 
 $container_padding: 6px;
 $material_radius: 2px;
-$material_duration: 0.3s;
-$material_timing_function: cubic-bezier(0, 0, 0.2, 1);
+$material_faster: 0.2s;
+$material_slower: 0.3s;
+$material_ease: cubic-bezier(0.4, 0.0, 0.2, 1);
+$material_ease_out: cubic-bezier(0.0, 0.0, 0.2, 1);
+$material_ease_in: cubic-bezier(0.4, 0.0, 1, 1);
 // FIXME: color's transition is too slow
-$material_transition: all $material_duration $material_timing_function, color 0;
+$material_transition: all $material_slower $material_ease_out, color 0;
+$shadow_transition: box-shadow $material_faster $material_ease_out;
 
 * {
   padding: 0;
@@ -588,7 +592,7 @@ button {
 }
 
 %needs_attention {
-  animation: needs_attention $material_duration $material_timing_function forwards;
+  animation: needs_attention $material_slower $material_ease_out forwards;
   background-repeat: no-repeat;
   background-position: right 3px;
   background-size: 6px 6px;
@@ -681,9 +685,9 @@ modelbutton.flat,
     &:active { animation: none; }
   }
 
-  check:not(:indeterminate):checked:active { animation: check_check $material_duration $material_timing_function; }
+  check:not(:indeterminate):checked:active { animation: check_check $material_slower $material_ease; }
 
-  check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $material_duration $material_timing_function; }
+  check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $material_slower $material_ease; }
 
   // FIXME: remove the following when the checks/radios rewrite lands
   check:last-child,
@@ -899,7 +903,7 @@ toolbar {
 
   // stand-alone OSD toolbars
   &.osd {
-    transition: box-shadow $material_duration $material_timing_function;
+    transition: $shadow_transition;
     padding: $container_padding;
     border-radius: 2px;
     box-shadow: $z-depth-2;
@@ -944,7 +948,7 @@ searchbar,
   border-style: solid;
   border-width: 0 0 1px;
   border-color: $borders_color;
-  background-color: $dark_color;
+  background-color: $bg_color;
   background-clip: border-box;
 }
 
@@ -956,15 +960,12 @@ searchbar,
 headerbar {
   min-height: $large_size;
   padding: 0 $container_padding;
-  border-width: 0 0 1px;
-  border-style: solid;
-  border-color: $borders_color;
-  box-shadow: inset 0 1px $highlight_color;
-  background-color: $dark_color;
-  background-clip: border-box;
+  box-shadow: inset 0 1px $secondary_highlight_color, $z-depth-1;
+  background-color: $headerbar_color;
+  color: $selected_fg_color;
 
   &:backdrop {
-    // background-color: $dark_color;
+    // background-color: $headerbar_color;
   }
 
   .title {
@@ -985,30 +986,47 @@ headerbar {
     @extend %button_basic.flat;
 
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  $selected_bg_color 0%,
+                                  $selected_fg_color 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
+    color: $secondary_selected_fg_color;
+
+    &:hover, &:active, &:checked { color: $selected_fg_color; }
+
+    &:disabled {
+      color: $insensitive_secondary_selected_fg_color;
+
+      > label { color: inherit; }
+    }
 
     &:checked {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                    $selected_bg_color 100%,
+                                    $selected_fg_color 100%,
                                     transparent 0%)
                                     0 0 2 / 0 0 2px;
       background-color: transparent;
-      color: $fg_color;
+      color: $selected_fg_color;
 
       &:disabled {
         background-color: transparent;
-        color: $insensitive_fg_color;
+        color: $insensitive_selected_fg_color;
 
         > label { color: inherit; }
       }
     }
   }
 
+  button.suggested-action, button.destructive-action {
+    &:disabled {
+      color: $insensitive_secondary_selected_fg_color;
+
+      > label { color: inherit; }
+    }
+  }
+
   &.selection-mode {
-    animation: header_ripple_effect $material_duration $material_timing_function forwards;
-    box-shadow: inset 0 1px $secondary_highlight_color;
+    animation: header_ripple_effect $material_slower $material_ease_out forwards;
+    // box-shadow: inset 0 1px $secondary_highlight_color;
     // background-color: $selected_bg_color;
     color: $selected_fg_color;
 
@@ -1128,7 +1146,7 @@ headerbar {
   }
 
   > separator {
-    background-color: $dark_color;
+    background-color: $headerbar_color;
     background-image: image($borders_color);
   }
 
@@ -1278,21 +1296,21 @@ menubar,
 .menubar {
   -GtkWidget-window-dragging: true;
   padding: 0;
-  box-shadow: inset 0 -1px $borders_color;
-  background-color: $dark_color;
+  // box-shadow: inset 0 -1px $borders_color;
+  background-color: $headerbar_color;
 
   > menuitem {
     transition: $material_transition;
     min-height: 20px;
     padding: 4px 8px;
-    color: $secondary_fg_color;
+    color: $secondary_selected_fg_color;
 
     &:hover { //Seems like it :hover even with keyboard focus
-      box-shadow: inset 0 -2px $selected_bg_color;
-      color: $fg_color;
+      box-shadow: inset 0 -2px $selected_fg_color;
+      color: $selected_fg_color;
     }
 
-    &:disabled { color: $insensitive_secondary_fg_color; }
+    &:disabled { color: $insensitive_secondary_selected_fg_color; }
   }
 }
 
@@ -1394,10 +1412,10 @@ menuitem {
  * Popovers   *
  ***************/
 popover.background {
-  transition: box-shadow $material_duration $material_timing_function;
+  transition: $shadow_transition;
   padding: 0;
   box-shadow:  $z-depth-2;
-  background-color: $secondary_base_color;
+  background-color: $light_color;
 
   &:backdrop { box-shadow: $z-depth-1; }
 
@@ -1437,7 +1455,7 @@ notebook {
   > header {
     border-width: 1px;
     border-color: $borders_color;
-    background-color: $dark_color;
+    background-color: $bg_color;
     background-clip: border-box;
 
     &.top {
@@ -1573,7 +1591,7 @@ notebook {
 
         &.reorderable-page {
           border-color: $borders_color;
-          background-color: $bg_color;
+          background-color: $secondary_base_color;
         }
       }
 
@@ -1584,11 +1602,11 @@ notebook {
 
         &:disabled { color: $insensitive_fg_color; }
 
-        &:not(.reorderable-page) { animation: tab_ripple_effect $material_duration * 2 ease-in-out; }
+        &:not(.reorderable-page) { animation: tab_ripple_effect $material_slower * 3 $material_ease_out; }
 
         &.reorderable-page {
           border-color: $borders_color;
-          background-color: $light_color;
+          background-color: $base_color;
         }
       }
 
@@ -1692,7 +1710,7 @@ scrollbar {
 
   // slider
   slider {
-    transition: $material_transition, margin 0, border-width 0;
+    transition: all $material_faster $material_ease_out, margin 0, border-width 0;
     min-width: 8px;
     min-height: 8px;
     border: 4px solid transparent;
@@ -1709,7 +1727,7 @@ scrollbar {
 
   &.fine-tune {
     slider {
-      transition: $material_transition, margin 0, border-width 0, min-width 0, min-height 0;
+      transition: all $material_faster $material_ease_out, margin 0, border-width 0, min-width 0, min-height 0;
       min-width: 4px;
       min-height: 4px;
     }
@@ -1838,7 +1856,7 @@ switch {
 
   &:checked slider {
     transition: $material_transition, margin 0, background-image 0;
-    animation: needs_attention $material_duration $material_timing_function forwards;
+    animation: needs_attention $material_slower $material_ease_out forwards;
     margin: -4px -4px -4px 0;
     // background-color: $accent_bg_color;
     color: $selected_fg_color;
@@ -2004,15 +2022,15 @@ radio {
   to { -gtk-icon-transform: unset; }
 }
 
-check:not(:indeterminate):checked { animation: check_check $material_duration $material_timing_function; }
+check:not(:indeterminate):checked { animation: check_check $material_slower $material_ease; }
 
-check:not(:indeterminate):checked:active { animation: check_check $material_duration $material_timing_function, flat_ripple_effect $material_duration $material_timing_function forwards; }
+check:not(:indeterminate):checked:active { animation: check_check $material_slower $material_ease, flat_ripple_effect $material_slower $material_ease_out forwards; }
 
-// radio:not(:indeterminate):checked { animation: check_radio $material_duration $material_timing_function; }
+// radio:not(:indeterminate):checked { animation: check_radio $material_slower $material_ease; }
 
-check:indeterminate:checked, radio:indeterminate:checked { animation: check_indeterminate $material_duration $material_timing_function; }
+check:indeterminate:checked, radio:indeterminate:checked { animation: check_indeterminate $material_slower $material_ease; }
 
-check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $material_duration $material_timing_function, flat_ripple_effect $material_duration $material_timing_function forwards; }
+check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $material_slower $material_ease, flat_ripple_effect $material_slower $material_ease_out forwards; }
 
 // no animations in menus
 menu menuitem {
@@ -2108,6 +2126,7 @@ scale {
   }
 
   slider {
+    transition: all $material_faster $material_ease;
     // border-radius: 100%;
     // background-color: $accent_bg_color;
     background-repeat: no-repeat;
@@ -2532,7 +2551,7 @@ row {
     &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
     &:active {
       transition: $material_transition, background-image 0;
-      animation: row_ripple_effect $material_duration $material_timing_function forwards;
+      animation: row_ripple_effect $material_slower $material_ease_out forwards;
     }
   }
 
@@ -2560,7 +2579,7 @@ row {
  *************/
 expander {
   arrow {
-    transition: $material_transition;
+    transition: all $material_faster $material_ease;
     min-width: 16px;
     min-height: 16px;
     -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
@@ -2629,7 +2648,7 @@ messagedialog { // Message Dialog styling
   .titlebar {
     min-height: $small_size;
     border-style: none;
-    // box-shadow: inset 0 1px $highlight_color;
+    box-shadow: inset 0 1px $highlight_color;
     background-color: $light_color;
   }
 
@@ -2670,7 +2689,7 @@ filechooserbutton:drop(active) {
  ***********/
 .sidebar {
   border-style: none;
-  background-color: $secondary_base_color;
+  background-color: $light_color;
 
   @at-root %sidebar_left,
   &:dir(ltr),
@@ -2991,7 +3010,7 @@ colorswatch {
   }
 
   overlay {
-    transition: $material_transition;
+    transition: $shadow_transition;
     box-shadow: $z-depth-1;
 
     &:hover { box-shadow: $z-depth-2; }
@@ -3033,7 +3052,7 @@ colorswatch {
 
 // colorscale popup
 colorchooser .popover.osd {
-  transition: box-shadow $material_duration $material_timing_function;
+  transition: $shadow_transition;
   border-radius: 2px;
   box-shadow:  $z-depth-2;
   background-color: $base_color;
@@ -3071,7 +3090,7 @@ colorchooser .popover.osd {
  * Window Decorations *
  *********************/
 decoration {
-  transition: box-shadow $material_duration $material_timing_function;
+  transition: $shadow_transition;
   border-radius: 2px 2px 0 0;
   box-shadow: $z-depth-4, 0 16px 16px transparent;
 
