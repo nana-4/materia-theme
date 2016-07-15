@@ -1,9 +1,9 @@
-# Flat-Plat
-
+Flat-Plat
+=========
 A Material Design-like flat theme for GTK3, GTK2, and GNOME Shell.
 
-## Features
-
+Features
+--------
 <img src="img/Button.gif" alt="Button" align="right" />
 * Supports ripple effect animations (only GTK3 apps).
 * Supports both light and dark variants.
@@ -11,16 +11,16 @@ A Material Design-like flat theme for GTK3, GTK2, and GNOME Shell.
 * Supports Chrome's theme and scrollbars extensions.
 * Appears more beautifully when you use a font family including `Medium` and `Light` weight.
 
-## Requirements
-
+Requirements
+------------
 * GNOME/GTK+ 3.14, 3.16, 3.18 or 3.20
 * The `gnome-themes-standard` package for GTK2
 * The pixmap (or pixbuf) engine for GTK2
 
 > _If default Adwaita works fine, it should also works fine._
 
-## Installation
-
+Installation
+------------
 1. Download an archive.
   * [3.20.20160404](https://github.com/nana-4/Flat-Plat/releases/download/3.20.20160404/Flat-Plat-3.20.20160404.tar.gz) for GNOME 3.20
   * [3.18.20160404](https://github.com/nana-4/Flat-Plat/releases/download/3.18.20160404/Flat-Plat-3.18.20160404.tar.gz) for GNOME 3.18
@@ -32,9 +32,9 @@ A Material Design-like flat theme for GTK3, GTK2, and GNOME Shell.
 3. Use `gnome-tweak-tool` to change the theme.
 4. Optionally, open the `chrome` folder and drag and drop the `.crx` files onto the Chrome's extensions page (`chrome://extensions/`).
 
-## GDM (Lock/Login Screen)
-
-To change the GDM theme, you need to rewrite a system file.
+GDM (Lock/Login Screen)
+-----------------------
+To change the GDM theme, you need to rewrite a system file.  
 Please **be careful** because if it fails, the desktop environment may not operate correctly.
 > **Notes:**
 > * Not supported for GNOME 3.14, sorry.
@@ -42,38 +42,34 @@ Please **be careful** because if it fails, the desktop environment may not opera
 
 ### Install
 1. Backup the existing `.gresource` file. _(Skip this step if you just update it.)_
-```bash
-sudo cp /usr/share/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell/gnome-shell-theme.gresource~
-```
+
+        sudo cp /usr/share/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell/gnome-shell-theme.gresource~
 2. Replace it with the new one.
   * If you put this theme in `/usr/share/themes`:
-```bash
-sudo cp /usr/share/themes/Flat-Plat/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell
-```
+
+          sudo cp /usr/share/themes/Flat-Plat/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell
   * If you put this theme in `~/.themes`:
-```bash
-sudo cp ~/.themes/Flat-Plat/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell
-```
+
+          sudo cp ~/.themes/Flat-Plat/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell
 3. Restart GNOME Shell (press `Alt`+`F2`, then type `r`).
 
 ### Uninstall
 1. Restore to original theme from the backup.
-```bash
-sudo mv -f /usr/share/gnome-shell/gnome-shell-theme.gresource~ /usr/share/gnome-shell/gnome-shell-theme.gresource
-```
+
+        sudo mv -f /usr/share/gnome-shell/gnome-shell-theme.gresource~ /usr/share/gnome-shell/gnome-shell-theme.gresource
 2. Restart GNOME Shell (press `Alt`+`F2`, then type `r`).
 
-## Screenshots
-
+Screenshots
+-----------
 ![Screenshot1](https://raw.githubusercontent.com/nana-4/Flat-Plat/master/img/Screenshot1.png)
 ![Screenshot2](https://raw.githubusercontent.com/nana-4/Flat-Plat/master/img/Screenshot2.png)
 ![Screenshot3](https://raw.githubusercontent.com/nana-4/Flat-Plat/master/img/Screenshot3.png)
 ![Screenshot4](https://raw.githubusercontent.com/nana-4/Flat-Plat/master/img/Screenshot4.png)
 ![Screenshot5](https://raw.githubusercontent.com/nana-4/Flat-Plat/master/img/Screenshot5.png)
 
-## Planned Features
-
-* Supports of global dark theme (sorry for the delay...)
+Planned Features
+----------------
+* Supports of global dark theme
 * Re-supports of Metacity theme
 * Total rewrite of the code and images for GTK2
 * Supports of Unity theme
@@ -82,8 +78,8 @@ sudo mv -f /usr/share/gnome-shell/gnome-shell-theme.gresource~ /usr/share/gnome-
 * GNOME Terminal color pallet (if possible)
 * Material Design like cursor theme
 
-## Other Info
-
+Other Info
+----------
 * License: GPL
 * Font: [M+ 1C](https://mplus-fonts.osdn.jp/) 10.5pt
 * Chrome's scrollbars extension forked from [Adwaita Scrollbars](https://github.com/gnome-integration-team/chrome-gnome-scrollbar). Thanks for original author.
