@@ -1,0 +1,112 @@
+# vim:set ft=gtkrc ts=2 sw=2 sts=2 ai et:
+
+style "toplevel_hack" {
+  engine "adwaita" {}
+}
+
+# TODO: This could really look nicer
+style "gimp_spin_scale" {
+
+  # Spin background
+  bg[NORMAL] = @base_color
+
+  engine "pixmap" {
+
+    image {
+      function        = BOX
+      state           = NORMAL
+      detail          = "spinbutton_up"
+      overlay_file    = "assets/pan-up-alt.png"
+      overlay_stretch = FALSE
+    }
+
+    image {
+      function        = BOX
+      state           = PRELIGHT
+      detail          = "spinbutton_up"
+      overlay_file    = "assets/pan-up.png"
+      overlay_stretch = FALSE
+    }
+
+    image {
+      function        = BOX
+      state           = ACTIVE
+      detail          = "spinbutton_up"
+      overlay_file    = "assets/pan-up.png"
+      overlay_stretch = FALSE
+    }
+
+    image {
+      function        = BOX
+      state           = INSENSITIVE
+      detail          = "spinbutton_up"
+      overlay_file    = "assets/pan-up-alt-insensitive.png"
+      overlay_stretch = FALSE
+    }
+
+    image {
+      function        = BOX
+      state           = NORMAL
+      detail          = "spinbutton_down"
+      overlay_file    = "assets/pan-down-alt.png"
+      overlay_stretch = FALSE
+    }
+
+    image {
+      function        = BOX
+      state           = PRELIGHT
+      detail          = "spinbutton_down"
+      overlay_file    = "assets/pan-down.png"
+      overlay_stretch = FALSE
+    }
+
+    image {
+      function        = BOX
+      state           = ACTIVE
+      detail          = "spinbutton_down"
+      overlay_file    = "assets/pan-down.png"
+      overlay_stretch = FALSE
+    }
+
+    image {
+      function        = BOX
+      state           = INSENSITIVE
+      detail          = "spinbutton_down"
+      overlay_file    = "assets/pan-down-alt-insensitive.png"
+      overlay_stretch = FALSE
+    }
+
+ }
+
+}
+
+style "chrome-gtk-frame" {
+
+  ChromeGtkFrame::frame-color                    = @headerbar_color
+  ChromeGtkFrame::inactive-frame-color           = @headerbar_color
+  ChromeGtkFrame::incognito-frame-color          = @headerbar_color
+  ChromeGtkFrame::incognito-inactive-frame-color = @headerbar_color
+
+  ChromeGtkFrame::frame-gradient-size = 0
+
+}
+
+style "chrome_entry" {
+  base[NORMAL] = @base_color
+  base[INSENSITIVE] = @base_color
+}
+
+# Disable spin button assets for GimpSpinScale
+class "GimpSpinScale" style "gimp_spin_scale"
+
+# Chromium lets us define some colours and settings for better integration
+class "ChromeGtkFrame" style "chrome-gtk-frame"
+# Chromium uses base as the fill colour of its own entries
+# This would be fine but Gtk+ uses it to fill the surrounding space, so its set to bg
+# That results in Chromium using it for the fill, so we need to handle that
+widget_class "*Chrom*<GtkEntry>" style "chrome_entry"
+
+# TODO: find out what does does exactly
+# This uses the Adwaita engine for something, I'm not sure for what
+# However disabling it glitches out some separators in Libreoffice
+class "GtkWindow" style "toplevel_hack"
