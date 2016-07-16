@@ -2899,7 +2899,7 @@ tooltip {
   &.background {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
-    background-color: scale-alpha($base_color, $higher_opacity);
+    background-color: scale-alpha($tooltip_background_color, $higher_opacity);
   }
 
   // @extend %osd;
@@ -2919,7 +2919,7 @@ tooltip {
   * { // Yeah this is ugly
     padding: 0;
     background-color: transparent;
-    color: inherit;
+    color: $tooltip_color;
   }
 }
 
