@@ -959,9 +959,10 @@ searchbar,
  ***************/
 %titlebar,
 headerbar {
+  transition: background-color $material_faster $material_ease_out, color $material_faster $material_ease_out;
   min-height: $large_size;
   padding: 0 $container_padding;
-  box-shadow: inset 0 1px $secondary_highlight_color, $z-depth-1;
+  box-shadow: $z-depth-1, inset 0 1px $secondary_highlight_color;
   background-color: $headerbar_color;
   color: $selected_fg_color;
 
@@ -1026,9 +1027,10 @@ headerbar {
   }
 
   &.selection-mode {
-    animation: header_ripple_effect $material_slower $material_ease_out forwards;
-    // box-shadow: inset 0 1px $secondary_highlight_color;
-    // background-color: $selected_bg_color;
+    transition: background-color 0 $material_slower, color $material_faster $material_ease_out;
+    animation: header_ripple_effect $material_slower $material_ease_out;
+    // box-shadow: $z-depth-1, inset 0 1px $secondary_highlight_color;
+    background-color: $selected_bg_color;
     color: $selected_fg_color;
 
     &:backdrop {
@@ -1077,10 +1079,11 @@ headerbar {
     }
   }
 
+  .fullscreen &,
   .tiled &,
   .maximized & {
     border-radius: 0; // squared corners when the window is max'd or tiled
-    box-shadow: none;
+    box-shadow: $z-depth-1;
   }
 
   &.default-decoration {
