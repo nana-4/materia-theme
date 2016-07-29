@@ -170,6 +170,19 @@ menubar {
 
 separator { color: $borders_color; }
 
+/* FIXME: not working */
+window.background > widget > check,
+window.background > widget > radio {
+  margin: 0;
+  padding: 0;
+}
+
+window.background > widget > radio:checked {
+  -gtk-icon-source: image(-gtk-recolor(url("assets/radio-checked-symbolic.svg")),
+                          -gtk-recolor(url("assets/radio-checked-symbolic.png")));
+  border-image: none;
+}
+
 
 /***********
  * Synapse *

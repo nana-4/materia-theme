@@ -680,21 +680,22 @@ modelbutton.flat,
 
   check,
   radio {
+    &:not(:checked):not(:indeterminate) { color: gtkalpha(currentColor, $hint_opacity); }
+
     &, &:hover { background-image: none; }
 
     &:active { animation: none; }
+
+    &:last-child { margin-left: -8px; margin-right: -16px; }
+
+    &:first-child { margin-left: -16px; margin-right: -8px; }
   }
 
-  check:not(:indeterminate):checked:active { animation: check_check $material_slower $material_ease; }
+  check:not(:indeterminate):checked { @extend %check_checked; }
 
-  check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $material_slower $material_ease; }
+  // radio:not(:indeterminate):checked { @extend %radio_checked; }
 
-  // FIXME: remove the following when the checks/radios rewrite lands
-  check:last-child,
-  radio:last-child { margin-left: 8px; }
-
-  check:first-child,
-  radio:first-child { margin-right: 8px; }
+  check:indeterminate:checked, radio:indeterminate:checked { @extend %indeterminate_checked; }
 }
 
 modelbutton.flat arrow {
@@ -1445,9 +1446,6 @@ popover.background {
   separator { margin: 4px 0; }
 
   list separator { margin: 0; }
-
-  checkbutton,
-  radiobutton { @extend modelbutton.flat; }
 }
 
 /*************
@@ -1885,36 +1883,25 @@ switch {
   }
 }
 
-checkbutton.text-button, radiobutton.text-button {
+checkbutton.text-button,
+radiobutton.text-button {
   // this is for a nice focus on check and radios text
-  padding: 2px 0;
+  padding: 2px;
   outline-offset: 0;
 
-  label:not(:only-child) {
-    &:first-child { margin-left: 4px; }
-
-    &:last-child { margin-right: 4px; }
-  }
+  label:not(:only-child) { margin: 0 4px; }
 }
 
 check,
 radio {
   min-height: 24px;
   min-width: 24px;
-  -gtk-icon-source: none;
-
-  margin: -12px -8px;
+  margin: -12px;
   padding: 12px;
-  outline-offset: 4px;
-  // border-radius: 100%;
 
   @extend %button_basic.flat;
 
   @extend %button_basic.image-button;
-
-  color: gtkalpha(currentColor, $enabled_opacity);
-
-  &:hover, &:active { color: currentColor; }
 
   &:checked, &:checked:disabled { background-color: transparent; }
 
@@ -1922,16 +1909,19 @@ radio {
 
   &:checked:disabled, &:indeterminate:disabled { color: scale-alpha($accent_bg_color, $disabled_opacity); }
 
-  &:only-child { margin: -12px; }
+  // &:only-child { margin: -12px; }
 
-  .osd & {
+  row &:not(:checked):not(:indeterminate) {
+    color: gtkalpha(currentColor, $enabled_opacity);
+
+    &:hover, &:active { color: currentColor; }
   }
 
   menu menuitem & {
     transition: none;
-    margin: -16px -16px; // this is a workaround for a menu check/radio size allocation issue
+    margin: -16px; // this is a workaround for a menu check/radio size allocation issue
 
-    &:not(:checked):not(:indeterminate):hover { color: gtkalpha(currentColor, $enabled_opacity); }
+    &:not(:checked):not(:indeterminate) { color: gtkalpha(currentColor, $hint_opacity); }
 
     &, &:hover, &:disabled {
       background-image: none;
@@ -1955,14 +1945,21 @@ check {
 
 %radio,
 radio {
+  & { -gtk-icon-source: image(-gtk-recolor(url("assets/radio-unchecked-symbolic.svg")),
+                              -gtk-recolor(url("assets/radio-unchecked-symbolic.png"))); }
+
+  // &:checked { -gtk-icon-source: image(-gtk-recolor(url("assets/radio-checked-symbolic.svg")),
+  //                                     -gtk-recolor(url("assets/radio-checked-symbolic.png"))); }
+
+  &:indeterminate { -gtk-icon-source: image(-gtk-recolor(url("assets/radio-dash-symbolic.svg")),
+                                            -gtk-recolor(url("assets/radio-dash-symbolic.png"))); }
+
   border-image: -gtk-gradient(radial,
                               center center, 0,
                               center center, 0.001,
                               to($accent_bg_color),
                               to(transparent))
                               24 / 24px;
-  -gtk-icon-source: image(-gtk-recolor(url("assets/radio-unchecked-symbolic.svg")),
-                          -gtk-recolor(url("assets/radio-unchecked-symbolic.png")));
 
   &:checked {
     border-image: -gtk-gradient(radial,
@@ -1982,9 +1979,6 @@ radio {
                                 24 / 24px;
  }
 
-  &:indeterminate { -gtk-icon-source: image(-gtk-recolor(url("assets/radio-dash-symbolic.svg")),
-                                            -gtk-recolor(url("assets/radio-dash-symbolic.png"))); }
-
   &:indeterminate:checked {
     border-image: -gtk-gradient(radial,
                                 center center, 0,
@@ -2001,9 +1995,24 @@ radio {
   to { -gtk-icon-transform: unset; }
 }
 
-@keyframes check_radio {
-  from { -gtk-icon-transform: scale(0); }
-  to { -gtk-icon-transform: unset; }
+@keyframes check_radio { // FIXME: cannot animate border-image
+  from {
+    border-image: -gtk-gradient(radial,
+                                center center, 0,
+                                center center, 0.001,
+                                to($accent_bg_color),
+                                to(transparent))
+                                24 / 24px;
+  }
+
+  to {
+    border-image: -gtk-gradient(radial,
+                                center center, 0,
+                                center center, (10 / 48 / 2),
+                                to($accent_bg_color),
+                                to(transparent))
+                                24 / 24px;
+  }
 }
 
 @keyframes check_indeterminate {
@@ -2012,12 +2021,17 @@ radio {
   to { -gtk-icon-transform: unset; }
 }
 
+%check_checked,
 check:not(:indeterminate):checked { animation: check_check $material_slower $material_ease; }
 
 check:not(:indeterminate):checked:active { animation: check_check $material_slower $material_ease, flat_ripple_effect $material_slower $material_ease_out forwards; }
 
+// %radio_checked,
 // radio:not(:indeterminate):checked { animation: check_radio $material_slower $material_ease; }
 
+// radio:not(:indeterminate):checked:active { animation: check_radio $material_slower $material_ease, flat_ripple_effect $material_slower $material_ease_out forwards; }
+
+%indeterminate_checked,
 check:indeterminate:checked, radio:indeterminate:checked { animation: check_indeterminate $material_slower $material_ease; }
 
 check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $material_slower $material_ease, flat_ripple_effect $material_slower $material_ease_out forwards; }
@@ -2032,8 +2046,6 @@ menu menuitem {
 
 treeview.view check,
 treeview.view radio {
-  // margin: -12px;
-  // padding: 12px;
   padding: 0;
 
   &:checked:hover, &:selected:checked:hover { background-image: none; }
