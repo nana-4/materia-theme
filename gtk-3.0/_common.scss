@@ -2628,19 +2628,18 @@ calendar {
   }
 
   &.header {
-    border: none;
-    border-bottom: 1px solid $borders_color;
+    border-style: none none solid;
     border-radius: 0;
   }
 
   &.button { @extend %button_basic.flat; }
 
-  &:indeterminate { color: gtkalpha(currentColor, $disabled_opacity); }
-
   &.highlight {
     color: gtkalpha(currentColor, $hint_opacity);
     font-weight: 500;
   }
+
+  &:indeterminate { color: gtkalpha(currentColor, $disabled_opacity); }
 }
 
 
