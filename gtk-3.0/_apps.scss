@@ -159,6 +159,101 @@
 .nautilus-window .searchbar-container { margin-top: -1px; }
 
 
+/*********
+ * gedit *
+ *********/
+.open-document-selector-treeview:hover {
+}
+
+.open-document-selector-treeview:selected:hover {
+}
+
+/* Only normal state is handle */
+.open-document-selector-name-label {
+  font-weight: bold;
+}
+
+/* Only normal state is handle */
+.open-document-selector-path-label {
+  color: gtkalpha(currentColor, $hint_opacity);
+  font-size: smaller;
+
+  // @extend .dim-label;
+}
+
+.gedit-document-panel {
+  background-color: $light_color;
+}
+
+.gedit-document-panel row:selected {
+}
+
+.gedit-document-panel-group-row,
+.gedit-document-panel-group-row:hover {
+  border-top: 1px solid gtkalpha(currentColor, 0.3);
+}
+
+.gedit-document-panel-group-row:first-child,
+.gedit-document-panel-group-row:first-child:hover {
+  border-top: 0px;
+}
+
+/* Try to look as the notebook tab close button */
+.gedit-document-panel row button.flat {
+  min-height: $small_size;
+  min-width: $small_size;
+  padding: 0;
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  @extend %button_basic.image-button;
+}
+
+statusbar {
+  border-top: 1px solid $borders_color;
+}
+
+.gedit-search-slider {
+  margin: 4px 4px 8px;
+
+  .gedit-search-entry-occurrences-tag {
+    all: unset;
+    padding: 0 4px;
+    color: gtkalpha(currentColor, $hint_opacity);
+  }
+
+  entry {
+    &:dir(ltr) {
+      margin-right: -$medium_size * 2;
+      padding-right: $medium_size * 2 + 8px;
+
+      .gedit-search-entry-occurrences-tag { margin-right: -8px; }
+    }
+
+    &:dir(rtl) {
+      margin-left: -$medium_size * 2;
+      padding-left: $medium_size * 2 + 8px;
+
+      .gedit-search-entry-occurrences-tag { margin-left: -8px; }
+    }
+
+    &.error ~ button { @extend %button_selected.flat; }
+  }
+
+  button {
+    @extend %button_basic.flat;
+
+    &:dir(ltr),
+    &:dir(rtl) { @extend %linked; }
+  }
+}
+
+// Yeah this is ugly
+notebook > stack:not(:only-child) revealer .gedit-search-slider .linked:not(.vertical) > entry {
+  border-radius: 2px;
+}
+
+
 /***********
  * Firefox *
  ***********/
