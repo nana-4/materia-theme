@@ -32,8 +32,6 @@
   -GtkTextView-error-underline-color: #DD2C00;
   -GtkScrolledWindow-scrollbar-spacing: 0;
   -GtkToolItemGroup-expander-size: 11;
-  -GtkTreeView-expander-size: 11;
-  -GtkTreeView-horizontal-separator: 4;
   -GtkWidget-text-handle-width: 24;
   -GtkWidget-text-handle-height: 24;
   -GtkDialog-button-spacing: 4;
@@ -354,9 +352,6 @@ entry progress {
   border-color: #42A5F5;
   background-color: transparent; }
 
-treeview acceleditor > label {
-  background-color: #42A5F5; }
-
 treeview entry.flat, treeview entry {
   min-height: 0;
   padding: 2px;
@@ -569,10 +564,6 @@ button.flat {
   .error button.flat:disabled, .gedit-search-slider entry.error ~ button:disabled, row:selected
   button.flat:disabled {
     color: rgba(255, 255, 255, 0.3); }
-button separator {
-  min-width: 0;
-  min-height: 0;
-  background: transparent; }
 button.osd {
   padding: 12px 16px; }
   button.osd.image-button {
@@ -646,6 +637,10 @@ button {
   button.needs-attention:checked > image {
     animation: none;
     background-image: none; }
+button separator {
+  min-width: 0;
+  min-height: 0;
+  background: transparent; }
 .primary-toolbar
 button {
   -gtk-icon-shadow: none; }
@@ -1054,6 +1049,9 @@ headerbar spinbutton,
 headerbar button {
   margin-top: 6px;
   margin-bottom: 6px; }
+headerbar switch {
+  margin-top: 12px;
+  margin-bottom: 12px; }
 
 .background:not(.tiled):not(.maximized):not(.fullscreen) .titlebar {
   border-top-left-radius: 2px;
@@ -1091,13 +1089,15 @@ window.csd > .titlebar:not(headerbar) {
  * Tree Views *
  **************/
 treeview.view {
-  -GtkTreeView-grid-line-width: 1;
-  -GtkTreeView-grid-line-pattern: '';
-  -GtkTreeView-tree-line-width: 1;
-  -GtkTreeView-tree-line-pattern: '';
-  -GtkTreeView-expander-size: 16;
   border-left-color: alpha(currentColor, 0.3);
   border-top-color: rgba(0, 0, 0, 0.2); }
+  * {
+    -GtkTreeView-horizontal-separator: 4;
+    -GtkTreeView-grid-line-width: 1;
+    -GtkTreeView-grid-line-pattern: '';
+    -GtkTreeView-tree-line-width: 1;
+    -GtkTreeView-tree-line-pattern: '';
+    -GtkTreeView-expander-size: 16; }
   treeview.view:hover, treeview.view:active, treeview.view:selected {
     border-radius: 0; }
   treeview.view.separator {
@@ -1169,6 +1169,8 @@ treeview.view {
     background-color: #546E7A;
     background-clip: border-box;
     color: #42A5F5; }
+  treeview.view acceleditor > label {
+    background-color: #42A5F5; }
 
 /*********
  * Menus *
@@ -2008,7 +2010,7 @@ levelbar.vertical.discrete trough {
   padding: 1px 2px; }
 levelbar block.low {
   background-color: #FF6D00; }
-levelbar block.high {
+levelbar block.high, levelbar block:not(.empty) {
   background-color: #42A5F5; }
 levelbar block.full {
   background-color: #00C853; }
@@ -2514,7 +2516,7 @@ entry selection, modelbutton.flat:selected,
       color: rgba(255, 255, 255, 0.4); }
 
 .monospace {
-  font: Monospace; }
+  font-family: monospace; }
 
 /**********************
  * Touch Copy & Paste *

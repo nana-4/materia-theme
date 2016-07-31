@@ -33,9 +33,6 @@ $shadow_transition: box-shadow $material_faster $material_ease_out;
   -GtkScrolledWindow-scrollbar-spacing: 0;
 
   -GtkToolItemGroup-expander-size: 11;
-  -GtkTreeView-expander-size: 11;
-
-  -GtkTreeView-horizontal-separator: 4;
 
   -GtkWidget-text-handle-width: 24;
   -GtkWidget-text-handle-height: 24;
@@ -346,8 +343,6 @@ entry {
   .linked.vertical > &:not(.flat) { @extend %linked_vertical; }
 }
 
-treeview acceleditor > label { background-color: $selected_bg_color; }
-
 treeview entry {
   &.flat, & {
     min-height: 0;
@@ -480,12 +475,6 @@ button {
     }
   }
 
-  separator {
-    min-width: 0;
-    min-height: 0;
-    background: transparent;
-  }
-
   // big standalone buttons like in Documents pager
   &.osd {
     padding: 12px 16px;
@@ -580,6 +569,18 @@ button {
       }
     }
   }
+
+  // hide separators
+  separator {
+    min-width: 0;
+    min-height: 0;
+    background: transparent;
+  }
+
+  // &.font,
+  // &.file { separator { background-color: transparent; }}
+
+  // &.font { > box > box > label { font-weight: bold; }}
 
   // inline-toolbar buttons
   .inline-toolbar & {
@@ -1118,13 +1119,18 @@ headerbar {
 }
 
 headerbar {
-  // add vertical margins to headerbar entries, buttons and separators to avoid them spanning the whole height
+  // add vertical margins to common widget on the headerbar to avoid them spanning the whole height
   entry,
   spinbutton,
   // separator,
   button {
     margin-top: $container_padding;
     margin-bottom: $container_padding;
+  }
+
+  switch {
+    margin-top: $container_padding * 2;
+    margin-bottom: $container_padding * 2;
   }
 }
 
@@ -1189,11 +1195,14 @@ headerbar {
  * Tree Views *
  **************/
 treeview.view {
-  -GtkTreeView-grid-line-width: 1;
-  -GtkTreeView-grid-line-pattern: '';
-  -GtkTreeView-tree-line-width: 1;
-  -GtkTreeView-tree-line-pattern: '';
-  -GtkTreeView-expander-size: 16;
+  @at-root * {
+    -GtkTreeView-horizontal-separator: 4;
+    -GtkTreeView-grid-line-width: 1;
+    -GtkTreeView-grid-line-pattern: '';
+    -GtkTreeView-tree-line-width: 1;
+    -GtkTreeView-tree-line-pattern: '';
+    -GtkTreeView-expander-size: 16;
+  }
 
   border-left-color: $track_color;  // this is actually the tree lines color,
   border-top-color: $borders_color; // while this is the grid lines color, better then nothing
@@ -1291,6 +1300,8 @@ treeview.view {
     background-clip: border-box;
     color: $selected_bg_color;
   }
+
+  acceleditor > label { background-color: $selected_bg_color; } // see tests/testaccel to test
 }
 
 
@@ -2090,7 +2101,6 @@ treeview.view radio:checked {
  ************/
 scale {
   // sizing
-
   $_marks_lenght: 8px;
   $_marks_distance: 8px;
 
@@ -2429,7 +2439,8 @@ levelbar {
       background-color: $warning_color;
     }
 
-    &.high {
+    &.high,
+    &:not(.empty) {
       background-color: $selected_bg_color;
     }
 
@@ -3170,7 +3181,7 @@ button.titlebutton {
   }
 }
 
-.monospace { font: Monospace; }
+.monospace { font-family: monospace; }
 
 
 /**********************
