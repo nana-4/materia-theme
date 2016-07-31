@@ -1055,18 +1055,14 @@ headerbar button {
   margin-top: 6px;
   margin-bottom: 6px; }
 
-.titlebar {
+.background:not(.tiled):not(.maximized):not(.fullscreen) .titlebar {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px; }
 
-separator:first-child + headerbar, headerbar:first-child {
+window:not(.tiled):not(.maximized):not(.fullscreen) separator:first-child + headerbar, window:not(.tiled):not(.maximized):not(.fullscreen) headerbar:first-child {
   border-top-left-radius: 2px; }
-  .tiled separator:first-child + headerbar, .maximized separator:first-child + headerbar, .tiled headerbar:first-child, .maximized headerbar:first-child {
-    border-radius: 0; }
-headerbar:last-child {
+window:not(.tiled):not(.maximized):not(.fullscreen) headerbar:last-child {
   border-top-right-radius: 2px; }
-  .tiled headerbar:last-child, .maximized headerbar:last-child {
-    border-radius: 0; }
 
 window.csd > .titlebar:not(headerbar) {
   padding: 0;
@@ -2477,7 +2473,7 @@ decoration {
   margin: 8px; }
   decoration:backdrop {
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23), 0 16px 16px transparent; }
-  .fullscreen decoration, .tiled decoration {
+  .maximized decoration, .fullscreen decoration, .tiled decoration {
     border-radius: 0; }
   .popup decoration {
     box-shadow: none; }

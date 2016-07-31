@@ -1082,7 +1082,7 @@ headerbar {
   .fullscreen &,
   .tiled &,
   .maximized & {
-    border-radius: 0; // squared corners when the window is max'd or tiled
+    border-radius: 0; // squared corners when the window is fullscreen, maximized or tiled
     box-shadow: $z-depth-1;
   }
 
@@ -1128,26 +1128,16 @@ headerbar {
   }
 }
 
-.titlebar {
+.background:not(.tiled):not(.maximized):not(.fullscreen) .titlebar {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
 }
 
 headerbar {
-  separator:first-child + &, // tackles the paned container case
-  &:first-child {
-    border-top-left-radius: 2px;
+  window:not(.tiled):not(.maximized):not(.fullscreen) separator:first-child + &, // tackles the paned container case
+  window:not(.tiled):not(.maximized):not(.fullscreen) &:first-child { border-top-left-radius: 2px; }
 
-    .tiled &,
-    .maximized & { border-radius: 0; }
-  }
-
-  &:last-child {
-    border-top-right-radius: 2px;
-
-    .tiled &,
-    .maximized & { border-radius: 0; }
-  }
+  window:not(.tiled):not(.maximized):not(.fullscreen) &:last-child { border-top-right-radius: 2px; }
 }
 
 .titlebar:not(headerbar) {
@@ -3121,6 +3111,7 @@ decoration {
     box-shadow: $z-depth-2, 0 16px 16px transparent;
   }
 
+  .maximized &,
   .fullscreen &,
   .tiled & { border-radius: 0; }
 
