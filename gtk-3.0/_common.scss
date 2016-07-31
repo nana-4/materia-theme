@@ -1105,6 +1105,16 @@ headerbar {
       }
     }
   }
+
+  .solid-csd & {
+    &:dir(rtl), &:dir(ltr) { // specificity bump
+      margin-left: -1px;
+      margin-right: -1px;
+      margin-top: -1px;
+      border-radius: 0;
+      box-shadow: none;
+    }
+  }
 }
 
 headerbar {
@@ -3137,11 +3147,12 @@ decoration {
   }
 
   .solid-csd & {
-    margin: 4px;
+    margin: 0;
+    padding: 4px;
     // border: solid 1px $borders_color;
     border-radius: 0;
-    box-shadow: none;
-    background-color: $bg_color;
+    box-shadow: inset 0 0 0 3px $headerbar_color, inset 0 1px $secondary_highlight_color;
+    background-color: $borders_color;
   }
 }
 
