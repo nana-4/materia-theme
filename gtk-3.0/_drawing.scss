@@ -115,45 +115,45 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 // normal, focus, insensitive, flat-normal, flat-focus, flat-insensitive;
 //
 
-  @if $t==normal {
+  @if $t == normal {
     transition: $material_transition, $shadow_transition;
     border-image: none;
     box-shadow: $z-depth-1;
-    background-color: if($fc!=$selected_bg_color, $fc, $base_color);
-    color: if($fc!=$selected_bg_color, $selected_fg_color, $fg_color);
+    background-color: if($fc != $selected_bg_color, $fc, $base_color);
+    color: if($fc != $selected_bg_color, $selected_fg_color, $fg_color);
   }
 
-  @if $t==focus {
+  @if $t == focus {
     border-image: none;
     box-shadow: $z-depth-2;
   }
 
-  @if $t==insensitive {
+  @if $t == insensitive {
     box-shadow: $z-depth-1;
     background-color: $secondary_base_color;
     color: $insensitive_fg_color;
   }
 
-  @if $t==flat-normal {
+  @if $t == flat-normal {
     transition: $material_transition;
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                   $fc 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
-    box-shadow: inset 0 -1px if($fc!=$selected_bg_color, $fc, $track_color);
+    box-shadow: inset 0 -1px if($fc != $selected_bg_color, $fc, $track_color);
     background-color: transparent;
     color: $fg_color;
   }
 
-  @if $t==flat-focus {
+  @if $t == flat-focus {
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                   $fc 100%,
                                   transparent 0%)
                                   0 0 2 / 0 0 2px;
-    box-shadow: inset 0 -1px if($fc!=$selected_bg_color, $fc, $track_color);
+    box-shadow: inset 0 -1px if($fc != $selected_bg_color, $fc, $track_color);
   }
 
-  @if $t==flat-insensitive {
+  @if $t == flat-insensitive {
     box-shadow: inset 0 -1px $track_color;
     background-color: transparent;
     color: $insensitive_fg_color;
@@ -176,7 +176,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 // flat-normal, flat-hover, flat-active, flat-insensitive, flat-checked, flat-checked-insensitive;
 //
 
-  @if $t==normal {
+  @if $t == normal {
   //
   // normal button
   //
@@ -190,7 +190,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     color: $secondary_fg_color;
   }
 
-  @if $t==hover {
+  @if $t == hover {
   //
   // hovered button
   //
@@ -202,7 +202,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     color: $fg_color;
   }
 
-  @if $t==active {
+  @if $t == active {
   //
   // pushed button
   //
@@ -212,18 +212,18 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     color: $fg_color;
   }
 
-  @if $t==insensitive {
+  @if $t == insensitive {
   //
   // insensitive button
   //
     box-shadow: none;
     background-color: $track_color;
-    color: if($tc!=$fg_color, $insensitive_fg_color, $insensitive_secondary_fg_color);
+    color: if($tc != $fg_color, $insensitive_fg_color, $insensitive_secondary_fg_color);
 
     > label { color: inherit; }
   }
 
-  @if $t==checked {
+  @if $t == checked {
   //
   // checked button
   //
@@ -231,7 +231,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     color: $selected_fg_color;
   }
 
-  @if $t==checked-insensitive {
+  @if $t == checked-insensitive {
   //
   // checked insensitive button
   //
@@ -241,7 +241,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     > label { color: inherit; }
   }
 
-  @if $t==flat-normal {
+  @if $t == flat-normal {
   //
   // normal flat button
   //
@@ -255,7 +255,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     color: $secondary_fg_color;
   }
 
-  @if $t==flat-hover {
+  @if $t == flat-hover {
   //
   // hovered flat button
   //
@@ -267,7 +267,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     color: $fg_color;
   }
 
-  @if $t==flat-active {
+  @if $t == flat-active {
   //
   // pushed flat button
   //
@@ -277,18 +277,18 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     color: $fg_color;
   }
 
-  @if $t==flat-insensitive {
+  @if $t == flat-insensitive {
   //
   // insensitive flat button
   //
     box-shadow: none;
     background-color: transparent;
-    color: if($tc!=$fg_color, $insensitive_fg_color, $insensitive_secondary_fg_color);
+    color: if($tc != $fg_color, $insensitive_fg_color, $insensitive_secondary_fg_color);
 
     > label { color: inherit; }
   }
 
-  @if $t==flat-checked {
+  @if $t == flat-checked {
   //
   // checked flat button
   //
@@ -296,7 +296,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     color: $fg_color;
   }
 
-  @if $t==flat-checked-insensitive {
+  @if $t == flat-checked-insensitive {
   //
   // checked flat insensitive button
   //
