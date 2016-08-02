@@ -258,15 +258,21 @@ entry {
     }
 
     image { // icons inside the entry
+      // @extend %button_basic.flat;
+
+      min-height: $small_size;
+      min-width: $small_size;
+      -gtk-outline-radius: 100px;
+      border-radius: 100px;
       color: gtkalpha(currentColor, $enabled_opacity);
 
       &:hover, &:active { color: currentColor; }
 
       &:disabled { color: gtkalpha(currentColor, $hint_opacity); }
 
-      &.left { padding-left: 2px; padding-right: 6px; }
+      &.left { margin-left: -2px; margin-right: 2px; }
 
-      &.right { padding-left: 6px; padding-right: 2px; }
+      &.right { margin-left: 2px; margin-right: -2px; }
     }
 
     undershoot {
