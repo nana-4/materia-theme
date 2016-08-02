@@ -132,29 +132,7 @@ textview {
 
 textview border {
   background-color: $secondary_base_color;
-  background-image: image($borders_color); // HACK: the border node just draws background so, using a background-image to draw the border
-  background-repeat: no-repeat;
   color: $tertiary_fg_color;
-
-  &.bottom {
-    background-size: 100% 1px;
-    background-position: top;
-  }
-
-  &.top {
-    background-size: 100% 1px;
-    background-position: bottom;
-  }
-
-  &.left {
-    background-size: 1px 100%;
-    background-position: right;
-  }
-
-  &.right {
-    background-size: 1px 100%;
-    background-position: left;
-  }
 }
 
 iconview { @extend .view; }
