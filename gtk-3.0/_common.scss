@@ -762,9 +762,11 @@ spinbutton {
 
       @extend %button_basic.image-button;
 
-      &.up { margin-left: -$container_padding / 2; }
+      &.up:dir(ltr),
+      &.down:dir(rtl) { margin-left: -$container_padding / 2; }
 
-      &.down { margin-right: -$container_padding / 2; }
+      &.up:dir(rtl),
+      &.down:dir(ltr) { margin-right: -$container_padding / 2; }
     }
   }
 
