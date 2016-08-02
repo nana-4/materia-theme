@@ -845,10 +845,12 @@ combobox arrow {
   min-height: 16px;
   min-width: 16px; }
 combobox menu,
-combobox .menu {
+combobox .menu,
+combobox .context-menu {
   padding: 2px 0; }
   combobox menu menuitem,
-  combobox .menu menuitem {
+  combobox .menu menuitem,
+  combobox .context-menu menuitem {
     min-height: 36px;
     padding: 0 10px; }
 combobox:drop(active) {
@@ -1184,17 +1186,20 @@ menubar,
       color: rgba(255, 255, 255, 0.3); }
 
 menu,
-.menu {
+.menu,
+.context-menu {
   margin: 4px 0;
   padding: 4px 0;
   background-color: #546E7A;
   border: 1px solid rgba(0, 0, 0, 0.2); }
   .csd menu, .csd
-  .menu {
+  .menu, .csd
+  .context-menu {
     border: none;
     border-radius: 2px; }
   menu menuitem,
-  .menu menuitem {
+  .menu menuitem,
+  .context-menu menuitem {
     transition: background-color 0.2s cubic-bezier(0, 0, 0.2, 1);
     min-height: 20px;
     min-width: 40px;
@@ -1202,26 +1207,38 @@ menu,
     font: initial;
     text-shadow: none; }
     menu menuitem:hover,
-    .menu menuitem:hover {
+    .menu menuitem:hover,
+    .context-menu menuitem:hover {
       transition: none;
       background-color: alpha(currentColor, 0.15); }
     menu menuitem:disabled,
-    .menu menuitem:disabled {
+    .menu menuitem:disabled,
+    .context-menu menuitem:disabled {
       color: rgba(255, 255, 255, 0.4); }
     menu menuitem arrow,
-    .menu menuitem arrow {
+    .menu menuitem arrow,
+    .context-menu menuitem arrow {
       min-height: 16px;
       min-width: 16px; }
       menu menuitem arrow:dir(ltr),
-      .menu menuitem arrow:dir(ltr) {
+      .menu menuitem arrow:dir(ltr),
+      .context-menu menuitem arrow:dir(ltr) {
         -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
         margin-left: 8px; }
       menu menuitem arrow:dir(rtl),
-      .menu menuitem arrow:dir(rtl) {
+      .menu menuitem arrow:dir(rtl),
+      .context-menu menuitem arrow:dir(rtl) {
         -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl");
         margin-right: 8px; }
+    menu menuitem label:dir(rtl), menu menuitem label:dir(ltr),
+    .menu menuitem label:dir(rtl),
+    .menu menuitem label:dir(ltr),
+    .context-menu menuitem label:dir(rtl),
+    .context-menu menuitem label:dir(ltr) {
+      color: inherit; }
   menu > arrow,
-  .menu > arrow {
+  .menu > arrow,
+  .context-menu > arrow {
     min-height: 16px;
     min-width: 16px;
     padding: 4px;
@@ -1229,26 +1246,31 @@ menu,
     background-color: #546E7A;
     color: rgba(255, 255, 255, 0.75); }
     menu > arrow.top,
-    .menu > arrow.top {
+    .menu > arrow.top,
+    .context-menu > arrow.top {
       margin-top: -4px;
       border-bottom: 1px solid rgba(0, 0, 0, 0.2);
       -gtk-icon-source: -gtk-icontheme("pan-up-symbolic"); }
     menu > arrow.bottom,
-    .menu > arrow.bottom {
+    .menu > arrow.bottom,
+    .context-menu > arrow.bottom {
       margin-bottom: -4px;
       border-top: 1px solid rgba(0, 0, 0, 0.2);
       -gtk-icon-source: -gtk-icontheme("pan-down-symbolic"); }
     menu > arrow:hover,
-    .menu > arrow:hover {
+    .menu > arrow:hover,
+    .context-menu > arrow:hover {
       background-image: image(alpha(currentColor, 0.15));
       color: #FFFFFF; }
     menu > arrow:disabled,
-    .menu > arrow:disabled {
+    .menu > arrow:disabled,
+    .context-menu > arrow:disabled {
       border-color: transparent;
       background-color: transparent;
       color: transparent; }
   menu separator,
-  .menu separator {
+  .menu separator,
+  .context-menu separator {
     margin: 4px 0; }
 
 menuitem accelerator {

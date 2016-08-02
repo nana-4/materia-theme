@@ -830,7 +830,8 @@ combobox {
   }
 
   menu,
-  .menu {
+  .menu,
+  .context-menu {
     padding: 2px 0;
 
     menuitem {
@@ -1312,7 +1313,8 @@ menubar,
 }
 
 menu,
-.menu {
+.menu,
+.context-menu {
   margin: 4px 0;
   padding: 4px 0;
   background-color: $base_color;
@@ -1353,6 +1355,10 @@ menu,
         margin-right: 8px;
       }
     }
+
+    // avoids labels color being overridden, see
+    // https://bugzilla.gnome.org/show_bug.cgi?id=767058
+    label { &:dir(rtl), &:dir(ltr) { color: inherit; }}
   }
 
   // overflow arrows
