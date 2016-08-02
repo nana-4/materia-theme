@@ -528,32 +528,17 @@ button {
     button.flat.text-button.image-button {
       -gtk-outline-radius: 2px;
       border-radius: 2px; }
-.info button:disabled,
-.question button:disabled,
-.warning button:disabled,
-.error button:disabled, row:selected
+infobar.info button:disabled, infobar.question button:disabled, infobar.warning button:disabled, infobar.error button:disabled, row:selected
 button:disabled {
   color: rgba(255, 255, 255, 0.3); }
-row:selected button.sidebar-button, .info button.flat,
-.question button.flat,
-.warning button.flat,
-.error button.flat, .gedit-search-slider entry.error ~ button, row:selected
+row:selected button.sidebar-button, infobar.info button.flat, infobar.question button.flat, infobar.warning button.flat, infobar.error button.flat, .gedit-search-slider entry.error ~ button, row:selected
 button.flat {
   color: rgba(255, 255, 255, 0.75); }
-  row:selected button.sidebar-button:hover, .info button.flat:hover,
-  .question button.flat:hover,
-  .warning button.flat:hover,
-  .error button.flat:hover, .gedit-search-slider entry.error ~ button:hover, row:selected button.sidebar-button:active, .info button.flat:active,
-  .question button.flat:active,
-  .warning button.flat:active,
-  .error button.flat:active, .gedit-search-slider entry.error ~ button:active, row:selected
+  row:selected button.sidebar-button:hover, infobar.info button.flat:hover, infobar.question button.flat:hover, infobar.warning button.flat:hover, infobar.error button.flat:hover, .gedit-search-slider entry.error ~ button:hover, row:selected button.sidebar-button:active, infobar.info button.flat:active, infobar.question button.flat:active, infobar.warning button.flat:active, infobar.error button.flat:active, .gedit-search-slider entry.error ~ button:active, row:selected
   button.flat:hover, row:selected
   button.flat:active {
     color: #FFFFFF; }
-  row:selected button.sidebar-button:disabled, .info button.flat:disabled,
-  .question button.flat:disabled,
-  .warning button.flat:disabled,
-  .error button.flat:disabled, .gedit-search-slider entry.error ~ button:disabled, row:selected
+  row:selected button.sidebar-button:disabled, infobar.info button.flat:disabled, infobar.question button.flat:disabled, infobar.warning button.flat:disabled, infobar.error button.flat:disabled, .gedit-search-slider entry.error ~ button:disabled, row:selected
   button.flat:disabled {
     color: rgba(255, 255, 255, 0.3); }
 button.osd {
@@ -775,17 +760,11 @@ button:visited, *:link:visited:hover,
 button:visited:hover, *:link:visited:active,
 button:visited:active {
   color: #E040FB; }
-.info *:link, .info button:link,
-.info button:visited,
-.question *:link,
-.question button:link,
-.question button:visited,
-.warning *:link,
-.warning button:link,
-.warning button:visited,
-.error *:link,
-.error button:link,
-.error button:visited, *:link:selected, button:selected:link,
+infobar.info *:link, infobar.info button:link,
+infobar.info button:visited, infobar.question *:link, infobar.question button:link,
+infobar.question button:visited, infobar.warning *:link, infobar.warning button:link,
+infobar.warning button:visited, infobar.error *:link, infobar.error button:link,
+infobar.error button:visited, *:link:selected, button:selected:link,
 button:selected:visited, .selection-mode.titlebar:not(headerbar) .subtitle:link,
 headerbar.selection-mode .subtitle:link, *:selected *:link, *:selected button:link,
 *:selected button:visited {
@@ -2365,24 +2344,16 @@ paned.vertical > separator {
  **************/
 infobar {
   border-style: none; }
-
-.info {
-  background-color: #66BB6A; }
-
-.question {
-  background-color: #42A5F5; }
-
-.warning {
-  background-color: #FFA726; }
-
-.error {
-  background-color: #EF5350; }
-
-.info,
-.question,
-.warning,
-.error {
-  color: #FFFFFF; }
+  infobar.info {
+    background-color: #66BB6A; }
+  infobar.question {
+    background-color: #42A5F5; }
+  infobar.warning {
+    background-color: #FFA726; }
+  infobar.error {
+    background-color: #EF5350; }
+  infobar.info > label, infobar.info, infobar.question > label, infobar.question, infobar.warning > label, infobar.warning, infobar.error > label, infobar.error {
+    color: #FFFFFF; }
 
 /************
  * Tooltips *
