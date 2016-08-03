@@ -255,6 +255,93 @@ notebook > stack:not(:only-child) revealer .gedit-search-slider .linked:not(.ver
 }
 
 
+/**************
+ * Tweak Tool *
+ **************/
+// the sidebar
+.tweak-categories {
+  // padding: 4px 0;
+  // background-color: shade(@theme_bg_color, 0.99);
+  background-image: image($light_color);
+
+  // hide separators
+  separator {
+    min-width: 0;
+    min-height: 0;
+    background: transparent;
+  }
+}
+
+.tweak-category {
+  // padding: 10px;
+}
+
+// the container and tweaks in a group
+.tweak-group {
+  // background-color: rgba(0, 0, 0, 0);
+}
+
+.tweak {
+  padding: 3px;
+  // padding-top: 3px;
+  // background-color: rgba(0, 0, 0, 0);
+}
+
+.tweak:hover {
+  // background-color: rgba(0, 0, 0, 0);
+}
+
+.tweak.title {
+  // padding-top: 10px;
+
+  &:hover { background-image: none; }
+}
+
+.tweak-titlebar-left:dir(ltr),
+.tweak-titlebar-right:dir(rtl) {
+  // border-top-right-radius: 0;
+}
+
+.tweak-titlebar-right:dir(ltr),
+.tweak-titlebar-left:dir(rtl) {
+  // border-top-left-radius: 0;
+}
+
+// individual tweak theme changes
+.tweak.title#title-theme {
+  // padding-top: 3px;
+}
+
+.tweak#hinting,
+.tweak#text-scaling-factor {
+  // padding-top: 20px;
+}
+
+.tweak-group-white,
+.tweak-white,
+.tweak-white:hover {
+  // background-color: white;
+  background-image: image($base_color);
+}
+
+.tweak-startup,
+.tweak-startup:hover {
+  // background-color: lighter(shade(@theme_bg_color, 0.9));
+  background-image: image($base_color);
+}
+
+.tweak-group-startup {
+  // background-color: @view_separators;
+  background-image: image($base_color);
+  border: 1px solid $borders_color;
+}
+
+// NOT WORKING 
+.main-container {
+  // padding: 20px;
+}
+
+
 /***********
  * Firefox *
  ***********/
