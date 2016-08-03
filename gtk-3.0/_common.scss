@@ -1,13 +1,15 @@
 $asset_suffix: if($variant=='dark', '-dark', '');
 $extra_background_clip: if($variant == 'light', padding-box, border-box);
 
-$small_size: 24px;
-$medium_size: 36px;
-$large_size: 48px;
+$small_size: if($laptop == 'true', 20px, 24px);
+$medium_size: if($laptop == 'true', 32px, 36px);
+$large_size: if($laptop == 'true', 44px, 48px);
+
+$container_padding: 6px;
+
 $bar_size: 4px;
 $menuitem_size: 28px;
 
-$container_padding: 6px;
 $material_radius: 2px;
 $material_faster: 0.2s;
 $material_slower: 0.3s;
@@ -371,7 +373,7 @@ button {
   @at-root %button_basic, & {
     min-height: 24px;
     min-width: 16px;
-    padding: 6px 10px;
+    padding: ($medium_size - 24px) / 2 ($medium_size - 16px) / 2;
     border-radius: 2px;
     font-weight: 500;
 
@@ -403,7 +405,7 @@ button {
 
     &.image-button {
       min-width: 24px;
-      padding: 6px;
+      padding: ($medium_size - 24px) / 2;
       -gtk-outline-radius: 100px;
       border-radius: 100px;
     }
@@ -414,14 +416,14 @@ button {
     }
 
     &.text-button.image-button {
-      padding-left: 10px;
-      padding-right: 10px;
+      padding-left: ($medium_size - 16px) / 2;
+      padding-right: ($medium_size - 16px) / 2;
       -gtk-outline-radius: 2px;
       border-radius: 2px;
 
       label {
-        &:last-child { padding-left: 2px; padding-right: 6px; }
-        &:first-child { padding-left: 6px; padding-right: 2px; }
+        &:last-child { padding-left: 2px; padding-right: 16px - ($medium_size - 16px) / 2; }
+        &:first-child { padding-left: 16px - ($medium_size - 16px) / 2; padding-right: 2px; }
       }
     }
 
@@ -463,9 +465,9 @@ button {
 
   // big standalone buttons like in Documents pager
   &.osd {
-    padding: 12px 16px;
+    padding: ($large_size - 24px) / 2 ($large_size - 16px) / 2;
 
-    &.image-button { padding: 12px; }
+    &.image-button { padding: ($large_size - 24px) / 2; }
 
     &:disabled { opacity: 0; }
   }
@@ -531,15 +533,15 @@ button {
 
     &.text-button {
       // compensate text-button paddings
-      padding-left: 10px;
-      padding-right: 10px;
+      padding-left: 16px - 6px;
+      padding-right: 16px - 6px;
     }
 
     &.image-button {
       // we want image buttons to have a 1:1 aspect ratio, so compensation
       // of the padding added to the GtkImage is needed
-      padding-left: 4px;
-      padding-right: 4px;
+      padding-left: ($medium_size - 16px) / 2 - 6px;
+      padding-right: ($medium_size - 16px) / 2 - 6px;
     }
 
     &.needs-attention {
@@ -742,7 +744,7 @@ spinbutton {
 
     %spinbutton_entry,
     entry {
-      min-width: $large_size - 16px;
+      min-width: $large_size - 8px * 2;
       // reset all the other props since the spinbutton node is styled here
       margin: 0;
       border-image: none;
@@ -844,7 +846,7 @@ combobox {
 
     menuitem {
       min-height: $medium_size;
-      padding: 0 10px;
+      padding: 0 ($medium_size - 16px) / 2;
     }
   }
 
@@ -1169,8 +1171,8 @@ headerbar {
   }
 
   image {
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: ($medium_size - 16px) / 2 - 6px;
+    padding-right: ($medium_size - 16px) / 2 - 6px;
   }
 
   &.slider-button {
@@ -1582,9 +1584,9 @@ notebook {
 
     tab {
       transition: $material_transition;
-      min-height: 24px;
-      min-width: 24px;
-      padding: 6px 12px;
+      min-height: $small_size;
+      min-width: $small_size;
+      padding: $container_padding 12px;
 
       outline-offset: -6px;
 
@@ -1627,13 +1629,13 @@ notebook {
         @extend %button_basic.image-button;
 
         &:last-child {
-          margin-left: 6px;
-          margin-right: -6px;
+          margin-left: $container_padding;
+          margin-right: $container_padding - 12px;
         }
 
         &:first-child {
-          margin-left: -6px;
-          margin-right: 6px;
+          margin-left: $container_padding - 12px;
+          margin-right: $container_padding;
         }
       }
     }
@@ -2098,17 +2100,17 @@ scale {
   $_marks_lenght: 8px;
   $_marks_distance: 8px;
 
-  min-height: 12px;
-  min-width: 12px;
-  padding: 12px;
+  min-height: $medium_size - 24px;
+  min-width: $medium_size - 24px;
+  padding: (24px / 2);
 
   * { transition: $material_transition; }
 
   // the slider is inside the trough, so to have make it bigger there's a negative margin
   slider {
-    min-height: $small_size;
-    min-width: $small_size;
-    margin: -10px;
+    min-height: 24px;
+    min-width: 24px;
+    margin: ($bar_size - 24px) / 2;
   }
 
   // the backing bit
@@ -2215,7 +2217,7 @@ scale {
 
             @if $dir_class == 'horizontal' {
               min-height: 30px;
-              min-width: $small_size;
+              min-width: 24px;
 
               @if $marks_infix == 'scale-has-marks-above' {
                 margin-top: -16px;
@@ -2239,7 +2241,7 @@ scale {
             }
 
             @if $dir_class == 'vertical' {
-              min-height: $small_size;
+              min-height: 24px;
               min-width: 30px;
 
               @if $marks_infix == 'scale-has-marks-above' {
