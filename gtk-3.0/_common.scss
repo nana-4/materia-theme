@@ -1179,6 +1179,41 @@ headerbar {
     padding-left: 0;
     padding-right: 0;
   }
+
+  :not(headerbar) & {
+    @extend %button_basic.flat;
+
+    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
+                                  $selected_bg_color 0%,
+                                  transparent 0%)
+                                  0 0 0 / 0 0 0px;
+    border-radius: 2px;
+    color: gtkalpha(currentColor, $enabled_opacity);
+
+    &:hover, &:active { color: currentColor; }
+
+    &:disabled {
+      color: gtkalpha(currentColor, $enabled_opacity * $disabled_opacity);
+
+      > label { color: inherit; }
+    }
+
+    &:checked {
+      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
+                                    $selected_bg_color 100%,
+                                    transparent 0%)
+                                    0 0 2 / 0 0 2px;
+      background-color: transparent;
+      color: currentColor;
+
+      &:disabled {
+        background-color: transparent;
+        color: gtkalpha(currentColor, $disabled_opacity);
+
+        > label { color: inherit; }
+      }
+    }
+  }
 }
 
 
@@ -2687,7 +2722,10 @@ messagedialog { // Message Dialog styling
 filechooser {
   .dialog-action-box { border-top: 1px solid $borders_color; }
 
-  #pathbarbox { border-bottom: 1px solid $borders_color; }
+  #pathbarbox {
+    border-bottom: 1px solid $borders_color;
+    background-color: $bg_color;
+  }
 }
 
 filechooserbutton:drop(active) {
