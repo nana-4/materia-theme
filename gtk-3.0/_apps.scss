@@ -343,6 +343,416 @@ notebook > stack:not(:only-child) revealer .gedit-search-slider .linked:not(.ver
 
 
 /***********
+ * Builder *
+ ***********/
+//
+// Titlebar adjustments for workbench
+//
+// This is needed due to our placement of headerbar inside of a
+// stack. We were seeing black edges around the header bar, and
+// improper radius on the headerbar.
+//
+workbench stack.titlebar {
+  padding: 0;
+  // box-shadow: none;
+}
+
+workbench:not(.tiled):not(.maximized):not(.fullscreen) stack.titlebar headerbar {
+  border-radius: 2px 2px 0 0;
+  // box-shadow: none;
+}
+
+perspectiveswitcher {
+  background-color: $bg_color;
+}
+
+perspectiveswitcher button {
+}
+
+perspectiveswitcher button:hover {
+}
+
+perspectiveswitcher button:checked {
+  color: $selected_bg_color;
+}
+
+//
+// Layout tab and tab bar tweaks
+//
+// The following makes the layout stack header look similar to a tab bar.
+//
+layouttabbar {
+  border-bottom: 1px solid $borders_color;
+  background-color: $bg_color;
+}
+
+layouttabbar button { @extend %button_basic.flat; }
+
+layouttabbar > box > button {
+  margin: (40px - $medium_size) / 2 0;
+  // border-radius: 0;
+}
+
+layouttab {
+  margin: 0 8px; // not working
+  border-style: none solid;
+  border-width: 1px;
+  border-color: $borders_color;
+  box-shadow: inset 0 -2px $selected_bg_color;
+  background-color: $base_color;
+}
+
+layouttab separator.vertical {
+  margin: 8px 4px;
+}
+
+layouttab button {
+  &.text-button, &.image-button, & {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 0 4px;
+  }
+}
+
+//
+// Close button styling for layouttab.
+//
+layouttab > box > button.close {
+  border-radius: 100px;
+}
+
+layout {
+  border: 1px solid $borders_color;
+  -PnlDockBin-handle-size: 1;
+}
+
+entry.search-missing {
+  background-color: $error_color;
+  color: $selected_fg_color;
+}
+
+// tweak icons for treeviews
+workbench treeview.image { color: gtkalpha(currentColor, $hint_opacity); }
+workbench treeview.image:selected { color: $tertiary_selected_fg_color; }
+
+dockbin {
+  border: 1px solid $borders_color;
+  -PnlDockBin-handle-size: 1;
+}
+
+dockpaned {
+  border: 1px solid $borders_color;
+}
+
+eggsearchbar box.search-bar {
+  padding: 0 8px;
+  border-bottom: 1px solid $borders_color;
+  background-color: $bg_color;
+}
+
+docktabstrip {
+  padding: 0 8px;
+  border-bottom: 1px solid $borders_color;
+  background-color: $bg_color;
+}
+
+docktab {
+  transition: $material_transition;
+  min-height: $small_size;
+  min-width: $small_size;
+  margin-bottom: -1px;
+  padding: $container_padding 6px;
+
+  outline-offset: -6px;
+
+  border-width: 1px;         // for reorderable tabs
+  border-color: transparent; //
+
+  color: $secondary_fg_color;
+  font-weight: 500;
+
+  &:hover {
+    box-shadow: inset 0 -2px $track_color;
+    color: $fg_color;
+  }
+
+  &:checked {
+    animation: tab_ripple_effect $material_slower * 3 $material_ease_out;
+    box-shadow: inset 0 -2px $selected_bg_color;
+    color: $fg_color;
+  }
+}
+
+dockoverlayedge {
+  background-color: $bg_color;
+}
+
+dockoverlayedge docktabstrip {
+  padding: 0;
+  border: none;
+}
+
+dockoverlayedge.left-edge docktab:checked {
+  border-right-color: $selected_bg_color;
+  border-bottom-color: transparent;
+}
+
+dockoverlayedge.right-edge docktab:checked {
+  border-left-color: $selected_bg_color;
+  border-bottom-color: transparent;
+}
+
+pillbox {
+  background-color: $bg_color;
+  border-radius: 2px;
+}
+
+layoutpane entry.search {
+  @extend %entry.flat;
+
+  box-shadow: inset 0 -1px $borders_color;
+  background-color: $base_color;
+}
+
+editortweak entry.search {
+  @extend %entry.flat;
+
+  margin-bottom: -1px;
+  box-shadow: none;
+}
+
+// work around some gtk padding issue
+filechooser actionbar button.combo {
+  // padding: 0;
+}
+
+// styling for editor search
+frame.gb-search-frame {
+  // background-image: linear-gradient(shade(@theme_bg_color,1.05), @theme_bg_color);
+  // padding: 6px;
+  // border-style: solid;
+  // border-color: @borders;
+  // border-left-width: 1px;
+  // border-right-width: 1px;
+  // border-bottom-width: 1px;
+  // border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+frame.gb-search-frame border {
+  // border: none;
+}
+
+// styling for NautilusFloatingBar
+.floating-bar {
+  // padding: 2px;
+  // background-color: @theme_base_color;
+  // border-width: 1px;
+  // border-style: solid solid none;
+  // border-color: @borders;
+  // border-radius: 3px 3px 0 0;
+}
+
+.floating-bar.bottom.left { // axes left border and border radius
+  // border-left-style: none;
+  // border-top-left-radius: 0;
+}
+
+.floating-bar.bottom.right { // axes right border and border radius
+  // border-right-style: none;
+  // border-top-right-radius: 0;
+}
+
+.floating-bar:backdrop {
+  // background-color: @theme_unfocused_base_color;
+  // border-color: @unfocused_borders;
+}
+
+.floating-bar button {
+  // padding: 4px;
+}
+
+.gb-search-entry-occurrences-tag {
+  // color: shade (@theme_unfocused_fg_color, 0.8);
+  // border: 0px;
+  // margin: 2px;
+  // padding: 2px;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+//
+// For our pattern of popover with lists (and close buttons).
+//
+popover list row {
+  // padding: 6px;
+}
+
+popover list row button {
+  // background: transparent;
+  // border: none;
+  // box-shadow: none;
+  // margin: 0;
+  // padding: 0;
+  // opacity: 0.25;
+}
+
+popover list row:selected button,
+popover list row:selected button:hover {
+  // color: @theme_selected_fg_color;
+}
+
+popover list row button:hover {
+  // opacity: 1;
+}
+
+//
+// Tweaks for the editortweak popover in the editor.
+//
+editortweak button {
+  // padding: 0 6px 0 6px;
+}
+
+editortweak list row {
+  // padding: 0;
+}
+
+//
+// Keep search bar and layouttab height in sync.
+//
+docktabstrip {
+  min-height: 39px;
+}
+
+layouttabbar > box {
+  // min-height: 39px;
+}
+
+eggsearchbar > revealer > box {
+  // min-height: 39px;
+}
+
+eggsearchbar entry {
+  // min-height: 24px;
+}
+
+//
+// Pillbox is used to render "languages" in the greeter.
+//
+pillbox {
+  // border-radius: 3px;
+}
+
+//
+// Styling in the genesis (create project) perspective.
+//
+genesisperspective stack > box:first-child list row {
+  // padding: 10px;
+  // border-bottom: 1px solid alpha(@borders, 0.2);
+}
+
+genesisperspective stack > box:first-child list row:last-child {
+  // border-bottom: none;
+}
+
+//
+// Greeter tweaks
+//
+// The following tweaks the greeter perspective by adding
+// separator lines to the list box.
+//
+greeter list row {
+  // border-bottom: 1px solid alpha(@borders, 0.2);
+}
+
+greeter list row:last-child {
+  // border-bottom: none;
+}
+
+greeter frame border {
+  // border-color: alpha(@borders, 0.6);
+}
+
+//
+// Global search results styling
+//
+// The following tweaks the sizing of listbox rows in the
+// global search results to have a bit more padding and
+// row separators after each line. Additionally, we tweak
+// the selection color to ensure it has priority.
+//
+omnisearchdisplay omnisearchgroup omnisearchrow {
+  // background: transparent;
+  // padding: 9px 12px 9px 12px;
+  // border-bottom: 1px solid alpha(@borders, 0.2);
+}
+
+omnisearchdisplay omnisearchgroup omnisearchrow:last-child {
+  // border-bottom: none;
+}
+
+omnisearchdisplay omnisearchgroup omnisearchrow:selected {
+  // background-color: @theme_selected_bg_color;
+  // color: @theme_selected_fg_color;
+}
+
+//
+// Preferences styling
+//
+// The following tweaks our preferences styling in the
+// preferences perspective, including groups, rows,
+// sidebar, etc.
+//
+workbench preferences stacksidebar list {
+  // border-right: 1px solid alpha(@borders, 0.4);
+  // background-color: @theme_base_color;
+}
+
+workbench preferences preferencesgroup list row {
+  // padding: 10px;
+  // border-bottom: 1px solid alpha(@borders, 0.2);
+}
+
+workbench preferences preferencesgroup list row:last-child {
+  // border-bottom: none;
+}
+
+workbench preferences preferencesgroup list entry {
+  // background: none;
+  // min-height: 0px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+//
+// Perspectives switcher
+//
+// The following tweaks the left-most sidebar containing
+// the list of perspectives.
+//
+perspectiveswitcher {
+  // border-right: 1px solid alpha(@borders, 0.5);
+}
+
+perspectiveswitcher button {
+  // background: transparent;
+  // border-radius: 0;
+  // border: none;
+  // box-shadow: none;
+  // padding: 6px;
+}
+
+// Workaround Adwaita adding borders we don't want
+textview border.left {
+  // background: none;
+}
+
+treeview.dim-label {
+  // color: alpha(currentColor, 0.5);
+}
+
+
+/***********
  * Firefox *
  ***********/
 menubar {
