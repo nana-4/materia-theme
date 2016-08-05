@@ -1488,6 +1488,29 @@ popover.background {
     &.osd { @extend %osd; }
   }
 
+  // entry { @extend %entry.flat; }
+
+  // button:not(.suggested-action):not(.destructive-action) { @extend %button_basic.flat; }
+
+  &.menu button.model {
+    @extend %button_basic.flat;
+
+    min-height: 32px;
+    padding: 0 8px;
+
+    &:checked {
+      background-color: $selected_bg_color;
+      color: $selected_fg_color;
+    }
+  }
+
+  &.menu .linked > button.model {
+    &:dir(rtl), &:dir(ltr) { // specificity bump
+      -gtk-outline-radius: 2px;
+      border-radius: 2px;
+    }
+  }
+
   separator { margin: 4px 0; }
 
   list separator { margin: 0; }
