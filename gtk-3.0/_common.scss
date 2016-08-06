@@ -259,6 +259,16 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
 
   .osd & {
   }
+
+  GtkTreeView &:not(:selected) {
+    &, &:focus {
+      padding: 2px;
+      border-image: none;
+      border-radius: 0;
+      box-shadow: none;
+      background-color: $base_color;
+    }
+  }
 }
 
 
