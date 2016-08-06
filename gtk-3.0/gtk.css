@@ -2416,6 +2416,58 @@ GtkColorSwatch {
   color: rgba(0, 0, 0, 0.32); }
 
 /* View */
+/*********
+ * Unity *
+ *********/
+UnityDecoration {
+  -UnityDecoration-extents: 32px 0 0 0;
+  -UnityDecoration-input-extents: 8px;
+  -UnityDecoration-shadow-offset-x: 0;
+  -UnityDecoration-shadow-offset-y: 3px;
+  -UnityDecoration-active-shadow-color: rgba(0, 0, 0, 0.48);
+  -UnityDecoration-active-shadow-radius: 18px;
+  -UnityDecoration-inactive-shadow-color: rgba(0, 0, 0, 0.32);
+  -UnityDecoration-inactive-shadow-radius: 6px;
+  -UnityDecoration-glow-size: 8px;
+  -UnityDecoration-glow-color: #00BCD4;
+  -UnityDecoration-title-indent: 4px;
+  -UnityDecoration-title-fade: 32px;
+  -UnityDecoration-title-alignment: 0.0; }
+
+UnityDecoration.top {
+  padding: 0 4px;
+  border-style: none;
+  border-radius: 2px 2px 0 0;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.2);
+  background-color: #dee4e7; }
+
+UnityDecoration.menubar.menuitem:hover,
+UnityDecoration.menubar .menuitem *:hover {
+  box-shadow: inset 0 -2px #00BCD4;
+  background-color: transparent; }
+
+.background:not(.csd) .header-bar {
+  border-radius: 0;
+  box-shadow: none; }
+
+UnityPanelWidget,
+.unity-panel {
+  background-color: #dee4e7;
+  background-image: image(#dee4e7); }
+
+.unity-panel.menubar.menuitem:hover,
+.unity-panel.menubar .menuitem *:hover {
+  box-shadow: inset 0 -2px #00BCD4;
+  background-color: transparent; }
+
+@keyframes playbackmenuitem_spinner {
+  to {
+    -gtk-icon-transform: rotate(1turn); } }
+.menu IdoPlaybackMenuItem.menuitem:active {
+  -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
+  animation: playbackmenuitem_spinner 1s infinite linear;
+  color: #00BCD4; }
+
 /* GTK NAMED COLORS
    ----------------
    use responsibly! */
