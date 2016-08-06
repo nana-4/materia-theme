@@ -1,0 +1,19 @@
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 54 54">
+ <defs>
+  <filter id="a" style="color-interpolation-filters:sRGB" height="2" width="2" y="-.5" x="-.5">
+   <feFlood result="flood" flood-opacity=".12" flood-color="rgb(0,0,0)"/>
+   <feComposite operator="in" result="composite1" in2="SourceGraphic" in="flood"/>
+   <feGaussianBlur stdDeviation="1.5" result="blur" in="composite1"/>
+   <feOffset result="offset" dx="0" dy="1"/>
+   <feComposite operator="over" result="fbSourceGraphic" in2="offset" in="SourceGraphic"/>
+   <feColorMatrix values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0" result="fbSourceGraphicAlpha" in="fbSourceGraphic"/>
+   <feFlood result="flood" flood-color="rgb(0,0,0)" in="fbSourceGraphic" flood-opacity=".24"/>
+   <feComposite operator="in" result="composite1" in2="fbSourceGraphic" in="flood"/>
+   <feGaussianBlur result="blur" stdDeviation="1" in="composite1"/>
+   <feOffset result="offset" dx="0" dy="1"/>
+   <feComposite operator="over" result="composite2" in2="offset" in="fbSourceGraphic"/>
+  </filter>
+ </defs>
+ <rect rx="2" ry="2" height="8" filter="url(#a)" width="46" y="23" x="4" fill="#ffffff"/>
+ <rect fill-opacity=".096" height="4" width="42" y="25" x="6" fill="#000000"/>
+</svg>
