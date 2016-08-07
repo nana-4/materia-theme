@@ -154,18 +154,18 @@ GtkTextView {
   .entry:insensitive {
     color: rgba(255, 255, 255, 0.4);
     background-color: #3e515a; }
-  .entry.flat, .notebook:not(.reorderable-page) > .entry {
+  .entry.flat, .notebook GtkGrid > .entry {
     border-radius: 0;
     border-image: -gtk-gradient(radial, center bottom, 0, center bottom, 0.001, to(#00BCD4), to(transparent)) 0 0 0/0 0 0px;
     border-radius: 0;
     box-shadow: inset 0 -1px alpha(currentColor, 0.3);
     background-color: transparent;
     color: #FFFFFF; }
-    .entry.flat:focus, .notebook:not(.reorderable-page) > .entry:focus {
+    .entry.flat:focus, .notebook GtkGrid > .entry:focus {
       border-image: -gtk-gradient(radial, center bottom, 0, center bottom, 0.5, to(#00BCD4), to(transparent)) 0 0 2/0 0 2px;
       box-shadow: inset 0 -2px #00BCD4;
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0 cubic-bezier(0.4, 0, 0.2, 1) 0.2s, color 0; }
-    .entry.flat:insensitive, .notebook:not(.reorderable-page) > .entry:insensitive {
+    .entry.flat:insensitive, .notebook GtkGrid > .entry:insensitive {
       box-shadow: inset 0 -1px alpha(currentColor, 0.3);
       background-color: transparent;
       color: rgba(255, 255, 255, 0.4); }
@@ -191,17 +191,17 @@ GtkTextView {
     .entry.error:insensitive {
       color: rgba(255, 255, 255, 0.4);
       background-color: #3e515a; }
-    .entry.error.flat, .notebook:not(.reorderable-page) > .error.entry {
+    .entry.error.flat, .notebook GtkGrid > .error.entry {
       border-image: -gtk-gradient(radial, center bottom, 0, center bottom, 0.001, to(#DD2C00), to(transparent)) 0 0 0/0 0 0px;
       border-radius: 0;
       box-shadow: inset 0 -1px #DD2C00;
       background-color: transparent;
       color: #FFFFFF; }
-      .entry.error.flat:focus, .notebook:not(.reorderable-page) > .error.entry:focus {
+      .entry.error.flat:focus, .notebook GtkGrid > .error.entry:focus {
         border-image: -gtk-gradient(radial, center bottom, 0, center bottom, 0.5, to(#DD2C00), to(transparent)) 0 0 2/0 0 2px;
         box-shadow: inset 0 -2px #DD2C00;
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0 cubic-bezier(0.4, 0, 0.2, 1) 0.2s, color 0; }
-      .entry.error.flat:insensitive, .notebook:not(.reorderable-page) > .error.entry:insensitive {
+      .entry.error.flat:insensitive, .notebook GtkGrid > .error.entry:insensitive {
         box-shadow: inset 0 -1px alpha(currentColor, 0.3);
         background-color: transparent;
         color: rgba(255, 255, 255, 0.4); }
@@ -214,17 +214,17 @@ GtkTextView {
     .entry.warning:insensitive {
       color: rgba(255, 255, 255, 0.4);
       background-color: #3e515a; }
-    .entry.warning.flat, .notebook:not(.reorderable-page) > .warning.entry {
+    .entry.warning.flat, .notebook GtkGrid > .warning.entry {
       border-image: -gtk-gradient(radial, center bottom, 0, center bottom, 0.001, to(#FF6D00), to(transparent)) 0 0 0/0 0 0px;
       border-radius: 0;
       box-shadow: inset 0 -1px #FF6D00;
       background-color: transparent;
       color: #FFFFFF; }
-      .entry.warning.flat:focus, .notebook:not(.reorderable-page) > .warning.entry:focus {
+      .entry.warning.flat:focus, .notebook GtkGrid > .warning.entry:focus {
         border-image: -gtk-gradient(radial, center bottom, 0, center bottom, 0.5, to(#FF6D00), to(transparent)) 0 0 2/0 0 2px;
         box-shadow: inset 0 -2px #FF6D00;
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0 cubic-bezier(0.4, 0, 0.2, 1) 0.2s, color 0; }
-      .entry.warning.flat:insensitive, .notebook:not(.reorderable-page) > .warning.entry:insensitive {
+      .entry.warning.flat:insensitive, .notebook GtkGrid > .warning.entry:insensitive {
         box-shadow: inset 0 -1px alpha(currentColor, 0.3);
         background-color: transparent;
         color: rgba(255, 255, 255, 0.4); }
@@ -2387,6 +2387,9 @@ GtkColorSwatch {
 /************
  * Nautilus *
  ************/
+EelEditableLabel.entry {
+  transition: none; }
+
 .nautilus-desktop.nautilus-canvas-item {
   color: #FFFFFF;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
