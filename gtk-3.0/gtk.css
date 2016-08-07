@@ -10,9 +10,9 @@
     background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 100%, transparent 0%), image(alpha(currentColor, 0.15)); } }
 @keyframes row_ripple_effect {
   from {
-    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 0%, transparent 0%), image(alpha(currentColor, 0.05)); }
+    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 0%, transparent 0%), image(alpha(currentColor, 0)); }
   to {
-    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 100%, transparent 0%), image(alpha(currentColor, 0.15)); } }
+    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 100%, transparent 0%), image(alpha(currentColor, 0)); } }
 @keyframes tab_ripple_effect {
   from {
     background-image: radial-gradient(circle farthest-corner at center, rgba(66, 165, 245, 0.6) 0%, transparent 0%); }
@@ -2152,17 +2152,17 @@ list {
   list row {
     padding: 2px; }
 
-row {
-  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), color 0; }
-  row:hover {
-    transition: none; }
-  row.activatable, .view, iconview, treeview.view header button {
-    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0)); }
-    row.activatable:hover, .view:hover, iconview:hover, treeview.view header button:hover {
-      background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0.05)); }
-    row.activatable.has-open-popup, .has-open-popup.view, iconview.has-open-popup, treeview.view header button.has-open-popup, row.activatable:active, .view:active, iconview:active, treeview.view header button:active {
-      transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), color 0, background-image 0;
-      animation: row_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards; }
+row.activatable, .view, iconview, treeview.view header button {
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), color 0;
+  box-shadow: inset 0 0 0 10000px alpha(currentColor, 0);
+  background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0)); }
+  row.activatable:hover, .view:hover, iconview:hover, treeview.view header button:hover {
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), color 0, box-shadow 0;
+    box-shadow: inset 0 0 0 10000px alpha(currentColor, 0.05); }
+  row.activatable.has-open-popup, .has-open-popup.view, iconview.has-open-popup, treeview.view header button.has-open-popup, row.activatable:active, .view:active, iconview:active, treeview.view header button:active {
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), color 0, background-image 0;
+    animation: row_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
+    box-shadow: inset 0 0 0 10000px alpha(currentColor, 0.15); }
 
 /*********************
  * App Notifications *
@@ -2754,7 +2754,7 @@ notebook > stack:not(:only-child) revealer .gedit-search-slider .linked:not(.ver
   padding: 3px; }
 
 .tweak.title:hover {
-  background-image: none; }
+  box-shadow: none; }
 
 .tweak-group-white,
 .tweak-white,
