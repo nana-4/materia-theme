@@ -75,7 +75,7 @@
 }
 
 .nautilus-circular-button {
-  @extend %button_basic.image-button;
+  @extend %circular_button;
 }
 
 // Toolbar
@@ -139,7 +139,7 @@
 }
 
 .documents-entry-tag.button {
-  // @extend %button_basic.flat;
+  // @extend %simple_flat_button;
 
   // min-height: 24px;
   // min-width: 24px;
@@ -200,13 +200,10 @@
 
 /* Try to look as the notebook tab close button */
 .gedit-document-panel row button.flat {
-  min-height: $small_size;
-  min-width: $small_size;
-  padding: 0;
   margin-top: 8px;
   margin-bottom: 8px;
 
-  @extend %button_basic.image-button;
+  @extend %small_button;
 }
 
 statusbar {
@@ -237,11 +234,17 @@ statusbar {
       .gedit-search-entry-occurrences-tag { margin-left: -8px; }
     }
 
-    &.error ~ button { @extend %button_selected.flat; }
+    &.error ~ button {
+      color: $secondary_selected_fg_color;
+
+      &:hover, &:active { color: $selected_fg_color; }
+
+      &:disabled { color: $insensitive_secondary_selected_fg_color; }
+    }
   }
 
   button {
-    @extend %button_basic.flat;
+    @extend %simple_flat_button;
 
     &:dir(ltr),
     &:dir(rtl) { @extend %linked; }
@@ -386,7 +389,7 @@ layouttabbar {
   background-color: $bg_color;
 }
 
-layouttabbar button { @extend %button_basic.flat; }
+layouttabbar button { @extend %flat_button; }
 
 layouttabbar > box > button {
   margin: (40px - $medium_size) / 2 0;

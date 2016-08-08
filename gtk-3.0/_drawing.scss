@@ -252,7 +252,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
                                       gtkalpha(currentColor, 0) 100%,
                                       transparent 0%),
                       image(gtkalpha(currentColor, 0));
-    color: $secondary_fg_color;
+    color: gtkalpha(currentColor, $enabled_opacity);
   }
 
   @if $t == flat-hover {
@@ -264,7 +264,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
                                       gtkalpha(currentColor, 0) 100%,
                                       transparent 0%),
                       image(gtkalpha(currentColor, $lower_opacity / 2));
-    color: $fg_color;
+    color: currentColor;
   }
 
   @if $t == flat-active {
@@ -274,7 +274,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     transition: $material_transition, background-image 0;
     animation: flat_ripple_effect $material_slower $material_ease_out forwards;
     box-shadow: none;
-    color: $fg_color;
+    color: currentColor;
   }
 
   @if $t == flat-insensitive {
@@ -283,7 +283,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   //
     box-shadow: none;
     background-color: transparent;
-    color: if($tc != $fg_color, $insensitive_fg_color, $insensitive_secondary_fg_color);
+    color: if($tc != $fg_color, gtkalpha(currentColor, $disabled_opacity), gtkalpha(currentColor, $enabled_opacity * $disabled_opacity));
 
     > label { color: inherit; }
   }
@@ -293,7 +293,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   // checked flat button
   //
     background-color: $track_color;
-    color: $fg_color;
+    color: currentColor;
   }
 
   @if $t == flat-checked-insensitive {
@@ -301,7 +301,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   // checked flat insensitive button
   //
     background-color: $track_color;
-    color: $insensitive_fg_color;
+    color: gtkalpha(currentColor, $disabled_opacity);
 
     > label { color: inherit; }
   }

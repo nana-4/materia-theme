@@ -343,6 +343,14 @@ entry progress {
   border-width: 2px;
   border-color: #42A5F5;
   background-color: transparent; }
+.linked:not(.vertical) > spinbutton.flat:not(.vertical), notebook > stack:not(:only-child) .linked:not(.vertical) > entry,
+notebook > stack:not(:only-child) .linked:not(.vertical) > spinbutton:not(.vertical), notebook > stack:not(:only-child) revealer .linked:not(.vertical) > entry.flat,
+notebook > stack:not(:only-child) revealer .linked:not(.vertical) > spinbutton.flat:not(.vertical), colorchooser .popover.osd .linked:not(.vertical) > spinbutton:not(.vertical), layoutpane .linked:not(.vertical) > entry.search, editortweak .linked:not(.vertical) > entry.search, .linked.vertical > spinbutton.flat:not(.vertical), notebook > stack:not(:only-child) .linked.vertical > entry,
+notebook > stack:not(:only-child) .linked.vertical > spinbutton:not(.vertical), notebook > stack:not(:only-child) revealer .linked.vertical > entry.flat,
+notebook > stack:not(:only-child) revealer .linked.vertical > spinbutton.flat:not(.vertical), colorchooser .popover.osd .linked.vertical > spinbutton:not(.vertical), layoutpane .linked.vertical > entry.search, editortweak .linked.vertical > entry.search, .linked:not(.vertical) >
+entry.flat, .linked.vertical >
+entry.flat {
+  border-radius: 0; }
 
 treeview entry.flat, treeview entry {
   min-height: 0;
@@ -395,79 +403,70 @@ button {
     color: rgba(66, 165, 245, 0.4); }
     button:checked:disabled > label {
       color: inherit; }
-  .inline-toolbar
-  button, modelbutton.flat,
-  .menuitem.button.flat, spinbutton:not(.vertical) button, spinbutton.vertical button, toolbar.osd button, .app-notification button,
+  modelbutton.flat,
+  .menuitem.button.flat, spinbutton:not(.vertical) button, spinbutton.vertical button, popover.background.menu button.model, notebook > header > tabs > arrow, scrollbar button, check,
+  radio, calendar.button, messagedialog.csd .dialog-action-area button, button.sidebar-button, .gedit-search-slider button, :not(headerbar) .path-bar button, layouttabbar button, .inline-toolbar
+  button, toolbar.osd button, .app-notification button,
   .app-notification.frame button, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
-  headerbar button:not(.suggested-action):not(.destructive-action), :not(headerbar) .path-bar button, popover.background.menu button.model, notebook > header > tabs > arrow, scrollbar button, check,
-  radio, calendar.button, messagedialog.csd .dialog-action-area button, button.sidebar-button, .gedit-search-slider button, layouttabbar button,
+  headerbar button:not(.suggested-action):not(.destructive-action),
   button.flat {
     transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), color 0;
     box-shadow: none;
     background-color: transparent;
     background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0));
-    color: rgba(255, 255, 255, 0.75); }
-    .inline-toolbar
-    button:hover, modelbutton.flat:hover,
-    .menuitem.button.flat:hover, spinbutton:not(.vertical) button:hover, spinbutton.vertical button:hover, toolbar.osd button:hover, .app-notification button:hover, .titlebar:not(headerbar) button:hover:not(.suggested-action):not(.destructive-action),
-    headerbar button:hover:not(.suggested-action):not(.destructive-action), :not(headerbar) .path-bar button:hover, popover.background.menu button.model:hover, notebook > header > tabs > arrow:hover, scrollbar button:hover, check:hover,
-    radio:hover, calendar.button:hover, messagedialog.csd .dialog-action-area button:hover, button.sidebar-button:hover, .gedit-search-slider button:hover, layouttabbar button:hover,
+    color: alpha(currentColor, 0.75); }
+    modelbutton.flat:hover,
+    .menuitem.button.flat:hover, spinbutton:not(.vertical) button:hover, spinbutton.vertical button:hover, popover.background.menu button.model:hover, notebook > header > tabs > arrow:hover, scrollbar button:hover, check:hover,
+    radio:hover, calendar.button:hover, messagedialog.csd .dialog-action-area button:hover, button.sidebar-button:hover, .gedit-search-slider button:hover, :not(headerbar) .path-bar button:hover, layouttabbar button:hover, .inline-toolbar
+    button:hover, toolbar.osd button:hover, .app-notification button:hover, .titlebar:not(headerbar) button:hover:not(.suggested-action):not(.destructive-action),
+    headerbar button:hover:not(.suggested-action):not(.destructive-action),
     button.flat:hover {
       box-shadow: none;
       background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0.15));
-      color: #FFFFFF; }
-    .inline-toolbar
-    button:active, modelbutton.flat:active,
-    .menuitem.button.flat:active, spinbutton:not(.vertical) button:active, spinbutton.vertical button:active, toolbar.osd button:active, .app-notification button:active, .titlebar:not(headerbar) button:active:not(.suggested-action):not(.destructive-action),
-    headerbar button:active:not(.suggested-action):not(.destructive-action), :not(headerbar) .path-bar button:active, popover.background.menu button.model:active, notebook > header > tabs > arrow:active, scrollbar button:active, check:active,
-    radio:active, calendar.button:active, messagedialog.csd .dialog-action-area button:active, button.sidebar-button:active, .gedit-search-slider button:active, layouttabbar button:active,
+      color: currentColor; }
+    modelbutton.flat:active,
+    .menuitem.button.flat:active, spinbutton:not(.vertical) button:active, spinbutton.vertical button:active, popover.background.menu button.model:active, notebook > header > tabs > arrow:active, scrollbar button:active, check:active,
+    radio:active, calendar.button:active, messagedialog.csd .dialog-action-area button:active, button.sidebar-button:active, .gedit-search-slider button:active, :not(headerbar) .path-bar button:active, layouttabbar button:active, .inline-toolbar
+    button:active, toolbar.osd button:active, .app-notification button:active, .titlebar:not(headerbar) button:active:not(.suggested-action):not(.destructive-action),
+    headerbar button:active:not(.suggested-action):not(.destructive-action),
     button.flat:active {
       transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), color 0, background-image 0;
       animation: flat_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
       box-shadow: none;
-      color: #FFFFFF; }
-    .inline-toolbar
-    button:disabled, modelbutton.flat:disabled,
-    .menuitem.button.flat:disabled, spinbutton:not(.vertical) button:disabled, spinbutton.vertical button:disabled, toolbar.osd button:disabled, .app-notification button:disabled, .titlebar:not(headerbar) button:disabled:not(.suggested-action):not(.destructive-action),
-    headerbar button:disabled:not(.suggested-action):not(.destructive-action), :not(headerbar) .path-bar button:disabled, popover.background.menu button.model:disabled, notebook > header > tabs > arrow:disabled, scrollbar button:disabled, check:disabled,
-    radio:disabled, calendar.button:disabled, messagedialog.csd .dialog-action-area button:disabled, button.sidebar-button:disabled, .gedit-search-slider button:disabled, layouttabbar button:disabled,
+      color: currentColor; }
+    modelbutton.flat:disabled,
+    .menuitem.button.flat:disabled, spinbutton:not(.vertical) button:disabled, spinbutton.vertical button:disabled, popover.background.menu button.model:disabled, notebook > header > tabs > arrow:disabled, scrollbar button:disabled, check:disabled,
+    radio:disabled, calendar.button:disabled, messagedialog.csd .dialog-action-area button:disabled, button.sidebar-button:disabled, .gedit-search-slider button:disabled, :not(headerbar) .path-bar button:disabled, layouttabbar button:disabled, .inline-toolbar
+    button:disabled, toolbar.osd button:disabled, .app-notification button:disabled, .titlebar:not(headerbar) button:disabled:not(.suggested-action):not(.destructive-action),
+    headerbar button:disabled:not(.suggested-action):not(.destructive-action),
     button.flat:disabled {
       box-shadow: none;
       background-color: transparent;
-      color: rgba(255, 255, 255, 0.3); }
-      .inline-toolbar
-      button:disabled > label, modelbutton.flat:disabled > label,
-      .menuitem.button.flat:disabled > label, spinbutton:not(.vertical) button:disabled > label, spinbutton.vertical button:disabled > label, toolbar.osd button:disabled > label, .app-notification button:disabled > label, .titlebar:not(headerbar) button:disabled:not(.suggested-action):not(.destructive-action) > label,
-      headerbar button:disabled:not(.suggested-action):not(.destructive-action) > label, :not(headerbar) .path-bar button:disabled > label, popover.background.menu button.model:disabled > label, notebook > header > tabs > arrow:disabled > label, scrollbar button:disabled > label, check:disabled > label,
-      radio:disabled > label, calendar.button:disabled > label, messagedialog.csd .dialog-action-area button:disabled > label, button.sidebar-button:disabled > label, .gedit-search-slider button:disabled > label, layouttabbar button:disabled > label,
+      color: alpha(currentColor, 0.3); }
+      modelbutton.flat:disabled > label,
+      .menuitem.button.flat:disabled > label, spinbutton:not(.vertical) button:disabled > label, spinbutton.vertical button:disabled > label, popover.background.menu button.model:disabled > label, notebook > header > tabs > arrow:disabled > label, scrollbar button:disabled > label, check:disabled > label,
+      radio:disabled > label, calendar.button:disabled > label, messagedialog.csd .dialog-action-area button:disabled > label, button.sidebar-button:disabled > label, .gedit-search-slider button:disabled > label, :not(headerbar) .path-bar button:disabled > label, layouttabbar button:disabled > label, .inline-toolbar
+      button:disabled > label, toolbar.osd button:disabled > label, .app-notification button:disabled > label, .titlebar:not(headerbar) button:disabled:not(.suggested-action):not(.destructive-action) > label,
+      headerbar button:disabled:not(.suggested-action):not(.destructive-action) > label,
       button.flat:disabled > label {
         color: inherit; }
-    .inline-toolbar
-    button:checked, modelbutton.flat:checked,
-    .menuitem.button.flat:checked, spinbutton:not(.vertical) button:checked, spinbutton.vertical button:checked, toolbar.osd button:checked, .app-notification button:checked, .titlebar:not(headerbar) button:checked:not(.suggested-action):not(.destructive-action),
-    headerbar button:checked:not(.suggested-action):not(.destructive-action), :not(headerbar) .path-bar button:checked, popover.background.menu button.model:checked, notebook > header > tabs > arrow:checked, scrollbar button:checked, check:checked,
-    radio:checked, calendar.button:checked, messagedialog.csd .dialog-action-area button:checked, button.sidebar-button:checked, .gedit-search-slider button:checked, layouttabbar button:checked,
-    button.flat:checked {
-      background-color: alpha(currentColor, 0.3);
-      color: #FFFFFF; }
-    .inline-toolbar
-    button:checked:disabled, modelbutton.flat:checked:disabled,
-    .menuitem.button.flat:checked:disabled, spinbutton:not(.vertical) button:checked:disabled, spinbutton.vertical button:checked:disabled, toolbar.osd button:checked:disabled, .app-notification button:checked:disabled, .titlebar:not(headerbar) button:checked:disabled:not(.suggested-action):not(.destructive-action),
-    headerbar button:checked:disabled:not(.suggested-action):not(.destructive-action), :not(headerbar) .path-bar button:checked:disabled, popover.background.menu button.model:checked:disabled, notebook > header > tabs > arrow:checked:disabled, scrollbar button:checked:disabled, check:checked:disabled,
-    radio:checked:disabled, calendar.button:checked:disabled, messagedialog.csd .dialog-action-area button:checked:disabled, button.sidebar-button:checked:disabled, .gedit-search-slider button:checked:disabled, layouttabbar button:checked:disabled,
-    button.flat:checked:disabled {
-      background-color: alpha(currentColor, 0.3);
-      color: rgba(255, 255, 255, 0.4); }
-      .inline-toolbar
-      button:checked:disabled > label, modelbutton.flat:checked:disabled > label,
-      .menuitem.button.flat:checked:disabled > label, spinbutton:not(.vertical) button:checked:disabled > label, spinbutton.vertical button:checked:disabled > label, toolbar.osd button:checked:disabled > label, .app-notification button:checked:disabled > label, .titlebar:not(headerbar) button:checked:disabled:not(.suggested-action):not(.destructive-action) > label,
-      headerbar button:checked:disabled:not(.suggested-action):not(.destructive-action) > label, :not(headerbar) .path-bar button:checked:disabled > label, popover.background.menu button.model:checked:disabled > label, notebook > header > tabs > arrow:checked:disabled > label, scrollbar button:checked:disabled > label, check:checked:disabled > label,
-      radio:checked:disabled > label, calendar.button:checked:disabled > label, messagedialog.csd .dialog-action-area button:checked:disabled > label, button.sidebar-button:checked:disabled > label, .gedit-search-slider button:checked:disabled > label, layouttabbar button:checked:disabled > label,
-      button.flat:checked:disabled > label {
-        color: inherit; }
-  .inline-toolbar
-  button:not(.text-button), spinbutton:not(.vertical) button, notebook > header tab button.flat, check,
-  radio, button.titlebutton, .nautilus-circular-button, .gedit-document-panel row button.flat,
+  :not(headerbar) .path-bar button:checked, layouttabbar button:checked, .inline-toolbar
+  button:checked, toolbar.osd button:checked, .app-notification button:checked, .titlebar:not(headerbar) button:checked:not(.suggested-action):not(.destructive-action),
+  headerbar button:checked:not(.suggested-action):not(.destructive-action),
+  button.flat:checked {
+    background-color: alpha(currentColor, 0.3);
+    color: currentColor; }
+  :not(headerbar) .path-bar button:checked:disabled, layouttabbar button:checked:disabled, .inline-toolbar
+  button:checked:disabled, toolbar.osd button:checked:disabled, .app-notification button:checked:disabled, .titlebar:not(headerbar) button:checked:disabled:not(.suggested-action):not(.destructive-action),
+  headerbar button:checked:disabled:not(.suggested-action):not(.destructive-action),
+  button.flat:checked:disabled {
+    background-color: alpha(currentColor, 0.3);
+    color: alpha(currentColor, 0.4); }
+    :not(headerbar) .path-bar button:checked:disabled > label, layouttabbar button:checked:disabled > label, .inline-toolbar
+    button:checked:disabled > label, toolbar.osd button:checked:disabled > label, .app-notification button:checked:disabled > label, .titlebar:not(headerbar) button:checked:disabled:not(.suggested-action):not(.destructive-action) > label,
+    headerbar button:checked:disabled:not(.suggested-action):not(.destructive-action) > label,
+    button.flat:checked:disabled > label {
+      color: inherit; }
   button.image-button {
     min-width: 24px;
     padding: 6px;
@@ -476,54 +475,33 @@ button {
   button.text-button {
     padding-left: 16px;
     padding-right: 16px; }
-  .inline-toolbar
-  button.text-button:not(.text-button), spinbutton:not(.vertical) button.text-button, notebook > header tab button.text-button.flat, check.text-button,
-  radio.text-button, button.text-button.titlebutton, .text-button.nautilus-circular-button, .gedit-document-panel row button.text-button.flat,
   button.text-button.image-button {
     padding-left: 10px;
     padding-right: 10px;
     -gtk-outline-radius: 2px;
     border-radius: 2px; }
-    .inline-toolbar
-    button.text-button:not(.text-button) label:last-child, spinbutton:not(.vertical) button.text-button label:last-child, notebook > header tab button.text-button.flat label:last-child, check.text-button label:last-child,
-    radio.text-button label:last-child, button.text-button.titlebutton label:last-child, .text-button.nautilus-circular-button label:last-child, .gedit-document-panel row button.text-button.flat label:last-child,
     button.text-button.image-button label:last-child {
       padding-left: 2px;
       padding-right: 6px; }
-    .inline-toolbar
-    button.text-button:not(.text-button) label:first-child, spinbutton:not(.vertical) button.text-button label:first-child, notebook > header tab button.text-button.flat label:first-child, check.text-button label:first-child,
-    radio.text-button label:first-child, button.text-button.titlebutton label:first-child, .text-button.nautilus-circular-button label:first-child, .gedit-document-panel row button.text-button.flat label:first-child,
     button.text-button.image-button label:first-child {
       padding-left: 6px;
       padding-right: 2px; }
-  .inline-toolbar .linked > button, .linked > modelbutton.flat,
-  .linked > .menuitem.button.flat, spinbutton:not(.vertical) .linked > button, spinbutton.vertical .linked > button, toolbar.osd .linked > button, .app-notification .linked > button, .titlebar:not(headerbar) .linked > button:not(.suggested-action):not(.destructive-action),
-  headerbar .linked > button:not(.suggested-action):not(.destructive-action), :not(headerbar) .path-bar .linked > button, popover.background.menu .linked > button.model, notebook > header > tabs.linked > arrow, scrollbar .linked > button, .linked > check,
-  .linked > radio, .linked > calendar.button, messagedialog.csd .dialog-action-area .linked > button, .linked > button.sidebar-button, .gedit-search-slider .linked > button, layouttabbar .linked > button, .inline-toolbar .linked.vertical > button, .linked.vertical > modelbutton.flat,
-  .linked.vertical > .menuitem.button.flat, spinbutton:not(.vertical) .linked.vertical > button, spinbutton.vertical .linked.vertical > button, toolbar.osd .linked.vertical > button, .app-notification .linked.vertical > button, .titlebar:not(headerbar) .linked.vertical > button:not(.suggested-action):not(.destructive-action),
-  headerbar .linked.vertical > button:not(.suggested-action):not(.destructive-action), :not(headerbar) .path-bar .linked.vertical > button, popover.background.menu .linked.vertical > button.model, notebook > header > tabs.linked.vertical > arrow, scrollbar .linked.vertical > button, .linked.vertical > check,
-  .linked.vertical > radio, .linked.vertical > calendar.button, messagedialog.csd .dialog-action-area .linked.vertical > button, .linked.vertical > button.sidebar-button, .gedit-search-slider .linked.vertical > button, layouttabbar .linked.vertical > button, .linked >
+  .inline-toolbar .linked > button, toolbar.osd .linked > button, .app-notification .linked > button, .titlebar:not(headerbar) .linked > button:not(.suggested-action):not(.destructive-action),
+  headerbar .linked > button:not(.suggested-action):not(.destructive-action), .inline-toolbar .linked.vertical > button, toolbar.osd .linked.vertical > button, .app-notification .linked.vertical > button, .titlebar:not(headerbar) .linked.vertical > button:not(.suggested-action):not(.destructive-action),
+  headerbar .linked.vertical > button:not(.suggested-action):not(.destructive-action), .linked >
   button.flat, .linked.vertical >
   button.flat {
     border-radius: 2px; }
-    .inline-toolbar .linked > button.image-button, .inline-toolbar .linked > button.flat:not(.text-button), .linked > modelbutton.image-button.flat,
-    .linked > .image-button.menuitem.button.flat, spinbutton:not(.vertical) .linked > button, spinbutton.vertical .linked > button.image-button, toolbar.osd .linked > button.image-button, .app-notification .linked > button.image-button, .titlebar:not(headerbar) .linked > button.image-button:not(.suggested-action):not(.destructive-action),
-    headerbar .linked > button.image-button:not(.suggested-action):not(.destructive-action), :not(headerbar) .path-bar .linked > button.image-button, popover.background.menu .linked > button.image-button.model, notebook > header > tabs.linked > arrow.image-button, notebook > header tab .linked > button.flat, scrollbar .linked > button.image-button, .linked > check,
-    .linked > radio, .linked > calendar.image-button.button, messagedialog.csd .dialog-action-area .linked > button.image-button, .linked > button.image-button.sidebar-button, .linked > button.flat.titlebutton, .linked > .flat.nautilus-circular-button, .gedit-document-panel row .linked > button.flat, .gedit-search-slider .linked > button.image-button, layouttabbar .linked > button.image-button, .inline-toolbar .linked.vertical > button.image-button, .inline-toolbar .linked.vertical > button.flat:not(.text-button), .linked.vertical > modelbutton.image-button.flat,
-    .linked.vertical > .image-button.menuitem.button.flat, spinbutton:not(.vertical) .linked.vertical > button, spinbutton.vertical .linked.vertical > button.image-button, toolbar.osd .linked.vertical > button.image-button, .app-notification .linked.vertical > button.image-button, .titlebar:not(headerbar) .linked.vertical > button.image-button:not(.suggested-action):not(.destructive-action),
-    headerbar .linked.vertical > button.image-button:not(.suggested-action):not(.destructive-action), :not(headerbar) .path-bar .linked.vertical > button.image-button, popover.background.menu .linked.vertical > button.image-button.model, notebook > header > tabs.linked.vertical > arrow.image-button, notebook > header tab .linked.vertical > button.flat, scrollbar .linked.vertical > button.image-button, .linked.vertical > check,
-    .linked.vertical > radio, .linked.vertical > calendar.image-button.button, messagedialog.csd .dialog-action-area .linked.vertical > button.image-button, .linked.vertical > button.image-button.sidebar-button, .linked.vertical > button.flat.titlebutton, .linked.vertical > .flat.nautilus-circular-button, .gedit-document-panel row .linked.vertical > button.flat, .gedit-search-slider .linked.vertical > button.image-button, layouttabbar .linked.vertical > button.image-button, .linked >
+    .inline-toolbar .linked > button.image-button, toolbar.osd .linked > button.image-button, .app-notification .linked > button.image-button, .titlebar:not(headerbar) .linked > button.image-button:not(.suggested-action):not(.destructive-action),
+    headerbar .linked > button.image-button:not(.suggested-action):not(.destructive-action), .inline-toolbar .linked.vertical > button.image-button, toolbar.osd .linked.vertical > button.image-button, .app-notification .linked.vertical > button.image-button, .titlebar:not(headerbar) .linked.vertical > button.image-button:not(.suggested-action):not(.destructive-action),
+    headerbar .linked.vertical > button.image-button:not(.suggested-action):not(.destructive-action), .linked >
     button.flat.image-button, .linked.vertical >
     button.flat.image-button {
       -gtk-outline-radius: 100px;
       border-radius: 100px; }
-    .inline-toolbar .linked > button.text-button.image-button, .inline-toolbar .linked > button.flat.text-button:not(.text-button), .linked > modelbutton.text-button.image-button.flat,
-    .linked > .text-button.image-button.menuitem.button.flat, spinbutton:not(.vertical) .linked > button.text-button, spinbutton.vertical .linked > button.text-button.image-button, toolbar.osd .linked > button.text-button.image-button, .app-notification .linked > button.text-button.image-button, .titlebar:not(headerbar) .linked > button.text-button.image-button:not(.suggested-action):not(.destructive-action),
-    headerbar .linked > button.text-button.image-button:not(.suggested-action):not(.destructive-action), :not(headerbar) .path-bar .linked > button.text-button.image-button, popover.background.menu .linked > button.text-button.image-button.model, notebook > header > tabs.linked > arrow.text-button.image-button, notebook > header tab .linked > button.flat.text-button, scrollbar .linked > button.text-button.image-button, .linked > check.text-button,
-    .linked > radio.text-button, .linked > calendar.text-button.image-button.button, messagedialog.csd .dialog-action-area .linked > button.text-button.image-button, .linked > button.text-button.image-button.sidebar-button, .linked > button.flat.text-button.titlebutton, .linked > .flat.text-button.nautilus-circular-button, .gedit-document-panel row .linked > button.flat.text-button, .gedit-search-slider .linked > button.text-button.image-button, layouttabbar .linked > button.text-button.image-button, .inline-toolbar .linked.vertical > button.text-button.image-button, .inline-toolbar .linked.vertical > button.flat.text-button:not(.text-button), .linked.vertical > modelbutton.text-button.image-button.flat,
-    .linked.vertical > .text-button.image-button.menuitem.button.flat, spinbutton:not(.vertical) .linked.vertical > button.text-button, spinbutton.vertical .linked.vertical > button.text-button.image-button, toolbar.osd .linked.vertical > button.text-button.image-button, .app-notification .linked.vertical > button.text-button.image-button, .titlebar:not(headerbar) .linked.vertical > button.text-button.image-button:not(.suggested-action):not(.destructive-action),
-    headerbar .linked.vertical > button.text-button.image-button:not(.suggested-action):not(.destructive-action), :not(headerbar) .path-bar .linked.vertical > button.text-button.image-button, popover.background.menu .linked.vertical > button.text-button.image-button.model, notebook > header > tabs.linked.vertical > arrow.text-button.image-button, notebook > header tab .linked.vertical > button.flat.text-button, scrollbar .linked.vertical > button.text-button.image-button, .linked.vertical > check.text-button,
-    .linked.vertical > radio.text-button, .linked.vertical > calendar.text-button.image-button.button, messagedialog.csd .dialog-action-area .linked.vertical > button.text-button.image-button, .linked.vertical > button.text-button.image-button.sidebar-button, .linked.vertical > button.flat.text-button.titlebutton, .linked.vertical > .flat.text-button.nautilus-circular-button, .gedit-document-panel row .linked.vertical > button.flat.text-button, .gedit-search-slider .linked.vertical > button.text-button.image-button, layouttabbar .linked.vertical > button.text-button.image-button, .linked >
+    .inline-toolbar .linked > button.text-button.image-button, toolbar.osd .linked > button.text-button.image-button, .app-notification .linked > button.text-button.image-button, .titlebar:not(headerbar) .linked > button.text-button.image-button:not(.suggested-action):not(.destructive-action),
+    headerbar .linked > button.text-button.image-button:not(.suggested-action):not(.destructive-action), .inline-toolbar .linked.vertical > button.text-button.image-button, toolbar.osd .linked.vertical > button.text-button.image-button, .app-notification .linked.vertical > button.text-button.image-button, .titlebar:not(headerbar) .linked.vertical > button.text-button.image-button:not(.suggested-action):not(.destructive-action),
+    headerbar .linked.vertical > button.text-button.image-button:not(.suggested-action):not(.destructive-action), .linked >
     button.flat.text-button.image-button, .linked.vertical >
     button.flat.text-button.image-button {
       -gtk-outline-radius: 2px;
@@ -531,16 +509,6 @@ button {
 infobar.info button:disabled, infobar.question button:disabled, infobar.warning button:disabled, infobar.error button:disabled, row:selected
 button:disabled {
   color: rgba(255, 255, 255, 0.3); }
-row:selected button.sidebar-button, infobar.info button.flat, infobar.question button.flat, infobar.warning button.flat, infobar.error button.flat, .gedit-search-slider entry.error ~ button, row:selected
-button.flat {
-  color: rgba(255, 255, 255, 0.75); }
-  row:selected button.sidebar-button:hover, infobar.info button.flat:hover, infobar.question button.flat:hover, infobar.warning button.flat:hover, infobar.error button.flat:hover, .gedit-search-slider entry.error ~ button:hover, row:selected button.sidebar-button:active, infobar.info button.flat:active, infobar.question button.flat:active, infobar.warning button.flat:active, infobar.error button.flat:active, .gedit-search-slider entry.error ~ button:active, row:selected
-  button.flat:hover, row:selected
-  button.flat:active {
-    color: #FFFFFF; }
-  row:selected button.sidebar-button:disabled, infobar.info button.flat:disabled, infobar.question button.flat:disabled, infobar.warning button.flat:disabled, infobar.error button.flat:disabled, .gedit-search-slider entry.error ~ button:disabled, row:selected
-  button.flat:disabled {
-    color: rgba(255, 255, 255, 0.3); }
 button.osd {
   padding: 12px 16px; }
   button.osd.image-button {
@@ -564,7 +532,7 @@ button.suggested-action {
     button.suggested-action.flat:disabled {
       box-shadow: none;
       background-color: transparent;
-      color: rgba(255, 255, 255, 0.3); }
+      color: alpha(currentColor, 0.3); }
       button.suggested-action.flat:disabled > label {
         color: inherit; }
 button.destructive-action {
@@ -584,7 +552,7 @@ button.destructive-action {
     button.destructive-action.flat:disabled {
       box-shadow: none;
       background-color: transparent;
-      color: rgba(255, 255, 255, 0.3); }
+      color: alpha(currentColor, 0.3); }
       button.destructive-action.flat:disabled > label {
         color: inherit; }
 .stack-switcher >
@@ -636,63 +604,55 @@ button.needs-attention > image, stacksidebar row.needs-attention > label {
   button.needs-attention > image:dir(rtl), stacksidebar row.needs-attention > label:dir(rtl) {
     background-position: left 3px; }
 
-.linked:not(.vertical) > spinbutton:not(.flat):not(.vertical), notebook > stack:not(:only-child) revealer .linked:not(.vertical) > entry:not(.flat),
-notebook > stack:not(:only-child) revealer .linked:not(.vertical) > spinbutton:not(.flat):not(.vertical), .linked:not(.vertical) >
-entry:not(.flat), .linked >
+.linked:not(.vertical) > spinbutton:not(.vertical), notebook > stack:not(:only-child) revealer .linked:not(.vertical) > entry,
+notebook > stack:not(:only-child) revealer .linked:not(.vertical) > spinbutton:not(.vertical), .linked:not(.vertical) >
+entry, .linked >
 button, .gedit-search-slider button:dir(ltr), .gedit-search-slider button:dir(rtl), .linked > combobox > box > button.combo:dir(ltr), .linked > combobox > box > button.combo:dir(rtl) {
+  -gtk-outline-radius: 2px;
   border-radius: 0; }
 
-.linked:not(.vertical) > spinbutton:not(.flat):not(.vertical), notebook > stack:not(:only-child) revealer .linked:not(.vertical) > entry:not(.flat),
-notebook > stack:not(:only-child) revealer .linked:not(.vertical) > spinbutton:not(.flat):not(.vertical), .linked:not(.vertical) >
-entry:not(.flat), .linked >
-button, .gedit-search-slider button:dir(ltr), .gedit-search-slider button:dir(rtl) {
-  -gtk-outline-radius: 2px; }
-  .linked:not(.vertical) > spinbutton:first-child:not(.flat):not(.vertical), notebook > stack:not(:only-child) revealer .linked:not(.vertical) > entry:first-child:not(.flat),
-  notebook > stack:not(:only-child) revealer .linked:not(.vertical) > spinbutton:first-child:not(.flat):not(.vertical), .linked:not(.vertical) >
-  entry:first-child:not(.flat), .linked >
-  button:first-child, combobox.linked button:nth-child(2):dir(rtl), .linked:not(.vertical) > combobox:first-child > box > button.combo, .gedit-search-slider button:first-child:dir(ltr), .gedit-search-slider button:first-child:dir(rtl) {
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px; }
-  .linked:not(.vertical) > spinbutton:last-child:not(.flat):not(.vertical), notebook > stack:not(:only-child) revealer .linked:not(.vertical) > entry:last-child:not(.flat),
-  notebook > stack:not(:only-child) revealer .linked:not(.vertical) > spinbutton:last-child:not(.flat):not(.vertical), .linked:not(.vertical) >
-  entry:last-child:not(.flat), .linked >
-  button:last-child, combobox.linked button:nth-child(2):dir(ltr), .linked:not(.vertical) > combobox:last-child > box > button.combo, .gedit-search-slider button:last-child:dir(ltr), .gedit-search-slider button:last-child:dir(rtl) {
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px; }
-  .linked:not(.vertical) > spinbutton:only-child:not(.flat):not(.vertical), notebook > stack:not(:only-child) revealer .linked:not(.vertical) > entry:only-child:not(.flat),
-  notebook > stack:not(:only-child) revealer .linked:not(.vertical) > spinbutton:only-child:not(.flat):not(.vertical), .linked:not(.vertical) >
-  entry:only-child:not(.flat), .linked >
-  button:only-child, .linked:not(.vertical) > combobox:only-child > box > button.combo, .gedit-search-slider button:only-child:dir(ltr), .gedit-search-slider button:only-child:dir(rtl) {
-    border-radius: 2px; }
+.linked:not(.vertical) > spinbutton:first-child:not(.vertical), notebook > stack:not(:only-child) revealer .linked:not(.vertical) > entry:first-child,
+notebook > stack:not(:only-child) revealer .linked:not(.vertical) > spinbutton:first-child:not(.vertical), .linked:not(.vertical) >
+entry:first-child, .linked >
+button:first-child, combobox.linked button:nth-child(2):dir(rtl), .linked:not(.vertical) > combobox:first-child > box > button.combo, .gedit-search-slider button:first-child:dir(ltr), .gedit-search-slider button:first-child:dir(rtl) {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px; }
+.linked:not(.vertical) > spinbutton:last-child:not(.vertical), notebook > stack:not(:only-child) revealer .linked:not(.vertical) > entry:last-child,
+notebook > stack:not(:only-child) revealer .linked:not(.vertical) > spinbutton:last-child:not(.vertical), .linked:not(.vertical) >
+entry:last-child, .linked >
+button:last-child, combobox.linked button:nth-child(2):dir(ltr), .linked:not(.vertical) > combobox:last-child > box > button.combo, .gedit-search-slider button:last-child:dir(ltr), .gedit-search-slider button:last-child:dir(rtl) {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px; }
+.linked:not(.vertical) > spinbutton:only-child:not(.vertical), notebook > stack:not(:only-child) revealer .linked:not(.vertical) > entry:only-child,
+notebook > stack:not(:only-child) revealer .linked:not(.vertical) > spinbutton:only-child:not(.vertical), .linked:not(.vertical) >
+entry:only-child, .linked >
+button:only-child, .linked:not(.vertical) > combobox:only-child > box > button.combo, .gedit-search-slider button:only-child:dir(ltr), .gedit-search-slider button:only-child:dir(rtl) {
+  border-radius: 2px; }
 
-.linked.vertical > spinbutton:not(.flat):not(.vertical), notebook > stack:not(:only-child) revealer .linked.vertical > entry:not(.flat),
-notebook > stack:not(:only-child) revealer .linked.vertical > spinbutton:not(.flat):not(.vertical), .linked.vertical >
-entry:not(.flat), .linked.vertical >
+.linked.vertical > spinbutton:not(.vertical), notebook > stack:not(:only-child) revealer .linked.vertical > entry,
+notebook > stack:not(:only-child) revealer .linked.vertical > spinbutton:not(.vertical), .linked.vertical >
+entry, .linked.vertical >
 button, .linked.vertical > combobox > box > button.combo {
+  -gtk-outline-radius: 2px;
   border-radius: 0; }
 
-.linked.vertical > spinbutton:not(.flat):not(.vertical), notebook > stack:not(:only-child) revealer .linked.vertical > entry:not(.flat),
-notebook > stack:not(:only-child) revealer .linked.vertical > spinbutton:not(.flat):not(.vertical), .linked.vertical >
-entry:not(.flat), .linked.vertical >
-button {
-  -gtk-outline-radius: 2px; }
-  .linked.vertical > spinbutton:first-child:not(.flat):not(.vertical), notebook > stack:not(:only-child) revealer .linked.vertical > entry:first-child:not(.flat),
-  notebook > stack:not(:only-child) revealer .linked.vertical > spinbutton:first-child:not(.flat):not(.vertical), .linked.vertical >
-  entry:first-child:not(.flat), .linked.vertical >
-  button:first-child, .linked.vertical > combobox:first-child > box > button.combo {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px; }
-  .linked.vertical > spinbutton:last-child:not(.flat):not(.vertical), notebook > stack:not(:only-child) revealer .linked.vertical > entry:last-child:not(.flat),
-  notebook > stack:not(:only-child) revealer .linked.vertical > spinbutton:last-child:not(.flat):not(.vertical), .linked.vertical >
-  entry:last-child:not(.flat), .linked.vertical >
-  button:last-child, .linked.vertical > combobox:last-child > box > button.combo {
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px; }
-  .linked.vertical > spinbutton:only-child:not(.flat):not(.vertical), notebook > stack:not(:only-child) revealer .linked.vertical > entry:only-child:not(.flat),
-  notebook > stack:not(:only-child) revealer .linked.vertical > spinbutton:only-child:not(.flat):not(.vertical), .linked.vertical >
-  entry:only-child:not(.flat), .linked.vertical >
-  button:only-child, .linked.vertical > combobox:only-child > box > button.combo {
-    border-radius: 2px; }
+.linked.vertical > spinbutton:first-child:not(.vertical), notebook > stack:not(:only-child) revealer .linked.vertical > entry:first-child,
+notebook > stack:not(:only-child) revealer .linked.vertical > spinbutton:first-child:not(.vertical), .linked.vertical >
+entry:first-child, .linked.vertical >
+button:first-child, .linked.vertical > combobox:first-child > box > button.combo {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px; }
+.linked.vertical > spinbutton:last-child:not(.vertical), notebook > stack:not(:only-child) revealer .linked.vertical > entry:last-child,
+notebook > stack:not(:only-child) revealer .linked.vertical > spinbutton:last-child:not(.vertical), .linked.vertical >
+entry:last-child, .linked.vertical >
+button:last-child, .linked.vertical > combobox:last-child > box > button.combo {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px; }
+.linked.vertical > spinbutton:only-child:not(.vertical), notebook > stack:not(:only-child) revealer .linked.vertical > entry:only-child,
+notebook > stack:not(:only-child) revealer .linked.vertical > spinbutton:only-child:not(.vertical), .linked.vertical >
+entry:only-child, .linked.vertical >
+button:only-child, .linked.vertical > combobox:only-child > box > button.combo {
+  border-radius: 2px; }
 
 /* menu buttons */
 modelbutton.flat,
@@ -788,9 +748,6 @@ spinbutton:not(.vertical) {
     box-shadow: none;
     background-color: transparent; }
   spinbutton:not(.vertical) button {
-    min-height: 24px;
-    min-width: 24px;
-    padding: 0;
     border: solid 6px transparent; }
     spinbutton:not(.vertical) button.up:dir(ltr), spinbutton:not(.vertical) button.down:dir(rtl) {
       margin-left: -3px; }
@@ -913,30 +870,14 @@ headerbar {
     font-size: smaller; }
   .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
   headerbar button:not(.suggested-action):not(.destructive-action) {
-    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 0%, transparent 0%) 0 0 0/0 0 0px;
-    color: alpha(currentColor, 0.75); }
-    .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):hover, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):active,
-    headerbar button:not(.suggested-action):not(.destructive-action):hover,
-    headerbar button:not(.suggested-action):not(.destructive-action):active {
-      color: currentColor; }
-    .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):disabled,
-    headerbar button:not(.suggested-action):not(.destructive-action):disabled {
-      color: alpha(currentColor, 0.3); }
-      .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):disabled > label,
-      headerbar button:not(.suggested-action):not(.destructive-action):disabled > label {
-        color: inherit; }
+    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 0%, transparent 0%) 0 0 0/0 0 0px; }
     .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked,
     headerbar button:not(.suggested-action):not(.destructive-action):checked {
-      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 100%, transparent 0%) 0 0 2/0 0 2px;
-      background-color: transparent;
-      color: currentColor; }
-      .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled,
+      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 100%, transparent 0%) 0 0 2/0 0 2px; }
+      .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled,
+      headerbar button:not(.suggested-action):not(.destructive-action):checked,
       headerbar button:not(.suggested-action):not(.destructive-action):checked:disabled {
-        background-color: transparent;
-        color: alpha(currentColor, 0.4); }
-        .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled > label,
-        headerbar button:not(.suggested-action):not(.destructive-action):checked:disabled > label {
-          color: inherit; }
+        background-color: transparent; }
   .titlebar:not(headerbar) button.suggested-action:disabled, .titlebar:not(headerbar) button.destructive-action:disabled,
   headerbar button.suggested-action:disabled,
   headerbar button.destructive-action:disabled {
@@ -956,12 +897,8 @@ headerbar {
       color: rgba(255, 255, 255, 0.75); }
     .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
     headerbar.selection-mode button:not(.suggested-action):not(.destructive-action) {
-      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 0%, transparent 0%) 0 0 0/0 0 0px; }
-      .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action), .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):hover, .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):active,
-      headerbar.selection-mode button:not(.suggested-action):not(.destructive-action),
-      headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):hover,
-      headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):active {
-        color: currentColor; }
+      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 0%, transparent 0%) 0 0 0/0 0 0px;
+      color: currentColor; }
       .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):disabled,
       headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):disabled {
         color: alpha(currentColor, 0.4); }
@@ -1059,23 +996,11 @@ window.csd > .titlebar:not(headerbar) {
   padding-right: 0; }
 :not(headerbar) .path-bar button {
   border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #42A5F5 0%, transparent 0%) 0 0 0/0 0 0px;
-  border-radius: 2px;
-  color: alpha(currentColor, 0.75); }
-  :not(headerbar) .path-bar button:hover, :not(headerbar) .path-bar button:active {
-    color: currentColor; }
-  :not(headerbar) .path-bar button:disabled {
-    color: alpha(currentColor, 0.3); }
-    :not(headerbar) .path-bar button:disabled > label {
-      color: inherit; }
+  border-radius: 2px; }
   :not(headerbar) .path-bar button:checked {
-    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #42A5F5 100%, transparent 0%) 0 0 2/0 0 2px;
-    background-color: transparent;
-    color: currentColor; }
-    :not(headerbar) .path-bar button:checked:disabled {
-      background-color: transparent;
-      color: alpha(currentColor, 0.4); }
-      :not(headerbar) .path-bar button:checked:disabled > label {
-        color: inherit; }
+    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #42A5F5 100%, transparent 0%) 0 0 2/0 0 2px; }
+    :not(headerbar) .path-bar button:checked, :not(headerbar) .path-bar button:checked:disabled {
+      background-color: transparent; }
 
 /**************
  * Tree Views *
@@ -1313,13 +1238,11 @@ popover.background {
     background-color: transparent; }
   popover.background.menu button.model {
     min-height: 32px;
-    padding: 0 8px; }
+    padding: 0 8px;
+    border-radius: 2px; }
     popover.background.menu button.model:checked {
       background-color: #42A5F5;
       color: #FFFFFF; }
-  popover.background.menu .linked > button.model:dir(rtl), popover.background.menu .linked > button.model:dir(ltr) {
-    -gtk-outline-radius: 2px;
-    border-radius: 2px; }
   popover.background separator {
     margin: 4px 0; }
   popover.background list separator {
@@ -1420,16 +1343,12 @@ notebook > header {
       notebook > header tab:checked.reorderable-page {
         border-color: rgba(0, 0, 0, 0.2);
         background-color: #546E7A; }
-    notebook > header tab button.flat {
-      min-width: 24px;
-      min-height: 24px;
-      padding: 0; }
-      notebook > header tab button.flat:last-child {
-        margin-left: 6px;
-        margin-right: -6px; }
-      notebook > header tab button.flat:first-child {
-        margin-left: -6px;
-        margin-right: 6px; }
+    notebook > header tab button.flat:last-child {
+      margin-left: 6px;
+      margin-right: -6px; }
+    notebook > header tab button.flat:first-child {
+      margin-left: -6px;
+      margin-right: 6px; }
   notebook > header.top tabs, notebook > header.bottom tabs {
     padding-left: 8px;
     padding-right: 8px; }
@@ -1627,10 +1546,6 @@ radio {
   min-width: 24px;
   margin: -12px;
   padding: 12px; }
-  check:checked, check:checked:disabled,
-  radio:checked,
-  radio:checked:disabled {
-    background-color: transparent; }
   check:checked, check:indeterminate,
   radio:checked,
   radio:indeterminate {
@@ -2302,14 +2217,6 @@ placessidebar row {
     padding-right: 2px; }
   placessidebar row label.sidebar-label:dir(rtl) {
     padding-left: 2px; }
-  button.sidebar-button {
-    min-height: 24px;
-    min-width: 24px;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 0;
-    border-radius: 100%;
-    -gtk-outline-radius: 100%; }
   placessidebar row.sidebar-placeholder-row {
     min-height: 2px;
     padding: 0 8px;
@@ -2556,11 +2463,19 @@ cursor-handle {
 .context-menu {
   font: initial; }
 
+.inline-toolbar
+button:not(.text-button), check,
+radio, button.titlebutton, .nautilus-circular-button,
 button.circular {
   border-radius: 100px;
   -gtk-outline-radius: 100px; }
-  button.circular label {
-    padding: 0; }
+
+spinbutton:not(.vertical) button, notebook > header tab button.flat, button.sidebar-button, .gedit-document-panel row button.flat {
+  min-height: 24px;
+  min-width: 24px;
+  padding: 0;
+  border-radius: 100px;
+  -gtk-outline-radius: 100px; }
 
 .keycap {
   min-width: 12px;
@@ -2710,9 +2625,6 @@ stackswitcher button.text-button.circular {
 
 /* Try to look as the notebook tab close button */
 .gedit-document-panel row button.flat {
-  min-height: 24px;
-  min-width: 24px;
-  padding: 0;
   margin-top: 8px;
   margin-bottom: 8px; }
 
@@ -2735,6 +2647,12 @@ statusbar {
     padding-left: 80px; }
     .gedit-search-slider entry:dir(rtl) .gedit-search-entry-occurrences-tag {
       margin-left: -8px; }
+  .gedit-search-slider entry.error ~ button {
+    color: rgba(255, 255, 255, 0.75); }
+    .gedit-search-slider entry.error ~ button:hover, .gedit-search-slider entry.error ~ button:active {
+      color: #FFFFFF; }
+    .gedit-search-slider entry.error ~ button:disabled {
+      color: rgba(255, 255, 255, 0.3); }
 
 .gedit-search-slider .linked:not(.vertical) > entry,
 notebook > stack:not(:only-child) revealer .gedit-search-slider .linked:not(.vertical) > entry {
