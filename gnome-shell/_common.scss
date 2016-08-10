@@ -26,10 +26,11 @@ $panel-corner-radius: 0;
  */
 
 
-$menuitem_size: 32px;
-$small_size: 24px;
-$medium_size: 36px;
-$large_size: 48px;
+$small_size: if($laptop == 'true', 20px, 24px);
+$medium_size: if($laptop == 'true', 32px, 36px);
+$large_size: if($laptop == 'true', 44px, 48px);
+
+$menuitem_size: if($laptop == 'true', 28px, 32px);
 
 * {
   transition-timing-function : cubic-bezier(0.4, 0, 0.2, 1);
@@ -37,7 +38,6 @@ $large_size: 48px;
 }
 
 /* GLOBALS */
-$root-font-size: 14px;
 $font-family: "M+ 1c", Roboto, Cantarell, Sans-Serif;
 $large-font-family: Roboto, "M+ 1c", Cantarell, Sans-Serif;
 
@@ -785,7 +785,7 @@ StScrollBar {
   }
 
   .ws-switcher-active-up, .ws-switcher-active-down {
-    height: $large_size;
+    height: 48px;
     background-color: $selected_bg_color;
     color: $selected_fg_color;
     background-size: 32px;
@@ -793,7 +793,7 @@ StScrollBar {
   }
 
   .ws-switcher-box {
-    height: $large_size;
+    height: 48px;
     border: none;
     background: $insensitive_track_color;
     border-radius: 2px;
@@ -889,7 +889,7 @@ StScrollBar {
       & > .system-status-icon { icon-shadow: none; }
     }
 
-    .system-status-icon { @include px-to-em(16px); padding: 0 4px; }
+    .system-status-icon { @include em(16px); padding: 0 4px; }
     .unlock-screen &,
     .login-screen &,
     .lock-screen & {
@@ -1094,7 +1094,7 @@ StScrollBar {
         .message-list-section-close > StIcon {
           icon-size: 16px;
           border-radius: 16px;
-          padding: 8px;
+          padding: ($menuitem_size - 16px) / 2;
           color: $secondary_fg_color;
           background-color: transparent;
         }
@@ -1158,7 +1158,7 @@ StScrollBar {
           .message-content * > StIcon {
             icon-size: 16px;
             border-radius: 16px;
-            padding: 4px;
+            padding: ($small_size - 16px) / 2;
             color: $secondary_fg_color;
           }
 
@@ -1203,8 +1203,8 @@ StScrollBar {
   // a little unstructured mess:
 
   .system-switch-user-submenu-icon.user-icon {
-    icon-size: 24px;
-    padding: 0 0;
+    icon-size: 20px;
+    padding: 0 2px;
   }
   .system-switch-user-submenu-icon.default-icon {
     icon-size: 16px;
@@ -1233,7 +1233,7 @@ StScrollBar {
       background-color: $semi_track_color;
       color: $fg_color;
       border: none;
-      padding: 16px;
+      padding: ($large_size - 16px) / 2;
     }
     &:active { background-color: $track_color; color: $fg_color; }
 
@@ -1254,7 +1254,7 @@ StScrollBar {
 
 // not really top bar only
 .popup-menu-arrow { width: 16px; height: 16px; }
-.popup-menu-icon { @include px-to-em(16px); }
+.popup-menu-icon { @include em(16px); }
 
 //close buttons
 
@@ -1673,7 +1673,7 @@ StScrollBar {
 
     .notification-icon { padding: 5px; }
     .notification-content { padding: 5px; spacing: 5px; }
-    .secondary-icon { @include px-to-em(16px); }
+    .secondary-icon { @include em(16px); }
     .notification-actions {
       background-color: transparent;
       padding-top: 0;
@@ -1705,7 +1705,7 @@ StScrollBar {
     border-radius: 0.9em; // should be 0.8 but whatever; wish I could do 50%;
   }
 
-  .secondary-icon { @include px-to-em(16px); }
+  .secondary-icon { @include em(16px); }
 
   //chat bubbles
   .chat-body { spacing: 5px; }
@@ -1892,7 +1892,7 @@ $legacy_icon_size: 24px;
 
   .candidate-page-button-previous { border-radius: 2px; border-right-width: 0; }
   .candidate-page-button-next { border-radius: 2px;  }
-  .candidate-page-button-icon { @include px-to-em(16px); }
+  .candidate-page-button-icon { @include em(16px); }
 
 /* Auth Dialogs & Screen Shield */
 
