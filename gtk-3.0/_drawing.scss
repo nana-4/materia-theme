@@ -70,13 +70,13 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 @keyframes tab_ripple_effect {
   from {
     background-image: radial-gradient(circle farthest-corner at center,
-                                      scale-alpha($selected_bg_color, $middle_opacity) 0%,
+                                      scale-alpha($primary_color, $middle_opacity) 0%,
                                       transparent 0%);
   }
 
   50% {
     background-image: radial-gradient(circle farthest-corner at center,
-                                      scale-alpha($selected_bg_color, $middle_opacity) 100%,
+                                      scale-alpha($primary_color, $middle_opacity) 100%,
                                       transparent 0%);
   }
 
@@ -90,21 +90,19 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 @keyframes header_ripple_effect {
   from {
     background-image: radial-gradient(circle farthest-corner at center,
-                                      $selected_bg_color 0%,
+                                      $primary_color 0%,
                                       transparent 0%);
   }
 
   to {
     background-image: radial-gradient(circle farthest-corner at center,
-                                      $selected_bg_color 100%,
+                                      $primary_color 100%,
                                       transparent 0%);
   }
 }
 
 
-// entries
-
-@mixin entry($t, $fc:$selected_bg_color) {
+@mixin entry($t, $fc:$primary_color) {
 //
 // Entries drawing function
 //
@@ -112,15 +110,15 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 // $fc: focus color
 //
 // possible $t values:
-// normal, focus, insensitive, flat-normal, flat-focus, flat-insensitive;
+// normal, focus, disabled, flat-normal, flat-focus, flat-disabled;
 //
 
   @if $t == normal {
-    transition: $material_transition, $shadow_transition;
+    transition: $longer_transition, $shadow_transition;
     border-image: none;
     box-shadow: $z-depth-1;
-    background-color: if($fc != $selected_bg_color, $fc, $base_color);
-    color: if($fc != $selected_bg_color, $selected_fg_color, $fg_color);
+    background-color: if($fc != $primary_color, $fc, $base_color);
+    color: if($fc != $primary_color, $inversed_fg_color, $fg_color);
   }
 
   @if $t == focus {
@@ -128,19 +126,19 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     box-shadow: $z-depth-2;
   }
 
-  @if $t == insensitive {
+  @if $t == disabled {
     box-shadow: $z-depth-1;
-    background-color: $secondary_base_color;
-    color: $insensitive_fg_color;
+    background-color: $alt_base_color;
+    color: $disabled_fg_color;
   }
 
   @if $t == flat-normal {
-    transition: $material_transition;
+    transition: $longer_transition;
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                   $fc 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
-    box-shadow: inset 0 -1px if($fc != $selected_bg_color, $fc, $track_color);
+    box-shadow: inset 0 -1px if($fc != $primary_color, $fc, $track_color);
     background-color: transparent;
     color: $fg_color;
   }
@@ -150,20 +148,18 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
                                   $fc 100%,
                                   transparent 0%)
                                   0 0 2 / 0 0 2px;
-    box-shadow: inset 0 -1px if($fc != $selected_bg_color, $fc, $track_color);
+    box-shadow: inset 0 -1px if($fc != $primary_color, $fc, $track_color);
   }
 
-  @if $t == flat-insensitive {
+  @if $t == flat-disabled {
     box-shadow: inset 0 -1px $track_color;
     background-color: transparent;
-    color: $insensitive_fg_color;
+    color: $disabled_fg_color;
   }
 }
 
 
-// buttons
-
-@mixin button($t, $c:$light_color, $tc:$fg_color) {
+@mixin button($t, $c:$lighter_bg_color, $tc:$fg_color) {
 //
 // Button drawing function
 //
@@ -172,15 +168,12 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 // $tc:   optional text color for colored* types
 //
 // possible $t values:
-// normal, hover, active, insensitive, checked, checked-insensitive,
-// flat-normal, flat-hover, flat-active, flat-insensitive, flat-checked, flat-checked-insensitive;
+// normal, hover, active, disabled, checked, checked-disabled,
+// flat-normal, flat-hover, flat-active, flat-disabled, flat-checked, flat-checked-disabled;
 //
 
   @if $t == normal {
-  //
-  // normal button
-  //
-    transition: $material_transition, $shadow_transition;
+    transition: $longer_transition, $shadow_transition;
     box-shadow: $z-depth-1;
     background-color: $c;
     background-image: radial-gradient(circle farthest-corner at center,
@@ -191,9 +184,6 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   }
 
   @if $t == hover {
-  //
-  // hovered button
-  //
     box-shadow: $z-depth-2;
     background-image: radial-gradient(circle farthest-corner at center,
                                       gtkalpha(currentColor, 0) 100%,
@@ -203,49 +193,34 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   }
 
   @if $t == active {
-  //
-  // pushed button
-  //
-    transition: $material_transition, $shadow_transition, background-image 0;
-    animation: ripple_effect $material_slower $material_ease_out forwards;
+    transition: $longer_transition, $shadow_transition, background-image 0;
+    animation: ripple_effect $longer_duration $deceleration_curve forwards;
     box-shadow: $z-depth-2;
     color: $fg_color;
   }
 
-  @if $t == insensitive {
-  //
-  // insensitive button
-  //
+  @if $t == disabled {
     box-shadow: none;
     background-color: $track_color;
-    color: if($tc != $fg_color, $insensitive_fg_color, $insensitive_secondary_fg_color);
+    color: if($tc != $fg_color, $disabled_fg_color, $disabled_secondary_fg_color);
 
     > label { color: inherit; }
   }
 
   @if $t == checked {
-  //
-  // checked button
-  //
-    background-color: $selected_bg_color;
-    color: $selected_fg_color;
+    background-color: $primary_color;
+    color: $inversed_fg_color;
   }
 
-  @if $t == checked-insensitive {
-  //
-  // checked insensitive button
-  //
+  @if $t == checked-disabled {
     background-color: $track_color;
-    color: scale-alpha($selected_bg_color, $disabled_opacity);
+    color: scale-alpha($primary_color, $disabled_opacity);
 
     > label { color: inherit; }
   }
 
   @if $t == flat-normal {
-  //
-  // normal flat button
-  //
-    transition: $material_transition;
+    transition: $longer_transition;
     box-shadow: none;
     background-color: transparent;
     background-image: radial-gradient(circle farthest-corner at center,
@@ -256,9 +231,6 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   }
 
   @if $t == flat-hover {
-  //
-  // hovered flat button
-  //
     box-shadow: none;
     background-image: radial-gradient(circle farthest-corner at center,
                                       gtkalpha(currentColor, 0) 100%,
@@ -268,19 +240,13 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   }
 
   @if $t == flat-active {
-  //
-  // pushed flat button
-  //
-    transition: $material_transition, background-image 0;
-    animation: flat_ripple_effect $material_slower $material_ease_out forwards;
+    transition: $longer_transition, background-image 0;
+    animation: flat_ripple_effect $longer_duration $deceleration_curve forwards;
     box-shadow: none;
     color: currentColor;
   }
 
-  @if $t == flat-insensitive {
-  //
-  // insensitive flat button
-  //
+  @if $t == flat-disabled {
     box-shadow: none;
     background-color: transparent;
     color: if($tc != $fg_color, gtkalpha(currentColor, $disabled_opacity), gtkalpha(currentColor, $enabled_opacity * $disabled_opacity));
@@ -289,17 +255,11 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   }
 
   @if $t == flat-checked {
-  //
-  // checked flat button
-  //
     background-color: $track_color;
     color: currentColor;
   }
 
-  @if $t == flat-checked-insensitive {
-  //
-  // checked flat insensitive button
-  //
+  @if $t == flat-checked-disabled {
     background-color: $track_color;
     color: gtkalpha(currentColor, $disabled_opacity);
 
@@ -308,7 +268,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 }
 
 
-@mixin overshoot($p, $t:normal, $c:$secondary_selected_bg_color) {
+@mixin overshoot($p, $t:normal, $c:$alt_primary_color) {
 //
 // overshoot
 //
