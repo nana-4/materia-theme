@@ -1916,7 +1916,7 @@ check,
 radio {
   min-height: 24px;
   min-width: 24px;
-  margin: -12px;
+  margin: -($large_size - 24px) / 2;
   padding: ($large_size - 24px) / 2;
 
   @extend %simple_flat_button;
@@ -1963,6 +1963,10 @@ check {
                                             -gtk-recolor(url("assets/check-dash-symbolic.png"))); }
 }
 
+$radio_indicator: 10 / ($large_size / 1px) / 2;
+$radio_radius_slice: #{$large_size / 2 / 1px};
+$radio_radius_width: #{$large_size / 2};
+
 %radio,
 radio {
   & { -gtk-icon-source: image(-gtk-recolor(url("assets/radio-unchecked-symbolic.svg")),
@@ -1979,24 +1983,24 @@ radio {
                               center center, 0.001,
                               to($accent_color),
                               to(transparent))
-                              24 / 24px;
+                              $radio_radius_slice / $radio_radius_width;
 
   &:checked {
     border-image: -gtk-gradient(radial,
                                 center center, 0,
-                                center center, (10 / 48 / 2),
+                                center center, $radio_indicator,
                                 to($accent_color),
                                 to(transparent))
-                                24 / 24px;
+                                $radio_radius_slice / $radio_radius_width;
  }
 
   &:checked:disabled {
     border-image: -gtk-gradient(radial,
                                 center center, 0,
-                                center center, (10 / 48 / 2),
+                                center center, $radio_indicator,
                                 to(scale-alpha($accent_color, $disabled_opacity)),
                                 to(transparent))
-                                24 / 24px;
+                                $radio_radius_slice / $radio_radius_width;
  }
 
   &:indeterminate:checked {
@@ -2005,7 +2009,7 @@ radio {
                                 center center, 0.001,
                                 to($accent_color),
                                 to(transparent))
-                                24 / 24px;
+                                $radio_radius_slice / $radio_radius_width;
  }
 }
 
@@ -2022,16 +2026,16 @@ radio {
                                 center center, 0.001,
                                 to($accent_color),
                                 to(transparent))
-                                24 / 24px;
+                                $radio_radius_slice / $radio_radius_width;
   }
 
   to {
     border-image: -gtk-gradient(radial,
                                 center center, 0,
-                                center center, (10 / 48 / 2),
+                                center center, $radio_indicator,
                                 to($accent_color),
                                 to(transparent))
-                                24 / 24px;
+                                $radio_radius_slice / $radio_radius_width;
   }
 }
 
