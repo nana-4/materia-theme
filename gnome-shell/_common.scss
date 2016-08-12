@@ -1295,14 +1295,17 @@ StScrollBar {
 
   .nm-dialog-airplane-text { color: $fg_color; }
   .nm-dialog-header-icon { icon-size: 32px; }
-  .nm-dialog-scroll-view { border: 2px solid $borders_color; }
-  .nm-dialog-header { font-weight: bold; }
+  .nm-dialog-scroll-view { border: none; }
+  .nm-dialog-header { @include font(title); }
 
   .nm-dialog-item {
-    @include font(subheading);
-    border-bottom: 1px solid $borders_color;
+    font-size: 1em;
+    border-bottom: none;
+    border-radius: 2px;
     padding: 12px;
     spacing: 20px;
+    &:hover, &:focus { background-color: $semi_track_color; }
+    &:active { background-color: $track_color; }
   }
 
   .nm-dialog-item:selected {
