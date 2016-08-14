@@ -65,11 +65,11 @@ EelEditableLabel.entry { transition: none; }
 }
 .nautilus-operations-button-needs-attention {
   color: $accent_bg_color;
-  animation: needs_attention_keyframes 2s $material_timing_function;
+  animation: needs_attention_keyframes 2s $standard_curve;
 }
 .nautilus-operations-button-needs-attention-multiple {
   color: $accent_bg_color;
-  animation: needs_attention_keyframes 2s $material_timing_function;
+  animation: needs_attention_keyframes 2s $standard_curve;
   animation-iteration-count: 2;
 }
 
@@ -97,6 +97,23 @@ NautilusListView .view {
 }
 
 
+/**************
+ * Tweak Tool *
+ **************/
+// the sidebar
+.tweak-categories {
+  // padding: 4px 0;
+  background-color: $light_color;
+  background-image: linear-gradient(to bottom, $light_color);
+
+  // hide separators
+  .separator {
+    -GtkWidget-wide-separators: true;
+    color: transparent;
+  }
+}
+
+
 /************
  * Software *
  ************/
@@ -111,12 +128,22 @@ NautilusListView .view {
 GbTerminalView { background-color: $base_color; }
 
 
+/***********
+ * Firefox *
+ ***********/
+.menubar {
+  color: $secondary_selected_fg_color;
+
+  &:hover { color: $selected_fg_color; }
+}
+
+
 /*********
  * Unity *
  *********/
 // Decorations
 UnityDecoration {
-  -UnityDecoration-extents: 32px 0 0 0;
+  -UnityDecoration-extents: 28px 0 0 0;
   -UnityDecoration-input-extents: 8px;
 
   -UnityDecoration-shadow-offset-x: 0;
@@ -135,16 +162,17 @@ UnityDecoration {
 }
 
 UnityDecoration.top {
-  padding: 0 4px;
+  padding: 0 2px;
   border-style: none;
   border-radius: 2px 2px 0 0;
-  box-shadow: inset 0 1px $highlight_color;
-  background-color: $dark_color;
-  // color: $fg_color;
+  // box-shadow: inset 0 1px $secondary_highlight_color;
+  box-shadow: inset 0 1px scale-alpha(#FFFFFF, 0.1);
+  background-color: $unity_titlebar_color;
+  color: $selected_fg_color;
 }
 
 UnityDecoration.top:backdrop {
-  // color: $secondary_fg_color;
+  color: $secondary_selected_fg_color;
 }
 
 UnityDecoration.left,
@@ -154,10 +182,16 @@ UnityDecoration.right {
 UnityDecoration.bottom {
 }
 
+UnityDecoration.menuitem,
+UnityDecoration .menuitem {
+  color: gtkalpha(currentColor, $enabled_opacity);
+}
+
 UnityDecoration.menubar.menuitem:hover,
 UnityDecoration.menubar .menuitem *:hover {
-  box-shadow: inset 0 -2px $selected_bg_color;
+  box-shadow: inset 0 -2px currentColor;
   background-color: transparent;
+  color: currentColor;
 }
 
 .background:not(.csd) .header-bar {
@@ -172,14 +206,14 @@ SheetStyleDialog.unity-force-quit {
 // Panel Style
 UnityPanelWidget,
 .unity-panel {
-  background-color: $dark_color;
-  background-image: linear-gradient(to bottom, $dark_color);
-  // color: $fg_color;
+  background-color: $topbar_color;
+  background-image: linear-gradient(to bottom, $topbar_color);
+  color: $selected_fg_color;
 }
 
 UnityPanelWidget:backdrop,
 .unity-panel:backdrop {
-  // color: $secondary_fg_color;
+  color: $secondary_selected_fg_color;
 }
 
 .unity-panel.menubar,
@@ -188,12 +222,14 @@ UnityPanelWidget:backdrop,
 
 .unity-panel.menuitem,
 .unity-panel .menuitem {
+  color: gtkalpha(currentColor, $enabled_opacity);
 }
 
 .unity-panel.menubar.menuitem:hover,
 .unity-panel.menubar .menuitem *:hover {
-  box-shadow: inset 0 -2px $selected_bg_color;
+  box-shadow: inset 0 -2px currentColor;
   background-color: transparent;
+  color: currentColor;
 }
 
 @keyframes playbackmenuitem_spinner {
