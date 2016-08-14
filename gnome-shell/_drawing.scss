@@ -2,87 +2,91 @@
 
 // generic drawing of more complex things
 
+$root-font-size: if($laptop == 'true', 13px, 14px);
+$subheading-size: if($laptop == 'true', 15px, 16px);
+
 // provide font size in pt, with px fallback
-@mixin px-to-pt($size: $root-font-size) {
+@mixin pt($size: $root-font-size) {
   font-size: ($size * 0.75 / 1px) * 1pt;
 }
 
 // provide icon size in em, with px fallback
-@mixin px-to-em($size: 16px) {
+@mixin em($size: 16px) {
   icon-size: ($size / $root-font-size) * 1em;
 }
 
 // Typography
-@mixin font($typo) {
-  @if $typo==display-4 {
+
+// Reference URL:
+// https://material.google.com/style/typography.html#typography-styles
+
+@mixin font($size) {
+  @if $size==display-4 {
     // font-family: $large-font-family;
     font-size: 112px;
     font-weight: 300;
-    line-height: 1;
+    // line-height: 1;
   }
-  @if $typo==display-3 {
+  @if $size==display-3 {
     // font-family: $large-font-family;
     font-size: 56px;
     font-weight: 400;
-    line-height: 1;
+    // line-height: 1;
   }
-  @if $typo==display-2 {
+  @if $size==display-2 {
     // font-family: $large-font-family;
     font-size: 45px;
     font-weight: 400;
-    line-height: 48px;
+    // line-height: 48px;
   }
-  @if $typo==display-1 {
+  @if $size==display-1 {
     // font-family: $large-font-family;
     font-size: 34px;
     font-weight: 400;
-    line-height: 40px;
+    // line-height: 40px;
   }
-  @if $typo==headline {
-    // font-size: 24px;
-    @include px-to-pt(24px);
+  @if $size==headline {
+    @include pt(24px);
     font-weight: 400;
-    line-height: 32px;
+    // line-height: 32px;
   }
-  @if $typo==title {
-    // font-size: 20px;
-    @include px-to-pt(20px);
+  @if $size==title {
+    @include pt(20px);
     font-weight: 500;
-    line-height: 1;
+    // line-height: 1;
   }
-  @if $typo==subheading {
-    // font-size: 16px;
-    @include px-to-pt(16px);
+  @if $size==subheading {
+    @include pt($subheading-size);
     font-weight: 400;
-    line-height: 24px;
+    // line-height: 24px;
   }
-  @if $typo==body-2 {
-    // font-size: 14px;
-    @include px-to-pt($root-font-size);
+  @if $size==body-2 {
+    @include pt($root-font-size);
     font-weight: 500;
-    line-height: 24px;
+    // line-height: 24px;
   }
-  @if $typo==body-1 {
-    // font-size: 14px;
-    @include px-to-pt($root-font-size);
+  @if $size==body-1 {
+    @include pt($root-font-size);
     font-weight: 400;
-    line-height: 24px;
+    // line-height: 20px;
   }
-  @if $typo==caption {
-    // font-size: 12px;
-    @include px-to-pt(12px);
+  @if $size==caption {
+    @include pt(12px);
     font-weight: 400;
-    line-height: 1;
+    // line-height: 1;
   }
-  @if $typo==button {
-    // font-size: 14px;
-    @include px-to-pt($root-font-size);
+  @if $size==button {
+    @include pt($root-font-size);
     font-weight: 500;
-    line-height: 1;
+    // line-height: 20px;
   }
 }
 
 // shadows
+
+// Reference URL:
+// https://material-design.storage.googleapis.com/images/layout-principles-dimensionality-shadows-08_large_mdpi.png
+
 $z-depth-0: 0 0 transparent;
 $z-depth-1: 0 1px 1.5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
 $z-depth-2: 0 3px 3px rgba(0, 0, 0, 0.16 * 1.5), 0 3px 3px rgba(0, 0, 0, 0.23 * 1.5);
