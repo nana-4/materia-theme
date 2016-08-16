@@ -1470,7 +1470,7 @@ switch {
   background-clip: padding-box;
   font-size: 0; }
   switch:disabled {
-    color: rgba(0, 0, 0, 0.32); }
+    color: alpha(currentColor, 0.4); }
   switch:checked {
     background-color: rgba(255, 64, 129, 0.5); }
     switch:checked:disabled {
@@ -1491,16 +1491,16 @@ switch {
   switch:hover slider {
     border-image: none;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23); }
-  switch:disabled slider {
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    background-color: #fafafa;
-    color: rgba(0, 0, 0, 0.32); }
   switch:checked slider {
     transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1), margin 0, background-image 0, background-color 0 0.3s;
     animation: needs_attention 0.3s cubic-bezier(0, 0, 0.2, 1);
     margin: -4px -4px -4px 0;
     background-color: #FF4081;
     color: #FFFFFF; }
+  switch:disabled slider {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    background-color: #fafafa;
+    color: rgba(0, 0, 0, 0.32); }
   switch:checked:disabled slider {
     animation: none; }
 
@@ -1639,10 +1639,13 @@ menu menuitem radio:indeterminate:checked {
 treeview.view check,
 treeview.view radio {
   padding: 0; }
-  treeview.view check:checked:hover, treeview.view check:selected:checked:hover,
-  treeview.view radio:checked:hover,
-  treeview.view radio:selected:checked:hover {
+  treeview.view check:hover,
+  treeview.view radio:hover {
+    box-shadow: inset 0 0 0 10000px alpha(rgba(0, 0, 0, 0.8), 0.05);
     background-image: none; }
+    treeview.view check:hover:selected,
+    treeview.view radio:hover:selected {
+      box-shadow: inset 0 0 0 10000px alpha(#FFFFFF, 0.05); }
   treeview.view check,
   treeview.view radio {
     color: rgba(0, 0, 0, 0.6); }
@@ -1954,7 +1957,7 @@ levelbar block.full {
   background-color: #00C853; }
 levelbar block.empty {
   background-color: alpha(currentColor, 0.3);
-  color: rgba(0, 0, 0, 0.48); }
+  color: rgba(0, 0, 0, 0.32); }
 
 /****************
  * Print dialog *

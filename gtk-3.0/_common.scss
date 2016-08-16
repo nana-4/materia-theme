@@ -1842,7 +1842,7 @@ switch {
   background-clip: padding-box;
   font-size: 0;
 
-  &:disabled { color: $disabled_fg_color; }
+  &:disabled { color: gtkalpha(currentColor, $disabled_opacity); }
 
   &:checked {
     background-color: scale-alpha($accent_color, 0.5);
@@ -1866,8 +1866,6 @@ switch {
 
   &:hover slider { @include entry(focus); }
 
-  &:disabled slider { @include entry(disabled); }
-
   &:checked slider {
     transition: $longer_transition, $shadow_transition, margin 0, background-image 0, background-color 0 $longer_duration;
     animation: needs_attention $longer_duration $deceleration_curve;
@@ -1875,6 +1873,8 @@ switch {
     background-color: $accent_color;
     color: $inversed_fg_color;
   }
+
+  &:disabled slider { @include entry(disabled); }
 
   &:checked:disabled slider { animation: none; }
 
@@ -2072,7 +2072,12 @@ treeview.view check,
 treeview.view radio {
   padding: 0;
 
-  &:checked:hover, &:selected:checked:hover { background-image: none; }
+  &:hover {
+    box-shadow: inset 0 0 0 10000px gtkalpha($fg_color, 0.05);
+    background-image: none;
+
+    &:selected { box-shadow: inset 0 0 0 10000px gtkalpha($inversed_fg_color, 0.05); }
+  }
 
   & {
     color: $secondary_fg_color;
@@ -2460,7 +2465,7 @@ levelbar {
 
     &.empty {
       background-color: $track_color;
-      color: $tertiary_fg_color;
+      color: $disabled_fg_color;
     }
   }
 }
