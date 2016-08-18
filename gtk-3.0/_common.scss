@@ -2264,6 +2264,15 @@ GtkVolumeButton.button {
 .titlebar .button.titlebutton {
   // @extend %simple_flat_button;
   @extend %image_button;
+
+  &:active { // add fallback
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.4,
+                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
+                                    to(transparent)),
+                      linear-gradient(to bottom, gtkalpha(currentColor, $lower_opacity / 2));
+  }
 }
 
 // catch all extend :)
