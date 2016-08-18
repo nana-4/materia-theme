@@ -895,10 +895,10 @@ toolbar {
     transition: $shadow_transition;
     padding: $container_padding;
     border-radius: 2px;
-    box-shadow: $z-depth-2;
+    box-shadow: $z-depth-2, inset 0 1px $highlight_color;
     background-color: $base_color;
 
-    &:backdrop { box-shadow: $z-depth-1; }
+    &:backdrop { box-shadow: $z-depth-1, inset 0 1px $highlight_color; }
 
     &.left,
     &.right,
@@ -1324,6 +1324,7 @@ menu,
 .context-menu {
   margin: 4px 0;
   padding: 4px 0;
+  box-shadow: inset 0 1px $highlight_color;
   background-color: $base_color;
   border: 1px solid $borders_color; // adds borders in a non composited env
 
@@ -1424,7 +1425,7 @@ menuitem {
 popover.background {
   transition: $shadow_transition;
   padding: 0;
-  box-shadow:  $z-depth-2;
+  box-shadow:  $z-depth-2; // TODO: this should really have a highlight
   background-color: $lighter_bg_color;
 
   &:backdrop { box-shadow: $z-depth-1; }
@@ -2941,6 +2942,7 @@ tooltip {
   &.background {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
+    box-shadow: inset 0 1px $highlight_color;
     background-color: scale-alpha($base_color, $higher_opacity);
   }
 
@@ -3087,10 +3089,10 @@ colorswatch {
 colorchooser .popover.osd {
   transition: $shadow_transition;
   border-radius: 2px;
-  box-shadow:  $z-depth-2;
+  box-shadow:  $z-depth-2, inset 0 1px $highlight_color;
   background-color: $base_color;
 
-  &:backdrop { box-shadow: $z-depth-1; }
+  &:backdrop { box-shadow: $z-depth-1, inset 0 1px $highlight_color; }
 
   spinbutton:not(.vertical) { @extend %entry.flat; }
 }
