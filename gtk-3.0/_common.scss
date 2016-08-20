@@ -245,9 +245,12 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
     background-image: none;
   }
 
-  .linked > &:not(.flat) { @extend %linked; }
+  .linked > & { @extend %linked; }
 
-  .linked.vertical > &:not(.flat) { @extend %linked_vertical; }
+  .linked.vertical > & { @extend %linked_vertical; }
+
+  .linked > &.flat,
+  .linked.vertical > &.flat { border-radius: 0; }
 
   // entry error and warning style
   @each $e_type, $e_color in (error, $error_color),
@@ -330,13 +333,6 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
     }
     &:checked { @include button(flat-checked); }
     &:checked:insensitive { @include button(flat-checked-insensitive); }
-    .linked > & {
-      border-radius: 2px;
-      &.image-button {
-        outline-radius: 100px;
-        border-radius: 100px;
-      }
-    }
   }
   // big standalone buttons like in Documents pager
   &.osd {
@@ -428,15 +424,30 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
 
   //inline-toolbar buttons
   .inline-toolbar & {
-    @extend %button.flat;
+    // @extend %button.flat;
     @extend %image_button;
   }
 
   .primary-toolbar & { icon-shadow: none; } // tango icons don't need shadows
 
-  .linked > &:not(.flat):not(:only-child) { @extend %linked; }
+  .linked > & { @extend %linked; }
 
-  .linked.vertical > &:not(.flat):not(:only-child) { @extend %linked_vertical; }
+  .linked.vertical > & { @extend %linked_vertical; }
+
+  .linked > &.flat,
+  .linked.vertical > &.flat {
+    border-radius: 2px;
+
+    &.image-button {
+      -gtk-outline-radius: $circular_radius;
+      border-radius: $circular_radius;
+    }
+
+    &.text-button.image-button {
+      -gtk-outline-radius: 2px;
+      border-radius: 2px;
+    }
+  }
 }
 
 %image_button {
@@ -470,11 +481,11 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
 }
 
 %linked_middle {
+  outline-radius: 2px;
   border-radius: 0;
 }
 
 %linked {
-  outline-radius: 2px;
   @extend %linked_middle;
   &:first-child {
     border-top-left-radius: 2px;
@@ -490,11 +501,11 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
 }
 
 %linked_vertical_middle {
+  outline-radius: 2px;
   border-radius: 0;
 }
 
 %linked_vertical{
-  outline-radius: 2px;
   @extend %linked_vertical_middle;
   &:first-child {
     border-top-left-radius: 2px;
@@ -672,6 +683,7 @@ GtkComboBox {
   -GtkWidget-window-dragging: true;
   padding: 4px;
   background-color: $bg_color;
+  &:not(.search-bar) .button { @extend %button.flat; }
   .osd &, &.osd {
     transition: $shadow_image_transition;
     padding: $container_padding;
@@ -688,9 +700,6 @@ GtkComboBox {
                                 url("assets/osd-shadow-backdrop#{$asset_suffix}@2.png"))
                     10 / 10px stretch;
       // box-shadow: $z-depth-1, inset 0 1px $highlight_color;
-    }
-    & .button {
-      @extend %button.flat;
     }
   }
 }
@@ -1742,6 +1751,7 @@ GtkProgressBar {
   &.action-bar {
     padding: $container_padding;
     border-width: 1px 0 0;
+    .button:not(.suggested-action):not(.destructive-action) { @extend %button.flat; }
   }
 }
 
@@ -1832,8 +1842,7 @@ $row_transition: $longer_transition, background-color 0, color 0;
 .app-notification.frame {
   @extend %osd;
   @extend .toolbar.osd;
-  .button {
-  }
+  .button { @extend %button.flat; }
 }
 
 /*************

@@ -181,6 +181,8 @@ GtkTextView {
     box-shadow: none;
     background-color: transparent;
     background-image: none; }
+  .linked > .entry.flat, .notebook GtkGrid.linked > .entry, .linked.vertical > .entry.flat, .notebook GtkGrid.linked.vertical > .entry {
+    border-radius: 0; }
   .entry.error {
     transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -285,69 +287,52 @@ GtkTextView {
     color: rgba(66, 165, 245, 0.4); }
     .button:checked:insensitive > .label {
       color: inherit; }
-  .spinbutton .button, .popover .linked > .button, .notebook tab .button, GtkCalendar.button, .message-dialog.csd .dialog-action-area .button, .sidebar-button.button, .inline-toolbar
-  .button, .osd .toolbar .button, .toolbar.osd .button, .app-notification .button,
-  .app-notification.frame .button, .titlebar .button:not(.suggested-action):not(.destructive-action),
-  .header-bar .button:not(.suggested-action):not(.destructive-action),
+  .spinbutton .button, .popover .linked > .button, .notebook tab .button, GtkCalendar.button, .message-dialog.csd .dialog-action-area .button, .sidebar-button.button, .toolbar:not(.search-bar) .button, .titlebar .button:not(.suggested-action):not(.destructive-action),
+  .header-bar .button:not(.suggested-action):not(.destructive-action), .frame.action-bar .button:not(.suggested-action):not(.destructive-action), .app-notification .button,
+  .app-notification.frame .button,
   .button.flat {
     transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
     box-shadow: none;
     background-color: transparent;
     background-image: -gtk-gradient(radial, center center, 0, center center, 0.5, to(alpha(currentColor, 0)), to(transparent)), linear-gradient(to bottom, alpha(currentColor, 0));
     color: alpha(currentColor, 0.75); }
-    .spinbutton .button:hover, .popover .linked > .button:hover, .notebook tab .button:hover, GtkCalendar.button:hover, .message-dialog.csd .dialog-action-area .button:hover, .sidebar-button.button:hover, .inline-toolbar
-    .button:hover, .osd .toolbar .button:hover, .toolbar.osd .button:hover, .app-notification .button:hover, .titlebar .button:hover:not(.suggested-action):not(.destructive-action),
-    .header-bar .button:hover:not(.suggested-action):not(.destructive-action),
+    .spinbutton .button:hover, .popover .linked > .button:hover, .notebook tab .button:hover, GtkCalendar.button:hover, .message-dialog.csd .dialog-action-area .button:hover, .sidebar-button.button:hover, .toolbar:not(.search-bar) .button:hover, .titlebar .button:hover:not(.suggested-action):not(.destructive-action),
+    .header-bar .button:hover:not(.suggested-action):not(.destructive-action), .frame.action-bar .button:hover:not(.suggested-action):not(.destructive-action), .app-notification .button:hover,
     .button.flat:hover {
       box-shadow: none;
       background-image: -gtk-gradient(radial, center center, 0, center center, 0.5, to(alpha(currentColor, 0)), to(transparent)), linear-gradient(to bottom, alpha(currentColor, 0.15));
       color: currentColor; }
-    .spinbutton .button:active, .popover .linked > .button:active, .notebook tab .button:active, GtkCalendar.button:active, .message-dialog.csd .dialog-action-area .button:active, .sidebar-button.button:active, .inline-toolbar
-    .button:active, .osd .toolbar .button:active, .toolbar.osd .button:active, .app-notification .button:active, .titlebar .button:active:not(.suggested-action):not(.destructive-action),
-    .header-bar .button:active:not(.suggested-action):not(.destructive-action),
+    .spinbutton .button:active, .popover .linked > .button:active, .notebook tab .button:active, GtkCalendar.button:active, .message-dialog.csd .dialog-action-area .button:active, .sidebar-button.button:active, .toolbar:not(.search-bar) .button:active, .titlebar .button:active:not(.suggested-action):not(.destructive-action),
+    .header-bar .button:active:not(.suggested-action):not(.destructive-action), .frame.action-bar .button:active:not(.suggested-action):not(.destructive-action), .app-notification .button:active,
     .button.flat:active {
       transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-image 0;
       animation: flat_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
       box-shadow: none;
       color: currentColor; }
-    .spinbutton .button:insensitive, .popover .linked > .button:insensitive, .notebook tab .button:insensitive, GtkCalendar.button:insensitive, .message-dialog.csd .dialog-action-area .button:insensitive, .sidebar-button.button:insensitive, .inline-toolbar
-    .button:insensitive, .osd .toolbar .button:insensitive, .toolbar.osd .button:insensitive, .app-notification .button:insensitive, .titlebar .button:insensitive:not(.suggested-action):not(.destructive-action),
-    .header-bar .button:insensitive:not(.suggested-action):not(.destructive-action),
+    .spinbutton .button:insensitive, .popover .linked > .button:insensitive, .notebook tab .button:insensitive, GtkCalendar.button:insensitive, .message-dialog.csd .dialog-action-area .button:insensitive, .sidebar-button.button:insensitive, .toolbar:not(.search-bar) .button:insensitive, .titlebar .button:insensitive:not(.suggested-action):not(.destructive-action),
+    .header-bar .button:insensitive:not(.suggested-action):not(.destructive-action), .frame.action-bar .button:insensitive:not(.suggested-action):not(.destructive-action), .app-notification .button:insensitive,
     .button.flat:insensitive {
       box-shadow: none;
       background-color: transparent;
       color: alpha(currentColor, 0.3); }
-      .spinbutton .button:insensitive > .label, .popover .linked > .button:insensitive > .label, .notebook tab .button:insensitive > .label, GtkCalendar.button:insensitive > .label, .message-dialog.csd .dialog-action-area .button:insensitive > .label, .sidebar-button.button:insensitive > .label, .inline-toolbar
-      .button:insensitive > .label, .osd .toolbar .button:insensitive > .label, .toolbar.osd .button:insensitive > .label, .app-notification .button:insensitive > .label, .titlebar .button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
-      .header-bar .button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+      .spinbutton .button:insensitive > .label, .popover .linked > .button:insensitive > .label, .notebook tab .button:insensitive > .label, GtkCalendar.button:insensitive > .label, .message-dialog.csd .dialog-action-area .button:insensitive > .label, .sidebar-button.button:insensitive > .label, .toolbar:not(.search-bar) .button:insensitive > .label, .titlebar .button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+      .header-bar .button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .frame.action-bar .button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .app-notification .button:insensitive > .label,
       .button.flat:insensitive > .label {
         color: inherit; }
-  .inline-toolbar
-  .button:checked, .osd .toolbar .button:checked, .toolbar.osd .button:checked, .app-notification .button:checked, .titlebar .button:checked:not(.suggested-action):not(.destructive-action),
-  .header-bar .button:checked:not(.suggested-action):not(.destructive-action),
+  .toolbar:not(.search-bar) .button:checked, .titlebar .button:checked:not(.suggested-action):not(.destructive-action),
+  .header-bar .button:checked:not(.suggested-action):not(.destructive-action), .frame.action-bar .button:checked:not(.suggested-action):not(.destructive-action), .app-notification .button:checked,
   .button.flat:checked {
     background-color: alpha(currentColor, 0.3);
     color: currentColor; }
-  .inline-toolbar
-  .button:checked:insensitive, .osd .toolbar .button:checked:insensitive, .toolbar.osd .button:checked:insensitive, .app-notification .button:checked:insensitive, .titlebar .button:checked:insensitive:not(.suggested-action):not(.destructive-action),
-  .header-bar .button:checked:insensitive:not(.suggested-action):not(.destructive-action),
+  .toolbar:not(.search-bar) .button:checked:insensitive, .titlebar .button:checked:insensitive:not(.suggested-action):not(.destructive-action),
+  .header-bar .button:checked:insensitive:not(.suggested-action):not(.destructive-action), .frame.action-bar .button:checked:insensitive:not(.suggested-action):not(.destructive-action), .app-notification .button:checked:insensitive,
   .button.flat:checked:insensitive {
     background-color: alpha(currentColor, 0.3);
     color: alpha(currentColor, 0.4); }
-    .inline-toolbar
-    .button:checked:insensitive > .label, .osd .toolbar .button:checked:insensitive > .label, .toolbar.osd .button:checked:insensitive > .label, .app-notification .button:checked:insensitive > .label, .titlebar .button:checked:insensitive:not(.suggested-action):not(.destructive-action) > .label,
-    .header-bar .button:checked:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+    .toolbar:not(.search-bar) .button:checked:insensitive > .label, .titlebar .button:checked:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+    .header-bar .button:checked:insensitive:not(.suggested-action):not(.destructive-action) > .label, .frame.action-bar .button:checked:insensitive:not(.suggested-action):not(.destructive-action) > .label, .app-notification .button:checked:insensitive > .label,
     .button.flat:checked:insensitive > .label {
       color: inherit; }
-  .inline-toolbar .linked > .button, .osd .toolbar .linked > .button, .toolbar.osd .linked > .button, .app-notification .linked > .button, .titlebar .linked > .button:not(.suggested-action):not(.destructive-action),
-  .header-bar .linked > .button:not(.suggested-action):not(.destructive-action), .linked >
-  .button.flat {
-    border-radius: 2px; }
-    .inline-toolbar .linked > .image-button.button, .osd .toolbar .linked > .image-button.button, .toolbar.osd .linked > .image-button.button, .app-notification .linked > .image-button.button, .titlebar .linked > .image-button.button:not(.suggested-action):not(.destructive-action),
-    .header-bar .linked > .image-button.button:not(.suggested-action):not(.destructive-action), .linked >
-    .button.flat.image-button {
-      outline-radius: 100px;
-      border-radius: 100px; }
   .button.osd.image-button {
     padding: 16px;
     background-size: 60px 60px, auto; }
@@ -364,22 +349,19 @@ GtkTextView {
         color: inherit; }
     .button.suggested-action:checked {
       background-color: #ff79a7; }
-    .inline-toolbar
-    .suggested-action.button, .osd .toolbar .suggested-action.button, .toolbar.osd .suggested-action.button, .app-notification .suggested-action.button, .titlebar .suggested-action.button:not(.suggested-action):not(.destructive-action),
-    .header-bar .suggested-action.button:not(.suggested-action):not(.destructive-action),
+    .toolbar:not(.search-bar) .suggested-action.button, .titlebar .suggested-action.button:not(.suggested-action):not(.destructive-action),
+    .header-bar .suggested-action.button:not(.suggested-action):not(.destructive-action), .frame.action-bar .suggested-action.button:not(.suggested-action):not(.destructive-action), .app-notification .suggested-action.button,
     .button.suggested-action.flat {
       background-color: transparent;
       color: #FF4081; }
-      .inline-toolbar
-      .suggested-action.button:insensitive, .osd .toolbar .suggested-action.button:insensitive, .toolbar.osd .suggested-action.button:insensitive, .app-notification .suggested-action.button:insensitive, .titlebar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action),
-      .header-bar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action),
+      .toolbar:not(.search-bar) .suggested-action.button:insensitive, .titlebar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action),
+      .header-bar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action), .frame.action-bar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action), .app-notification .suggested-action.button:insensitive,
       .button.suggested-action.flat:insensitive {
         box-shadow: none;
         background-color: transparent;
         color: alpha(currentColor, 0.4); }
-        .inline-toolbar
-        .suggested-action.button:insensitive > .label, .osd .toolbar .suggested-action.button:insensitive > .label, .toolbar.osd .suggested-action.button:insensitive > .label, .app-notification .suggested-action.button:insensitive > .label, .titlebar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
-        .header-bar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+        .toolbar:not(.search-bar) .suggested-action.button:insensitive > .label, .titlebar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+        .header-bar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .frame.action-bar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .app-notification .suggested-action.button:insensitive > .label,
         .button.suggested-action.flat:insensitive > .label {
           color: inherit; }
   .button.destructive-action {
@@ -393,22 +375,19 @@ GtkTextView {
         color: inherit; }
     .button.destructive-action:checked {
       background-color: #ff8686; }
-    .inline-toolbar
-    .destructive-action.button, .osd .toolbar .destructive-action.button, .toolbar.osd .destructive-action.button, .app-notification .destructive-action.button, .titlebar .destructive-action.button:not(.suggested-action):not(.destructive-action),
-    .header-bar .destructive-action.button:not(.suggested-action):not(.destructive-action),
+    .toolbar:not(.search-bar) .destructive-action.button, .titlebar .destructive-action.button:not(.suggested-action):not(.destructive-action),
+    .header-bar .destructive-action.button:not(.suggested-action):not(.destructive-action), .frame.action-bar .destructive-action.button:not(.suggested-action):not(.destructive-action), .app-notification .destructive-action.button,
     .button.destructive-action.flat {
       background-color: transparent;
       color: #FF5252; }
-      .inline-toolbar
-      .destructive-action.button:insensitive, .osd .toolbar .destructive-action.button:insensitive, .toolbar.osd .destructive-action.button:insensitive, .app-notification .destructive-action.button:insensitive, .titlebar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action),
-      .header-bar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action),
+      .toolbar:not(.search-bar) .destructive-action.button:insensitive, .titlebar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action),
+      .header-bar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action), .frame.action-bar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action), .app-notification .destructive-action.button:insensitive,
       .button.destructive-action.flat:insensitive {
         box-shadow: none;
         background-color: transparent;
         color: alpha(currentColor, 0.4); }
-        .inline-toolbar
-        .destructive-action.button:insensitive > .label, .osd .toolbar .destructive-action.button:insensitive > .label, .toolbar.osd .destructive-action.button:insensitive > .label, .app-notification .destructive-action.button:insensitive > .label, .titlebar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
-        .header-bar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+        .toolbar:not(.search-bar) .destructive-action.button:insensitive > .label, .titlebar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+        .header-bar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .frame.action-bar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .app-notification .destructive-action.button:insensitive > .label,
         .button.destructive-action.flat:insensitive > .label {
           color: inherit; }
   .button.text-button,
@@ -452,6 +431,26 @@ GtkTextView {
   .primary-toolbar
   .button {
     icon-shadow: none; }
+  .toolbar:not(.search-bar) .linked > .button, .titlebar .linked > .button:not(.suggested-action):not(.destructive-action),
+  .header-bar .linked > .button:not(.suggested-action):not(.destructive-action), .frame.action-bar .linked > .button:not(.suggested-action):not(.destructive-action), .app-notification .linked > .button, .toolbar:not(.search-bar) .linked.vertical > .button, .titlebar .linked.vertical > .button:not(.suggested-action):not(.destructive-action),
+  .header-bar .linked.vertical > .button:not(.suggested-action):not(.destructive-action), .frame.action-bar .linked.vertical > .button:not(.suggested-action):not(.destructive-action), .app-notification .linked.vertical > .button, .linked >
+  .button.flat, .linked.vertical >
+  .button.flat {
+    border-radius: 2px; }
+    .toolbar:not(.search-bar) .linked > .image-button.button, .titlebar .linked > .image-button.button:not(.suggested-action):not(.destructive-action),
+    .header-bar .linked > .image-button.button:not(.suggested-action):not(.destructive-action), .frame.action-bar .linked > .image-button.button:not(.suggested-action):not(.destructive-action), .app-notification .linked > .image-button.button, .toolbar:not(.search-bar) .linked.vertical > .image-button.button, .titlebar .linked.vertical > .image-button.button:not(.suggested-action):not(.destructive-action),
+    .header-bar .linked.vertical > .image-button.button:not(.suggested-action):not(.destructive-action), .frame.action-bar .linked.vertical > .image-button.button:not(.suggested-action):not(.destructive-action), .app-notification .linked.vertical > .image-button.button, .linked >
+    .button.flat.image-button, .linked.vertical >
+    .button.flat.image-button {
+      -gtk-outline-radius: 100px;
+      border-radius: 100px; }
+    .toolbar:not(.search-bar) .linked > .text-button.image-button.button, .titlebar .linked > .text-button.image-button.button:not(.suggested-action):not(.destructive-action),
+    .header-bar .linked > .text-button.image-button.button:not(.suggested-action):not(.destructive-action), .frame.action-bar .linked > .text-button.image-button.button:not(.suggested-action):not(.destructive-action), .app-notification .linked > .text-button.image-button.button, .toolbar:not(.search-bar) .linked.vertical > .text-button.image-button.button, .titlebar .linked.vertical > .text-button.image-button.button:not(.suggested-action):not(.destructive-action),
+    .header-bar .linked.vertical > .text-button.image-button.button:not(.suggested-action):not(.destructive-action), .frame.action-bar .linked.vertical > .text-button.image-button.button:not(.suggested-action):not(.destructive-action), .app-notification .linked.vertical > .text-button.image-button.button, .linked >
+    .button.flat.text-button.image-button, .linked.vertical >
+    .button.flat.text-button.image-button {
+      -gtk-outline-radius: 2px;
+      border-radius: 2px; }
 
 .button.image-button, .inline-toolbar
 .button, .spinbutton .button, .notebook tab .button, GtkScaleButton.button,
@@ -474,52 +473,48 @@ GtkVolumeButton.button, .header-bar .button.titlebutton,
   .button.needs-attention > GtkImage:dir(rtl), .sidebar-item.needs-attention > .label:dir(rtl) {
     background-position: left 3px; }
 
-.linked > .entry:not(.flat), .linked >
-.button:not(.flat):not(:only-child), .linked > GtkComboBox > .the-button-in-the-combobox:dir(ltr), .linked > GtkComboBox > .the-button-in-the-combobox:dir(rtl),
+.linked > .entry, .linked >
+.button, .linked > GtkComboBox > .the-button-in-the-combobox:dir(ltr), .linked > GtkComboBox > .the-button-in-the-combobox:dir(rtl),
 .linked > GtkComboBoxText > .the-button-in-the-combobox:dir(ltr),
 .linked > GtkComboBoxText > .the-button-in-the-combobox:dir(rtl) {
+  outline-radius: 2px;
   border-radius: 0; }
 
-.linked > .entry:not(.flat), .linked >
-.button:not(.flat):not(:only-child) {
-  outline-radius: 2px; }
-  .linked > .entry:first-child:not(.flat), .linked >
-  .button:first-child:not(.flat):not(:only-child), .linked > GtkComboBox:first-child > .the-button-in-the-combobox,
-  .linked > GtkComboBoxText:first-child > .the-button-in-the-combobox {
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px; }
-  .linked > .entry:last-child:not(.flat), .linked >
-  .button:last-child:not(.flat):not(:only-child), .linked > GtkComboBox:last-child > .the-button-in-the-combobox,
-  .linked > GtkComboBoxText:last-child > .the-button-in-the-combobox {
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px; }
-  .linked > .entry:only-child:not(.flat), .linked >
-  .button:only-child:not(.flat):not(:only-child), .linked > GtkComboBox:only-child > .the-button-in-the-combobox,
-  .linked > GtkComboBoxText:only-child > .the-button-in-the-combobox {
-    border-radius: 2px; }
+.linked > .entry:first-child, .linked >
+.button:first-child, .linked > GtkComboBox:first-child > .the-button-in-the-combobox,
+.linked > GtkComboBoxText:first-child > .the-button-in-the-combobox {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px; }
+.linked > .entry:last-child, .linked >
+.button:last-child, .linked > GtkComboBox:last-child > .the-button-in-the-combobox,
+.linked > GtkComboBoxText:last-child > .the-button-in-the-combobox {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px; }
+.linked > .entry:only-child, .linked >
+.button:only-child, .linked > GtkComboBox:only-child > .the-button-in-the-combobox,
+.linked > GtkComboBoxText:only-child > .the-button-in-the-combobox {
+  border-radius: 2px; }
 
-.linked.vertical > .entry:not(.flat), .linked.vertical >
-.button:not(.flat):not(:only-child), .linked.vertical > GtkComboBoxText > .the-button-in-the-combobox,
+.linked.vertical > .entry, .linked.vertical >
+.button, .linked.vertical > GtkComboBoxText > .the-button-in-the-combobox,
 .linked.vertical > GtkComboBox > .the-button-in-the-combobox {
+  outline-radius: 2px;
   border-radius: 0; }
 
-.linked.vertical > .entry:not(.flat), .linked.vertical >
-.button:not(.flat):not(:only-child) {
-  outline-radius: 2px; }
-  .linked.vertical > .entry:first-child:not(.flat), .linked.vertical >
-  .button:first-child:not(.flat):not(:only-child), .linked.vertical > GtkComboBoxText:first-child > .the-button-in-the-combobox,
-  .linked.vertical > GtkComboBox:first-child > .the-button-in-the-combobox {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px; }
-  .linked.vertical > .entry:last-child:not(.flat), .linked.vertical >
-  .button:last-child:not(.flat):not(:only-child), .linked.vertical > GtkComboBoxText:last-child > .the-button-in-the-combobox,
-  .linked.vertical > GtkComboBox:last-child > .the-button-in-the-combobox {
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px; }
-  .linked.vertical > .entry:only-child:not(.flat), .linked.vertical >
-  .button:only-child:not(.flat):not(:only-child), .linked.vertical > GtkComboBoxText:only-child > .the-button-in-the-combobox,
-  .linked.vertical > GtkComboBox:only-child > .the-button-in-the-combobox {
-    border-radius: 2px; }
+.linked.vertical > .entry:first-child, .linked.vertical >
+.button:first-child, .linked.vertical > GtkComboBoxText:first-child > .the-button-in-the-combobox,
+.linked.vertical > GtkComboBox:first-child > .the-button-in-the-combobox {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px; }
+.linked.vertical > .entry:last-child, .linked.vertical >
+.button:last-child, .linked.vertical > GtkComboBoxText:last-child > .the-button-in-the-combobox,
+.linked.vertical > GtkComboBox:last-child > .the-button-in-the-combobox {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px; }
+.linked.vertical > .entry:only-child, .linked.vertical >
+.button:only-child, .linked.vertical > GtkComboBoxText:only-child > .the-button-in-the-combobox,
+.linked.vertical > GtkComboBox:only-child > .the-button-in-the-combobox {
+  border-radius: 2px; }
 
 /* menu buttons */
 GtkColorButton.button {
