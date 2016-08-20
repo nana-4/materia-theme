@@ -775,9 +775,17 @@ GtkComboBox {
     }
   }
 
+  .button.suggested-action, .button.destructive-action {
+    &:insensitive {
+      color: gtkalpha(currentColor, $disabled_opacity);
+
+      > .label { color: inherit; }
+    }
+  }
+
   &.selection-mode {
-    transition: background-color $longer_duration $deceleration_curve;
-    box-shadow: inset 0 1px $secondary_highlight_color;
+    // transition: background-color $shorter_duration $deceleration_curve;
+    // box-shadow: $z-depth-1, inset 0 1px $secondary_highlight_color;
     background-color: $selected_bg_color;
     color: $selected_fg_color;
     &:backdrop {
@@ -1395,14 +1403,12 @@ GtkSwitch {
     background-color: $track_color;
     // background-clip: padding-box;
     &:insensitive {
-      color: $insensitive_fg_color;
+      color: gtkalpha(currentColor, $disabled_opacity);
     }
     &:active {
       background-color: scale-alpha($accent_bg_color, 0.5);
-      color: $selected_fg_color;
       &:insensitive {
         background-color: scale-alpha($accent_bg_color, 0.5 * $disabled_opacity);
-        color: $insensitive_fg_color;
       }
     }
   }

@@ -317,10 +317,10 @@ GtkTextView {
       box-shadow: none;
       background-color: transparent;
       color: alpha(currentColor, 0.3); }
-      .spinbutton .button:insensitive > label, .popover .linked > .button:insensitive > label, .notebook tab .button:insensitive > label, GtkCalendar.button:insensitive > label, .message-dialog.csd .dialog-action-area .button:insensitive > label, .sidebar-button.button:insensitive > label, .inline-toolbar
-      .button:insensitive > label, .osd .toolbar .button:insensitive > label, .toolbar.osd .button:insensitive > label, .app-notification .button:insensitive > label, .titlebar .button:insensitive:not(.suggested-action):not(.destructive-action) > label,
-      .header-bar .button:insensitive:not(.suggested-action):not(.destructive-action) > label,
-      .button.flat:insensitive > label {
+      .spinbutton .button:insensitive > .label, .popover .linked > .button:insensitive > .label, .notebook tab .button:insensitive > .label, GtkCalendar.button:insensitive > .label, .message-dialog.csd .dialog-action-area .button:insensitive > .label, .sidebar-button.button:insensitive > .label, .inline-toolbar
+      .button:insensitive > .label, .osd .toolbar .button:insensitive > .label, .toolbar.osd .button:insensitive > .label, .app-notification .button:insensitive > .label, .titlebar .button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+      .header-bar .button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+      .button.flat:insensitive > .label {
         color: inherit; }
   .inline-toolbar
   .button:checked, .osd .toolbar .button:checked, .toolbar.osd .button:checked, .app-notification .button:checked, .titlebar .button:checked:not(.suggested-action):not(.destructive-action),
@@ -335,9 +335,9 @@ GtkTextView {
     background-color: alpha(currentColor, 0.3);
     color: alpha(currentColor, 0.4); }
     .inline-toolbar
-    .button:checked:insensitive > label, .osd .toolbar .button:checked:insensitive > label, .toolbar.osd .button:checked:insensitive > label, .app-notification .button:checked:insensitive > label, .titlebar .button:checked:insensitive:not(.suggested-action):not(.destructive-action) > label,
-    .header-bar .button:checked:insensitive:not(.suggested-action):not(.destructive-action) > label,
-    .button.flat:checked:insensitive > label {
+    .button:checked:insensitive > .label, .osd .toolbar .button:checked:insensitive > .label, .toolbar.osd .button:checked:insensitive > .label, .app-notification .button:checked:insensitive > .label, .titlebar .button:checked:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+    .header-bar .button:checked:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+    .button.flat:checked:insensitive > .label {
       color: inherit; }
   .inline-toolbar .linked > .button, .osd .toolbar .linked > .button, .toolbar.osd .linked > .button, .app-notification .linked > .button, .titlebar .linked > .button:not(.suggested-action):not(.destructive-action),
   .header-bar .linked > .button:not(.suggested-action):not(.destructive-action), .linked >
@@ -378,9 +378,9 @@ GtkTextView {
         background-color: transparent;
         color: alpha(currentColor, 0.4); }
         .inline-toolbar
-        .suggested-action.button:insensitive > label, .osd .toolbar .suggested-action.button:insensitive > label, .toolbar.osd .suggested-action.button:insensitive > label, .app-notification .suggested-action.button:insensitive > label, .titlebar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > label,
-        .header-bar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > label,
-        .button.suggested-action.flat:insensitive > label {
+        .suggested-action.button:insensitive > .label, .osd .toolbar .suggested-action.button:insensitive > .label, .toolbar.osd .suggested-action.button:insensitive > .label, .app-notification .suggested-action.button:insensitive > .label, .titlebar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+        .header-bar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+        .button.suggested-action.flat:insensitive > .label {
           color: inherit; }
   .button.destructive-action {
     background-color: #FF5252;
@@ -407,9 +407,9 @@ GtkTextView {
         background-color: transparent;
         color: alpha(currentColor, 0.4); }
         .inline-toolbar
-        .destructive-action.button:insensitive > label, .osd .toolbar .destructive-action.button:insensitive > label, .toolbar.osd .destructive-action.button:insensitive > label, .app-notification .destructive-action.button:insensitive > label, .titlebar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > label,
-        .header-bar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > label,
-        .button.destructive-action.flat:insensitive > label {
+        .destructive-action.button:insensitive > .label, .osd .toolbar .destructive-action.button:insensitive > .label, .toolbar.osd .destructive-action.button:insensitive > .label, .app-notification .destructive-action.button:insensitive > .label, .titlebar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+        .header-bar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
+        .button.destructive-action.flat:insensitive > .label {
           color: inherit; }
   .button.text-button,
   GtkScaleButton.button.text-button,
@@ -677,10 +677,16 @@ GtkComboBox {
       .header-bar .button:not(.suggested-action):not(.destructive-action):checked,
       .header-bar .button:not(.suggested-action):not(.destructive-action):checked:insensitive {
         background-color: transparent; }
+  .titlebar .button.suggested-action:insensitive, .titlebar .button.destructive-action:insensitive,
+  .header-bar .button.suggested-action:insensitive,
+  .header-bar .button.destructive-action:insensitive {
+    color: alpha(currentColor, 0.4); }
+    .titlebar .button.suggested-action:insensitive > .label, .titlebar .button.destructive-action:insensitive > .label,
+    .header-bar .button.suggested-action:insensitive > .label,
+    .header-bar .button.destructive-action:insensitive > .label {
+      color: inherit; }
   .titlebar.selection-mode,
   .header-bar.selection-mode {
-    transition: background-color 0.3s cubic-bezier(0, 0, 0.2, 1);
-    box-shadow: inset 0 1px rgba(255, 255, 255, 0.2);
     background-color: #42A5F5;
     color: #FFFFFF; }
     .titlebar.selection-mode:backdrop,
@@ -1181,13 +1187,11 @@ GtkSwitch {
     border-radius: 100px;
     background-color: alpha(currentColor, 0.3); }
     GtkSwitch.trough:insensitive {
-      color: rgba(0, 0, 0, 0.32); }
+      color: alpha(currentColor, 0.4); }
     GtkSwitch.trough:active {
-      background-color: rgba(255, 64, 129, 0.5);
-      color: #FFFFFF; }
+      background-color: rgba(255, 64, 129, 0.5); }
       GtkSwitch.trough:active:insensitive {
-        background-color: rgba(255, 64, 129, 0.2);
-        color: rgba(0, 0, 0, 0.32); }
+        background-color: rgba(255, 64, 129, 0.2); }
   GtkSwitch.slider {
     padding: 4px;
     border-radius: 100px;
@@ -2254,10 +2258,10 @@ UnityDecoration.menubar .menuitem *:hover {
   background-color: transparent;
   color: currentColor; }
 
-.background:not(.csd) .header-bar {
+.background:not(.csd) :not(.titlebar) .header-bar {
   border-radius: 0;
   box-shadow: none; }
-  .background:not(.csd) .header-bar.inline-toolbar {
+  .background:not(.csd) :not(.titlebar) .header-bar.inline-toolbar {
     border-style: none; }
 
 UnityPanelWidget,
