@@ -2854,7 +2854,7 @@ box > widget > widget:selected {
  * Unity *
  *********/
 UnityDecoration {
-  -UnityDecoration-extents: 32px 0 0 0;
+  -UnityDecoration-extents: 28px 0 0 0;
   -UnityDecoration-input-extents: 8px;
   -UnityDecoration-shadow-offset-x: 0;
   -UnityDecoration-shadow-offset-y: 3px;
@@ -2869,30 +2869,51 @@ UnityDecoration {
   -UnityDecoration-title-alignment: 0.0; }
 
 UnityDecoration.top {
-  padding: 0 4px;
+  padding: 0 2px;
   border-style: none;
   border-radius: 2px 2px 0 0;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.2);
-  background-color: #455A64; }
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+  background-color: #37474F;
+  color: #FFFFFF; }
+
+UnityDecoration.top:backdrop {
+  color: rgba(255, 255, 255, 0.75); }
+
+UnityDecoration.menuitem,
+UnityDecoration .menuitem {
+  color: alpha(currentColor, 0.75); }
 
 UnityDecoration.menubar.menuitem:hover,
 UnityDecoration.menubar .menuitem *:hover {
-  box-shadow: inset 0 -2px #42A5F5;
-  background-color: transparent; }
+  box-shadow: inset 0 -2px currentColor;
+  background-color: transparent;
+  color: currentColor; }
 
-.background:not(.csd) .header-bar {
+.background:not(.csd) headerbar {
   border-radius: 0;
   box-shadow: none; }
+  .background:not(.csd) headerbar.inline-toolbar {
+    border-style: none; }
 
 UnityPanelWidget,
 .unity-panel {
-  background-color: #455A64;
-  background-image: image(#455A64); }
+  background-color: #263238;
+  background-image: image(#263238);
+  color: #FFFFFF; }
+
+UnityPanelWidget:backdrop,
+.unity-panel:backdrop {
+  color: rgba(255, 255, 255, 0.75); }
+
+.unity-panel.menuitem,
+.unity-panel .menuitem {
+  color: alpha(currentColor, 0.75); }
 
 .unity-panel.menubar.menuitem:hover,
 .unity-panel.menubar .menuitem *:hover {
-  box-shadow: inset 0 -2px #42A5F5;
-  background-color: transparent; }
+  box-shadow: inset 0 -2px currentColor;
+  background-color: transparent;
+  color: currentColor; }
 
 @keyframes playbackmenuitem_spinner {
   to {

@@ -791,7 +791,7 @@ box > widget > widget:selected { background-color: $primary_color; }
  *********/
 // Decorations
 UnityDecoration {
-  -UnityDecoration-extents: 32px 0 0 0;
+  -UnityDecoration-extents: 28px 0 0 0;
   -UnityDecoration-input-extents: 8px;
 
   -UnityDecoration-shadow-offset-x: 0;
@@ -810,16 +810,17 @@ UnityDecoration {
 }
 
 UnityDecoration.top {
-  padding: 0 4px;
+  padding: 0 2px;
   border-style: none;
   border-radius: 2px 2px 0 0;
-  box-shadow: inset 0 1px $secondary_highlight_color;
-  background-color: $headerbar_color;
-  // color: $inversed_fg_color;
+  // box-shadow: inset 0 1px $secondary_highlight_color;
+  box-shadow: inset 0 1px scale-alpha(#FFFFFF, 0.1);
+  background-color: $secondary_titlebar_color;
+  color: $inversed_fg_color;
 }
 
 UnityDecoration.top:backdrop {
-  // color: $secondary_inversed_fg_color;
+  color: $secondary_inversed_fg_color;
 }
 
 UnityDecoration.left,
@@ -829,15 +830,23 @@ UnityDecoration.right {
 UnityDecoration.bottom {
 }
 
-UnityDecoration.menubar.menuitem:hover,
-UnityDecoration.menubar .menuitem *:hover {
-  box-shadow: inset 0 -2px $primary_color;
-  background-color: transparent;
+UnityDecoration.menuitem,
+UnityDecoration .menuitem {
+  color: gtkalpha(currentColor, $enabled_opacity);
 }
 
-.background:not(.csd) .header-bar {
+UnityDecoration.menubar.menuitem:hover,
+UnityDecoration.menubar .menuitem *:hover {
+  box-shadow: inset 0 -2px currentColor;
+  background-color: transparent;
+  color: currentColor;
+}
+
+.background:not(.csd) headerbar {
   border-radius: 0;
   box-shadow: none;
+
+  &.inline-toolbar { border-style: none; }
 }
 
 SheetStyleDialog.unity-force-quit {
@@ -847,14 +856,14 @@ SheetStyleDialog.unity-force-quit {
 // Panel Style
 UnityPanelWidget,
 .unity-panel {
-  background-color: $headerbar_color;
-  background-image: image($headerbar_color);
-  // color: $inversed_fg_color;
+  background-color: $topbar_color;
+  background-image: image($topbar_color);
+  color: $inversed_fg_color;
 }
 
 UnityPanelWidget:backdrop,
 .unity-panel:backdrop {
-  // color: $secondary_inversed_fg_color;
+  color: $secondary_inversed_fg_color;
 }
 
 .unity-panel.menubar,
@@ -863,12 +872,14 @@ UnityPanelWidget:backdrop,
 
 .unity-panel.menuitem,
 .unity-panel .menuitem {
+  color: gtkalpha(currentColor, $enabled_opacity);
 }
 
 .unity-panel.menubar.menuitem:hover,
 .unity-panel.menubar .menuitem *:hover {
-  box-shadow: inset 0 -2px $primary_color;
+  box-shadow: inset 0 -2px currentColor;
   background-color: transparent;
+  color: currentColor;
 }
 
 @keyframes playbackmenuitem_spinner {
