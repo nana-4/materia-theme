@@ -681,13 +681,13 @@ GtkComboBox {
                               url("assets/osd-shadow#{$asset_suffix}@2.png"))
                   10 / 10px stretch;
     border-radius: 2px;
-    // box-shadow: $z-depth-2;
+    // box-shadow: $z-depth-2, inset 0 1px $highlight_color;
     background-color: $base_color;
     &:backdrop {
       border-image: -gtk-scaled(url("assets/osd-shadow-backdrop#{$asset_suffix}.png"),
                                 url("assets/osd-shadow-backdrop#{$asset_suffix}@2.png"))
                     10 / 10px stretch;
-      // box-shadow: $z-depth-1;
+      // box-shadow: $z-depth-1, inset 0 1px $highlight_color;
     }
     & .button {
       @extend %button.flat;
@@ -985,6 +985,7 @@ column-header.button.dnd { // for treeview-like derive widgets
 .menu {
   margin: 4px 0;
   padding: 4px 0;
+  box-shadow: inset 0 1px $highlight_color;
   background-color: $base_color;
   border: 1px solid $borders_color; // adds borders in a non composited env
   .csd & {
@@ -1037,7 +1038,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.3);
   border-radius: 2px + 1px;
   background-color: $light_color;
-  box-shadow:  $z-depth-2;
+  box-shadow:  $z-depth-2; // TODO: this should really have a highlight
   &:backdrop { box-shadow: $z-depth-1; }
 
   > .list,
@@ -1891,7 +1892,7 @@ GtkCalendar {
   &.background { background-color: $light_color; }
   .titlebar {
     border-style: none;
-    // box-shadow: inset 0 1px $highlight_color;
+    box-shadow: inset 0 1px $highlight_color;
     background-color: $light_color;
   }
   &.csd { // rounded bottom border styling for csd version
@@ -2070,6 +2071,7 @@ GtkInfoBar {
   &.background {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
+    box-shadow: inset 0 1px $highlight_color;
     background-color: scale-alpha($base_color, $higher_opacity);
   }
 
