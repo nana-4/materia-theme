@@ -81,6 +81,10 @@ Screenshots
 ![GDM Unlock Screen](img/Screenshot4.png?raw=true)
 <sub>**Screenshots Details:** Icons: [Paper](https://github.com/snwh/paper-icon-theme) | Font: [M+ 1C](https://mplus-fonts.osdn.jp/) 10.5pt | Dock's icon size: 48px + fixed | [Wallpapers](http://imgur.com/a/v2Ovx)</sub>
 
+Bug Reporting
+-------------
+If you find a bug, please report it here: https://github.com/nana-4/Flat-Plat/issues
+
 Planned Features
 ----------------
 * Supports of global dark theme
