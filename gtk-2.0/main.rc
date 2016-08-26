@@ -1650,7 +1650,9 @@ style "default" {
 
 style "menubar" {
 
+  fg[NORMAL]   = mix(0.75, @selected_fg_color, @headerbar_color)
   bg[NORMAL]   = @headerbar_color
+  fg[PRELIGHT] = @selected_fg_color
   # Needed to fix Firefox's menubar text
   bg[SELECTED] = mix(0.15, @selected_fg_color, @headerbar_color)
   fg[SELECTED] = @selected_fg_color
