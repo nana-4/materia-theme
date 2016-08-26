@@ -38,16 +38,14 @@
 /************
  * Nautilus *
  ************/
+// based css:
+// https://git.gnome.org/browse/nautilus/tree/src/resources/css/Adwaita.css
+// hard-coded css:
+// https://git.gnome.org/browse/nautilus/tree/src/resources/css/nautilus.css
 .nautilus-window,
 .nautilus-window notebook,
 .nautilus-window notebook > stack {
   background: $base_color;
-}
-
-.nautilus-desktop-window,
-.nautilus-desktop-window notebook,
-.nautilus-desktop-window notebook > stack {
-  background: transparent;
 }
 
 .nautilus-canvas-item {
@@ -72,10 +70,6 @@
 .nautilus-desktop.nautilus-canvas-item:selected {
   // color: $inversed_fg_color;
   text-shadow: none;
-}
-
-.nautilus-circular-button {
-  @extend %circular_button;
 }
 
 // Toolbar
@@ -162,6 +156,10 @@
 /*********
  * gedit *
  *********/
+// based css:
+// https://git.gnome.org/browse/gedit/tree/gedit/resources/css/gedit.adwaita.css
+// hard-coded css:
+// https://git.gnome.org/browse/gedit/tree/gedit/resources/css/gedit-style.css
 .open-document-selector-treeview:hover {
 }
 
@@ -261,6 +259,8 @@ notebook > stack:not(:only-child) revealer .gedit-search-slider .linked:not(.ver
 /**************
  * Tweak Tool *
  **************/
+// hard-coded css:
+// https://git.gnome.org/browse/gnome-tweak-tool/tree/data/shell.css
 // the sidebar
 .tweak-categories {
   // padding: 4px 0;
@@ -275,49 +275,11 @@ notebook > stack:not(:only-child) revealer .gedit-search-slider .linked:not(.ver
   }
 }
 
-.tweak-category {
-  // padding: 10px;
-}
-
-// the container and tweaks in a group
-.tweak-group {
-  // background-color: rgba(0, 0, 0, 0);
-}
-
 .tweak {
   padding: 3px;
   // padding-top: 3px;
-  // background-color: rgba(0, 0, 0, 0);
-}
 
-.tweak:hover {
-  // background-color: rgba(0, 0, 0, 0);
-}
-
-.tweak.title {
-  // padding-top: 10px;
-
-  &:hover { box-shadow: none; }
-}
-
-.tweak-titlebar-left:dir(ltr),
-.tweak-titlebar-right:dir(rtl) {
-  // border-top-right-radius: 0;
-}
-
-.tweak-titlebar-right:dir(ltr),
-.tweak-titlebar-left:dir(rtl) {
-  // border-top-left-radius: 0;
-}
-
-// individual tweak theme changes
-.tweak.title#title-theme {
-  // padding-top: 3px;
-}
-
-.tweak#hinting,
-.tweak#text-scaling-factor {
-  // padding-top: 20px;
+  &.title:hover { box-shadow: none; }
 }
 
 .tweak-group-white,
@@ -339,15 +301,14 @@ notebook > stack:not(:only-child) revealer .gedit-search-slider .linked:not(.ver
   border: 1px solid $borders_color;
 }
 
-// NOT WORKING 
-.main-container {
-  // padding: 20px;
-}
-
 
 /***********
  * Builder *
  ***********/
+// based css:
+// https://git.gnome.org/browse/gnome-builder/tree/data/theme
+// hard-coded css:
+// https://git.gnome.org/browse/gnome-builder/tree/data/theme/shared.css
 //
 // Titlebar adjustments for workbench
 //
@@ -524,100 +485,15 @@ editortweak entry.search {
   box-shadow: none;
 }
 
-// work around some gtk padding issue
-filechooser actionbar button.combo {
-  // padding: 0;
-}
-
 // styling for editor search
 frame.gb-search-frame {
-  // background-image: linear-gradient(shade(@theme_bg_color,1.05), @theme_bg_color);
-  // padding: 6px;
-  // border-style: solid;
-  // border-color: @borders;
-  // border-left-width: 1px;
-  // border-right-width: 1px;
-  // border-bottom-width: 1px;
   // border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-frame.gb-search-frame border {
-  // border: none;
-}
-
-// styling for NautilusFloatingBar
-.floating-bar {
-  // padding: 2px;
-  // background-color: @theme_base_color;
-  // border-width: 1px;
-  // border-style: solid solid none;
-  // border-color: @borders;
-  // border-radius: 3px 3px 0 0;
-}
-
-.floating-bar.bottom.left { // axes left border and border radius
-  // border-left-style: none;
-  // border-top-left-radius: 0;
-}
-
-.floating-bar.bottom.right { // axes right border and border radius
-  // border-right-style: none;
-  // border-top-right-radius: 0;
-}
-
-.floating-bar:backdrop {
-  // background-color: @theme_unfocused_base_color;
-  // border-color: @unfocused_borders;
-}
-
-.floating-bar button {
-  // padding: 4px;
-}
-
 .gb-search-entry-occurrences-tag {
-  // color: shade (@theme_unfocused_fg_color, 0.8);
-  // border: 0px;
-  // margin: 2px;
-  // padding: 2px;
   box-shadow: none;
   background-color: transparent;
-}
-
-//
-// For our pattern of popover with lists (and close buttons).
-//
-popover list row {
-  // padding: 6px;
-}
-
-popover list row button {
-  // background: transparent;
-  // border: none;
-  // box-shadow: none;
-  // margin: 0;
-  // padding: 0;
-  // opacity: 0.25;
-}
-
-popover list row:selected button,
-popover list row:selected button:hover {
-  // color: @theme_selected_fg_color;
-}
-
-popover list row button:hover {
-  // opacity: 1;
-}
-
-//
-// Tweaks for the editortweak popover in the editor.
-//
-editortweak button {
-  // padding: 0 6px 0 6px;
-}
-
-editortweak list row {
-  // padding: 0;
 }
 
 //
@@ -639,119 +515,11 @@ eggsearchbar entry {
   // min-height: 24px;
 }
 
-//
-// Pillbox is used to render "languages" in the greeter.
-//
-pillbox {
-  // border-radius: 3px;
-}
-
-//
-// Styling in the genesis (create project) perspective.
-//
-genesisperspective stack > box:first-child list row {
-  // padding: 10px;
-  // border-bottom: 1px solid alpha(@borders, 0.2);
-}
-
-genesisperspective stack > box:first-child list row:last-child {
-  // border-bottom: none;
-}
-
-//
-// Greeter tweaks
-//
-// The following tweaks the greeter perspective by adding
-// separator lines to the list box.
-//
-greeter list row {
-  // border-bottom: 1px solid alpha(@borders, 0.2);
-}
-
-greeter list row:last-child {
-  // border-bottom: none;
-}
-
-greeter frame border {
-  // border-color: alpha(@borders, 0.6);
-}
-
-//
-// Global search results styling
-//
-// The following tweaks the sizing of listbox rows in the
-// global search results to have a bit more padding and
-// row separators after each line. Additionally, we tweak
-// the selection color to ensure it has priority.
-//
-omnisearchdisplay omnisearchgroup omnisearchrow {
-  // background: transparent;
-  // padding: 9px 12px 9px 12px;
-  // border-bottom: 1px solid alpha(@borders, 0.2);
-}
-
-omnisearchdisplay omnisearchgroup omnisearchrow:last-child {
-  // border-bottom: none;
-}
-
-omnisearchdisplay omnisearchgroup omnisearchrow:selected {
-  // background-color: @theme_selected_bg_color;
-  // color: @theme_selected_fg_color;
-}
-
-//
-// Preferences styling
-//
-// The following tweaks our preferences styling in the
-// preferences perspective, including groups, rows,
-// sidebar, etc.
-//
-workbench preferences stacksidebar list {
-  // border-right: 1px solid alpha(@borders, 0.4);
-  // background-color: @theme_base_color;
-}
-
-workbench preferences preferencesgroup list row {
-  // padding: 10px;
-  // border-bottom: 1px solid alpha(@borders, 0.2);
-}
-
-workbench preferences preferencesgroup list row:last-child {
-  // border-bottom: none;
-}
-
 workbench preferences preferencesgroup list entry {
   // background: none;
   // min-height: 0px;
   padding-top: 8px;
   padding-bottom: 8px;
-}
-
-//
-// Perspectives switcher
-//
-// The following tweaks the left-most sidebar containing
-// the list of perspectives.
-//
-perspectiveswitcher {
-  // border-right: 1px solid alpha(@borders, 0.5);
-}
-
-perspectiveswitcher button {
-  // background: transparent;
-  // border-radius: 0;
-  // border: none;
-  // box-shadow: none;
-  // padding: 6px;
-}
-
-// Workaround Adwaita adding borders we don't want
-textview border.left {
-  // background: none;
-}
-
-treeview.dim-label {
-  // color: alpha(currentColor, 0.5);
 }
 
 
@@ -789,6 +557,8 @@ box > widget > widget:selected { background-color: $primary_color; }
 /*********
  * Unity *
  *********/
+// based css:
+// http://bazaar.launchpad.net/~ubuntu-art-pkg/ubuntu-themes/trunk/view/head:/Ambiance/gtk-3.20/apps/unity.css
 // Decorations
 UnityDecoration {
   -UnityDecoration-extents: 28px 0 0 0;
