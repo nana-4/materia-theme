@@ -1,0 +1,283 @@
+// based css:
+// https://github.com/mate-desktop/mate-themes/blob/master/desktop-themes/Menta/gtk-3.0/mate-applications.css
+
+/**************
+ * Mate-Panel *
+ **************/
+
+// first make all transparent
+.mate-panel-menu-bar menubar,
+#PanelApplet-window-menu-applet-button {
+  background-color: transparent;
+}
+
+// let's start it
+#PanelPlug,
+PanelToplevel.background {
+  background-color: $topbar_color;
+  color: $inversed_fg_color;
+  font-weight: 500;
+}
+
+// hide buttons
+PanelToplevel > widget > button {
+  padding: 0 4px;
+  border-radius: 0;
+
+  @extend %simple_flat_button;
+}
+
+#PanelApplet {
+  // border-width: 0;
+}
+
+PanelSeparator {
+  color: $borders_color;
+}
+
+// the grid left from na-tray and wncktasklist
+MatePanelAppletFrameDBus {
+  border-style: solid;
+  border-width: 0 1px;
+  border-color: $borders_color;
+}
+
+// main menu
+// set normal menubar button
+.mate-panel-menu-bar menubar menuitem {
+  padding: 4px;
+}
+
+// set normal menubar menuitem
+.mate-panel-menu-bar menubar menu menuitem {
+  padding: 6px;
+  // font-weight: initial;
+}
+
+// all applets
+.mate-panel-menu-bar #PanelApplet button {
+  -GtkWidget-window-dragging: true;
+  padding: 4px;
+  border-radius: 0;
+
+  &:not(.flat) { @extend %flat_button; }
+}
+
+// WnckPager
+PanelApplet.wnck-applet .wnck-pager {
+  background-color: transparent;
+  color: $alt_primary_color;
+
+  &:hover { background-color: gtkalpha(currentColor, $lower_opacity / 2); }
+
+  &:active { background-color: $track_color; }
+
+  &:selected { background-color: $primary_color; }
+}
+
+#clock-applet-button {
+  // font-weight: initial;
+}
+
+#MatePanelPopupWindow {
+  border: 1px solid $borders_color;
+  border-radius: $md_radius + 1px;
+  box-shadow: inset 0 1px $highlight_color;
+
+  frame > border { border-style: none; }
+
+  // FIXME, does not work
+  ClockMap { border: 1px solid $borders_color; }
+}
+
+na-tray-applet {
+  -NaTrayApplet-icon-padding: 3px;
+  -NaTrayApplet-icon-size: 16;
+}
+
+// remove right space a bit
+na-tray-applet > widget > box {
+  // margin-right: 2px;
+}
+
+// no background for icon-padding area
+na-tray-applet widget box widget {
+  // background-color: transparent;
+}
+
+// Classic icon style
+.mate-panel-menu-bar {
+  -PanelMenuBar-icon-visible: true;
+}
+
+// volume applet, brightness applet
+.mate-panel-applet-slider {
+  background: transparent;
+
+  frame {
+    border: 1px solid $borders_color;
+    border-radius: $md_radius + 1px;
+    box-shadow: inset 0 1px $highlight_color;
+    background-color: $bg_color;
+
+    frame { all: unset; }
+
+    > border { border-style: none; }
+  }
+}
+
+/*********************
+ * CAJA File manager *
+ *********************/
+
+// pathpar toggle button
+.caja-navigation-window button.toggle.image-button {
+  border-radius: $md_radius;
+}
+
+// pathbar
+// pathbar buttons
+.caja-pathbar button {
+  margin: 0 -1px 0 -2px;
+  // padding: 4px;
+
+  @extend %pathbar_button;
+}
+
+// arrow button
+.caja-pathbar button > widget {
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+  -GtkArrow-arrow-scaling: 1;
+}
+
+// places, treeview, history, information, emblems and notes
+// .caja-side-pane notebook treeview.view,
+// .caja-side-pane notebook textview.view text,
+.caja-side-pane notebook viewport.frame,
+.caja-side-pane notebook widget .vertical {
+  background-color: $base_color;
+}
+
+// treeview rows
+.caja-side-pane treeview.view {
+  // padding: 2px 0;
+}
+
+.caja-side-pane notebook .frame,
+.caja-notebook .frame {
+  border-style: none;
+}
+
+.caja-side-pane notebook,
+.caja-notebook {
+  border-top: 1px solid $borders_color;
+}
+
+// window and desktop mode
+.caja-canvas-item {
+  // border-radius: 2px;
+}
+
+// desktop mode
+.caja-desktop.caja-canvas-item {
+  @extend .nautilus-desktop.nautilus-canvas-item;
+}
+
+.caja-desktop EelEditableLabel.entry {
+}
+
+// statusbar
+.caja-navigation-window statusbar {
+  margin: 0 -10px;
+  padding: 0 4px;
+  border-top: 1px solid $borders_color;
+}
+
+// infobar
+.caja-notebook frame > border {
+  border-style: none;
+}
+
+#caja-extra-view-widget {
+  border-bottom: 1px solid $borders_color;
+  background-color: $bg_color; // needs overriding
+
+  > box > box > label { font-weight: bold; }
+}
+
+/*********
+ * Pluma *
+ *********/
+
+// Pluma status bar
+.pluma-window statusbar {
+  margin: 0 -10px;
+  padding: 0 4px;
+  border-top: 1px solid $borders_color;
+}
+
+.pluma-window statusbar frame > border {
+  border-style: none;
+}
+
+.pluma-window statusbar frame button.flat {
+  padding: 0 4px;
+  border-radius: 0;
+}
+
+.pluma-window statusbar frame button.flat widget {
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+  -GtkArrow-arrow-scaling: 1;
+}
+
+// Printpreview
+.pluma-print-preview toolbar {
+  border-bottom: 1px solid $borders_color;
+}
+
+.pluma-print-preview scrolledwindow {
+  // background-color: $base_color;
+}
+
+// sidebar file-browser
+.pluma-window paned.horizontal box.vertical box.horizontal button.flat {
+  margin: 1px;
+
+  @extend %small_button;
+}
+
+.pluma-window paned.horizontal box.vertical .frame {
+  border-style: none;
+}
+
+.pluma-window paned.horizontal box.vertical notebook.frame {
+  margin-top: -1px;
+  border-top: 1px solid $borders_color;
+}
+
+.pluma-window paned.horizontal box.vertical notebook.frame box.vertical toolbar.horizontal {
+  border-bottom: 1px solid $borders_color;
+}
+
+/*********
+ * Atril *
+ *********/
+
+.atril-window paned.horizontal box.vertical .frame {
+  border-style: none;
+}
+
+.atril-window paned.horizontal box.vertical notebook .frame {
+  border-top: 1px solid $borders_color;
+}
+
+/* mate-screensaver lock dialog */
+
+.lock-dialog {
+  border-radius: $md_radius;
+  // not sure if box-shadow works here
+  box-shadow: $z-depth-4, inset 0 1px $highlight_color;
+
+  frame > border { border-style: none; }
+}
+

@@ -405,7 +405,8 @@ button {
       color: inherit; }
   modelbutton.flat,
   .menuitem.button.flat, spinbutton:not(.vertical) button, spinbutton.vertical button, popover.background.menu button.model, notebook > header > tabs > arrow, scrollbar button, check,
-  radio, calendar.button, messagedialog.csd .dialog-action-area button, button.sidebar-button, .gedit-search-slider button, :not(headerbar) .path-bar button, layouttabbar button, toolbar button, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
+  radio, calendar.button, messagedialog.csd .dialog-action-area button, button.sidebar-button, .gedit-search-slider button, PanelToplevel > widget > button, :not(headerbar) .caja-pathbar button, .caja-pathbar :not(headerbar) button, :not(headerbar)
+  .path-bar button, layouttabbar button, .mate-panel-menu-bar #PanelApplet button:not(.flat), toolbar button, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
   headerbar button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button,
   .app-notification.frame button,
   button.flat {
@@ -416,7 +417,8 @@ button {
     color: alpha(currentColor, 0.75); }
     modelbutton.flat:hover,
     .menuitem.button.flat:hover, spinbutton:not(.vertical) button:hover, spinbutton.vertical button:hover, popover.background.menu button.model:hover, notebook > header > tabs > arrow:hover, scrollbar button:hover, check:hover,
-    radio:hover, calendar.button:hover, messagedialog.csd .dialog-action-area button:hover, button.sidebar-button:hover, .gedit-search-slider button:hover, :not(headerbar) .path-bar button:hover, layouttabbar button:hover, toolbar button:hover, .titlebar:not(headerbar) button:hover:not(.suggested-action):not(.destructive-action),
+    radio:hover, calendar.button:hover, messagedialog.csd .dialog-action-area button:hover, button.sidebar-button:hover, .gedit-search-slider button:hover, PanelToplevel > widget > button:hover, :not(headerbar) .caja-pathbar button:hover, .caja-pathbar :not(headerbar) button:hover, :not(headerbar)
+    .path-bar button:hover, layouttabbar button:hover, .mate-panel-menu-bar #PanelApplet button:hover:not(.flat), toolbar button:hover, .titlebar:not(headerbar) button:hover:not(.suggested-action):not(.destructive-action),
     headerbar button:hover:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:hover:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button:hover,
     button.flat:hover {
       box-shadow: none;
@@ -424,7 +426,8 @@ button {
       color: currentColor; }
     modelbutton.flat:active,
     .menuitem.button.flat:active, spinbutton:not(.vertical) button:active, spinbutton.vertical button:active, popover.background.menu button.model:active, notebook > header > tabs > arrow:active, scrollbar button:active, check:active,
-    radio:active, calendar.button:active, messagedialog.csd .dialog-action-area button:active, button.sidebar-button:active, .gedit-search-slider button:active, :not(headerbar) .path-bar button:active, layouttabbar button:active, toolbar button:active, .titlebar:not(headerbar) button:active:not(.suggested-action):not(.destructive-action),
+    radio:active, calendar.button:active, messagedialog.csd .dialog-action-area button:active, button.sidebar-button:active, .gedit-search-slider button:active, PanelToplevel > widget > button:active, :not(headerbar) .caja-pathbar button:active, .caja-pathbar :not(headerbar) button:active, :not(headerbar)
+    .path-bar button:active, layouttabbar button:active, .mate-panel-menu-bar #PanelApplet button:active:not(.flat), toolbar button:active, .titlebar:not(headerbar) button:active:not(.suggested-action):not(.destructive-action),
     headerbar button:active:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:active:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button:active,
     button.flat:active {
       transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-image 0;
@@ -433,7 +436,8 @@ button {
       color: currentColor; }
     modelbutton.flat:disabled,
     .menuitem.button.flat:disabled, spinbutton:not(.vertical) button:disabled, spinbutton.vertical button:disabled, popover.background.menu button.model:disabled, notebook > header > tabs > arrow:disabled, scrollbar button:disabled, check:disabled,
-    radio:disabled, calendar.button:disabled, messagedialog.csd .dialog-action-area button:disabled, button.sidebar-button:disabled, .gedit-search-slider button:disabled, :not(headerbar) .path-bar button:disabled, layouttabbar button:disabled, toolbar button:disabled, .titlebar:not(headerbar) button:disabled:not(.suggested-action):not(.destructive-action),
+    radio:disabled, calendar.button:disabled, messagedialog.csd .dialog-action-area button:disabled, button.sidebar-button:disabled, .gedit-search-slider button:disabled, PanelToplevel > widget > button:disabled, :not(headerbar) .caja-pathbar button:disabled, .caja-pathbar :not(headerbar) button:disabled, :not(headerbar)
+    .path-bar button:disabled, layouttabbar button:disabled, .mate-panel-menu-bar #PanelApplet button:disabled:not(.flat), toolbar button:disabled, .titlebar:not(headerbar) button:disabled:not(.suggested-action):not(.destructive-action),
     headerbar button:disabled:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:disabled:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button:disabled,
     button.flat:disabled {
       box-shadow: none;
@@ -441,21 +445,25 @@ button {
       color: alpha(currentColor, 0.3); }
       modelbutton.flat:disabled > label,
       .menuitem.button.flat:disabled > label, spinbutton:not(.vertical) button:disabled > label, spinbutton.vertical button:disabled > label, popover.background.menu button.model:disabled > label, notebook > header > tabs > arrow:disabled > label, scrollbar button:disabled > label, check:disabled > label,
-      radio:disabled > label, calendar.button:disabled > label, messagedialog.csd .dialog-action-area button:disabled > label, button.sidebar-button:disabled > label, .gedit-search-slider button:disabled > label, :not(headerbar) .path-bar button:disabled > label, layouttabbar button:disabled > label, toolbar button:disabled > label, .titlebar:not(headerbar) button:disabled:not(.suggested-action):not(.destructive-action) > label,
+      radio:disabled > label, calendar.button:disabled > label, messagedialog.csd .dialog-action-area button:disabled > label, button.sidebar-button:disabled > label, .gedit-search-slider button:disabled > label, PanelToplevel > widget > button:disabled > label, :not(headerbar) .caja-pathbar button:disabled > label, .caja-pathbar :not(headerbar) button:disabled > label, :not(headerbar)
+      .path-bar button:disabled > label, layouttabbar button:disabled > label, .mate-panel-menu-bar #PanelApplet button:disabled:not(.flat) > label, toolbar button:disabled > label, .titlebar:not(headerbar) button:disabled:not(.suggested-action):not(.destructive-action) > label,
       headerbar button:disabled:not(.suggested-action):not(.destructive-action) > label, actionbar > revealer > box button:disabled:not(.suggested-action):not(.destructive-action):not(.server-list-button) > label, .app-notification button:disabled > label,
       button.flat:disabled > label {
         color: inherit; }
-  :not(headerbar) .path-bar button:checked, layouttabbar button:checked, toolbar button:checked, .titlebar:not(headerbar) button:checked:not(.suggested-action):not(.destructive-action),
+  :not(headerbar) .caja-pathbar button:checked, .caja-pathbar :not(headerbar) button:checked, :not(headerbar)
+  .path-bar button:checked, layouttabbar button:checked, .mate-panel-menu-bar #PanelApplet button:checked:not(.flat), toolbar button:checked, .titlebar:not(headerbar) button:checked:not(.suggested-action):not(.destructive-action),
   headerbar button:checked:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:checked:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button:checked,
   button.flat:checked {
     background-color: alpha(currentColor, 0.3);
     color: currentColor; }
-  :not(headerbar) .path-bar button:checked:disabled, layouttabbar button:checked:disabled, toolbar button:checked:disabled, .titlebar:not(headerbar) button:checked:disabled:not(.suggested-action):not(.destructive-action),
+  :not(headerbar) .caja-pathbar button:checked:disabled, .caja-pathbar :not(headerbar) button:checked:disabled, :not(headerbar)
+  .path-bar button:checked:disabled, layouttabbar button:checked:disabled, .mate-panel-menu-bar #PanelApplet button:checked:disabled:not(.flat), toolbar button:checked:disabled, .titlebar:not(headerbar) button:checked:disabled:not(.suggested-action):not(.destructive-action),
   headerbar button:checked:disabled:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:checked:disabled:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button:checked:disabled,
   button.flat:checked:disabled {
     background-color: alpha(currentColor, 0.3);
     color: alpha(currentColor, 0.4); }
-    :not(headerbar) .path-bar button:checked:disabled > label, layouttabbar button:checked:disabled > label, toolbar button:checked:disabled > label, .titlebar:not(headerbar) button:checked:disabled:not(.suggested-action):not(.destructive-action) > label,
+    :not(headerbar) .caja-pathbar button:checked:disabled > label, .caja-pathbar :not(headerbar) button:checked:disabled > label, :not(headerbar)
+    .path-bar button:checked:disabled > label, layouttabbar button:checked:disabled > label, .mate-panel-menu-bar #PanelApplet button:checked:disabled:not(.flat) > label, toolbar button:checked:disabled > label, .titlebar:not(headerbar) button:checked:disabled:not(.suggested-action):not(.destructive-action) > label,
     headerbar button:checked:disabled:not(.suggested-action):not(.destructive-action) > label, actionbar > revealer > box button:checked:disabled:not(.suggested-action):not(.destructive-action):not(.server-list-button) > label, .app-notification button:checked:disabled > label,
     button.flat:checked:disabled > label {
       color: inherit; }
@@ -983,21 +991,30 @@ window.csd > .titlebar:not(headerbar) {
 /************
  * Pathbars *
  ************/
-.path-bar button.text-button, .path-bar button.image-button, .path-bar button {
+.caja-pathbar button.text-button, .caja-pathbar button.image-button, .caja-pathbar button,
+.path-bar button.text-button,
+.path-bar button.image-button,
+.path-bar button {
   padding-left: 6px;
   padding-right: 6px; }
+.caja-pathbar button image,
 .path-bar button image {
   padding-left: 4px;
   padding-right: 4px; }
+.caja-pathbar button.slider-button,
 .path-bar button.slider-button {
   padding-left: 0;
   padding-right: 0; }
-:not(headerbar) .path-bar button {
+:not(headerbar) .caja-pathbar button, .caja-pathbar :not(headerbar) button, :not(headerbar)
+.path-bar button {
   border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #42A5F5 0%, transparent 0%) 0 0 0/0 0 0px;
   border-radius: 2px; }
-  :not(headerbar) .path-bar button:checked {
+  :not(headerbar) .caja-pathbar button:checked, .caja-pathbar :not(headerbar) button:checked, :not(headerbar)
+  .path-bar button:checked {
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #42A5F5 100%, transparent 0%) 0 0 2/0 0 2px; }
-    :not(headerbar) .path-bar button:checked, :not(headerbar) .path-bar button:checked:disabled {
+    :not(headerbar) .caja-pathbar button:checked, .caja-pathbar :not(headerbar) button:checked, :not(headerbar) .caja-pathbar button:checked:disabled, .caja-pathbar :not(headerbar) button:checked:disabled, :not(headerbar)
+    .path-bar button:checked, :not(headerbar)
+    .path-bar button:checked:disabled {
       background-color: transparent; }
 
 /**************
@@ -2474,7 +2491,7 @@ button.circular {
   border-radius: 100px;
   -gtk-outline-radius: 100px; }
 
-spinbutton:not(.vertical) button, notebook > header tab button.flat, button.sidebar-button, .gedit-document-panel row button.flat {
+spinbutton:not(.vertical) button, notebook > header tab button.flat, button.sidebar-button, .gedit-document-panel row button.flat, .pluma-window paned.horizontal box.vertical box.horizontal button.flat {
   min-height: 24px;
   min-width: 24px;
   padding: 0;
@@ -2541,11 +2558,11 @@ stackswitcher button.text-button.circular {
 .nautilus-window notebook > stack {
   background: #FFFFFF; }
 
-.nautilus-desktop.nautilus-canvas-item {
+.nautilus-desktop.nautilus-canvas-item, .caja-desktop.caja-canvas-item {
   color: #FFFFFF;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
 
-.nautilus-desktop.nautilus-canvas-item:selected {
+.nautilus-desktop.nautilus-canvas-item:selected, .caja-desktop.caja-canvas-item:selected {
   text-shadow: none; }
 
 @keyframes needs_attention_keyframes {
@@ -2916,6 +2933,170 @@ UnityPanelWidget:backdrop,
   -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
   animation: playbackmenuitem_spinner 1s infinite linear;
   color: #42A5F5; }
+
+/**************
+ * Mate-Panel *
+ **************/
+.mate-panel-menu-bar menubar,
+#PanelApplet-window-menu-applet-button {
+  background-color: transparent; }
+
+#PanelPlug,
+PanelToplevel.background {
+  background-color: #263238;
+  color: #FFFFFF;
+  font-weight: 500; }
+
+PanelToplevel > widget > button {
+  padding: 0 4px;
+  border-radius: 0; }
+
+PanelSeparator {
+  color: rgba(0, 0, 0, 0.1); }
+
+MatePanelAppletFrameDBus {
+  border-style: solid;
+  border-width: 0 1px;
+  border-color: rgba(0, 0, 0, 0.1); }
+
+.mate-panel-menu-bar menubar menuitem {
+  padding: 4px; }
+
+.mate-panel-menu-bar menubar menu menuitem {
+  padding: 6px; }
+
+.mate-panel-menu-bar #PanelApplet button {
+  -GtkWidget-window-dragging: true;
+  padding: 4px;
+  border-radius: 0; }
+
+PanelApplet.wnck-applet .wnck-pager {
+  background-color: transparent;
+  color: #40C4FF; }
+  PanelApplet.wnck-applet .wnck-pager:hover {
+    background-color: alpha(currentColor, 0.15); }
+  PanelApplet.wnck-applet .wnck-pager:active {
+    background-color: alpha(currentColor, 0.3); }
+  PanelApplet.wnck-applet .wnck-pager:selected {
+    background-color: #42A5F5; }
+
+#MatePanelPopupWindow {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.4); }
+  #MatePanelPopupWindow frame > border {
+    border-style: none; }
+  #MatePanelPopupWindow ClockMap {
+    border: 1px solid rgba(0, 0, 0, 0.1); }
+
+na-tray-applet {
+  -NaTrayApplet-icon-padding: 3px;
+  -NaTrayApplet-icon-size: 16; }
+
+.mate-panel-menu-bar {
+  -PanelMenuBar-icon-visible: true; }
+
+.mate-panel-applet-slider {
+  background: transparent; }
+  .mate-panel-applet-slider frame {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.4);
+    background-color: #F5F5F5; }
+    .mate-panel-applet-slider frame frame {
+      all: unset; }
+    .mate-panel-applet-slider frame > border {
+      border-style: none; }
+
+/*********************
+ * CAJA File manager *
+ *********************/
+.caja-navigation-window button.toggle.image-button {
+  border-radius: 2px; }
+
+.caja-pathbar button {
+  margin: 0 -1px 0 -2px; }
+
+.caja-pathbar button > widget {
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+  -GtkArrow-arrow-scaling: 1; }
+
+.caja-side-pane notebook viewport.frame,
+.caja-side-pane notebook widget .vertical {
+  background-color: #FFFFFF; }
+
+.caja-side-pane notebook .frame,
+.caja-notebook .frame {
+  border-style: none; }
+
+.caja-side-pane notebook,
+.caja-notebook {
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
+
+.caja-navigation-window statusbar {
+  margin: 0 -10px;
+  padding: 0 4px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
+
+.caja-notebook frame > border {
+  border-style: none; }
+
+#caja-extra-view-widget {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #F5F5F5; }
+  #caja-extra-view-widget > box > box > label {
+    font-weight: bold; }
+
+/*********
+ * Pluma *
+ *********/
+.pluma-window statusbar {
+  margin: 0 -10px;
+  padding: 0 4px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
+
+.pluma-window statusbar frame > border {
+  border-style: none; }
+
+.pluma-window statusbar frame button.flat {
+  padding: 0 4px;
+  border-radius: 0; }
+
+.pluma-window statusbar frame button.flat widget {
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+  -GtkArrow-arrow-scaling: 1; }
+
+.pluma-print-preview toolbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
+.pluma-window paned.horizontal box.vertical box.horizontal button.flat {
+  margin: 1px; }
+
+.pluma-window paned.horizontal box.vertical .frame {
+  border-style: none; }
+
+.pluma-window paned.horizontal box.vertical notebook.frame {
+  margin-top: -1px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
+
+.pluma-window paned.horizontal box.vertical notebook.frame box.vertical toolbar.horizontal {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
+/*********
+ * Atril *
+ *********/
+.atril-window paned.horizontal box.vertical .frame {
+  border-style: none; }
+
+.atril-window paned.horizontal box.vertical notebook .frame {
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
+
+/* mate-screensaver lock dialog */
+.lock-dialog {
+  border-radius: 2px;
+  box-shadow: 0 14px 14px rgba(0, 0, 0, 0.25), 0 10px 5px rgba(0, 0, 0, 0.22), inset 0 1px rgba(255, 255, 255, 0.4); }
+  .lock-dialog frame > border {
+    border-style: none; }
 
 /* GTK NAMED COLORS
    ----------------
