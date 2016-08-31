@@ -639,6 +639,46 @@ box.vertical > paned.horizontal notebook widget .frame { border-style: none; }
 frame.commit-frame > border { border-style: solid none none; }
 
 
+/************
+ * Terminix *
+ ************/
+.terminix-background box.vertical > widget > box.horizontal {
+  padding: 3px 0 2px;
+  // border-bottom: 1px solid $borders_color;
+
+  button {
+    padding: 4px 8px;
+
+    &.image-button { padding: 4px; }
+  }
+}
+
+.terminix-background revealer > frame > border {
+  // border-style: none none solid;
+  border-style: none;
+}
+
+button.image-button.session-new-button { min-width: $medium_size - 4px; }
+
+overlay > revealer.left > scrolledwindow.frame,
+overlay > revealer.right > scrolledwindow.frame {
+  border-style: none;
+  box-shadow: $z-depth-4;
+}
+
+overlay > revealer.left > scrolledwindow.frame {
+  margin-right: 32px;
+  // border-style: none solid none none;
+}
+
+overlay > revealer.right > scrolledwindow.frame {
+  margin-left: 32px;
+  // border-style: none none none solid;
+}
+
+.terminix-session-sidebar { background-image: image($lighter_bg_color); }
+
+
 /***********
  * Firefox *
  ***********/
