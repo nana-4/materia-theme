@@ -133,7 +133,7 @@ assistant .sidebar label {
     color: rgba(0, 0, 0, 0.8); }
 
 popover.background.touch-selection, popover.background.magnifier, popover.background.osd, .csd popover.background.touch-selection, .csd popover.background.magnifier, .csd popover.background.osd, .app-notification,
-.app-notification.frame, .osd .scale-popup, .floating-bar, .osd {
+.app-notification.frame, .osd .scale-popup, .nautilus-window .floating-bar, .osd {
   opacity: 0.9; }
 
 /*********************
@@ -805,15 +805,15 @@ toolbar {
   .osd toolbar {
     background-color: transparent; }
   toolbar.osd, .app-notification,
-  .app-notification.frame {
+  .app-notification.frame, frame.documents-dropdown {
     transition: box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1);
     padding: 6px;
     border-radius: 2px;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23), inset 0 1px rgba(255, 255, 255, 0.4);
     background-color: #FFFFFF; }
-    toolbar.osd:backdrop, .app-notification:backdrop {
+    toolbar.osd:backdrop, .app-notification:backdrop, frame.documents-dropdown:backdrop {
       box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24), inset 0 1px rgba(255, 255, 255, 0.4); }
-    toolbar.osd.left, .left.app-notification, toolbar.osd.right, .right.app-notification, toolbar.osd.top, .top.app-notification, toolbar.osd.bottom, .bottom.app-notification {
+    toolbar.osd.left, .left.app-notification, frame.left.documents-dropdown, toolbar.osd.right, .right.app-notification, frame.right.documents-dropdown, toolbar.osd.top, .top.app-notification, frame.top.documents-dropdown, toolbar.osd.bottom, .bottom.app-notification, frame.bottom.documents-dropdown {
       border-radius: 0; }
   toolbar.horizontal separator {
     margin: 3px; }
@@ -2489,12 +2489,12 @@ cursor-handle {
 
 .inline-toolbar
 button:not(.text-button), check,
-radio, button.titlebutton,
+radio, button.titlebutton, .nautilus-window headerbar > revealer > button,
 button.circular {
   border-radius: 100px;
   -gtk-outline-radius: 100px; }
 
-spinbutton:not(.vertical) button, notebook > header tab button.flat, button.sidebar-button, .gedit-document-panel row button.flat, .pluma-window paned.horizontal box.vertical box.horizontal button.flat {
+spinbutton:not(.vertical) button, notebook > header tab button.flat, button.sidebar-button, .nautilus-window .floating-bar button, .gedit-document-panel row button.flat, .pluma-window paned.horizontal box.vertical box.horizontal button.flat {
   min-height: 20px;
   min-width: 20px;
   padding: 0;
@@ -2529,30 +2529,6 @@ stackswitcher button.text-button.circular {
   min-height: 32px;
   padding: 0; }
 
-.floating-bar {
-  min-height: 32px;
-  padding: 0;
-  border-style: solid solid none;
-  border-width: 1px;
-  border-color: rgba(0, 0, 0, 0.1);
-  border-radius: 3px 3px 0 0;
-  background-color: #FFFFFF;
-  background-clip: padding-box;
-  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), border-width 0; }
-  .floating-bar.left {
-    margin-right: 7px;
-    border-left-style: none;
-    border-top-left-radius: 0; }
-  .floating-bar.right {
-    margin-left: 7px;
-    border-right-style: none;
-    border-top-right-radius: 0; }
-  .floating-bar button {
-    min-height: 24px;
-    min-width: 24px;
-    margin: 4px;
-    padding: 0; }
-
 /************
  * Nautilus *
  ************/
@@ -2569,20 +2545,38 @@ stackswitcher button.text-button.circular {
   text-shadow: none; }
 
 @keyframes needs_attention_keyframes {
-  0% {
+  from {
     background-color: transparent; }
-  50% {
-    background-color: alpha(currentColor, 0.3); }
-  100% {
-    background-color: transparent; } }
+  to {
+    background-color: alpha(currentColor, 0.3); } }
 .nautilus-operations-button-needs-attention {
   color: #FF4081;
-  animation: needs_attention_keyframes 2s cubic-bezier(0.4, 0, 0.2, 1); }
+  animation: needs_attention_keyframes 0.3s cubic-bezier(0.4, 0, 0.2, 1) 2 alternate; }
 
 .nautilus-operations-button-needs-attention-multiple {
   color: #FF4081;
-  animation: needs_attention_keyframes 2s cubic-bezier(0.4, 0, 0.2, 1);
-  animation-iteration-count: 2; }
+  animation: needs_attention_keyframes 0.3s cubic-bezier(0.4, 0, 0.2, 1) 4 alternate; }
+
+.nautilus-window .floating-bar {
+  min-height: 32px;
+  padding: 0;
+  border-style: solid solid none;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-radius: 3px 3px 0 0;
+  background-color: #FFFFFF;
+  background-clip: padding-box;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), border-width 0; }
+  .nautilus-window .floating-bar.bottom.left {
+    margin-right: 7px;
+    border-left-style: none;
+    border-top-left-radius: 0; }
+  .nautilus-window .floating-bar.bottom.right {
+    margin-left: 7px;
+    border-right-style: none;
+    border-top-right-radius: 0; }
+  .nautilus-window .floating-bar button {
+    margin: 6px; }
 
 .disk-space-display.unknown {
   background-color: #FF6D00; }
@@ -2594,23 +2588,23 @@ stackswitcher button.text-button.circular {
   background-color: alpha(currentColor, 0.3);
   color: rgba(0, 0, 0, 0.32); }
 
-.documents-entry-tag {
+.documents-entry-tag, .photos-entry-tag {
   margin: 3px -2px 3px 8px;
   padding: 0 8px;
   border-radius: 100px;
   box-shadow: none;
   background-color: #42A5F5;
   color: #FFFFFF; }
-  .documents-entry-tag:hover {
+  .documents-entry-tag:hover, .photos-entry-tag:hover {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
 
-.documents-entry-tag.button {
+.documents-entry-tag.button, .button.photos-entry-tag {
   margin: 0 -2px;
   padding: 4px;
   border-radius: 100px;
   box-shadow: none;
   color: rgba(255, 255, 255, 0.75); }
-  .documents-entry-tag.button:hover, .documents-entry-tag.button:active {
+  .documents-entry-tag.button:hover, .button.photos-entry-tag:hover, .documents-entry-tag.button:active, .button.photos-entry-tag:active {
     color: #FFFFFF; }
 
 .nautilus-window searchbar {
@@ -2622,11 +2616,9 @@ stackswitcher button.text-button.circular {
 /*********
  * gedit *
  *********/
-/* Only normal state is handle */
 .open-document-selector-name-label {
   font-weight: bold; }
 
-/* Only normal state is handle */
 .open-document-selector-path-label {
   color: alpha(currentColor, 0.6);
   font-size: smaller; }
@@ -2634,15 +2626,12 @@ stackswitcher button.text-button.circular {
 .gedit-document-panel {
   background-color: #FAFAFA; }
 
-.gedit-document-panel-group-row,
-.gedit-document-panel-group-row:hover {
-  border-top: 1px solid alpha(currentColor, 0.3); }
+.gedit-document-panel-group-row {
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
 
-.gedit-document-panel-group-row:first-child,
-.gedit-document-panel-group-row:first-child:hover {
-  border-top: 0px; }
+.gedit-document-panel-group-row:first-child {
+  border-top: none; }
 
-/* Try to look as the notebook tab close button */
 .gedit-document-panel row button.flat {
   margin-top: 8px;
   margin-bottom: 8px; }
@@ -2676,6 +2665,11 @@ stackswitcher button.text-button.circular {
 .gedit-search-slider .linked:not(.vertical) > entry,
 notebook > stack:not(:only-child) revealer .gedit-search-slider .linked:not(.vertical) > entry {
   border-radius: 2px; }
+
+frame.gedit-map-frame > border:dir(ltr) {
+  border-style: none none none solid; }
+frame.gedit-map-frame > border:dir(rtl) {
+  border-style: none solid none none; }
 
 /**************
  * Tweak Tool *
@@ -2803,17 +2797,22 @@ dockoverlayedge docktabstrip {
   padding: 0;
   border: none; }
 
+dockoverlayedge.left-edge docktab:hover {
+  box-shadow: inset -2px 0 alpha(currentColor, 0.3); }
 dockoverlayedge.left-edge docktab:checked {
-  border-right-color: #42A5F5;
-  border-bottom-color: transparent; }
+  box-shadow: inset -2px 0 #42A5F5; }
 
+dockoverlayedge.right-edge docktab:hover {
+  box-shadow: inset 2px 0 alpha(currentColor, 0.3); }
 dockoverlayedge.right-edge docktab:checked {
-  border-left-color: #42A5F5;
-  border-bottom-color: transparent; }
+  box-shadow: inset 2px 0 #42A5F5; }
 
 pillbox {
   background-color: #F5F5F5;
   border-radius: 2px; }
+
+buildperspective row {
+  padding: 10px; }
 
 layoutpane entry.search {
   box-shadow: inset 0 -1px rgba(0, 0, 0, 0.1);
@@ -2836,6 +2835,85 @@ docktabstrip {
 workbench preferences preferencesgroup list entry {
   padding-top: 8px;
   padding-bottom: 8px; }
+
+/**********
+ * Photos *
+ **********/
+GdMainIconView.content-view {
+  -GdMainIconView-icon-size: 48; }
+
+.documents-counter {
+  margin: 8px;
+  border-radius: 100px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
+  background-color: #FF4081;
+  color: #FFFFFF;
+  font-weight: bold; }
+
+.documents-scrolledwin.frame {
+  border-style: none; }
+
+.photos-fade-in {
+  opacity: 1;
+  transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1); }
+
+.photos-fade-out {
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1); }
+
+overlay grid.horizontal > revealer > scrolledwindow.frame:dir(ltr) {
+  border-style: none none none solid; }
+overlay grid.horizontal > revealer > scrolledwindow.frame:dir(rtl) {
+  border-style: none solid none none; }
+
+/*********
+ * Music *
+ *********/
+.side-panel:dir(ltr) {
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1); }
+
+.side-panel:dir(rtl) {
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1); }
+
+.side-panel .view, .side-panel iconview {
+  background-image: image(#FAFAFA); }
+  .side-panel .view:hover, .side-panel iconview:hover {
+    background-image: image(rgba(242, 242, 242, 0.99)); }
+
+.side-panel .view:selected, .side-panel iconview:selected {
+  background-image: image(#42A5F5); }
+  .side-panel .view:selected:hover, .side-panel iconview:selected:hover {
+    background-image: image(#4baaf6); }
+
+.songs-list:hover {
+  background-image: image(alpha(currentColor, 0.05)); }
+
+frame.documents-dropdown {
+  margin: 8px; }
+  frame.documents-dropdown > border {
+    border: none; }
+
+box.vertical > revealer > toolbar.search-bar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  box.vertical > revealer > toolbar.search-bar button > widget {
+    -gtk-icon-source: -gtk-icontheme("pan-down-symbolic"); }
+
+/*************
+ * Evolution *
+ *************/
+frame.taskbar > border {
+  border-style: solid none none; }
+
+box.vertical > paned.horizontal notebook widget .frame {
+  border-style: none; }
+
+/********
+ * gitg *
+ ********/
+frame.commit-frame > border {
+  border-style: solid none none; }
 
 /***********
  * Firefox *
