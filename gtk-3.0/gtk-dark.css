@@ -484,6 +484,9 @@ button {
     button.text-button.image-button label:last-child {
       margin-left: 2px;
       margin-right: 10px; }
+    button.text-button.image-button label:only-child {
+      margin-left: 10px;
+      margin-right: 10px; }
     button.text-button.image-button image:not(:only-child):first-child {
       margin-left: 4px; }
     button.text-button.image-button image:not(:only-child):last-child {
@@ -2898,6 +2901,17 @@ box.vertical:not(.titlebar) > revealer > toolbar.search-bar {
   box.vertical:not(.titlebar) > revealer > toolbar.search-bar button > widget {
     -gtk-icon-source: -gtk-icontheme("pan-down-symbolic"); }
 
+/*********
+ * To Do *
+ *********/
+task-row {
+  transition: all 0.2s cubic-bezier(0, 0, 0.2, 1); }
+  task-row:hover {
+    transition: none; }
+
+task-list-view > box > revealer > box > button {
+  margin: -6px 0; }
+
 /*************
  * Evolution *
  *************/
@@ -2912,6 +2926,21 @@ box.vertical > paned.horizontal notebook widget .frame {
  ********/
 frame.commit-frame > border {
   border-style: solid none none; }
+
+/**************
+ * Characters *
+ **************/
+box.dialog-vbox scrolledwindow.related {
+  border: 1px solid rgba(0, 0, 0, 0.2); }
+
+list.categories {
+  background-image: image(#607D8B); }
+
+/**************
+ * Calculator *
+ **************/
+button.title label {
+  min-height: 36px; }
 
 /************
  * Terminix *
