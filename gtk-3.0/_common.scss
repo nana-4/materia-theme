@@ -846,13 +846,15 @@ combobox {
     min-width: 16px;
   }
 
+  button.combo:checked { transition: none; } // workaround for menuitem selection
+
   menu,
   .menu,
   .context-menu {
     padding: 2px 0;
 
     menuitem {
-      min-height: $medium_size;
+      min-height: $medium_size - 2px * 2;
       padding: 0 ($medium_size - 16px) / 2;
     }
   }
