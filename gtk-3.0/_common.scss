@@ -2141,17 +2141,26 @@ scale {
   $_marks_lenght: 8px;
   $_marks_distance: 8px;
 
-  min-height: $medium_size - 24px;
-  min-width: $medium_size - 24px;
-  padding: (24px / 2);
+  $slider_size: 24px;
+  $marks_slider_size: 30px;
+
+  $slider_margin: -($slider_size - $bar_size) / 2;
+  $marks_slider_margin: -($marks_slider_size - $bar_size) - $slider_margin;
+
+  $color_slider_margin: -($slider_size) / 2;
+  $color_marks_slider_margin: -($marks_slider_size - 16px) - $color_slider_margin;
+
+  min-height: $medium_size - $slider_size;
+  min-width: $medium_size - $slider_size;
+  padding: ($slider_size / 2);
 
   * { transition: $longer_transition; }
 
   // the slider is inside the trough, so to have make it bigger there's a negative margin
   slider {
-    min-height: 24px;
-    min-width: 24px;
-    margin: ($bar_size - 24px) / 2;
+    min-height: $slider_size;
+    min-width: $slider_size;
+    margin: $slider_margin;
   }
 
   // the backing bit
@@ -2237,8 +2246,6 @@ scale {
   }
 
   // *WARNING* scale with marks madness following
-
-  // FIXME: OSD and selected list rows missing, I don't feel like adding the other 144 assets needed for those...
   $suffix: if($variant == 'light', '', '-dark');
 
   @each $dir_class, $dir_infix in ('horizontal', 'horz'),
@@ -2257,11 +2264,11 @@ scale {
             }
 
             @if $dir_class == 'horizontal' {
-              min-height: 30px;
-              min-width: 24px;
+              min-height: $marks_slider_size;
+              min-width: $slider_size;
 
               @if $marks_infix == 'scale-has-marks-above' {
-                margin-top: -16px;
+                margin-top: $marks_slider_margin;
 
                 background-position: center calc(100% - 4px);
 
@@ -2271,7 +2278,7 @@ scale {
               }
 
               @if $marks_infix == 'scale-has-marks-below' {
-                margin-bottom: -16px;
+                margin-bottom: $marks_slider_margin;
 
                 background-position: center calc(4px);
 
@@ -2282,11 +2289,11 @@ scale {
             }
 
             @if $dir_class == 'vertical' {
-              min-height: 24px;
-              min-width: 30px;
+              min-height: $slider_size;
+              min-width: $marks_slider_size;
 
               @if $marks_infix == 'scale-has-marks-above' {
-                margin-left: -16px;
+                margin-left: $marks_slider_margin;
 
                 background-position: calc(4px) center;
 
@@ -2296,7 +2303,7 @@ scale {
               }
 
               @if $marks_infix == 'scale-has-marks-below' {
-                margin-right: -16px;
+                margin-right: $marks_slider_margin;
 
                 background-position: calc(100% - 4px) center;
 
@@ -2335,15 +2342,13 @@ scale {
     &.horizontal {
       padding: 0 0 12px 0;
 
-      trough {
-        padding-bottom: $bar_size;
-      }
+      // trough { padding-bottom: $bar_size; }
 
       slider {
         @extend %scale-has-marks-above-horz;
 
-        margin-bottom: -10px - $bar_size;
-        margin-top: 0;
+        margin-bottom: $color_slider_margin;
+        margin-top: $color_marks_slider_margin;
       }
     }
 
@@ -2351,30 +2356,26 @@ scale {
       &:dir(ltr) {
         padding: 0 0 0 12px;
 
-        trough {
-          padding-left: $bar_size;
-        }
+        // trough { padding-left: $bar_size; }
 
         slider {
           @extend %scale-has-marks-below-vert;
 
-          margin-left: -10px - $bar_size;
-          margin-right: 0;
+          margin-left: $color_slider_margin;
+          margin-right: $color_marks_slider_margin;
         }
       }
 
       &:dir(rtl) {
         padding: 0 12px 0 0;
 
-        trough {
-          padding-right: $bar_size;
-        }
+        // trough { padding-right: $bar_size; }
 
         slider {
           @extend %scale-has-marks-above-vert;
 
-          margin-right: -10px - $bar_size;
-          margin-left: 0;
+          margin-right: $color_slider_margin;
+          margin-left: $color_marks_slider_margin;
         }
       }
     }
