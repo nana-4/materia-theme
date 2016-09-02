@@ -467,25 +467,27 @@ button {
     headerbar button:checked:disabled:not(.suggested-action):not(.destructive-action) > label, actionbar > revealer > box button:checked:disabled:not(.suggested-action):not(.destructive-action):not(.server-list-button) > label, .app-notification button:checked:disabled > label,
     button.flat:checked:disabled > label {
       color: inherit; }
+  button.text-button {
+    padding-left: 16px;
+    padding-right: 16px; }
   button.image-button {
     min-width: 24px;
     padding: 6px;
     -gtk-outline-radius: 100px;
     border-radius: 100px; }
-  button.text-button {
-    padding-left: 16px;
-    padding-right: 16px; }
   button.text-button.image-button {
-    padding-left: 10px;
-    padding-right: 10px;
     -gtk-outline-radius: 2px;
     border-radius: 2px; }
-    button.text-button.image-button label:last-child {
-      padding-left: 2px;
-      padding-right: 6px; }
     button.text-button.image-button label:first-child {
-      padding-left: 6px;
-      padding-right: 2px; }
+      margin-left: 10px;
+      margin-right: 2px; }
+    button.text-button.image-button label:last-child {
+      margin-left: 2px;
+      margin-right: 10px; }
+    button.text-button.image-button image:not(:only-child):first-child {
+      margin-left: 4px; }
+    button.text-button.image-button image:not(:only-child):last-child {
+      margin-right: 4px; }
   toolbar .linked > button, .titlebar:not(headerbar) .linked > button:not(.suggested-action):not(.destructive-action),
   headerbar .linked > button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked > button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked > button, toolbar .linked.vertical > button, .titlebar:not(headerbar) .linked.vertical > button:not(.suggested-action):not(.destructive-action),
   headerbar .linked.vertical > button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked.vertical > button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked.vertical > button, .linked >

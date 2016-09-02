@@ -413,6 +413,11 @@ button {
       &:checked:disabled { @include button(flat-checked-disabled); }
     }
 
+    &.text-button {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
     &.image-button {
       min-width: 24px;
       padding: ($medium_size - 24px) / 2;
@@ -420,20 +425,26 @@ button {
       border-radius: $circular_radius;
     }
 
-    &.text-button {
-      padding-left: 16px;
-      padding-right: 16px;
-    }
-
     &.text-button.image-button {
-      padding-left: ($medium_size - 16px) / 2;
-      padding-right: ($medium_size - 16px) / 2;
       -gtk-outline-radius: 2px;
       border-radius: 2px;
 
       label {
-        &:last-child { padding-left: 2px; padding-right: 16px - ($medium_size - 16px) / 2; }
-        &:first-child { padding-left: 16px - ($medium_size - 16px) / 2; padding-right: 2px; }
+        &:first-child {
+          margin-left: 16px - ($medium_size - 24px) / 2;
+          margin-right: 2px;
+        }
+
+        &:last-child {
+          margin-left: 2px;
+          margin-right: 16px - ($medium_size - 24px) / 2;
+        }
+      }
+
+      image:not(:only-child) {
+        &:first-child { margin-left: (24px - 16px) / 2; }
+
+        &:last-child { margin-right: (24px - 16px) / 2; }
       }
     }
 
