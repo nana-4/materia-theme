@@ -2608,6 +2608,10 @@ row {
     &:hover {
       transition: $row_transition, box-shadow 0;
       box-shadow: inset 0 0 0 10000px gtkalpha(currentColor, 0.05);
+      background-image: radial-gradient(circle farthest-corner at center,
+                                        gtkalpha(currentColor, 0) 100%,
+                                        transparent 0%),
+                        image(gtkalpha(currentColor, 0));
     }
 
     &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
