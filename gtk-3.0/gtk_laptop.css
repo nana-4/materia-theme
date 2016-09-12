@@ -117,6 +117,8 @@ label {
     color: #FFFFFF; }
   label:disabled {
     color: rgba(0, 0, 0, 0.32); }
+    tab label:disabled, button label:disabled, menuitem label:disabled {
+      color: inherit; }
 
 .dim-label, label.separator, .titlebar:not(headerbar) .subtitle,
 headerbar .subtitle, .budgie-notification .notification-body {
@@ -393,16 +395,12 @@ button {
     box-shadow: none;
     background-color: alpha(currentColor, 0.3);
     color: rgba(0, 0, 0, 0.24); }
-    button:disabled > label {
-      color: inherit; }
   button:checked {
     background-color: #42A5F5;
     color: #FFFFFF; }
   button:checked:disabled {
     background-color: alpha(currentColor, 0.3);
     color: rgba(66, 165, 245, 0.4); }
-    button:checked:disabled > label {
-      color: inherit; }
   modelbutton.flat,
   .menuitem.button.flat, spinbutton:not(.vertical) button, spinbutton.vertical button, popover.background button.model, notebook > header > tabs > arrow, scrollbar button, check,
   radio, calendar.button, messagedialog.csd .dialog-action-area button, button.sidebar-button, .gedit-search-slider button, PanelToplevel > widget > button, .raven .raven-header:not(.top) button, .drop-shadow button, .budgie-session-dialog .linked.horizontal > button, :not(headerbar) .caja-pathbar button, .caja-pathbar :not(headerbar) button, :not(headerbar)
@@ -443,13 +441,6 @@ button {
       box-shadow: none;
       background-color: transparent;
       color: alpha(currentColor, 0.3); }
-      modelbutton.flat:disabled > label,
-      .menuitem.button.flat:disabled > label, spinbutton:not(.vertical) button:disabled > label, spinbutton.vertical button:disabled > label, popover.background button.model:disabled > label, notebook > header > tabs > arrow:disabled > label, scrollbar button:disabled > label, check:disabled > label,
-      radio:disabled > label, calendar.button:disabled > label, messagedialog.csd .dialog-action-area button:disabled > label, button.sidebar-button:disabled > label, .gedit-search-slider button:disabled > label, PanelToplevel > widget > button:disabled > label, .raven .raven-header:not(.top) button:disabled > label, .drop-shadow button:disabled > label, .budgie-session-dialog .linked.horizontal > button:disabled > label, :not(headerbar) .caja-pathbar button:disabled > label, .caja-pathbar :not(headerbar) button:disabled > label, :not(headerbar)
-      .path-bar button:disabled > label, layouttabbar button:disabled > label, .mate-panel-menu-bar #PanelApplet button:disabled:not(.flat) > label, .budgie-panel #tasklist-button:disabled > label, .raven stackswitcher.linked > button:disabled > label, toolbar button:disabled > label, .titlebar:not(headerbar) button:disabled:not(.suggested-action):not(.destructive-action) > label,
-      headerbar button:disabled:not(.suggested-action):not(.destructive-action) > label, actionbar > revealer > box button:disabled:not(.suggested-action):not(.destructive-action):not(.server-list-button) > label, .app-notification button:disabled > label,
-      button.flat:disabled > label {
-        color: inherit; }
   :not(headerbar) .caja-pathbar button:checked, .caja-pathbar :not(headerbar) button:checked, :not(headerbar)
   .path-bar button:checked, layouttabbar button:checked, .mate-panel-menu-bar #PanelApplet button:checked:not(.flat), .budgie-panel #tasklist-button:checked, .raven stackswitcher.linked > button:checked, toolbar button:checked, .titlebar:not(headerbar) button:checked:not(.suggested-action):not(.destructive-action),
   headerbar button:checked:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:checked:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button:checked,
@@ -462,11 +453,6 @@ button {
   button.flat:checked:disabled {
     background-color: alpha(currentColor, 0.3);
     color: alpha(currentColor, 0.4); }
-    :not(headerbar) .caja-pathbar button:checked:disabled > label, .caja-pathbar :not(headerbar) button:checked:disabled > label, :not(headerbar)
-    .path-bar button:checked:disabled > label, layouttabbar button:checked:disabled > label, .mate-panel-menu-bar #PanelApplet button:checked:disabled:not(.flat) > label, .budgie-panel #tasklist-button:checked:disabled > label, .raven stackswitcher.linked > button:checked:disabled > label, toolbar button:checked:disabled > label, .titlebar:not(headerbar) button:checked:disabled:not(.suggested-action):not(.destructive-action) > label,
-    headerbar button:checked:disabled:not(.suggested-action):not(.destructive-action) > label, actionbar > revealer > box button:checked:disabled:not(.suggested-action):not(.destructive-action):not(.server-list-button) > label, .app-notification button:checked:disabled > label,
-    button.flat:checked:disabled > label {
-      color: inherit; }
   button.text-button {
     padding-left: 16px;
     padding-right: 16px; }
@@ -527,8 +513,6 @@ button.suggested-action {
     box-shadow: none;
     background-color: alpha(currentColor, 0.3);
     color: rgba(0, 0, 0, 0.32); }
-    button.suggested-action:disabled > label {
-      color: inherit; }
   button.suggested-action:checked {
     background-color: #ff79a7; }
   button.suggested-action.flat {
@@ -538,8 +522,6 @@ button.suggested-action {
       box-shadow: none;
       background-color: transparent;
       color: alpha(currentColor, 0.4); }
-      button.suggested-action.flat:disabled > label {
-        color: inherit; }
 button.destructive-action {
   background-color: #FF5252;
   color: #FFFFFF; }
@@ -547,8 +529,6 @@ button.destructive-action {
     box-shadow: none;
     background-color: alpha(currentColor, 0.3);
     color: rgba(0, 0, 0, 0.32); }
-    button.destructive-action:disabled > label {
-      color: inherit; }
   button.destructive-action:checked {
     background-color: #ff8686; }
   button.destructive-action.flat {
@@ -558,8 +538,6 @@ button.destructive-action {
       box-shadow: none;
       background-color: transparent;
       color: alpha(currentColor, 0.4); }
-      button.destructive-action.flat:disabled > label {
-        color: inherit; }
 .stack-switcher >
 button {
   outline-offset: -4px; }
@@ -869,9 +847,15 @@ headerbar {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24), inset 0 1px rgba(255, 255, 255, 0.2);
   background-color: #455A64;
   color: #FFFFFF; }
+  .titlebar:disabled:not(headerbar) :not(button) > label,
+  headerbar:disabled :not(button) > label {
+    color: rgba(255, 255, 255, 0.4); }
   .titlebar:backdrop:not(headerbar),
   headerbar:backdrop {
     color: rgba(255, 255, 255, 0.75); }
+    .titlebar:backdrop:disabled:not(headerbar) :not(button) > label,
+    headerbar:backdrop:disabled :not(button) > label {
+      color: rgba(255, 255, 255, 0.3); }
   .titlebar:not(headerbar) .title,
   headerbar .title {
     transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
@@ -896,10 +880,6 @@ headerbar {
   headerbar button.suggested-action:disabled,
   headerbar button.destructive-action:disabled {
     color: alpha(currentColor, 0.4); }
-    .titlebar:not(headerbar) button.suggested-action:disabled > label, .titlebar:not(headerbar) button.destructive-action:disabled > label,
-    headerbar button.suggested-action:disabled > label,
-    headerbar button.destructive-action:disabled > label {
-      color: inherit; }
   .selection-mode.titlebar:not(headerbar),
   headerbar.selection-mode {
     transition: background-color 0 0.3s;
@@ -916,9 +896,6 @@ headerbar {
       .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):disabled,
       headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):disabled {
         color: alpha(currentColor, 0.4); }
-        .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):disabled > label,
-        headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):disabled > label {
-          color: inherit; }
       .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked,
       headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):checked {
         border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 100%, transparent 0%) 0 0 2/0 0 2px;
@@ -926,9 +903,6 @@ headerbar {
         .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled,
         headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):checked:disabled {
           color: alpha(currentColor, 0.4); }
-          .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled > label,
-          headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):checked:disabled > label {
-            color: inherit; }
     .selection-mode.titlebar:not(headerbar) .selection-menu,
     headerbar.selection-mode .selection-menu {
       padding-left: 16px;

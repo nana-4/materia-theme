@@ -183,6 +183,10 @@ label {
     color: $disabled_fg_color;
 
     selection { @extend %selected_items:disabled; }
+
+    tab &,
+    button &,
+    menuitem & { color: inherit; }
   }
 }
 
@@ -979,8 +983,12 @@ headerbar {
   background-color: $headerbar_color;
   color: $inversed_fg_color;
 
+  &:disabled :not(button) > label { color: $disabled_inversed_fg_color; }
+
   &:backdrop {
     color: $secondary_inversed_fg_color;
+
+    &:disabled :not(button) > label { color: $disabled_secondary_inversed_fg_color; }
   }
 
   .title {
@@ -1016,11 +1024,7 @@ headerbar {
   }
 
   button.suggested-action, button.destructive-action {
-    &:disabled {
-      color: gtkalpha(currentColor, $disabled_opacity);
-
-      > label { color: inherit; }
-    }
+    &:disabled { color: gtkalpha(currentColor, $disabled_opacity); }
   }
 
   &.selection-mode {
@@ -1043,11 +1047,7 @@ headerbar {
                                     0 0 0 / 0 0 0px;
       color: currentColor;
 
-      &:disabled {
-        color: gtkalpha(currentColor, $disabled_opacity);
-
-        > label { color: inherit; }
-      }
+      &:disabled { color: gtkalpha(currentColor, $disabled_opacity); }
 
       &:checked {
         border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
@@ -1056,11 +1056,7 @@ headerbar {
                                       0 0 2 / 0 0 2px;
         color: currentColor;
 
-        &:disabled {
-          color: gtkalpha(currentColor, $disabled_opacity);
-
-          > label { color: inherit; }
-        }
+        &:disabled { color: gtkalpha(currentColor, $disabled_opacity); }
       }
     }
 
