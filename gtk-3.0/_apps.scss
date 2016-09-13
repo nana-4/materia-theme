@@ -708,22 +708,27 @@ overlay > revealer.right > scrolledwindow.frame {
 /***********
  * Firefox *
  ***********/
-menubar {
+window.background > widget > menubar {
   color: $secondary_inversed_fg_color;
 
   &:hover { color: $inversed_fg_color; }
+
+  &:disabled { color: $disabled_secondary_inversed_fg_color; }
 }
 
-separator { color: $borders_color; }
+window.background > menu > menuitem > label:disabled { color: $disabled_fg_color; }
 
-/* FIXME: not working */
-window.background > widget > check,
-window.background > widget > radio {
+window.background > window.background > menu > separator { color: $borders_color; }
+
+window.background > widget > frame { color: rgba(0, 0, 0, 0.2); }
+
+window.background > widget > checkbutton > check,
+window.background > widget > radiobutton > radio {
   margin: 0;
   padding: 0;
 }
 
-window.background > widget > radio:checked {
+window.background > widget > radiobutton > radio:checked {
   -gtk-icon-source: image(-gtk-recolor(url("assets/radio-checked-symbolic.svg")),
                           -gtk-recolor(url("assets/radio-checked-symbolic.png")));
   border-image: none;

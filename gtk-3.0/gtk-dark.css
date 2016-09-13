@@ -2950,21 +2950,28 @@ overlay > revealer.right > scrolledwindow.frame {
 /***********
  * Firefox *
  ***********/
-menubar {
+window.background > widget > menubar {
   color: rgba(255, 255, 255, 0.75); }
-  menubar:hover {
+  window.background > widget > menubar:hover {
     color: #FFFFFF; }
+  window.background > widget > menubar:disabled {
+    color: rgba(255, 255, 255, 0.3); }
 
-separator {
+window.background > menu > menuitem > label:disabled {
+  color: rgba(255, 255, 255, 0.4); }
+
+window.background > window.background > menu > separator {
   color: rgba(0, 0, 0, 0.2); }
 
-/* FIXME: not working */
-window.background > widget > check,
-window.background > widget > radio {
+window.background > widget > frame {
+  color: rgba(0, 0, 0, 0.2); }
+
+window.background > widget > checkbutton > check,
+window.background > widget > radiobutton > radio {
   margin: 0;
   padding: 0; }
 
-window.background > widget > radio:checked {
+window.background > widget > radiobutton > radio:checked {
   -gtk-icon-source: image(-gtk-recolor(url("assets/radio-checked-symbolic.svg")), -gtk-recolor(url("assets/radio-checked-symbolic.png")));
   border-image: none; }
 
