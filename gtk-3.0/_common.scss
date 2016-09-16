@@ -770,6 +770,23 @@ spinbutton {
       border-radius: 0;
       box-shadow: none;
       background-color: transparent;
+      // 
+      // This will help to simplify spinbutton's code, but unfortunatelly
+      // doesn't work properly in :dir(rtl). It needs z-index property.
+      // 
+      // min-width: $large_size - 8px;
+      // 
+      // $spinbuttons_width: $small_size * 2 + $container_padding * 3;
+      // 
+      // &:dir(ltr) {
+      //   margin-right: -$spinbuttons_width;
+      //   padding-right: $spinbuttons_width;
+      // }
+      // 
+      // &:dir(rtl) {
+      //   margin-left: -$spinbuttons_width;
+      //   padding-left: $spinbuttons_width;
+      // }
     }
 
     button {
@@ -857,14 +874,17 @@ combobox {
 
   button.combo:checked { transition: none; } // workaround for menuitem selection
 
-  menu,
-  .menu,
-  .context-menu {
+  button.combo cellview {
+    &:dir(ltr) { margin-left: 8px - ($medium_size - 16px) / 2; }
+    &:dir(rtl) { margin-right: 8px - ($medium_size - 16px) / 2; }
+  }
+
+  #gtk-combobox-popup-menu {
     padding: 2px 0;
 
     menuitem {
       min-height: $medium_size - 2px * 2;
-      padding: 0 ($medium_size - 16px) / 2;
+      padding: 0 8px;
     }
   }
 
@@ -899,6 +919,25 @@ combobox {
 .linked.vertical > combobox:first-child > box > button.combo { @extend %linked_vertical:first-child;}
 .linked.vertical > combobox:last-child > box > button.combo { @extend %linked_vertical:last-child; }
 .linked.vertical > combobox:only-child > box > button.combo { @extend %linked_vertical:only-child; }
+
+%combo_flat {
+  border-radius: 0;
+  background-image: none;
+  font-weight: inherit;
+
+  @include entry(flat-normal);
+
+  &:hover { box-shadow: inset 0 -2px $track_color; }
+
+  &:checked {
+    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
+                                  $primary_color 100%,
+                                  transparent 0%)
+                                  0 0 2 / 0 0 2px;
+  }
+
+  &:disabled { color: $disabled_fg_color; }
+}
 
 
 /************
@@ -1341,6 +1380,8 @@ menubar,
   }
 }
 
+.csd.popup { border-radius: 2px; }
+
 menu,
 .menu,
 .context-menu {
@@ -1437,8 +1478,6 @@ menuitem {
     &:dir(rtl) { margin-right: -16px; margin-left: -8px; }
   }
 }
-
-.csd.popup { border-radius: 2px; }
 
 
 /***************
@@ -1716,13 +1755,12 @@ notebook {
   > stack:not(:only-child) { // the :not(:only-child) is for "hidden" notebooks
     background-color: $base_color;
 
-    entry,
+    entry:not(.search),
     spinbutton:not(.vertical) { @extend %entry.flat; }
 
-    revealer entry,
-    revealer spinbutton:not(.vertical) { @extend %entry; }
+    spinbutton:not(.vertical) entry { &, &:focus, &:disabled { @extend %spinbutton_entry; }}
 
-    spinbutton:not(.vertical) entry { @extend %spinbutton_entry; }
+    button.combo { @extend %combo_flat; }
   }
 }
 
