@@ -11,7 +11,7 @@ $bar_size: 4px;
 $menuitem_size: 28px;
 
 $md_radius: 2px;
-$circular_radius: 100px;
+$circular_radius: 9999px;
 
 $shorter_duration: 0.2s;
 $longer_duration: 0.3s;
@@ -273,8 +273,8 @@ entry {
 
       min-height: $small_size;
       min-width: $small_size;
-      -gtk-outline-radius: $circular_radius;
       border-radius: $circular_radius;
+      -gtk-outline-radius: $circular_radius;
       color: gtkalpha(currentColor, $enabled_opacity);
 
       &:hover, &:active { color: currentColor; }
@@ -425,13 +425,13 @@ button {
     &.image-button {
       min-width: 24px;
       padding: ($medium_size - 24px) / 2;
-      -gtk-outline-radius: $circular_radius;
       border-radius: $circular_radius;
+      -gtk-outline-radius: $circular_radius;
     }
 
     &.text-button.image-button {
-      -gtk-outline-radius: 2px;
       border-radius: 2px;
+      -gtk-outline-radius: 2px;
 
       label {
         &:first-child {
@@ -466,13 +466,13 @@ button {
       border-radius: 2px;
 
       &.image-button {
-        -gtk-outline-radius: $circular_radius;
         border-radius: $circular_radius;
+        -gtk-outline-radius: $circular_radius;
       }
 
       &.text-button.image-button {
-        -gtk-outline-radius: 2px;
         border-radius: 2px;
+        -gtk-outline-radius: 2px;
       }
     }
 
@@ -629,8 +629,8 @@ toolbar.inline-toolbar toolbutton {
 }
 
 %linked_middle {
-  -gtk-outline-radius: 2px;
   border-radius: 0;
+  -gtk-outline-radius: 2px;
 }
 
 %linked {
@@ -652,8 +652,8 @@ toolbar.inline-toolbar toolbutton {
 }
 
 %linked_vertical_middle {
-  -gtk-outline-radius: 2px;
   border-radius: 0;
+  -gtk-outline-radius: 2px;
 }
 
 %linked_vertical{
@@ -916,7 +916,7 @@ combobox {
 .linked:not(.vertical) > combobox:only-child > box > button.combo { @extend %linked:only-child; }
 
 .linked.vertical > combobox > box > button.combo { @extend %linked_vertical_middle; }
-.linked.vertical > combobox:first-child > box > button.combo { @extend %linked_vertical:first-child;}
+.linked.vertical > combobox:first-child > box > button.combo { @extend %linked_vertical:first-child; }
 .linked.vertical > combobox:last-child > box > button.combo { @extend %linked_vertical:last-child; }
 .linked.vertical > combobox:only-child > box > button.combo { @extend %linked_vertical:only-child; }
 
@@ -1921,8 +1921,8 @@ switch {
     min-width: $small_size;
     min-height: $small_size;
     margin: -4px 0 -4px -4px;
-    -gtk-outline-radius: $circular_radius;
     border-radius: $circular_radius;
+    -gtk-outline-radius: $circular_radius;
   }
 
   &:hover slider { @include entry(focus); }
@@ -1951,7 +1951,7 @@ switch {
 // all assets are rendered from assets.svg. never add pngs directly
 
 //selection-mode
-@each $s,$as in ('','-selectionmode'),
+@each $s, $as in ('', '-selectionmode'),
                 (':hover', '-hover-selectionmode'),
                 (':checked', '-checked-selectionmode'),
                 (':checked:hover', '-checked-hover-selectionmode') {
@@ -2134,12 +2134,12 @@ treeview.view radio {
   padding: 0;
 
   &:hover {
-    box-shadow: inset 0 0 0 10000px gtkalpha($fg_color, 0.05);
+    box-shadow: inset 0 0 0 9999px gtkalpha($fg_color, 0.05);
     background-image: none;
 
     &:disabled { box-shadow: none; }
 
-    &:selected { box-shadow: inset 0 0 0 10000px gtkalpha($inversed_fg_color, 0.05); }
+    &:selected { box-shadow: inset 0 0 0 9999px gtkalpha($inversed_fg_color, 0.05); }
   }
 
   & {
@@ -2234,7 +2234,7 @@ scale {
     background-repeat: no-repeat;
     background-position: center;
 
-    @each $s,$as in ('', ''),
+    @each $s, $as in ('', ''),
                     (':disabled', '-insensitive') {
       &#{$s} {
         $_url: 'assets/slider#{$as}#{$asset_suffix}';
@@ -2596,7 +2596,7 @@ $row_transition: $longer_transition, background-color 0, color 0;
 row {
   &.activatable {
     transition: $row_transition;
-    box-shadow: inset 0 0 0 10000px gtkalpha(currentColor, 0);
+    box-shadow: inset 0 0 0 9999px gtkalpha(currentColor, 0);
     background-image: radial-gradient(circle farthest-corner at center,
                                       gtkalpha(currentColor, 0) 100%,
                                       transparent 0%),
@@ -2604,7 +2604,7 @@ row {
 
     &:hover {
       transition: $row_transition, box-shadow 0;
-      box-shadow: inset 0 0 0 10000px gtkalpha(currentColor, 0.05);
+      box-shadow: inset 0 0 0 9999px gtkalpha(currentColor, 0.05);
       background-image: radial-gradient(circle farthest-corner at center,
                                         gtkalpha(currentColor, 0) 100%,
                                         transparent 0%),
@@ -2615,7 +2615,7 @@ row {
     &:active {
       transition: $row_transition, background-image 0;
       animation: row_ripple_effect $longer_duration $deceleration_curve forwards;
-      box-shadow: inset 0 0 0 10000px gtkalpha(currentColor, $lower_opacity / 2);
+      box-shadow: inset 0 0 0 9999px gtkalpha(currentColor, $lower_opacity / 2);
     }
   }
 
@@ -2962,7 +2962,7 @@ infobar {
 
     button { @extend %button_selected; }
 
-    selection { }
+    selection {}
 
     *:link { @extend %link_selected; }
   }

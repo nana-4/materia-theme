@@ -165,7 +165,7 @@ frame.raven-frame > border {
   box-shadow: $z-depth-4;
 }
 
-$pos_list: ((top, bottom),(bottom,top),(left,right),(right,left));
+$pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
 @each $pos, $b_pos in $pos_list {
   // Panel borders
@@ -217,8 +217,8 @@ $pos_list: ((top, bottom),(bottom,top),(left,right),(right,left));
         @extend %simple_flat_button;
 
         &.image-button {
-          -gtk-outline-radius: $circular_radius;
           border-radius: $circular_radius;
+          -gtk-outline-radius: $circular_radius;
         }
       }
     }

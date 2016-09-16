@@ -217,8 +217,8 @@ entry {
   entry image {
     min-height: 24px;
     min-width: 24px;
-    -gtk-outline-radius: 100px;
-    border-radius: 100px;
+    border-radius: 9999px;
+    -gtk-outline-radius: 9999px;
     color: alpha(currentColor, 0.75); }
     spinbutton:not(.vertical) image:hover, spinbutton:not(.vertical) image:active,
     entry image:hover,
@@ -442,11 +442,11 @@ button {
   button.image-button {
     min-width: 24px;
     padding: 6px;
-    -gtk-outline-radius: 100px;
-    border-radius: 100px; }
+    border-radius: 9999px;
+    -gtk-outline-radius: 9999px; }
   button.text-button.image-button {
-    -gtk-outline-radius: 2px;
-    border-radius: 2px; }
+    border-radius: 2px;
+    -gtk-outline-radius: 2px; }
     button.text-button.image-button label:first-child {
       margin-left: 10px;
       margin-right: 2px; }
@@ -471,15 +471,15 @@ button {
     headerbar .linked.vertical > button.image-button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked.vertical > button.image-button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked.vertical > button.image-button, .linked >
     button.flat.image-button, .linked.vertical >
     button.flat.image-button {
-      -gtk-outline-radius: 100px;
-      border-radius: 100px; }
+      border-radius: 9999px;
+      -gtk-outline-radius: 9999px; }
     toolbar .linked > button.text-button.image-button, .titlebar:not(headerbar) .linked > button.text-button.image-button:not(.suggested-action):not(.destructive-action),
     headerbar .linked > button.text-button.image-button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked > button.text-button.image-button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked > button.text-button.image-button, toolbar .linked.vertical > button.text-button.image-button, .titlebar:not(headerbar) .linked.vertical > button.text-button.image-button:not(.suggested-action):not(.destructive-action),
     headerbar .linked.vertical > button.text-button.image-button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked.vertical > button.text-button.image-button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked.vertical > button.text-button.image-button, .linked >
     button.flat.text-button.image-button, .linked.vertical >
     button.flat.text-button.image-button {
-      -gtk-outline-radius: 2px;
-      border-radius: 2px; }
+      border-radius: 2px;
+      -gtk-outline-radius: 2px; }
 infobar.info button:disabled, infobar.question button:disabled, infobar.warning button:disabled, infobar.error button:disabled, row:selected
 button:disabled {
   color: rgba(255, 255, 255, 0.3); }
@@ -573,8 +573,8 @@ button.needs-attention > image, stacksidebar row.needs-attention > label {
 .linked:not(.vertical) > spinbutton:not(.vertical), .linked:not(.vertical) >
 entry, .linked >
 button, .gedit-search-slider button:dir(ltr), .gedit-search-slider button:dir(rtl), .linked > combobox > box > button.combo:dir(ltr), .linked > combobox > box > button.combo:dir(rtl) {
-  -gtk-outline-radius: 2px;
-  border-radius: 0; }
+  border-radius: 0;
+  -gtk-outline-radius: 2px; }
 
 .linked:not(.vertical) > spinbutton:first-child:not(.vertical), .linked:not(.vertical) >
 entry:first-child, .linked >
@@ -594,8 +594,8 @@ button:only-child, .linked:not(.vertical) > combobox:only-child > box > button.c
 .linked.vertical > spinbutton:not(.vertical), .linked.vertical >
 entry, .linked.vertical >
 button, .linked.vertical > combobox > box > button.combo {
-  -gtk-outline-radius: 2px;
-  border-radius: 0; }
+  border-radius: 0;
+  -gtk-outline-radius: 2px; }
 
 .linked.vertical > spinbutton:first-child:not(.vertical), .linked.vertical >
 entry:first-child, .linked.vertical >
@@ -1383,7 +1383,7 @@ scrollbar {
     min-width: 8px;
     min-height: 8px;
     border: 4px solid transparent;
-    border-radius: 100px;
+    border-radius: 9999px;
     background-clip: padding-box;
     background-color: rgba(255, 255, 255, 0.6); }
     scrollbar slider:hover {
@@ -1413,7 +1413,7 @@ scrollbar {
       min-height: 4px;
       margin: 3px;
       border: 1px solid rgba(84, 110, 122, 0.3);
-      border-radius: 100px;
+      border-radius: 9999px;
       background-color: rgba(255, 255, 255, 0.6);
       background-clip: padding-box;
       -gtk-icon-source: none; }
@@ -1454,7 +1454,7 @@ switch {
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
   margin: 6px 0;
   border: 4px solid transparent;
-  border-radius: 100px;
+  border-radius: 9999px;
   background-color: alpha(currentColor, 0.3);
   background-clip: padding-box;
   font-size: 0; }
@@ -1475,8 +1475,8 @@ switch {
     min-width: 24px;
     min-height: 24px;
     margin: -4px 0 -4px -4px;
-    -gtk-outline-radius: 100px;
-    border-radius: 100px; }
+    border-radius: 9999px;
+    -gtk-outline-radius: 9999px; }
   switch:hover slider {
     border-image: none;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23); }
@@ -1630,14 +1630,14 @@ treeview.view radio {
   padding: 0; }
   treeview.view check:hover,
   treeview.view radio:hover {
-    box-shadow: inset 0 0 0 10000px alpha(#FFFFFF, 0.05);
+    box-shadow: inset 0 0 0 9999px alpha(#FFFFFF, 0.05);
     background-image: none; }
     treeview.view check:hover:disabled,
     treeview.view radio:hover:disabled {
       box-shadow: none; }
     treeview.view check:hover:selected,
     treeview.view radio:hover:selected {
-      box-shadow: inset 0 0 0 10000px alpha(#FFFFFF, 0.05); }
+      box-shadow: inset 0 0 0 9999px alpha(#FFFFFF, 0.05); }
   treeview.view check,
   treeview.view radio {
     color: rgba(255, 255, 255, 0.75); }
@@ -1992,16 +1992,16 @@ list {
 
 row.activatable, .view, iconview, treeview.view header button, .budgie-menu button {
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0;
-  box-shadow: inset 0 0 0 10000px alpha(currentColor, 0);
+  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0);
   background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0)); }
   row.activatable:hover, .view:hover, iconview:hover, treeview.view header button:hover, .budgie-menu button:hover {
     transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, box-shadow 0;
-    box-shadow: inset 0 0 0 10000px alpha(currentColor, 0.05);
+    box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.05);
     background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0)); }
   row.activatable.has-open-popup, .has-open-popup.view, iconview.has-open-popup, treeview.view header button.has-open-popup, .budgie-menu button.has-open-popup, row.activatable:active, .view:active, iconview:active, treeview.view header button:active, .budgie-menu button:active {
     transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, background-image 0;
     animation: row_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
-    box-shadow: inset 0 0 0 10000px alpha(currentColor, 0.15); }
+    box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.15); }
 
 /*********************
  * App Notifications *
@@ -2366,7 +2366,7 @@ entry selection, modelbutton.flat:selected,
  * Touch Copy & Paste *
  *********************/
 cursor-handle {
-  border-radius: 100px;
+  border-radius: 9999px;
   background-color: #FF4081;
   background-image: none; }
   cursor-handle.top:dir(ltr), cursor-handle.bottom:dir(rtl) {
@@ -2387,15 +2387,15 @@ cursor-handle {
 button:not(.text-button), check,
 radio, button.titlebutton, .nautilus-window headerbar > revealer > button, .raven .expander-button,
 button.circular {
-  border-radius: 100px;
-  -gtk-outline-radius: 100px; }
+  border-radius: 9999px;
+  -gtk-outline-radius: 9999px; }
 
 spinbutton:not(.vertical) button, notebook > header tab button.flat, button.sidebar-button, .nautilus-window .floating-bar button, .gedit-document-panel row button.flat, .pluma-window paned.horizontal box.vertical box.horizontal button.flat {
   min-height: 24px;
   min-width: 24px;
   padding: 0;
-  border-radius: 100px;
-  -gtk-outline-radius: 100px; }
+  border-radius: 9999px;
+  -gtk-outline-radius: 9999px; }
 
 .keycap {
   min-width: 12px;
@@ -2487,7 +2487,7 @@ stackswitcher button.text-button.circular {
 .documents-entry-tag, .photos-entry-tag {
   margin: 3px -2px 3px 8px;
   padding: 0 8px;
-  border-radius: 100px;
+  border-radius: 9999px;
   box-shadow: none;
   background-color: #42A5F5;
   color: #FFFFFF; }
@@ -2497,7 +2497,7 @@ stackswitcher button.text-button.circular {
 .documents-entry-tag.button, .button.photos-entry-tag {
   margin: 0 -2px;
   padding: 4px;
-  border-radius: 100px;
+  border-radius: 9999px;
   box-shadow: none;
   color: rgba(255, 255, 255, 0.75); }
   .documents-entry-tag.button:hover, .button.photos-entry-tag:hover, .documents-entry-tag.button:active, .button.photos-entry-tag:active {
@@ -2634,7 +2634,7 @@ layouttab button.text-button, layouttab button.image-button, layouttab button {
   padding: 0 4px; }
 
 layouttab > box > button.close {
-  border-radius: 100px; }
+  border-radius: 9999px; }
 
 layout {
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -2740,7 +2740,7 @@ GdMainIconView.content-view {
 
 .documents-counter {
   margin: 8px;
-  border-radius: 100px;
+  border-radius: 9999px;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
   background-color: #FF4081;
   color: #FFFFFF;
@@ -3254,8 +3254,8 @@ frame.raven-frame > border {
     .raven .raven-header:not(.top) {
       margin-top: -6px; }
       .raven .raven-header:not(.top) button.image-button {
-        -gtk-outline-radius: 100px;
-        border-radius: 100px; }
+        border-radius: 9999px;
+        -gtk-outline-radius: 9999px; }
     .raven .raven-header.top {
       padding: 2px 0;
       border-style: none;
