@@ -196,25 +196,35 @@
 .gedit-search-slider {
   margin: 4px 4px 8px;
 
-  .gedit-search-entry-occurrences-tag {
-    all: unset;
-    padding: 0 4px;
-    color: gtkalpha(currentColor, $hint_opacity);
-  }
-
   entry {
-    &:dir(ltr) {
-      margin-right: -$medium_size * 2;
-      padding-right: $medium_size * 2 + 8px;
+    &:dir(ltr),
+    &:dir(rtl) { // specificity bump
+      border-radius: 2px;
 
-      .gedit-search-entry-occurrences-tag { margin-right: -8px; }
+      .gedit-search-entry-occurrences-tag {
+        all: unset;
+        color: gtkalpha(currentColor, $hint_opacity);
+      }
+    }
+
+    $buttons_width: $small_size * 2 + $container_padding * 3;
+
+    &:dir(ltr) {
+      margin-right: -$buttons_width;
+      padding-right: $buttons_width;
+
+      .gedit-search-entry-occurrences-tag { margin-left: $container_padding; }
+
+      image.right { margin-right: 0; }
     }
 
     &:dir(rtl) {
-      margin-left: -$medium_size * 2;
-      padding-left: $medium_size * 2 + 8px;
+      margin-left: -$buttons_width;
+      padding-left: $buttons_width;
 
-      .gedit-search-entry-occurrences-tag { margin-left: -8px; }
+      .gedit-search-entry-occurrences-tag { margin-right: $container_padding; }
+
+      image.left { margin-left: 0; }
     }
 
     &.error ~ button {
@@ -227,17 +237,19 @@
   }
 
   button {
+    border: solid $container_padding transparent;
+
     @extend %simple_flat_button;
 
     &:dir(ltr),
-    &:dir(rtl) { @extend %linked; }
-  }
-}
+    &:dir(rtl) { @extend %small_button; } // specificity bump
 
-// Yeah this is ugly
-.gedit-search-slider .linked:not(.vertical) > entry,
-notebook > stack:not(:only-child) revealer .gedit-search-slider .linked:not(.vertical) > entry {
-  border-radius: 2px;
+    &:last-child:dir(ltr),
+    &:not(:first-child):dir(rtl) { margin-left: -$container_padding / 2; }
+
+    &:first-child:dir(rtl),
+    &:not(:last-child):dir(ltr) { margin-right: -$container_padding / 2; }
+  }
 }
 
 frame.gedit-map-frame > border {

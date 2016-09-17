@@ -572,23 +572,23 @@ button.needs-attention > image, stacksidebar row.needs-attention > label {
 
 .linked:not(.vertical) > spinbutton:not(.vertical), .linked:not(.vertical) >
 entry, .linked >
-button, .gedit-search-slider button:dir(ltr), .gedit-search-slider button:dir(rtl), .linked > combobox > box > button.combo:dir(ltr), .linked > combobox > box > button.combo:dir(rtl) {
+button, .linked > combobox > box > button.combo:dir(ltr), .linked > combobox > box > button.combo:dir(rtl) {
   border-radius: 0;
   -gtk-outline-radius: 2px; }
 
 .linked:not(.vertical) > spinbutton:first-child:not(.vertical), .linked:not(.vertical) >
 entry:first-child, .linked >
-button:first-child, combobox.linked button:nth-child(2):dir(rtl), .linked:not(.vertical) > combobox:first-child > box > button.combo, .gedit-search-slider button:first-child:dir(ltr), .gedit-search-slider button:first-child:dir(rtl) {
+button:first-child, combobox.linked button:nth-child(2):dir(rtl), .linked:not(.vertical) > combobox:first-child > box > button.combo {
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px; }
 .linked:not(.vertical) > spinbutton:last-child:not(.vertical), .linked:not(.vertical) >
 entry:last-child, .linked >
-button:last-child, combobox.linked button:nth-child(2):dir(ltr), .linked:not(.vertical) > combobox:last-child > box > button.combo, .gedit-search-slider button:last-child:dir(ltr), .gedit-search-slider button:last-child:dir(rtl) {
+button:last-child, combobox.linked button:nth-child(2):dir(ltr), .linked:not(.vertical) > combobox:last-child > box > button.combo {
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px; }
 .linked:not(.vertical) > spinbutton:only-child:not(.vertical), .linked:not(.vertical) >
 entry:only-child, .linked >
-button:only-child, .linked:not(.vertical) > combobox:only-child > box > button.combo, .gedit-search-slider button:only-child:dir(ltr), .gedit-search-slider button:only-child:dir(rtl) {
+button:only-child, .linked:not(.vertical) > combobox:only-child > box > button.combo {
   border-radius: 2px; }
 
 .linked.vertical > spinbutton:not(.vertical), .linked.vertical >
@@ -2390,7 +2390,7 @@ button.circular {
   border-radius: 9999px;
   -gtk-outline-radius: 9999px; }
 
-spinbutton:not(.vertical) button, notebook > header tab button.flat, button.sidebar-button, .nautilus-window .floating-bar button, .gedit-document-panel row button.flat, .pluma-window paned.horizontal box.vertical box.horizontal button.flat {
+spinbutton:not(.vertical) button, notebook > header tab button.flat, button.sidebar-button, .nautilus-window .floating-bar button, .gedit-document-panel row button.flat, .gedit-search-slider button:dir(ltr), .gedit-search-slider button:dir(rtl), .pluma-window paned.horizontal box.vertical box.horizontal button.flat {
   min-height: 20px;
   min-width: 20px;
   padding: 0;
@@ -2537,30 +2537,37 @@ stackswitcher button.text-button.circular {
 
 .gedit-search-slider {
   margin: 4px 4px 8px; }
-  .gedit-search-slider .gedit-search-entry-occurrences-tag {
-    all: unset;
-    padding: 0 4px;
-    color: alpha(currentColor, 0.6); }
+  .gedit-search-slider entry:dir(ltr), .gedit-search-slider entry:dir(rtl) {
+    border-radius: 2px; }
+    .gedit-search-slider entry:dir(ltr) .gedit-search-entry-occurrences-tag, .gedit-search-slider entry:dir(rtl) .gedit-search-entry-occurrences-tag {
+      all: unset;
+      color: alpha(currentColor, 0.6); }
   .gedit-search-slider entry:dir(ltr) {
-    margin-right: -64px;
-    padding-right: 72px; }
+    margin-right: -58px;
+    padding-right: 58px; }
     .gedit-search-slider entry:dir(ltr) .gedit-search-entry-occurrences-tag {
-      margin-right: -8px; }
+      margin-left: 6px; }
+    .gedit-search-slider entry:dir(ltr) image.right {
+      margin-right: 0; }
   .gedit-search-slider entry:dir(rtl) {
-    margin-left: -64px;
-    padding-left: 72px; }
+    margin-left: -58px;
+    padding-left: 58px; }
     .gedit-search-slider entry:dir(rtl) .gedit-search-entry-occurrences-tag {
-      margin-left: -8px; }
+      margin-right: 6px; }
+    .gedit-search-slider entry:dir(rtl) image.left {
+      margin-left: 0; }
   .gedit-search-slider entry.error ~ button {
     color: rgba(255, 255, 255, 0.75); }
     .gedit-search-slider entry.error ~ button:hover, .gedit-search-slider entry.error ~ button:active {
       color: #FFFFFF; }
     .gedit-search-slider entry.error ~ button:disabled {
       color: rgba(255, 255, 255, 0.3); }
-
-.gedit-search-slider .linked:not(.vertical) > entry,
-notebook > stack:not(:only-child) revealer .gedit-search-slider .linked:not(.vertical) > entry {
-  border-radius: 2px; }
+  .gedit-search-slider button {
+    border: solid 6px transparent; }
+    .gedit-search-slider button:last-child:dir(ltr), .gedit-search-slider button:not(:first-child):dir(rtl) {
+      margin-left: -3px; }
+    .gedit-search-slider button:first-child:dir(rtl), .gedit-search-slider button:not(:last-child):dir(ltr) {
+      margin-right: -3px; }
 
 frame.gedit-map-frame > border:dir(ltr) {
   border-style: none none none solid; }
