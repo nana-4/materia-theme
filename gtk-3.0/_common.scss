@@ -1129,9 +1129,9 @@ headerbar {
 
       &:active { // add fallback
         background-image: radial-gradient(circle farthest-corner at center,
-                                          gtkalpha(currentColor, $lower_opacity / 2) 100%,
+                                          $semi_track_color 100%,
                                           transparent 0%),
-                          image(gtkalpha(currentColor, $lower_opacity / 2));
+                          image($semi_track_color);
       }
     }
   }
@@ -1372,7 +1372,7 @@ menubar,
 
     &:hover { //Seems like it :hover even with keyboard focus
       transition: none;
-      background-color: gtkalpha(currentColor, $lower_opacity / 2);
+      background-color: $semi_track_color;
       color: $inversed_fg_color;
     }
 
@@ -1406,7 +1406,7 @@ menu,
 
     &:hover {
       transition: none;
-      background-color: gtkalpha(currentColor, $lower_opacity / 2);
+      background-color: $semi_track_color;
     }
 
     &:disabled { color: $disabled_fg_color; }
@@ -1454,7 +1454,7 @@ menu,
     }
 
     &:hover {
-      background-image: image(gtkalpha(currentColor, $lower_opacity / 2));
+      background-image: image($semi_track_color);
       color: $fg_color;
     }
 
@@ -2596,26 +2596,26 @@ $row_transition: $longer_transition, background-color 0, color 0;
 row {
   &.activatable {
     transition: $row_transition;
-    box-shadow: inset 0 0 0 9999px gtkalpha(currentColor, 0);
+    box-shadow: inset 0 0 0 9999px $zero_track_color;
     background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, 0) 100%,
+                                      $zero_track_color 100%,
                                       transparent 0%),
-                      image(gtkalpha(currentColor, 0));
+                      image($zero_track_color);
 
     &:hover {
       transition: $row_transition, box-shadow 0;
-      box-shadow: inset 0 0 0 9999px gtkalpha(currentColor, 0.05);
+      box-shadow: inset 0 0 0 9999px $row_track_color;
       background-image: radial-gradient(circle farthest-corner at center,
-                                        gtkalpha(currentColor, 0) 100%,
+                                        $zero_track_color 100%,
                                         transparent 0%),
-                        image(gtkalpha(currentColor, 0));
+                        image($zero_track_color);
     }
 
     &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
     &:active {
       transition: $row_transition, background-image 0;
       animation: row_ripple_effect $longer_duration $deceleration_curve forwards;
-      box-shadow: inset 0 0 0 9999px gtkalpha(currentColor, $lower_opacity / 2);
+      box-shadow: inset 0 0 0 9999px $semi_track_color;
     }
   }
 

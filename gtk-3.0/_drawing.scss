@@ -23,48 +23,48 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 @keyframes ripple_effect {
   from {
     background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, $lower_opacity / 2) 0%,
+                                      $semi_track_color 0%,
                                       transparent 0%),
-                      image(gtkalpha(currentColor, 0));
+                      image($zero_track_color);
   }
 
   to {
     background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, $lower_opacity / 2) 100%,
+                                      $semi_track_color 100%,
                                       transparent 0%),
-                      image(gtkalpha(currentColor, $lower_opacity / 2));
+                      image($semi_track_color);
   }
 }
 
 @keyframes flat_ripple_effect {
   from {
     background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, $lower_opacity / 2) 0%,
+                                      $semi_track_color 0%,
                                       transparent 0%),
-                      image(gtkalpha(currentColor, $lower_opacity / 2));
+                      image($semi_track_color);
   }
 
   to {
     background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, $lower_opacity / 2) 100%,
+                                      $semi_track_color 100%,
                                       transparent 0%),
-                      image(gtkalpha(currentColor, $lower_opacity / 2));
+                      image($semi_track_color);
   }
 }
 
 @keyframes row_ripple_effect {
   from {
     background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, $lower_opacity / 2) 0%,
+                                      $semi_track_color 0%,
                                       transparent 0%),
-                      image(gtkalpha(currentColor, 0));
+                      image($zero_track_color);
   }
 
   to {
     background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, $lower_opacity / 2) 100%,
+                                      $semi_track_color 100%,
                                       transparent 0%),
-                      image(gtkalpha(currentColor, 0));
+                      image($zero_track_color);
   }
 }
 
@@ -178,18 +178,18 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     box-shadow: $z-depth-1;
     background-color: $c;
     background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, 0) 100%,
+                                      $zero_track_color 100%,
                                       transparent 0%),
-                      image(gtkalpha(currentColor, 0));
+                      image($zero_track_color);
     color: $secondary_fg_color;
   }
 
   @if $t == hover {
     box-shadow: $z-depth-2;
     background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, 0) 100%,
+                                      $zero_track_color 100%,
                                       transparent 0%),
-                      image(gtkalpha(currentColor, 0));
+                      image($zero_track_color);
     color: $fg_color;
   }
 
@@ -221,18 +221,18 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
     box-shadow: none;
     background-color: transparent;
     background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, 0) 100%,
+                                      $zero_track_color 100%,
                                       transparent 0%),
-                      image(gtkalpha(currentColor, 0));
+                      image($zero_track_color);
     color: gtkalpha(currentColor, $enabled_opacity);
   }
 
   @if $t == flat-hover {
     box-shadow: none;
     background-image: radial-gradient(circle farthest-corner at center,
-                                      gtkalpha(currentColor, 0) 100%,
+                                      $zero_track_color 100%,
                                       transparent 0%),
-                      image(gtkalpha(currentColor, $lower_opacity / 2));
+                      image($semi_track_color);
     color: currentColor;
   }
 
