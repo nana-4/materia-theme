@@ -1486,14 +1486,17 @@ menuitem {
 popover.background {
   transition: $shadow_transition;
   padding: 2px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.3);
-  border-radius: 2px + 1px;
   box-shadow:  $z-depth-2; // TODO: this should really have a highlight
   background-color: $lighter_bg_color;
 
   &:backdrop { box-shadow: $z-depth-1; }
+
+  &, .csd & {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.3);
+    border-radius: 2px + 1px;
+  }
 
   > stack { margin: -4px; } // remove extra padding from menu style popovers
 
