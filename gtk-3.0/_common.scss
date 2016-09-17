@@ -2986,6 +2986,12 @@ tooltip {
   border-radius: 2px;
   box-shadow: none; // otherwise it gets inherited by windowframe.csd
 
+  &:not(.csd) {
+    border: 1px solid $borders_color;
+    border-radius: 2px + 1px;
+    background-clip: $extra_background_clip;
+  }
+
   // FIXME: we need a border or tooltips vanish on black background.
   decoration { background-color: transparent; }
 
