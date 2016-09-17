@@ -134,8 +134,7 @@ assistant .sidebar label {
   assistant .sidebar label.highlight {
     color: rgba(0, 0, 0, 0.8); }
 
-popover.background.touch-selection, popover.background.magnifier, popover.background.osd, .csd popover.background.touch-selection, .csd popover.background.magnifier, .csd popover.background.osd, .app-notification,
-.app-notification.frame, .osd .scale-popup, .nautilus-window .floating-bar, .osd {
+popover.background.touch-selection, popover.background.magnifier, popover.background.osd, .csd popover.background.touch-selection, .csd popover.background.magnifier, .csd popover.background.osd, .app-notification, .osd .scale-popup, .nautilus-window .floating-bar, .osd {
   opacity: 0.9; }
 
 /*********************
@@ -389,7 +388,6 @@ button {
   radio, calendar.button, messagedialog.csd .dialog-action-area button, button.sidebar-button, .gedit-search-slider button, PanelToplevel > widget > button, .raven .raven-header:not(.top) button, .drop-shadow button, .budgie-session-dialog .linked.horizontal > button, .lightdm-gtk-greeter button, :not(headerbar) .caja-pathbar button, .caja-pathbar :not(headerbar) button, :not(headerbar)
   .path-bar button, layouttabbar button, .mate-panel-menu-bar #PanelApplet button:not(.flat), .budgie-panel #tasklist-button, .raven stackswitcher.linked > button, toolbar button, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
   headerbar button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button,
-  .app-notification.frame button,
   button.flat {
     transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
     box-shadow: none;
@@ -780,8 +778,7 @@ toolbar {
   background-color: #F5F5F5; }
   .osd toolbar {
     background-color: transparent; }
-  toolbar.osd, .app-notification,
-  .app-notification.frame, frame.documents-dropdown {
+  toolbar.osd, .app-notification, frame.documents-dropdown {
     transition: box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1);
     padding: 6px;
     border-radius: 2px;
@@ -2006,12 +2003,11 @@ row.activatable, .view, iconview, treeview.view header button, .budgie-menu butt
 /*********************
  * App Notifications *
  *********************/
-.app-notification,
-.app-notification.frame {
+.app-notification {
   margin: 8px; }
-  .app-notification border,
-  .app-notification.frame border {
-    border: none; }
+  .app-notification.frame,
+  .app-notification border {
+    border-style: none; }
 
 /*************
  * Expanders *

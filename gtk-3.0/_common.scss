@@ -2626,8 +2626,7 @@ row {
 /*********************
  * App Notifications *
  *********************/
-.app-notification,
-.app-notification.frame {
+.app-notification {
   @extend %osd;
 
   @extend toolbar.osd;
@@ -2636,7 +2635,8 @@ row {
 
   button { @extend %button_basic.flat; }
 
-  border { border: none; }
+  &.frame,
+  border { border-style: none; }
 }
 
 
