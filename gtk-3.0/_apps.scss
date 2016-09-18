@@ -642,11 +642,24 @@ box.vertical:not(.titlebar) > revealer > toolbar.search-bar {
  *********/
 task-row {
   transition: $shorter_transition;
+  margin: 0 -4px;
 
   &:hover { transition: none; }
+
+  label { margin: 0 8px; }
+
+  image { margin: 0 4px; }
 }
 
-task-list-view > box > revealer > box > button { margin: -6px 0; }
+task-list-view > box > revealer > box > button {
+  min-height: $medium_size;
+  margin: -4px;
+  padding: 0 12px;
+
+  label { margin: 0 8px; }
+
+  image { margin: 0 4px; }
+}
 
 
 /*************
