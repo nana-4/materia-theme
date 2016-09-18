@@ -1199,24 +1199,18 @@ headerbar {
  ************/
 %pathbar_button,
 .path-bar button {
-  &.text-button, &.image-button, & {
-    padding-left: 6px;
-    padding-right: 6px;
-  }
+  padding-left: ($medium_size - 24px) / 2;
+  padding-right: ($medium_size - 24px) / 2;
 
-  &.text-button.image-button, & {
-    // label:last-child { padding-left: 2px; padding-right: 8px; }
-    // label:first-child { padding-left: 8px; padding-right: 2px; }
-  }
+  label:not(:only-child) {
+    &:first-child { margin-left: 4px; }
 
-  image {
-    padding-left: ($medium_size - 16px) / 2 - 6px;
-    padding-right: ($medium_size - 16px) / 2 - 6px;
+    &:last-child { margin-right: 4px; }
   }
 
   &.slider-button {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: (24px - 16px) / 2;
+    padding-right: (24px - 16px) / 2;
   }
 
   :not(headerbar) & {
