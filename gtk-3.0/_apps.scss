@@ -147,6 +147,47 @@
 
 .nautilus-window headerbar > revealer > button { @extend %circular_button; }
 
+.conflict-row:not(:selected) { background-color: mix($warning_color, $base_color, percentage($lower_opacity)); }
+
+dialog.background > box.dialog-vbox.vertical > grid.horizontal {
+  > scrolledwindow.frame { border-style: none; }
+
+  > box.horizontal:last-child {
+    margin: -6px 0 0 -6px;
+    border-top: 1px solid $borders_color;
+
+    > label { margin: 0 8px; }
+
+    > box > button { border-radius: 0; }
+  }
+}
+
+.nautilus-menu-sort-heading {
+  // min-height: 26px;
+  // padding-left: 5px;
+  // padding-right: 5px;
+  margin: 1px 3px;
+  font-weight: 500;
+
+  &:disabled { color: $tertiary_fg_color; }
+}
+
+.nautilus-window > popover.menu {
+  padding: 3px;
+
+  > stack > box > box > box {
+    margin-top: -6px;
+
+    > box {
+      margin-bottom: -6px;
+
+      &.linked { margin-top: 1px; }
+    }
+  }
+
+  separator { margin-bottom: -2px; }
+}
+
 
 /*********
  * gedit *
