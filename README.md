@@ -39,7 +39,7 @@ Installation
 5. [Optional] Open the `chrome` folder and drag and drop the `.crx` files onto the Chrome/Chromium extensions page (`chrome://extensions/`).
 
 #### Note if you want to clone from the repository
-The `master` branch is currently being built for GNOME 3.20.  
+The `master` branch is currently being built for GNOME 3.22.  
 If you want to use [other versions](https://github.com/nana-4/Flat-Plat/branches/all), you need to specify the branch as follows:
 
     git clone -b 3.18 https://github.com/nana-4/Flat-Plat.git
