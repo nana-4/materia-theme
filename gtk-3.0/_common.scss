@@ -690,7 +690,7 @@ modelbutton.flat,
   radio {
     &:not(:checked):not(:indeterminate) { color: gtkalpha(currentColor, $hint_opacity); }
 
-    &, &:hover { background-image: none; }
+    &, &:hover { box-shadow: none; }
 
     &:active { animation: none; }
 
@@ -2001,7 +2001,7 @@ radio {
     &:not(:checked):not(:indeterminate) { color: gtkalpha(currentColor, $hint_opacity); }
 
     &, &:hover, &:disabled {
-      background-image: none;
+      box-shadow: none;
       // color: inherit;
       // animation: none;
     }
@@ -2131,7 +2131,6 @@ treeview.view radio {
 
   &:hover {
     box-shadow: inset 0 0 0 9999px gtkalpha($fg_color, 0.05);
-    background-image: none;
 
     &:disabled { box-shadow: none; }
 
@@ -2591,26 +2590,22 @@ $row_transition: $longer_transition, background-color 0, color 0;
 
 row {
   &.activatable {
-    transition: $row_transition;
-    box-shadow: inset 0 0 0 9999px $zero_track_color;
+    transition: $row_transition, background-image $longer_duration * 2 $deceleration_curve;
+    box-shadow: inset 0 0 0 9999px transparent;
     background-image: radial-gradient(circle farthest-corner at center,
-                                      $zero_track_color 100%,
+                                      transparent 100%,
                                       transparent 0%),
-                      image($zero_track_color);
+                      image(transparent);
 
     &:hover {
-      transition: $row_transition, box-shadow 0;
+      transition: $row_transition, box-shadow 0, background-image $longer_duration * 2 $deceleration_curve;
       box-shadow: inset 0 0 0 9999px $row_track_color;
-      background-image: radial-gradient(circle farthest-corner at center,
-                                        $zero_track_color 100%,
-                                        transparent 0%),
-                        image($zero_track_color);
     }
 
     &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
     &:active {
       transition: $row_transition, background-image 0;
-      animation: row_ripple_effect $longer_duration $deceleration_curve forwards;
+      animation: flat_ripple_effect $longer_duration $deceleration_curve forwards;
       box-shadow: inset 0 0 0 9999px $semi_track_color;
     }
   }

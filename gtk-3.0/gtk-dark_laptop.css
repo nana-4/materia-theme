@@ -1,18 +1,13 @@
 @keyframes ripple_effect {
   from {
-    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 0%, transparent 0%), image(alpha(currentColor, 0)); }
+    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 0%, transparent 0%), image(transparent); }
   to {
     background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 100%, transparent 0%), image(alpha(currentColor, 0.15)); } }
 @keyframes flat_ripple_effect {
   from {
-    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 0%, transparent 0%), image(alpha(currentColor, 0.15)); }
+    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 0%, transparent 0%), image(transparent); }
   to {
-    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 100%, transparent 0%), image(alpha(currentColor, 0.15)); } }
-@keyframes row_ripple_effect {
-  from {
-    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 0%, transparent 0%), image(alpha(currentColor, 0)); }
-  to {
-    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 100%, transparent 0%), image(alpha(currentColor, 0)); } }
+    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 100%, transparent 0%), image(transparent); } }
 @keyframes tab_ripple_effect {
   from {
     background-image: radial-gradient(circle farthest-corner at center, rgba(66, 165, 245, 0.6) 0%, transparent 0%); }
@@ -359,14 +354,13 @@ button {
   padding: 4px 8px;
   border-radius: 2px;
   font-weight: 500;
-  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1), background-image 0.6s cubic-bezier(0, 0, 0.2, 1);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   background-color: #607D8B;
-  background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0));
+  background-image: radial-gradient(circle farthest-corner at center, transparent 100%, transparent 0%), image(transparent);
   color: rgba(255, 255, 255, 0.75); }
   button:hover {
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
-    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0));
     color: #FFFFFF; }
   button:active {
     transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1), background-image 0;
@@ -390,10 +384,10 @@ button {
   .path-bar button, layouttabbar button, .mate-panel-menu-bar #PanelApplet button:not(.flat), .budgie-panel #tasklist-button, .raven stackswitcher.linked > button, toolbar button, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
   headerbar button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button,
   button.flat {
-    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-    box-shadow: none;
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-image 0.6s cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: inset 0 0 0 9999px transparent;
     background-color: transparent;
-    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0));
+    background-image: radial-gradient(circle farthest-corner at center, transparent 100%, transparent 0%), image(transparent);
     color: alpha(currentColor, 0.75); }
     modelbutton.flat:hover,
     .menuitem.button.flat:hover, spinbutton:not(.vertical) button:hover, spinbutton.vertical button:hover, popover.background.menu button:hover,
@@ -402,8 +396,7 @@ button {
     .path-bar button:hover, layouttabbar button:hover, .mate-panel-menu-bar #PanelApplet button:hover:not(.flat), .budgie-panel #tasklist-button:hover, .raven stackswitcher.linked > button:hover, toolbar button:hover, .titlebar:not(headerbar) button:hover:not(.suggested-action):not(.destructive-action),
     headerbar button:hover:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:hover:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button:hover,
     button.flat:hover {
-      box-shadow: none;
-      background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0.15));
+      box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.15);
       color: currentColor; }
     modelbutton.flat:active,
     .menuitem.button.flat:active, spinbutton:not(.vertical) button:active, spinbutton.vertical button:active, popover.background.menu button:active,
@@ -414,7 +407,7 @@ button {
     button.flat:active {
       transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-image 0;
       animation: flat_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
-      box-shadow: none;
+      box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.15);
       color: currentColor; }
     modelbutton.flat:disabled,
     .menuitem.button.flat:disabled, spinbutton:not(.vertical) button:disabled, spinbutton.vertical button:disabled, popover.background.menu button:disabled,
@@ -633,7 +626,7 @@ modelbutton.flat,
   .menuitem.button.flat check:hover,
   .menuitem.button.flat radio,
   .menuitem.button.flat radio:hover {
-    background-image: none; }
+    box-shadow: none; }
   modelbutton.flat check:active,
   modelbutton.flat radio:active,
   .menuitem.button.flat check:active,
@@ -1566,7 +1559,7 @@ radio {
     radio, menu menuitem
     radio:hover, menu menuitem
     radio:disabled {
-      background-image: none; }
+      box-shadow: none; }
 
 check {
   -gtk-icon-source: image(-gtk-recolor(url("assets/check-unchecked-symbolic.svg")), -gtk-recolor(url("assets/check-unchecked-symbolic.png"))); }
@@ -1633,8 +1626,7 @@ treeview.view radio {
   padding: 0; }
   treeview.view check:hover,
   treeview.view radio:hover {
-    box-shadow: inset 0 0 0 9999px alpha(#FFFFFF, 0.05);
-    background-image: none; }
+    box-shadow: inset 0 0 0 9999px alpha(#FFFFFF, 0.05); }
     treeview.view check:hover:disabled,
     treeview.view radio:hover:disabled {
       box-shadow: none; }
@@ -1994,16 +1986,15 @@ list {
     padding: 2px; }
 
 row.activatable, .view, iconview, treeview.view header button, .budgie-menu button {
-  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0;
-  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0);
-  background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0)); }
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, background-image 0.6s cubic-bezier(0, 0, 0.2, 1);
+  box-shadow: inset 0 0 0 9999px transparent;
+  background-image: radial-gradient(circle farthest-corner at center, transparent 100%, transparent 0%), image(transparent); }
   row.activatable:hover, .view:hover, iconview:hover, treeview.view header button:hover, .budgie-menu button:hover {
-    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, box-shadow 0;
-    box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.05);
-    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0)); }
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, box-shadow 0, background-image 0.6s cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.05); }
   row.activatable.has-open-popup, .has-open-popup.view, iconview.has-open-popup, treeview.view header button.has-open-popup, .budgie-menu button.has-open-popup, row.activatable:active, .view:active, iconview:active, treeview.view header button:active, .budgie-menu button:active {
     transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, background-image 0;
-    animation: row_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
+    animation: flat_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
     box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.15); }
 
 /*********************
