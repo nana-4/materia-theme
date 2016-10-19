@@ -34,6 +34,10 @@ $inversed_fg_color: $dark_contrast_color;
 $secondary_inversed_fg_color: scale-alpha($inversed_fg_color, $enabled_opacity);
 $tertiary_inversed_fg_color: scale-alpha($inversed_fg_color, $hint_opacity);
 
+$topbar_fg_color: if($light == 'true', $fg_color, $inversed_fg_color);
+$secondary_topbar_fg_color: if($light == 'true', $secondary_fg_color, $secondary_inversed_fg_color);
+$tertiary_topbar_fg_color: if($light == 'true', $tertiary_fg_color, $tertiary_inversed_fg_color);
+
 $disabled_fg_color: scale-alpha($fg_color, $disabled_opacity);
 $disabled_secondary_fg_color: scale-alpha($secondary_fg_color, $disabled_opacity);
 $disabled_tertiary_fg_color: scale-alpha($tertiary_fg_color, $disabled_opacity);
@@ -42,15 +46,19 @@ $disabled_inversed_fg_color: scale-alpha($inversed_fg_color, $disabled_opacity);
 $disabled_secondary_inversed_fg_color: scale-alpha($secondary_inversed_fg_color, $disabled_opacity);
 $disabled_tertiary_inversed_fg_color: scale-alpha($tertiary_inversed_fg_color, $disabled_opacity);
 
+$disabled_topbar_fg_color: if($light == 'true', $disabled_fg_color, $disabled_inversed_fg_color);
+$disabled_secondary_topbar_fg_color: if($light == 'true', $disabled_secondary_fg_color, $disabled_secondary_inversed_fg_color);
+$disabled_tertiary_topbar_fg_color: if($light == 'true', $disabled_tertiary_fg_color, $disabled_tertiary_inversed_fg_color);
+
 // Background colors
 $bg_color: if($variant == 'light', #F5F5F5, #455A64);
 $base_color: if($variant == 'light', #FFFFFF, #546E7A);
 $alt_base_color: mix($base_color, $bg_color, 50%);
-$lighter_bg_color: if($variant =='light', #FAFAFA, #607D8B);
-$darker_bg_color: if($variant =='light', #EEEEEE, #263238);
-$headerbar_color: if($variant =='light', #455A64, #37474F);
-$secondary_titlebar_color: #37474F;
-$topbar_color: #263238;
+$lighter_bg_color: if($variant == 'light', #FAFAFA, #607D8B);
+$darker_bg_color: if($variant == 'light', #EEEEEE, #263238);
+$headerbar_color: if($variant == 'light', if($light == 'true', #E0E0E0, #455A64), #37474F);
+$secondary_titlebar_color: if($light == 'true', #BDBDBD, #37474F);
+$topbar_color: if($light == 'true', #BDBDBD, #263238);
 
 $primary_color: #42A5F5;
 $alt_primary_color: #40C4FF;
@@ -63,6 +71,8 @@ $row_track_color: gtkalpha(currentColor, 0.05);
 $borders_color: if($variant == 'light', scale-alpha(#000000, 0.1), scale-alpha(#000000, 0.2));
 $highlight_color: if($variant == 'light', scale-alpha(#FFFFFF, 0.4), scale-alpha(#FFFFFF, 0.1));
 $secondary_highlight_color: scale-alpha(#FFFFFF, 0.2);
+$topbar_highlight_color: if($light == 'true', $highlight_color, $secondary_highlight_color);
+$topbar_indicator_color: if($light == 'true', $primary_color, currentColor);
 
 $placeholder_text_color: mix($fg_color, $base_color, percentage($hint_opacity));
 

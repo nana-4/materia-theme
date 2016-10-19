@@ -869,6 +869,7 @@ headerbar {
   headerbar.selection-mode {
     transition: background-color 0 0.3s;
     animation: header_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24), inset 0 1px rgba(255, 255, 255, 0.2);
     background-color: #42A5F5;
     color: #FFFFFF; }
     .selection-mode.titlebar:backdrop:not(headerbar),
@@ -3218,8 +3219,7 @@ button.raven-trigger {
   .budgie-panel button {
     border-radius: 0; }
   .budgie-panel separator {
-    background-color: alpha(currentColor, 0.3);
-    color: #FFFFFF; }
+    background-color: alpha(currentColor, 0.3); }
   .budgie-panel .alert {
     color: #FF5252; }
   .budgie-panel .end-region {
@@ -3414,6 +3414,13 @@ calendar.raven-calendar {
 #panel_window menubar,
 #panel_window separator {
   background-color: transparent; }
+
+#panel_window menubar > menuitem {
+  color: rgba(255, 255, 255, 0.75); }
+  #panel_window menubar > menuitem:hover {
+    color: #FFFFFF; }
+  #panel_window menubar > menuitem:disabled {
+    color: rgba(255, 255, 255, 0.3); }
 
 #login_window,
 #shutdown_dialog,

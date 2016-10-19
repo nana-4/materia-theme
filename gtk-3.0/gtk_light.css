@@ -829,18 +829,18 @@ headerbar {
   transition: background-color 0.2s cubic-bezier(0, 0, 0.2, 1);
   min-height: 48px;
   padding: 0 6px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24), inset 0 1px rgba(255, 255, 255, 0.2);
-  background-color: #455A64;
-  color: #FFFFFF; }
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24), inset 0 1px rgba(255, 255, 255, 0.4);
+  background-color: #E0E0E0;
+  color: rgba(0, 0, 0, 0.8); }
   .titlebar:disabled:not(headerbar) :not(button) > label,
   headerbar:disabled :not(button) > label {
-    color: rgba(255, 255, 255, 0.4); }
+    color: rgba(0, 0, 0, 0.32); }
   .titlebar:backdrop:not(headerbar),
   headerbar:backdrop {
-    color: rgba(255, 255, 255, 0.75); }
+    color: rgba(0, 0, 0, 0.6); }
     .titlebar:backdrop:disabled:not(headerbar) :not(button) > label,
     headerbar:backdrop:disabled :not(button) > label {
-      color: rgba(255, 255, 255, 0.3); }
+      color: rgba(0, 0, 0, 0.24); }
   .titlebar:not(headerbar) .title,
   headerbar .title {
     transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
@@ -853,10 +853,10 @@ headerbar {
     font-size: smaller; }
   .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
   headerbar button:not(.suggested-action):not(.destructive-action) {
-    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 0%, transparent 0%) 0 0 0/0 0 0px; }
+    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #42A5F5 0%, transparent 0%) 0 0 0/0 0 0px; }
     .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked,
     headerbar button:not(.suggested-action):not(.destructive-action):checked {
-      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 100%, transparent 0%) 0 0 2/0 0 2px; }
+      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #42A5F5 100%, transparent 0%) 0 0 2/0 0 2px; }
       .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled,
       headerbar button:not(.suggested-action):not(.destructive-action):checked,
       headerbar button:not(.suggested-action):not(.destructive-action):checked:disabled {
@@ -925,7 +925,7 @@ headerbar {
     margin-left: -2px;
     margin-right: -2px;
     margin-top: -2px;
-    box-shadow: inset 0 1px rgba(255, 255, 255, 0.2); }
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.4); }
 
 headerbar entry,
 headerbar spinbutton,
@@ -952,7 +952,7 @@ window.csd > .titlebar:not(headerbar) {
   border-style: none;
   box-shadow: none; }
 .titlebar:not(headerbar) > separator {
-  background-color: #455A64;
+  background-color: #E0E0E0;
   background-image: image(rgba(0, 0, 0, 0.1)); }
 
 /************
@@ -1078,21 +1078,21 @@ menubar,
 .menubar {
   -GtkWidget-window-dragging: true;
   padding: 0;
-  background-color: #455A64; }
+  background-color: #E0E0E0; }
   menubar > menuitem,
   .menubar > menuitem {
     transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
     min-height: 20px;
     padding: 4px 8px;
-    color: rgba(255, 255, 255, 0.75); }
+    color: rgba(0, 0, 0, 0.6); }
     menubar > menuitem:hover,
     .menubar > menuitem:hover {
       transition: none;
       background-color: alpha(currentColor, 0.15);
-      color: #FFFFFF; }
+      color: rgba(0, 0, 0, 0.8); }
     menubar > menuitem:disabled,
     .menubar > menuitem:disabled {
-      color: rgba(255, 255, 255, 0.3); }
+      color: rgba(0, 0, 0, 0.24); }
 
 .csd.popup {
   border-radius: 2px; }
@@ -2338,7 +2338,7 @@ decoration {
   .solid-csd decoration {
     margin: 0;
     padding: 4px;
-    box-shadow: inset 0 0 0 4px #455A64; }
+    box-shadow: inset 0 0 0 4px #E0E0E0; }
 
 .view:selected, iconview:selected, .view text selection, iconview text selection,
 textview text selection, flowbox flowboxchild:selected, spinbutton:not(.vertical) selection,
@@ -2909,11 +2909,11 @@ window.background > box.vertical > scrolledwindow > widget toolbar {
  * Firefox *
  ***********/
 window.background > widget > menubar {
-  color: rgba(255, 255, 255, 0.75); }
+  color: rgba(0, 0, 0, 0.6); }
   window.background > widget > menubar:hover {
-    color: #FFFFFF; }
+    color: rgba(0, 0, 0, 0.8); }
   window.background > widget > menubar:disabled {
-    color: rgba(255, 255, 255, 0.3); }
+    color: rgba(0, 0, 0, 0.24); }
 
 window.background > menu > menuitem > label:disabled {
   color: rgba(0, 0, 0, 0.32); }
@@ -2961,12 +2961,12 @@ UnityDecoration.top {
   padding: 0 2px;
   border-style: none;
   border-radius: 2px 2px 0 0;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
-  background-color: #37474F;
-  color: #FFFFFF; }
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.2);
+  background-color: #BDBDBD;
+  color: rgba(0, 0, 0, 0.8); }
 
 UnityDecoration.top:backdrop {
-  color: rgba(255, 255, 255, 0.75); }
+  color: rgba(0, 0, 0, 0.6); }
 
 UnityDecoration.menuitem,
 UnityDecoration .menuitem {
@@ -2986,13 +2986,13 @@ UnityDecoration.menubar .menuitem *:hover {
 
 UnityPanelWidget,
 .unity-panel {
-  background-color: #263238;
-  background-image: image(#263238);
-  color: #FFFFFF; }
+  background-color: #BDBDBD;
+  background-image: image(#BDBDBD);
+  color: rgba(0, 0, 0, 0.8); }
 
 UnityPanelWidget:backdrop,
 .unity-panel:backdrop {
-  color: rgba(255, 255, 255, 0.75); }
+  color: rgba(0, 0, 0, 0.6); }
 
 .unity-panel.menuitem,
 .unity-panel .menuitem {
@@ -3021,8 +3021,8 @@ UnityPanelWidget:backdrop,
 
 #PanelPlug,
 PanelToplevel.background {
-  background-color: #263238;
-  color: #FFFFFF;
+  background-color: #BDBDBD;
+  color: rgba(0, 0, 0, 0.8);
   font-weight: 500; }
 
 PanelToplevel > widget > button {
@@ -3213,8 +3213,8 @@ button.raven-trigger {
   padding-right: 2px; }
 
 .budgie-panel {
-  background-color: #263238;
-  color: #FFFFFF;
+  background-color: #BDBDBD;
+  color: rgba(0, 0, 0, 0.8);
   font-weight: 500; }
   .budgie-panel button {
     border-radius: 0; }
