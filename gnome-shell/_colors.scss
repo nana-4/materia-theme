@@ -31,12 +31,12 @@ $insensitive_secondary_selected_fg_color: scale-alpha($secondary_selected_fg_col
 $insensitive_tertiary_selected_fg_color: scale-alpha($tertiary_selected_fg_color, $disabled_opacity);
 
 // Background colors
-$base_color: if($variant =='light', #FAFAFA, #607D8B);
+$base_color: if($variant == 'light', #FAFAFA, #607D8B);
 $secondary_base_color: scale-alpha($fg_color, 0.05);
 $bg_color: scale-alpha(#000000, $middle_opacity);
 $osd_bg_color: scale-alpha(#000000, $lower_opacity);
 $overview_bg_color: scale-alpha(#FFFFFF, 0.1);
-$topbar_color: #263238;
+$topbar_color: if($light == 'true', $bg_color, #263238);
 
 $selected_bg_color: #42A5F5;
 $secondary_selected_bg_color: #40C4FF;
