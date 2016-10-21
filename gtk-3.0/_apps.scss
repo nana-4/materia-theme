@@ -132,9 +132,9 @@ GbTerminalView { background-color: $base_color; }
  * Firefox *
  ***********/
 .menubar {
-  color: $secondary_selected_fg_color;
+  color: $secondary_topbar_fg_color;
 
-  &:hover { color: $selected_fg_color; }
+  &:hover { color: $topbar_fg_color; }
 }
 
 
@@ -165,14 +165,14 @@ UnityDecoration.top {
   padding: 0 2px;
   border-style: none;
   border-radius: 2px 2px 0 0;
-  // box-shadow: inset 0 1px $secondary_highlight_color;
-  box-shadow: inset 0 1px scale-alpha(#FFFFFF, 0.1);
+  // box-shadow: inset 0 1px $topbar_highlight_color;
+  box-shadow: inset 0 1px if($light == 'true', scale-alpha(#FFFFFF, 0.2), scale-alpha(#FFFFFF, 0.1));
   background-color: $unity_titlebar_color;
-  color: $selected_fg_color;
+  color: $topbar_fg_color;
 }
 
 UnityDecoration.top:backdrop {
-  color: $secondary_selected_fg_color;
+  color: $secondary_topbar_fg_color;
 }
 
 UnityDecoration.left,
@@ -210,12 +210,12 @@ UnityPanelWidget,
 .unity-panel {
   background-color: $topbar_color;
   background-image: linear-gradient(to bottom, $topbar_color);
-  color: $selected_fg_color;
+  color: $topbar_fg_color;
 }
 
 UnityPanelWidget:backdrop,
 .unity-panel:backdrop {
-  color: $secondary_selected_fg_color;
+  color: $secondary_topbar_fg_color;
 }
 
 .unity-panel.menubar,

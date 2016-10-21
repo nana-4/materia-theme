@@ -731,12 +731,12 @@ GtkComboBox {
   transition: background-color $shorter_duration $deceleration_curve;
   padding: $container_padding;
   border-radius: 2px 2px 0 0;
-  box-shadow: $z-depth-1, inset 0 1px $secondary_highlight_color;
+  box-shadow: $z-depth-1, inset 0 1px $topbar_highlight_color;
   background-color: $headerbar_color;
-  color: $selected_fg_color;
+  color: $topbar_fg_color;
 
   &:backdrop {
-    color: $secondary_selected_fg_color;
+    color: $secondary_topbar_fg_color;
   }
 
   .title {
@@ -768,14 +768,14 @@ GtkComboBox {
     border-image: -gtk-gradient(radial,
                                 center bottom, 0,
                                 center bottom, 0.001,
-                                to(currentColor),
+                                to($topbar_indicator_color),
                                 to(transparent))
                                 0 0 0 / 0 0 0px;
     &:checked {
       border-image: -gtk-gradient(radial,
                                   center bottom, 0,
                                   center bottom, 0.5,
-                                  to(currentColor),
+                                  to($topbar_indicator_color),
                                   to(transparent))
                                   0 0 2 / 0 0 2px;
       &, &:insensitive {
@@ -794,7 +794,7 @@ GtkComboBox {
 
   &.selection-mode {
     // transition: background-color $shorter_duration $deceleration_curve;
-    // box-shadow: $z-depth-1, inset 0 1px $secondary_highlight_color;
+    box-shadow: $z-depth-1, inset 0 1px $secondary_highlight_color;
     background-color: $selected_bg_color;
     color: $selected_fg_color;
     &:backdrop {
@@ -978,14 +978,14 @@ column-header.button.dnd { // for treeview-like derive widgets
   & > .menuitem {
     transition: $shorter_transition;
     padding: 4px 8px;
-    color: $secondary_selected_fg_color;
+    color: $secondary_topbar_fg_color;
     &:hover { //Seems like it :hover even with keyboard focus
       transition: none;
       background-color: gtkalpha(currentColor, $lower_opacity / 2);
-      color: $selected_fg_color;
+      color: $topbar_fg_color;
     }
     &:insensitive {
-      color: $insensitive_secondary_selected_fg_color;
+      color: $insensitive_secondary_topbar_fg_color;
       box-shadow: none;
     }
   }
