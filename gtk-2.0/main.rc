@@ -1650,12 +1650,13 @@ style "default" {
 
 style "menubar" {
 
-  fg[NORMAL]   = mix(0.75, @selected_fg_color, @headerbar_color)
-  bg[NORMAL]   = @headerbar_color
-  fg[PRELIGHT] = @selected_fg_color
+  bg[NORMAL]      = @headerbar_bg_color
+  fg[NORMAL]      = mix(0.75, @headerbar_fg_color, @headerbar_bg_color)
+  fg[PRELIGHT]    = @headerbar_fg_color
+  fg[INSENSITIVE] = mix(0.3, @headerbar_fg_color, @headerbar_bg_color)
   # Needed to fix Firefox's menubar text
-  bg[SELECTED] = mix(0.15, @selected_fg_color, @headerbar_color)
-  fg[SELECTED] = @selected_fg_color
+  bg[SELECTED]    = mix(0.15, @headerbar_fg_color, @headerbar_bg_color)
+  fg[SELECTED]    = @headerbar_fg_color
 
 }
 
@@ -1664,9 +1665,10 @@ style "menubar_item" {
   xthickness = 3
   ythickness = 4
 
-  fg[NORMAL]   = mix(0.75, @selected_fg_color, @headerbar_color)
-  bg[PRELIGHT] = mix(0.15, @selected_fg_color, @headerbar_color)
-  fg[PRELIGHT] = @selected_fg_color
+  fg[NORMAL]      = mix(0.75, @headerbar_fg_color, @headerbar_bg_color)
+  bg[PRELIGHT]    = mix(0.15, @headerbar_fg_color, @headerbar_bg_color)
+  fg[PRELIGHT]    = @headerbar_fg_color
+  fg[INSENSITIVE] = mix(0.3, @headerbar_fg_color, @headerbar_bg_color)
 
 }
 
@@ -2719,9 +2721,9 @@ style "tooltip" {
   xthickness = 8
   ythickness = 8
 
-  bg[NORMAL]   = @tooltip_bg_color
-  fg[NORMAL]   = @tooltip_fg_color
-  bg[SELECTED] = @tooltip_bg_color
+  bg[NORMAL]   = @base_color
+  fg[NORMAL]   = @fg_color
+  bg[SELECTED] = @base_color
 
 }
 
