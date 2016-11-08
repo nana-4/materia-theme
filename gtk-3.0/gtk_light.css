@@ -1,20 +1,6 @@
 @keyframes ripple_effect {
-  from {
-    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 0%, transparent 0%), image(transparent); }
   to {
-    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 100%, transparent 0%), image(alpha(currentColor, 0.15)); } }
-@keyframes flat_ripple_effect {
-  from {
-    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 0%, transparent 0%), image(transparent); }
-  to {
-    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 100%, transparent 0%), image(transparent); } }
-@keyframes tab_ripple_effect {
-  from {
-    background-image: radial-gradient(circle farthest-corner at center, rgba(66, 165, 245, 0.6) 0%, transparent 0%); }
-  50% {
-    background-image: radial-gradient(circle farthest-corner at center, rgba(66, 165, 245, 0.6) 100%, transparent 0%); }
-  to {
-    background-image: radial-gradient(circle farthest-corner at center, transparent 100%, transparent 0%); } }
+    background-size: 1000% 1000%; } }
 @keyframes header_ripple_effect {
   from {
     background-image: radial-gradient(circle farthest-corner at center, #42A5F5 0%, transparent 0%); }
@@ -354,18 +340,23 @@ button {
   padding: 6px 10px;
   border-radius: 2px;
   font-weight: 500;
-  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1), background-image 0.6s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1), background-size 0.5s cubic-bezier(0, 0, 0.2, 1), background-image 1s cubic-bezier(0, 0, 0.2, 1);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24), inset 0 0 0 9999px transparent;
   background-color: #FAFAFA;
-  background-image: radial-gradient(circle farthest-corner at center, transparent 100%, transparent 0%), image(transparent);
+  background-image: radial-gradient(circle farthest-corner at center, transparent 10%, transparent 0%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1000% 1000%;
   color: rgba(0, 0, 0, 0.6); }
   button:hover {
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23), inset 0 0 0 9999px transparent;
     color: rgba(0, 0, 0, 0.8); }
   button:active {
-    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1), background-image 0;
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-size 0, background-image 0;
     animation: ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23), inset 0 0 0 9999px alpha(currentColor, 0.15);
+    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 10%, transparent 0%);
+    background-size: 0% 0%;
     color: rgba(0, 0, 0, 0.8); }
   button:disabled {
     box-shadow: none;
@@ -384,10 +375,13 @@ button {
   .path-bar button, layouttabbar button, .mate-panel-menu-bar #PanelApplet button:not(.flat), .budgie-panel #tasklist-button, .raven stackswitcher.linked > button, toolbar button, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
   headerbar button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button,
   button.flat {
-    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-image 0.6s cubic-bezier(0, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-size 0.5s cubic-bezier(0, 0, 0.2, 1), background-image 1s cubic-bezier(0, 0, 0.2, 1);
     box-shadow: inset 0 0 0 9999px transparent;
     background-color: transparent;
-    background-image: radial-gradient(circle farthest-corner at center, transparent 100%, transparent 0%), image(transparent);
+    background-image: radial-gradient(circle farthest-corner at center, transparent 10%, transparent 0%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1000% 1000%;
     color: alpha(currentColor, 0.75); }
     modelbutton.flat:hover,
     .menuitem.button.flat:hover, spinbutton:not(.vertical) button:hover, spinbutton.vertical button:hover, popover.background.menu button:hover,
@@ -405,9 +399,11 @@ button {
     .path-bar button:active, layouttabbar button:active, .mate-panel-menu-bar #PanelApplet button:active:not(.flat), .budgie-panel #tasklist-button:active, .raven stackswitcher.linked > button:active, toolbar button:active, .titlebar:not(headerbar) button:active:not(.suggested-action):not(.destructive-action),
     headerbar button:active:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:active:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button:active,
     button.flat:active {
-      transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-image 0;
-      animation: flat_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
+      transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-size 0, background-image 0;
+      animation: ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
       box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.15);
+      background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 10%, transparent 0%);
+      background-size: 0% 0%;
       color: currentColor; }
     modelbutton.flat:disabled,
     .menuitem.button.flat:disabled, spinbutton:not(.vertical) button:disabled, spinbutton.vertical button:disabled, popover.background.menu button:disabled,
@@ -614,36 +610,29 @@ modelbutton.flat,
   padding: 0 8px;
   border-radius: 2px;
   color: inherit; }
-  modelbutton.flat check:not(:checked):not(:indeterminate),
-  modelbutton.flat radio:not(:checked):not(:indeterminate),
-  .menuitem.button.flat check:not(:checked):not(:indeterminate),
-  .menuitem.button.flat radio:not(:checked):not(:indeterminate) {
-    color: alpha(currentColor, 0.6); }
-  modelbutton.flat check, modelbutton.flat check:hover,
+  modelbutton.flat check,
   modelbutton.flat radio,
-  modelbutton.flat radio:hover,
   .menuitem.button.flat check,
-  .menuitem.button.flat check:hover,
-  .menuitem.button.flat radio,
-  .menuitem.button.flat radio:hover {
-    box-shadow: none; }
-  modelbutton.flat check:active,
-  modelbutton.flat radio:active,
-  .menuitem.button.flat check:active,
-  .menuitem.button.flat radio:active {
-    animation: none; }
-  modelbutton.flat check:last-child,
-  modelbutton.flat radio:last-child,
-  .menuitem.button.flat check:last-child,
-  .menuitem.button.flat radio:last-child {
-    margin-left: -8px;
-    margin-right: -16px; }
-  modelbutton.flat check:first-child,
-  modelbutton.flat radio:first-child,
-  .menuitem.button.flat check:first-child,
-  .menuitem.button.flat radio:first-child {
-    margin-left: -16px;
-    margin-right: -8px; }
+  .menuitem.button.flat radio {
+    box-shadow: none;
+    background-image: none; }
+    modelbutton.flat check:not(:checked):not(:indeterminate),
+    modelbutton.flat radio:not(:checked):not(:indeterminate),
+    .menuitem.button.flat check:not(:checked):not(:indeterminate),
+    .menuitem.button.flat radio:not(:checked):not(:indeterminate) {
+      color: alpha(currentColor, 0.6); }
+    modelbutton.flat check:last-child,
+    modelbutton.flat radio:last-child,
+    .menuitem.button.flat check:last-child,
+    .menuitem.button.flat radio:last-child {
+      margin-left: -8px;
+      margin-right: -16px; }
+    modelbutton.flat check:first-child,
+    modelbutton.flat radio:first-child,
+    .menuitem.button.flat check:first-child,
+    .menuitem.button.flat radio:first-child {
+      margin-left: -16px;
+      margin-right: -8px; }
 
 modelbutton.flat arrow {
   background: none; }
@@ -916,9 +905,6 @@ headerbar {
       min-width: 24px;
       margin: 0;
       padding: 0; }
-      .default-decoration.titlebar:not(headerbar) button.titlebutton:active,
-      headerbar.default-decoration button.titlebutton:active {
-        background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 100%, transparent 0%), image(alpha(currentColor, 0.15)); }
   .solid-csd .titlebar:dir(rtl):not(headerbar), .solid-csd .titlebar:dir(ltr):not(headerbar), .solid-csd
   headerbar:dir(rtl), .solid-csd
   headerbar:dir(ltr) {
@@ -1304,13 +1290,17 @@ notebook > header {
     min-width: 16px;
     border-radius: 0; }
   notebook > header tab {
-    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-size 0, background-image 0;
     min-height: 24px;
     min-width: 24px;
     padding: 6px 12px;
     outline-offset: -6px;
     border-width: 1px;
     border-color: transparent;
+    background-image: radial-gradient(circle farthest-corner at center, #42A5F5 10%, transparent 0%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 0% 0%;
     color: rgba(0, 0, 0, 0.6);
     font-weight: 500; }
     notebook > header tab:hover {
@@ -1321,7 +1311,9 @@ notebook > header {
     notebook > header tab:disabled {
       color: rgba(0, 0, 0, 0.24); }
     notebook > header tab:checked {
-      animation: tab_ripple_effect 0.9s cubic-bezier(0, 0, 0.2, 1);
+      transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-size 0.3s cubic-bezier(0, 0, 0.2, 1), background-image 0.8s cubic-bezier(0, 0, 0.2, 1);
+      background-image: radial-gradient(circle farthest-corner at center, transparent 10%, transparent 0%);
+      background-size: 1000% 1000%;
       color: rgba(0, 0, 0, 0.8); }
       notebook > header tab:checked:disabled {
         color: rgba(0, 0, 0, 0.32); }
@@ -1605,7 +1597,7 @@ check:not(:indeterminate):checked {
   animation: check_check 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 
 check:not(:indeterminate):checked:active {
-  animation: check_check 0.3s cubic-bezier(0.4, 0, 0.2, 1), flat_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards; }
+  animation: check_check 0.3s cubic-bezier(0.4, 0, 0.2, 1), ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards; }
 
 modelbutton.flat check:indeterminate:checked, modelbutton.flat radio:indeterminate:checked,
 .menuitem.button.flat check:indeterminate:checked,
@@ -1614,7 +1606,7 @@ check:indeterminate:checked, radio:indeterminate:checked {
   animation: check_indeterminate 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 
 check:indeterminate:checked:active, radio:indeterminate:checked:active {
-  animation: check_indeterminate 0.3s cubic-bezier(0.4, 0, 0.2, 1), flat_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards; }
+  animation: check_indeterminate 0.3s cubic-bezier(0.4, 0, 0.2, 1), ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards; }
 
 menu menuitem check:not(:indeterminate):checked,
 menu menuitem radio:not(:indeterminate):checked,
@@ -1987,16 +1979,21 @@ list {
     padding: 2px; }
 
 row.activatable, .view, iconview, treeview.view header button, .budgie-menu button {
-  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, background-image 0.6s cubic-bezier(0, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, background-size 0.5s cubic-bezier(0, 0, 0.2, 1), background-image 1s cubic-bezier(0, 0, 0.2, 1);
   box-shadow: inset 0 0 0 9999px transparent;
-  background-image: radial-gradient(circle farthest-corner at center, transparent 100%, transparent 0%), image(transparent); }
+  background-image: radial-gradient(circle farthest-corner at center, transparent 10%, transparent 0%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1000% 1000%; }
   row.activatable:hover, .view:hover, iconview:hover, treeview.view header button:hover, .budgie-menu button:hover {
-    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, box-shadow 0, background-image 0.6s cubic-bezier(0, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, box-shadow 0, background-size 0.5s cubic-bezier(0, 0, 0.2, 1), background-image 1s cubic-bezier(0, 0, 0.2, 1);
     box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.05); }
   row.activatable.has-open-popup, .has-open-popup.view, iconview.has-open-popup, treeview.view header button.has-open-popup, .budgie-menu button.has-open-popup, row.activatable:active, .view:active, iconview:active, treeview.view header button:active, .budgie-menu button:active {
-    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, background-image 0;
-    animation: flat_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
-    box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.15); }
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, background-size 0, background-image 0;
+    animation: ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
+    box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.15);
+    background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.15) 10%, transparent 0%);
+    background-size: 0% 0%; }
 
 /*********************
  * App Notifications *
@@ -2676,7 +2673,7 @@ docktabstrip {
   background-color: #F5F5F5; }
 
 docktab {
-  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-size 0, background-image 0;
   min-height: 24px;
   min-width: 24px;
   margin-bottom: -1px;
@@ -2684,14 +2681,20 @@ docktab {
   outline-offset: -6px;
   border-width: 1px;
   border-color: transparent;
+  background-image: radial-gradient(circle farthest-corner at center, #42A5F5 10%, transparent 0%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0% 0%;
   color: rgba(0, 0, 0, 0.6);
   font-weight: 500; }
   docktab:hover {
     box-shadow: inset 0 -2px alpha(currentColor, 0.3);
     color: rgba(0, 0, 0, 0.8); }
   docktab:checked {
-    animation: tab_ripple_effect 0.9s cubic-bezier(0, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-size 0.3s cubic-bezier(0, 0, 0.2, 1), background-image 0.8s cubic-bezier(0, 0, 0.2, 1);
     box-shadow: inset 0 -2px #42A5F5;
+    background-image: radial-gradient(circle farthest-corner at center, transparent 10%, transparent 0%);
+    background-size: 1000% 1000%;
     color: rgba(0, 0, 0, 0.8); }
 
 dockoverlayedge {
