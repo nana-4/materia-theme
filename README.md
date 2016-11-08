@@ -4,7 +4,7 @@ A Material Design-like theme for GNOME/GTK+ based desktop environments.
 
 Features
 --------
-<img src="img/Button.gif" alt="Button" align="right" />
+<img src="../images/Button.gif" alt="Button" align="right" />
 * Supports ripple effect animations (only GTK3 apps).
 * Supports both light and dark variants.
 * Supports [Dash to Dock](https://github.com/micheleg/dash-to-dock) extension's theming.
@@ -76,13 +76,13 @@ But please **be careful** because if it fails, the desktop environment may not o
 Screenshots
 -----------
 ##### GNOME Shell 3.20
-![GNOME Shell 3.20](img/Screenshot1.png?raw=true)
+![GNOME Shell 3.20](../images/Screenshot1.png?raw=true)
 ##### Unity 7.4
-![Unity 7.4](img/Screenshot2.png?raw=true)
+![Unity 7.4](../images/Screenshot2.png?raw=true)
 ##### GDM Lock Screen
-![GDM Lock Screen](img/Screenshot3.png?raw=true)
+![GDM Lock Screen](../images/Screenshot3.png?raw=true)
 ##### GDM Unlock Screen
-![GDM Unlock Screen](img/Screenshot4.png?raw=true)
+![GDM Unlock Screen](../images/Screenshot4.png?raw=true)
 <sub>**Screenshots Details:** Icons: [Paper](https://github.com/snwh/paper-icon-theme) | Font: [M+ 1C](https://mplus-fonts.osdn.jp/) 10.5pt | Dock's icon size: 48px + fixed | [Wallpapers](http://imgur.com/a/v2Ovx)</sub>
 
 Bug Reporting
