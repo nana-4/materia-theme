@@ -1067,7 +1067,9 @@ headerbar {
   }
 
   &.selection-mode {
-    transition: background-color 0 $longer_duration;
+    // FIXME: 0.00001s is workaround for transition bug of gtk+ 3.22
+    // see https://bugzilla.gnome.org/show_bug.cgi?id=774064
+    transition: background-color 0.00001s $longer_duration;
     animation: header_ripple_effect $longer_duration $deceleration_curve;
     box-shadow: $z-depth-1, inset 0 1px $secondary_highlight_color;
     background-color: $primary_color;
@@ -1932,7 +1934,7 @@ switch {
   &:hover slider { @include entry(focus); }
 
   &:checked slider {
-    transition: $longer_transition, $shadow_transition, margin 0, background-image 0, background-color 0 $longer_duration;
+    transition: $longer_transition, $shadow_transition, margin 0, background-image 0, background-color 0.00001s $longer_duration;
     animation: needs_attention $longer_duration $deceleration_curve;
     margin: -4px -4px -4px 0;
     background-color: $accent_color;
