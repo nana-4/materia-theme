@@ -15,6 +15,7 @@ $circular_radius: 9999px;
 
 $shorter_duration: 0.2s;
 $longer_duration: 0.3s;
+$ripple_duration: 0.5s;
 
 $standard_curve: cubic-bezier(0.4, 0.0, 0.2, 1);
 $deceleration_curve: cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -688,11 +689,10 @@ modelbutton.flat,
 
   check,
   radio {
+    box-shadow: none;
+    background-image: none;
+
     &:not(:checked):not(:indeterminate) { color: gtkalpha(currentColor, $hint_opacity); }
-
-    &, &:hover { box-shadow: none; }
-
-    &:active { animation: none; }
 
     &:last-child { margin-left: -8px; margin-right: -16px; }
 
@@ -1126,13 +1126,6 @@ headerbar {
       min-width: $small_size;
       margin: 0;
       padding: 0;
-
-      &:active { // add fallback
-        background-image: radial-gradient(circle farthest-corner at center,
-                                          $semi_track_color 100%,
-                                          transparent 0%),
-                          image($semi_track_color);
-      }
     }
   }
 
@@ -1655,7 +1648,9 @@ notebook {
     }
 
     tab {
-      transition: $longer_transition;
+      transition: $longer_transition,
+                  background-size 0,
+                  background-image 0;
       min-height: $small_size;
       min-width: $small_size;
       padding: $container_padding 12px;
@@ -1664,6 +1659,13 @@ notebook {
 
       border-width: 1px;         // for reorderable tabs
       border-color: transparent; //
+
+      background-image: radial-gradient(circle farthest-corner at center,
+                                        $primary_color 10%,
+                                        transparent 0%);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 0% 0%;
 
       color: $secondary_fg_color;
       font-weight: 500;
@@ -1680,7 +1682,13 @@ notebook {
       &:disabled { color: $disabled_secondary_fg_color; }
 
       &:checked {
-        animation: tab_ripple_effect $longer_duration * 3 $deceleration_curve;
+        transition: $longer_transition,
+                    background-size $longer_duration $deceleration_curve,
+                    background-image $longer_duration + $ripple_duration $deceleration_curve;
+        background-image: radial-gradient(circle farthest-corner at center,
+                                          transparent 10%,
+                                          transparent 0%);
+        background-size: 1000% 1000%;
         color: $fg_color;
 
         &:disabled { color: $disabled_fg_color; }
@@ -2105,17 +2113,17 @@ radio {
 %check_checked,
 check:not(:indeterminate):checked { animation: check_check $longer_duration $standard_curve; }
 
-check:not(:indeterminate):checked:active { animation: check_check $longer_duration $standard_curve, flat_ripple_effect $longer_duration $deceleration_curve forwards; }
+check:not(:indeterminate):checked:active { animation: check_check $longer_duration $standard_curve, ripple_effect $longer_duration $deceleration_curve forwards; }
 
 // %radio_checked,
 // radio:not(:indeterminate):checked { animation: check_radio $longer_duration $standard_curve; }
 
-// radio:not(:indeterminate):checked:active { animation: check_radio $longer_duration $standard_curve, flat_ripple_effect $longer_duration $deceleration_curve forwards; }
+// radio:not(:indeterminate):checked:active { animation: check_radio $longer_duration $standard_curve, ripple_effect $longer_duration $deceleration_curve forwards; }
 
 %indeterminate_checked,
 check:indeterminate:checked, radio:indeterminate:checked { animation: check_indeterminate $longer_duration $standard_curve; }
 
-check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $longer_duration $standard_curve, flat_ripple_effect $longer_duration $deceleration_curve forwards; }
+check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $longer_duration $standard_curve, ripple_effect $longer_duration $deceleration_curve forwards; }
 
 // no animations in menus
 menu menuitem {
@@ -2590,23 +2598,36 @@ $row_transition: $longer_transition, background-color 0, color 0;
 
 row {
   &.activatable {
-    transition: $row_transition, background-image $longer_duration * 2 $deceleration_curve;
+    transition: $row_transition,
+                background-size $ripple_duration $deceleration_curve,
+                background-image $ripple_duration * 2 $deceleration_curve;
     box-shadow: inset 0 0 0 9999px transparent;
     background-image: radial-gradient(circle farthest-corner at center,
-                                      transparent 100%,
-                                      transparent 0%),
-                      image(transparent);
+                                      transparent 10%,
+                                      transparent 0%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1000% 1000%;
 
     &:hover {
-      transition: $row_transition, box-shadow 0, background-image $longer_duration * 2 $deceleration_curve;
+      transition: $row_transition,
+                  box-shadow 0,
+                  background-size $ripple_duration $deceleration_curve,
+                  background-image $ripple_duration * 2 $deceleration_curve;
       box-shadow: inset 0 0 0 9999px $row_track_color;
     }
 
     &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
     &:active {
-      transition: $row_transition, background-image 0;
-      animation: flat_ripple_effect $longer_duration $deceleration_curve forwards;
+      transition: $row_transition,
+                  background-size 0,
+                  background-image 0;
+      animation: ripple_effect $longer_duration $deceleration_curve forwards;
       box-shadow: inset 0 0 0 9999px $semi_track_color;
+      background-image: radial-gradient(circle farthest-corner at center,
+                                        $semi_track_color 10%,
+                                        transparent 0%);
+      background-size: 0% 0%;
     }
   }
 
