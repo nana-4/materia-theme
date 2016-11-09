@@ -1121,7 +1121,11 @@ headerbar {
   &.default-decoration {
     min-height: $small_size;
     padding: $container_padding;
-    border-width: 0;
+    box-shadow: inset 0 1px $topbar_highlight_color;
+
+    .fullscreen &,
+    .tiled &,
+    .maximized & { box-shadow: none; }
 
     button.titlebutton {
       min-height: $small_size;
