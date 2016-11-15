@@ -2912,6 +2912,7 @@ paned {
     // workaround, using background istead of a border since the border will get rendered twice (?)
     background-image: image($borders_color);
     background-size: 1px 1px;
+    background-clip: content-box; // avoids borders image being rendered twice (?)
 
     &.wide {
       min-width: 6px;

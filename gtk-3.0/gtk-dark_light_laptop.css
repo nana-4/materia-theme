@@ -2168,7 +2168,8 @@ paned > separator {
   border-style: none;
   background-color: transparent;
   background-image: image(rgba(0, 0, 0, 0.2));
-  background-size: 1px 1px; }
+  background-size: 1px 1px;
+  background-clip: content-box; }
   paned > separator.wide {
     min-width: 6px;
     min-height: 6px;
@@ -2434,7 +2435,10 @@ stackswitcher button.text-button.circular {
 .nautilus-window,
 .nautilus-window notebook,
 .nautilus-window notebook > stack {
-  background: #546E7A; }
+  background-color: #546E7A; }
+
+.nautilus-window paned > separator {
+  background-color: #455A64; }
 
 .nautilus-desktop.nautilus-canvas-item, .caja-desktop.caja-canvas-item {
   color: #FFFFFF;
