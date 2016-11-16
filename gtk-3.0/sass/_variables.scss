@@ -1,0 +1,54 @@
+$asset_suffix: if($variant == 'dark', '-dark', '');
+$extra_background_clip: if($variant == 'light', padding-box, border-box);
+
+// opacities
+$higher_opacity: 0.9;
+$middle_opacity: 0.6;
+$lower_opacity: 0.3;
+
+$enabled_opacity: 0.75;
+$hint_opacity: 0.6;
+$disabled_opacity: 0.4;
+
+// sizes
+$small_size: if($laptop == 'true', 20px, 24px);
+$medium_size: if($laptop == 'true', 32px, 36px);
+$large_size: if($laptop == 'true', 44px, 48px);
+
+$container_padding: 6px;
+
+$bar_size: 4px;
+$menuitem_size: 28px;
+
+// radiuses
+$md_radius: 2px;
+$circular_radius: 9999px;
+
+// durations
+$shorter_duration: 0.2s;
+$longer_duration: 0.3s;
+$ripple_duration: 0.5s;
+
+// timing functions
+$standard_curve: cubic-bezier(0.4, 0.0, 0.2, 1);
+$deceleration_curve: cubic-bezier(0.0, 0.0, 0.2, 1);
+$acceleration_curve: cubic-bezier(0.4, 0.0, 1, 1);
+$sharp_curve: cubic-bezier(0.4, 0.0, 0.6, 1);
+
+// transition shorthands
+$shorter_transition: all $shorter_duration $deceleration_curve;
+$longer_transition: all $longer_duration $deceleration_curve;
+$shadow_transition: box-shadow $shorter_duration $deceleration_curve;
+
+// shadows
+// based shadow values:
+// https://material-design.storage.googleapis.com/images/layout-principles-dimensionality-shadows-08_large_mdpi.png
+
+// box-shadow 1px blur doesn't draw correctly, see
+// https://bugzilla.gnome.org/show_bug.cgi?id=738484
+// $z-depth-1: 0 1px 1.5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+$z-depth-1: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+$z-depth-2: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
+$z-depth-3: 0 10px 10px rgba(0, 0, 0, 0.19), 0 6px 3px rgba(0, 0, 0, 0.23);
+$z-depth-4: 0 14px 14px rgba(0, 0, 0, 0.25), 0 10px 5px rgba(0, 0, 0, 0.22);
+$z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
