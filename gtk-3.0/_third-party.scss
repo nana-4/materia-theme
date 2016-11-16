@@ -1,0 +1,87 @@
+/************
+ * Terminix *
+ ************/
+.terminix-background box.vertical > widget > box.horizontal {
+  padding: 3px 0 2px;
+  // border-bottom: 1px solid $borders_color;
+
+  button {
+    padding: 4px 8px;
+
+    &.image-button { padding: 4px; }
+  }
+}
+
+.terminix-background revealer > frame > border {
+  // border-style: none none solid;
+  border-style: none;
+}
+
+button.image-button.session-new-button { min-width: $medium_size - 4px; }
+
+overlay > revealer.left > scrolledwindow.frame,
+overlay > revealer.right > scrolledwindow.frame {
+  border-style: none;
+  box-shadow: $z-depth-4;
+}
+
+overlay > revealer.left > scrolledwindow.frame {
+  margin-right: 32px;
+  // border-style: none solid none none;
+}
+
+overlay > revealer.right > scrolledwindow.frame {
+  margin-left: 32px;
+  // border-style: none none none solid;
+}
+
+.terminix-session-sidebar { background-image: image($lighter_bg_color); }
+
+
+/***********
+ * Eclipse *
+ ***********/
+window.background > box.vertical > scrolledwindow > widget toolbar {
+  padding: 2px;
+
+  separator,
+  button { margin: 2px; }
+
+  button { border-radius: 2px; }
+}
+
+
+/***********
+ * Firefox *
+ ***********/
+window.background > widget > menubar {
+  color: $secondary_topbar_fg_color;
+
+  &:hover { color: $topbar_fg_color; }
+
+  &:disabled { color: $disabled_secondary_topbar_fg_color; }
+}
+
+window.background > menu > menuitem > label:disabled { color: $disabled_fg_color; }
+
+window.background > window.background > menu > separator { color: $borders_color; }
+
+window.background > widget > frame { color: rgba(0, 0, 0, 0.2); }
+
+window.background > widget > checkbutton > check,
+window.background > widget > radiobutton > radio {
+  margin: 0;
+  padding: 0;
+}
+
+window.background > widget > radiobutton > radio:checked {
+  -gtk-icon-source: image(-gtk-recolor(url("assets/radio-checked-symbolic.svg")),
+                          -gtk-recolor(url("assets/radio-checked-symbolic.png")));
+  border-image: none;
+}
+
+
+/***********
+ * Synapse *
+ ***********/
+window.background > box.vertical > widget > widget:selected { background-color: $primary_color; }
