@@ -479,13 +479,7 @@ button {
       background-color: $b_color;
       color: $inverse_fg_color;
 
-      // @include button(normal, $b_color, $inverse_fg_color);
-
-      // &:hover { @include button(hover, $b_color, $inverse_fg_color); }
-
-      // &:active, &:checked { @include button(active, $b_color, $inverse_fg_color); }
-
-      &:disabled { @include button(disabled, $b_color, $inverse_fg_color); }
+      &:disabled { @include button(disabled, $b_color); }
 
       &:checked { background-color: mix($inverse_fg_color, $b_color, percentage($lower_opacity)); }
 
@@ -493,13 +487,9 @@ button {
         background-color: transparent;
         color: $b_color;
 
-        // @include button(flat-normal, $b_color, $inverse_fg_color);
+        &:disabled { @include button(flat-disabled, $b_color); }
 
-        // &:hover { @include button(flat-hover, $b_color, $inverse_fg_color); }
-
-        // &:active, &:checked { @include button(flat-active, $b_color, $inverse_fg_color); }
-
-        &:disabled { @include button(flat-disabled, $b_color, $inverse_fg_color); }
+        &:checked { background-color: $fill_color; }
       }
 
       .osd & {
@@ -1445,13 +1435,13 @@ menuitem {
 }
 
 
-/***************
- * Popovers   *
- ***************/
+/************
+ * Popovers *
+ ************/
 popover.background {
   transition: $shadow_transition;
   padding: 2px;
-  box-shadow:  $shadow_2; // TODO: this should really have a highlight
+  box-shadow: $shadow_2; // TODO: this should really have a highlight
   background-color: $lighter_bg_color;
 
   &:backdrop { box-shadow: $shadow_1; }
@@ -3125,7 +3115,7 @@ colorswatch {
 colorchooser .popover.osd {
   transition: $shadow_transition;
   border-radius: 2px;
-  box-shadow:  $shadow_2, inset 0 1px $highlight_color;
+  box-shadow: $shadow_2, inset 0 1px $highlight_color;
   background-color: $base_color;
 
   &:backdrop { box-shadow: $shadow_1, inset 0 1px $highlight_color; }

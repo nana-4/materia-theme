@@ -496,6 +496,8 @@ button.suggested-action {
       box-shadow: none;
       background-color: transparent;
       color: alpha(currentColor, 0.4); }
+    button.suggested-action.flat:checked {
+      background-color: alpha(currentColor, 0.3); }
 button.destructive-action {
   background-color: #FF5252;
   color: #FFFFFF; }
@@ -512,6 +514,8 @@ button.destructive-action {
       box-shadow: none;
       background-color: transparent;
       color: alpha(currentColor, 0.4); }
+    button.destructive-action.flat:checked {
+      background-color: alpha(currentColor, 0.3); }
 .stack-switcher >
 button {
   outline-offset: -4px; }
@@ -1188,9 +1192,9 @@ menuitem radio:dir(rtl) {
   margin-right: -16px;
   margin-left: -8px; }
 
-/***************
- * Popovers   *
- ***************/
+/************
+ * Popovers *
+ ************/
 popover.background {
   transition: box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1);
   padding: 2px;
@@ -3588,7 +3592,7 @@ base background color of selections on backdrop windows */
 text/foreground color of selections on backdrop windows */
 @define-color theme_unfocused_selected_fg_color #FFFFFF;
 /*
-insensitive color on backdrop windows*/
+insensitive color on backdrop windows */
 @define-color unfocused_insensitive_color rgba(0, 0, 0, 0.32);
 /*
 widgets main borders color */
@@ -3601,5 +3605,7 @@ these are pretty self explicative */
 @define-color warning_color #FF6D00;
 @define-color error_color #DD2C00;
 @define-color success_color #00C853;
+/*
+FIXME this is really an API */
 @define-color content_view_bg #FFFFFF;
 @define-color placeholder_text_color rgba(128, 128, 128, 0.88);
