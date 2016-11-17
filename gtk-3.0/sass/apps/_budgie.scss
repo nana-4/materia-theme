@@ -16,8 +16,8 @@
   scrolledwindow:not(.categories) { background-color: $base_color; }
 
   entry.search {
-    border-bottom: 1px solid $borders_color;
-    border-radius: $md_radius $md_radius 0 0;
+    border-bottom: 1px solid $border_color;
+    border-radius: $material_radius $material_radius 0 0;
     box-shadow: inset 0 1px $highlight_color;
     font-size: 120%;
   }
@@ -48,7 +48,7 @@ button.budgie-menu-launcher {
 .user-menu {
   padding: 10px;
 
-  // .content-box separator { background-color: $borders_color; }
+  // .content-box separator { background-color: $border_color; }
 }
 
 // Raven Trigger
@@ -59,13 +59,13 @@ button.raven-trigger {
 
 // Panel
 .budgie-panel {
-  background-color: $topbar_color;
-  color: $topbar_fg_color;
+  background-color: $panel_bg_color;
+  color: $titlebar_fg_color;
   font-weight: 500;
 
   button { border-radius: 0; }
 
-  separator { background-color: $track_color; }
+  separator { background-color: $fill_color; }
 
   // used to indicate unread notifications
   .alert { color: $destructive_color; }
@@ -159,23 +159,23 @@ button.raven-trigger {
 
 frame.raven-frame > border {
   border-style: none;
-  box-shadow: $z-depth-4;
+  box-shadow: $shadow_4;
 }
 
 $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
 @each $pos, $b_pos in $pos_list {
   // Panel borders
-  // .#{$pos} .budgie-panel { border-#{$b_pos}: 1px solid $borders_color; }
+  // .#{$pos} .budgie-panel { border-#{$b_pos}: 1px solid $border_color; }
 
   // Raven borders
   .#{$pos} frame.raven-frame > border {
     margin-#{$b_pos}: 32px;
-    // border-#{$b_pos}: 1px solid $borders_color;
+    // border-#{$b_pos}: 1px solid $border_color;
   }
 
   // Shadows
-  // .#{$pos} .shadow-block { background-image: linear-gradient(to $b_pos, $borders_color, transparent); }
+  // .#{$pos} .shadow-block { background-image: linear-gradient(to $b_pos, $border_color, transparent); }
 }
 
 // Raven
@@ -205,7 +205,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
     padding: 3px;
     border-style: none none solid;
     border-width: 1px;
-    border-color: $borders_color;
+    border-color: $border_color;
 
     &:not(.top) {
       margin-top: -6px; // remove extra spaces, but not perfect :(
@@ -224,7 +224,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
       padding: 2px 0;
       border-style: none;
       background-color: $primary_color;
-      color: $inversed_fg_color;
+      color: $inverse_fg_color;
 
       stackswitcher button {
         margin: -$container_padding 0;
@@ -252,14 +252,14 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
   .expander-button { @extend %circular_button; }
 
   .raven-background {
-    border-bottom: 1px solid $borders_color;
+    border-bottom: 1px solid $border_color;
     background-color: $lighter_bg_color;
 
     // &.middle { border-bottom-style: none; } // applet background between two headers
 
     &.frame { border-style: none none solid; }
 
-    > overlay > image { color: $track_color; }
+    > overlay > image { color: $fill_color; }
   }
 
   scrolledwindow.raven-background { border-bottom-style: none; }
@@ -267,7 +267,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
   > stack > box > .raven-background {
     border-bottom-style: none;
     background-color: $primary_color;
-    color: $inversed_fg_color;
+    color: $inverse_fg_color;
 
     stackswitcher button { margin: -4px 0; }
   }
@@ -294,8 +294,8 @@ calendar.raven-calendar {
 
 // MPRIS Applet
 .raven-mpris {
-  color: white;
-  background-color: scale-alpha(black, $middle_opacity);
+  color: $white;
+  background-color: scale-alpha($black, $middle_opacity);
 
   label { min-height: 24px; }
 
@@ -325,7 +325,7 @@ calendar.raven-calendar {
   margin: 5px 9px;
   padding: 3px;
   border-radius: 2px;
-  box-shadow: $z-depth-2, inset 0 1px $highlight_color;
+  box-shadow: $shadow_2, inset 0 1px $highlight_color;
   background-color: $lighter_bg_color;
 
   button { @extend %simple_flat_button; }
@@ -349,7 +349,7 @@ calendar.raven-calendar {
 
   .linked.horizontal > button {
     padding: 8px 16px;
-    border-top: 1px solid $borders_color;
+    border-top: 1px solid $border_color;
     border-radius: 0;
 
     @extend %simple_flat_button;
@@ -384,5 +384,5 @@ calendar.raven-calendar {
 
   list .dim-label { opacity: 1; }
 
-  scrolledwindow { border-top: 1px solid $borders_color; }
+  scrolledwindow { border-top: 1px solid $border_color; }
 }

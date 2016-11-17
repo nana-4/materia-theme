@@ -17,7 +17,7 @@
 }
 
 .nautilus-canvas-item {
-  // border-radius: $md_radius;
+  // border-radius: $material_radius;
 }
 
 .nautilus-canvas-item.dim-label,
@@ -26,20 +26,20 @@
 }
 
 .nautilus-desktop.nautilus-canvas-item {
-  // background-color: scale-alpha(#000000, $lower_opacity);
-  color: $inversed_fg_color;
-  text-shadow: $z-depth-1;
+  // background-color: scale-alpha($black, $lower_opacity);
+  color: $inverse_fg_color;
+  text-shadow: $shadow_1;
 }
 
 .nautilus-desktop.nautilus-canvas-item:selected {
-  // color: $inversed_fg_color;
+  // color: $inverse_fg_color;
   text-shadow: none;
 }
 
 // Toolbar
 @keyframes needs_attention_keyframes {
   from { background-color: transparent; }
-  to { background-color: $track_color; }
+  to { background-color: $fill_color; }
 }
 
 .nautilus-operations-button-needs-attention {
@@ -62,7 +62,7 @@
   padding: 0;
   border-style: solid solid none;
   border-width: 1px;
-  border-color: $borders_color;
+  border-color: $border_color;
   border-radius: (2px + 1px) (2px + 1px) 0 0;
   background-color: $base_color;
   background-clip: $extra_background_clip;
@@ -101,13 +101,13 @@
 }
 
 .disk-space-display.free {
-  background-color: $track_color;
+  background-color: $fill_color;
   color: $disabled_fg_color;
 }
 
 // View
 .nautilus-list-view .view {
-  // border-bottom: 1px solid $borders_color;
+  // border-bottom: 1px solid $border_color;
 }
 
 // Hide superfluous treeview drop target indication
@@ -124,9 +124,9 @@
   border-radius: $circular_radius;
   box-shadow: none;
   background-color: $primary_color;
-  color: $inversed_fg_color;
+  color: $inverse_fg_color;
 
-  &:hover { box-shadow: $z-depth-1; }
+  &:hover { box-shadow: $shadow_1; }
 }
 
 .documents-entry-tag.button {
@@ -138,14 +138,14 @@
   padding: 4px;
   border-radius: $circular_radius;
   box-shadow: none;
-  color: $secondary_inversed_fg_color;
+  color: $secondary_inverse_fg_color;
 
-  &:hover, &:active { color: $inversed_fg_color; }
+  &:hover, &:active { color: $inverse_fg_color; }
 }
 
 // Workaround for the double border of the searchbar since we use a revealer which
 // always allocates at least 1 pixel
-.nautilus-window searchbar { border-top: 1px solid $borders_color; }
+.nautilus-window searchbar { border-top: 1px solid $border_color; }
 
 .nautilus-window .searchbar-container { margin-top: -1px; }
 
@@ -158,7 +158,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 
   > box.horizontal:last-child {
     margin: -6px 0 0 -6px;
-    border-top: 1px solid $borders_color;
+    border-top: 1px solid $border_color;
 
     > label { margin: 0 8px; }
 
@@ -208,7 +208,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 
 // Only normal state is handle
 .open-document-selector-path-label {
-  color: gtkalpha(currentColor, $hint_opacity);
+  color: gtkalpha(currentColor, $tertiary_opacity);
   font-size: smaller;
 
   // @extend .dim-label;
@@ -219,7 +219,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 }
 
 .gedit-document-panel-group-row {
-  border-top: 1px solid $borders_color;
+  border-top: 1px solid $border_color;
 }
 
 .gedit-document-panel-group-row:first-child {
@@ -235,7 +235,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 }
 
 .gedit-side-panel-paned statusbar {
-  border-top: 1px solid $borders_color;
+  border-top: 1px solid $border_color;
 }
 
 .gedit-search-slider {
@@ -248,7 +248,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 
       .gedit-search-entry-occurrences-tag {
         all: unset;
-        color: gtkalpha(currentColor, $hint_opacity);
+        color: gtkalpha(currentColor, $tertiary_opacity);
       }
     }
 
@@ -273,11 +273,11 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
     }
 
     &.error ~ button {
-      color: $secondary_inversed_fg_color;
+      color: $secondary_inverse_fg_color;
 
-      &:hover, &:active { color: $inversed_fg_color; }
+      &:hover, &:active { color: $inverse_fg_color; }
 
-      &:disabled { color: $disabled_secondary_inversed_fg_color; }
+      &:disabled { color: $disabled_secondary_inverse_fg_color; }
     }
   }
 
@@ -346,7 +346,7 @@ frame.gedit-map-frame > border {
 .tweak-group-startup {
   // background-color: @view_separators;
   background-image: image($base_color);
-  border: 1px solid $borders_color;
+  border: 1px solid $border_color;
 }
 
 
@@ -377,7 +377,7 @@ workbench:not(.tiled):not(.maximized):not(.fullscreen) stack.titlebar headerbar 
 // Layout tab and tab bar tweaks
 // The following makes the layout stack header look similar to a tab bar.
 layouttabbar {
-  border-bottom: 1px solid $borders_color;
+  border-bottom: 1px solid $border_color;
   background-color: $bg_color;
 }
 
@@ -392,7 +392,7 @@ layouttab {
   margin: 0 8px; // not working
   border-style: none solid;
   border-width: 1px;
-  border-color: $borders_color;
+  border-color: $border_color;
   box-shadow: inset 0 -2px $primary_color;
   background-color: $base_color;
 }
@@ -415,19 +415,19 @@ layouttab > box > button.close {
 }
 
 layout {
-  border: 1px solid $borders_color;
+  border: 1px solid $border_color;
   -PnlDockBin-handle-size: 1;
 }
 
 entry.search-missing {
   background-color: $error_color;
-  color: $inversed_fg_color;
+  color: $inverse_fg_color;
 }
 
 // tweak icons for treeviews
-workbench treeview.image { color: gtkalpha(currentColor, $hint_opacity); }
+workbench treeview.image { color: gtkalpha(currentColor, $tertiary_opacity); }
 
-workbench treeview.image:selected { color: $tertiary_inversed_fg_color; }
+workbench treeview.image:selected { color: $tertiary_inverse_fg_color; }
 
 popover.popover-selector list {
   padding: 8px - 2px;
@@ -449,18 +449,18 @@ omnibar {
 }
 
 popover.omnibar list row:not(:last-child) {
-  border-bottom: 1px solid $borders_color;
+  border-bottom: 1px solid $border_color;
 }
 
 entry.preferences-search {
   @extend %entry.flat;
 
-  box-shadow: inset 0 -1px $borders_color;
+  box-shadow: inset 0 -1px $border_color;
   background-color: $base_color;
 
   // doesn't work properly
-  // &:dir(ltr) { border-right: 1px solid $borders_color; }
-  // &:dir(rtl) { border-left: 1px solid $borders_color; }
+  // &:dir(ltr) { border-right: 1px solid $border_color; }
+  // &:dir(rtl) { border-left: 1px solid $border_color; }
 }
 
 preferences stacksidebar.sidebar list {
@@ -479,8 +479,8 @@ preferences stacksidebar list separator {
 }
 
 preferences > box > box {
-  &:dir(ltr) { border-right: 1px solid $borders_color; }
-  &:dir(rtl) { border-left: 1px solid $borders_color; }
+  &:dir(ltr) { border-right: 1px solid $border_color; }
+  &:dir(rtl) { border-left: 1px solid $border_color; }
 }
 
 popover.messagepopover.background {
@@ -491,7 +491,7 @@ popover.messagepopover .popover-action-area button {
   @extend %simple_flat_button;
 
   padding: 8px 16px;
-  border-top: 1px solid $borders_color;
+  border-top: 1px solid $border_color;
   border-radius: 0;
 }
 
@@ -512,7 +512,7 @@ popover.transfers list {
 }
 
 popover.transfers list row:not(:first-child) {
-  border-top: 1px solid $borders_color;
+  border-top: 1px solid $border_color;
 }
 
 popover.transfers list row > box {
@@ -520,23 +520,23 @@ popover.transfers list row > box {
 }
 
 dockbin {
-  border: 1px solid $borders_color;
+  border: 1px solid $border_color;
   -PnlDockBin-handle-size: 1;
 }
 
 dockpaned {
-  border: 1px solid $borders_color;
+  border: 1px solid $border_color;
 }
 
 eggsearchbar box.search-bar {
   padding: 0 8px;
-  border-bottom: 1px solid $borders_color;
+  border-bottom: 1px solid $border_color;
   background-color: $bg_color;
 }
 
 docktabstrip {
   padding: 0 8px;
-  border-bottom: 1px solid $borders_color;
+  border-bottom: 1px solid $border_color;
   background-color: $bg_color;
 }
 
@@ -565,7 +565,7 @@ docktab {
   font-weight: 500;
 
   &:hover {
-    box-shadow: inset 0 -2px $track_color;
+    box-shadow: inset 0 -2px $fill_color;
     color: $fg_color;
   }
 
@@ -592,12 +592,12 @@ dockoverlayedge docktabstrip {
 }
 
 dockoverlayedge.left-edge docktab {
-  &:hover { box-shadow: inset -2px 0 $track_color; }
+  &:hover { box-shadow: inset -2px 0 $fill_color; }
   &:checked { box-shadow: inset -2px 0 $primary_color; }
 }
 
 dockoverlayedge.right-edge docktab {
-  &:hover { box-shadow: inset 2px 0 $track_color; }
+  &:hover { box-shadow: inset 2px 0 $fill_color; }
   &:checked { box-shadow: inset 2px 0 $primary_color; }
 }
 
@@ -613,7 +613,7 @@ buildperspective row {
 layoutpane entry.search {
   @extend %entry.flat;
 
-  box-shadow: inset 0 -1px $borders_color;
+  box-shadow: inset 0 -1px $border_color;
   background-color: $base_color;
 }
 
@@ -683,9 +683,9 @@ GdMainIconView.content-view.cell:active {
 .documents-counter {
   margin: 8px;
   border-radius: $circular_radius;
-  box-shadow: $z-depth-2;
+  box-shadow: $shadow_2;
   background-color: $accent_color;
-  color: $inversed_fg_color;
+  color: $inverse_fg_color;
   font-weight: bold;
 }
 
@@ -728,13 +728,13 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
 .side-panel:dir(ltr) {
   // border-width: 0 1px 0 0;
   border-style: solid;
-  border-color: $borders_color;
+  border-color: $border_color;
 }
 
 .side-panel:dir(rtl) {
   // border-width: 0 0 0 1px;
   border-style: solid;
-  border-color: $borders_color;
+  border-color: $border_color;
 }
 
 .side-panel .view {
@@ -748,14 +748,14 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
   // background-color: mix(@theme_fg_color, @theme_bg_color, 0.5);
   background-image: image($primary_color);
 
-  &:hover { background-image: image(mix($inversed_fg_color, $primary_color, percentage(0.05))); }
+  &:hover { background-image: image(mix($inverse_fg_color, $primary_color, percentage(0.05))); }
 }
 
 .songs-list {
   // box-shadow: inset 0 -1px shade(@borders, 1.30);
   // background-color: @theme_bg_color;
 
-  &:hover { background-image: image($row_track_color); }
+  &:hover { background-image: image($row_fill_color); }
 }
 
 frame.documents-dropdown {
@@ -767,7 +767,7 @@ frame.documents-dropdown {
 }
 
 box.vertical:not(.titlebar) > revealer > toolbar.search-bar {
-  border-bottom: 1px solid $borders_color;
+  border-bottom: 1px solid $border_color;
 
   button > widget {
     -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
@@ -828,7 +828,7 @@ frame.commit-frame > border { border-style: solid none none; }
 /**************
  * Characters *
  **************/
-box.dialog-vbox scrolledwindow.related { border: 1px solid $borders_color; }
+box.dialog-vbox scrolledwindow.related { border: 1px solid $border_color; }
 
 list.categories { background-image: image($lighter_bg_color); }
 

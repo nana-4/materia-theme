@@ -28,14 +28,14 @@ UnityDecoration .top {
   padding: 0 2px;
   border-style: none;
   border-radius: 2px 2px 0 0;
-  // box-shadow: inset 0 1px $topbar_highlight_color;
-  box-shadow: inset 0 1px if($light == 'true', scale-alpha(#FFFFFF, 0.2), scale-alpha(#FFFFFF, 0.1));
-  background-color: $secondary_titlebar_color;
-  color: $topbar_fg_color;
+  // box-shadow: inset 0 1px $titlebar_highlight_color;
+  box-shadow: inset 0 1px if($light == 'true', scale-alpha($white, 0.2), scale-alpha($white, 0.1));
+  background-color: $alt_titlebar_bg_color;
+  color: $titlebar_fg_color;
 }
 
 UnityDecoration .top:backdrop {
-  color: $secondary_topbar_fg_color;
+  color: $secondary_titlebar_fg_color;
 }
 
 UnityDecoration .left,
@@ -46,7 +46,7 @@ UnityDecoration .bottom {
 }
 
 UnityDecoration .menuitem {
-  color: gtkalpha(currentColor, $enabled_opacity);
+  color: gtkalpha(currentColor, $secondary_opacity);
 }
 
 UnityDecoration .menuitem:hover {
@@ -69,14 +69,14 @@ sheet-style-dialog.unity-force-quit {
 // Panel Style
 UnityPanelWidget,
 .unity-panel {
-  background-color: $topbar_color;
-  background-image: image($topbar_color);
-  color: $topbar_fg_color;
+  background-color: $panel_bg_color;
+  background-image: image($panel_bg_color);
+  color: $titlebar_fg_color;
 }
 
 UnityPanelWidget:backdrop,
 .unity-panel:backdrop {
-  color: $secondary_topbar_fg_color;
+  color: $secondary_titlebar_fg_color;
 }
 
 .unity-panel.menubar,
@@ -85,7 +85,7 @@ UnityPanelWidget:backdrop,
 
 .unity-panel.menuitem,
 .unity-panel .menuitem {
-  color: gtkalpha(currentColor, $enabled_opacity);
+  color: gtkalpha(currentColor, $secondary_opacity);
 }
 
 .unity-panel.menubar.menuitem:hover,
