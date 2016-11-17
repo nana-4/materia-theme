@@ -91,7 +91,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30 * 2), 0 15px 6px rgba(0, 0, 0, 0.22 *
 
 // entries
 
-@mixin entry($t, $fc:$selected_bg_color) {
+@mixin entry($t, $fc:$primary_color) {
 //
 // Entries drawing function
 //
@@ -102,20 +102,20 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30 * 2), 0 15px 6px rgba(0, 0, 0, 0.22 *
 // normal, focus, insensitive
 //
   @if $t==normal {
-    background-color: if($fc!=$selected_bg_color, rgba($bg_color, 0.01), rgba($base_color, 0.01));
+    background-color: if($fc!=$primary_color, rgba($bg_color, 0.01), rgba($base_color, 0.01));
     border-color: transparent;
-    box-shadow: inset 0 -1px if($fc!=$selected_bg_color, $fc, $track_color);
+    box-shadow: inset 0 -1px if($fc!=$primary_color, $fc, $fill_color);
 
   }
   @if $t==focus {
     border-color: transparent;
-    box-shadow: inset 0 -2px if($fc!=$selected_bg_color, $fc, $selected_bg_color);
+    box-shadow: inset 0 -2px if($fc!=$primary_color, $fc, $primary_color);
   }
   @if $t==hover { }
   @if $t==insensitive {
-    color: $insensitive_fg_color;
+    color: $disabled_fg_color;
     border-color: transparent;
-    box-shadow: inset 0 -1px if($fc!=$selected_bg_color, $fc, $insensitive_track_color);
+    box-shadow: inset 0 -1px if($fc!=$primary_color, $fc, $disabled_fill_color);
   }
 }
 
@@ -152,7 +152,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30 * 2), 0 15px 6px rgba(0, 0, 0, 0.22 *
     text-shadow: none;
     icon-shadow: none;
     box-shadow: 0 0 transparent;
-  //  box-shadow: inset 0px 0px 0px 2px $track_color;
+  //  box-shadow: inset 0px 0px 0px 2px $fill_color;
   }
 
   @else if $t==hover {
@@ -182,8 +182,8 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30 * 2), 0 15px 6px rgba(0, 0, 0, 0.22 *
   //
   // insensitive button
   //
-    color: if($tc!=$fg_color, $tc, $insensitive_secondary_fg_color);
-    background-color: if($c!=$base_color, $c, $insensitive_track_color);
+    color: if($tc!=$fg_color, $tc, $disabled_secondary_fg_color);
+    background-color: if($c!=$base_color, $c, $disabled_fill_color);
     border-color: transparent;
     box-shadow: 0 0 transparent;
     text-shadow: none;
@@ -208,7 +208,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30 * 2), 0 15px 6px rgba(0, 0, 0, 0.22 *
     text-shadow: none;
     icon-shadow: none;
     box-shadow: 0 0 transparent;
-  //  box-shadow: inset 0px 0px 0px 2px $track_color;
+  //  box-shadow: inset 0px 0px 0px 2px $fill_color;
   }
 
   @else if $t==flat-hover {
@@ -216,7 +216,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30 * 2), 0 15px 6px rgba(0, 0, 0, 0.22 *
   // hovered flat button
   //
     color: if($tc!=$fg_color, $tc, $fg_color);
-    background-color: if($c!=$base_color, $c, $semi_track_color);
+    background-color: if($c!=$base_color, $c, $semi_fill_color);
     border-color: transparent;
     box-shadow: 0 0 transparent;
     text-shadow: none;
@@ -228,7 +228,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30 * 2), 0 15px 6px rgba(0, 0, 0, 0.22 *
   // pushed flat button
   //
     color: if($tc!=$fg_color, $tc, $fg_color);
-    background-color: if($c!=$base_color, $c, $track_color);
+    background-color: if($c!=$base_color, $c, $fill_color);
     border-color: transparent;
     box-shadow: 0 0 transparent;
     text-shadow: none;
@@ -238,7 +238,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30 * 2), 0 15px 6px rgba(0, 0, 0, 0.22 *
   //
   // insensitive flat button
   //
-    color: if($tc!=$fg_color, $tc, $insensitive_secondary_fg_color);
+    color: if($tc!=$fg_color, $tc, $disabled_secondary_fg_color);
     background-color: transparent;
     border-color: transparent;
     box-shadow: 0 0 transparent;
