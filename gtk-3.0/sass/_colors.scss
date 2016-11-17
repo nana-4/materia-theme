@@ -26,9 +26,9 @@ $inverse_fg_color: $light_fg_color;
 $secondary_inverse_fg_color: scale-alpha($inverse_fg_color, $secondary_opacity);
 $tertiary_inverse_fg_color: scale-alpha($inverse_fg_color, $tertiary_opacity);
 
-$titlebar_fg_color: if($light == 'true', $fg_color, $inverse_fg_color);
-$secondary_titlebar_fg_color: if($light == 'true', $secondary_fg_color, $secondary_inverse_fg_color);
-$tertiary_titlebar_fg_color: if($light == 'true', $tertiary_fg_color, $tertiary_inverse_fg_color);
+$titlebar_fg_color: if($titlebar == 'dark', $inverse_fg_color, $fg_color);
+$secondary_titlebar_fg_color: if($titlebar == 'dark', $secondary_inverse_fg_color, $secondary_fg_color);
+$tertiary_titlebar_fg_color: if($titlebar == 'dark', $tertiary_inverse_fg_color, $tertiary_fg_color);
 
 $disabled_fg_color: scale-alpha($fg_color, $disabled_opacity);
 $disabled_secondary_fg_color: scale-alpha($secondary_fg_color, $disabled_opacity);
@@ -38,9 +38,9 @@ $disabled_inverse_fg_color: scale-alpha($inverse_fg_color, $disabled_opacity);
 $disabled_secondary_inverse_fg_color: scale-alpha($secondary_inverse_fg_color, $disabled_opacity);
 $disabled_tertiary_inverse_fg_color: scale-alpha($tertiary_inverse_fg_color, $disabled_opacity);
 
-$disabled_titlebar_fg_color: if($light == 'true', $disabled_fg_color, $disabled_inverse_fg_color);
-$disabled_secondary_titlebar_fg_color: if($light == 'true', $disabled_secondary_fg_color, $disabled_secondary_inverse_fg_color);
-$disabled_tertiary_titlebar_fg_color: if($light == 'true', $disabled_tertiary_fg_color, $disabled_tertiary_inverse_fg_color);
+$disabled_titlebar_fg_color: if($titlebar == 'dark', $disabled_inverse_fg_color, $disabled_fg_color);
+$disabled_secondary_titlebar_fg_color: if($titlebar == 'dark', $disabled_secondary_inverse_fg_color, $disabled_secondary_fg_color);
+$disabled_tertiary_titlebar_fg_color: if($titlebar == 'dark', $disabled_tertiary_inverse_fg_color, $disabled_tertiary_fg_color);
 
 // Background colors
 $bg_color: if($variant == 'light', $grey_100, $blue_grey_700);
@@ -49,9 +49,9 @@ $alt_base_color: if($variant == 'light', $grey_50, mix($base_color, $bg_color, 5
 $lighter_bg_color: if($variant == 'light', $grey_50, $blue_grey_500);
 $darker_bg_color: if($variant == 'light', $grey_200, $blue_grey_900);
 
-$titlebar_bg_color: if($variant == 'light', if($light == 'true', $grey_300, $blue_grey_700), $blue_grey_800);
-$alt_titlebar_bg_color: if($light == 'true', $grey_400, $blue_grey_800);
-$panel_bg_color: if($light == 'true', $grey_400, $blue_grey_900);
+$titlebar_bg_color: if($variant == 'light', if($titlebar == 'dark', $blue_grey_700, $grey_300), $blue_grey_800);
+$alt_titlebar_bg_color: if($titlebar == 'dark', $blue_grey_800, $grey_400);
+$panel_bg_color: if($titlebar == 'dark', $blue_grey_900, $grey_400);
 
 $fill_color: gtkalpha(currentColor, $lower_opacity);
 $semi_fill_color: gtkalpha(currentColor, $lower_opacity / 2);
@@ -80,7 +80,8 @@ $error_bg_color: $red_400;
 $border_color: if($variant == 'light', scale-alpha($black, 0.1), scale-alpha($black, 0.2));
 $highlight_color: if($variant == 'light', scale-alpha($white, 0.4), scale-alpha($white, 0.1));
 $alt_highlight_color: scale-alpha($white, 0.2);
-$titlebar_highlight_color: if($light == 'true', $highlight_color, $alt_highlight_color);
-$titlebar_indicator_color: if($light == 'true', $primary_color, currentColor);
+$unity_highlight_color: if($titlebar == 'dark', scale-alpha($white, 0.1), scale-alpha($white, 0.2));
+$titlebar_highlight_color: if($titlebar == 'dark', $alt_highlight_color, $highlight_color);
+$titlebar_indicator_color: if($titlebar == 'dark', currentColor, $primary_color);
 
 $placeholder_text_color: mix($fg_color, $base_color, percentage($tertiary_opacity));
