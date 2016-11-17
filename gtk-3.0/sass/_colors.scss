@@ -9,14 +9,14 @@
   @return scale-color($c, $alpha: percentage(-1 + $a));
 }
 
-// based color palette:
-// https://material.google.com/style/color.html#color-color-palette
+@import 'color-palette';
+
 // based border and highlight values:
 // https://material.google.com/style/icons.html#icons-product-icons
 
 // Foreground colors
-$light_contrast_color: scale-alpha(#000000, 0.8);
-$dark_contrast_color: #FFFFFF;
+$light_contrast_color: scale-alpha($black, 0.8);
+$dark_contrast_color: $white;
 
 $fg_color: if($variant == 'light', $light_contrast_color, $dark_contrast_color);
 $secondary_fg_color: scale-alpha($fg_color, $enabled_opacity);
@@ -43,43 +43,42 @@ $disabled_secondary_topbar_fg_color: if($light == 'true', $disabled_secondary_fg
 $disabled_tertiary_topbar_fg_color: if($light == 'true', $disabled_tertiary_fg_color, $disabled_tertiary_inversed_fg_color);
 
 // Background colors
-$bg_color: if($variant == 'light', #F5F5F5, #455A64);
-$base_color: if($variant == 'light', #FFFFFF, #546E7A);
+$bg_color: if($variant == 'light', $grey-100, $blue-grey-700);
+$base_color: if($variant == 'light', $white, $blue-grey-600);
 $alt_base_color: mix($base_color, $bg_color, 50%);
-$lighter_bg_color: if($variant == 'light', #FAFAFA, #607D8B);
-$darker_bg_color: if($variant == 'light', #EEEEEE, #263238);
-$headerbar_color: if($variant == 'light', if($light == 'true', #E0E0E0, #455A64), #37474F);
-$secondary_titlebar_color: if($light == 'true', #BDBDBD, #37474F);
-$topbar_color: if($light == 'true', #BDBDBD, #263238);
+$lighter_bg_color: if($variant == 'light', $grey-50, $blue-grey-500);
+$darker_bg_color: if($variant == 'light', $grey-200, $blue-grey-900);
+$headerbar_color: if($variant == 'light', if($light == 'true', $grey-300, $blue-grey-700), $blue-grey-800);
+$secondary_titlebar_color: if($light == 'true', $grey-400, $blue-grey-800);
+$topbar_color: if($light == 'true', $grey-400, $blue-grey-900);
 
-$primary_color: #42A5F5;
-$alt_primary_color: #40C4FF;
-$accent_color: #FF4081;
+$primary_color: $blue-400;
+$alt_primary_color: $light-blue-A200;
+$accent_color: $pink-A200;
 
 // Misc colors
 $track_color: gtkalpha(currentColor, $lower_opacity);
 $semi_track_color: gtkalpha(currentColor, $lower_opacity / 2);
 $row_track_color: gtkalpha(currentColor, 0.05);
-$borders_color: if($variant == 'light', scale-alpha(#000000, 0.1), scale-alpha(#000000, 0.2));
-$highlight_color: if($variant == 'light', scale-alpha(#FFFFFF, 0.4), scale-alpha(#FFFFFF, 0.1));
-$secondary_highlight_color: scale-alpha(#FFFFFF, 0.2);
+$borders_color: if($variant == 'light', scale-alpha($black, 0.1), scale-alpha($black, 0.2));
+$highlight_color: if($variant == 'light', scale-alpha($white, 0.4), scale-alpha($white, 0.1));
+$secondary_highlight_color: scale-alpha($white, 0.2);
 $topbar_highlight_color: if($light == 'true', $highlight_color, $secondary_highlight_color);
 $topbar_indicator_color: if($light == 'true', $primary_color, currentColor);
 
 $placeholder_text_color: mix($fg_color, $base_color, percentage($hint_opacity));
 
 $link_color: $primary_color;
-$link_visited_color: #E040FB;
+$link_visited_color: $purple-A200;
 
-$warning_color: #FF6D00;
-$error_color: #DD2C00;
-$success_color: #00C853;
+$warning_color: $orange-A700;
+$error_color: $deep-orange-A700;
+$success_color: $green-A700;
 
 $suggested_color: $accent_color;
-$destructive_color: #FF5252;
+$destructive_color: $red-A200;
 
-$info_bg_color: #66BB6A;
-$question_bg_color: #42A5F5;
-$warning_bg_color: #FFA726;
-$error_bg_color: #EF5350;
-
+$info_bg_color: $green-400;
+$question_bg_color: $blue-400;
+$warning_bg_color: $orange-400;
+$error_bg_color: $red-400;
