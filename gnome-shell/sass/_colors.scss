@@ -1,26 +1,18 @@
 // When color definition differs for dark and light variant,
 // it gets @if ed depending on $variant
 
-$higher_opacity: 0.9;
-$middle_opacity: 0.6;
-$lower_opacity: 0.3;
-
-$enabled_opacity: 0.75;
-$hint_opacity: 0.6;
-$disabled_opacity: 0.4;
-
 @function scale-alpha($c, $a) {
   @return scale-color($c, $alpha: percentage(-1 + $a));
 }
 
 // Foreground colors
 $fg_color: if($variant == 'light', scale-alpha(#000000, 0.8), #FFFFFF);
-$secondary_fg_color: scale-alpha($fg_color, $enabled_opacity);
-$tertiary_fg_color: scale-alpha($fg_color, $hint_opacity);
+$secondary_fg_color: scale-alpha($fg_color, $secondary_opacity);
+$tertiary_fg_color: scale-alpha($fg_color, $tertiary_opacity);
 
 $selected_fg_color: #FFFFFF;
-$secondary_selected_fg_color: scale-alpha($selected_fg_color, $enabled_opacity);
-$tertiary_selected_fg_color: scale-alpha($selected_fg_color, $hint_opacity);
+$secondary_selected_fg_color: scale-alpha($selected_fg_color, $secondary_opacity);
+$tertiary_selected_fg_color: scale-alpha($selected_fg_color, $tertiary_opacity);
 
 $insensitive_fg_color: scale-alpha($fg_color, $disabled_opacity);
 $insensitive_secondary_fg_color: scale-alpha($secondary_fg_color, $disabled_opacity);
@@ -36,7 +28,7 @@ $secondary_base_color: scale-alpha($fg_color, 0.05);
 $bg_color: scale-alpha(#000000, $middle_opacity);
 $osd_bg_color: scale-alpha(#000000, $lower_opacity);
 $overview_bg_color: scale-alpha(#FFFFFF, 0.1);
-$topbar_color: if($light == 'true', $bg_color, #263238);
+$topbar_color: if($titlebar == 'dark', #263238, $bg_color);
 
 $selected_bg_color: #42A5F5;
 $secondary_selected_bg_color: #40C4FF;
