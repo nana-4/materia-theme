@@ -23,6 +23,7 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
  * Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+
 /* GLOBALS */
 * {
   transition-timing-function : $standard_curve;
@@ -233,7 +234,7 @@ StScrollBar {
   color: $fg_color;
   background-color: $base_color;
   border: none;
-  box-shadow: $z-depth-4;
+  box-shadow: $shadow_4;
   .modal-dialog-content-box {
     padding: 24px;
   }
@@ -584,7 +585,7 @@ StScrollBar {
   .popup-menu-arrow { } //defined globally in the TOP BAR
   .popup-sub-menu {
     background-color: $alt_base_color;
-    box-shadow: $z-depth-0;
+    box-shadow: $shadow_0;
   }
 
   .popup-menu-content { padding: 8px 0; }
@@ -598,7 +599,7 @@ StScrollBar {
     &:checked {
       background-color: $primary_color;
       color: $inverse_fg_color;
-      box-shadow: $z-depth-0;
+      box-shadow: $shadow_0;
       font-weight: normal;
       &.selected {
         background-color: mix($inverse_fg_color, $primary_color, percentage($lower_opacity / 2));
@@ -654,7 +655,7 @@ StScrollBar {
     margin: 5px 8px 8px;
     background-color: $base_color;
     border-radius: 2px;
-    box-shadow: $z-depth-2;
+    box-shadow: $shadow_2;
   }
 
   .popup-separator-menu-item {
@@ -794,7 +795,7 @@ StScrollBar {
   color: $fg_color;
   background-color: $base_color;
   border: none;
-  box-shadow: $z-depth-4;
+  box-shadow: $shadow_4;
   border-radius: 2px;
   padding: 12px;
 }
@@ -880,7 +881,7 @@ StScrollBar {
       & > .system-status-icon { icon-shadow: none; }
     }
 
-    .system-status-icon { @include em(16px); padding: 0 4px; }
+    .system-status-icon { icon-size: em(16px); padding: 0 4px; }
     .unlock-screen &,
     .login-screen &,
     .lock-screen & {
@@ -1245,23 +1246,23 @@ StScrollBar {
 
 // not really top bar only
 .popup-menu-arrow { width: 16px; height: 16px; }
-.popup-menu-icon { @include em(16px); }
+.popup-menu-icon { icon-size: em(16px); }
 
 //close buttons
 
 .window-close {
   height: $medium_size;
   width: $medium_size;
-  -st-background-image-shadow: $z-depth-1;
+  -st-background-image-shadow: $shadow_1;
   background-image: url("assets/window-close.svg");
   background-size: $medium_size;
-  &:hover { -st-background-image-shadow: $z-depth-2; }
+  &:hover { -st-background-image-shadow: $shadow_2; }
   &:active { background-image: url("assets/window-close-active.svg"); }
 }
   .window-close {
     -shell-close-overlap: $medium_size / 2;
-    &:rtl { -st-background-image-shadow: $z-depth-1; }
-    &:rtl:hover { -st-background-image-shadow: $z-depth-2; }
+    &:rtl { -st-background-image-shadow: $shadow_1; }
+    &:rtl:hover { -st-background-image-shadow: $shadow_2; }
   }
 
 /* NETWORK DIALOGS */
@@ -1447,7 +1448,7 @@ StScrollBar {
     padding: 7px 8px;
     color: $fg_color;
     background-color: $base_color;
-    box-shadow: $z-depth-2;
+    box-shadow: $shadow_2;
     text-align: center;
     -x-offset: 8px;
   }
@@ -1525,7 +1526,7 @@ StScrollBar {
     &:active .overview-icon,
     &:checked .overview-icon {
       background-color: $inverse_fill_color;
-      box-shadow: $z-depth-0;
+      box-shadow: $shadow_0;
       transition-duration: 0.2s;
     }
 
@@ -1661,13 +1662,13 @@ StScrollBar {
     color: $fg_color;
     background-color: $base_color;
     border: none;
-    box-shadow: $z-depth-2;
+    box-shadow: $shadow_2;
     &:hover { background-color: $base_color; }
     &:focus { background-color: $base_color; }
 
     .notification-icon { padding: 5px; }
     .notification-content { padding: 5px; spacing: 5px; }
-    .secondary-icon { @include em(16px); }
+    .secondary-icon { icon-size: em(16px); }
     .notification-actions {
       background-color: transparent;
       padding-top: 0;
@@ -1699,7 +1700,7 @@ StScrollBar {
     border-radius: 0.9em; // should be 0.8 but whatever; wish I could do 50%;
   }
 
-  .secondary-icon { @include em(16px); }
+  .secondary-icon { icon-size: em(16px); }
 
   //chat bubbles
   .chat-body { spacing: 5px; }
@@ -1846,7 +1847,7 @@ $legacy_icon_size: 24px;
     -boxpointer-gap: 5px;
     background-color: $base_color;
     border-radius: 2px;
-    box-shadow: $z-depth-2;
+    box-shadow: $shadow_2;
   }
 
 // IBus Candidate Popup
@@ -1886,7 +1887,7 @@ $legacy_icon_size: 24px;
 
   .candidate-page-button-previous { border-radius: 2px; border-right-width: 0; }
   .candidate-page-button-next { border-radius: 2px;  }
-  .candidate-page-button-icon { @include em(16px); }
+  .candidate-page-button-icon { icon-size: em(16px); }
 
 /* Auth Dialogs & Screen Shield */
 
@@ -1928,19 +1929,18 @@ $legacy_icon_size: 24px;
   .modal-dialog-button-box { spacing: 3px; }
   .modal-dialog-button {
     padding: 0 16px;
-    @include button(flat-normal, $tc:$secondary_inverse_fg_color);
-    &:hover,&:focus { @include button(flat-hover, $c:$semi_inverse_fill_color, $tc:$inverse_fg_color); }
-    &:active { @include button(flat-active, $c:$inverse_fill_color, $tc:$inverse_fg_color); }
-    &:insensitive { @include button(flat-insensitive, $tc:$disabled_secondary_inverse_fg_color); }
-    &:default {
-      @include button(normal, $c:$suggested_color, $tc:$inverse_fg_color);
-      &:hover,&:focus { @include button(hover, $c:$suggested_color, $tc:$inverse_fg_color); }
-      &:active { @include button(active, $c:$suggested_color, $tc:$inverse_fg_color); }
-      &:insensitive { @include button(insensitive, $c:$disabled_inverse_fill_color, $tc:$disabled_inverse_fg_color); }
+    @include button(flat-normal, $tc: $inverse_fg_color);
+    &:hover,&:focus { @include button(flat-hover, $tc: $inverse_fg_color); }
+    &:active { @include button(flat-active, $tc: $inverse_fg_color); }
+    &:insensitive { @include button(flat-insensitive, $tc: $inverse_fg_color); }
 
+    &:default {
+      @include button(normal, $c: $suggested_color, $tc: $inverse_fg_color);
+      &:hover,&:focus { @include button(hover, $c: $suggested_color, $tc: $inverse_fg_color); }
+      &:active { @include button(active, $c: $suggested_color, $tc: $inverse_fg_color); }
+      &:insensitive { @include button(insensitive, $c: $disabled_inverse_fill_color, $tc: $disabled_inverse_fg_color); }
     }
   }
-
 }
 
   .login-dialog-logo-bin { padding: 24px 0px; }
@@ -2039,12 +2039,12 @@ $legacy_icon_size: 24px;
     width: 80px;
     height: 48px;
     -arrow-thickness: 12px;
-    -arrow-shadow: $z-depth-1;
+    -arrow-shadow: $shadow_1;
 }
 
 .screen-shield-clock {
   color: white;
-  text-shadow: $z-depth-1;
+  text-shadow: $shadow_1;
   font-weight: normal;
   text-align: center;
   padding-bottom: 1.5em;
@@ -2052,7 +2052,7 @@ $legacy_icon_size: 24px;
 
 .screen-shield-clock-time {
   @include font(display-4);
-  text-shadow: $z-depth-1;
+  text-shadow: $shadow_1;
 }
 
 .screen-shield-clock-date { @include font(display-2); }
@@ -2095,7 +2095,7 @@ $legacy_icon_size: 24px;
 
 .screen-shield-background { //just the shadow, really
   background: black;
-  box-shadow: $z-depth-5;
+  box-shadow: $shadow_5;
 }
 
 #lockDialogGroup {
@@ -2115,7 +2115,7 @@ $legacy_icon_size: 24px;
   padding: 0;
   border: none;
   border-radius: 2px;
-  box-shadow: $z-depth-4;
+  box-shadow: $shadow_4;
   & > #Toolbar {
     padding: 0 8px;
     border: none;
@@ -2212,5 +2212,5 @@ $legacy_icon_size: 24px;
     border: none;
     border-radius: 2px;
     padding: 6px;
-    box-shadow: $z-depth-4;
+    box-shadow: $shadow_4;
   }
