@@ -120,7 +120,7 @@ GtkAssistant .sidebar GtkLabel.highlight {
   opacity: 1; }
 
 GtkTextView {
-  background-color: #3b3b3b; }
+  background-color: #3c3c3c; }
 
 GtkFlowBox .grid-child {
   outline-offset: -2px;
@@ -173,7 +173,7 @@ GtkFlowBox .grid-child {
     border-image: -gtk-gradient(radial, center bottom, 0, center bottom, 0.75, to(#2980b9), to(transparent)) 0 0 2/0 0 2px;
     box-shadow: inset 0 -1px alpha(currentColor,0.2); }
   .entry:insensitive {
-    background-color: #3b3b3b;
+    background-color: #3c3c3c;
     color: rgba(238, 238, 238, 0.4); }
   .entry.flat:insensitive, .notebook .entry:insensitive {
     box-shadow: inset 0 -1px alpha(currentColor,0.2);
@@ -205,7 +205,7 @@ GtkFlowBox .grid-child {
       border-image: -gtk-gradient(radial, center bottom, 0, center bottom, 0.75, to(#c0392b), to(transparent)) 0 0 2/0 0 2px;
       box-shadow: inset 0 -1px #c0392b; }
     .entry.error:insensitive {
-      background-color: #3b3b3b;
+      background-color: #3c3c3c;
       color: rgba(238, 238, 238, 0.4); }
     .entry.error.flat:insensitive, .notebook .error.entry:insensitive {
       box-shadow: inset 0 -1px alpha(currentColor,0.2);
@@ -227,7 +227,7 @@ GtkFlowBox .grid-child {
       border-image: -gtk-gradient(radial, center bottom, 0, center bottom, 0.75, to(#d35400), to(transparent)) 0 0 2/0 0 2px;
       box-shadow: inset 0 -1px #d35400; }
     .entry.warning:insensitive {
-      background-color: #3b3b3b;
+      background-color: #3c3c3c;
       color: rgba(238, 238, 238, 0.4); }
     .entry.warning.flat:insensitive, .notebook .warning.entry:insensitive {
       box-shadow: inset 0 -1px alpha(currentColor,0.2);
@@ -421,9 +421,11 @@ GtkFlowBox .grid-child {
     .header-bar.selection-mode .suggested-action.button:backdrop > GtkLabel, .button.suggested-action:backdrop GtkImage, .titlebar.selection-mode .suggested-action.button:backdrop GtkImage,
     .header-bar.selection-mode .suggested-action.button:backdrop GtkImage {
       opacity: 0.8; }
-    .button.suggested-action:backdrop:insensitive > GtkLabel, .button.suggested-action:backdrop:insensitive GtkImage {
+    .button.suggested-action:backdrop:insensitive > GtkLabel, .titlebar.selection-mode .suggested-action.button:backdrop:insensitive > GtkLabel,
+    .header-bar.selection-mode .suggested-action.button:backdrop:insensitive > GtkLabel, .button.suggested-action:backdrop:insensitive GtkImage {
       color: inherit; }
-    .button.suggested-action:backdrop:insensitive > GtkLabel, .button.suggested-action:backdrop:insensitive GtkImage {
+    .button.suggested-action:backdrop:insensitive > GtkLabel, .titlebar.selection-mode .suggested-action.button:backdrop:insensitive > GtkLabel,
+    .header-bar.selection-mode .suggested-action.button:backdrop:insensitive > GtkLabel, .button.suggested-action:backdrop:insensitive GtkImage {
       opacity: 0.32; }
   .button.destructive-action, .titlebar.selection-mode .destructive-action.button.suggested-action,
   .header-bar.selection-mode .destructive-action.button.suggested-action {
@@ -485,9 +487,11 @@ GtkFlowBox .grid-child {
     .header-bar.selection-mode .destructive-action.button.suggested-action:backdrop > GtkLabel, .button.destructive-action:backdrop GtkImage, .titlebar.selection-mode .destructive-action.button.suggested-action:backdrop GtkImage,
     .header-bar.selection-mode .destructive-action.button.suggested-action:backdrop GtkImage {
       opacity: 0.8; }
-    .button.destructive-action:backdrop:insensitive > GtkLabel, .button.destructive-action:backdrop:insensitive GtkImage {
+    .button.destructive-action:backdrop:insensitive > GtkLabel, .titlebar.selection-mode .destructive-action.button.suggested-action:backdrop:insensitive > GtkLabel,
+    .header-bar.selection-mode .destructive-action.button.suggested-action:backdrop:insensitive > GtkLabel, .button.destructive-action:backdrop:insensitive GtkImage {
       color: inherit; }
-    .button.destructive-action:backdrop:insensitive > GtkLabel, .button.destructive-action:backdrop:insensitive GtkImage {
+    .button.destructive-action:backdrop:insensitive > GtkLabel, .titlebar.selection-mode .destructive-action.button.suggested-action:backdrop:insensitive > GtkLabel,
+    .header-bar.selection-mode .destructive-action.button.suggested-action:backdrop:insensitive > GtkLabel, .button.destructive-action:backdrop:insensitive GtkImage {
       opacity: 0.32; }
   .button.image-button, .inline-toolbar .button, .inline-toolbar .titlebar.selection-mode .button.suggested-action, .titlebar.selection-mode .inline-toolbar .button.suggested-action,
   .inline-toolbar .header-bar.selection-mode .button.suggested-action,
@@ -1952,7 +1956,7 @@ GtkColorButton.button, .titlebar.selection-mode GtkColorButton.button.suggested-
       color: #a9cce3; }
   *:link:selected, .titlebar.selection-mode .subtitle:link,
   .header-bar.selection-mode .subtitle:link, *:selected *:link {
-    color: #d4e5f1; }
+    color: #d4e6f1; }
 
 .button:link, .titlebar.selection-mode .button.suggested-action:link,
 .header-bar.selection-mode .button.suggested-action:link {
@@ -2047,7 +2051,7 @@ GtkComboBox {
   border-width: 0 1px 1px;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.2);
-  background-color: #3b3b3b; }
+  background-color: #3c3c3c; }
 
 .search-bar, .location-bar {
   -GtkWidget-window-dragging: true;
@@ -2135,28 +2139,38 @@ GtkComboBox {
         box-shadow: none;
         background-color: alpha(currentColor,0.08);
         color: #eeeeee; }
-        .titlebar .button.suggested-action:insensitive > GtkLabel, .titlebar .button.suggested-action:insensitive GtkImage,
+        .titlebar .button.suggested-action:insensitive > GtkLabel,
+        .titlebar .header-bar.selection-mode .suggested-action.button:insensitive > GtkLabel, .titlebar .button.suggested-action:insensitive GtkImage,
         .header-bar .button.suggested-action:insensitive > GtkLabel,
+        .header-bar .titlebar.selection-mode .suggested-action.button:insensitive > GtkLabel,
         .header-bar .button.suggested-action:insensitive GtkImage {
           color: inherit; }
-        .titlebar .button.suggested-action:insensitive > GtkLabel, .titlebar .button.suggested-action:insensitive GtkImage,
+        .titlebar .button.suggested-action:insensitive > GtkLabel,
+        .titlebar .header-bar.selection-mode .suggested-action.button:insensitive > GtkLabel, .titlebar .button.suggested-action:insensitive GtkImage,
         .header-bar .button.suggested-action:insensitive > GtkLabel,
+        .header-bar .titlebar.selection-mode .suggested-action.button:insensitive > GtkLabel,
         .header-bar .button.suggested-action:insensitive GtkImage {
           opacity: 0.4; }
       .titlebar .button.suggested-action:checked,
       .header-bar .button.suggested-action:checked {
         background-color: #2980b9;
         color: #ffffff; }
-      .titlebar .button.suggested-action:backdrop > GtkLabel, .titlebar .button.suggested-action:backdrop GtkImage,
+      .titlebar .button.suggested-action:backdrop > GtkLabel,
+      .titlebar .header-bar.selection-mode .suggested-action.button:backdrop > GtkLabel, .titlebar .button.suggested-action:backdrop GtkImage,
       .header-bar .button.suggested-action:backdrop > GtkLabel,
+      .header-bar .titlebar.selection-mode .suggested-action.button:backdrop > GtkLabel,
       .header-bar .button.suggested-action:backdrop GtkImage {
         opacity: 0.8; }
-      .titlebar .button.suggested-action:backdrop:insensitive > GtkLabel, .titlebar .button.suggested-action:backdrop:insensitive GtkImage,
+      .titlebar .button.suggested-action:backdrop:insensitive > GtkLabel,
+      .titlebar .header-bar.selection-mode .suggested-action.button:backdrop:insensitive > GtkLabel, .titlebar .button.suggested-action:backdrop:insensitive GtkImage,
       .header-bar .button.suggested-action:backdrop:insensitive > GtkLabel,
+      .header-bar .titlebar.selection-mode .suggested-action.button:backdrop:insensitive > GtkLabel,
       .header-bar .button.suggested-action:backdrop:insensitive GtkImage {
         color: inherit; }
-      .titlebar .button.suggested-action:backdrop:insensitive > GtkLabel, .titlebar .button.suggested-action:backdrop:insensitive GtkImage,
+      .titlebar .button.suggested-action:backdrop:insensitive > GtkLabel,
+      .titlebar .header-bar.selection-mode .suggested-action.button:backdrop:insensitive > GtkLabel, .titlebar .button.suggested-action:backdrop:insensitive GtkImage,
       .header-bar .button.suggested-action:backdrop:insensitive > GtkLabel,
+      .header-bar .titlebar.selection-mode .suggested-action.button:backdrop:insensitive > GtkLabel,
       .header-bar .button.suggested-action:backdrop:insensitive GtkImage {
         opacity: 0.32; }
     .titlebar .button.destructive-action, .titlebar.selection-mode .destructive-action.button.suggested-action,
@@ -2183,28 +2197,38 @@ GtkComboBox {
         box-shadow: none;
         background-color: alpha(currentColor,0.08);
         color: #eeeeee; }
-        .titlebar .button.destructive-action:insensitive > GtkLabel, .titlebar .button.destructive-action:insensitive GtkImage,
+        .titlebar .button.destructive-action:insensitive > GtkLabel,
+        .titlebar .header-bar.selection-mode .destructive-action.button.suggested-action:insensitive > GtkLabel, .titlebar .button.destructive-action:insensitive GtkImage,
         .header-bar .button.destructive-action:insensitive > GtkLabel,
+        .header-bar .titlebar.selection-mode .destructive-action.button.suggested-action:insensitive > GtkLabel,
         .header-bar .button.destructive-action:insensitive GtkImage {
           color: inherit; }
-        .titlebar .button.destructive-action:insensitive > GtkLabel, .titlebar .button.destructive-action:insensitive GtkImage,
+        .titlebar .button.destructive-action:insensitive > GtkLabel,
+        .titlebar .header-bar.selection-mode .destructive-action.button.suggested-action:insensitive > GtkLabel, .titlebar .button.destructive-action:insensitive GtkImage,
         .header-bar .button.destructive-action:insensitive > GtkLabel,
+        .header-bar .titlebar.selection-mode .destructive-action.button.suggested-action:insensitive > GtkLabel,
         .header-bar .button.destructive-action:insensitive GtkImage {
           opacity: 0.4; }
       .titlebar .button.destructive-action:checked,
       .header-bar .button.destructive-action:checked {
         background-color: #2980b9;
         color: #ffffff; }
-      .titlebar .button.destructive-action:backdrop > GtkLabel, .titlebar .button.destructive-action:backdrop GtkImage,
+      .titlebar .button.destructive-action:backdrop > GtkLabel,
+      .titlebar .header-bar.selection-mode .destructive-action.button.suggested-action:backdrop > GtkLabel, .titlebar .button.destructive-action:backdrop GtkImage,
       .header-bar .button.destructive-action:backdrop > GtkLabel,
+      .header-bar .titlebar.selection-mode .destructive-action.button.suggested-action:backdrop > GtkLabel,
       .header-bar .button.destructive-action:backdrop GtkImage {
         opacity: 0.8; }
-      .titlebar .button.destructive-action:backdrop:insensitive > GtkLabel, .titlebar .button.destructive-action:backdrop:insensitive GtkImage,
+      .titlebar .button.destructive-action:backdrop:insensitive > GtkLabel,
+      .titlebar .header-bar.selection-mode .destructive-action.button.suggested-action:backdrop:insensitive > GtkLabel, .titlebar .button.destructive-action:backdrop:insensitive GtkImage,
       .header-bar .button.destructive-action:backdrop:insensitive > GtkLabel,
+      .header-bar .titlebar.selection-mode .destructive-action.button.suggested-action:backdrop:insensitive > GtkLabel,
       .header-bar .button.destructive-action:backdrop:insensitive GtkImage {
         color: inherit; }
-      .titlebar .button.destructive-action:backdrop:insensitive > GtkLabel, .titlebar .button.destructive-action:backdrop:insensitive GtkImage,
+      .titlebar .button.destructive-action:backdrop:insensitive > GtkLabel,
+      .titlebar .header-bar.selection-mode .destructive-action.button.suggested-action:backdrop:insensitive > GtkLabel, .titlebar .button.destructive-action:backdrop:insensitive GtkImage,
       .header-bar .button.destructive-action:backdrop:insensitive > GtkLabel,
+      .header-bar .titlebar.selection-mode .destructive-action.button.suggested-action:backdrop:insensitive > GtkLabel,
       .header-bar .button.destructive-action:backdrop:insensitive GtkImage {
         opacity: 0.32; }
   .titlebar .stack-switcher, .titlebar .path-bar,
@@ -2732,7 +2756,7 @@ column-header.button.dnd, .titlebar.selection-mode column-header.dnd.button.sugg
 .scrollbars-junction.frame {
   border-style: none;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.2), inset 1px 0 rgba(0, 0, 0, 0.2);
-  background-color: #3b3b3b; }
+  background-color: #3c3c3c; }
 
 /**********
  * Switch *
@@ -3279,7 +3303,7 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
     .scale.slider:insensitive,
     .scale.scale-has-marks-above.scale-has-marks-below.slider:insensitive,
     .scale.vertical.scale-has-marks-above.scale-has-marks-below.slider:insensitive {
-      background-color: #3b3b3b; }
+      background-color: #3c3c3c; }
   .scale.trough,
   .scale.scale-has-marks-above.scale-has-marks-below.trough,
   .scale.vertical.scale-has-marks-above.scale-has-marks-below.trough {
@@ -3554,7 +3578,7 @@ GtkLevelBar.vertical {
   .frame.action-bar {
     padding: 6px;
     border-width: 1px 0 0;
-    background-color: #3b3b3b; }
+    background-color: #3c3c3c; }
 
 GtkScrolledWindow .frame {
   border-radius: 0; }
@@ -3721,7 +3745,7 @@ GtkFileChooserDialog .dialog-action-box {
 .sidebar,
 .sidebar .view {
   border: none;
-  background-color: #3b3b3b; }
+  background-color: #3c3c3c; }
   .sidebar:selected,
   .sidebar .view:selected {
     background-color: #2980b9;
@@ -4201,7 +4225,7 @@ column-header .header-bar.selection-mode .button.suggested-action,
 @define-color theme_selected_fg_color #ffffff;
 @define-color insensitive_bg_color #333333;
 @define-color insensitive_fg_color rgba(238, 238, 238, 0.4);
-@define-color insensitive_base_color #3b3b3b;
+@define-color insensitive_base_color #3c3c3c;
 @define-color theme_unfocused_fg_color rgba(238, 238, 238, 0.8);
 @define-color theme_unfocused_bg_color #333333;
 @define-color theme_unfocused_base_color #444444;
@@ -4213,7 +4237,7 @@ column-header .header-bar.selection-mode .button.suggested-action,
 @define-color error_color #c0392b;
 @define-color success_color #27ae60;
 @define-color wm_button_focused_color #a3a3a3;
-@define-color wm_button_unfocused_color #8c8c8c;
+@define-color wm_button_unfocused_color #8d8d8d;
 @define-color wm_button_hover_color rgba(238, 238, 238, 0.1);
 @define-color wm_button_active_color rgba(238, 238, 238, 0.2);
 @define-color wm_title #eeeeee;
