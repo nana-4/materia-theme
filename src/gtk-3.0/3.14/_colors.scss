@@ -1,0 +1,37 @@
+// When color definition differs for dark and light variant,
+// it gets @if ed depending on $variant
+
+@function gtkalpha($c,$a) {
+  @return unquote("alpha(#{$c},#{$a})");
+}
+
+
+$base_color: if($variant =='light', #ffffff, #444444);
+$bg_color: if($variant =='light', #eeeeee, #333333);
+$fg_color: if($variant =='light', #333333, #eeeeee);
+
+$light_color: if($variant =='light', darken($base_color,2%), lighten($base_color,4%));
+$dark_color: if($variant =='light', darken($bg_color,4%), darken($bg_color,2%));
+
+$selected_fg_color: #ffffff;
+$selected_bg_color: if($variant == 'light', #3498db, #2980b9);
+
+$fill_color: gtkalpha(currentColor, 0.2);
+$borders_color: if($variant =='light', transparentize(black, 0.9), transparentize(black, 0.8));
+
+$link_color: if($variant == 'light', #3498db, #2980b9);
+$link_visited_color: if($variant == 'light', #9b59b6, #8e44ad);
+
+$warning_color: if($variant =='light', #e67e22, #d35400);
+$error_color: if($variant =='light', #e74c3c, #c0392b);
+$success_color: if($variant =='light', #2ecc71, #27ae60);
+$destructive_color: if($variant =='light', #e74c3c, #c0392b);
+
+//insensitive state derived colors
+$insensitive_fg_color: transparentize($fg_color, 0.6);
+$insensitive_base_color: mix($bg_color, $base_color, 50%);
+
+//colors for the backdrop state, derived from the main colors.
+$backdrop_fg_color: transparentize($fg_color, 0.2);
+$backdrop_selected_fg_color: transparentize($selected_fg_color, 0.2);
+$backdrop_insensitive_fg_color: transparentize($fg_color, 1 - 0.4 * 0.8);

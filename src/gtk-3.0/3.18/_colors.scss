@@ -1,0 +1,83 @@
+// When color definition differs for dark and light variant,
+// it gets @if ed depending on $variant
+
+$higher_opacity: 0.9;
+$middle_opacity: 0.6;
+$lower_opacity: 0.3;
+
+$enabled_opacity: 0.75;
+$hint_opacity: 0.6;
+$disabled_opacity: 0.4;
+
+@function gtkalpha($c, $a) {
+  @return unquote("alpha(#{$c}, #{$a})");
+}
+
+@function scale-alpha($c, $a) {
+  @return scale-color($c, $alpha: percentage(-1 + $a));
+}
+
+// Foreground colors
+$fg_color: if($variant == 'light', scale-alpha(#000000, 0.8), #FFFFFF);
+$secondary_fg_color: scale-alpha($fg_color, $enabled_opacity);
+$tertiary_fg_color: scale-alpha($fg_color, $hint_opacity);
+
+$selected_fg_color: #FFFFFF;
+$secondary_selected_fg_color: scale-alpha($selected_fg_color, $enabled_opacity);
+$tertiary_selected_fg_color: scale-alpha($selected_fg_color, $hint_opacity);
+
+$topbar_fg_color: if($light == 'true', $fg_color, $selected_fg_color);
+$secondary_topbar_fg_color: if($light == 'true', $secondary_fg_color, $secondary_selected_fg_color);
+$tertiary_topbar_fg_color: if($light == 'true', $tertiary_fg_color, $tertiary_selected_fg_color);
+
+$insensitive_fg_color: scale-alpha($fg_color, $disabled_opacity);
+$insensitive_secondary_fg_color: scale-alpha($secondary_fg_color, $disabled_opacity);
+$insensitive_tertiary_fg_color: scale-alpha($tertiary_fg_color, $disabled_opacity);
+
+$insensitive_selected_fg_color: scale-alpha($selected_fg_color, $disabled_opacity);
+$insensitive_secondary_selected_fg_color: scale-alpha($secondary_selected_fg_color, $disabled_opacity);
+$insensitive_tertiary_selected_fg_color: scale-alpha($tertiary_selected_fg_color, $disabled_opacity);
+
+$insensitive_topbar_fg_color: if($light == 'true', $insensitive_fg_color, $insensitive_selected_fg_color);
+$insensitive_secondary_topbar_fg_color: if($light == 'true', $insensitive_secondary_fg_color, $insensitive_secondary_selected_fg_color);
+$insensitive_tertiary_topbar_fg_color: if($light == 'true', $insensitive_tertiary_fg_color, $insensitive_tertiary_selected_fg_color);
+
+// Background colors
+$bg_color: if($variant == 'light', #F5F5F5, #455A64);
+$base_color: if($variant == 'light', #FFFFFF, #546E7A);
+$secondary_base_color: mix($base_color, $bg_color, 50%);
+$light_color: if($variant == 'light', #FAFAFA, #607D8B);
+$dark_color: if($variant == 'light', #EEEEEE, #263238);
+$headerbar_color: if($variant == 'light', if($light == 'true', #E0E0E0, #455A64), #37474F);
+$unity_titlebar_color: if($light == 'true', #BDBDBD, #37474F);
+$topbar_color: if($light == 'true', #BDBDBD, #263238);
+
+$selected_bg_color: #42A5F5;
+$secondary_selected_bg_color: #40C4FF;
+$accent_bg_color: #FF4081;
+
+// Misc colors
+$track_color: gtkalpha(currentColor, $lower_opacity);
+$borders_color: if($variant == 'light', scale-alpha(#000000, 0.1), scale-alpha(#000000, 0.2));
+$highlight_color: if($variant == 'light', scale-alpha(#FFFFFF, 0.4), scale-alpha(#FFFFFF, 0.1));
+$secondary_highlight_color: scale-alpha(#FFFFFF, 0.2);
+$topbar_highlight_color: if($light == 'true', $highlight_color, $secondary_highlight_color);
+$topbar_indicator_color: if($light == 'true', $selected_bg_color, currentColor);
+
+$placeholder_text_color: mix($fg_color, $base_color, percentage($hint_opacity));
+
+$link_color: $selected_bg_color;
+$link_visited_color: #E040FB;
+
+$warning_color: #FF6D00;
+$error_color: #DD2C00;
+$success_color: #00C853;
+
+$suggested_color: $accent_bg_color;
+$destructive_color: #FF5252;
+
+$info_bg_color: #66BB6A;
+$question_bg_color: #42A5F5;
+$warning_bg_color: #FFA726;
+$error_bg_color: #EF5350;
+

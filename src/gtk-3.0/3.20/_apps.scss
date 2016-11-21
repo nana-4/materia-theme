@@ -1,0 +1,913 @@
+/************
+ * Nautilus *
+ ************/
+// based css:
+// https://git.gnome.org/browse/nautilus/tree/src/resources/css/Adwaita.css
+// hard-coded css:
+// https://git.gnome.org/browse/nautilus/tree/src/resources/css/nautilus.css
+
+.nautilus-window,
+.nautilus-window notebook,
+.nautilus-window notebook > stack {
+  background: $base_color;
+}
+
+.nautilus-canvas-item {
+  // border-radius: $md_radius;
+}
+
+.nautilus-canvas-item.dim-label,
+.nautilus-list-dim-label {
+  // @extend .dim-label;
+}
+
+.nautilus-desktop.nautilus-canvas-item {
+  // background-color: scale-alpha(#000000, $lower_opacity);
+  color: $inversed_fg_color;
+  text-shadow: $z-depth-1;
+}
+
+.nautilus-desktop.nautilus-canvas-item:selected {
+  // color: $inversed_fg_color;
+  text-shadow: none;
+}
+
+// Toolbar
+@keyframes needs_attention_keyframes {
+  from { background-color: transparent; }
+  to { background-color: $track_color; }
+}
+
+.nautilus-operations-button-needs-attention {
+  color: $accent_color;
+  animation: needs_attention_keyframes $longer_duration $standard_curve 2 alternate;
+}
+
+.nautilus-operations-button-needs-attention-multiple {
+  color: $accent_color;
+  animation: needs_attention_keyframes $longer_duration $standard_curve 4 alternate;
+}
+
+// Floating status bar
+.nautilus-window .floating-bar {
+  @extend %osd;
+
+  // @extend .toolbar.osd;
+
+  min-height: 32px;
+  padding: 0;
+  border-style: solid solid none;
+  border-width: 1px;
+  border-color: $borders_color;
+  border-radius: (2px + 1px) (2px + 1px) 0 0;
+  background-color: $base_color;
+  background-clip: $extra_background_clip;
+  transition: $longer_transition, border-width 0;
+
+  &.bottom.left { // axes left border and border radius
+    margin-right: 8px - 1px;
+    border-left-style: none;
+    border-top-left-radius: 0;
+  }
+
+  &.bottom.right { // axes right border and border radius
+    margin-left: 8px - 1px;
+    border-right-style: none;
+    border-top-right-radius: 0;
+  }
+
+  button {
+    margin: (32px - $small_size) / 2;
+
+    @extend %small_button;
+  }
+}
+
+.disk-space-display {
+  // border-style: solid;
+  // border-width: 2px;
+}
+
+.disk-space-display.unknown {
+  background-color: $warning_color;
+}
+
+.disk-space-display.used {
+  background-color: $primary_color;
+}
+
+.disk-space-display.free {
+  background-color: $track_color;
+  color: $disabled_fg_color;
+}
+
+// View
+.nautilus-list-view .view {
+  // border-bottom: 1px solid $borders_color;
+}
+
+// Hide superfluous treeview drop target indication
+.nautilus-list-view .view.dnd {
+  // border-style: none;
+}
+
+// Libgd tag entries in the search. Sadly it requires this copy pasted css style.
+// https://git.gnome.org/browse/libgd/tree/libgd/gd-tagged-entry-default.css
+.documents-entry-tag {
+  // min-height: 24px;
+  margin: 3px -2px 3px 8px;
+  padding: 0 8px;
+  border-radius: $circular_radius;
+  box-shadow: none;
+  background-color: $primary_color;
+  color: $inversed_fg_color;
+
+  &:hover { box-shadow: $z-depth-1; }
+}
+
+.documents-entry-tag.button {
+  // @extend %simple_flat_button;
+
+  // min-height: 24px;
+  // min-width: 24px;
+  margin: 0 -2px;
+  padding: 4px;
+  border-radius: $circular_radius;
+  box-shadow: none;
+  color: $secondary_inversed_fg_color;
+
+  &:hover, &:active { color: $inversed_fg_color; }
+}
+
+// Workaround for the double border of the searchbar since we use a revealer which
+// always allocates at least 1 pixel
+.nautilus-window searchbar { border-top: 1px solid $borders_color; }
+
+.nautilus-window .searchbar-container { margin-top: -1px; }
+
+.nautilus-window headerbar > revealer > button { @extend %circular_button; }
+
+
+/*********
+ * gedit *
+ *********/
+// based css:
+// https://git.gnome.org/browse/gedit/tree/gedit/resources/css/gedit.adwaita.css
+// hard-coded css:
+// https://git.gnome.org/browse/gedit/tree/gedit/resources/css/gedit-style.css
+
+// Only normal state is handle
+.open-document-selector-name-label {
+  font-weight: bold;
+}
+
+// Only normal state is handle
+.open-document-selector-path-label {
+  color: gtkalpha(currentColor, $hint_opacity);
+  font-size: smaller;
+
+  // @extend .dim-label;
+}
+
+.gedit-document-panel {
+  background-color: $lighter_bg_color;
+}
+
+.gedit-document-panel-group-row {
+  border-top: 1px solid $borders_color;
+}
+
+.gedit-document-panel-group-row:first-child {
+  border-top: none;
+}
+
+// Try to look as the notebook tab close button
+.gedit-document-panel row button.flat {
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  @extend %small_button;
+}
+
+.gedit-side-panel-paned statusbar {
+  border-top: 1px solid $borders_color;
+}
+
+.gedit-search-slider {
+  margin: 4px 4px 8px;
+
+  entry {
+    &:dir(ltr),
+    &:dir(rtl) { // specificity bump
+      border-radius: 2px;
+
+      .gedit-search-entry-occurrences-tag {
+        all: unset;
+        color: gtkalpha(currentColor, $hint_opacity);
+      }
+    }
+
+    $buttons_width: $small_size * 2 + $container_padding * 3;
+
+    &:dir(ltr) {
+      margin-right: -$buttons_width;
+      padding-right: $buttons_width;
+
+      .gedit-search-entry-occurrences-tag { margin-left: $container_padding; }
+
+      image.right { margin-right: 0; }
+    }
+
+    &:dir(rtl) {
+      margin-left: -$buttons_width;
+      padding-left: $buttons_width;
+
+      .gedit-search-entry-occurrences-tag { margin-right: $container_padding; }
+
+      image.left { margin-left: 0; }
+    }
+
+    &.error ~ button {
+      color: $secondary_inversed_fg_color;
+
+      &:hover, &:active { color: $inversed_fg_color; }
+
+      &:disabled { color: $disabled_secondary_inversed_fg_color; }
+    }
+  }
+
+  button {
+    border: solid $container_padding transparent;
+
+    @extend %simple_flat_button;
+
+    &:dir(ltr),
+    &:dir(rtl) { @extend %small_button; } // specificity bump
+
+    &:last-child:dir(ltr),
+    &:not(:first-child):dir(rtl) { margin-left: -$container_padding / 2; }
+
+    &:first-child:dir(rtl),
+    &:not(:last-child):dir(ltr) { margin-right: -$container_padding / 2; }
+  }
+}
+
+frame.gedit-map-frame > border {
+  &:dir(ltr) { border-style: none none none solid; }
+  &:dir(rtl) { border-style: none solid none none; }
+}
+
+
+/**************
+ * Tweak Tool *
+ **************/
+// hard-coded css:
+// https://git.gnome.org/browse/gnome-tweak-tool/tree/data/shell.css
+
+// the sidebar
+.tweak-categories {
+  // padding: 4px 0;
+  // background-color: shade(@theme_bg_color, 0.99);
+  background-image: image($lighter_bg_color);
+
+  // hide separators
+  separator {
+    min-width: 0;
+    min-height: 0;
+    background: transparent;
+  }
+}
+
+.tweak {
+  padding: 3px;
+  // padding-top: 3px;
+
+  &.title:hover { box-shadow: none; }
+}
+
+.tweak-group-white,
+.tweak-white,
+.tweak-white:hover {
+  // background-color: white;
+  background-image: image($base_color);
+}
+
+.tweak-startup,
+.tweak-startup:hover {
+  // background-color: lighter(shade(@theme_bg_color, 0.9));
+  background-image: image($base_color);
+}
+
+.tweak-group-startup {
+  // background-color: @view_separators;
+  background-image: image($base_color);
+  border: 1px solid $borders_color;
+}
+
+
+/***********
+ * Builder *
+ ***********/
+// based css:
+// https://git.gnome.org/browse/gnome-builder/tree/data/theme
+// hard-coded css:
+// https://git.gnome.org/browse/gnome-builder/tree/data/theme/shared.css
+
+// Titlebar adjustments for workbench
+//
+// This is needed due to our placement of headerbar inside of a
+// stack. We were seeing black edges around the header bar, and
+// improper radius on the headerbar.
+//
+workbench stack.titlebar {
+  padding: 0;
+  // box-shadow: none;
+}
+
+workbench:not(.tiled):not(.maximized):not(.fullscreen) stack.titlebar headerbar {
+  border-radius: 2px 2px 0 0;
+  // box-shadow: none;
+}
+
+perspectiveswitcher {
+  background-color: $bg_color;
+}
+
+perspectiveswitcher button:checked {
+  color: $primary_color;
+}
+
+// Layout tab and tab bar tweaks
+// The following makes the layout stack header look similar to a tab bar.
+layouttabbar {
+  border-bottom: 1px solid $borders_color;
+  background-color: $bg_color;
+}
+
+layouttabbar button { @extend %flat_button; }
+
+layouttabbar > box > button {
+  margin: (40px - $medium_size) / 2 0;
+  // border-radius: 0;
+}
+
+layouttab {
+  margin: 0 8px; // not working
+  border-style: none solid;
+  border-width: 1px;
+  border-color: $borders_color;
+  box-shadow: inset 0 -2px $primary_color;
+  background-color: $base_color;
+}
+
+layouttab separator.vertical {
+  margin: 8px 4px;
+}
+
+layouttab button {
+  &.text-button, &.image-button, & {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 0 4px;
+  }
+}
+
+// Close button styling for layouttab.
+layouttab > box > button.close {
+  border-radius: $circular_radius;
+}
+
+layout {
+  border: 1px solid $borders_color;
+  -PnlDockBin-handle-size: 1;
+}
+
+entry.search-missing {
+  background-color: $error_color;
+  color: $inversed_fg_color;
+}
+
+// tweak icons for treeviews
+workbench treeview.image { color: gtkalpha(currentColor, $hint_opacity); }
+workbench treeview.image:selected { color: $tertiary_inversed_fg_color; }
+
+dockbin {
+  border: 1px solid $borders_color;
+  -PnlDockBin-handle-size: 1;
+}
+
+dockpaned {
+  border: 1px solid $borders_color;
+}
+
+eggsearchbar box.search-bar {
+  padding: 0 8px;
+  border-bottom: 1px solid $borders_color;
+  background-color: $bg_color;
+}
+
+docktabstrip {
+  padding: 0 8px;
+  border-bottom: 1px solid $borders_color;
+  background-color: $bg_color;
+}
+
+docktab {
+  transition: $longer_transition,
+              background-size 0,
+              background-image 0;
+  min-height: $small_size;
+  min-width: $small_size;
+  margin-bottom: -1px;
+  padding: $container_padding 6px;
+
+  outline-offset: -6px;
+
+  border-width: 1px;         // for reorderable tabs
+  border-color: transparent; //
+
+  background-image: radial-gradient(circle farthest-corner at center,
+                                    $primary_color 10%,
+                                    transparent 0%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0% 0%;
+
+  color: $secondary_fg_color;
+  font-weight: 500;
+
+  &:hover {
+    box-shadow: inset 0 -2px $track_color;
+    color: $fg_color;
+  }
+
+  &:checked {
+    transition: $longer_transition,
+                background-size $longer_duration $deceleration_curve,
+                background-image $longer_duration + $ripple_duration $deceleration_curve;
+    box-shadow: inset 0 -2px $primary_color;
+    background-image: radial-gradient(circle farthest-corner at center,
+                                      transparent 10%,
+                                      transparent 0%);
+    background-size: 1000% 1000%;
+    color: $fg_color;
+  }
+}
+
+dockoverlayedge {
+  background-color: $bg_color;
+}
+
+dockoverlayedge docktabstrip {
+  padding: 0;
+  border: none;
+}
+
+dockoverlayedge.left-edge docktab {
+  &:hover { box-shadow: inset -2px 0 $track_color; }
+  &:checked { box-shadow: inset -2px 0 $primary_color; }
+}
+
+dockoverlayedge.right-edge docktab {
+  &:hover { box-shadow: inset 2px 0 $track_color; }
+  &:checked { box-shadow: inset 2px 0 $primary_color; }
+}
+
+pillbox {
+  background-color: $bg_color;
+  border-radius: 2px;
+}
+
+buildperspective row {
+  padding: 10px;
+}
+
+layoutpane entry.search {
+  @extend %entry.flat;
+
+  box-shadow: inset 0 -1px $borders_color;
+  background-color: $base_color;
+}
+
+editortweak entry.search {
+  @extend %entry.flat;
+
+  margin-bottom: -1px;
+  box-shadow: none;
+}
+
+//
+// let's tweak hard-coded elements
+//
+
+// styling for editor search
+frame.gb-search-frame {
+  // border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.gb-search-entry-occurrences-tag {
+  box-shadow: none;
+  background-color: transparent;
+}
+
+// Keep search bar and layouttab height in sync.
+docktabstrip {
+  min-height: 39px;
+}
+
+layouttabbar > box {
+  // min-height: 39px;
+}
+
+eggsearchbar > revealer > box {
+  // min-height: 39px;
+}
+
+eggsearchbar entry {
+  // min-height: 24px;
+}
+
+workbench preferences preferencesgroup list entry {
+  // background: none;
+  // min-height: 0px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+
+/**********
+ * Photos *
+ **********/
+// based css:
+// https://git.gnome.org/browse/gnome-photos/tree/data/Adwaita.css
+
+GdMainIconView.content-view {
+  -GdMainIconView-icon-size: 48;
+}
+
+// Make spinner visible on both dark and bright backgrounds w/o making
+// it look ugly/weird.
+GdMainIconView.content-view.cell:active {
+  // color: $tertiary_fg_color;
+}
+
+.documents-counter {
+  margin: 8px;
+  border-radius: $circular_radius;
+  box-shadow: $z-depth-2;
+  background-color: $accent_color;
+  color: $inversed_fg_color;
+  font-weight: bold;
+}
+
+.photos-entry-tag {
+  @extend .documents-entry-tag;
+}
+
+.documents-scrolledwin.frame {
+  border-style: none;
+}
+
+.photos-icon-bg {
+}
+
+.photos-fade-in {
+  opacity: 1;
+  transition: opacity $shorter_duration $deceleration_curve;
+}
+
+.photos-fade-out {
+  opacity: 0;
+  transition: opacity $shorter_duration $deceleration_curve;
+}
+
+.photos-collection-icon {
+}
+
+overlay grid.horizontal > revealer > scrolledwindow.frame {
+  &:dir(ltr) { border-style: none none none solid; }
+  &:dir(rtl) { border-style: none solid none none; }
+}
+
+
+/*********
+ * Music *
+ *********/
+// hard-coded css:
+// https://git.gnome.org/browse/gnome-music/tree/data/application.css
+
+.side-panel:dir(ltr) {
+  // border-width: 0 1px 0 0;
+  border-style: solid;
+  border-color: $borders_color;
+}
+
+.side-panel:dir(rtl) {
+  // border-width: 0 0 0 1px;
+  border-style: solid;
+  border-color: $borders_color;
+}
+
+.side-panel .view {
+  // background-color: mix(@theme_fg_color, @theme_bg_color, 0.9);
+  background-image: image($lighter_bg_color);
+
+  &:hover { background-image: image(mix($fg_color, $lighter_bg_color, percentage(0.05))); }
+}
+
+.side-panel .view:selected {
+  // background-color: mix(@theme_fg_color, @theme_bg_color, 0.5);
+  background-image: image($primary_color);
+
+  &:hover { background-image: image(mix($inversed_fg_color, $primary_color, percentage(0.05))); }
+}
+
+.playlists-list {
+  // box-shadow: inset 0 -1px @view_separators;
+}
+
+.songs-list {
+  // box-shadow: inset 0 1px shade(@borders, 1.30);
+  // background-color: @theme_bg_color;
+
+  &:hover { background-image: image($row_track_color); }
+}
+
+frame.documents-dropdown {
+  @extend toolbar.osd;
+
+  margin: 8px;
+
+  > border { border: none; }
+}
+
+box.vertical:not(.titlebar) > revealer > toolbar.search-bar {
+  border-bottom: 1px solid $borders_color;
+
+  button > widget {
+    -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+    // -GtkArrow-arrow-scaling: 1;
+  }
+}
+
+
+/*********
+ * To Do *
+ *********/
+task-row {
+  transition: $shorter_transition;
+  margin: 0 -4px;
+
+  &:hover { transition: none; }
+
+  label { margin: 0 8px; }
+
+  image { margin: 0 4px; }
+}
+
+task-list-view > box > revealer > box > button {
+  min-height: $medium_size;
+  margin: -4px;
+  padding: 0 12px;
+
+  label { margin: 0 8px; }
+
+  image { margin: 0 4px; }
+}
+
+
+/*******
+ * eog *
+ *******/
+#eog-thumb-nav {
+  scrolledwindow { border-top: none; }
+
+  button { -gtk-outline-radius: 2px; }
+}
+
+
+/*************
+ * Evolution *
+ *************/
+frame.taskbar > border { border-style: solid none none; }
+
+box.vertical > paned.horizontal notebook widget .frame { border-style: none; }
+
+
+/********
+ * gitg *
+ ********/
+frame.commit-frame > border { border-style: solid none none; }
+
+
+/**************
+ * Characters *
+ **************/
+box.dialog-vbox scrolledwindow.related { border: 1px solid $borders_color; }
+
+list.categories { background-image: image($lighter_bg_color); }
+
+
+/**************
+ * Calculator *
+ **************/
+button.title label { min-height: $medium_size; }
+
+
+/************
+ * Terminix *
+ ************/
+.terminix-background box.vertical > widget > box.horizontal {
+  padding: 3px 0 2px;
+  // border-bottom: 1px solid $borders_color;
+
+  button {
+    padding: 4px 8px;
+
+    &.image-button { padding: 4px; }
+  }
+}
+
+.terminix-background revealer > frame > border {
+  // border-style: none none solid;
+  border-style: none;
+}
+
+button.image-button.session-new-button { min-width: $medium_size - 4px; }
+
+overlay > revealer.left > scrolledwindow.frame,
+overlay > revealer.right > scrolledwindow.frame {
+  border-style: none;
+  box-shadow: $z-depth-4;
+}
+
+overlay > revealer.left > scrolledwindow.frame {
+  margin-right: 32px;
+  // border-style: none solid none none;
+}
+
+overlay > revealer.right > scrolledwindow.frame {
+  margin-left: 32px;
+  // border-style: none none none solid;
+}
+
+.terminix-session-sidebar { background-image: image($lighter_bg_color); }
+
+
+/***********
+ * Eclipse *
+ ***********/
+window.background > box.vertical > scrolledwindow > widget toolbar {
+  padding: 2px;
+
+  separator,
+  button { margin: 2px; }
+
+  button { border-radius: 2px; }
+}
+
+
+/***********
+ * Firefox *
+ ***********/
+window.background > widget > menubar {
+  color: $secondary_topbar_fg_color;
+
+  &:hover { color: $topbar_fg_color; }
+
+  &:disabled { color: $disabled_secondary_topbar_fg_color; }
+}
+
+window.background > menu > menuitem > label:disabled { color: $disabled_fg_color; }
+
+window.background > window.background > menu > separator { color: $borders_color; }
+
+window.background > widget > frame { color: rgba(0, 0, 0, 0.2); }
+
+window.background > widget > checkbutton > check,
+window.background > widget > radiobutton > radio {
+  margin: 0;
+  padding: 0;
+}
+
+window.background > widget > radiobutton > radio:checked {
+  -gtk-icon-source: image(-gtk-recolor(url("assets/radio-checked-symbolic.svg")),
+                          -gtk-recolor(url("assets/radio-checked-symbolic.png")));
+  border-image: none;
+}
+
+
+/***********
+ * Synapse *
+ ***********/
+window.background > box.vertical > widget > widget:selected { background-color: $primary_color; }
+
+
+/*********
+ * Unity *
+ *********/
+// based css:
+// http://bazaar.launchpad.net/~ubuntu-art-pkg/ubuntu-themes/trunk/view/head:/Ambiance/gtk-3.20/apps/unity.css
+
+// Decorations
+UnityDecoration {
+  -UnityDecoration-extents: 28px 0 0 0;
+  -UnityDecoration-input-extents: 8px;
+
+  -UnityDecoration-shadow-offset-x: 0;
+  -UnityDecoration-shadow-offset-y: 3px;
+  -UnityDecoration-active-shadow-color: rgba(0, 0, 0, 0.48);
+  -UnityDecoration-active-shadow-radius: 18px;
+  -UnityDecoration-inactive-shadow-color: rgba(0, 0, 0, 0.32);
+  -UnityDecoration-inactive-shadow-radius: 6px;
+
+  -UnityDecoration-glow-size: 8px;
+  -UnityDecoration-glow-color: $primary_color;
+
+  -UnityDecoration-title-indent: 4px;
+  -UnityDecoration-title-fade: 32px;
+  -UnityDecoration-title-alignment: 0.0;
+}
+
+UnityDecoration .top {
+  padding: 0 2px;
+  border-style: none;
+  border-radius: 2px 2px 0 0;
+  // box-shadow: inset 0 1px $topbar_highlight_color;
+  box-shadow: inset 0 1px if($light == 'true', scale-alpha(#FFFFFF, 0.2), scale-alpha(#FFFFFF, 0.1));
+  background-color: $secondary_titlebar_color;
+  color: $topbar_fg_color;
+}
+
+UnityDecoration .top:backdrop {
+  color: $secondary_topbar_fg_color;
+}
+
+UnityDecoration .left,
+UnityDecoration .right {
+}
+
+UnityDecoration .bottom {
+}
+
+UnityDecoration .menuitem {
+  color: gtkalpha(currentColor, $enabled_opacity);
+}
+
+UnityDecoration .menuitem:hover {
+  box-shadow: inset 0 -2px currentColor;
+  background-color: transparent;
+  color: currentColor;
+}
+
+.background:not(.csd) headerbar:not(.titlebar) {
+  border-radius: 0;
+  box-shadow: none;
+
+  &.inline-toolbar { border-style: none; }
+}
+
+sheet-style-dialog.unity-force-quit {
+  // background-color: $bg_color;
+}
+
+// Panel Style
+UnityPanelWidget,
+.unity-panel {
+  background-color: $topbar_color;
+  background-image: image($topbar_color);
+  color: $topbar_fg_color;
+}
+
+UnityPanelWidget:backdrop,
+.unity-panel:backdrop {
+  color: $secondary_topbar_fg_color;
+}
+
+.unity-panel.menubar,
+.unity-panel .menubar {
+}
+
+.unity-panel.menuitem,
+.unity-panel .menuitem {
+  color: gtkalpha(currentColor, $enabled_opacity);
+}
+
+.unity-panel.menubar.menuitem:hover,
+.unity-panel.menubar .menuitem *:hover {
+  box-shadow: inset 0 -2px currentColor;
+  background-color: transparent;
+  color: currentColor;
+}
+
+@keyframes playbackmenuitem_spinner {
+  to { -gtk-icon-transform: rotate(1turn); }
+}
+
+.menu IdoPlaybackMenuItem.menuitem:active {
+  -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
+  animation: playbackmenuitem_spinner 1s infinite linear;
+  color: $primary_color;
+}
+

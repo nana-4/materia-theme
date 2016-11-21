@@ -1,0 +1,254 @@
+// Drawing mixins
+
+// generic drawing of more complex things
+
+$root-font-size: if($laptop == 'true', 13px, 14px);
+$subheading-size: if($laptop == 'true', 15px, 16px);
+
+// provide font size in pt, with px fallback
+@mixin pt($size: $root-font-size) {
+  font-size: ($size * 0.75 / 1px) * 1pt;
+}
+
+// provide icon size in em, with px fallback
+@mixin em($size: 16px) {
+  icon-size: ($size / $root-font-size) * 1em;
+}
+
+// Typography
+
+// Reference URL:
+// https://material.google.com/style/typography.html#typography-styles
+
+@mixin font($size) {
+  @if $size==display-4 {
+    // font-family: $large-font-family;
+    font-size: 112px;
+    font-weight: 300;
+    // line-height: 1;
+  }
+  @if $size==display-3 {
+    // font-family: $large-font-family;
+    font-size: 56px;
+    font-weight: 400;
+    // line-height: 1;
+  }
+  @if $size==display-2 {
+    // font-family: $large-font-family;
+    font-size: 45px;
+    font-weight: 400;
+    // line-height: 48px;
+  }
+  @if $size==display-1 {
+    // font-family: $large-font-family;
+    font-size: 34px;
+    font-weight: 400;
+    // line-height: 40px;
+  }
+  @if $size==headline {
+    @include pt(24px);
+    font-weight: 400;
+    // line-height: 32px;
+  }
+  @if $size==title {
+    @include pt(20px);
+    font-weight: 500;
+    // line-height: 1;
+  }
+  @if $size==subheading {
+    @include pt($subheading-size);
+    font-weight: 400;
+    // line-height: 24px;
+  }
+  @if $size==body-2 {
+    @include pt($root-font-size);
+    font-weight: 500;
+    // line-height: 24px;
+  }
+  @if $size==body-1 {
+    @include pt($root-font-size);
+    font-weight: 400;
+    // line-height: 20px;
+  }
+  @if $size==caption {
+    @include pt(12px);
+    font-weight: 400;
+    // line-height: 1;
+  }
+  @if $size==button {
+    @include pt($root-font-size);
+    font-weight: 500;
+    // line-height: 20px;
+  }
+}
+
+// shadows
+
+// Reference URL:
+// https://material-design.storage.googleapis.com/images/layout-principles-dimensionality-shadows-08_large_mdpi.png
+
+$z-depth-0: 0 0 transparent;
+$z-depth-1: 0 1px 1.5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+$z-depth-2: 0 3px 3px rgba(0, 0, 0, 0.16 * 1.5), 0 3px 3px rgba(0, 0, 0, 0.23 * 1.5);
+$z-depth-3: 0 10px 10px rgba(0, 0, 0, 0.19 * 1.5), 0 6px 3px rgba(0, 0, 0, 0.23 * 1.5);
+$z-depth-4: 0 14px 14px rgba(0, 0, 0, 0.25 * 2), 0 10px 5px rgba(0, 0, 0, 0.22 * 2);
+$z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30 * 2), 0 15px 6px rgba(0, 0, 0, 0.22 * 2);
+
+// entries
+
+@mixin entry($t, $fc:$selected_bg_color) {
+//
+// Entries drawing function
+//
+// $t: entry type
+// $fc: focus color
+//
+// possible $t values:
+// normal, focus, insensitive
+//
+  @if $t==normal {
+    background-color: if($fc!=$selected_bg_color, rgba($bg_color, 0.01), rgba($base_color, 0.01));
+    border-color: transparent;
+    box-shadow: inset 0 -1px if($fc!=$selected_bg_color, $fc, $track_color);
+
+  }
+  @if $t==focus {
+    border-color: transparent;
+    box-shadow: inset 0 -2px if($fc!=$selected_bg_color, $fc, $selected_bg_color);
+  }
+  @if $t==hover { }
+  @if $t==insensitive {
+    color: $insensitive_fg_color;
+    border-color: transparent;
+    box-shadow: inset 0 -1px if($fc!=$selected_bg_color, $fc, $insensitive_track_color);
+  }
+}
+
+// buttons
+
+@mixin button($t, $c:$base_color, $tc:$fg_color) {
+//
+// Button drawing function
+//
+// $t:    button type,
+// $c:    base button color for colored* types
+// $tc:   optional text color for colored* types
+//
+// possible $t values:
+// normal, focus, hover, active, insensitive,
+// flat-normal, flat-focus, flat-hover, flat-active, flat-insensitive
+//
+  @if $t==normal {
+  //
+  // normal button
+  //
+    color: if($tc!=$fg_color, $tc, $secondary_fg_color);
+    background-color: $c;
+    border-color: transparent;
+    box-shadow: $z-depth-1;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+  @if $t==focus {
+  //
+  // focused button
+  //
+    color: $tc;
+    text-shadow: none;
+    icon-shadow: none;
+    box-shadow: 0 0 transparent;
+  //  box-shadow: inset 0px 0px 0px 2px $track_color;
+  }
+
+  @else if $t==hover {
+  //
+  // hovered button
+  //
+    color: if($tc!=$fg_color, $tc, $fg_color);
+    background-color: $c;
+    border-color: transparent;
+    box-shadow: $z-depth-2;
+    text-shadow: none;
+    icon-shadow: none;
+
+  }
+  @else if $t==active {
+  //
+  // pushed button
+  //
+    color: if($tc!=$fg_color, $tc, $fg_color);
+    background-color: mix($tc, $c, percentage($lower_opacity));
+    border-color: transparent;
+    box-shadow: $z-depth-2;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+  @else if $t==insensitive {
+  //
+  // insensitive button
+  //
+    color: if($tc!=$fg_color, $tc, $insensitive_secondary_fg_color);
+    background-color: if($c!=$base_color, $c, $insensitive_track_color);
+    border-color: transparent;
+    box-shadow: 0 0 transparent;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+  @if $t==flat-normal {
+  //
+  // normal flat button
+  //
+    color: if($tc!=$fg_color, $tc, $secondary_fg_color);
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: 0 0 transparent;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+  @if $t==flat-focus {
+  //
+  // focused flat button
+  //
+    color: $tc;
+    text-shadow: none;
+    icon-shadow: none;
+    box-shadow: 0 0 transparent;
+  //  box-shadow: inset 0px 0px 0px 2px $track_color;
+  }
+
+  @else if $t==flat-hover {
+  //
+  // hovered flat button
+  //
+    color: if($tc!=$fg_color, $tc, $fg_color);
+    background-color: if($c!=$base_color, $c, $semi_track_color);
+    border-color: transparent;
+    box-shadow: 0 0 transparent;
+    text-shadow: none;
+    icon-shadow: none;
+
+  }
+  @else if $t==flat-active {
+  //
+  // pushed flat button
+  //
+    color: if($tc!=$fg_color, $tc, $fg_color);
+    background-color: if($c!=$base_color, $c, $track_color);
+    border-color: transparent;
+    box-shadow: 0 0 transparent;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+  @else if $t==flat-insensitive {
+  //
+  // insensitive flat button
+  //
+    color: if($tc!=$fg_color, $tc, $insensitive_secondary_fg_color);
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: 0 0 transparent;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+}
+
