@@ -1,3 +1,3 @@
 #!/bin/sh
 
-bundle exec sass --update --sourcemap=none .
+bundle exec sass --update --sourcemap=none sass:.
