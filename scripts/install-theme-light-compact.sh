@@ -73,11 +73,11 @@ cp -ur \
 	assets \
 	${themedir}/gtk-3.0
 cp -ur \
-	gtk-light-compact.css \
+	gtk-light.css \
 	${themedir}/gtk-3.0/gtk.css
 cp -ur \
-	gtk-dark-compact.css \
-	${themedir}/gtk-3.0/gtk-dark.css
+	gtk-dark.css \
+	${themedir}/gtk-3.0
 
 
 install -d ${themedir}/gtk-3.20

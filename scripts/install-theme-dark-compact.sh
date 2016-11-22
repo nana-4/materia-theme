@@ -73,10 +73,10 @@ cp -ur \
 	assets \
 	${themedir}/gtk-3.0
 #cp -ur \
-#	gtk-compact.css \
-#	${themedir}/gtk-3.0/gtk.css
+#	gtk.css \
+#	${themedir}/gtk-3.0
 cp -ur \
-	gtk-dark-compact.css \
+	gtk-dark.css \
 	${themedir}/gtk-3.0/gtk.css
 
 
