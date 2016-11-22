@@ -1986,30 +1986,30 @@ radio {
 
 %check,
 check {
-  & { -gtk-icon-source: image(-gtk-recolor(url("assets/check-unchecked-symbolic.svg")),
-                              -gtk-recolor(url("assets/check-unchecked-symbolic.png"))); }
+  & { -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/check-symbolic.svg")),
+                              -gtk-recolor(url("assets/scalable/check-symbolic.png"))); }
 
-  &:checked { -gtk-icon-source: image(-gtk-recolor(url("assets/check-checked-symbolic.svg")),
-                                      -gtk-recolor(url("assets/check-checked-symbolic.png"))); }
+  &:checked { -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/check-checked-symbolic.svg")),
+                                      -gtk-recolor(url("assets/scalable/check-checked-symbolic.png"))); }
 
-  &:indeterminate { -gtk-icon-source: image(-gtk-recolor(url("assets/check-dash-symbolic.svg")),
-                                            -gtk-recolor(url("assets/check-dash-symbolic.png"))); }
+  &:indeterminate { -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/check-indeterminate-symbolic.svg")),
+                                            -gtk-recolor(url("assets/scalable/check-indeterminate-symbolic.png"))); }
 }
 
-$radio_indicator: 10 / ($large_size / 1px) / 2;
-$radio_radius_slice: #{$large_size / 2 / 1px};
+$radio_indicator: 10px / $large_size / 2;
+$radio_radius_slice: #{$large_size / 2px};
 $radio_radius_width: #{$large_size / 2};
 
 %radio,
 radio {
-  & { -gtk-icon-source: image(-gtk-recolor(url("assets/radio-unchecked-symbolic.svg")),
-                              -gtk-recolor(url("assets/radio-unchecked-symbolic.png"))); }
+  & { -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/radio-symbolic.svg")),
+                              -gtk-recolor(url("assets/scalable/radio-symbolic.png"))); }
 
-  // &:checked { -gtk-icon-source: image(-gtk-recolor(url("assets/radio-checked-symbolic.svg")),
-  //                                     -gtk-recolor(url("assets/radio-checked-symbolic.png"))); }
+  // &:checked { -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/radio-checked-symbolic.svg")),
+  //                                     -gtk-recolor(url("assets/scalable/radio-checked-symbolic.png"))); }
 
-  &:indeterminate { -gtk-icon-source: image(-gtk-recolor(url("assets/radio-dash-symbolic.svg")),
-                                            -gtk-recolor(url("assets/radio-dash-symbolic.png"))); }
+  &:indeterminate { -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/radio-indeterminate-symbolic.svg")),
+                                            -gtk-recolor(url("assets/scalable/radio-indeterminate-symbolic.png"))); }
 
   border-image: -gtk-gradient(radial,
                               center center, 0,
@@ -2139,8 +2139,8 @@ treeview.view radio {
 }
 
 treeview.view radio:checked {
-  -gtk-icon-source: image(-gtk-recolor(url("assets/radio-checked-symbolic.svg")),
-                          -gtk-recolor(url("assets/radio-checked-symbolic.png")));
+  -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/radio-checked-symbolic.svg")),
+                          -gtk-recolor(url("assets/scalable/radio-checked-symbolic.png")));
   border-image: none;
 }
 
