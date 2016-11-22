@@ -106,6 +106,13 @@ cp -ur \
 	${themedir}/gtk-3.22/gtk-dark.css
 
 
+install -d ${themedir}/gtk-common
+cd ${srcdir}/gtk-3.0/gtk-common
+cp -ur \
+	assets \
+	${themedir}/gtk-common
+
+
 # Install Metacity Theme
 install -d ${themedir}/metacity-1
 cd ${srcdir}/metacity-1
