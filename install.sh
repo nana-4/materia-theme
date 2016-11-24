@@ -1,11 +1,141 @@
 #!/bin/sh
+gnomever=$(echo $(gnome-shell --version) | cut -d ' ' -f 3 | cut -d . -f -2)
+repodir=$(cd $(dirname $0) && pwd)
+srcdir="${repodir}/src"
+echo $srcdir
+# Not enabled VARIANT: '-dark' '-dark-compact'
+for VARIANT in '' '-compact' '-light' '-light-compact'; do
+	echo "Installing Flat-Plat${VARIANT}"
+	themedir="${destdir}/usr/share/themes/Flat-Plat${VARIANT}"
+	install -d "${themedir}"
 
-echo
-echo Installing Flat-Plat && ./scripts/install-theme.sh
-echo Installing Flat-Plat-compact && ./scripts/install-theme-compact.sh
-# echo Installing Flat-Plat-dark && ./scripts/install-theme-dark.sh
-# echo Installing Flat-Plat-dark-compact && ./scripts/install-theme-dark-compact.sh
-echo Installing Flat-Plat-light && ./scripts/install-theme-light.sh
-echo Installing Flat-Plat-light-compact && ./scripts/install-theme-light-compact.sh
-echo
-echo Done.
+	# Copy COPYING
+	cd "${repodir}"
+	cp -ur \
+		COPYING \
+		"${themedir}"
+
+	# Install index.theme
+	cd ${srcdir}
+	cp -ur \
+		"index${VARIANT}.theme" \
+		"${themedir}"
+
+	# Install Chrome Theme/Extention
+	install -d "${themedir}/chrome"
+	cd ${srcdir}/chrome
+	cp -ur \
+		"Flat-Plat Scrollbars.crx" \
+		"Flat-Plat Theme.crx" \
+		"${themedir}/chrome"
+
+	# Install GNOME Shell Theme
+	install -d "${themedir}/gnome-shell"
+	cd ${srcdir}/gnome-shell/${gnomever}
+	cp -ur \
+		extensions \
+		no-events.svg \
+		no-notifications.svg \
+		process-working.svg \
+		"${themedir}/gnome-shell"
+	cp -ur \
+		assets \
+		"${themedir}/gnome-shell"
+	cp -ur \
+		gnome-shell.css \
+		"${themedir}/gnome-shell"
+	glib-compile-resources \
+		--sourcedir="${themedir}/gnome-shell" \
+		--target="${themedir}/gnome-shell/gnome-shell-theme.gresource" \
+		gnome-shell-theme.gresource.xml
+
+
+	# Install GTK+ 2 Theme
+	install -d ${themedir}/gtk-2.0
+	cd ${srcdir}/gtk-2.0
+	cp -ur \
+		apps.rc \
+		main.rc \
+		"${themedir}/gtk-2.0"
+	cp -ur \
+		assets \
+		"${themedir}/gtk-2.0"
+	cp -ur \
+		gtkrc \
+		"${themedir}/gtk-2.0"
+
+
+	# Install GTK+ 3 Theme
+	install -d "${themedir}/gtk-3.0"
+	cd ${srcdir}/gtk-3.0/3.18
+	cp -ur \
+		assets \
+		"${themedir}/gtk-3.0"
+	cp -ur \
+		gtk.css \
+		"${themedir}/gtk-3.0"
+	cp -ur \
+		gtk-dark.css \
+		"${themedir}/gtk-3.0"
+
+
+	install -d "${themedir}/gtk-3.20"
+	cd ${srcdir}/gtk-3.0/3.20
+	cp -ur \
+		assets \
+		"${themedir}/gtk-3.20"
+	cp -ur \
+		gtk.css \
+		"${themedir}/gtk-3.20"
+	cp -ur \
+		gtk-dark.css \
+		"${themedir}/gtk-3.20"
+
+
+	install -d "${themedir}/gtk-3.22"
+	cd ${srcdir}/gtk-3.0/3.22
+	cp -ur \
+		assets \
+		"${themedir}/gtk-3.22"
+	cp -ur \
+		gtk.css \
+		"${themedir}/gtk-3.22"
+	cp -ur \
+		gtk-dark.css \
+		"${themedir}/gtk-3.22"
+
+
+	install -d "${themedir}/gtk-common"
+	cd ${srcdir}/gtk-3.0/gtk-common
+	cp -ur \
+		assets \
+		"${themedir}/gtk-common"
+
+
+	# Install Metacity Theme
+	install -d "${themedir}/metacity-1"
+	cd ${srcdir}/metacity-1
+	cp -ur \
+		*.svg \
+		"${themedir}/metacity-1"
+	cp -ur \
+		metacity-theme-2.xml \
+		"${themedir}/metacity-1"
+	cp -ur \
+		metacity-theme-3.xml \
+		"${themedir}/metacity-1"
+
+
+	# Install Unity Theme
+	install -d "${themedir}/unity"
+	cd ${srcdir}/unity
+	cp -ur \
+		*.svg \
+		*.png \
+		*.json \
+		"${themedir}/unity"
+	cp -ur \
+		buttons \
+		"${themedir}/unity"
+done
+echo Done
