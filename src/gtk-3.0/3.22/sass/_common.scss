@@ -1923,16 +1923,18 @@ switch {
 // all assets are rendered from assets.svg. never add pngs directly
 
 //selection-mode
-@each $s, $as in ('', '-selectionmode'),
-                (':hover', '-hover-selectionmode'),
-                (':checked', '-checked-selectionmode'),
-                (':checked:hover', '-checked-hover-selectionmode') {
+@each $s, $as in ('', '-unchecked'),
+                 (':checked', '-checked') {
   .view.content-view.check#{$s}:not(list) {
-    -gtk-icon-shadow: $shadow_1;
-    -gtk-icon-source: -gtk-scaled(url("assets/checkbox#{$as}#{$asset_suffix}.png"),
-                                  url("assets/checkbox#{$as}#{$asset_suffix}@2.png"));
     margin: 8px;
+    box-shadow: none;
     background-color: transparent;
+    background-image: none;
+    -gtk-icon-source: -gtk-scaled(url("assets/selectionmode-checkbox#{$as}#{$asset_suffix}.png"),
+                                  url("assets/selectionmode-checkbox#{$as}#{$asset_suffix}@2.png"));
+    -gtk-icon-shadow: $shadow_1;
+
+    &:hover, &:active { -gtk-icon-shadow: $shadow_2; }
   }
 }
 
@@ -2206,9 +2208,9 @@ scale {
     background-position: center;
 
     @each $s, $as in ('', ''),
-                    (':disabled', '-insensitive') {
+                     (':disabled', '-disabled') {
       &#{$s} {
-        $_url: 'assets/slider#{$as}#{$asset_suffix}';
+        $_url: 'assets/scale-slider#{$as}#{$asset_suffix}';
 
         background-image: -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png'));
       }
@@ -2261,14 +2263,14 @@ scale {
 
   @each $dir_class, $dir_infix in ('horizontal', 'horz'),
                                   ('vertical', 'vert') {
-    @each $marks_infix, $marks_class in ('scale-has-marks-above', 'marks-before:not(.marks-after)'),
-                                        ('scale-has-marks-below', 'marks-after:not(.marks-before)') {
+    @each $marks_infix, $marks_class in ('marks-before', 'marks-before:not(.marks-after)'),
+                                        ('marks-after', 'marks-after:not(.marks-before)') {
       &.#{$dir_class}.#{$marks_class} {
         slider {
           @each $state, $state_infix in ('', ''),
-                                        (':disabled', '-insensitive') {
+                                        (':disabled', '-disabled') {
             &#{$state} {
-              $_scale_asset: 'assets/slider-#{$dir_infix}-#{$marks_infix}#{$state_infix}#{$asset_suffix}';
+              $_scale_asset: 'assets/scale-#{$dir_infix}-#{$marks_infix}-slider#{$state_infix}#{$asset_suffix}';
 
               background-image: -gtk-scaled(url('#{$_scale_asset}.png'), url('#{$_scale_asset}@2.png'));
             }
@@ -2278,7 +2280,7 @@ scale {
             min-height: $marks_slider_size;
             min-width: $slider_size;
 
-            @if $marks_infix == 'scale-has-marks-above' {
+            @if $marks_infix == 'marks-before' {
               margin-top: $marks_slider_margin;
 
               background-position: center calc(100% - 4px);
@@ -2288,7 +2290,7 @@ scale {
               &:active { background-position: center calc(100% - 0px); }
             }
 
-            @if $marks_infix == 'scale-has-marks-below' {
+            @if $marks_infix == 'marks-after' {
               margin-bottom: $marks_slider_margin;
 
               background-position: center calc(4px);
@@ -2303,7 +2305,7 @@ scale {
             min-height: $slider_size;
             min-width: $marks_slider_size;
 
-            @if $marks_infix == 'scale-has-marks-above' {
+            @if $marks_infix == 'marks-before' {
               margin-left: $marks_slider_margin;
 
               background-position: calc(4px) center;
@@ -2313,7 +2315,7 @@ scale {
               &:active { background-position: calc(0px) center; }
             }
 
-            @if $marks_infix == 'scale-has-marks-below' {
+            @if $marks_infix == 'marks-after' {
               margin-right: $marks_slider_margin;
 
               background-position: calc(100% - 4px) center;
@@ -2327,15 +2329,15 @@ scale {
 
         &.fine-tune slider {
           @if $dir_class == 'horizontal' {
-            @if $marks_infix == 'scale-has-marks-above' { background-position: center calc(100% - 6px); }
+            @if $marks_infix == 'marks-before' { background-position: center calc(100% - 6px); }
 
-            @if $marks_infix == 'scale-has-marks-below' { background-position: center calc(6px); }
+            @if $marks_infix == 'marks-after' { background-position: center calc(6px); }
           }
 
           @if $dir_class == 'vertical' {
-            @if $marks_infix == 'scale-has-marks-above' { background-position: calc(6px) center; }
+            @if $marks_infix == 'marks-before' { background-position: calc(6px) center; }
 
-            @if $marks_infix == 'scale-has-marks-below' { background-position: calc(100% - 6px) center; }
+            @if $marks_infix == 'marks-after' { background-position: calc(100% - 6px) center; }
           }
         }
       }
@@ -3253,7 +3255,7 @@ cursor-handle {
     -GtkWidget-text-handle-width: 24;
     -GtkWidget-text-handle-height: 30;
 
-    $_url: 'assets/slider-horz-scale-has-marks-above#{$asset_suffix}';
+    $_url: 'assets/scale-horz-marks-before-slider#{$asset_suffix}';
     -gtk-icon-source: -gtk-scaled(url('#{$_url}.png'),
                                   url('#{$_url}@2.png'));
   }
