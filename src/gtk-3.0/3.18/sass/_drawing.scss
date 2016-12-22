@@ -60,36 +60,32 @@
   }
 }
 
-// entries
 
-@mixin entry($t, $fc:$primary_color) {
+@mixin entry($t, $fc: $primary_color) {
 //
-// Entries drawing function
+// entry
 //
 // $t: entry type
 // $fc: focus color
 //
-// possible $t values:
-// normal, focus, insensitive, flat-normal, flat-focus, flat-insensitive;
-//
 
-  @if $t==normal {
+  @if $t == normal {
     transition: $longer_transition, $shadow_transition;
     box-shadow: $shadow_1;
-    background-color: if($fc!=$primary_color, $fc, $base_color);
-    color: if($fc!=$primary_color, $inverse_fg_color, $fg_color);
+    background-color: if($fc == $primary_color, $base_color, $fc);
+    color: if($fc == $primary_color, $fg_color, $inverse_fg_color);
   }
 
-  @if $t==focus {
+  @if $t == focus {
     box-shadow: $shadow_2;
   }
 
-  @if $t==insensitive {
+  @if $t == insensitive {
     color: $disabled_fg_color;
     background-color: $alt_base_color;
   }
 
-  @if $t==flat-normal {
+  @if $t == flat-normal {
     transition: $longer_transition;
     border-image: -gtk-gradient(radial,
                                 center bottom, 0,
@@ -98,12 +94,12 @@
                                 to(transparent))
                                 0 0 0 / 0 0 0px;
     border-radius: 0;
-    box-shadow: inset 0 -1px if($fc!=$primary_color, $fc, $fill_color);
+    box-shadow: inset 0 -1px if($fc == $primary_color, $fill_color, $fc);
     background-color: transparent;
     color: $fg_color;
   }
 
-  @if $t==flat-focus {
+  @if $t == flat-focus {
     border-image: -gtk-gradient(radial,
                                 center bottom, 0,
                                 center bottom, 0.5,
@@ -114,29 +110,23 @@
     transition: $longer_transition, box-shadow 0 $longer_duration;
   }
 
-  @if $t==flat-insensitive {
+  @if $t == flat-insensitive {
     box-shadow: inset 0 -1px $fill_color;
     background-color: transparent;
     color: $disabled_fg_color;
   }
 }
 
-// buttons
 
-@mixin button($t, $c:$lighter_bg_color, $tc:$fg_color) {
+@mixin button($t, $c: $lighter_bg_color) {
 //
-// Button drawing function
+// button
 //
-// $t:    button type,
-// $c:    base button color for colored* types
-// $tc:   optional text color for colored* types
-//
-// possible $t values:
-// normal, hover, active, insensitive, checked, checked-insensitive,
-// flat-normal, flat-hover, flat-active, flat-insensitive, flat-checked, flat-checked-insensitive;
+// $t: button type
+// $c: base color
 //
 
-  @if $t==normal {
+  @if $t == normal {
     transition: $longer_transition, $shadow_transition;
     box-shadow: $shadow_1;
     background-color: $c;
@@ -149,7 +139,7 @@
     color: $secondary_fg_color;
   }
 
-  @else if $t==hover {
+  @if $t == hover {
     box-shadow: $shadow_2;
     background-image: -gtk-gradient(radial,
                                     center center, 0,
@@ -160,33 +150,33 @@
     color: $fg_color;
   }
 
-  @else if $t==active {
+  @if $t == active {
     transition: $longer_transition, $shadow_transition, background-image 0;
     animation: ripple_effect $longer_duration $deceleration_curve forwards;
     box-shadow: $shadow_2;
     color: $fg_color;
   }
 
-  @else if $t==insensitive {
+  @if $t == insensitive {
     box-shadow: none;
     background-color: $fill_color;
-    color: if($tc!=$fg_color, $disabled_fg_color, $disabled_secondary_fg_color);
+    color: if($c == $lighter_bg_color, $disabled_secondary_fg_color, $disabled_fg_color);
 
     > .label { color: inherit; }
   }
 
-  @else if $t==checked {
+  @if $t == checked {
     background-color: $primary_color;
     color: $inverse_fg_color;
   }
 
-  @else if $t==checked-insensitive {
+  @if $t == checked-insensitive {
     background-color: $fill_color;
     color: scale-alpha($primary_color, $disabled_opacity);
     > .label { color: inherit; }
   }
 
-  @else if $t==flat-normal {
+  @if $t == flat-normal {
     transition: $longer_transition;
     box-shadow: none;
     background-color: transparent;
@@ -199,7 +189,7 @@
     color: gtkalpha(currentColor, $secondary_opacity);
   }
 
-  @else if $t==flat-hover {
+  @if $t == flat-hover {
     box-shadow: none;
     background-image: -gtk-gradient(radial,
                                     center center, 0,
@@ -210,27 +200,29 @@
     color: currentColor;
   }
 
-  @else if $t==flat-active {
+  @if $t == flat-active {
     transition: $longer_transition, background-image 0;
     animation: flat_ripple_effect $longer_duration $deceleration_curve forwards;
     box-shadow: none;
     color: currentColor;
   }
 
-  @else if $t==flat-insensitive {
+  @if $t == flat-insensitive {
     box-shadow: none;
     background-color: transparent;
-    color: if($tc != $fg_color, gtkalpha(currentColor, $disabled_opacity), gtkalpha(currentColor, $secondary_opacity * $disabled_opacity));
+    color: if($c == $lighter_bg_color,
+              gtkalpha(currentColor, $secondary_opacity * $disabled_opacity),
+              gtkalpha(currentColor, $disabled_opacity));
 
     > .label { color: inherit; }
   }
 
-  @else if $t==flat-checked {
+  @if $t == flat-checked {
     background-color: $fill_color;
     color: currentColor;
   }
 
-  @else if $t==flat-checked-insensitive {
+  @if $t == flat-checked-insensitive {
     background-color: $fill_color;
     color: gtkalpha(currentColor, $disabled_opacity);
 
@@ -238,19 +230,15 @@
   }
 }
 
-@mixin overshoot($p, $t:normal, $c:$alt_primary_color) {
+
+@mixin overshoot($p) {
 //
 // overshoot
 //
 // $p: position
-// $t: type
-// $c: base color
 //
 // possible $p values:
 // top, bottom, right, left
-//
-// possible $t values:
-// normal, backdrop
 //
 
   $_position: center $p;
@@ -262,7 +250,7 @@
   background-image: -gtk-gradient(radial,
                                   $_position, 0,
                                   $_position, 0.75,
-                                  to(scale-alpha($c, $lower_opacity)),
+                                  to(scale-alpha($alt_primary_color, $lower_opacity)),
                                   to(transparent));
 
   background-repeat: no-repeat;
@@ -272,6 +260,7 @@
   border: none;                  //
   box-shadow: none;              //
 }
+
 
 @mixin undershoot($p) {
 //
@@ -291,14 +280,14 @@
   $_gradient_repeat: repeat-x;
   $_bg_pos: left $p;
 
-  background-color: transparent; // shouldn't be needed, but better to be sure;
-
   @if ($p == left) or ($p == right) {
     $_gradient_dir: top;
     $_dash_bg_size: 1px 12px;
     $_gradient_repeat: repeat-y;
     $_bg_pos: $p top;
   }
+
+  background-color: transparent; // shouldn't be needed, but better to be sure
 
   background-image: linear-gradient(to $_gradient_dir, // this is the dashed line
                                     $_undershoot_color_light 50%,

@@ -364,6 +364,10 @@ GtkTextView {
         .header-bar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .frame.action-bar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .app-notification .suggested-action.button:insensitive > .label,
         .button.suggested-action.flat:insensitive > .label {
           color: inherit; }
+      .toolbar:not(.search-bar) .suggested-action.button:checked, .titlebar .suggested-action.button:checked:not(.suggested-action):not(.destructive-action),
+      .header-bar .suggested-action.button:checked:not(.suggested-action):not(.destructive-action), .frame.action-bar .suggested-action.button:checked:not(.suggested-action):not(.destructive-action), .app-notification .suggested-action.button:checked,
+      .button.suggested-action.flat:checked {
+        background-color: alpha(currentColor, 0.3); }
   .button.destructive-action {
     background-color: #FF5252;
     color: #FFFFFF; }
@@ -390,6 +394,10 @@ GtkTextView {
         .header-bar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .frame.action-bar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .app-notification .destructive-action.button:insensitive > .label,
         .button.destructive-action.flat:insensitive > .label {
           color: inherit; }
+      .toolbar:not(.search-bar) .destructive-action.button:checked, .titlebar .destructive-action.button:checked:not(.suggested-action):not(.destructive-action),
+      .header-bar .destructive-action.button:checked:not(.suggested-action):not(.destructive-action), .frame.action-bar .destructive-action.button:checked:not(.suggested-action):not(.destructive-action), .app-notification .destructive-action.button:checked,
+      .button.destructive-action.flat:checked {
+        background-color: alpha(currentColor, 0.3); }
   .button.text-button,
   GtkScaleButton.button.text-button,
   GtkVolumeButton.button.text-button {

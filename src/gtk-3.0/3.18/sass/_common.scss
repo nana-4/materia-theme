@@ -324,18 +324,13 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
     &.#{$b_type} {
       background-color: $b_color;
       color: $inverse_fg_color;
-      // @include button(normal, $b_color, white);
-      // &:hover { @include button(hover, $b_color, white); }
-      // &:active, &:checked { @include button(active, $b_color, white); }
-      &:insensitive { @include button(insensitive, $b_color, white); }
+      &:insensitive { @include button(insensitive, $b_color); }
       &:checked { background-color: mix($inverse_fg_color, $b_color, percentage($lower_opacity)); }
       &.flat {
         background-color: transparent;
         color: $b_color;
-        // @include button(flat-normal, $b_color, white);
-        // &:hover { @include button(flat-hover, $b_color, white); }
-        // &:active, &:checked { @include button(flat-active, $b_color, white); }
-        &:insensitive { @include button(flat-insensitive, $b_color, white); }
+        &:insensitive { @include button(flat-insensitive, $b_color); }
+        &:checked { background-color: $fill_color; }
       }
     }
   }
