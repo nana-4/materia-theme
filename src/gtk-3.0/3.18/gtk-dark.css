@@ -442,8 +442,8 @@ GtkTextView {
     .header-bar .linked.vertical > .image-button.button:not(.suggested-action):not(.destructive-action), .frame.action-bar .linked.vertical > .image-button.button:not(.suggested-action):not(.destructive-action), .app-notification .linked.vertical > .image-button.button, .linked >
     .button.flat.image-button, .linked.vertical >
     .button.flat.image-button {
-      outline-radius: 100px;
-      border-radius: 100px; }
+      outline-radius: 9999px;
+      border-radius: 9999px; }
     .toolbar:not(.search-bar) .linked > .text-button.image-button.button, .titlebar .linked > .text-button.image-button.button:not(.suggested-action):not(.destructive-action),
     .header-bar .linked > .text-button.image-button.button:not(.suggested-action):not(.destructive-action), .frame.action-bar .linked > .text-button.image-button.button:not(.suggested-action):not(.destructive-action), .app-notification .linked > .text-button.image-button.button, .toolbar:not(.search-bar) .linked.vertical > .text-button.image-button.button, .titlebar .linked.vertical > .text-button.image-button.button:not(.suggested-action):not(.destructive-action),
     .header-bar .linked.vertical > .text-button.image-button.button:not(.suggested-action):not(.destructive-action), .frame.action-bar .linked.vertical > .text-button.image-button.button:not(.suggested-action):not(.destructive-action), .app-notification .linked.vertical > .text-button.image-button.button, .linked >
@@ -1851,12 +1851,12 @@ GtkColorSwatch {
     GtkColorEditor GtkColorSwatch:hover {
       box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
   GtkColorSwatch.color-dark {
-    color: white; }
+    color: #FFFFFF; }
   GtkColorSwatch.color-light {
     color: rgba(0, 0, 0, 0.8); }
   GtkColorSwatch#add-color-button {
     background-image: linear-gradient(to right, #EF5350 25%, #FFA726 25%, #FFA726 50%, #66BB6A 50%, #66BB6A 75%, #42A5F5 75%);
-    color: white; }
+    color: #FFFFFF; }
 
 /********
  * Misc *
@@ -2250,6 +2250,9 @@ base background color of selections on backdrop windows */
 text/foreground color of selections on backdrop windows */
 @define-color theme_unfocused_selected_fg_color #FFFFFF;
 /*
+insensitive color on backdrop windows */
+@define-color unfocused_insensitive_color rgba(255, 255, 255, 0.4);
+/*
 widgets main borders color */
 @define-color borders rgba(0, 0, 0, 0.2);
 /*
@@ -2260,5 +2263,7 @@ these are pretty self explicative */
 @define-color warning_color #FF6D00;
 @define-color error_color #DD2C00;
 @define-color success_color #00C853;
+/*
+FIXME this is really an API */
 @define-color content_view_bg #546E7A;
 @define-color placeholder_text_color #bbc5ca;

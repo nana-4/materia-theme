@@ -5,7 +5,7 @@
   padding: 3px 0 4px;
   border-width: 1px;
   border-style: solid solid none;
-  border-color: $borders_color;
+  border-color: $border_color;
   border-radius: 2px + 1px 2px + 1px 0 0;
   background-color: $base_color;
   background-clip: $extra_background_clip;
@@ -43,12 +43,12 @@ EelEditableLabel.entry { transition: none; }
 
 .nautilus-desktop.nautilus-canvas-item {
   // background-color: scale-alpha(#000000, $lower_opacity);
-  color: $selected_fg_color;
-  text-shadow: $z-depth-1;
+  color: $inverse_fg_color;
+  text-shadow: $shadow_1;
 }
 
 .nautilus-desktop.nautilus-canvas-item:selected {
-  // color: $selected_fg_color;
+  // color: $inverse_fg_color;
   text-shadow: none;
 }
 
@@ -60,15 +60,15 @@ EelEditableLabel.entry { transition: none; }
 
 @keyframes needs_attention_keyframes {
   0% {background-color: transparent; }
-  50% {background-color: $track_color; }
+  50% {background-color: $fill_color; }
   100% {background-color: transparent; }
 }
 .nautilus-operations-button-needs-attention {
-  color: $accent_bg_color;
+  color: $accent_color;
   animation: needs_attention_keyframes 2s $standard_curve;
 }
 .nautilus-operations-button-needs-attention-multiple {
-  color: $accent_bg_color;
+  color: $accent_color;
   animation: needs_attention_keyframes 2s $standard_curve;
   animation-iteration-count: 2;
 }
@@ -83,17 +83,17 @@ EelEditableLabel.entry { transition: none; }
 }
 
 .disk-space-display.used {
-  background-color: $selected_bg_color;
+  background-color: $primary_color;
 }
 
 .disk-space-display.free {
-  background-color: $track_color;
-  color: $insensitive_fg_color;
+  background-color: $fill_color;
+  color: $disabled_fg_color;
 }
 
 /* View */
 NautilusListView .view {
-  // border-bottom: 1px solid $borders_color;
+  // border-bottom: 1px solid $border_color;
 }
 
 
@@ -103,8 +103,8 @@ NautilusListView .view {
 // the sidebar
 .tweak-categories {
   // padding: 4px 0;
-  background-color: $light_color;
-  background-image: linear-gradient(to bottom, $light_color);
+  background-color: $lighter_bg_color;
+  background-image: linear-gradient(to bottom, $lighter_bg_color);
 
   // hide separators
   .separator {
@@ -118,7 +118,7 @@ NautilusListView .view {
  * Software *
  ************/
 
-.button.install-progress:insensitive { background-color: $track_color; }
+.button.install-progress:insensitive { background-color: $fill_color; }
 
 
 /***********
@@ -132,9 +132,9 @@ GbTerminalView { background-color: $base_color; }
  * Firefox *
  ***********/
 .menubar {
-  color: $secondary_topbar_fg_color;
+  color: $secondary_titlebar_fg_color;
 
-  &:hover { color: $topbar_fg_color; }
+  &:hover { color: $titlebar_fg_color; }
 }
 
 
@@ -154,7 +154,7 @@ UnityDecoration {
   -UnityDecoration-inactive-shadow-radius: 6px;
 
   -UnityDecoration-glow-size: 8px;
-  -UnityDecoration-glow-color: $selected_bg_color;
+  -UnityDecoration-glow-color: $primary_color;
 
   -UnityDecoration-title-indent: 4px;
   -UnityDecoration-title-fade: 32px;
@@ -165,14 +165,14 @@ UnityDecoration.top {
   padding: 0 2px;
   border-style: none;
   border-radius: 2px 2px 0 0;
-  // box-shadow: inset 0 1px $topbar_highlight_color;
-  box-shadow: inset 0 1px if($light == 'true', scale-alpha(#FFFFFF, 0.2), scale-alpha(#FFFFFF, 0.1));
-  background-color: $unity_titlebar_color;
-  color: $topbar_fg_color;
+  // box-shadow: inset 0 1px $titlebar_highlight_color;
+  box-shadow: inset 0 1px $unity_highlight_color;
+  background-color: $alt_titlebar_bg_color;
+  color: $titlebar_fg_color;
 }
 
 UnityDecoration.top:backdrop {
-  color: $secondary_topbar_fg_color;
+  color: $secondary_titlebar_fg_color;
 }
 
 UnityDecoration.left,
@@ -184,7 +184,7 @@ UnityDecoration.bottom {
 
 UnityDecoration.menuitem,
 UnityDecoration .menuitem {
-  color: gtkalpha(currentColor, $enabled_opacity);
+  color: gtkalpha(currentColor, $secondary_opacity);
 }
 
 UnityDecoration.menubar.menuitem:hover,
@@ -208,14 +208,14 @@ SheetStyleDialog.unity-force-quit {
 // Panel Style
 UnityPanelWidget,
 .unity-panel {
-  background-color: $topbar_color;
-  background-image: linear-gradient(to bottom, $topbar_color);
-  color: $topbar_fg_color;
+  background-color: $panel_bg_color;
+  background-image: linear-gradient(to bottom, $panel_bg_color);
+  color: $titlebar_fg_color;
 }
 
 UnityPanelWidget:backdrop,
 .unity-panel:backdrop {
-  color: $secondary_topbar_fg_color;
+  color: $secondary_titlebar_fg_color;
 }
 
 .unity-panel.menubar,
@@ -224,7 +224,7 @@ UnityPanelWidget:backdrop,
 
 .unity-panel.menuitem,
 .unity-panel .menuitem {
-  color: gtkalpha(currentColor, $enabled_opacity);
+  color: gtkalpha(currentColor, $secondary_opacity);
 }
 
 .unity-panel.menubar.menuitem:hover,
@@ -241,6 +241,5 @@ UnityPanelWidget:backdrop,
 .menu IdoPlaybackMenuItem.menuitem:active {
   -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
   animation: playbackmenuitem_spinner 1s infinite linear;
-  color: $selected_bg_color;
+  color: $primary_color;
 }
-

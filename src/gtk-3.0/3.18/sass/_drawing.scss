@@ -1,19 +1,7 @@
-// Drawing mixins
-
 // generic drawing of more complex things
 
-// shadows
 
-// Reference URL:
-// https://material-design.storage.googleapis.com/images/layout-principles-dimensionality-shadows-08_large_mdpi.png
-
-// FIXME: doesn't work 1.5px
-// $z-depth-1: 0 1px 1.5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
-$z-depth-1: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-$z-depth-2: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
-$z-depth-3: 0 10px 10px rgba(0, 0, 0, 0.19), 0 6px 3px rgba(0, 0, 0, 0.23);
-$z-depth-4: 0 14px 14px rgba(0, 0, 0, 0.25), 0 10px 5px rgba(0, 0, 0, 0.22);
-$z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
+// ripple effect animations
 
 @keyframes ripple_effect {
   from {
@@ -74,7 +62,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 
 // entries
 
-@mixin entry($t, $fc:$selected_bg_color) {
+@mixin entry($t, $fc:$primary_color) {
 //
 // Entries drawing function
 //
@@ -87,18 +75,18 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 
   @if $t==normal {
     transition: $longer_transition, $shadow_transition;
-    box-shadow: $z-depth-1;
-    background-color: if($fc!=$selected_bg_color, $fc, $base_color);
-    color: if($fc!=$selected_bg_color, $selected_fg_color, $fg_color);
+    box-shadow: $shadow_1;
+    background-color: if($fc!=$primary_color, $fc, $base_color);
+    color: if($fc!=$primary_color, $inverse_fg_color, $fg_color);
   }
 
   @if $t==focus {
-    box-shadow: $z-depth-2;
+    box-shadow: $shadow_2;
   }
 
   @if $t==insensitive {
-    color: $insensitive_fg_color;
-    background-color: $secondary_base_color;
+    color: $disabled_fg_color;
+    background-color: $alt_base_color;
   }
 
   @if $t==flat-normal {
@@ -110,7 +98,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
                                 to(transparent))
                                 0 0 0 / 0 0 0px;
     border-radius: 0;
-    box-shadow: inset 0 -1px if($fc!=$selected_bg_color, $fc, $track_color);
+    box-shadow: inset 0 -1px if($fc!=$primary_color, $fc, $fill_color);
     background-color: transparent;
     color: $fg_color;
   }
@@ -127,15 +115,15 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   }
 
   @if $t==flat-insensitive {
-    box-shadow: inset 0 -1px $track_color;
+    box-shadow: inset 0 -1px $fill_color;
     background-color: transparent;
-    color: $insensitive_fg_color;
+    color: $disabled_fg_color;
   }
 }
 
 // buttons
 
-@mixin button($t, $c:$light_color, $tc:$fg_color) {
+@mixin button($t, $c:$lighter_bg_color, $tc:$fg_color) {
 //
 // Button drawing function
 //
@@ -150,7 +138,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
 
   @if $t==normal {
     transition: $longer_transition, $shadow_transition;
-    box-shadow: $z-depth-1;
+    box-shadow: $shadow_1;
     background-color: $c;
     background-image: -gtk-gradient(radial,
                                     center center, 0,
@@ -162,7 +150,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   }
 
   @else if $t==hover {
-    box-shadow: $z-depth-2;
+    box-shadow: $shadow_2;
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.5,
@@ -175,26 +163,26 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   @else if $t==active {
     transition: $longer_transition, $shadow_transition, background-image 0;
     animation: ripple_effect $longer_duration $deceleration_curve forwards;
-    box-shadow: $z-depth-2;
+    box-shadow: $shadow_2;
     color: $fg_color;
   }
 
   @else if $t==insensitive {
     box-shadow: none;
-    background-color: $track_color;
-    color: if($tc!=$fg_color, $insensitive_fg_color, $insensitive_secondary_fg_color);
+    background-color: $fill_color;
+    color: if($tc!=$fg_color, $disabled_fg_color, $disabled_secondary_fg_color);
 
     > .label { color: inherit; }
   }
 
   @else if $t==checked {
-    background-color: $selected_bg_color;
-    color: $selected_fg_color;
+    background-color: $primary_color;
+    color: $inverse_fg_color;
   }
 
   @else if $t==checked-insensitive {
-    background-color: $track_color;
-    color: scale-alpha($selected_bg_color, $disabled_opacity);
+    background-color: $fill_color;
+    color: scale-alpha($primary_color, $disabled_opacity);
     > .label { color: inherit; }
   }
 
@@ -208,7 +196,7 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
                                     to(gtkalpha(currentColor, 0)),
                                     to(transparent)),
                       linear-gradient(to bottom, gtkalpha(currentColor, 0));
-    color: gtkalpha(currentColor, $enabled_opacity);
+    color: gtkalpha(currentColor, $secondary_opacity);
   }
 
   @else if $t==flat-hover {
@@ -232,25 +220,25 @@ $z-depth-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
   @else if $t==flat-insensitive {
     box-shadow: none;
     background-color: transparent;
-    color: if($tc != $fg_color, gtkalpha(currentColor, $disabled_opacity), gtkalpha(currentColor, $enabled_opacity * $disabled_opacity));
+    color: if($tc != $fg_color, gtkalpha(currentColor, $disabled_opacity), gtkalpha(currentColor, $secondary_opacity * $disabled_opacity));
 
     > .label { color: inherit; }
   }
 
   @else if $t==flat-checked {
-    background-color: $track_color;
+    background-color: $fill_color;
     color: currentColor;
   }
 
   @else if $t==flat-checked-insensitive {
-    background-color: $track_color;
+    background-color: $fill_color;
     color: gtkalpha(currentColor, $disabled_opacity);
 
     > .label { color: inherit; }
   }
 }
 
-@mixin overshoot($p, $t:normal, $c:$secondary_selected_bg_color) {
+@mixin overshoot($p, $t:normal, $c:$alt_primary_color) {
 //
 // overshoot
 //
