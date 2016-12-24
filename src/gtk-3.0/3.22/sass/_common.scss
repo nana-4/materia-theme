@@ -563,6 +563,23 @@ button {
   }
 
   .primary-toolbar & { -gtk-icon-shadow: none; } // tango icons don't need shadows
+
+  @at-root %circular_button,
+  &.close,
+  &.circular { // The Bloody Circul Button
+    border-radius: $circular_radius;
+    -gtk-outline-radius: $circular_radius;
+
+    // label { padding: 0; }
+  }
+
+  @at-root %small_button {
+    min-height: $small_size;
+    min-width: $small_size;
+    padding: 0;
+    border-radius: $circular_radius;
+    -gtk-outline-radius: $circular_radius;
+  }
 }
 
 %needs_attention {
@@ -3271,23 +3288,6 @@ cursor-handle {
 }
 
 .context-menu { font: initial; } // Decouple the font of context menus from their entry/textview
-
-%circular_button,
-button.close,
-button.circular { // FIXME: aggregate to buttons
-  border-radius: $circular_radius;
-  -gtk-outline-radius: $circular_radius;
-
-  // label { padding: 0; }
-}
-
-%small_button {
-  min-height: $small_size;
-  min-width: $small_size;
-  padding: 0;
-  border-radius: $circular_radius;
-  -gtk-outline-radius: $circular_radius;
-}
 
 // shortcut window keys
 .keycap {

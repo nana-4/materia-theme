@@ -547,6 +547,19 @@ button separator {
 .primary-toolbar
 button {
   -gtk-icon-shadow: none; }
+.inline-toolbar
+button:not(.text-button), check,
+radio, button.titlebutton, .nautilus-window headerbar > revealer > button, .raven .expander-button,
+button.close,
+button.circular {
+  border-radius: 9999px;
+  -gtk-outline-radius: 9999px; }
+spinbutton:not(.vertical) button, notebook > header tab button.flat, button.sidebar-button, .nautilus-window .floating-bar button, .gedit-document-panel row button.flat, .gedit-search-slider button:dir(ltr), .gedit-search-slider button:dir(rtl), .pluma-window paned.horizontal box.vertical box.horizontal button.flat {
+  min-height: 20px;
+  min-width: 20px;
+  padding: 0;
+  border-radius: 9999px;
+  -gtk-outline-radius: 9999px; }
 
 .stack-switcher >
 button.needs-attention > label,
@@ -2387,21 +2400,6 @@ cursor-handle {
 
 .context-menu {
   font: initial; }
-
-.inline-toolbar
-button:not(.text-button), check,
-radio, button.titlebutton, .nautilus-window headerbar > revealer > button, .raven .expander-button,
-button.close,
-button.circular {
-  border-radius: 9999px;
-  -gtk-outline-radius: 9999px; }
-
-spinbutton:not(.vertical) button, notebook > header tab button.flat, button.sidebar-button, .nautilus-window .floating-bar button, .gedit-document-panel row button.flat, .gedit-search-slider button:dir(ltr), .gedit-search-slider button:dir(rtl), .pluma-window paned.horizontal box.vertical box.horizontal button.flat {
-  min-height: 20px;
-  min-width: 20px;
-  padding: 0;
-  border-radius: 9999px;
-  -gtk-outline-radius: 9999px; }
 
 .keycap {
   min-width: 12px;
