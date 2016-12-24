@@ -3297,7 +3297,7 @@ button.circular { // FIXME: aggregate to buttons
   font-size: smaller;
 }
 
-*:drop(active) { // FIXME needs to be done widget by widget, this wildcard should really die
+:not(decoration):not(window):drop(active) { // FIXME needs to be done widget by widget, this wildcard should really die
   transition: $longer_transition;
   box-shadow: $shadow_1, inset 0 0 0 2px $accent_color;
   caret-color: $accent_color;
