@@ -1124,16 +1124,16 @@ headerbar {
   }
 }
 
-.background:not(.tiled):not(.maximized):not(.fullscreen) .titlebar {
+.background:not(.tiled):not(.maximized):not(.fullscreen):not(.solid-csd) .titlebar {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
 }
 
 headerbar {
-  window:not(.tiled):not(.maximized):not(.fullscreen) separator:first-child + &, // tackles the paned container case
-  window:not(.tiled):not(.maximized):not(.fullscreen) &:first-child { border-top-left-radius: 2px; }
+  window:not(.tiled):not(.maximized):not(.fullscreen):not(.solid-csd) separator:first-child + &, // tackles the paned container case
+  window:not(.tiled):not(.maximized):not(.fullscreen):not(.solid-csd) &:first-child { border-top-left-radius: 2px; }
 
-  window:not(.tiled):not(.maximized):not(.fullscreen) &:last-child { border-top-right-radius: 2px; }
+  window:not(.tiled):not(.maximized):not(.fullscreen):not(.solid-csd) &:last-child { border-top-right-radius: 2px; }
 }
 
 .titlebar:not(headerbar) {
