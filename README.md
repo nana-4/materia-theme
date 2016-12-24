@@ -49,8 +49,9 @@ Arch Linux users can install from [the AUR package](https://aur.archlinux.org/pa
   * for system-wide installation to `/usr/share/themes`
   * for user-specific installation to `~/.themes`
 3. Select the theme via `gnome-tweak-tool` or other suitable tools.
-4. [Optional] Set the font size to `10.5` (= 14px at 96dpi) or `9.75` (= 13px at 96dpi).
-5. [Optional] Open the `chrome` folder and drag and drop the `.crx` files onto the Chrome/Chromium extensions page (`chrome://extensions/`).
+4. Optionally, do the following works.
+  * Set the font size to `10.5` (= 14px at 96dpi) or `9.75` (= 13px at 96dpi).
+  * Open the `chrome` folder and drag and drop the `.crx` files onto the Chrome/Chromium extensions page (`chrome://extensions/`).
 
 #### Note if you want to clone from the repository
 The `master` branch is currently being built for GNOME 3.22.  
@@ -83,7 +84,7 @@ But please **be careful** because if it fails, the desktop environment may not o
   sudo cp -div gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell
   ```
 
-3. Restart GNOME Shell (press <kbd>Alt</kbd>+<kbd>F2</kbd>, then type `r`).
+3. Restart GNOME Shell (press <kbd>Alt</kbd> + <kbd>F2</kbd>, then type `r`).
 
 ### Uninstallation
 1. Restore to original theme from the backup.
@@ -92,7 +93,7 @@ But please **be careful** because if it fails, the desktop environment may not o
   sudo mv -iv /usr/share/gnome-shell/gnome-shell-theme.gresource~ /usr/share/gnome-shell/gnome-shell-theme.gresource
   ```
 
-2. Restart GNOME Shell (press <kbd>Alt</kbd>+<kbd>F2</kbd>, then type `r`).
+2. Restart GNOME Shell (press <kbd>Alt</kbd> + <kbd>F2</kbd>, then type `r`).
 
 Screenshots
 -----------
