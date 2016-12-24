@@ -24,7 +24,6 @@ Requirements
 ##### Supported desktop environments are:
 * GNOME Shell 3.14 or later
 * Unity 7.4 or later
-* Budgie 10.2.5 or later
 * MATE 1.14 or later
 
 Installation
@@ -40,7 +39,7 @@ Installation
   | GNOME 3.14 | n/a | n/a | [:arrow_down:v3.14.20160921](../../releases/download/v3.14.20160921/Flat-Plat-3.14.20160921.tar.gz) | n/a |
   > **:beginner: Tips:**
   > * Choose from _GNOME 3.22_ if you are using ~~Unity 7.6 (Ubuntu 17.04)~~ or MATE 1.16.
-  > * Choose from _GNOME 3.20_ if you are using Unity 7.5 (Ubuntu 16.10), Budgie 10.2.x or MATE 1.14.
+  > * Choose from _GNOME 3.20_ if you are using Unity 7.5 (Ubuntu 16.10) or MATE 1.14.
   > * Choose from _GNOME 3.18_ if you are using Unity 7.4 (Ubuntu 16.04).
 2. Extract it to the theme directory.
   * for system-wide installation to `/usr/share/themes`
