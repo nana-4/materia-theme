@@ -1,6 +1,6 @@
 Flat-Plat
 =========
-Flat-Plat is a [Material Design](https://material.io/)-like theme for GNOME/GTK+ based desktop environments.  
+Flat-Plat is a [Material Design](https://material.io)-like theme for GNOME/GTK+ based desktop environments.  
 It supports GTK3, GTK2, Metacity, GNOME Shell, Unity, MATE, LightDM and GDM.
 
 Features
@@ -29,7 +29,7 @@ Requirements
 
 Installation
 ------------
-Arch Linux users can install from [the AUR package](https://aur.archlinux.org/packages/flatplat-theme/) maintained by [@cthbleachbit](https://github.com/cthbleachbit).
+Arch Linux users can install from [the AUR package](https://aur.archlinux.org/packages/flatplat-theme) maintained by [@cthbleachbit](https://github.com/cthbleachbit).
 
 ### Manual Installation
 1. Download an archive from the table.
@@ -51,13 +51,13 @@ Arch Linux users can install from [the AUR package](https://aur.archlinux.org/pa
 3. Select the theme via `gnome-tweak-tool` or other suitable tools.
 4. Optionally, do the following works.
   * Set the font size to `10.5` (= 14px at 96dpi) or `9.75` (= 13px at 96dpi).
-  * Open the `chrome` folder and drag and drop the `.crx` files onto the Chrome/Chromium extensions page (`chrome://extensions/`).
+  * Open the `chrome` folder and drag and drop the `.crx` files onto the Chrome/Chromium extensions page (`chrome://extensions`).
 
 #### Note if you want to clone from the repository
 The `master` branch is currently being built for GNOME 3.22.  
 If you want to use [other versions](../../branches/all), you need to specify the branch as follows:
 
-```sh
+```
 git clone -b 3.18 https://github.com/nana-4/Flat-Plat.git
 ```
 
@@ -73,15 +73,15 @@ But please **be careful** because if it fails, the desktop environment may not o
 ### Installation
 1. Backup the existing `.gresource` file. _(Skip this step if you just update it.)_
 
-  ```sh
-  sudo cp -i /usr/share/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell/gnome-shell-theme.gresource~
+  ```
+  sudo cp -iv /usr/share/gnome-shell/gnome-shell-theme.gresource{,~}
   ```
 
 2. Replace it with the new one.
 
-  ```sh
+  ```
   cd /usr/share/themes/Flat-Plat || cd ~/.themes/Flat-Plat
-  sudo cp -div gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell
+  sudo cp -iv {.,/usr/share}/gnome-shell/gnome-shell-theme.gresource
   ```
 
 3. Restart GNOME Shell (press <kbd>Alt</kbd> + <kbd>F2</kbd>, then type `r`).
@@ -89,8 +89,8 @@ But please **be careful** because if it fails, the desktop environment may not o
 ### Uninstallation
 1. Restore to original theme from the backup.
 
-  ```sh
-  sudo mv -iv /usr/share/gnome-shell/gnome-shell-theme.gresource~ /usr/share/gnome-shell/gnome-shell-theme.gresource
+  ```
+  sudo mv -iv /usr/share/gnome-shell/gnome-shell-theme.gresource{~,}
   ```
 
 2. Restart GNOME Shell (press <kbd>Alt</kbd> + <kbd>F2</kbd>, then type `r`).
@@ -105,11 +105,12 @@ Screenshots
 ![GDM Lock Screen](../images/Screenshot3.png?raw=true)
 ##### GDM Unlock Screen
 ![GDM Unlock Screen](../images/Screenshot4.png?raw=true)
-<sub>**Screenshots Details:** Icons: [Paper](https://github.com/snwh/paper-icon-theme) | Font: [M+ 1C](https://mplus-fonts.osdn.jp/) 10.5pt | Dock's icon size: 48px + fixed | [Wallpapers](http://imgur.com/a/v2Ovx)</sub>
+<sub>**Screenshots Details:** Icons: [Paper](https://github.com/snwh/paper-icon-theme) | Font: [M+ 1C](https://mplus-fonts.osdn.jp) 10.5pt | Dock's icon size: 48px + fixed | [Wallpapers](http://imgur.com/a/v2Ovx)</sub>
 
-Bug Reporting
--------------
-If you find a bug, please report it here: https://github.com/nana-4/Flat-Plat/issues
+Contributing
+------------
+If you find any bugs or mistakes, please report it to [GitHub's issue tracker](https://github.com/nana-4/Flat-Plat/issues) or send a pull request.  
+Thank you in advance for your cooperation. :+1:
 
 Planned Features
 ----------------
