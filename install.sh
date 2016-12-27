@@ -1,8 +1,13 @@
 #!/bin/bash
 
-gnomever=$(echo $(gnome-shell --version) | cut -d ' ' -f 3 | cut -d . -f -2)
+gnomever=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -2)
 repodir=$(cd $(dirname $0) && pwd)
 srcdir=${repodir}/src
+
+# FIXME:
+if [ -z "$gnomever" ] ; then
+	gnomever=3.18
+fi
 
 echo
 
