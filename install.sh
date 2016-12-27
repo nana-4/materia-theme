@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 gnomever=$(echo $(gnome-shell --version) | cut -d ' ' -f 3 | cut -d . -f -2)
 repodir=$(cd $(dirname $0) && pwd)
