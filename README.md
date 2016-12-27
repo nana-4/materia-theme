@@ -17,13 +17,13 @@ Features
 
 Requirements
 ------------
-- GTK+ 3.14 or later
+- GTK+ 3.18 or later
 - `gnome-themes-standard`
 - pixmap (or pixbuf) engine
 - murrine engine
 
 ##### Supported desktop environments are:
-- GNOME Shell 3.14 or later
+- GNOME Shell 3.18 or later
 - Unity 7.4 or later
 - MATE 1.14 or later
 
@@ -32,34 +32,39 @@ Installation
 Arch Linux users can install from the [AUR package](https://aur.archlinux.org/packages/flatplat-theme) maintained by [@cthbleachbit](https://github.com/cthbleachbit).
 
 ### Manual Installation
-1. Download an archive from the table.
+1. Download and extract the [stable archive](../../releases).
 
-  |   | :black_circle:Dark titlebar | :black_circle:Dark titlebar (compact) | :white_circle:Light titlebar | :white_circle:Light titlebar (compact) |
-  |:--|:-:|:-:|:-:|:-:|
-  | GNOME 3.22 | [:arrow_down:v3.22.20161109](../../releases/download/v3.22.20161109/Flat-Plat-3.22.20161109.tar.gz) | [:arrow_down:v3.22.20161109](../../releases/download/v3.22.20161109/Flat-Plat-laptop-3.22.20161109.tar.gz) | [:arrow_down:v3.22.20161109](../../releases/download/v3.22.20161109/Flat-Plat-light-3.22.20161109.tar.gz) | [:arrow_down:v3.22.20161109](../../releases/download/v3.22.20161109/Flat-Plat-light-laptop-3.22.20161109.tar.gz) |
-  | GNOME 3.20 | [:arrow_down:v3.20.20161109](../../releases/download/v3.20.20161109/Flat-Plat-3.20.20161109.tar.gz) | [:arrow_down:v3.20.20161109](../../releases/download/v3.20.20161109/Flat-Plat-laptop-3.20.20161109.tar.gz) | [:arrow_down:v3.20.20161109](../../releases/download/v3.20.20161109/Flat-Plat-light-3.20.20161109.tar.gz) | [:arrow_down:v3.20.20161109](../../releases/download/v3.20.20161109/Flat-Plat-light-laptop-3.20.20161109.tar.gz) |
-  | GNOME 3.18 | [:arrow_down:v3.18.20161109](../../releases/download/v3.18.20161109/Flat-Plat-3.18.20161109.tar.gz) | n/a | [:arrow_down:v3.18.20161109](../../releases/download/v3.18.20161109/Flat-Plat-light-3.18.20161109.tar.gz) | n/a |
-  | GNOME 3.16 | n/a | n/a | [:arrow_down:v3.16.20160821](../../releases/download/v3.16.20160821/Flat-Plat-3.16.20160821.tar.gz) | n/a |
-  | GNOME 3.14 | n/a | n/a | [:arrow_down:v3.14.20160921](../../releases/download/v3.14.20160921/Flat-Plat-3.14.20160921.tar.gz) | n/a |
-  > **:beginner: Tips:**
-  > - Choose from _GNOME 3.22_ if you are using MATE 1.16.
-  > - Choose from _GNOME 3.20_ if you are using Unity 7.5 (Ubuntu 16.10) or MATE 1.14.
-  > - Choose from _GNOME 3.18_ if you are using Unity 7.4 (Ubuntu 16.04).
-2. Extract it to the theme directory.
-  - for system-wide installation to `/usr/share/themes`
-  - for user-specific installation to `~/.themes`
+  ```sh
+  cd /tmp
+  curl -sL https://github.com/nana-4/Flat-Plat/archive/v20161227.tar.gz | tar xz
+  ```
+
+2. In terminal, move to the extracted directory and run `./install.sh` as root.
+
+  ```sh
+  cd Flat-Plat-20161227 && sudo ./install.sh
+  ```
+
 3. Select the theme via `gnome-tweak-tool` or other suitable tools.
-4. Optionally, do the following works.
-  - Set the font size to `10.5` (= 14px at 96dpi) or `9.75` (= 13px at 96dpi).
-  - Open the `chrome` folder and drag and drop the `.crx` files onto the Chrome/Chromium extensions page (`chrome://extensions`).
 
-#### Note if you want to clone from the repository
-The `master` branch is currently being built for GNOME 3.22.  
-If you want to use [other versions](../../branches/all), you need to specify the branch as follows:
+4. Optionally, configure the following settings:
+  - Set the system font size to `9.75` (= 13px at 96dpi) or `10.5` (= 14px at 96dpi).
+  - Open the `chrome` folder on `/usr/share/themes/Flat-Plat*/` and drag and drop the `.crx` files onto the Chrome/Chromium extensions page (`chrome://extensions`).
 
-```sh
-git clone -b 3.18 https://github.com/nana-4/Flat-Plat.git
-```
+---
+
+**Note:** Series 3.14 and 3.16 are no longer supported. If you want to get the final version, you can download from the link below.
+- [:arrow_down: v3.14.20160921](../../releases/download/v3.14.20160921/Flat-Plat-3.14.20160921.tar.gz)
+- [:arrow_down: v3.16.20160821](../../releases/download/v3.16.20160821/Flat-Plat-3.16.20160821.tar.gz)
+
+---
+
+### Manual Uninstallation
+- Delete the installed directories.
+
+  ```sh
+  sudo rm -rf /usr/share/themes/Flat-Plat{,-compact,-dark,-dark-compact,-light,-light-compact}
+  ```
 
 GDM (Lock/Login Screen)
 -----------------------
@@ -68,23 +73,19 @@ But please **be careful** because if it fails, the desktop environment may not o
 > **:warning: Cautions:**
 > - When applying this, other third-party GNOME Shell themes would look broken.
 > - If GNOME Shell has been updated, you will need to install this again.
-> - Not supported for GNOME 3.14.
 
 ### Installation
-1. Backup the existing `.gresource` file. _(Skip this step if you just update it.)_
+1. Back up and replace the existing `.gresource` file after selecting the GTK+ theme.
 
   ```sh
-  sudo cp -iv /usr/share/gnome-shell/gnome-shell-theme.gresource{,~}
+  GTK_THEME=$(gsettings get org.gnome.desktop.interface gtk-theme | sed "s/'//g")
+  sudo cp -iv --backup /usr/share{/themes/$GTK_THEME,}/gnome-shell/gnome-shell-theme.gresource
   ```
 
-2. Replace it with the new one.
+  > _Developer note:_  
+  > If you don't want to overwrite the backup on the second and subsequent runs, delete the `--backup` option.
 
-  ```sh
-  cd /usr/share/themes/Flat-Plat || cd ~/.themes/Flat-Plat
-  sudo cp -iv {.,/usr/share}/gnome-shell/gnome-shell-theme.gresource
-  ```
-
-3. Restart GNOME Shell (press <kbd>Alt</kbd> + <kbd>F2</kbd>, then type `r`).
+2. Restart GNOME Shell (press <kbd>Alt</kbd> + <kbd>F2</kbd>, then type `r`).
 
 ### Uninstallation
 1. Restore to original theme from the backup.
