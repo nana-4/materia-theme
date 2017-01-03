@@ -56,4 +56,4 @@ Upstream theme sources:
 Tips:
 - [Unity/Theming](https://wiki.ubuntu.com/Unity/Theming)
 - [Material Design Guidelines](https://www.material.io/guidelines/)
-- [Personal CSS Guideline](https://github.com/nana-4/Flat-Plat/wiki/My-GTK3-CSS-Order)
+- [Personal CSS Guidelines](https://github.com/nana-4/Flat-Plat/wiki/CSS-Guidelines)

@@ -11,9 +11,6 @@
 
 @import 'color-palette';
 
-// based border and highlight values:
-// https://material.google.com/style/icons.html#icons-product-icons
-
 // Foreground colors
 $dark_fg_color: scale-alpha($black, 0.8);
 $light_fg_color: $white;
@@ -84,4 +81,6 @@ $unity_highlight_color: if($titlebar == 'dark', scale-alpha($white, 0.1), scale-
 $titlebar_highlight_color: if($titlebar == 'dark', $alt_highlight_color, $highlight_color);
 $titlebar_indicator_color: if($titlebar == 'dark', currentColor, $primary_color);
 
+// FIXME: @placeholder_text_color should really use $tertiary_fg_color, but
+// doesn't work translucent colors here. So we use an opaque color instead.
 $placeholder_text_color: mix($fg_color, $base_color, percentage($tertiary_opacity));
