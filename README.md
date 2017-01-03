@@ -124,7 +124,7 @@ Planned Features
 
 License
 -------
-Flat-Plat is available under the terms of the GPL. See the [`COPYING`](COPYING) file for details.
+Flat-Plat is distributed under the terms of the GNU General Public License, version 2 or later. See the [`COPYING`](COPYING) file for details.
 
 Acknowledgments
 ---------------
