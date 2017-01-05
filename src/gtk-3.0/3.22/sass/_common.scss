@@ -1458,6 +1458,27 @@ menuitem {
   }
 }
 
+// FIXME: THIS IS A REALLY UGLY WORKAROUND!
+// Electron/Atom render all translucent colors in opaque colors.
+// It's a very critical issue for this theme and should be fixed by upstream...
+.popup:not(.csd) menu {
+  $opaque_fg_color: if($variant == 'light', mix($black, $base_color, percentage(0.8)), $white);
+  $opaque_semi_fill_color: mix($opaque_fg_color, $base_color, percentage($lower_opacity / 2));
+  $opaque_disabled_fg_color: mix($opaque_fg_color, $base_color, percentage($disabled_opacity));
+  $opaque_tertiary_fg_color: mix($opaque_fg_color, $base_color, percentage($tertiary_opacity));
+
+  menuitem {
+    color: $opaque_fg_color;
+
+    &:hover { background-color: $opaque_semi_fill_color; }
+
+    &:disabled { color: $opaque_disabled_fg_color; } // separator/border also use this color.
+  }
+
+  // TODO: not working this, where/how i can set the accelerators?
+  accelerator { color: $opaque_tertiary_fg_color; }
+}
+
 
 /************
  * Popovers *
