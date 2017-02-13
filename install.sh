@@ -1,6 +1,6 @@
 #!/bin/bash
 
-gnomever=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -2)
+gnomever=$(/sbin/ldconfig -v -N 2>/dev/null | grep -oE 'libgtk-3\.so\.0\.([[:digit:]]{1,2})00' | sed 's|libgtk-3\.so\.0\.\([[:digit:]]\{1,2\}\)00|3.\1|')
 repodir=$(cd $(dirname $0) && pwd)
 srcdir=${repodir}/src
 
