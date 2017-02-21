@@ -46,6 +46,7 @@ for color in '' '-light' ; do
 			extensions \
 			no-events.svg \
 			no-notifications.svg \
+			pad-osd.css \
 			process-working.svg \
 			${themedir}/gnome-shell
 		if [ "$color" != '-dark' ] ; then
