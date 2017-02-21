@@ -3,7 +3,7 @@
 repodir=$(cd $(dirname $0) && pwd)
 srcdir=${repodir}/src
 
-if type gnome-shell > /dev/null ; then
+if type -p gnome-shell > /dev/null ; then
 	gnomever=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -2)
 else
 	gnomever=3.18
