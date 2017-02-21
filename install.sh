@@ -48,14 +48,14 @@ for color in '' '-light' ; do
 			no-notifications.svg \
 			process-working.svg \
 			${themedir}/gnome-shell
-		if [ "$color" == '-dark' ] ; then
-			cp -ur \
-				assets${color} \
-				${themedir}/gnome-shell/assets
-		else
+		if [ "$color" != '-dark' ] ; then
 			cp -ur \
 				assets \
 				${themedir}/gnome-shell
+		else
+			cp -ur \
+				assets${color} \
+				${themedir}/gnome-shell/assets
 		fi
 		cp -ur \
 			gnome-shell${color}${size}.css \
@@ -72,20 +72,26 @@ for color in '' '-light' ; do
 			apps.rc \
 			main.rc \
 			${themedir}/gtk-2.0
-		if [ "$color" == '-dark' ] ; then
-			cp -ur \
-				assets${color} \
-				${themedir}/gtk-2.0/assets
-		else
+		if [ "$color" != '-dark' ] ; then
 			cp -ur \
 				assets \
 				${themedir}/gtk-2.0
+		else
+			cp -ur \
+				assets${color} \
+				${themedir}/gtk-2.0/assets
 		fi
 		cp -ur \
 			gtkrc${color} \
 			${themedir}/gtk-2.0/gtkrc
 
 		# Install GTK+ 3 Theme
+		install -d ${themedir}/gtk-common
+		cd ${srcdir}/gtk-3.0/gtk-common
+		cp -ur \
+			assets \
+			${themedir}/gtk-common
+
 		for version in '3.18' '3.20' '3.22' ; do
 			if [ "$version" == '3.18' ] ; then
 				install -d ${themedir}/gtk-3.0
@@ -96,9 +102,7 @@ for color in '' '-light' ; do
 				cp -ur \
 					gtk${color}.css \
 					${themedir}/gtk-3.0/gtk.css
-				if [ "$color" == '-dark' ] ; then
-					:
-				else
+				if [ "$color" != '-dark' ] ; then
 					cp -ur \
 						gtk-dark.css \
 						${themedir}/gtk-3.0
@@ -112,9 +116,7 @@ for color in '' '-light' ; do
 				cp -ur \
 					gtk${color}${size}.css \
 					${themedir}/gtk-${version}/gtk.css
-				if [ "$color" == '-dark' ] ; then
-					:
-				else
+				if [ "$color" != '-dark' ] ; then
 					cp -ur \
 						gtk-dark${size}.css \
 						${themedir}/gtk-${version}/gtk-dark.css
@@ -122,30 +124,24 @@ for color in '' '-light' ; do
 			fi
 		done
 
-		install -d ${themedir}/gtk-common
-		cd ${srcdir}/gtk-3.0/gtk-common
-		cp -ur \
-			assets \
-			${themedir}/gtk-common
-
 		# Install Metacity Theme
 		install -d ${themedir}/metacity-1
 		cd ${srcdir}/metacity-1
 		cp -ur \
 			*.svg \
 			${themedir}/metacity-1
-		if [ "$color" == '-light' ] ; then
+		if [ "$color" != '-light' ] ; then
+			cp -ur \
+				metacity-theme-2.xml \
+				metacity-theme-3.xml \
+				${themedir}/metacity-1
+		else
 			cp -ur \
 				metacity-theme-2${color}.xml \
 				${themedir}/metacity-1/metacity-theme-2.xml
 			cp -ur \
 				metacity-theme-3${color}.xml \
 				${themedir}/metacity-1/metacity-theme-3.xml
-		else
-			cp -ur \
-				metacity-theme-2.xml \
-				metacity-theme-3.xml \
-				${themedir}/metacity-1
 		fi
 
 		# Install Unity Theme
@@ -156,14 +152,14 @@ for color in '' '-light' ; do
 			*.png \
 			*.json \
 			${themedir}/unity
-		if [ "$color" == '-light' ] ; then
-			cp -urT \
-				buttons${color} \
-				${themedir}/unity/buttons
-		else
+		if [ "$color" != '-light' ] ; then
 			cp -ur \
 				buttons \
 				${themedir}/unity
+		else
+			cp -urT \
+				buttons${color} \
+				${themedir}/unity/buttons
 		fi
 	done
 done
