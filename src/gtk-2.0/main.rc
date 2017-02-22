@@ -1,4 +1,9 @@
 # vim:set ft=gtkrc ts=2 sw=2 sts=2 ai et:
+#
+# This is the main theme file, handling all the default widgets and theme
+# properties. Since GTK+ 2 is old, we need to overcome some of its limitations,
+# which is also mostly done in this file. Sadly not all of them can be overcome
+# so there will always be a visible difference between the GTK+ 2 and 3 theme.
 
 style "default" {
 
@@ -1162,9 +1167,8 @@ style "default" {
     # Scales #
     ##########
 
-    # Troughs
-    # They are overrided later on
-    # We set them here too because some widgets don't specify their orientation
+    # Troughs, overrided later on. We set them here too because some widgets
+    # don't specify their orientation.
 
     image {
       function    = BOX
@@ -2208,9 +2212,10 @@ style "combobox_entry" {
 
 style "combo_button_padding" {
 
-  # Since one side of the button is missing, we need to shift the arrow a little to the right
+  # Since one side of the button is missing, we need to shift the arrow a
+  # little to the right.
   # This is the same thing we've done above but the combo, unlike the combobox,
-  # uses padding the same way as a button
+  # uses padding the same way as a button.
   GtkButton::inner-border = {4, 7, 4, 4}
 
 }
@@ -2750,74 +2755,84 @@ style "disable_separator" {
 
 }
 
-# Default style, containing most of the stuff
-class "GtkWidget"            style "default"
+# Default style, containing theme properties and trying to match every widget as
+# much as possible, which is not only faster than trying to match every widget
+# by its own but also less bug-prune and more consistent. However there is some
+# widget specific stuff that needs to be taken care of, which is the point of
+# every other style below.
+class "GtkWidget" style "default"
 
-# Override padding,          style and colour
-class "GtkButton"            style "button"
-class "GtkLinkButton"        style "link_button"
-class "GtkEntry"             style "entry"
-class "GtkOldEditable"       style "entry"
-class "GtkSpinButton"        style "spinbutton"
-class "GtkNotebook"          style "notebook"
-class "GtkHScale"            style "scale_horz"
-class "GtkVScale"            style "scale_vert"
-class "GtkProgressBar"       style "progressbar"
-class "GtkScrolledWindow"    style "scrolled_window"
-class "GtkFrame"             style "frame"
-class "GtkSeparatorToolItem" style "toolbar_separator"
-class "GtkMenuBar"           style "menubar"
-class "GtkMenu"              style "menu"
-class "GtkTextView"          style "textview"
+ ######################################
+ # Override padding, style and colour #
+ ######################################
+
+class "GtkButton"                                                  style "button"
+class "GtkLinkButton"                                              style "link_button"
+class "GtkEntry"                                                   style "entry"
+class "GtkOldEditable"                                             style "entry"
+class "GtkSpinButton"                                              style "spinbutton"
+class "GtkNotebook"                                                style "notebook"
+class "GtkHScale"                                                  style "scale_horz"
+class "GtkVScale"                                                  style "scale_vert"
+class "GtkProgressBar"                                             style "progressbar"
+class "GtkScrolledWindow"                                          style "scrolled_window"
+class "GtkFrame"                                                   style "frame"
+class "GtkSeparatorToolItem"                                       style "toolbar_separator"
+class "GtkMenuBar"                                                 style "menubar"
+class "GtkMenu"                                                    style "menu"
+class "GtkTextView"                                                style "textview"
 
 # Menu and menubar items
-widget_class "*<GtkMenuItem>*"              style "menu_item"
-widget_class "*<GtkMenuBar>.<GtkMenuItem>*" style "menubar_item"
-widget_class "*<GtkSeparatorMenuItem>*"     style "separator_menu_item"
+widget_class "*<GtkMenuItem>*"                                     style "menu_item"
+widget_class "*<GtkMenuBar>.<GtkMenuItem>*"                        style "menubar_item"
+widget_class "*<GtkSeparatorMenuItem>*"                            style "separator_menu_item"
 
 # Treeview buttons
-widget_class "*<GtkTreeView>*<GtkButton>*" style "treeview_header"
+widget_class "*<GtkTreeView>*<GtkButton>*"                         style "treeview_header"
 
 # Give the file chooser toolbar a border
-widget_class "*<GtkFileChooserDefault>*<GtkToolbar>" style "inline_toolbar"
+widget_class "*<GtkFileChooserDefault>*<GtkToolbar>"               style "inline_toolbar"
 
 # Fix padding on regular comboboxes
-widget_class "*<GtkComboBox>.<GtkButton>" style "combobox"
+widget_class "*<GtkComboBox>.<GtkButton>"                          style "combobox"
 # And disable separators on them
-widget_class "*<GtkComboBox>.<GtkButton>*<GtkSeparator>" style "disable_separator"
-widget_class "*<GtkFontButton>*<GtkSeparator>"           style "disable_separator"
-widget_class "*<GtkFileChooserButton>*<GtkSeparator>"    style "disable_separator"
+widget_class "*<GtkComboBox>.<GtkButton>*<GtkSeparator>"           style "disable_separator"
+widget_class "*<GtkFontButton>*<GtkSeparator>"                     style "disable_separator"
+widget_class "*<GtkFileChooserButton>*<GtkSeparator>"              style "disable_separator"
 
 # Join together the ComboBoxEntry entry and button
-widget_class "*<GtkComboBoxEntry>*"  style "combobox_entry"
+widget_class "*<GtkComboBoxEntry>*"                                style "combobox_entry"
 
 # Join the Combo entry and button
-widget_class "*<GtkCombo>*"  style "combobox_entry"
-# Tweak the padding on the button a little bit because it uses it a bit differently
-widget_class "*<GtkCombo>.<GtkButton>" style "combo_button_padding"
+widget_class "*<GtkCombo>*"                                        style "combobox_entry"
+# Tweak the padding on the button a little bit because it
+# uses it a bit differently
+widget_class "*<GtkCombo>.<GtkButton>"                             style "combo_button_padding"
 
-# Alas we cannot do the same for ComboBoxText because there isn't a way to apply the style to only
-# the comboboxes that have an entry inside
+# Alas we cannot do the same for ComboBoxText because there
+# isn't a way to apply the style to only the comboboxes that
+# have an entry inside
 
 # Tool buttons have different styles
-widget_class "*<GtkToolButton>*<GtkButton>"                      style "tool_button"
-widget_class "*<GtkVBox>*<GtkEventBox>.<GtkToolbar>*<GtkButton>" style "tool_button"
+widget_class "*<GtkToolButton>*<GtkButton>"                        style "tool_button"
+widget_class "*<GtkVBox>*<GtkEventBox>.<GtkToolbar>*<GtkButton>"   style "tool_button"
 
 # Notebooks
-widget_class "*<GtkNotebook>.<GtkLabel>" style "notebook_tab_label"
-widget_class "*<GtkNotebook>.<GtkHBox>.<GtkLabel>" style "notebook_tab_label"
+widget_class "*<GtkNotebook>.<GtkLabel>"                           style "notebook_tab_label"
+widget_class "*<GtkNotebook>.<GtkHBox>.<GtkLabel>"                 style "notebook_tab_label"
 
 # Notebooks are white, act accordingly
-widget_class "*<GtkNotebook>*<GtkEntry>"                        style "notebook_entry"
-widget_class "*<GtkNotebook>*<GtkProgressBar>"                  style "notebook_bg"
-widget_class "*<GtkNotebook>*<GtkSpinButton>"                   style "notebook_bg"
-widget_class "*<GtkNotebook>*<GtkScrolledWindow>*<GtkViewport>" style "notebook_bg"
-widget_class "*<GtkNotebook>*<GimpRuler>"                       style "notebook_bg"
-widget_class "*<GtkNotebook>.<GimpDisplayShell>*<GtkEventBox>"  style "notebook_bg"
-widget_class "*<GtkNotebook>*<GtkComboBoxEntry>*"               style "notebook_combo"
-widget_class "*<GtkNotebook>*<GtkCombo>*"                       style "notebook_combo"
+widget_class "*<GtkNotebook>*<GtkEntry>"                           style "notebook_entry"
+widget_class "*<GtkNotebook>*<GtkProgressBar>"                     style "notebook_bg"
+widget_class "*<GtkNotebook>*<GtkSpinButton>"                      style "notebook_bg"
+widget_class "*<GtkNotebook>*<GtkScrolledWindow>*<GtkViewport>"    style "notebook_bg"
+widget_class "*<GtkNotebook>*<GimpRuler>"                          style "notebook_bg"
+widget_class "*<GtkNotebook>.<GimpDisplayShell>*<GtkEventBox>"     style "notebook_bg"
+widget_class "*<GtkNotebook>*<GtkComboBoxEntry>*"                  style "notebook_combo"
+widget_class "*<GtkNotebook>*<GtkCombo>*"                          style "notebook_combo"
 
-# However, stuff inside eventboxes inside notebooks is grey again, react
+# However, stuff inside eventboxes inside notebooks is grey
+# again, react
 widget_class "*<GtkNotebook>*<GtkEventBox>*<GtkEntry>"             style "normal_entry"
 widget_class "*<GtkNotebook>*<GtkEventBox>*<GtkProgressBar>"       style "normal_bg"
 widget_class "*<GtkNotebook>*<GtkEventBox>*<GtkSpinButton>"        style "normal_bg"
@@ -2826,17 +2841,18 @@ widget_class "*<GtkNotebook>*<GtkEventBox>*<GtkCombo>*"            style "combob
 widget_class "*<GtkNotebook>*<GtkEventBox>*<GtkCombo>.<GtkButton>" style "combo_button_padding"
 
 # Button labels
-widget_class "*<GtkButton>*<GtkLabel>" style "button_label"
+widget_class "*<GtkButton>*<GtkLabel>"                             style "button_label"
 
 # Checkbutton labels
-widget_class "*<GtkCheckButton>.<GtkLabel>" style "checkbutton_label"
+widget_class "*<GtkCheckButton>.<GtkLabel>"                        style "checkbutton_label"
 
-# ComboBoxes tend to draw the button label with text[] instead of fg[], we need to fix that
-widget_class "*<GtkComboBox>*<GtkCellView>" style "combobox_cellview"
+# ComboBoxes tend to draw the button label with text[]
+# instead of fg[], we need to fix that
+widget_class "*<GtkComboBox>*<GtkCellView>"                        style "combobox_cellview"
 
 # Disable white text shadows
-widget_class "*<GtkLabel>"    style "disable_text_shadow"
-widget_class "*<GtkCellView>" style "disable_text_shadow"
+widget_class "*<GtkLabel>"                                         style "disable_text_shadow"
+widget_class "*<GtkCellView>"                                      style "disable_text_shadow"
 
 # GTK tooltips
-widget "gtk-tooltip*" style "tooltip"
+widget "gtk-tooltip*"                                              style "tooltip"

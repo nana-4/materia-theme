@@ -1,8 +1,8 @@
 # vim:set ft=gtkrc ts=2 sw=2 sts=2 ai et:
-
-style "toplevel_hack" {
-  engine "adwaita" {}
-}
+#
+# This file, unlike hacks.rc, contains legitimate cases we need to handle, e.g.
+# custom widgets, programs giving us a chance to alter their UI to fit more with
+# the theme or stuff that is supposed to look different, like panels.
 
 # TODO: This could really look nicer
 style "gimp_spin_scale" {
@@ -76,14 +76,15 @@ style "gimp_spin_scale" {
       overlay_stretch = FALSE
     }
 
- }
+  }
 
 }
 
-style "chrome-gtk-frame" {
+style "chrome_gtk_frame" {
 
   ChromeGtkFrame::frame-color                    = @titlebar_bg_color
   ChromeGtkFrame::inactive-frame-color           = @titlebar_bg_color
+
   ChromeGtkFrame::incognito-frame-color          = @titlebar_bg_color
   ChromeGtkFrame::incognito-inactive-frame-color = @titlebar_bg_color
 
@@ -91,22 +92,8 @@ style "chrome-gtk-frame" {
 
 }
 
-style "chrome_entry" {
-  base[NORMAL] = @base_color
-  base[INSENSITIVE] = @base_color
-}
-
 # Disable spin button assets for GimpSpinScale
 class "GimpSpinScale" style "gimp_spin_scale"
 
 # Chromium lets us define some colours and settings for better integration
-class "ChromeGtkFrame" style "chrome-gtk-frame"
-# Chromium uses base as the fill colour of its own entries
-# This would be fine but Gtk+ uses it to fill the surrounding space, so its set to bg
-# That results in Chromium using it for the fill, so we need to handle that
-widget_class "*Chrom*<GtkEntry>" style "chrome_entry"
-
-# TODO: find out what does does exactly
-# This uses the Adwaita engine for something, I'm not sure for what
-# However disabling it glitches out some separators in Libreoffice
-class "GtkWindow" style "toplevel_hack"
+class "ChromeGtkFrame" style "chrome_gtk_frame"
