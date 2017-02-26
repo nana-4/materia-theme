@@ -45,7 +45,7 @@ style "default" {
   GtkButton::inner-border           = {4, 4, 4, 4}
 
   GtkEntry::state-hint   = 1
-  GtkEntry::inner-border = {6, 6, 6, 7}
+  GtkEntry::inner-border = {4, 4, 4, 4}
 
   GtkPaned::handle-size  = 8
   GtkHPaned::handle-size = 8
@@ -89,7 +89,7 @@ style "default" {
 
   GtkCheckButton::indicator-size    = 24
   GtkCheckButton::indicator_spacing = 2
-  GtkOptionMenu::indicator_spacing  = {13, 13, 5, 7}
+  GtkOptionMenu::indicator_spacing  = {10, 10, 6, 6}
 
   GtkTreeView::expander-size        = 16
   GtkTreeView::vertical-separator   = 0
@@ -1356,7 +1356,7 @@ style "default" {
       state    = ACTIVE
       detail   = "entry"
       file     = "assets/entry-active.png"
-      border   = {6, 6, 6, 6}
+      border   = {8, 8, 8, 8}
       stretch  = TRUE
     }
 
@@ -1365,7 +1365,7 @@ style "default" {
       state    = INSENSITIVE
       detail   = "entry"
       file     = "assets/entry-insensitive.png"
-      border   = {6, 6, 6, 6}
+      border   = {8, 8, 8, 8}
       stretch  = TRUE
     }
 
@@ -1373,7 +1373,7 @@ style "default" {
       function = SHADOW
       detail   = "entry"
       file     = "assets/entry.png"
-      border   = {6, 6, 6, 6}
+      border   = {8, 8, 8, 8}
       stretch  = TRUE
     }
 
@@ -2014,15 +2014,8 @@ style "entry" {
 
   # We set this same as the border of the border of the entry
   # This way there's no overlap
-  xthickness = 4
-  ythickness = 4
-
-}
-
-style "spinbutton" {
-
   xthickness = 6
-  ythickness = 4
+  ythickness = 6
 
 }
 
@@ -2046,7 +2039,7 @@ style "combobox_cellview" {
 style "combobox_entry" {
 
   # Since one side of the button is missing, we need to shift the arrow a little to the right
-  GtkButton::inner-border = {0, 3, 0, 0}
+  GtkButton::inner-border = {0, 2, 0, 0}
 
   engine "pixmap" {
 
@@ -2216,7 +2209,7 @@ style "combo_button_padding" {
   # little to the right.
   # This is the same thing we've done above but the combo, unlike the combobox,
   # uses padding the same way as a button.
-  GtkButton::inner-border = {4, 7, 4, 4}
+  GtkButton::inner-border = {3, 6, 3, 3}
 
 }
 
@@ -2252,7 +2245,7 @@ style "notebook_entry" {
       state    = ACTIVE
       detail   = "entry"
       file     = "assets/notebook-entry-active.png"
-      border   = {6, 6, 6, 6}
+      border   = {8, 8, 8, 8}
       stretch  = TRUE
     }
 
@@ -2261,7 +2254,7 @@ style "notebook_entry" {
       state    = INSENSITIVE
       detail   = "entry"
       file     = "assets/notebook-entry-insensitive.png"
-      border   = {6, 6, 6, 6}
+      border   = {8, 8, 8, 8}
       stretch  = TRUE
     }
 
@@ -2269,7 +2262,7 @@ style "notebook_entry" {
       function = SHADOW
       detail   = "entry"
       file     = "assets/notebook-entry.png"
-      border   = {6, 6, 6, 6}
+      border   = {8, 8, 8, 8}
       stretch  = TRUE
     }
   }
@@ -2290,7 +2283,7 @@ style "normal_entry" {
       state    = ACTIVE
       detail   = "entry"
       file     = "assets/entry-active.png"
-      border   = {6, 6, 6, 6}
+      border   = {8, 8, 8, 8}
       stretch  = TRUE
     }
 
@@ -2299,7 +2292,7 @@ style "normal_entry" {
       state    = INSENSITIVE
       detail   = "entry"
       file     = "assets/entry-insensitive.png"
-      border   = {6, 6, 6, 6}
+      border   = {8, 8, 8, 8}
       stretch  = TRUE
     }
 
@@ -2307,7 +2300,7 @@ style "normal_entry" {
       function = SHADOW
       detail   = "entry"
       file     = "assets/entry.png"
-      border   = {6, 6, 6, 6}
+      border   = {8, 8, 8, 8}
       stretch  = TRUE
     }
   }
@@ -2770,7 +2763,6 @@ class "GtkButton"                                                  style "button
 class "GtkLinkButton"                                              style "link_button"
 class "GtkEntry"                                                   style "entry"
 class "GtkOldEditable"                                             style "entry"
-class "GtkSpinButton"                                              style "spinbutton"
 class "GtkNotebook"                                                style "notebook"
 class "GtkHScale"                                                  style "scale_horz"
 class "GtkVScale"                                                  style "scale_vert"
