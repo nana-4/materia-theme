@@ -71,6 +71,7 @@ for color in '' '-light' ; do
 		cd ${srcdir}/gtk-2.0
 		cp -ur \
 			apps.rc \
+			hacks.rc \
 			main.rc \
 			${themedir}/gtk-2.0
 		if [ "$color" != '-dark' ] ; then
