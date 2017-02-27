@@ -153,6 +153,24 @@
 
 .conflict-row:not(:selected) { background-color: mix($warning_color, $base_color, percentage($lower_opacity)); }
 
+// Icon view
+.nautilus-window flowboxchild {
+  > widget > .icon-item-background {
+    padding: 4px;
+    border-radius: $material_radius;
+  }
+
+  // > widget > box > .icon-background { background-color: black; }
+
+  &:selected {
+    background-color: transparent;
+
+    > widget > .icon-item-background { background-color: $primary_color; }
+
+    // > widget > box > .icon-background { background-color: black; }
+  }
+}
+
 dialog.background > box.dialog-vbox.vertical > grid.horizontal {
   > scrolledwindow.frame { border-style: none; }
 
