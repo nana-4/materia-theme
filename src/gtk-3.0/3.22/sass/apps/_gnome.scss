@@ -383,12 +383,12 @@ frame.gedit-map-frame > border {
 // stack. We were seeing black edges around the header bar, and
 // improper radius on the headerbar.
 //
-workbench stack.titlebar {
+window.workbench stack.titlebar {
   padding: 0;
   // box-shadow: none;
 }
 
-workbench:not(.tiled):not(.maximized):not(.fullscreen) stack.titlebar headerbar {
+window.workbench:not(.tiled):not(.maximized):not(.fullscreen) stack.titlebar headerbar {
   border-radius: 2px 2px 0 0;
   // box-shadow: none;
 }
@@ -444,9 +444,9 @@ entry.search-missing {
 }
 
 // tweak icons for treeviews
-workbench treeview.image { color: gtkalpha(currentColor, $tertiary_opacity); }
+window.workbench treeview.image { color: gtkalpha(currentColor, $tertiary_opacity); }
 
-workbench treeview.image:selected { color: $tertiary_inverse_fg_color; }
+window.workbench treeview.image:selected { color: $tertiary_inverse_fg_color; }
 
 popover.popover-selector list {
   padding: 8px - 2px;
@@ -674,7 +674,7 @@ eggsearchbar entry {
   // min-height: 24px;
 }
 
-workbench preferences preferencesgroup list entry {
+window.workbench preferences preferencesgroup list entry {
   // background: none;
   // min-height: 0px;
   padding-top: 8px;
