@@ -34,35 +34,55 @@ window.background > box.vertical > scrolledwindow > widget toolbar {
 /***********
  * Firefox *
  ***********/
-window.background {
-  > widget > menubar {
-    color: $secondary_titlebar_fg_color;
+window.background:not(.csd) {
+  // for the bookmark toolbar's separators
+  > widget > separator { color: rgba(0, 0, 0, 0.2); }
 
-    &:hover { color: $titlebar_fg_color; }
+  // remove ugly border around the menus
+  > * > menu { border: none; }
 
-    &:disabled { color: $disabled_secondary_titlebar_fg_color; }
+  // use 16px assets for hard-coded sizing
+  > window.background > menu > menuitem > check,
+  > widget > checkbutton > check {
+    & {
+      border-radius: 2px;
+      -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.svg")),
+                              -gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.png")));
+    }
+
+    &:checked {
+      -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-checkbox-checked-symbolic.svg")),
+                              -gtk-recolor(url("assets/scalable/small-checkbox-checked-symbolic.png")));
+    }
+
+    &:indeterminate {
+      -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-checkbox-mixed-symbolic.svg")),
+                              -gtk-recolor(url("assets/scalable/small-checkbox-mixed-symbolic.png")));
+    }
   }
 
-  > menu > menuitem > label:disabled { color: $disabled_fg_color; }
-
-  > window.background > menu > separator { color: $border_color; }
-
-  > widget > separator,
-  > widget > frame { color: rgba(0, 0, 0, 0.2); }
-
-  > widget > checkbutton > check,
+  > window.background > menu > menuitem > radio,
   > widget > radiobutton > radio {
-    margin: 0;
-    padding: 0;
-  }
+    & {
+      -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-unchecked-symbolic.svg")),
+                              -gtk-recolor(url("assets/scalable/small-radio-unchecked-symbolic.png")));
+    }
 
-  > window.background > menu > menuitem > radio:checked,
-  > widget > radiobutton > radio:checked {
-    -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/radio-checked-symbolic.svg")),
-                            -gtk-recolor(url("assets/scalable/radio-checked-symbolic.png")));
-    border-image: none;
+    &:checked {
+      border-image: none;
+      -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-checked-symbolic.svg")),
+                              -gtk-recolor(url("assets/scalable/small-radio-checked-symbolic.png")));
+    }
+
+    &:indeterminate {
+      -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-mixed-symbolic.svg")),
+                              -gtk-recolor(url("assets/scalable/small-radio-mixed-symbolic.png")));
+    }
   }
 }
+
+// Firefox now uses this for selected items
+text:selected { @extend %selected_items; }
 
 
 /***********

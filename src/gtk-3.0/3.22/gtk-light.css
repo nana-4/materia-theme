@@ -99,7 +99,7 @@ label {
     color: #FFFFFF; }
   label:disabled {
     color: rgba(0, 0, 0, 0.32); }
-    tab label:disabled, button label:disabled, menuitem label:disabled {
+    tab label:disabled, button label:disabled {
       color: inherit; }
 
 .dim-label, label.separator, .titlebar:not(headerbar) .subtitle,
@@ -2374,19 +2374,19 @@ decoration {
 textview text selection, flowbox flowboxchild:selected, spinbutton:not(.vertical) selection,
 entry selection, modelbutton.flat:selected,
 .menuitem.button.flat:selected, popover.background.menu button:checked,
-popover.background button.model:checked, row:selected, calendar:selected {
+popover.background button.model:checked, row:selected, calendar:selected, text:selected {
   background-color: #42A5F5; }
   row:selected label, label:selected, .view:selected, iconview:selected, .view text selection, iconview text selection,
   textview text selection, flowbox flowboxchild:selected, spinbutton:not(.vertical) selection,
   entry selection, modelbutton.flat:selected,
   .menuitem.button.flat:selected, popover.background.menu button:checked,
-  popover.background button.model:checked, row:selected, calendar:selected {
+  popover.background button.model:checked, row:selected, calendar:selected, text:selected {
     color: #FFFFFF; }
     row:selected label:disabled, label:disabled:selected, .view:disabled:selected, iconview:disabled:selected, .view text selection:disabled, iconview text selection:disabled,
     textview text selection:disabled, flowbox flowboxchild:disabled:selected, label:disabled selection, spinbutton:not(.vertical) selection:disabled,
     entry selection:disabled, modelbutton.flat:disabled:selected,
     .menuitem.button.flat:disabled:selected, popover.background.menu button:disabled:checked,
-    popover.background button.model:disabled:checked, row:disabled:selected, calendar:disabled:selected {
+    popover.background button.model:disabled:checked, row:disabled:selected, calendar:disabled:selected, text:disabled:selected {
       color: rgba(255, 255, 255, 0.4); }
 
 .monospace {
@@ -3013,27 +3013,30 @@ window.background > box.vertical > scrolledwindow > widget toolbar {
 /***********
  * Firefox *
  ***********/
-window.background > widget > menubar {
-  color: rgba(0, 0, 0, 0.6); }
-  window.background > widget > menubar:hover {
-    color: rgba(0, 0, 0, 0.8); }
-  window.background > widget > menubar:disabled {
-    color: rgba(0, 0, 0, 0.24); }
-window.background > menu > menuitem > label:disabled {
-  color: rgba(0, 0, 0, 0.32); }
-window.background > window.background > menu > separator {
-  color: rgba(0, 0, 0, 0.1); }
-window.background > widget > separator,
-window.background > widget > frame {
+window.background:not(.csd) > widget > separator {
   color: rgba(0, 0, 0, 0.2); }
-window.background > widget > checkbutton > check,
-window.background > widget > radiobutton > radio {
-  margin: 0;
-  padding: 0; }
-window.background > window.background > menu > menuitem > radio:checked,
-window.background > widget > radiobutton > radio:checked {
-  -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/radio-checked-symbolic.svg")), -gtk-recolor(url("assets/scalable/radio-checked-symbolic.png")));
-  border-image: none; }
+window.background:not(.csd) > * > menu {
+  border: none; }
+window.background:not(.csd) > window.background > menu > menuitem > check,
+window.background:not(.csd) > widget > checkbutton > check {
+  border-radius: 2px;
+  -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.svg")), -gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.png"))); }
+window.background:not(.csd) > window.background > menu > menuitem > check:checked,
+window.background:not(.csd) > widget > checkbutton > check:checked {
+  -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-checkbox-checked-symbolic.svg")), -gtk-recolor(url("assets/scalable/small-checkbox-checked-symbolic.png"))); }
+window.background:not(.csd) > window.background > menu > menuitem > check:indeterminate,
+window.background:not(.csd) > widget > checkbutton > check:indeterminate {
+  -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-checkbox-mixed-symbolic.svg")), -gtk-recolor(url("assets/scalable/small-checkbox-mixed-symbolic.png"))); }
+window.background:not(.csd) > window.background > menu > menuitem > radio,
+window.background:not(.csd) > widget > radiobutton > radio {
+  -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-unchecked-symbolic.svg")), -gtk-recolor(url("assets/scalable/small-radio-unchecked-symbolic.png"))); }
+window.background:not(.csd) > window.background > menu > menuitem > radio:checked,
+window.background:not(.csd) > widget > radiobutton > radio:checked {
+  border-image: none;
+  -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-checked-symbolic.svg")), -gtk-recolor(url("assets/scalable/small-radio-checked-symbolic.png"))); }
+window.background:not(.csd) > window.background > menu > menuitem > radio:indeterminate,
+window.background:not(.csd) > widget > radiobutton > radio:indeterminate {
+  -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-mixed-symbolic.svg")), -gtk-recolor(url("assets/scalable/small-radio-mixed-symbolic.png"))); }
 
 /***********
  * Synapse *
