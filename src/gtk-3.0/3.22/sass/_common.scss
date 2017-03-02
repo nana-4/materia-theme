@@ -76,46 +76,27 @@
   }
 }
 
-.view,
-%view {
+.view {
   @extend row.activatable;
 
   background-color: $base_color;
   color: $fg_color;
 
-  &:hover, &:active, &:selected { border-radius: 2px; }
+  &:disabled { color: $disabled_fg_color; }
 
-  &:disabled {
-    // background-color: $alt_base_color;
-    color: $disabled_fg_color;
-  }
-
+  selection,
   &:selected { @extend %selected_items; }
 }
 
-.view,
 textview {
-  text {
-    // @extend %view;
+  // FIXME: we need to override background-color to ensure text rendering
+  text { background-color: $base_color; }
 
-    background-color: $base_color;
-    color: $fg_color;
-
-    &:disabled {
-      // background-color: $alt_base_color;
-      color: $disabled_fg_color;
-    }
-
-    selection { @extend %selected_items; }
-  }
+  // FIXME: we cannot specify text color for the border node
+  border { background-color: $alt_base_color; }
 }
 
-textview border {
-  background-color: $alt_base_color;
-  color: $tertiary_fg_color;
-}
-
-iconview { @extend .view; }
+iconview { border-radius: 2px; }
 
 .rubberband,
 rubberband {
@@ -1238,8 +1219,6 @@ treeview.view {
   border-top-color: $border_color; // while this is the grid lines color, better then nothing
 
   rubberband { @extend rubberband; } // to avoid borders being overridden by the previously set props
-
-  &:hover, &:active, &:selected { border-radius: 0; }
 
   &.separator {
     min-height: 1px + 2px * 2;

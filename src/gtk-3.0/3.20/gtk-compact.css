@@ -56,25 +56,19 @@
     background-color: #42A5F5;
     color: #FFFFFF; }
 
-.view, iconview {
+.view {
   background-color: #FFFFFF;
   color: rgba(0, 0, 0, 0.8); }
-  .view:hover, iconview:hover, .view:active, iconview:active, .view:selected, iconview:selected {
-    border-radius: 2px; }
-  .view:disabled, iconview:disabled {
+  .view:disabled {
     color: rgba(0, 0, 0, 0.32); }
 
-.view text, iconview text,
 textview text {
-  background-color: #FFFFFF;
-  color: rgba(0, 0, 0, 0.8); }
-  .view text:disabled, iconview text:disabled,
-  textview text:disabled {
-    color: rgba(0, 0, 0, 0.32); }
-
+  background-color: #FFFFFF; }
 textview border {
-  background-color: #FAFAFA;
-  color: rgba(0, 0, 0, 0.48); }
+  background-color: #FAFAFA; }
+
+iconview, .nautilus-canvas-item, .caja-canvas-item {
+  border-radius: 2px; }
 
 .rubberband,
 rubberband,
@@ -1008,8 +1002,6 @@ treeview.view {
     -GtkTreeView-tree-line-width: 1;
     -GtkTreeView-tree-line-pattern: '';
     -GtkTreeView-expander-size: 16; }
-  treeview.view:hover, treeview.view:active, treeview.view:selected {
-    border-radius: 0; }
   treeview.view.separator {
     min-height: 5px;
     color: rgba(0, 0, 0, 0.1); }
@@ -1238,7 +1230,6 @@ popover.background {
     margin: -2px; }
   popover.background > list,
   popover.background > .view,
-  popover.background > iconview,
   popover.background > toolbar {
     border-style: none;
     box-shadow: none;
@@ -1519,24 +1510,24 @@ switch {
 /*************************
  * Check and Radio items *
  *************************/
-.view.content-view.check:not(list), iconview.content-view.check:not(list) {
+.view.content-view.check:not(list) {
   margin: 8px;
   box-shadow: none;
   background-color: transparent;
   background-image: none;
   -gtk-icon-source: -gtk-scaled(url("assets/selectionmode-checkbox-unchecked.png"), url("assets/selectionmode-checkbox-unchecked@2.png"));
   -gtk-icon-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
-  .view.content-view.check:not(list):hover, iconview.content-view.check:not(list):hover, .view.content-view.check:not(list):active, iconview.content-view.check:not(list):active {
+  .view.content-view.check:not(list):hover, .view.content-view.check:not(list):active {
     -gtk-icon-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23); }
 
-.view.content-view.check:checked:not(list), iconview.content-view.check:checked:not(list) {
+.view.content-view.check:checked:not(list) {
   margin: 8px;
   box-shadow: none;
   background-color: transparent;
   background-image: none;
   -gtk-icon-source: -gtk-scaled(url("assets/selectionmode-checkbox-checked.png"), url("assets/selectionmode-checkbox-checked@2.png"));
   -gtk-icon-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
-  .view.content-view.check:checked:not(list):hover, iconview.content-view.check:checked:not(list):hover, .view.content-view.check:checked:not(list):active, iconview.content-view.check:checked:not(list):active {
+  .view.content-view.check:checked:not(list):hover, .view.content-view.check:checked:not(list):active {
     -gtk-icon-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23); }
 
 checkbutton.text-button,
@@ -2010,17 +2001,17 @@ list {
   list row {
     padding: 2px; }
 
-row.activatable, .view, iconview, treeview.view header button {
+row.activatable, .view, treeview.view header button {
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, background-size 0.5s cubic-bezier(0, 0, 0.2, 1), background-image 1s cubic-bezier(0, 0, 0.2, 1);
   box-shadow: inset 0 0 0 9999px transparent;
   background-image: radial-gradient(circle farthest-corner at center, transparent 10%, transparent 0%);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 1000% 1000%; }
-  row.activatable:hover, .view:hover, iconview:hover, treeview.view header button:hover {
+  row.activatable:hover, .view:hover, treeview.view header button:hover {
     transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, box-shadow 0, background-size 0.5s cubic-bezier(0, 0, 0.2, 1), background-image 1s cubic-bezier(0, 0, 0.2, 1);
     box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.05); }
-  row.activatable.has-open-popup, .has-open-popup.view, iconview.has-open-popup, treeview.view header button.has-open-popup, row.activatable:active, .view:active, iconview:active, treeview.view header button:active {
+  row.activatable.has-open-popup, .has-open-popup.view, treeview.view header button.has-open-popup, row.activatable:active, .view:active, treeview.view header button:active {
     transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, background-size 0, background-image 0;
     animation: ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
     box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.15);
@@ -2370,20 +2361,17 @@ decoration {
     padding: 4px;
     box-shadow: inset 0 0 0 4px #455A64; }
 
-.view:selected, iconview:selected, .view text selection, iconview text selection,
-textview text selection, flowbox flowboxchild:selected, spinbutton:not(.vertical) selection,
+.view selection, .view:selected, flowbox flowboxchild:selected, spinbutton:not(.vertical) selection,
 entry selection, modelbutton.flat:selected,
 .menuitem.button.flat:selected, popover.background.menu button:checked,
 popover.background button.model:checked, row:selected, calendar:selected, text:selected {
   background-color: #42A5F5; }
-  row:selected label, label:selected, .view:selected, iconview:selected, .view text selection, iconview text selection,
-  textview text selection, flowbox flowboxchild:selected, spinbutton:not(.vertical) selection,
+  row:selected label, label:selected, .view selection, .view:selected, flowbox flowboxchild:selected, spinbutton:not(.vertical) selection,
   entry selection, modelbutton.flat:selected,
   .menuitem.button.flat:selected, popover.background.menu button:checked,
   popover.background button.model:checked, row:selected, calendar:selected, text:selected {
     color: #FFFFFF; }
-    row:selected label:disabled, label:disabled:selected, .view:disabled:selected, iconview:disabled:selected, .view text selection:disabled, iconview text selection:disabled,
-    textview text selection:disabled, flowbox flowboxchild:disabled:selected, label:disabled selection, spinbutton:not(.vertical) selection:disabled,
+    row:selected label:disabled, label:disabled:selected, .view selection:disabled, .view:disabled:selected, flowbox flowboxchild:disabled:selected, label:disabled selection, spinbutton:not(.vertical) selection:disabled,
     entry selection:disabled, modelbutton.flat:disabled:selected,
     .menuitem.button.flat:disabled:selected, popover.background.menu button:disabled:checked,
     popover.background button.model:disabled:checked, row:disabled:selected, calendar:disabled:selected, text:disabled:selected {
@@ -2805,14 +2793,14 @@ overlay grid.horizontal > revealer > scrolledwindow.frame:dir(rtl) {
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.1); }
 
-.side-panel .view, .side-panel iconview {
+.side-panel .view {
   background-image: image(#FAFAFA); }
-  .side-panel .view:hover, .side-panel iconview:hover {
+  .side-panel .view:hover {
     background-image: image(rgba(242, 242, 242, 0.99)); }
 
-.side-panel .view:selected, .side-panel iconview:selected {
+.side-panel .view:selected {
   background-image: image(#42A5F5); }
-  .side-panel .view:selected:hover, .side-panel iconview:selected:hover {
+  .side-panel .view:selected:hover {
     background-image: image(#4baaf6); }
 
 .songs-list:hover {
