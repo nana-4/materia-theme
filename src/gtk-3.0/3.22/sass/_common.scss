@@ -108,9 +108,9 @@ flowbox {
   rubberband { @extend rubberband; }
 
   flowboxchild {
-    outline-offset: -2px;
     padding: 4px;
     border-radius: 2px;
+    outline-offset: -2px;
 
     &:selected { @extend %selected_items; }
   }
@@ -447,7 +447,7 @@ button {
     &:disabled { opacity: 0; }
   }
 
-  //overlay / OSD style
+  // overlay / OSD style
   @at-root %osd_button,
   .osd & {
   }
@@ -527,7 +527,7 @@ button {
   separator {
     min-width: 0;
     min-height: 0;
-    background: transparent;
+    background-color: transparent;
   }
 
   // &.font,
@@ -729,19 +729,19 @@ spinbutton {
       border-radius: 0;
       box-shadow: none;
       background-color: transparent;
-      // 
+      //
       // This will help to simplify spinbutton's code, but unfortunatelly
       // doesn't work properly in :dir(rtl). It needs z-index property.
-      // 
+      //
       // min-width: $large_size - 8px;
-      // 
+      //
       // $spinbuttons_width: $small_size * 2 + $container_padding * 3;
-      // 
+      //
       // &:dir(ltr) {
       //   margin-right: -$spinbuttons_width;
       //   padding-right: $spinbuttons_width;
       // }
-      // 
+      //
       // &:dir(rtl) {
       //   margin-left: -$spinbuttons_width;
       //   padding-left: $spinbuttons_width;
@@ -949,7 +949,7 @@ toolbar {
   }
 }
 
-//searchbar, location-bar & inline-toolbar
+// searchbar, location-bar & inline-toolbar
 .inline-toolbar {
   padding: $container_padding;
   border-style: solid;
@@ -1038,7 +1038,7 @@ headerbar {
       color: $secondary_inverse_fg_color;
     }
 
-    .subtitle:link { @extend *:link:selected;  }
+    .subtitle:link { @extend *:link:selected; }
 
     button:not(.suggested-action):not(.destructive-action) {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
@@ -1330,7 +1330,7 @@ menubar,
     padding: 4px 8px;
     color: $secondary_titlebar_fg_color;
 
-    &:hover { //Seems like it :hover even with keyboard focus
+    &:hover { // Seems like it :hover even with keyboard focus
       transition: none;
       background-color: $semi_fill_color;
       color: $titlebar_fg_color;
@@ -1948,7 +1948,7 @@ switch {
 // draw regular check and radio items using our PNG assets
 // all assets are rendered from assets.svg. never add pngs directly
 
-//selection-mode
+// selection-mode
 @each $s, $as in ('', '-unchecked'),
                  (':checked', '-checked') {
   .view.content-view.check#{$s}:not(list) {
@@ -2506,7 +2506,7 @@ printdialog {
   paper {
     padding: 0;
     border: 1px solid $border_color;
-    background: $base_color;
+    background-color: $base_color;
     color: $fg_color;
   }
 
@@ -2530,7 +2530,7 @@ frame > border,
 
 frame.flat > border { @extend .frame.flat; }
 
-actionbar > revealer >  box {
+actionbar > revealer > box {
   padding: $container_padding;
   border-top: 1px solid $border_color;
 
@@ -2575,11 +2575,11 @@ scrolledwindow {
   }
 }
 
-//vbox and hbox separators
+// vbox and hbox separators
 separator {
   min-width: 1px;
   min-height: 1px;
-  background: $border_color;
+  background-color: $border_color;
 }
 
 
@@ -2782,7 +2782,7 @@ filechooserbutton:drop(active) {
     border-left-style: none;
   }
 
-  @at-root %sidebar_right
+  @at-root %sidebar_right,
   &:dir(rtl),
   &.right {
     border-left: 1px solid $border_color;
@@ -3159,7 +3159,7 @@ colorchooser .popover.osd {
 /********
  * Misc *
  ********/
-//content view (grid/list)
+// content view (grid/list)
 .content-view {
   background-color: $bg_color;
 
@@ -3171,7 +3171,7 @@ colorchooser .popover.osd {
 .scale-popup {
   .osd & { @extend %osd; }
 
-  .osd & button.flat {  //FIXME: quick hack, redo properly
+  .osd & button.flat { // FIXME: quick hack, redo properly
   }
 
   button { // +/- buttons on GtkVolumeButton popup
@@ -3207,7 +3207,7 @@ decoration {
   .popup & { box-shadow: none; }
 
   // server-side decorations as used by mutter
-  .ssd & { box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16); } //just doing borders, wm draws actual shadows
+  .ssd & { box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16); } // just doing borders, wm draws actual shadows
 
   .csd.popup & {
     border-radius: 2px;
@@ -3265,7 +3265,7 @@ button.titlebutton {
 /**********************
  * Touch Copy & Paste *
  *********************/
-//touch selection handlebars for the Popover.osd above
+// touch selection handlebars for the Popover.osd above
 cursor-handle {
   border-radius: $circular_radius;
   background-color: $accent_color;
