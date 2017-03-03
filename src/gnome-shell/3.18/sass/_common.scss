@@ -1607,12 +1607,12 @@ StScrollBar {
       background-image: none;
       background-color: scale-alpha($inverse_fg_color, $higher_opacity);
     }
-    &:checked .page-indicator-icon,
-    &:checked:active {
+    &:checked .page-indicator-icon {
       background-image: none;
       background-color: $inverse_fg_color;
       transition-duration: 0s;
     }
+    &:checked:active { background-image: none; }
   }
 
   .no-frequent-applications-label { @extend %status_text; }
