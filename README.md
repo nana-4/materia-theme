@@ -1,7 +1,7 @@
 Flat-Plat
 =========
 Flat-Plat is a [Material Design](https://material.io)-like theme for GNOME/GTK+ based desktop environments.  
-It supports GTK3, GTK2, Metacity, GNOME Shell, Unity, MATE, LightDM and GDM.
+It supports GTK3, GTK2, Metacity, GNOME Shell, Unity, MATE, LightDM, GDM, Chrome theme, etc.
 
 Features
 --------
@@ -29,35 +29,22 @@ Requirements
 
 Installation
 ------------
-Arch Linux users can install from the [AUR package](https://aur.archlinux.org/packages/flatplat-theme) maintained by [@cthbleachbit](https://github.com/cthbleachbit).
+Arch Linux users can install from the [AUR package](https://aur.archlinux.org/packages/flatplat-theme) maintained by @cthbleachbit.
 
 ### Manual Installation
-1. Download and extract the [stable archive](../../releases).
+1. Open the terminal and run the following commands:
 
   ```sh
   cd /tmp
   curl -sL https://github.com/nana-4/Flat-Plat/archive/v20161227.tar.gz | tar xz
-  ```
-
-2. In terminal, move to the extracted directory and run `./install.sh` as root.
-
-  ```sh
   cd Flat-Plat-20161227 && sudo ./install.sh
   ```
 
-3. Select the theme via `gnome-tweak-tool` or other suitable tools.
+2. Select the theme using `gnome-tweak-tool` or other suitable tools.
 
-4. Optionally, configure the following settings:
-  - Set the system font size to `9.75` (= 13px at 96dpi) or `10.5` (= 14px at 96dpi).
-  - Open the `chrome` folder on `/usr/share/themes/Flat-Plat*/` and drag and drop the `.crx` files onto the Chrome/Chromium extensions page (`chrome://extensions`).
-
----
-
-**Note:** Series 3.14 and 3.16 are no longer supported. If you want to get the final version, you can download from the link below.
-- [:arrow_down: v3.14.20160921](../../releases/download/v3.14.20160921/Flat-Plat-3.14.20160921.tar.gz)
-- [:arrow_down: v3.16.20160821](../../releases/download/v3.16.20160821/Flat-Plat-3.16.20160821.tar.gz)
-
----
+3. Optionally;
+  - Set the font size to `9.75` (= 13px at 96dpi) or `10.5` (= 14px at 96dpi).
+  - Open the `chrome` folder on `/usr/share/themes/Flat-Plat`* and drag and drop the `.crx` files onto the Chrome/Chromium _Extensions_ page.
 
 ### Manual Uninstallation
 - Delete the installed directories.
@@ -69,13 +56,13 @@ Arch Linux users can install from the [AUR package](https://aur.archlinux.org/pa
 GDM (Lock/Login Screen)
 -----------------------
 You can change the GDM theme by replacing the default GNOME Shell theme.  
-But please **be careful** because if it fails, the desktop environment may not operate correctly.
+However, if it fails, the desktop environment may not operate correctly. So please **be careful** if doing this.
 > **:warning: Cautions:**
 > - When applying this, other third-party GNOME Shell themes would look broken.
 > - If GNOME Shell has been updated, you will need to install this again.
 
 ### Installation
-1. Back up and replace the existing `.gresource` file after selecting the GTK+ theme.
+1. After selecting the GTK+ theme, back up and replace the existing `.gresource` file.
 
   ```sh
   GTK_THEME=$(gsettings get org.gnome.desktop.interface gtk-theme | sed "s/'//g")
@@ -85,16 +72,16 @@ But please **be careful** because if it fails, the desktop environment may not o
   > _Developer note:_  
   > If you don't want to overwrite the backup on the second and subsequent runs, delete the `--backup` option.
 
-2. Restart GNOME Shell (press <kbd>Alt</kbd> + <kbd>F2</kbd>, then type `r`).
+2. Restart GNOME Shell. (press <kbd>Alt</kbd> + <kbd>F2</kbd>, then type `r`)
 
 ### Uninstallation
-1. Restore to original theme from the backup.
+1. Restore to the original theme from the backup.
 
   ```sh
   sudo mv -iv /usr/share/gnome-shell/gnome-shell-theme.gresource{~,}
   ```
 
-2. Restart GNOME Shell (press <kbd>Alt</kbd> + <kbd>F2</kbd>, then type `r`).
+2. Restart GNOME Shell. (press <kbd>Alt</kbd> + <kbd>F2</kbd>, then type `r`)
 
 Screenshots
 -----------
@@ -110,8 +97,8 @@ Screenshots
 
 Contributing
 ------------
-If you find any bugs or mistakes, please report it to [GitHub's issue tracker](https://github.com/nana-4/Flat-Plat/issues) or send a pull request.  
-Thank you in advance for your cooperation. :+1:
+If you find any bugs or mistakes, please report it to the [issue tracker](https://github.com/nana-4/Flat-Plat/issues) or send a pull request.  
+Thank you in advance for your cooperation!
 
 Planned Features
 ----------------
@@ -126,7 +113,9 @@ License
 -------
 Flat-Plat is distributed under the terms of the GNU General Public License, version 2 or later. See the [`COPYING`](COPYING) file for details.
 
-Acknowledgments
----------------
+Credits
+-------
 - The included symbolic icons are based on [Material Design icons](https://github.com/google/material-design-icons) by Google.
 - Chrome/Chromium scrollbars extension was forked from [Adwaita-chrome-scrollbar](https://github.com/gnome-integration-team/chrome-gnome-scrollbar) by GNOME Integration Team.
+
+Also I am grateful to every upstream developers and all contributors.
