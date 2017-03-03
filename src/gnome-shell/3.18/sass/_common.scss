@@ -26,8 +26,8 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
 
 /* GLOBALS */
 * {
-  transition-timing-function : $standard_curve;
-  transition-duration: $shorter_duration;
+  // transition-timing-function: $deceleration_curve;
+  transition-duration: $longer_duration;
 }
 
 stage {
@@ -592,7 +592,7 @@ StScrollBar {
   .popup-menu-item {
     // min-height: $menuitem_size - 4px * 2;
     spacing: 8px;
-    transition-duration: 0s;
+    transition-duration: $shorter_duration;
 
     &:ltr { padding: 0.4em 24px 0.4em 0; }
     &:rtl { padding: 0.4em 0 0.4em 24px; }
@@ -614,11 +614,12 @@ StScrollBar {
     &.selected {
       background-color: $semi_fill_color;
       color: $fg_color;
+      transition-duration: 0s;
     }
     &:active {
       background-color: $fill_color;
       color: $fg_color;
-      transition-duration: 0.2s;
+      transition-duration: $longer_duration;
     }
     &.selected:active { color: $fg_color; }
     &:insensitive { color: $disabled_fg_color; }
@@ -868,7 +869,7 @@ StScrollBar {
     -minimum-hpadding: 6px;
     font-weight: bold;
     color: $secondary_inverse_fg_color;
-    transition-duration: 0.2s;
+    transition-duration: $longer_duration;
 
     .app-menu-icon {
       -st-icon-style: symbolic;
@@ -1515,7 +1516,7 @@ StScrollBar {
     }
     &:active, &:checked {
       background-color: $inverse_fill_color;
-      transition-duration: 0.2s;
+      transition-duration: $longer_duration;
     }
   }
   .app-well-app,
@@ -1537,7 +1538,7 @@ StScrollBar {
     &:checked .overview-icon {
       background-color: $inverse_fill_color;
       box-shadow: $shadow_0;
-      transition-duration: 0.2s;
+      transition-duration: $longer_duration;
     }
 
   }
@@ -1553,7 +1554,7 @@ StScrollBar {
     border-radius: 2px;
     padding: 6px;
     border: none;
-    transition-duration: 0.2s;
+    transition-duration: $longer_duration;
     text-align: center;
   }
 
@@ -1570,7 +1571,7 @@ StScrollBar {
   .show-apps:checked .show-apps-icon,
   .show-apps:focus .show-apps-icon {
     color: $inverse_fg_color;
-    transition-duration: 0.2s;
+    transition-duration: $longer_duration;
   }
 
 
@@ -1874,7 +1875,7 @@ $legacy_icon_size: 24px;
   }
 
   .candidate-box {
-    transition-duration: 0s;
+    transition-duration: 0s; // FIXME: needs more natural transitions
     min-height: $menuitem_size;
     padding: 0 8px;
     border-radius: 2px;
@@ -2139,7 +2140,7 @@ $legacy_icon_size: 24px;
     -minimum-hpadding: 6px;
     font-weight: bold;
     color: $tertiary_fg_color;
-    transition-duration: 0.2s;
+    transition-duration: $longer_duration;
     padding-left: 16px;
     padding-right: 16px;
     min-height: $medium_size;
