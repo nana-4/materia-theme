@@ -2021,13 +2021,13 @@ radio {
 %check,
 check {
   & { -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/checkbox-unchecked-symbolic.svg")),
-                              -gtk-recolor(url("assets/scalable/checkbox-unchecked-symbolic.png"))); }
+                              -gtk-recolor(url("assets/scalable/checkbox-unchecked-symbolic.symbolic.png"))); }
 
   &:checked { -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/checkbox-checked-symbolic.svg")),
-                                      -gtk-recolor(url("assets/scalable/checkbox-checked-symbolic.png"))); }
+                                      -gtk-recolor(url("assets/scalable/checkbox-checked-symbolic.symbolic.png"))); }
 
   &:indeterminate { -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/checkbox-mixed-symbolic.svg")),
-                                            -gtk-recolor(url("assets/scalable/checkbox-mixed-symbolic.png"))); }
+                                            -gtk-recolor(url("assets/scalable/checkbox-mixed-symbolic.symbolic.png"))); }
 }
 
 $radio_indicator: 10px / $large_size / 2;
@@ -2037,13 +2037,13 @@ $radio_radius_width: #{$large_size / 2};
 %radio,
 radio {
   & { -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/radio-unchecked-symbolic.svg")),
-                              -gtk-recolor(url("assets/scalable/radio-unchecked-symbolic.png"))); }
+                              -gtk-recolor(url("assets/scalable/radio-unchecked-symbolic.symbolic.png"))); }
 
   // &:checked { -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/radio-checked-symbolic.svg")),
-  //                                     -gtk-recolor(url("assets/scalable/radio-checked-symbolic.png"))); }
+  //                                     -gtk-recolor(url("assets/scalable/radio-checked-symbolic.symbolic.png"))); }
 
   &:indeterminate { -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/radio-mixed-symbolic.svg")),
-                                            -gtk-recolor(url("assets/scalable/radio-mixed-symbolic.png"))); }
+                                            -gtk-recolor(url("assets/scalable/radio-mixed-symbolic.symbolic.png"))); }
 
   border-image: -gtk-gradient(radial,
                               center center, 0,
@@ -2174,7 +2174,7 @@ treeview.view radio {
 
 treeview.view radio:checked {
   -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/radio-checked-symbolic.svg")),
-                          -gtk-recolor(url("assets/scalable/radio-checked-symbolic.png")));
+                          -gtk-recolor(url("assets/scalable/radio-checked-symbolic.symbolic.png")));
   border-image: none;
 }
 
@@ -2534,7 +2534,7 @@ frame > border,
   &.flat { border-style: none; }
 }
 
-frame.flat > border { @extend .frame.flat; }
+frame.flat > border { @extend .frame.flat; } // for backporting
 
 actionbar > revealer > box {
   padding: $container_padding;
