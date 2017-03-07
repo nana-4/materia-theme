@@ -36,8 +36,8 @@ Arch Linux users can install from the [AUR package](https://aur.archlinux.org/pa
 
   ```sh
   cd /tmp
-  curl -sL https://github.com/nana-4/Flat-Plat/archive/v20161227.tar.gz | tar xz
-  cd Flat-Plat-20161227 && sudo ./install.sh
+  curl -sL https://github.com/nana-4/Flat-Plat/archive/v20170307.tar.gz | tar xz
+  cd Flat-Plat-20170307 && sudo ./install.sh
   ```
 
 2. Select the theme using `gnome-tweak-tool` or other suitable tools.
