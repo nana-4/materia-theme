@@ -11,8 +11,7 @@ fi
 
 echo
 
-# Not enabled color: '-dark'
-for color in '' '-light' ; do
+for color in '' '-dark' '-light' ; do
 	for size in '' '-compact' ; do
 		echo Installing Flat-Plat${color}${size} ...
 
