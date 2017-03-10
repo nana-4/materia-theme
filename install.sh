@@ -34,9 +34,17 @@ for color in '' '-dark' '-light' ; do
 		install -d ${themedir}/chrome
 		cd ${srcdir}/chrome
 		cp -ur \
-			"Flat-Plat Scrollbars.crx" \
 			"Flat-Plat${color} Theme.crx" \
 			${themedir}/chrome
+		if [ "$color" != '-dark' ] ; then
+			cp -ur \
+				"Flat-Plat Scrollbars.crx" \
+				${themedir}/chrome
+		else
+			cp -ur \
+				"Flat-Plat${color} Scrollbars.crx" \
+				${themedir}/chrome
+		fi
 
 		# Install GNOME Shell Theme
 		install -d ${themedir}/gnome-shell
