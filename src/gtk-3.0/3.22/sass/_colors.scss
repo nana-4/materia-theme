@@ -47,8 +47,8 @@ $lighter_bg_color: if($variant == 'light', $grey_50, $blue_grey_500);
 $darker_bg_color: if($variant == 'light', $grey_200, $blue_grey_900);
 
 $titlebar_bg_color: if($variant == 'light', if($titlebar == 'dark', $blue_grey_700, $grey_300), $blue_grey_800);
-$alt_titlebar_bg_color: if($titlebar == 'dark', $blue_grey_800, $grey_400);
-$panel_bg_color: if($titlebar == 'dark', $blue_grey_900, $grey_400);
+$alt_titlebar_bg_color: if($titlebar == 'dark', $blue_grey_800, mix($grey_300, $grey_400, 50%));
+$panel_bg_color: if($titlebar == 'dark', $blue_grey_900, mix($grey_300, $grey_400, 50%));
 
 $fill_color: gtkalpha(currentColor, $lower_opacity);
 $semi_fill_color: gtkalpha(currentColor, $lower_opacity / 2);
@@ -78,7 +78,7 @@ $border_color: if($variant == 'light', scale-alpha($black, 0.1), scale-alpha($bl
 $highlight_color: if($variant == 'light', scale-alpha($white, 0.4), scale-alpha($white, 0.1));
 $alt_highlight_color: scale-alpha($white, 0.2);
 $unity_highlight_color: if($titlebar == 'dark', scale-alpha($white, 0.1), scale-alpha($white, 0.2));
-$titlebar_highlight_color: if($titlebar == 'dark', $alt_highlight_color, $highlight_color);
+$titlebar_highlight_color: if($titlebar == 'dark', scale-alpha($white, 0.15), $highlight_color);
 $titlebar_indicator_color: if($titlebar == 'dark', currentColor, $primary_color);
 
 // FIXME: @placeholder_text_color should really use $tertiary_fg_color, but
