@@ -1544,10 +1544,10 @@ radio {
   radio:checked,
   radio:indeterminate {
     color: #FF4081; }
-  check:checked:disabled, check:indeterminate:disabled,
-  radio:checked:disabled,
-  radio:indeterminate:disabled {
-    color: rgba(255, 64, 129, 0.4); }
+    check:checked:disabled, check:indeterminate:disabled,
+    radio:checked:disabled,
+    radio:indeterminate:disabled {
+      color: rgba(255, 64, 129, 0.4); }
   row check:not(:checked):not(:indeterminate), row
   radio:not(:checked):not(:indeterminate) {
     color: alpha(currentColor, 0.75); }
@@ -1591,45 +1591,24 @@ radio {
   radio:indeterminate:checked {
     border-image: -gtk-gradient(radial, center center, 0, center center, 0.001, to(#FF4081), to(transparent)) 24/24px; }
 
-@keyframes check_check {
-  from {
-    -gtk-icon-transform: rotate(90deg); }
-  to {
-    -gtk-icon-transform: unset; } }
-@keyframes check_radio {
-  from {
-    border-image: -gtk-gradient(radial, center center, 0, center center, 0.001, to(#FF4081), to(transparent)) 24/24px; }
-  to {
-    border-image: -gtk-gradient(radial, center center, 0, center center, 0.10417, to(#FF4081), to(transparent)) 24/24px; } }
-@keyframes check_indeterminate {
-  from {
-    -gtk-icon-transform: unset; }
-  50% {
-    -gtk-icon-transform: scale(0, 1); }
-  to {
-    -gtk-icon-transform: unset; } }
-modelbutton.flat check:not(:indeterminate):checked,
-.menuitem.button.flat check:not(:indeterminate):checked,
-check:not(:indeterminate):checked {
-  animation: check_check 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+check:not(:indeterminate):not(:checked):active {
+  -gtk-icon-transform: rotate(90deg); }
 
-check:not(:indeterminate):checked:active {
-  animation: check_check 0.3s cubic-bezier(0.4, 0, 0.2, 1), ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards; }
+check:indeterminate:not(:checked):active,
+radio:indeterminate:not(:checked):active {
+  -gtk-icon-transform: scaleX(-1); }
 
-modelbutton.flat check:indeterminate:checked, modelbutton.flat radio:indeterminate:checked,
-.menuitem.button.flat check:indeterminate:checked,
-.menuitem.button.flat radio:indeterminate:checked,
-check:indeterminate:checked, radio:indeterminate:checked {
-  animation: check_indeterminate 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+check:not(:checked),
+radio:not(:checked) {
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-size 0.5s cubic-bezier(0, 0, 0.2, 1), background-image 1s cubic-bezier(0, 0, 0.2, 1), -gtk-icon-transform 0; }
+check:not(:checked):active,
+radio:not(:checked):active {
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-size 0, background-image 0, -gtk-icon-transform 0; }
 
-check:indeterminate:checked:active, radio:indeterminate:checked:active {
-  animation: check_indeterminate 0.3s cubic-bezier(0.4, 0, 0.2, 1), ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1) forwards; }
-
-menu menuitem check:not(:indeterminate):checked,
-menu menuitem radio:not(:indeterminate):checked,
-menu menuitem check:indeterminate:checked,
-menu menuitem radio:indeterminate:checked {
-  animation: none; }
+menu menuitem check:checked, menu menuitem check:indeterminate,
+menu menuitem radio:checked,
+menu menuitem radio:indeterminate {
+  transition: none; }
 
 treeview.view check,
 treeview.view radio {

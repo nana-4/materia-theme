@@ -657,12 +657,6 @@ modelbutton.flat,
 
     &:first-child { margin-left: -16px; margin-right: -8px; }
   }
-
-  check:not(:indeterminate):checked { @extend %check_checked; }
-
-  // radio:not(:indeterminate):checked { @extend %radio_checked; }
-
-  check:indeterminate:checked, radio:indeterminate:checked { @extend %indeterminate_checked; }
 }
 
 modelbutton.flat arrow {
@@ -1990,9 +1984,11 @@ radio {
 
   @extend %circular_button;
 
-  &:checked, &:indeterminate { color: $accent_color; }
+  &:checked, &:indeterminate {
+    color: $accent_color;
 
-  &:checked:disabled, &:indeterminate:disabled { color: scale-alpha($accent_color, $disabled_opacity); }
+    &:disabled { color: scale-alpha($accent_color, $disabled_opacity); }
+  }
 
   // &:only-child { margin: -12px; }
 
@@ -2013,7 +2009,6 @@ radio {
     &, &:hover, &:disabled {
       box-shadow: none;
       // color: inherit;
-      // animation: none;
     }
   }
 }
@@ -2080,59 +2075,38 @@ radio {
  }
 }
 
-// let's animate things
-@keyframes check_check {
-  from { -gtk-icon-transform: rotate(90deg); }
-  to { -gtk-icon-transform: unset; }
-}
+// ANIMATION:
+// this is made with those pretty convoluted transitions, since checks and radios have to animate only on state changes,
+// the transformation is set on the active state and it get reset on the checked state.
+check:not(:indeterminate):not(:checked):active { -gtk-icon-transform: rotate(90deg); }
 
-@keyframes check_radio { // FIXME: cannot animate border-image
-  from {
-    border-image: -gtk-gradient(radial,
-                                center center, 0,
-                                center center, 0.001,
-                                to($accent_color),
-                                to(transparent))
-                                $radio_radius_slice / $radio_radius_width;
+// radio:not(:indeterminate):not(:checked):active { -gtk-icon-transform: scale(0); }
+
+check:indeterminate:not(:checked):active,
+radio:indeterminate:not(:checked):active { -gtk-icon-transform: scaleX(-1); } // instead of rotateY(180deg)
+
+check:not(:checked),
+radio:not(:checked) {
+  & {
+    transition: $longer_transition,
+                background-size $ripple_duration $deceleration_curve,
+                background-image $ripple_duration * 2 $deceleration_curve,
+                -gtk-icon-transform 0;
   }
 
-  to {
-    border-image: -gtk-gradient(radial,
-                                center center, 0,
-                                center center, $radio_indicator,
-                                to($accent_color),
-                                to(transparent))
-                                $radio_radius_slice / $radio_radius_width;
+  &:active {
+    transition: $longer_transition,
+                background-size 0,
+                background-image 0,
+                -gtk-icon-transform 0;
   }
 }
 
-@keyframes check_indeterminate {
-  from { -gtk-icon-transform: unset; }
-  50% { -gtk-icon-transform: scale(0, 1); }
-  to { -gtk-icon-transform: unset; }
-}
-
-%check_checked,
-check:not(:indeterminate):checked { animation: check_check $longer_duration $standard_curve; }
-
-check:not(:indeterminate):checked:active { animation: check_check $longer_duration $standard_curve, ripple_effect $longer_duration $deceleration_curve forwards; }
-
-// %radio_checked,
-// radio:not(:indeterminate):checked { animation: check_radio $longer_duration $standard_curve; }
-
-// radio:not(:indeterminate):checked:active { animation: check_radio $longer_duration $standard_curve, ripple_effect $longer_duration $deceleration_curve forwards; }
-
-%indeterminate_checked,
-check:indeterminate:checked, radio:indeterminate:checked { animation: check_indeterminate $longer_duration $standard_curve; }
-
-check:indeterminate:checked:active, radio:indeterminate:checked:active { animation: check_indeterminate $longer_duration $standard_curve, ripple_effect $longer_duration $deceleration_curve forwards; }
-
-// no animations in menus
 menu menuitem {
-  check:not(:indeterminate):checked,
-  radio:not(:indeterminate):checked,
-  check:indeterminate:checked,
-  radio:indeterminate:checked { animation: none; }
+  check,
+  radio {
+    &:checked, &:indeterminate { transition: none; }
+  }
 }
 
 treeview.view check,
