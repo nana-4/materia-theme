@@ -5,6 +5,10 @@
   @return scale-color($c, $alpha: percentage(-1 + $a));
 }
 
+@function chroma($c) {
+  @return mix($c, $grey_800, 75%);
+}
+
 @import 'color-palette';
 
 // Foreground colors
@@ -28,8 +32,8 @@ $disabled_secondary_inverse_fg_color: scale-alpha($secondary_inverse_fg_color, $
 $disabled_tertiary_inverse_fg_color: scale-alpha($tertiary_inverse_fg_color, $disabled_opacity);
 
 // Background colors
-$base_color: if($variant == 'light', $grey_50, $blue_grey_500);
-$alt_base_color: if($variant == 'light', $grey_200, $blue_grey_900);
+$base_color: if($variant == 'light', $grey_50, chroma($blue_grey_500));
+$alt_base_color: if($variant == 'light', $grey_200, chroma($blue_grey_600));
 
 $bg_color: scale-alpha($black, $middle_opacity);
 $alt_bg_color: scale-alpha($black, $lower_opacity);

@@ -9,6 +9,10 @@
   @return scale-color($c, $alpha: percentage(-1 + $a));
 }
 
+@function chroma($c) {
+  @return mix($c, $grey_800, 75%);
+}
+
 @import 'color-palette';
 
 // Foreground colors
@@ -40,11 +44,11 @@ $disabled_secondary_titlebar_fg_color: if($titlebar == 'dark', $disabled_seconda
 $disabled_tertiary_titlebar_fg_color: if($titlebar == 'dark', $disabled_tertiary_inverse_fg_color, $disabled_tertiary_fg_color);
 
 // Background colors
-$bg_color: if($variant == 'light', $grey_100, $blue_grey_700);
-$base_color: if($variant == 'light', $white, $blue_grey_600);
+$bg_color: if($variant == 'light', $grey_100, chroma($blue_grey_700));
+$base_color: if($variant == 'light', $white, chroma($blue_grey_600));
 $alt_base_color: if($variant == 'light', $grey_50, mix($base_color, $bg_color, 50%));
-$lighter_bg_color: if($variant == 'light', $grey_50, $blue_grey_500);
-$darker_bg_color: if($variant == 'light', $grey_200, $blue_grey_900);
+$lighter_bg_color: if($variant == 'light', $grey_50, chroma($blue_grey_500));
+$darker_bg_color: if($variant == 'light', $grey_200, chroma($blue_grey_900));
 
 $titlebar_bg_color: if($variant == 'light', if($titlebar == 'dark', $blue_grey_700, $grey_300), $blue_grey_800);
 $alt_titlebar_bg_color: if($titlebar == 'dark', $blue_grey_800, mix($grey_300, $grey_400, 50%));
