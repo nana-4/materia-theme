@@ -26,12 +26,16 @@
 
   outline-style: solid;
   outline-width: 2px;
-  outline-color: $fill_color;
+  outline-color: transparent;
   outline-offset: -4px;
   -gtk-outline-radius: 2px;
 
   -gtk-secondary-caret-color: $primary_color;
 }
+
+switch:focus slider,
+notebook:focus tab,
+*:focus { outline-color: $fill_color; }
 
 
 /***************

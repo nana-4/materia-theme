@@ -19,10 +19,15 @@
   -GtkDialog-action-area-border: 0;
   outline-style: solid;
   outline-width: 2px;
-  outline-color: alpha(currentColor, 0.3);
+  outline-color: transparent;
   outline-offset: -4px;
   -gtk-outline-radius: 2px;
   -gtk-secondary-caret-color: #42A5F5; }
+
+switch:focus slider,
+notebook:focus tab,
+*:focus {
+  outline-color: alpha(currentColor, 0.3); }
 
 /***************
  * Base States *
