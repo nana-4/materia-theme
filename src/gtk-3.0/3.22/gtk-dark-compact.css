@@ -1579,23 +1579,24 @@ check:indeterminate {
   -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/checkbox-mixed-symbolic.svg")), -gtk-recolor(url("assets/scalable/checkbox-mixed-symbolic.symbolic.png"))); }
 
 radio {
-  border-image: -gtk-gradient(radial, center center, 0, center center, 0.001, to(#FF4081), to(transparent)) 22/22px; }
+  border-image-slice: 22;
+  border-image-width: 22px; }
   radio {
     -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/radio-unchecked-symbolic.svg")), -gtk-recolor(url("assets/scalable/radio-unchecked-symbolic.symbolic.png"))); }
   radio:indeterminate {
     -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/radio-mixed-symbolic.svg")), -gtk-recolor(url("assets/scalable/radio-mixed-symbolic.symbolic.png"))); }
-  radio:checked {
-    border-image: -gtk-gradient(radial, center center, 0, center center, 0.11364, to(#FF4081), to(transparent)) 22/22px; }
-  radio:checked:disabled {
-    border-image: -gtk-gradient(radial, center center, 0, center center, 0.11364, to(rgba(255, 64, 129, 0.4)), to(transparent)) 22/22px; }
-  radio:indeterminate:checked {
-    border-image: -gtk-gradient(radial, center center, 0, center center, 0.001, to(#FF4081), to(transparent)) 22/22px; }
+  radio {
+    border-image-source: -gtk-gradient(radial, center center, 0, center center, 0.001, to(#FF4081), to(transparent)); }
+  radio:checked:not(:indeterminate) {
+    border-image-source: -gtk-gradient(radial, center center, 0, center center, 0.11364, to(#FF4081), to(transparent)); }
+  radio:checked:not(:indeterminate):disabled {
+    border-image-source: -gtk-gradient(radial, center center, 0, center center, 0.11364, to(rgba(255, 64, 129, 0.4)), to(transparent)); }
 
-check:not(:indeterminate):not(:checked):active {
+check:not(:checked):active {
   -gtk-icon-transform: rotate(90deg); }
 
-check:indeterminate:not(:checked):active,
-radio:indeterminate:not(:checked):active {
+check:not(:checked):indeterminate:active,
+radio:not(:checked):indeterminate:active {
   -gtk-icon-transform: scaleX(-1); }
 
 check:not(:checked),

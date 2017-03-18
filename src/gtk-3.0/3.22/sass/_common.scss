@@ -2025,10 +2025,6 @@ check {
                                             -gtk-recolor(url("assets/scalable/checkbox-mixed-symbolic.symbolic.png"))); }
 }
 
-$radio_indicator: 10px / $large_size / 2;
-$radio_radius_slice: #{$large_size / 2px};
-$radio_radius_width: #{$large_size / 2};
-
 %radio,
 radio {
   & { -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/radio-unchecked-symbolic.svg")),
@@ -2040,50 +2036,45 @@ radio {
   &:indeterminate { -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/radio-mixed-symbolic.svg")),
                                             -gtk-recolor(url("assets/scalable/radio-mixed-symbolic.symbolic.png"))); }
 
-  border-image: -gtk-gradient(radial,
-                              center center, 0,
-                              center center, 0.001,
-                              to($accent_color),
-                              to(transparent))
-                              $radio_radius_slice / $radio_radius_width;
+  border-image-slice: $large_size / 2px;
+  border-image-width: $large_size / 2;
 
-  &:checked {
-    border-image: -gtk-gradient(radial,
-                                center center, 0,
-                                center center, $radio_indicator,
-                                to($accent_color),
-                                to(transparent))
-                                $radio_radius_slice / $radio_radius_width;
- }
+  $radio_indicator: 10px / $large_size / 2;
 
-  &:checked:disabled {
-    border-image: -gtk-gradient(radial,
-                                center center, 0,
-                                center center, $radio_indicator,
-                                to(scale-alpha($accent_color, $disabled_opacity)),
-                                to(transparent))
-                                $radio_radius_slice / $radio_radius_width;
- }
+  & {
+    border-image-source: -gtk-gradient(radial,
+                                       center center, 0,
+                                       center center, 0.001,
+                                       to($accent_color),
+                                       to(transparent));
+  }
 
-  &:indeterminate:checked {
-    border-image: -gtk-gradient(radial,
-                                center center, 0,
-                                center center, 0.001,
-                                to($accent_color),
-                                to(transparent))
-                                $radio_radius_slice / $radio_radius_width;
- }
+  &:checked:not(:indeterminate) {
+    border-image-source: -gtk-gradient(radial,
+                                       center center, 0,
+                                       center center, $radio_indicator,
+                                       to($accent_color),
+                                       to(transparent));
+  }
+
+  &:checked:not(:indeterminate):disabled {
+    border-image-source: -gtk-gradient(radial,
+                                       center center, 0,
+                                       center center, $radio_indicator,
+                                       to(scale-alpha($accent_color, $disabled_opacity)),
+                                       to(transparent));
+  }
 }
 
 // ANIMATION:
 // this is made with those pretty convoluted transitions, since checks and radios have to animate only on state changes,
 // the transformation is set on the active state and it get reset on the checked state.
-check:not(:indeterminate):not(:checked):active { -gtk-icon-transform: rotate(90deg); }
+check:not(:checked):active { -gtk-icon-transform: rotate(90deg); }
 
-// radio:not(:indeterminate):not(:checked):active { -gtk-icon-transform: scale(0); }
+// radio:not(:checked):active { -gtk-icon-transform: scale(0); }
 
-check:indeterminate:not(:checked):active,
-radio:indeterminate:not(:checked):active { -gtk-icon-transform: scaleX(-1); } // instead of rotateY(180deg)
+check:not(:checked):indeterminate:active,
+radio:not(:checked):indeterminate:active { -gtk-icon-transform: scaleX(-1); } // instead of rotateY(180deg)
 
 check:not(:checked),
 radio:not(:checked) {
