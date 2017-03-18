@@ -1605,10 +1605,8 @@ radio:not(:checked) {
 check:not(:checked):active,
 radio:not(:checked):active {
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), background-size 0, background-image 0, -gtk-icon-transform 0; }
-
-menu menuitem check:checked, menu menuitem check:indeterminate,
-menu menuitem radio:checked,
-menu menuitem radio:indeterminate {
+menu menuitem check:not(:checked), menu menuitem
+radio:not(:checked) {
   transition: none; }
 
 treeview.view check,
