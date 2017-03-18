@@ -277,13 +277,8 @@ entry {
 
   progress {
     margin: 2px (2px - 8px);
-    border-style: none none solid;
-    border-width: 2px;
-    border-color: $primary_color;
-    // border-radius: 0;
-    // box-shadow: none;
+    border-bottom: 2px solid $primary_color;
     background-color: transparent;
-    // background-image: none;
   }
 
    // linked entries
@@ -1259,23 +1254,19 @@ treeview.view {
   }
 
   &.progressbar { // progress bar in treeviews
-    border-style: none none solid;
-    border-width: $bar_size;
-    border-color: $primary_color;
+    border-bottom: $bar_size solid $primary_color;
     box-shadow: none;
     background-color: transparent;
 
-    &:selected { border-color: currentColor; }
+    &:selected { border-bottom-color: currentColor; }
   }
 
   &.trough { // progress bar trough in treeviews
-    border-style: none none solid;
-    border-width: $bar_size;
-    border-color: scale-alpha($primary_color, $lower_opacity);
+    border-bottom: $bar_size solid scale-alpha($primary_color, $lower_opacity);
     box-shadow: none;
     background-color: transparent;
 
-    &:selected { border-color: $fill_color; }
+    &:selected { border-bottom-color: $fill_color; }
   }
 
   header {
