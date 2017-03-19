@@ -85,8 +85,11 @@ treeview.view rubberband,
 
 flowbox flowboxchild {
   padding: 4px;
-  border-radius: 2px;
-  outline-offset: -2px; }
+  border-radius: 2px; }
+
+.content-view .tile:selected {
+  background-color: transparent;
+  color: inherit; }
 
 label {
   caret-color: currentColor; }
@@ -1504,25 +1507,26 @@ switch {
 /*************************
  * Check and Radio items *
  *************************/
-.view.content-view.check:not(list) {
-  margin: 8px;
+.view.content-view.check:not(list),
+.content-view .tile check:not(list) {
+  min-height: 40px;
+  min-width: 40px;
+  margin: 0;
+  padding: 0;
   box-shadow: none;
   background-color: transparent;
   background-image: none;
-  -gtk-icon-source: -gtk-scaled(url("assets/selectionmode-checkbox-unchecked-dark.png"), url("assets/selectionmode-checkbox-unchecked-dark@2.png"));
   -gtk-icon-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
-  .view.content-view.check:not(list):hover, .view.content-view.check:not(list):active {
+  .view.content-view.check:not(list):hover, .view.content-view.check:not(list):active,
+  .content-view .tile check:not(list):hover,
+  .content-view .tile check:not(list):active {
     -gtk-icon-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23); }
-
-.view.content-view.check:checked:not(list) {
-  margin: 8px;
-  box-shadow: none;
-  background-color: transparent;
-  background-image: none;
-  -gtk-icon-source: -gtk-scaled(url("assets/selectionmode-checkbox-checked-dark.png"), url("assets/selectionmode-checkbox-checked-dark@2.png"));
-  -gtk-icon-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
-  .view.content-view.check:checked:not(list):hover, .view.content-view.check:checked:not(list):active {
-    -gtk-icon-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23); }
+  .view.content-view.check:not(list),
+  .content-view .tile check:not(list) {
+    -gtk-icon-source: -gtk-scaled(url("assets/selectionmode-checkbox-unchecked-dark.png"), url("assets/selectionmode-checkbox-unchecked-dark@2.png")); }
+  .view.content-view.check:not(list):checked,
+  .content-view .tile check:not(list):checked {
+    -gtk-icon-source: -gtk-scaled(url("assets/selectionmode-checkbox-checked-dark.png"), url("assets/selectionmode-checkbox-checked-dark@2.png")); }
 
 checkbutton.text-button,
 radiobutton.text-button {

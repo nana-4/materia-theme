@@ -114,9 +114,21 @@ flowbox {
   flowboxchild {
     padding: 4px;
     border-radius: 2px;
-    outline-offset: -2px;
+    // outline-offset: -2px;
 
     &:selected { @extend %selected_items; }
+  }
+}
+
+.content-view .tile {
+  // margin: 2px;
+  // padding: 0;
+  // border-radius: 0;
+  // background-color: $black;
+
+  &:selected {
+    background-color: transparent;
+    color: inherit;
   }
 }
 
@@ -1944,18 +1956,25 @@ switch {
 // all assets are rendered from assets.svg. never add pngs directly
 
 // selection-mode
-@each $s, $as in ('', '-unchecked'),
-                 (':checked', '-checked') {
-  .view.content-view.check#{$s}:not(list) {
-    margin: 8px;
-    box-shadow: none;
-    background-color: transparent;
-    background-image: none;
-    -gtk-icon-source: -gtk-scaled(url("assets/selectionmode-checkbox#{$as}#{$asset_suffix}.png"),
-                                  url("assets/selectionmode-checkbox#{$as}#{$asset_suffix}@2.png"));
-    -gtk-icon-shadow: $shadow_1;
+.view.content-view.check:not(list),
+.content-view .tile check:not(list) {
+  min-height: 40px;
+  min-width: 40px;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  background-color: transparent;
+  background-image: none;
+  -gtk-icon-shadow: $shadow_1;
 
-    &:hover, &:active { -gtk-icon-shadow: $shadow_2; }
+  &:hover, &:active { -gtk-icon-shadow: $shadow_2; }
+
+  @each $s, $as in ('', '-unchecked'),
+                   (':checked', '-checked') {
+    &#{$s} {
+      -gtk-icon-source: -gtk-scaled(url("assets/selectionmode-checkbox#{$as}#{$asset_suffix}.png"),
+                                    url("assets/selectionmode-checkbox#{$as}#{$asset_suffix}@2.png"));
+    }
   }
 }
 
