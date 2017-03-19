@@ -789,25 +789,19 @@ box.vertical:not(.titlebar) > revealer > toolbar.search-bar {
 /*********
  * To Do *
  *********/
-task-row {
+taskrow {
   transition: $shorter_transition;
-  margin: 0 -4px;
+  margin: 0 -8px;
 
   &:hover { transition: none; }
 
   label { margin: 0 8px; }
 
-  image { margin: 0 4px; }
+  image { min-width: 16px; }
 }
 
 task-list-view > box > revealer > box > button {
-  min-height: $medium_size;
-  margin: -4px;
-  padding: 0 12px;
-
-  label { margin: 0 8px; }
-
-  image { margin: 0 4px; }
+  margin: (12px * 2 - $medium_size) / 2;
 }
 
 
