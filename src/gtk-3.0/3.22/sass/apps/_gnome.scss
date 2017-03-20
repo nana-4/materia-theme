@@ -27,30 +27,22 @@
   // @extend .dim-label;
 }
 
-.nautilus-desktop.nautilus-canvas-item {
+.nautilus-desktop.nautilus-canvas-item:not(:selected) {
   // background-color: scale-alpha($black, $lower_opacity);
   color: $inverse_fg_color;
   text-shadow: $shadow_1;
 }
 
-.nautilus-desktop.nautilus-canvas-item:selected {
-  // color: $inverse_fg_color;
-  text-shadow: none;
-}
-
 // Toolbar
 @keyframes needs_attention_keyframes {
-  from { background-color: transparent; }
   to { background-color: $fill_color; }
 }
 
 .nautilus-operations-button-needs-attention {
-  color: $accent_color;
   animation: needs_attention_keyframes $longer_duration $standard_curve 2 alternate;
 }
 
 .nautilus-operations-button-needs-attention-multiple {
-  color: $accent_color;
   animation: needs_attention_keyframes $longer_duration $standard_curve 4 alternate;
 }
 
@@ -92,29 +84,21 @@
 .disk-space-display {
   // border-style: solid;
   // border-width: 2px;
-}
 
-.disk-space-display.unknown {
-  background-color: $warning_color;
-}
+  &.unknown { background-color: $warning_color; }
 
-.disk-space-display.used {
-  background-color: $primary_color;
-}
+  &.used { background-color: $primary_color; }
 
-.disk-space-display.free {
-  background-color: $fill_color;
-  color: $disabled_fg_color;
+  &.free {
+    background-color: $fill_color;
+    color: $disabled_fg_color;
+  }
 }
 
 // View
-.nautilus-list-view .view {
-  // border-bottom: 1px solid $border_color;
-}
-
 // Hide superfluous treeview drop target indication
-.nautilus-list-view .view.dnd {
-  // border-style: none;
+.nautilus-list-view .view:not(.dnd) {
+  // border-bottom: 1px solid $border_color;
 }
 
 // Libgd tag entries in the search. Sadly it requires this copy pasted css style.
@@ -147,9 +131,11 @@
 
 // Workaround for the double border of the searchbar since we use a revealer which
 // always allocates at least 1 pixel
-.nautilus-window searchbar { border-top: 1px solid $border_color; }
+.nautilus-window {
+  searchbar { border-top: 1px solid $border_color; }
 
-.nautilus-window .searchbar-container { margin-top: -1px; }
+  .searchbar-container { margin-top: -1px; }
+}
 
 .nautilus-window headerbar > revealer > button { @extend %circular_button; }
 
@@ -168,8 +154,6 @@
     background-color: transparent;
 
     > widget > .icon-item-background { background-color: $primary_color; }
-
-    // > widget > box > .icon-background { background-color: black; }
   }
 }
 
@@ -239,12 +223,8 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
   background-color: $lighter_bg_color;
 }
 
-.gedit-document-panel-group-row {
+.gedit-document-panel-group-row:not(:first-child) {
   border-top: 1px solid $border_color;
-}
-
-.gedit-document-panel-group-row:first-child {
-  border-top: none;
 }
 
 // Try to look as the notebook tab close button
@@ -384,13 +364,13 @@ frame.gedit-map-frame > border {
 layouttabbar {
   border-bottom: 1px solid $border_color;
   background-color: $bg_color;
-}
 
-layouttabbar button { @extend %flat_button; }
+  button { @extend %flat_button; }
 
-layouttabbar > box > button {
-  margin: (40px - $medium_size) / 2 0;
-  // border-radius: 0;
+  > box > button {
+    margin: (40px - $medium_size) / 2 0;
+    // border-radius: 0;
+  }
 }
 
 layouttab {
@@ -400,23 +380,19 @@ layouttab {
   border-color: $border_color;
   box-shadow: inset 0 -2px $primary_color;
   background-color: $base_color;
-}
 
-layouttab separator.vertical {
-  margin: 8px 4px;
-}
+  separator.vertical { margin: 8px 4px; }
 
-layouttab button {
-  &.text-button, &.image-button, & {
-    margin-top: 8px;
-    margin-bottom: 8px;
-    padding: 0 4px;
+  button {
+    &.text-button, &.image-button, & {
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding: 0 4px;
+    }
   }
-}
 
-// Close button styling for layouttab.
-layouttab > box > button.close {
-  border-radius: $circular_radius;
+  // Close button styling for layouttab.
+  > box > button.close { border-radius: $circular_radius; }
 }
 
 layout {
@@ -430,26 +406,28 @@ entry.search-missing {
 }
 
 // tweak icons for treeviews
-window.workbench treeview.image { color: gtkalpha(currentColor, $tertiary_opacity); }
+window.workbench treeview.image {
+  color: gtkalpha(currentColor, $tertiary_opacity);
 
-window.workbench treeview.image:selected { color: $tertiary_inverse_fg_color; }
+  &:selected { color: $tertiary_inverse_fg_color; }
+}
 
 popover.popover-selector list {
   padding: 8px - 2px;
-}
 
-popover.popover-selector list row {
-  border-radius: 2px;
-}
+  row {
+    border-radius: 2px;
 
-popover.popover-selector list row image {
-  &:dir(ltr) { margin-right: 6px; }
-  &:dir(rtl) { margin-left: 6px; }
-}
+    image {
+      &:dir(ltr) { margin-right: 6px; }
+      &:dir(rtl) { margin-left: 6px; }
+    }
 
-popover.popover-selector list row .accel {
-  &:dir(ltr) { margin-left: 6px; }
-  &:dir(rtl) { margin-right: 6px; }
+    .accel {
+      &:dir(ltr) { margin-left: 6px; }
+      &:dir(rtl) { margin-right: 6px; }
+    }
+  }
 }
 
 omnibar {
@@ -473,19 +451,17 @@ entry.preferences-search {
   // &:dir(rtl) { border-left: 1px solid $border_color; }
 }
 
-preferences stacksidebar.sidebar list {
-  background-color: $lighter_bg_color;
-}
-
 preferences stacksidebar.sidebar {
+  list { background-color: $lighter_bg_color; }
+
   &:dir(ltr),
   &:dir(rtl) { list { border-style: none; }}
-}
 
-preferences stacksidebar list separator {
-  min-width: 0;
-  min-height: 0;
-  background-color: transparent;
+  list separator {
+    min-width: 0;
+    min-height: 0;
+    background-color: transparent;
+  }
 }
 
 preferences > box > box {
@@ -493,40 +469,30 @@ preferences > box > box {
   &:dir(rtl) { border-left: 1px solid $border_color; }
 }
 
-popover.messagepopover.background {
-  padding: 0;
-}
+popover.messagepopover {
+  &.background { padding: 0; }
 
-popover.messagepopover .popover-action-area button {
-  @extend %simple_flat_button;
+  .popover-action-area button {
+    @extend %simple_flat_button;
 
-  padding: 8px 16px;
-  border-top: 1px solid $border_color;
-  border-radius: 0;
-}
+    padding: 8px 16px;
+    border-top: 1px solid $border_color;
+    border-radius: 0;
 
-popover.messagepopover .popover-action-area button:first-child {
-  border-bottom-left-radius: 2px;
-}
+    &:first-child { border-bottom-left-radius: 2px; }
 
-popover.messagepopover .popover-action-area button:last-child {
-  border-bottom-right-radius: 2px;
-}
+    &:last-child { border-bottom-right-radius: 2px; }
+  }
 
-popover.messagepopover .popover-content-area {
-  margin: 16px;
+  .popover-content-area { margin: 16px; }
 }
 
 popover.transfers list {
   background-color: transparent;
-}
 
-popover.transfers list row:not(:first-child) {
-  border-top: 1px solid $border_color;
-}
+  row:not(:first-child) { border-top: 1px solid $border_color; }
 
-popover.transfers list row > box {
-  padding: 10px;
+  row > box { padding: 10px; }
 }
 
 dockbin {
@@ -594,21 +560,21 @@ docktab {
 
 dockoverlayedge {
   background-color: $bg_color;
-}
 
-dockoverlayedge docktabstrip {
-  padding: 0;
-  border: none;
-}
+  docktabstrip {
+    padding: 0;
+    border: none;
+  }
 
-dockoverlayedge.left-edge docktab {
-  &:hover { box-shadow: inset -2px 0 $fill_color; }
-  &:checked { box-shadow: inset -2px 0 $primary_color; }
-}
+  &.left-edge docktab {
+    &:hover { box-shadow: inset -2px 0 $fill_color; }
+    &:checked { box-shadow: inset -2px 0 $primary_color; }
+  }
 
-dockoverlayedge.right-edge docktab {
-  &:hover { box-shadow: inset 2px 0 $fill_color; }
-  &:checked { box-shadow: inset 2px 0 $primary_color; }
+  &.right-edge docktab {
+    &:hover { box-shadow: inset 2px 0 $fill_color; }
+    &:checked { box-shadow: inset 2px 0 $primary_color; }
+  }
 }
 
 pillbox {
@@ -644,16 +610,10 @@ editortweak entry.search {
 }
 
 // Keep search bar and layouttab height in sync.
+// layouttabbar > box,
+// eggsearchbar > revealer > box,
 docktabstrip {
   min-height: 39px;
-}
-
-layouttabbar > box {
-  // min-height: 39px;
-}
-
-eggsearchbar > revealer > box {
-  // min-height: 39px;
 }
 
 eggsearchbar entry {
@@ -682,12 +642,10 @@ button.run-arrow-button {
 
 GdMainIconView.content-view {
   -GdMainIconView-icon-size: 48;
-}
 
-// Make spinner visible on both dark and bright backgrounds w/o making
-// it look ugly/weird.
-GdMainIconView.content-view.cell:active {
-  // color: $tertiary_fg_color;
+  // Make spinner visible on both dark and bright backgrounds w/o making
+  // it look ugly/weird.
+  // &.cell:active { color: $tertiary_fg_color; }
 }
 
 .documents-counter {

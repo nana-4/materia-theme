@@ -2416,24 +2416,17 @@ stackswitcher button.text-button.circular {
 .nautilus-window paned > separator {
   background-color: #44545c; }
 
-.nautilus-desktop.nautilus-canvas-item, .caja-desktop.caja-canvas-item {
+.nautilus-desktop.nautilus-canvas-item:not(:selected), .caja-desktop.caja-canvas-item:not(:selected) {
   color: #FFFFFF;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
 
-.nautilus-desktop.nautilus-canvas-item:selected, .caja-desktop.caja-canvas-item:selected {
-  text-shadow: none; }
-
 @keyframes needs_attention_keyframes {
-  from {
-    background-color: transparent; }
   to {
     background-color: alpha(currentColor, 0.3); } }
 .nautilus-operations-button-needs-attention {
-  color: #FF4081;
   animation: needs_attention_keyframes 0.3s cubic-bezier(0.4, 0, 0.2, 1) 2 alternate; }
 
 .nautilus-operations-button-needs-attention-multiple {
-  color: #FF4081;
   animation: needs_attention_keyframes 0.3s cubic-bezier(0.4, 0, 0.2, 1) 4 alternate; }
 
 .nautilus-window .floating-bar {
@@ -2459,10 +2452,8 @@ stackswitcher button.text-button.circular {
 
 .disk-space-display.unknown {
   background-color: #FF6D00; }
-
 .disk-space-display.used {
   background-color: #42A5F5; }
-
 .disk-space-display.free {
   background-color: alpha(currentColor, 0.3);
   color: rgba(255, 255, 255, 0.4); }
@@ -2488,7 +2479,6 @@ stackswitcher button.text-button.circular {
 
 .nautilus-window searchbar {
   border-top: 1px solid rgba(0, 0, 0, 0.2); }
-
 .nautilus-window .searchbar-container {
   margin-top: -1px; }
 
@@ -2543,11 +2533,8 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal > box.horizontal:
 .gedit-document-panel {
   background-color: #596e79; }
 
-.gedit-document-panel-group-row {
+.gedit-document-panel-group-row:not(:first-child) {
   border-top: 1px solid rgba(0, 0, 0, 0.2); }
-
-.gedit-document-panel-group-row:first-child {
-  border-top: none; }
 
 .gedit-document-panel row button.flat {
   margin-top: 8px;
@@ -2629,9 +2616,8 @@ frame.gedit-map-frame > border:dir(rtl) {
 layouttabbar {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   background-color: #44545c; }
-
-layouttabbar > box > button {
-  margin: 4px 0; }
+  layouttabbar > box > button {
+    margin: 4px 0; }
 
 layouttab {
   margin: 0 8px;
@@ -2640,17 +2626,14 @@ layouttab {
   border-color: rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 -2px #42A5F5;
   background-color: #50636c; }
-
-layouttab separator.vertical {
-  margin: 8px 4px; }
-
-layouttab button.text-button, layouttab button.image-button, layouttab button {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  padding: 0 4px; }
-
-layouttab > box > button.close {
-  border-radius: 9999px; }
+  layouttab separator.vertical {
+    margin: 8px 4px; }
+  layouttab button.text-button, layouttab button.image-button, layouttab button {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 0 4px; }
+  layouttab > box > button.close {
+    border-radius: 9999px; }
 
 layout {
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -2662,25 +2645,21 @@ entry.search-missing {
 
 window.workbench treeview.image {
   color: alpha(currentColor, 0.6); }
-
-window.workbench treeview.image:selected {
-  color: rgba(255, 255, 255, 0.6); }
+  window.workbench treeview.image:selected {
+    color: rgba(255, 255, 255, 0.6); }
 
 popover.popover-selector list {
   padding: 6px; }
-
-popover.popover-selector list row {
-  border-radius: 2px; }
-
-popover.popover-selector list row image:dir(ltr) {
-  margin-right: 6px; }
-popover.popover-selector list row image:dir(rtl) {
-  margin-left: 6px; }
-
-popover.popover-selector list row .accel:dir(ltr) {
-  margin-left: 6px; }
-popover.popover-selector list row .accel:dir(rtl) {
-  margin-right: 6px; }
+  popover.popover-selector list row {
+    border-radius: 2px; }
+    popover.popover-selector list row image:dir(ltr) {
+      margin-right: 6px; }
+    popover.popover-selector list row image:dir(rtl) {
+      margin-left: 6px; }
+    popover.popover-selector list row .accel:dir(ltr) {
+      margin-left: 6px; }
+    popover.popover-selector list row .accel:dir(rtl) {
+      margin-right: 6px; }
 
 omnibar.linked:not(.vertical) entry {
   border-radius: 2px; }
@@ -2696,11 +2675,9 @@ entry.preferences-search {
 
 preferences stacksidebar.sidebar list {
   background-color: #596e79; }
-
 preferences stacksidebar.sidebar:dir(ltr) list, preferences stacksidebar.sidebar:dir(rtl) list {
   border-style: none; }
-
-preferences stacksidebar list separator {
+preferences stacksidebar.sidebar list separator {
   min-width: 0;
   min-height: 0;
   background-color: transparent; }
@@ -2712,29 +2689,23 @@ preferences > box > box:dir(rtl) {
 
 popover.messagepopover.background {
   padding: 0; }
-
 popover.messagepopover .popover-action-area button {
   padding: 8px 16px;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0; }
-
-popover.messagepopover .popover-action-area button:first-child {
-  border-bottom-left-radius: 2px; }
-
-popover.messagepopover .popover-action-area button:last-child {
-  border-bottom-right-radius: 2px; }
-
+  popover.messagepopover .popover-action-area button:first-child {
+    border-bottom-left-radius: 2px; }
+  popover.messagepopover .popover-action-area button:last-child {
+    border-bottom-right-radius: 2px; }
 popover.messagepopover .popover-content-area {
   margin: 16px; }
 
 popover.transfers list {
   background-color: transparent; }
-
-popover.transfers list row:not(:first-child) {
-  border-top: 1px solid rgba(0, 0, 0, 0.2); }
-
-popover.transfers list row > box {
-  padding: 10px; }
+  popover.transfers list row:not(:first-child) {
+    border-top: 1px solid rgba(0, 0, 0, 0.2); }
+  popover.transfers list row > box {
+    padding: 10px; }
 
 dockbin {
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -2780,20 +2751,17 @@ docktab {
 
 dockoverlayedge {
   background-color: #44545c; }
-
-dockoverlayedge docktabstrip {
-  padding: 0;
-  border: none; }
-
-dockoverlayedge.left-edge docktab:hover {
-  box-shadow: inset -2px 0 alpha(currentColor, 0.3); }
-dockoverlayedge.left-edge docktab:checked {
-  box-shadow: inset -2px 0 #42A5F5; }
-
-dockoverlayedge.right-edge docktab:hover {
-  box-shadow: inset 2px 0 alpha(currentColor, 0.3); }
-dockoverlayedge.right-edge docktab:checked {
-  box-shadow: inset 2px 0 #42A5F5; }
+  dockoverlayedge docktabstrip {
+    padding: 0;
+    border: none; }
+  dockoverlayedge.left-edge docktab:hover {
+    box-shadow: inset -2px 0 alpha(currentColor, 0.3); }
+  dockoverlayedge.left-edge docktab:checked {
+    box-shadow: inset -2px 0 #42A5F5; }
+  dockoverlayedge.right-edge docktab:hover {
+    box-shadow: inset 2px 0 alpha(currentColor, 0.3); }
+  dockoverlayedge.right-edge docktab:checked {
+    box-shadow: inset 2px 0 #42A5F5; }
 
 pillbox {
   background-color: #44545c;
