@@ -27,30 +27,22 @@
   // @extend .dim-label;
 }
 
-.nautilus-desktop.nautilus-canvas-item {
+.nautilus-desktop.nautilus-canvas-item:not(:selected) {
   // background-color: scale-alpha($black, $lower_opacity);
   color: $inverse_fg_color;
   text-shadow: $shadow_1;
 }
 
-.nautilus-desktop.nautilus-canvas-item:selected {
-  // color: $inverse_fg_color;
-  text-shadow: none;
-}
-
 // Toolbar
 @keyframes needs_attention_keyframes {
-  from { background-color: transparent; }
   to { background-color: $fill_color; }
 }
 
 .nautilus-operations-button-needs-attention {
-  color: $accent_color;
   animation: needs_attention_keyframes $longer_duration $standard_curve 2 alternate;
 }
 
 .nautilus-operations-button-needs-attention-multiple {
-  color: $accent_color;
   animation: needs_attention_keyframes $longer_duration $standard_curve 4 alternate;
 }
 
@@ -92,29 +84,21 @@
 .disk-space-display {
   // border-style: solid;
   // border-width: 2px;
-}
 
-.disk-space-display.unknown {
-  background-color: $warning_color;
-}
+  &.unknown { background-color: $warning_color; }
 
-.disk-space-display.used {
-  background-color: $primary_color;
-}
+  &.used { background-color: $primary_color; }
 
-.disk-space-display.free {
-  background-color: $fill_color;
-  color: $disabled_fg_color;
+  &.free {
+    background-color: $fill_color;
+    color: $disabled_fg_color;
+  }
 }
 
 // View
-.nautilus-list-view .view {
-  // border-bottom: 1px solid $border_color;
-}
-
 // Hide superfluous treeview drop target indication
-.nautilus-list-view .view.dnd {
-  // border-style: none;
+.nautilus-list-view .view:not(.dnd) {
+  // border-bottom: 1px solid $border_color;
 }
 
 // Libgd tag entries in the search. Sadly it requires this copy pasted css style.
@@ -147,9 +131,11 @@
 
 // Workaround for the double border of the searchbar since we use a revealer which
 // always allocates at least 1 pixel
-.nautilus-window searchbar { border-top: 1px solid $border_color; }
+.nautilus-window {
+  searchbar { border-top: 1px solid $border_color; }
 
-.nautilus-window .searchbar-container { margin-top: -1px; }
+  .searchbar-container { margin-top: -1px; }
+}
 
 .nautilus-window headerbar > revealer > button { @extend %circular_button; }
 
@@ -179,12 +165,8 @@
   background-color: $lighter_bg_color;
 }
 
-.gedit-document-panel-group-row {
+.gedit-document-panel-group-row:not(:first-child) {
   border-top: 1px solid $border_color;
-}
-
-.gedit-document-panel-group-row:first-child {
-  border-top: none;
 }
 
 // Try to look as the notebook tab close button
@@ -325,22 +307,22 @@ frame.gedit-map-frame > border {
 // stack. We were seeing black edges around the header bar, and
 // improper radius on the headerbar.
 //
-workbench stack.titlebar {
-  padding: 0;
-  // box-shadow: none;
-}
+workbench {
+  stack.titlebar {
+    padding: 0;
+    // box-shadow: none;
+  }
 
-workbench:not(.tiled):not(.maximized):not(.fullscreen) stack.titlebar headerbar {
-  border-radius: 2px 2px 0 0;
-  // box-shadow: none;
+  &:not(.tiled):not(.maximized):not(.fullscreen) stack.titlebar headerbar {
+    border-radius: 2px 2px 0 0;
+    // box-shadow: none;
+  }
 }
 
 perspectiveswitcher {
   background-color: $bg_color;
-}
 
-perspectiveswitcher button:checked {
-  color: $primary_color;
+  button:checked { color: $primary_color; }
 }
 
 // Layout tab and tab bar tweaks
@@ -348,13 +330,13 @@ perspectiveswitcher button:checked {
 layouttabbar {
   border-bottom: 1px solid $border_color;
   background-color: $bg_color;
-}
 
-layouttabbar button { @extend %flat_button; }
+  button { @extend %flat_button; }
 
-layouttabbar > box > button {
-  margin: (40px - $medium_size) / 2 0;
-  // border-radius: 0;
+  > box > button {
+    margin: (40px - $medium_size) / 2 0;
+    // border-radius: 0;
+  }
 }
 
 layouttab {
@@ -364,23 +346,19 @@ layouttab {
   border-color: $border_color;
   box-shadow: inset 0 -2px $primary_color;
   background-color: $base_color;
-}
 
-layouttab separator.vertical {
-  margin: 8px 4px;
-}
+  separator.vertical { margin: 8px 4px; }
 
-layouttab button {
-  &.text-button, &.image-button, & {
-    margin-top: 8px;
-    margin-bottom: 8px;
-    padding: 0 4px;
+  button {
+    &.text-button, &.image-button, & {
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding: 0 4px;
+    }
   }
-}
 
-// Close button styling for layouttab.
-layouttab > box > button.close {
-  border-radius: $circular_radius;
+  // Close button styling for layouttab.
+  > box > button.close { border-radius: $circular_radius; }
 }
 
 layout {
@@ -394,9 +372,11 @@ entry.search-missing {
 }
 
 // tweak icons for treeviews
-workbench treeview.image { color: gtkalpha(currentColor, $tertiary_opacity); }
+workbench treeview.image {
+  color: gtkalpha(currentColor, $tertiary_opacity);
 
-workbench treeview.image:selected { color: $tertiary_inverse_fg_color; }
+  &:selected { color: $tertiary_inverse_fg_color; }
+}
 
 dockbin {
   border: 1px solid $border_color;
@@ -463,21 +443,21 @@ docktab {
 
 dockoverlayedge {
   background-color: $bg_color;
-}
 
-dockoverlayedge docktabstrip {
-  padding: 0;
-  border: none;
-}
+  docktabstrip {
+    padding: 0;
+    border: none;
+  }
 
-dockoverlayedge.left-edge docktab {
-  &:hover { box-shadow: inset -2px 0 $fill_color; }
-  &:checked { box-shadow: inset -2px 0 $primary_color; }
-}
+  &.left-edge docktab {
+    &:hover { box-shadow: inset -2px 0 $fill_color; }
+    &:checked { box-shadow: inset -2px 0 $primary_color; }
+  }
 
-dockoverlayedge.right-edge docktab {
-  &:hover { box-shadow: inset 2px 0 $fill_color; }
-  &:checked { box-shadow: inset 2px 0 $primary_color; }
+  &.right-edge docktab {
+    &:hover { box-shadow: inset 2px 0 $fill_color; }
+    &:checked { box-shadow: inset 2px 0 $primary_color; }
+  }
 }
 
 pillbox {
@@ -519,16 +499,10 @@ frame.gb-search-frame {
 }
 
 // Keep search bar and layouttab height in sync.
+// layouttabbar > box,
+// eggsearchbar > revealer > box,
 docktabstrip {
   min-height: 39px;
-}
-
-layouttabbar > box {
-  // min-height: 39px;
-}
-
-eggsearchbar > revealer > box {
-  // min-height: 39px;
 }
 
 eggsearchbar entry {
@@ -551,12 +525,10 @@ workbench preferences preferencesgroup list entry {
 
 GdMainIconView.content-view {
   -GdMainIconView-icon-size: 48;
-}
 
-// Make spinner visible on both dark and bright backgrounds w/o making
-// it look ugly/weird.
-GdMainIconView.content-view.cell:active {
-  // color: $tertiary_fg_color;
+  // Make spinner visible on both dark and bright backgrounds w/o making
+  // it look ugly/weird.
+  // &.cell:active { color: $tertiary_fg_color; }
 }
 
 .documents-counter {
