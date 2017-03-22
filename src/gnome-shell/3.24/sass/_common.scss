@@ -705,6 +705,9 @@ StScrollBar {
 .pad-osd-window {
   padding: 32px;
   background-color: $bg_color;
+
+  .pad-osd-title-box { spacing: 12px; }
+  .pad-osd-title-menu-box { spacing: 6px; }
 }
 
 .combo-box-label {
@@ -932,10 +935,18 @@ StScrollBar {
 
     .datemenu-calendar-column { spacing: 8px; }
     .datemenu-displays-section { padding-bottom: 0; }
+    .datemenu-displays-box { spacing: 8px; }
+
+    .datemenu-calendar-column {
+      border: 0 solid $border_color;
+      &:ltr { border-left-width: 0; }
+      &:rtl { border-right-width: 0; }
+    }
 
     .datemenu-today-button,
     .world-clocks-button,
-    .message-list-section-title {
+    .weather-button,
+    .events-section-title {
       min-height: $menuitem_size - 4px * 2;
       padding: 4px 8px;
       border-radius: 2px;
@@ -955,7 +966,8 @@ StScrollBar {
 
     .datemenu-today-button,
     .world-clocks-button,
-    .message-list-section-title {
+    .weather-button,
+    .events-section-title {
       &:hover,&:focus { color: $fg_color; background-color: $semi_fill_color; }
       &:active {
         color: $fg_color;
@@ -971,13 +983,18 @@ StScrollBar {
     }
 
     .world-clocks-header,
-    .message-list-section-title {
+    .weather-header,
+    .events-section-title {
       color: $secondary_fg_color;
       font-weight: bold;
     }
 
     .world-clocks-grid {
       spacing-rows: 0.4em;
+    }
+
+    .weather-box {
+      spacing: 0.4em;
     }
 
     .calendar-month-label {
@@ -1081,6 +1098,12 @@ StScrollBar {
         width: 420px;
       }
 
+        .message-list-clear-button.button {
+          background-color: transparent;
+          &:hover,&:focus { background-color: $semi_fill_color; }
+          margin: 8px 8px 0;
+        }
+
         .message-list-sections {
           spacing: 8px;
         }
@@ -1088,30 +1111,6 @@ StScrollBar {
         .message-list-section,
         .message-list-section-list {
           spacing: 8px;
-        }
-
-        .message-list-section-title-box {
-          spacing: 8px;
-        }
-
-        .message-list-section-close > StIcon {
-          icon-size: 16px;
-          border-radius: 16px;
-          padding: ($menuitem_size - 16px) / 2;
-          color: $secondary_fg_color;
-          background-color: transparent;
-        }
-
-        /* FIXME: how do you do this in sass? */
-        .message-list-section-close:hover > StIcon,
-        .message-list-section-close:focus > StIcon {
-          color: $fg_color;
-          background-color: $semi_fill_color;
-        }
-
-        .message-list-section-close:active > StIcon {
-          color: $fg_color;
-          background-color: $fill_color;
         }
 
         .message {
@@ -1128,16 +1127,21 @@ StScrollBar {
           }
 
           .message-icon-bin > StIcon {
+            color: $fg_color;
             icon-size: 32px;
+            -st-icon-style: requested;
           }
 
           .message-secondary-bin {
-            &:ltr { padding-left: 8px; }
-            &:rtl { padding-right: 8px; }
+            padding: 0 8px;
           }
 
-          .message-secondary-bin {
+          .message-secondary-bin > .event-time {
             color: $tertiary_fg_color;
+            font-size: 1em;
+            /* HACK: the label should be baseline-aligned with a 1em label,
+                     fake this with some bottom padding */
+            padding-bottom: 0;
           }
 
           .message-secondary-bin > StIcon {
