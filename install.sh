@@ -50,18 +50,20 @@ for color in '' '-dark' '-light' ; do
 		install -d ${themedir}/gnome-shell
 		cd ${srcdir}/gnome-shell/${gnomever}
 		cp -ur \
-			extensions \
 			no-events.svg \
 			no-notifications.svg \
-			pad-osd.css \
 			process-working.svg \
 			${themedir}/gnome-shell
+		cp -urL \
+			extensions \
+			pad-osd.css \
+			${themedir}/gnome-shell
 		if [ "$color" != '-dark' ] ; then
-			cp -ur \
+			cp -urL \
 				assets \
 				${themedir}/gnome-shell
 		else
-			cp -ur \
+			cp -urL \
 				assets${color} \
 				${themedir}/gnome-shell/assets
 		fi
