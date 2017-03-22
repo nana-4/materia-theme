@@ -31,6 +31,8 @@ Installation
 ------------
 Arch Linux users can install from the [AUR package](https://aur.archlinux.org/packages/flatplat-theme) maintained by @cthbleachbit.
 
+Fedora and EPEL users can also install from a [Copr repository](https://copr.fedorainfracloud.org/coprs/tcg/themes/).
+
 ### Manual Installation
 1. Open the terminal and run the following commands:
 
