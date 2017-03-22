@@ -9,16 +9,12 @@
   background-color: scale-alpha($black, $lower_opacity);
   // color: $white;
   // font-weight: bold;
-}
 
-// the menubars/menus of the panel, i.e. indicators
-#panel_window menubar,
-#panel_window separator {
-  background-color: transparent;
-}
+  // the menubars/menus of the panel, i.e. indicators
+  menubar,
+  separator { background-color: transparent; }
 
-#panel_window menubar {
-  > menuitem {
+  menubar > menuitem {
     color: $secondary_inverse_fg_color;
 
     &:hover { color: $inverse_fg_color; }
@@ -43,13 +39,15 @@
   border-bottom: 1px solid $border_color;
 }
 
-// the user-combobox
-#login_window #user_combobox button { @extend %combo_flat; }
+#login_window {
+  // the user-combobox
+  #user_combobox button { @extend %combo_flat; }
 
-// the entries, one for the username, one for the password
-#login_window entry { @extend %entry.flat; }
+  // the entries, one for the username, one for the password
+  entry { @extend %entry.flat; }
+}
 
-// the buttons, alternatively this could also be done with a simple ".lightdm-gtk-greeter .button"
+// the buttons, alternatively this could also be done with a simple ".lightdm-gtk-greeter button"
 #login_window button,
 #shutdown_dialog button,
 #restart_dialog button {

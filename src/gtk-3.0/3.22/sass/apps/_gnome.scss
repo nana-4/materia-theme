@@ -12,10 +12,6 @@
   background-color: $base_color;
 }
 
-.nautilus-window paned > separator {
-  background-color: $bg_color;
-}
-
 .nautilus-canvas-item {
   @extend iconview;
 
@@ -137,18 +133,16 @@
   .searchbar-container { margin-top: -1px; }
 }
 
-.nautilus-window headerbar > revealer > button { @extend %circular_button; }
-
 .conflict-row:not(:selected) { background-color: mix($warning_color, $base_color, percentage($lower_opacity)); }
 
 // Icon view
 .nautilus-window flowboxchild {
+  // > widget > box > .icon-background { background-color: black; }
+
   > widget > .icon-item-background {
     padding: 4px;
     border-radius: $material_radius;
   }
-
-  // > widget > box > .icon-background { background-color: black; }
 
   &:selected {
     background-color: transparent;
@@ -157,6 +151,7 @@
   }
 }
 
+// Batch rename dialog
 dialog.background > box.dialog-vbox.vertical > grid.horizontal {
   > scrolledwindow.frame { border-style: none; }
 
@@ -170,17 +165,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
   }
 }
 
-.nautilus-menu-sort-heading {
-  // min-height: 26px;
-  // padding-left: 5px;
-  // padding-right: 5px;
-  margin: 1px 3px;
-  font-weight: 500;
-
-  &:disabled { color: $tertiary_fg_color; }
-}
-
-// Tweaks to fix the messy sizing of the popover menu
+// Tweak to fix the messy sizing of the popover menu
 .nautilus-window > popover.menu:not(:last-child) {
   padding: 3px;
 
@@ -196,6 +181,22 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 
   separator { margin-bottom: -2px; }
 }
+
+.nautilus-menu-sort-heading {
+  // min-height: 26px;
+  // padding-left: 5px;
+  // padding-right: 5px;
+  margin: 1px 3px;
+  font-weight: 500;
+
+  &:disabled { color: $tertiary_fg_color; }
+}
+
+// Make operations button circular
+.nautilus-window headerbar > revealer > button { @extend %circular_button; }
+
+// Ensure paned separator rendering. See issue #84 for details.
+.nautilus-window paned > separator { background-color: $bg_color; }
 
 
 /*********
@@ -221,18 +222,18 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 
 .gedit-document-panel {
   background-color: $lighter_bg_color;
+
+  // Try to look as the notebook tab close button
+  row button.flat {
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    @extend %small_button;
+  }
 }
 
 .gedit-document-panel-group-row:not(:first-child) {
   border-top: 1px solid $border_color;
-}
-
-// Try to look as the notebook tab close button
-.gedit-document-panel row button.flat {
-  margin-top: 8px;
-  margin-bottom: 8px;
-
-  @extend %small_button;
 }
 
 .gedit-side-panel-paned statusbar {
@@ -325,8 +326,8 @@ frame.gedit-map-frame > border {
 }
 
 .tweak {
-  padding: 3px;
   // padding-top: 3px;
+  padding: 3px;
 
   &.title:hover { box-shadow: none; }
 }
@@ -392,7 +393,7 @@ layouttab {
   }
 
   // Close button styling for layouttab.
-  > box > button.close { border-radius: $circular_radius; }
+  // > box > button.close { @extend %circular_button; }
 }
 
 layout {

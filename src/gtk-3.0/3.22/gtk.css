@@ -1848,10 +1848,10 @@ levelbar trough {
     color: rgba(0, 0, 0, 0.32); }
 levelbar.horizontal.discrete block {
   margin: 0 1px; }
-levelbar.vertical.discrete block {
-  margin: 1px 0; }
 levelbar.horizontal.discrete trough {
   padding: 2px 1px; }
+levelbar.vertical.discrete block {
+  margin: 1px 0; }
 levelbar.vertical.discrete trough {
   padding: 1px 2px; }
 levelbar block.low {
@@ -2413,9 +2413,6 @@ stackswitcher button.text-button.circular {
 .nautilus-window notebook > stack {
   background-color: #FFFFFF; }
 
-.nautilus-window paned > separator {
-  background-color: #F5F5F5; }
-
 .nautilus-desktop.nautilus-canvas-item:not(:selected), .caja-desktop.caja-canvas-item:not(:selected) {
   color: #FFFFFF;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
@@ -2503,12 +2500,6 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal > box.horizontal:
   dialog.background > box.dialog-vbox.vertical > grid.horizontal > box.horizontal:last-child > box > button {
     border-radius: 0; }
 
-.nautilus-menu-sort-heading {
-  margin: 1px 3px;
-  font-weight: 500; }
-  .nautilus-menu-sort-heading:disabled {
-    color: rgba(0, 0, 0, 0.48); }
-
 .nautilus-window > popover.menu:not(:last-child) {
   padding: 3px; }
   .nautilus-window > popover.menu:not(:last-child) > stack > box > box > box {
@@ -2519,6 +2510,15 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal > box.horizontal:
         margin-top: 1px; }
   .nautilus-window > popover.menu:not(:last-child) separator {
     margin-bottom: -2px; }
+
+.nautilus-menu-sort-heading {
+  margin: 1px 3px;
+  font-weight: 500; }
+  .nautilus-menu-sort-heading:disabled {
+    color: rgba(0, 0, 0, 0.48); }
+
+.nautilus-window paned > separator {
+  background-color: #F5F5F5; }
 
 /*********
  * gedit *
@@ -2532,13 +2532,12 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal > box.horizontal:
 
 .gedit-document-panel {
   background-color: #FAFAFA; }
+  .gedit-document-panel row button.flat {
+    margin-top: 8px;
+    margin-bottom: 8px; }
 
 .gedit-document-panel-group-row:not(:first-child) {
   border-top: 1px solid rgba(0, 0, 0, 0.1); }
-
-.gedit-document-panel row button.flat {
-  margin-top: 8px;
-  margin-bottom: 8px; }
 
 .gedit-side-panel-paned statusbar {
   border-top: 1px solid rgba(0, 0, 0, 0.1); }
@@ -2632,8 +2631,6 @@ layouttab {
     margin-top: 8px;
     margin-bottom: 8px;
     padding: 0 4px; }
-  layouttab > box > button.close {
-    border-radius: 9999px; }
 
 layout {
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -3002,25 +2999,21 @@ UnityDecoration {
   -UnityDecoration-title-indent: 4px;
   -UnityDecoration-title-fade: 32px;
   -UnityDecoration-title-alignment: 0.0; }
-
-UnityDecoration .top {
-  padding: 0 2px;
-  border-style: none;
-  border-radius: 2px 2px 0 0;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
-  background-color: #37474F;
-  color: #FFFFFF; }
-
-UnityDecoration .top:backdrop {
-  color: rgba(255, 255, 255, 0.75); }
-
-UnityDecoration .menuitem {
-  color: alpha(currentColor, 0.75); }
-
-UnityDecoration .menuitem:hover {
-  box-shadow: inset 0 -2px currentColor;
-  background-color: transparent;
-  color: currentColor; }
+  UnityDecoration .top {
+    padding: 0 2px;
+    border-style: none;
+    border-radius: 2px 2px 0 0;
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+    background-color: #37474F;
+    color: #FFFFFF; }
+    UnityDecoration .top:backdrop {
+      color: rgba(255, 255, 255, 0.75); }
+  UnityDecoration .menuitem {
+    color: alpha(currentColor, 0.75); }
+    UnityDecoration .menuitem:hover {
+      box-shadow: inset 0 -2px currentColor;
+      background-color: transparent;
+      color: currentColor; }
 
 .background:not(.csd) headerbar:not(.titlebar) {
   border-radius: 0;
@@ -3033,10 +3026,9 @@ UnityPanelWidget,
   background-color: #263238;
   background-image: image(#263238);
   color: #FFFFFF; }
-
-UnityPanelWidget:backdrop,
-.unity-panel:backdrop {
-  color: rgba(255, 255, 255, 0.75); }
+  UnityPanelWidget:backdrop,
+  .unity-panel:backdrop {
+    color: rgba(255, 255, 255, 0.75); }
 
 .unity-panel.menuitem,
 .unity-panel .menuitem {
@@ -3048,12 +3040,9 @@ UnityPanelWidget:backdrop,
   background-color: transparent;
   color: currentColor; }
 
-@keyframes playbackmenuitem_spinner {
-  to {
-    -gtk-icon-transform: rotate(1turn); } }
 .menu IdoPlaybackMenuItem.menuitem:active {
   -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
-  animation: playbackmenuitem_spinner 1s infinite linear;
+  animation: spin 1s linear infinite;
   color: #42A5F5; }
 
 /**************
@@ -3083,7 +3072,6 @@ MatePanelAppletFrameDBus {
 
 .mate-panel-menu-bar menubar menuitem {
   padding: 4px; }
-
 .mate-panel-menu-bar menubar menu menuitem {
   padding: 6px; }
 
@@ -3138,22 +3126,20 @@ na-tray-applet {
 
 .caja-pathbar button {
   margin: 0 -1px 0 -2px; }
-
-.caja-pathbar button > widget {
-  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
-  -GtkArrow-arrow-scaling: 1; }
+  .caja-pathbar button > widget {
+    -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+    -GtkArrow-arrow-scaling: 1; }
 
 .caja-side-pane notebook viewport.frame,
 .caja-side-pane notebook widget .vertical {
   background-color: #FFFFFF; }
 
-.caja-side-pane notebook .frame,
-.caja-notebook .frame {
-  border-style: none; }
-
 .caja-side-pane notebook,
 .caja-notebook {
   border-top: 1px solid rgba(0, 0, 0, 0.1); }
+  .caja-side-pane notebook .frame,
+  .caja-notebook .frame {
+    border-style: none; }
 
 .caja-navigation-window statusbar {
   margin: 0 -10px;
@@ -3176,40 +3162,33 @@ na-tray-applet {
   margin: 0 -10px;
   padding: 0 4px;
   border-top: 1px solid rgba(0, 0, 0, 0.1); }
-
-.pluma-window statusbar frame > border {
-  border-style: none; }
-
-.pluma-window statusbar frame button.flat {
-  padding: 0 4px;
-  border-radius: 0; }
-
-.pluma-window statusbar frame button.flat widget {
-  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
-  -GtkArrow-arrow-scaling: 1; }
+  .pluma-window statusbar frame > border {
+    border-style: none; }
+  .pluma-window statusbar frame button.flat {
+    padding: 0 4px;
+    border-radius: 0; }
+    .pluma-window statusbar frame button.flat widget {
+      -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+      -GtkArrow-arrow-scaling: 1; }
 
 .pluma-print-preview toolbar {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
 .pluma-window paned.horizontal box.vertical box.horizontal button.flat {
   margin: 1px; }
-
 .pluma-window paned.horizontal box.vertical .frame {
   border-style: none; }
-
 .pluma-window paned.horizontal box.vertical notebook.frame {
   margin-top: -1px;
   border-top: 1px solid rgba(0, 0, 0, 0.1); }
-
-.pluma-window paned.horizontal box.vertical notebook.frame box.vertical toolbar.horizontal {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .pluma-window paned.horizontal box.vertical notebook.frame box.vertical toolbar.horizontal {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
 /*********
  * Atril *
  *********/
 .atril-window paned.horizontal box.vertical .frame {
   border-style: none; }
-
 .atril-window paned.horizontal box.vertical notebook .frame {
   border-top: 1px solid rgba(0, 0, 0, 0.1); }
 
@@ -3225,17 +3204,15 @@ na-tray-applet {
  ************************/
 #panel_window {
   background-color: rgba(0, 0, 0, 0.3); }
-
-#panel_window menubar,
-#panel_window separator {
-  background-color: transparent; }
-
-#panel_window menubar > menuitem {
-  color: rgba(255, 255, 255, 0.75); }
-  #panel_window menubar > menuitem:hover {
-    color: #FFFFFF; }
-  #panel_window menubar > menuitem:disabled {
-    color: rgba(255, 255, 255, 0.3); }
+  #panel_window menubar,
+  #panel_window separator {
+    background-color: transparent; }
+  #panel_window menubar > menuitem {
+    color: rgba(255, 255, 255, 0.75); }
+    #panel_window menubar > menuitem:hover {
+      color: #FFFFFF; }
+    #panel_window menubar > menuitem:disabled {
+      color: rgba(255, 255, 255, 0.3); }
 
 #login_window,
 #shutdown_dialog,

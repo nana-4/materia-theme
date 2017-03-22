@@ -1,9 +1,9 @@
-/*********
- * Unity *
- *********/
 // based css:
 // http://bazaar.launchpad.net/~ubuntu-art-pkg/ubuntu-themes/trunk/view/head:/Ambiance/gtk-3.20/apps/unity.css
 
+/*********
+ * Unity *
+ *********/
 // Decorations
 UnityDecoration {
   -UnityDecoration-extents: 28px 0 0 0;
@@ -22,37 +22,33 @@ UnityDecoration {
   -UnityDecoration-title-indent: 4px;
   -UnityDecoration-title-fade: 32px;
   -UnityDecoration-title-alignment: 0.0;
-}
 
-UnityDecoration .top {
-  padding: 0 2px;
-  border-style: none;
-  border-radius: 2px 2px 0 0;
-  // box-shadow: inset 0 1px $titlebar_highlight_color;
-  box-shadow: inset 0 1px $unity_highlight_color;
-  background-color: $alt_titlebar_bg_color;
-  color: $titlebar_fg_color;
-}
+  .top {
+    padding: 0 2px;
+    border-style: none;
+    border-radius: 2px 2px 0 0;
+    // box-shadow: inset 0 1px $titlebar_highlight_color;
+    box-shadow: inset 0 1px $unity_highlight_color;
+    background-color: $alt_titlebar_bg_color;
+    color: $titlebar_fg_color;
 
-UnityDecoration .top:backdrop {
-  color: $secondary_titlebar_fg_color;
-}
+    &:backdrop { color: $secondary_titlebar_fg_color; }
+  }
 
-UnityDecoration .left,
-UnityDecoration .right {
-}
+  .left,
+  .right {}
 
-UnityDecoration .bottom {
-}
+  .bottom {}
 
-UnityDecoration .menuitem {
-  color: gtkalpha(currentColor, $secondary_opacity);
-}
+  .menuitem {
+    color: gtkalpha(currentColor, $secondary_opacity);
 
-UnityDecoration .menuitem:hover {
-  box-shadow: inset 0 -2px currentColor;
-  background-color: transparent;
-  color: currentColor;
+    &:hover {
+      box-shadow: inset 0 -2px currentColor;
+      background-color: transparent;
+      color: currentColor;
+    }
+  }
 }
 
 .background:not(.csd) headerbar:not(.titlebar) {
@@ -72,11 +68,8 @@ UnityPanelWidget,
   background-color: $panel_bg_color;
   background-image: image($panel_bg_color);
   color: $titlebar_fg_color;
-}
 
-UnityPanelWidget:backdrop,
-.unity-panel:backdrop {
-  color: $secondary_titlebar_fg_color;
+  &:backdrop { color: $secondary_titlebar_fg_color; }
 }
 
 .unity-panel.menubar,
@@ -95,12 +88,8 @@ UnityPanelWidget:backdrop,
   color: currentColor;
 }
 
-@keyframes playbackmenuitem_spinner {
-  to { -gtk-icon-transform: rotate(1turn); }
-}
-
 .menu IdoPlaybackMenuItem.menuitem:active {
   -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
-  animation: playbackmenuitem_spinner 1s infinite linear;
+  animation: spin 1s linear infinite;
   color: $primary_color;
 }

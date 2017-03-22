@@ -2418,8 +2418,7 @@ progressbar {
 
     // trough { background-color: transparent; }
 
-    progress {
-    }
+    // progress { background-color: $primary_color; }
   }
 
   trough.empty progress { all: unset; } // makes the progress indicator disappear, when the fraction is 0
@@ -2449,27 +2448,25 @@ levelbar {
     &:disabled { @include entry(disabled); }
   }
 
-  &.horizontal.discrete block { margin: 0 1px; }
+  &.horizontal.discrete {
+    block { margin: 0 1px; }
 
-  &.vertical.discrete block { margin: 1px 0; }
+    trough { padding: 2px 1px; }
+  }
 
-  &.horizontal.discrete trough { padding: 2px 1px; }
+  &.vertical.discrete {
+    block { margin: 1px 0; }
 
-  &.vertical.discrete trough { padding: 1px 2px; }
+    trough { padding: 1px 2px; }
+  }
 
   block {
-    &.low {
-      background-color: $warning_color;
-    }
+    &.low { background-color: $warning_color; }
 
     &.high,
-    &:not(.empty) {
-      background-color: $primary_color;
-    }
+    &:not(.empty) { background-color: $primary_color; }
 
-    &.full {
-      background-color: $success_color;
-    }
+    &.full { background-color: $success_color; }
 
     &.empty {
       background-color: $fill_color;

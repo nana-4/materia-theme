@@ -12,10 +12,6 @@
   background-color: $base_color;
 }
 
-.nautilus-window paned > separator {
-  background-color: $bg_color;
-}
-
 .nautilus-canvas-item {
   @extend iconview;
 
@@ -137,7 +133,11 @@
   .searchbar-container { margin-top: -1px; }
 }
 
+// Make operations button circular
 .nautilus-window headerbar > revealer > button { @extend %circular_button; }
+
+// Ensure paned separator rendering. See issue #84 for details.
+.nautilus-window paned > separator { background-color: $bg_color; }
 
 
 /*********
@@ -163,18 +163,18 @@
 
 .gedit-document-panel {
   background-color: $lighter_bg_color;
+
+  // Try to look as the notebook tab close button
+  row button.flat {
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    @extend %small_button;
+  }
 }
 
 .gedit-document-panel-group-row:not(:first-child) {
   border-top: 1px solid $border_color;
-}
-
-// Try to look as the notebook tab close button
-.gedit-document-panel row button.flat {
-  margin-top: 8px;
-  margin-bottom: 8px;
-
-  @extend %small_button;
 }
 
 .gedit-side-panel-paned statusbar {
@@ -267,8 +267,8 @@ frame.gedit-map-frame > border {
 }
 
 .tweak {
-  padding: 3px;
   // padding-top: 3px;
+  padding: 3px;
 
   &.title:hover { box-shadow: none; }
 }
@@ -358,7 +358,7 @@ layouttab {
   }
 
   // Close button styling for layouttab.
-  > box > button.close { border-radius: $circular_radius; }
+  // > box > button.close { @extend %circular_button; }
 }
 
 layout {
