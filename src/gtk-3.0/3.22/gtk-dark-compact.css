@@ -8,7 +8,7 @@
     background-image: radial-gradient(circle farthest-corner at center, #42A5F5 100%, transparent 0%); } }
 * {
   background-clip: padding-box;
-  -GtkToolButton-icon-spacing: 4;
+  -GtkToolButton-icon-spacing: 0;
   -GtkTextView-error-underline-color: #DD2C00;
   -GtkScrolledWindow-scrollbar-spacing: 0;
   -GtkToolItemGroup-expander-size: 11;
@@ -428,45 +428,19 @@ button {
     padding-right: 16px; }
   button.image-button {
     min-width: 24px;
-    padding: 4px;
-    border-radius: 9999px;
-    -gtk-outline-radius: 9999px; }
-  button.text-button.image-button {
-    border-radius: 2px;
-    -gtk-outline-radius: 2px; }
-    button.text-button.image-button label:first-child {
-      margin-left: 12px;
-      margin-right: 2px; }
-    button.text-button.image-button label:last-child {
-      margin-left: 2px;
-      margin-right: 12px; }
-    button.text-button.image-button label:only-child {
-      margin-left: 12px;
-      margin-right: 12px; }
-    button.text-button.image-button image:not(:only-child):first-child {
-      margin-left: 4px; }
-    button.text-button.image-button image:not(:only-child):last-child {
-      margin-right: 4px; }
+    padding: 4px; }
+  button.text-button.image-button label:first-child {
+    margin-left: 12px; }
+  button.text-button.image-button label:last-child {
+    margin-right: 12px; }
+  button.text-button.image-button image:not(:only-child) {
+    margin: 0 4px; }
   toolbar .linked > button, .titlebar:not(headerbar) .linked > button:not(.suggested-action):not(.destructive-action),
   headerbar .linked > button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked > button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked > button, toolbar .linked.vertical > button, .titlebar:not(headerbar) .linked.vertical > button:not(.suggested-action):not(.destructive-action),
   headerbar .linked.vertical > button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked.vertical > button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked.vertical > button, .linked >
   button.flat, .linked.vertical >
   button.flat {
     border-radius: 2px; }
-    toolbar .linked > button.image-button, .titlebar:not(headerbar) .linked > button.image-button:not(.suggested-action):not(.destructive-action),
-    headerbar .linked > button.image-button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked > button.image-button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked > button.image-button, toolbar .linked.vertical > button.image-button, .titlebar:not(headerbar) .linked.vertical > button.image-button:not(.suggested-action):not(.destructive-action),
-    headerbar .linked.vertical > button.image-button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked.vertical > button.image-button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked.vertical > button.image-button, .linked >
-    button.flat.image-button, .linked.vertical >
-    button.flat.image-button {
-      border-radius: 9999px;
-      -gtk-outline-radius: 9999px; }
-    toolbar .linked > button.text-button.image-button, .titlebar:not(headerbar) .linked > button.text-button.image-button:not(.suggested-action):not(.destructive-action),
-    headerbar .linked > button.text-button.image-button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked > button.text-button.image-button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked > button.text-button.image-button, toolbar .linked.vertical > button.text-button.image-button, .titlebar:not(headerbar) .linked.vertical > button.text-button.image-button:not(.suggested-action):not(.destructive-action),
-    headerbar .linked.vertical > button.text-button.image-button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked.vertical > button.text-button.image-button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked.vertical > button.text-button.image-button, .linked >
-    button.flat.text-button.image-button, .linked.vertical >
-    button.flat.text-button.image-button {
-      border-radius: 2px;
-      -gtk-outline-radius: 2px; }
 infobar.info button:disabled, infobar.question button:disabled, infobar.warning button:disabled, infobar.error button:disabled, row:selected
 button:disabled {
   color: rgba(255, 255, 255, 0.3); }
@@ -547,7 +521,12 @@ button separator {
 button {
   -gtk-icon-shadow: none; }
 .inline-toolbar
-button:not(.text-button), check,
+button:not(.text-button),
+button.image-button:not(.text-button), toolbar .linked > button.image-button:not(.text-button), .titlebar:not(headerbar) .linked > button.image-button:not(.text-button):not(.suggested-action):not(.destructive-action),
+headerbar .linked > button.image-button:not(.text-button):not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked > button.image-button:not(.text-button):not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked > button.image-button:not(.text-button), toolbar .linked.vertical > button.image-button:not(.text-button),
+headerbar .linked.vertical > button.image-button:not(.text-button):not(.suggested-action):not(.destructive-action), .app-notification .linked.vertical > button.image-button:not(.text-button), .linked >
+button.flat.image-button:not(.text-button), .linked.vertical >
+button.flat.image-button:not(.text-button), check,
 radio, button.titlebutton, .nautilus-window headerbar > revealer > button,
 button.close,
 button.circular {
@@ -574,47 +553,33 @@ button.needs-attention > image, stacksidebar row.needs-attention > label {
   button.needs-attention > image:dir(rtl), stacksidebar row.needs-attention > label:dir(rtl) {
     background-position: left 3px; }
 
-.linked:not(.vertical) > spinbutton:not(.vertical), .linked:not(.vertical) >
-entry, .linked >
-button, .linked > combobox > box > button.combo:dir(ltr), .linked > combobox > box > button.combo:dir(rtl) {
+.linked:not(.vertical) > combobox:not(:only-child) > box > button.combo, .linked:not(.vertical) > spinbutton:not(:only-child):not(.vertical), .linked:not(.vertical) >
+entry:not(:only-child), .linked >
+button:not(:only-child) {
   border-radius: 0;
   -gtk-outline-radius: 2px; }
+.linked:not(.vertical) > combobox:not(:only-child):first-child > box > button.combo, .linked:not(.vertical) > spinbutton:not(:only-child):first-child:not(.vertical), .linked:not(.vertical) >
+entry:not(:only-child):first-child, .linked >
+button:not(:only-child):first-child, combobox.linked button:not(:only-child):nth-child(2):dir(rtl) {
+  border-radius: 2px 0 0 2px; }
+.linked:not(.vertical) > combobox:not(:only-child):last-child > box > button.combo, .linked:not(.vertical) > spinbutton:not(:only-child):last-child:not(.vertical), .linked:not(.vertical) >
+entry:not(:only-child):last-child, .linked >
+button:not(:only-child):last-child, combobox.linked button:not(:only-child):nth-child(2):dir(ltr) {
+  border-radius: 0 2px 2px 0; }
 
-.linked:not(.vertical) > spinbutton:first-child:not(.vertical), .linked:not(.vertical) >
-entry:first-child, .linked >
-button:first-child, combobox.linked button:nth-child(2):dir(rtl), .linked:not(.vertical) > combobox:first-child > box > button.combo {
-  border-top-left-radius: 2px;
-  border-bottom-left-radius: 2px; }
-.linked:not(.vertical) > spinbutton:last-child:not(.vertical), .linked:not(.vertical) >
-entry:last-child, .linked >
-button:last-child, combobox.linked button:nth-child(2):dir(ltr), .linked:not(.vertical) > combobox:last-child > box > button.combo {
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px; }
-.linked:not(.vertical) > spinbutton:only-child:not(.vertical), .linked:not(.vertical) >
-entry:only-child, .linked >
-button:only-child, .linked:not(.vertical) > combobox:only-child > box > button.combo {
-  border-radius: 2px; }
-
-.linked.vertical > spinbutton:not(.vertical), .linked.vertical >
-entry, .linked.vertical >
-button, .linked.vertical > combobox > box > button.combo {
+.linked.vertical > combobox:not(:only-child) > box > button.combo, .linked.vertical > spinbutton:not(:only-child):not(.vertical), .linked.vertical >
+entry:not(:only-child), .linked.vertical >
+button:not(:only-child) {
   border-radius: 0;
   -gtk-outline-radius: 2px; }
-
-.linked.vertical > spinbutton:first-child:not(.vertical), .linked.vertical >
-entry:first-child, .linked.vertical >
-button:first-child, .linked.vertical > combobox:first-child > box > button.combo {
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px; }
-.linked.vertical > spinbutton:last-child:not(.vertical), .linked.vertical >
-entry:last-child, .linked.vertical >
-button:last-child, .linked.vertical > combobox:last-child > box > button.combo {
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px; }
-.linked.vertical > spinbutton:only-child:not(.vertical), .linked.vertical >
-entry:only-child, .linked.vertical >
-button:only-child, .linked.vertical > combobox:only-child > box > button.combo {
-  border-radius: 2px; }
+.linked.vertical > combobox:not(:only-child):first-child > box > button.combo, .linked.vertical > spinbutton:not(:only-child):first-child:not(.vertical), .linked.vertical >
+entry:not(:only-child):first-child, .linked.vertical >
+button:not(:only-child):first-child {
+  border-radius: 2px 2px 0 0; }
+.linked.vertical > combobox:not(:only-child):last-child > box > button.combo, .linked.vertical > spinbutton:not(:only-child):last-child:not(.vertical), .linked.vertical >
+entry:not(:only-child):last-child, .linked.vertical >
+button:not(:only-child):last-child {
+  border-radius: 0 0 2px 2px; }
 
 /* menu buttons */
 modelbutton.flat,

@@ -2,7 +2,7 @@
   // padding: 0;
   background-clip: padding-box;
 
-  -GtkToolButton-icon-spacing: 4;
+  -GtkToolButton-icon-spacing: 0;
   -GtkTextView-error-underline-color: $error_color;
 
   // The size for scrollbars. The slider is 2px smaller, but we keep it
@@ -389,36 +389,18 @@ button {
     &.image-button {
       min-width: 24px;
       padding: ($medium_size - 24px) / 2;
-      border-radius: $circular_radius;
-      -gtk-outline-radius: $circular_radius;
+
+      &:not(.text-button) { @extend %circular_button; }
     }
 
     &.text-button.image-button {
-      border-radius: 2px;
-      -gtk-outline-radius: 2px;
-
       label {
-        &:first-child {
-          margin-left: 16px - ($medium_size - 24px) / 2;
-          margin-right: 2px;
-        }
+        &:first-child { margin-left: 16px - ($medium_size - 24px) / 2; }
 
-        &:last-child {
-          margin-left: 2px;
-          margin-right: 16px - ($medium_size - 24px) / 2;
-        }
-
-        &:only-child {
-          margin-left: 16px - ($medium_size - 24px) / 2;
-          margin-right: 16px - ($medium_size - 24px) / 2;
-        }
+        &:last-child { margin-right: 16px - ($medium_size - 24px) / 2; }
       }
 
-      image:not(:only-child) {
-        &:first-child { margin-left: (24px - 16px) / 2; }
-
-        &:last-child { margin-right: (24px - 16px) / 2; }
-      }
+      image:not(:only-child) { margin: 0 (24px - 16px) / 2; }
     }
 
     .linked > & { @extend %linked; }
@@ -429,15 +411,7 @@ button {
     .linked.vertical > &.flat {
       border-radius: 2px;
 
-      &.image-button {
-        border-radius: $circular_radius;
-        -gtk-outline-radius: $circular_radius;
-      }
-
-      &.text-button.image-button {
-        border-radius: 2px;
-        -gtk-outline-radius: 2px;
-      }
+      &.image-button:not(.text-button) { @extend %circular_button; }
     }
 
     &:drop(active) {
@@ -589,60 +563,40 @@ button {
 }
 
 // More inline toolbar buttons
-toolbar.inline-toolbar toolbutton {
+toolbar.inline-toolbar toolbutton:not(:only-child) {
   // > button.flat { @extend %linked_middle; }
 
-  // &:first-child > button.flat { @extend %linked:first-child; }
+  // &:first-child > button.flat { @extend %linked_first; }
 
-  // &:last-child > button.flat { @extend %linked:last-child; }
-
-  // &:only-child > button.flat { @extend %linked:only-child; }
+  // &:last-child > button.flat { @extend %linked_last; }
 }
 
-%linked_middle {
-  border-radius: 0;
-  -gtk-outline-radius: 2px;
+%linked:not(:only-child) {
+  @at-root %linked_middle,
+  & {
+    border-radius: 0;
+    -gtk-outline-radius: 2px;
+  }
+
+  @at-root %linked_first,
+  &:first-child { border-radius: 2px 0 0 2px; }
+
+  @at-root %linked_last,
+  &:last-child { border-radius: 0 2px 2px 0; }
 }
 
-%linked {
-  @extend %linked_middle;
-
-  &:first-child {
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
+%linked_vertical:not(:only-child) {
+  @at-root %linked_vertical_middle,
+  & {
+    border-radius: 0;
+    -gtk-outline-radius: 2px;
   }
 
-  &:last-child {
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-  }
+  @at-root %linked_vertical_first,
+  &:first-child { border-radius: 2px 2px 0 0; }
 
-  &:only-child {
-    border-radius: 2px;
-  }
-}
-
-%linked_vertical_middle {
-  border-radius: 0;
-  -gtk-outline-radius: 2px;
-}
-
-%linked_vertical{
-  @extend %linked_vertical_middle;
-
-  &:first-child {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-  }
-
-  &:last-child {
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-  }
-
-  &:only-child {
-    border-radius: 2px;
-  }
+  @at-root %linked_vertical_last,
+  &:last-child { border-radius: 0 0 2px 2px; }
 }
 
 /* menu buttons */
@@ -866,23 +820,25 @@ combobox {
   }
 }
 
-.linked > combobox > box > button.combo {
-  // the combo is a composite widget so the way we do button linking doesn't
-  // work, special case needed. See
-  // https://bugzilla.gnome.org/show_bug.cgi?id=733979
+// the combo is a composite widget so the way we do button linking doesn't
+// work, special case needed. See
+// https://bugzilla.gnome.org/show_bug.cgi?id=733979
 
-  &:dir(ltr),
-  &:dir(rtl) { @extend %linked_middle; } // specificity bump
+.linked:not(.vertical) > combobox:not(:only-child) {
+  > box > button.combo { @extend %linked_middle; }
+
+  &:first-child > box > button.combo { @extend %linked_first; }
+
+  &:last-child > box > button.combo { @extend %linked_last; }
 }
 
-.linked:not(.vertical) > combobox:first-child > box > button.combo { @extend %linked:first-child; }
-.linked:not(.vertical) > combobox:last-child > box > button.combo { @extend %linked:last-child; }
-.linked:not(.vertical) > combobox:only-child > box > button.combo { @extend %linked:only-child; }
+.linked.vertical > combobox:not(:only-child) {
+  > box > button.combo { @extend %linked_vertical_middle; }
 
-.linked.vertical > combobox > box > button.combo { @extend %linked_vertical_middle; }
-.linked.vertical > combobox:first-child > box > button.combo { @extend %linked_vertical:first-child; }
-.linked.vertical > combobox:last-child > box > button.combo { @extend %linked_vertical:last-child; }
-.linked.vertical > combobox:only-child > box > button.combo { @extend %linked_vertical:only-child; }
+  &:first-child > box > button.combo { @extend %linked_vertical_first; }
+
+  &:last-child > box > button.combo { @extend %linked_vertical_last; }
+}
 
 %combo_flat {
   border-radius: 0;
