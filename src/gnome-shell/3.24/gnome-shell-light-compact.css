@@ -989,6 +989,8 @@ StScrollBar {
   margin: 8px 8px 0; }
   .message-list-clear-button.button:hover, .message-list-clear-button.button:focus {
     background-color: rgba(0, 0, 0, 0.12); }
+  .message-list-clear-button.button:active {
+    background-color: rgba(0, 0, 0, 0.24); }
 
 .message-list-sections {
   spacing: 8px; }
@@ -1013,13 +1015,18 @@ StScrollBar {
 
 .message-icon-bin > StIcon {
   color: rgba(0, 0, 0, 0.8);
-  icon-size: 32px;
-  -st-icon-style: requested; }
+  icon-size: 16px;
+  -st-icon-style: requested;
+  padding: 4px 0px 4px 4px; }
+  .message-icon-bin > StIcon:rtl {
+    padding: 4px 4px 4px 0px; }
 
 .message-secondary-bin {
   padding: 0 8px; }
 
 .message-secondary-bin > .event-time {
+  min-height: 18px;
+  padding-top: 2px;
   color: rgba(0, 0, 0, 0.48);
   font-size: 1em;
   /* HACK: the label should be baseline-aligned with a 1em label,
@@ -1037,6 +1044,7 @@ StScrollBar {
   font-size: 1em; }
 
 .message-content {
+  min-height: 40px;
   padding: 8px;
   color: rgba(0, 0, 0, 0.6);
   font-size: 1em; }
@@ -1078,9 +1086,10 @@ StScrollBar {
     padding-left: 8px; }
 
 .media-message-cover-icon {
-  icon-size: 32px; }
+  icon-size: 32px !important;
+  margin: 8px 0; }
   .media-message-cover-icon.fallback {
-    icon-size: 16px;
+    icon-size: 16px !important;
     padding: 8px;
     border: none;
     border-radius: 2px;

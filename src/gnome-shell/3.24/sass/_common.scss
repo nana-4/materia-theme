@@ -1101,6 +1101,7 @@ StScrollBar {
         .message-list-clear-button.button {
           background-color: transparent;
           &:hover,&:focus { background-color: $semi_fill_color; }
+          &:active { background-color: $fill_color; }
           margin: 8px 8px 0;
         }
 
@@ -1128,8 +1129,10 @@ StScrollBar {
 
           .message-icon-bin > StIcon {
             color: $fg_color;
-            icon-size: 32px;
+            icon-size: 16px;
             -st-icon-style: requested;
+            padding: 4px 0px 4px 4px;
+            &:rtl { padding: 4px 4px 4px 0px; }
           }
 
           .message-secondary-bin {
@@ -1137,6 +1140,8 @@ StScrollBar {
           }
 
           .message-secondary-bin > .event-time {
+            min-height: $small_size - 2px;
+            padding-top: 2px;
             color: $tertiary_fg_color;
             font-size: 1em;
             /* HACK: the label should be baseline-aligned with a 1em label,
@@ -1157,6 +1162,7 @@ StScrollBar {
           }
 
           .message-content {
+            min-height: $menuitem_size * 2 - 8px * 2;
             padding: 8px;
             color: $secondary_fg_color;
             font-size: 1em;
@@ -1195,9 +1201,10 @@ StScrollBar {
           }
 
           .media-message-cover-icon {
-            icon-size: 32px;
+            icon-size: 32px !important;
+            margin: 8px 0;
             &.fallback {
-              icon-size: 16px;
+              icon-size: 16px !important;
               padding: 8px;
               border: none;
               border-radius: 2px;
