@@ -6,6 +6,7 @@ It supports GTK3, GTK2, Metacity, GNOME Shell, Unity, MATE, LightDM, GDM, Chrome
 Features
 --------
 <img src="../images/Button.gif" alt="Button" align="right"/>
+
 - Supports ripple effect animations (only GTK3 apps).
 - Supports both light and dark variants.
 - Supports dark or light titlebar versions.
