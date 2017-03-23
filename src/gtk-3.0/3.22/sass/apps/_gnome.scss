@@ -664,6 +664,8 @@ GdMainIconView.content-view {
 
 .documents-scrolledwin.frame {
   border-style: none;
+
+  frame.content-view > border { border-style: none; }
 }
 
 .photos-icon-bg {
@@ -735,8 +737,9 @@ frame.documents-dropdown {
   > border { border: none; }
 }
 
-box.vertical:not(.titlebar) > revealer > toolbar.search-bar {
+box.vertical > revealer > toolbar.search-bar {
   border-bottom: 1px solid $border_color;
+  background-clip: border-box; // avoid black border
 
   button > widget {
     -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");

@@ -2768,6 +2768,8 @@ GdMainIconView.content-view {
 
 .documents-scrolledwin.frame {
   border-style: none; }
+  .documents-scrolledwin.frame frame.content-view > border {
+    border-style: none; }
 
 .photos-fade-in {
   opacity: 1;
@@ -2811,9 +2813,10 @@ frame.documents-dropdown {
   frame.documents-dropdown > border {
     border: none; }
 
-box.vertical:not(.titlebar) > revealer > toolbar.search-bar {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
-  box.vertical:not(.titlebar) > revealer > toolbar.search-bar button > widget {
+box.vertical > revealer > toolbar.search-bar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background-clip: border-box; }
+  box.vertical > revealer > toolbar.search-bar button > widget {
     -gtk-icon-source: -gtk-icontheme("pan-down-symbolic"); }
 
 /*********
