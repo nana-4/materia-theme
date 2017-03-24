@@ -41,11 +41,62 @@ You can read about SASS at http://sass-lang.com/documentation/. Once you make yo
 edit. This is done by running `bundle exec sass --watch --sourcemap=none .` If sass is out of date, or is
 missing, you can install it with `bundle install`.
 
+How to change the assets color
+------------------------------
+
+To keep it maintainable SVG files are basically edited on text-based.
+
+So if you just want to change the SVG assets color, I recommend using a **text editor** instead of **Inkscape**.
+But please note that in some cases Inkscape is needed to render PNG assets.
+
+Here is an example to change the _accent color_:
+
+1. Open the following `.svg` files with a **text editor**.
+
+  - ./src/gtk-2.0/assets.svg
+  - ./src/gtk-2.0/assets-dark.svg
+  - ./src/gtk-3.0/gtk-common/assets.svg
+  - ./src/gnome-shell/3.18/assets/checkbox.svg
+  - ./src/gnome-shell/3.18/assets/more-results.svg
+  - ./src/gnome-shell/3.18/assets/toggle-on.svg
+  - ./src/gnome-shell/3.18/assets-dark/checkbox.svg
+  - ./src/gnome-shell/3.18/assets-dark/more-results.svg
+  - ./src/gnome-shell/3.18/assets-dark/toggle-on.svg
+
+2. Search `#FF4081` (default accent color) and replace with your favorite color.
+
+  - The recommended color palette is: https://material.io/guidelines/style/color.html#color-color-palette
+
+3. For gtk2 and gtk3, delete all png assets before redrawing them.
+
+  ```sh
+  rm -v ./src/gtk-2.0/assets/*.png
+  rm -v ./src/gtk-2.0/assets-dark/*.png
+  rm -v ./src/gtk-3.0/gtk-common/assets/*.png
+  ```
+
+4. Render png assets with scripts. (Inkscape is required to run the scripts.)
+
+  - for gtk2:
+
+    ```sh
+    cd ./src/gtk-2.0
+    ./render-assets.sh
+    ./render-assets-dark.sh
+    ```
+
+  - for gtk3:
+
+    ```sh
+    cd ./src/gtk-3.0/gtk-common
+    ./render-assets.sh
+    ```
+
 Useful Links
 ------------
 
 Upstream theme sources:
-- [GTK+ 3 or 4](https://github.com/GNOME/gtk/tree/master/gtk/theme/Adwaita)
+- [GTK+ 4](https://github.com/GNOME/gtk/tree/master/gtk/theme/Adwaita)
   - [3.22.x](https://github.com/GNOME/gtk/tree/gtk-3-22/gtk/theme/Adwaita)
   - [3.20.x](https://github.com/GNOME/gtk/tree/gtk-3-20/gtk/theme/Adwaita)
   - [3.18.x](https://github.com/GNOME/gtk/tree/gtk-3-18/gtk/theme/Adwaita)
