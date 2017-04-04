@@ -2,24 +2,31 @@ Summary
 -------
 
 - Do not edit the CSS directly, edit the source SCSS files and run `./parse-sass.sh`
-
-- To be able to use the latest/adequate version of sass, install `sassc`
+- To be able to use the latest/adequate version of Sass, install `sassc`
+- To change the SVG assets color, use a text editor instead of a image editor
 
 How to tweak the theme
 ----------------------
 
 Flat-Plat is a complex theme, so to keep it maintainable it's written and
-processed in SASS.
+processed in Sass.
 
-It is very likely your change will happen in the `_common.scss` file. That's where
-all the widget selectors are defined. Here's a rundown of the "supporting"
-stylesheets, that are unlikely to be the right place for a drive by stylesheet
-fix:
+Here's a rundown of the _supporting_ stylesheets, that are unlikely to be the
+right place for a drive by stylesheet fix:
+
+- `_variables.scss`
+
+  variables to allow easier definition of widget sizing/styling.
+
+- `_color-palette.scss`
+
+  material design color palette definitions. We don't recommend editing this
+  unless Google updates the color scheme.
 
 - `_colors.scss`
 
   global color definitions. We keep the number of defined colors to a necessary
-  minimum, most colors are derived form a handful of basics. It covers both the
+  minimum, most colors are derived from a handful of basics. It covers both the
   light variant and the dark variant.
 
 - `_colors-public.scss`
@@ -29,44 +36,49 @@ fix:
 - `_drawing.scss`
 
   drawing helper mixings/functions to allow easier definition of widget drawing
-  under specific context. This is why Flat-Plat isn't 15000 LOC.
+  under specific context.
 
 - `_common.scss`
 
   actual definitions of style for each widget. This is where you are likely to
   add/remove your changes.
 
-You can read about SASS at http://sass-lang.com/documentation/. Once you make
-your changes to the `_common.scss` file, run the `./parse-sass.sh` script.
+- `_apps.scss` or `_extensions.scss`
+
+  app/extension specific stylings.
+
+You can read about Sass at http://sass-lang.com/documentation/. Once you make
+your changes to the SCSS files, run the `./parse-sass.sh` script to rebuild the
+CSS files.
 
 How to change the assets color
 ------------------------------
 
-To keep it maintainable SVG files are basically edited on text-based.
+To keep it maintainable, SVG files are basically edited on text-based.
 
-So if you just want to change the SVG assets color, I recommend using a
+So if you just want to change the SVG assets color, we recommend using a
 **text editor** instead of **Inkscape**. But please note that in some cases
-Inkscape is needed to render PNG assets.
+Inkscape is needed to render the PNG assets.
 
-Here is an example to change the _accent color_:
+Here's an example to change the _accent color_:
 
-1. Open the following `.svg` files with a **text editor**.
+1. Open the following SVG files with a **text editor**.
 
-  - ./src/gtk-2.0/assets.svg
-  - ./src/gtk-2.0/assets-dark.svg
-  - ./src/gtk-3.0/gtk-common/assets.svg
-  - ./src/gnome-shell/3.18/assets/checkbox.svg
-  - ./src/gnome-shell/3.18/assets/more-results.svg
-  - ./src/gnome-shell/3.18/assets/toggle-on.svg
-  - ./src/gnome-shell/3.18/assets-dark/checkbox.svg
-  - ./src/gnome-shell/3.18/assets-dark/more-results.svg
-  - ./src/gnome-shell/3.18/assets-dark/toggle-on.svg
+  - `./src/gtk-2.0/assets.svg`
+  - `./src/gtk-2.0/assets-dark.svg`
+  - `./src/gtk-3.0/gtk-common/assets.svg`
+  - `./src/gnome-shell/3.18/assets/checkbox.svg`
+  - `./src/gnome-shell/3.18/assets/more-results.svg`
+  - `./src/gnome-shell/3.18/assets/toggle-on.svg`
+  - `./src/gnome-shell/3.18/assets-dark/checkbox.svg`
+  - `./src/gnome-shell/3.18/assets-dark/more-results.svg`
+  - `./src/gnome-shell/3.18/assets-dark/toggle-on.svg`
 
 2. Search `#FF4081` (default accent color) and replace with your favorite color.
 
   - The recommended color palette is: https://material.io/guidelines/style/color.html#color-color-palette
 
-3. For gtk2 and gtk3, delete all png assets before redrawing them.
+3. For gtk2 and gtk3, delete all PNG assets before redrawing them.
 
   ```sh
   rm -v ./src/gtk-2.0/assets/*.png
@@ -74,7 +86,9 @@ Here is an example to change the _accent color_:
   rm -v ./src/gtk-3.0/gtk-common/assets/*.png
   ```
 
-4. Render png assets with scripts. (Inkscape is required to run the scripts.)
+4. Run `./render-assets.sh` or `./render-assets-dark.sh` to render the PNG assets.
+
+  > Note: Inkscape is required to run the scripts.
 
   - for gtk2:
 
@@ -96,9 +110,9 @@ Useful Links
 
 Upstream theme sources:
 - [GTK+ 4](https://github.com/GNOME/gtk/tree/master/gtk/theme/Adwaita)
-  - [3.22.x](https://github.com/GNOME/gtk/tree/gtk-3-22/gtk/theme/Adwaita)
-  - [3.20.x](https://github.com/GNOME/gtk/tree/gtk-3-20/gtk/theme/Adwaita)
-  - [3.18.x](https://github.com/GNOME/gtk/tree/gtk-3-18/gtk/theme/Adwaita)
+  - [3.22](https://github.com/GNOME/gtk/tree/gtk-3-22/gtk/theme/Adwaita)
+  - [3.20](https://github.com/GNOME/gtk/tree/gtk-3-20/gtk/theme/Adwaita)
+  - [3.18](https://github.com/GNOME/gtk/tree/gtk-3-18/gtk/theme/Adwaita)
 - [GTK+ 2](https://github.com/GNOME/gnome-themes-standard/tree/master/themes/Adwaita/gtk-2.0)
 - [GNOME Shell](https://github.com/GNOME/gnome-shell/tree/master/data/theme)
   - [Sass sources](https://github.com/GNOME/gnome-shell-sass)
