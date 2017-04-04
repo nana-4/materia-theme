@@ -3172,15 +3172,20 @@ na-tray-applet {
  * LightDM GTK+ Greeter *
  ************************/
 #panel_window {
-  background-color: rgba(0, 0, 0, 0.3); }
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #FFFFFF; }
   #panel_window menubar,
   #panel_window separator {
     background-color: transparent; }
+  #panel_window separator {
+    padding: 0 4px; }
+    #panel_window separator:first-child {
+      padding: 0 8px; }
   #panel_window menubar > menuitem {
     color: rgba(255, 255, 255, 0.75); }
     #panel_window menubar > menuitem:hover {
       color: #FFFFFF; }
-    #panel_window menubar > menuitem:disabled {
+    #panel_window menubar > menuitem:disabled label {
       color: rgba(255, 255, 255, 0.3); }
 
 #login_window,

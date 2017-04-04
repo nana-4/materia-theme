@@ -7,19 +7,25 @@
 // the panel widget at the top
 #panel_window {
   background-color: scale-alpha($black, $lower_opacity);
-  // color: $white;
+  color: $white;
   // font-weight: bold;
 
   // the menubars/menus of the panel, i.e. indicators
   menubar,
   separator { background-color: transparent; }
 
+  separator {
+    padding: 0 4px;
+
+    &:first-child { padding: 0 8px; }
+  }
+
   menubar > menuitem {
     color: $secondary_inverse_fg_color;
 
     &:hover { color: $inverse_fg_color; }
 
-    &:disabled { color: $disabled_secondary_inverse_fg_color; }
+    &:disabled label { color: $disabled_secondary_inverse_fg_color; }
   }
 }
 
