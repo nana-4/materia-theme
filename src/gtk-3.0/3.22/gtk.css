@@ -4351,6 +4351,7 @@ window.background:not(.csd) > menu > menu {
 window.background:not(.csd) > window.background > menu > menuitem > check,
 window.background:not(.csd) > widget > checkbutton > check {
   border-radius: 2px;
+  -gtk-outline-radius: 2px;
   -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.svg")), -gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.symbolic.png")));
 }
 
@@ -4366,12 +4367,12 @@ window.background:not(.csd) > widget > checkbutton > check:indeterminate {
 
 window.background:not(.csd) > window.background > menu > menuitem > radio,
 window.background:not(.csd) > widget > radiobutton > radio {
+  border-image: none;
   -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-unchecked-symbolic.svg")), -gtk-recolor(url("assets/scalable/small-radio-unchecked-symbolic.symbolic.png")));
 }
 
 window.background:not(.csd) > window.background > menu > menuitem > radio:checked,
 window.background:not(.csd) > widget > radiobutton > radio:checked {
-  border-image: none;
   -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-checked-symbolic.svg")), -gtk-recolor(url("assets/scalable/small-radio-checked-symbolic.symbolic.png")));
 }
 
@@ -4392,10 +4393,6 @@ window.background:not(.csd) > widget > menubar:disabled {
   color: rgba(255, 255, 255, 0.3);
 }
 
-window.background:not(.csd) > window.background > menu > separator {
-  color: rgba(0, 0, 0, 0.1);
-}
-
 window.background:not(.csd) > widget > frame {
   color: rgba(0, 0, 0, 0.2);
 }
@@ -4404,6 +4401,10 @@ window.background:not(.csd) > widget > checkbutton > check,
 window.background:not(.csd) > widget > radiobutton > radio {
   margin: 0;
   padding: 0;
+}
+
+window.background:not(.csd) > window.background > menu > separator {
+  color: rgba(0, 0, 0, 0.1);
 }
 
 /***********

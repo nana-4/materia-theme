@@ -38,15 +38,17 @@ window.background > box.vertical > scrolledwindow > widget toolbar {
 $firefox_border_color: scale-alpha($black, 0.2);
 
 window.background:not(.csd) {
-  // for the bookmark toolbar's separators
-  > widget > separator { color: $firefox_border_color; }
+  > widget {
+    // for the bookmark toolbar's separators
+    > separator { color: $firefox_border_color; }
 
-  // avoid black border
-  > widget > scrollbar { background-clip: border-box; }
+    // avoid black border
+    > scrollbar { background-clip: border-box; }
 
-  // emphasize borders color
-  > widget > scrollbar,
-  > widget > frame > border { border-color: $firefox_border_color; }
+    // emphasize borders color
+    > scrollbar,
+    > frame > border { border-color: $firefox_border_color; }
+  }
 
   // remove ugly border around the menus
   > window > menu,
@@ -57,6 +59,7 @@ window.background:not(.csd) {
   > widget > checkbutton > check {
     & {
       border-radius: 2px;
+      -gtk-outline-radius: 2px;
       -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.svg")),
                               -gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.symbolic.png")));
     }
@@ -75,12 +78,12 @@ window.background:not(.csd) {
   > window.background > menu > menuitem > radio,
   > widget > radiobutton > radio {
     & {
+      border-image: none;
       -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-unchecked-symbolic.svg")),
                               -gtk-recolor(url("assets/scalable/small-radio-unchecked-symbolic.symbolic.png")));
     }
 
     &:checked {
-      border-image: none;
       -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-checked-symbolic.svg")),
                               -gtk-recolor(url("assets/scalable/small-radio-checked-symbolic.symbolic.png")));
     }
@@ -97,23 +100,25 @@ text:selected { @extend %selected_items; }
 
 // for backwards compatibility
 window.background:not(.csd) {
-  > widget > menubar {
-    color: $secondary_titlebar_fg_color;
+  > widget {
+    > menubar {
+      color: $secondary_titlebar_fg_color;
 
-    &:hover { color: $titlebar_fg_color; }
+      &:hover { color: $titlebar_fg_color; }
 
-    &:disabled { color: $disabled_secondary_titlebar_fg_color; }
+      &:disabled { color: $disabled_secondary_titlebar_fg_color; }
+    }
+
+    > frame { color: $firefox_border_color; }
+
+    > checkbutton > check,
+    > radiobutton > radio {
+      margin: 0;
+      padding: 0;
+    }
   }
 
   > window.background > menu > separator { color: $border_color; }
-
-  > widget > frame { color: $firefox_border_color; }
-
-  > widget > checkbutton > check,
-  > widget > radiobutton > radio {
-    margin: 0;
-    padding: 0;
-  }
 }
 
 
