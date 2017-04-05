@@ -4206,6 +4206,34 @@ window.background:not(.csd) > widget > frame > border {
   border-color: rgba(0, 0, 0, 0.2);
 }
 
+window.background:not(.csd) > widget > entry,
+window.background:not(.csd) > widget > button > button {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  box-shadow: none;
+}
+
+window.background:not(.csd) > widget > entry {
+  min-height: 30px;
+}
+
+window.background:not(.csd) > widget > entry:focus {
+  border-color: #42A5F5;
+}
+
+window.background:not(.csd) > widget > button > button {
+  padding: 4px 8px;
+  background-size: auto;
+}
+
+window.background:not(.csd) > widget > button > button:hover {
+  background-image: image(alpha(currentColor, 0.05));
+}
+
+window.background:not(.csd) > widget > button > button:active {
+  background-image: image(alpha(currentColor, 0.1));
+}
+
 window.background:not(.csd) > window > menu,
 window.background:not(.csd) > menu > menu {
   border: none;

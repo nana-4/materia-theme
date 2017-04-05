@@ -48,6 +48,29 @@ window.background:not(.csd) {
     // emphasize borders color
     > scrollbar,
     > frame > border { border-color: $firefox_border_color; }
+
+    > entry,
+    > button > button {
+      border: 1px solid $firefox_border_color;
+      border-radius: 2px + 1px;
+      box-shadow: none;
+    }
+
+    > entry {
+      min-height: 32px - 2px;
+
+      &:focus { border-color: $primary_color; }
+    }
+
+    > button > button {
+      padding: 4px 8px;
+      background-size: auto;
+      // color: $fg_color;
+
+      &:hover { background-image: image(gtkalpha(currentColor, 0.1 / 2)); }
+
+      &:active { background-image: image(gtkalpha(currentColor, 0.1)); }
+    }
   }
 
   // remove ugly border around the menus
