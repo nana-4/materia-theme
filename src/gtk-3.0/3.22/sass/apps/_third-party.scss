@@ -35,12 +35,22 @@ window.background > box.vertical > scrolledwindow > widget toolbar {
 /***********
  * Firefox *
  ***********/
+$firefox_border_color: scale-alpha($black, 0.2);
+
 window.background:not(.csd) {
   // for the bookmark toolbar's separators
-  > widget > separator { color: rgba(0, 0, 0, 0.2); }
+  > widget > separator { color: $firefox_border_color; }
+
+  // avoid black border
+  > widget > scrollbar { background-clip: border-box; }
+
+  // emphasize borders color
+  > widget > scrollbar,
+  > widget > frame > border { border-color: $firefox_border_color; }
 
   // remove ugly border around the menus
-  > * > menu { border: none; }
+  > window > menu,
+  > menu > menu { border: none; }
 
   // use 16px assets for hard-coded sizing
   > window.background > menu > menuitem > check,
@@ -97,7 +107,7 @@ window.background:not(.csd) {
 
   > window.background > menu > separator { color: $border_color; }
 
-  > widget > frame { color: rgba(0, 0, 0, 0.2); }
+  > widget > frame { color: $firefox_border_color; }
 
   > widget > checkbutton > check,
   > widget > radiobutton > radio {
