@@ -2990,7 +2990,7 @@ expander arrow:selected:disabled {
 
 /************
  * Calendar *
- ***********/
+ ************/
 calendar {
   padding: 1px;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -3281,7 +3281,7 @@ tooltip.background {
   background-color: rgba(80, 99, 108, 0.9);
 }
 
-tooltip:not(.csd) {
+tooltip:not(.csd):not(.unity-csd) {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   background-clip: border-box;
@@ -3426,7 +3426,7 @@ colorchooser .popover.osd:backdrop {
 
 /**********************
  * Window Decorations *
- *********************/
+ **********************/
 decoration {
   transition: box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1);
   border-radius: 2px 2px 0 0;
@@ -3500,7 +3500,7 @@ popover.background button.model:disabled:checked, row:disabled:selected, calenda
 
 /**********************
  * Touch Copy & Paste *
- *********************/
+ **********************/
 cursor-handle {
   border-radius: 9999px;
   background-color: #FF4081;
@@ -4309,7 +4309,7 @@ UnityDecoration .menuitem:hover {
 
 .background:not(.csd) headerbar:not(.titlebar) {
   border-radius: 0;
-  box-shadow: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .background:not(.csd) headerbar:not(.titlebar).inline-toolbar {
@@ -4319,7 +4319,6 @@ UnityDecoration .menuitem:hover {
 UnityPanelWidget,
 .unity-panel {
   background-color: #263238;
-  background-image: image(#263238);
   color: #FFFFFF;
 }
 
