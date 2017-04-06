@@ -1395,12 +1395,6 @@ menu,
 
 menuitem {
   accelerator { color: gtkalpha(currentColor, $tertiary_opacity); }
-
-  check,
-  radio {
-    &:dir(ltr) { margin-right: -8px; margin-left: -16px; }
-    &:dir(rtl) { margin-right: -16px; margin-left: -8px; }
-  }
 }
 
 // FIXME: THIS IS A REALLY UGLY WORKAROUND!
@@ -1973,7 +1967,14 @@ radio {
 
   menu menuitem & {
     transition: none;
-    margin: -16px; // this is a workaround for a menu check/radio size allocation issue
+    min-height: 16px;
+    min-width: 16px;
+    margin: 0; // this is a workaround for a menu check/radio size allocation issue
+    padding: 0;
+
+    &:dir(ltr) { margin-right: 8px; }
+
+    &:dir(rtl) { margin-left: 8px; }
 
     &:not(:checked):not(:indeterminate) { color: gtkalpha(currentColor, $tertiary_opacity); }
 
@@ -2034,6 +2035,45 @@ radio {
                                        center center, $radio_indicator,
                                        to(scale-alpha($accent_color, $disabled_opacity)),
                                        to(transparent));
+  }
+}
+
+%small_check,
+menu menuitem check {
+  & {
+    border-radius: 2px;
+    -gtk-outline-radius: 2px;
+    -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.svg")),
+                            -gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.symbolic.png")));
+  }
+
+  &:checked {
+    -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-checkbox-checked-symbolic.svg")),
+                            -gtk-recolor(url("assets/scalable/small-checkbox-checked-symbolic.symbolic.png")));
+  }
+
+  &:indeterminate {
+    -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-checkbox-mixed-symbolic.svg")),
+                            -gtk-recolor(url("assets/scalable/small-checkbox-mixed-symbolic.symbolic.png")));
+  }
+}
+
+%small_radio,
+menu menuitem radio {
+  & {
+    border-image: none;
+    -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-unchecked-symbolic.svg")),
+                            -gtk-recolor(url("assets/scalable/small-radio-unchecked-symbolic.symbolic.png")));
+  }
+
+  &:checked {
+    -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-checked-symbolic.svg")),
+                            -gtk-recolor(url("assets/scalable/small-radio-checked-symbolic.symbolic.png")));
+  }
+
+  &:indeterminate {
+    -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-mixed-symbolic.svg")),
+                            -gtk-recolor(url("assets/scalable/small-radio-mixed-symbolic.symbolic.png")));
   }
 }
 
@@ -2946,7 +2986,7 @@ tooltip {
   decoration { background-color: transparent; }
 
   label {
-    // tooltip label has already 6px margins
+    // tooltip label already seems to have 6px margins
     min-height: 32px - 6px * 2;
     padding: 0 8px - 6px;
   }

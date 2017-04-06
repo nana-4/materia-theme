@@ -71,51 +71,16 @@ window.background:not(.csd) {
 
       &:active { background-image: image(gtkalpha(currentColor, 0.1)); }
     }
+
+    // use 16px assets for hard-coded sizing
+    > checkbutton > check { @extend %small_check; }
+
+    > radiobutton > radio { @extend %small_radio; }
   }
 
   // remove ugly border around the menus
   > window > menu,
   > menu > menu { border: none; }
-
-  // use 16px assets for hard-coded sizing
-  > window.background > menu > menuitem > check,
-  > widget > checkbutton > check {
-    & {
-      border-radius: 2px;
-      -gtk-outline-radius: 2px;
-      -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.svg")),
-                              -gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.symbolic.png")));
-    }
-
-    &:checked {
-      -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-checkbox-checked-symbolic.svg")),
-                              -gtk-recolor(url("assets/scalable/small-checkbox-checked-symbolic.symbolic.png")));
-    }
-
-    &:indeterminate {
-      -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-checkbox-mixed-symbolic.svg")),
-                              -gtk-recolor(url("assets/scalable/small-checkbox-mixed-symbolic.symbolic.png")));
-    }
-  }
-
-  > window.background > menu > menuitem > radio,
-  > widget > radiobutton > radio {
-    & {
-      border-image: none;
-      -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-unchecked-symbolic.svg")),
-                              -gtk-recolor(url("assets/scalable/small-radio-unchecked-symbolic.symbolic.png")));
-    }
-
-    &:checked {
-      -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-checked-symbolic.svg")),
-                              -gtk-recolor(url("assets/scalable/small-radio-checked-symbolic.symbolic.png")));
-    }
-
-    &:indeterminate {
-      -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/small-radio-mixed-symbolic.svg")),
-                              -gtk-recolor(url("assets/scalable/small-radio-mixed-symbolic.symbolic.png")));
-    }
-  }
 }
 
 // Firefox now uses this for selected items
