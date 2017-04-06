@@ -805,6 +805,13 @@ combobox {
       min-height: $medium_size - 2px * 2;
       padding: 0 8px;
     }
+
+    // overflow arrows
+    > arrow {
+      &.top { margin-top: -2px; }
+
+      &.bottom { margin-bottom: -2px * 3; }
+    }
   }
 
   &.linked {
@@ -1361,19 +1368,20 @@ menu,
     min-height: 16px;
     min-width: 16px;
     padding: 4px;
-    border-radius: 0;
     background-color: $base_color;
     color: $secondary_fg_color;
 
     &.top {
       margin-top: -4px;
       border-bottom: 1px solid $border_color;
+      border-radius: 2px 2px 0 0;
       -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
     }
 
     &.bottom {
-      margin-bottom: -4px;
+      margin-bottom: -4px * 3;
       border-top: 1px solid $border_color;
+      border-radius: 0 0 2px 2px;
       -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
     }
 

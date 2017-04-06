@@ -1034,6 +1034,14 @@ combobox #gtk-combobox-popup-menu menuitem {
   padding: 0 8px;
 }
 
+combobox #gtk-combobox-popup-menu > arrow.top {
+  margin-top: -2px;
+}
+
+combobox #gtk-combobox-popup-menu > arrow.bottom {
+  margin-bottom: -6px;
+}
+
 combobox:drop(active) {
   box-shadow: none;
 }
@@ -1627,7 +1635,6 @@ menu > arrow,
   min-height: 16px;
   min-width: 16px;
   padding: 4px;
-  border-radius: 0;
   background-color: #50636c;
   color: rgba(255, 255, 255, 0.75);
 }
@@ -1637,14 +1644,16 @@ menu > arrow.top,
 .context-menu > arrow.top {
   margin-top: -4px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 2px 2px 0 0;
   -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
 }
 
 menu > arrow.bottom,
 .menu > arrow.bottom,
 .context-menu > arrow.bottom {
-  margin-bottom: -4px;
+  margin-bottom: -12px;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 2px 2px;
   -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
 }
 
