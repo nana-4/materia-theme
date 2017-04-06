@@ -508,15 +508,10 @@ button {
     }
   }
 
-  // hide separators
-  separator {
-    min-width: 0;
-    min-height: 0;
-    background-color: transparent;
-  }
+  separator { @extend %hide_separators; }
 
   // &.font,
-  // &.file { separator { background-color: transparent; }}
+  // &.file { separator { @extend %hide_separators; }}
 
   // &.font { > box > box > label { font-weight: bold; }}
 
@@ -2562,6 +2557,12 @@ separator {
   min-width: 1px;
   min-height: 1px;
   background-color: $border_color;
+}
+
+%hide_separators {
+  min-width: 0;
+  min-height: 0;
+  background-color: transparent;
 }
 
 

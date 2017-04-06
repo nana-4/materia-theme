@@ -258,12 +258,7 @@ frame.gedit-map-frame > border {
   // background-color: shade(@theme_bg_color, 0.99);
   background-image: image($lighter_bg_color);
 
-  // hide separators
-  separator {
-    min-width: 0;
-    min-height: 0;
-    background-color: transparent;
-  }
+  separator { @extend %hide_separators; }
 }
 
 .tweak {
