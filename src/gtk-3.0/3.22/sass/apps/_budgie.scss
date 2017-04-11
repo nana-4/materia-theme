@@ -1,25 +1,34 @@
 // based css:
-// https://github.com/solus-project/budgie-desktop/blob/master/theme/3.20/sass/_main.scss
+// https://github.com/budgie-desktop/budgie-desktop/blob/master/src/theme/3.20/sass/_main.scss
 
 /******************
  * Budgie Desktop *
  ******************/
-
 // Container for both the "panel" area and the shadow. Wise to keep
 // this transparent..
 .budgie-container { background-color: transparent; }
 
 // Budgie Menu
 .budgie-menu {
-  &.background { padding: 0; }
+  &.background {
+    padding: 0;
+    background-color: $base_color;
+  }
 
-  scrolledwindow:not(.categories) { background-color: $base_color; }
+  scrollbar,
+  entry.search { background-color: transparent; }
 
   entry.search {
     border-bottom: 1px solid $border_color;
-    border-radius: $material_radius $material_radius 0 0;
-    box-shadow: inset 0 1px $highlight_color;
+    border-radius: 0;
+    box-shadow: none;
     font-size: 120%;
+  }
+
+  .categories {
+    &:dir(ltr) { border-bottom-left-radius: $material_radius; }
+
+    &:dir(rtl) { border-bottom-right-radius: $material_radius; }
   }
 
   button {
@@ -45,16 +54,23 @@ button.budgie-menu-launcher {
 }
 
 // User Menu
-.user-menu {
-  padding: 10px;
+popover.background.user-menu {
+  padding: 8px;
 
-  // .content-box separator { background-color: $border_color; }
+  .content-box { background-color: transparent; }
+
+  separator { margin: 4px 0; }
+
+  row {
+    padding: 0;
+    box-shadow: none;
+    background-image: none;
+  }
 }
 
 // Raven Trigger
 button.raven-trigger {
-  padding-left: 2px;
-  padding-right: 2px;
+  padding: 0 4px;
 }
 
 // Panel
@@ -72,25 +88,21 @@ button.raven-trigger {
 
   // End Section needs to be fancy
   .end-region {
-    border-radius: 2px;
-    background-color: rgba(0,0,0,0.2);
+    // background-color: rgba(0,0,0,0.2);
   }
-}
 
-// Tasklist
-.budgie-panel #tasklist-button {
-  padding: 0 4px;
+  // Tasklist
+  #tasklist-button {
+    padding: 0 4px;
 
-  @extend %flat_button;
+    @extend %flat_button;
 
-  @extend %underscores;
-}
+    @extend %underscores;
+  }
 
-// Icon Tasklist
-.budgie-panel {
+  // Icon Tasklist
   button.flat.launcher {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0;
 
     @extend %underscores;
   }
@@ -100,59 +112,24 @@ button.raven-trigger {
 }
 
 %underscores {
-  .top & {
-    border-image: radial-gradient(circle closest-corner at center calc(1px),
-                                  currentColor 0%,
-                                  transparent 0%)
-                                  0 0 0 / 0px 0 0;
+  @each $pos, $b_pos, $b_wid in (top,    center calc(1px),        2 0 0 0 / 2px 0 0 0),
+                                (bottom, center calc(100% - 1px), 0 0 2 0 / 0 0 2px 0),
+                                (left,   calc(1px) center,        0 2 0 0 / 0 2px 0 0),
+                                (right,  calc(100% - 1px) center, 0 0 0 2 / 0 0 0 2px) {
+    .#{$pos} & {
+      & {
+        border-image: radial-gradient(circle closest-corner at #{$b_pos},
+                                      currentColor 0%,
+                                      transparent 0%)
+                                      0 0 0 0 / 0 0 0 0;
+      }
 
-    &:checked {
-      border-image: radial-gradient(circle closest-corner at center calc(1px),
-                                    currentColor 100%,
-                                    transparent 0%)
-                                    2 0 0 / 2px 0 0;
-    }
-  }
-
-  .bottom & {
-    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  currentColor 0%,
-                                  transparent 0%)
-                                  0 0 0 / 0 0 0px;
-
-    &:checked {
-      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                    currentColor 100%,
-                                    transparent 0%)
-                                    0 0 2 / 0 0 2px;
-    }
-  }
-
-  .left & {
-    border-image: radial-gradient(circle closest-corner at calc(1px) center,
-                                  currentColor 0%,
-                                  transparent 0%)
-                                  0 0 0 0 / 0 0px 0 0;
-
-    &:checked {
-      border-image: radial-gradient(circle closest-corner at calc(1px) center,
-                                    currentColor 100%,
-                                    transparent 0%)
-                                    0 2 0 0 / 0 2px 0 0;
-    }
-  }
-
-  .right & {
-    border-image: radial-gradient(circle closest-corner at calc(100% - 1px) center,
-                                  currentColor 0%,
-                                  transparent 0%)
-                                  0 0 0 0 / 0 0 0 0px;
-
-    &:checked {
-      border-image: radial-gradient(circle closest-corner at calc(100% - 1px) center,
-                                    currentColor 100%,
-                                    transparent 0%)
-                                    0 0 0 2 / 0 0 0 2px;
+      &:checked {
+        border-image: radial-gradient(circle closest-corner at #{$b_pos},
+                                      currentColor 100%,
+                                      transparent 0%)
+                                      #{$b_wid};
+      }
     }
   }
 }
@@ -180,7 +157,11 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
 // Raven
 .raven {
-  background-color: $base_color;
+  background-color: $lighter_bg_color;
+
+  > stack { margin-bottom: -10px; }
+
+  // > stack > box:last-child > stack { margin-top: -6px; }
 
   stackswitcher.linked > button {
     @extend %flat_button;
@@ -203,9 +184,6 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
   .raven-header {
     min-height: $medium_size;
     padding: 3px;
-    border-style: none none solid;
-    border-width: 1px;
-    border-color: $border_color;
 
     &:not(.top) {
       margin-top: -6px; // remove extra spaces, but not perfect :(
@@ -213,16 +191,12 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
       button {
         @extend %simple_flat_button;
 
-        &.image-button {
-          border-radius: $circular_radius;
-          -gtk-outline-radius: $circular_radius;
-        }
+        &.image-button { @extend %circular_button; }
       }
     }
 
     &.top {
       padding: 2px 0;
-      border-style: none;
       background-color: $primary_color;
       color: $inverse_fg_color;
 
@@ -244,7 +218,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
       }
     }
 
-    &.bottom { border-style: solid none none; }
+    &.bottom { border-top: 1px solid $border_color; }
   }
 
   viewport.frame .raven-header { margin-top: -8px; }
@@ -252,20 +226,28 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
   .expander-button { @extend %circular_button; }
 
   .raven-background {
-    border-bottom: 1px solid $border_color;
-    background-color: $lighter_bg_color;
+    border-style: solid none;
+    border-width: 1px;
+    border-color: $border_color;
+    background-color: $base_color;
 
     // &.middle { border-bottom-style: none; } // applet background between two headers
 
-    &.frame { border-style: none none solid; }
+    &.frame { border-style: solid none; }
 
     > overlay > image { color: $fill_color; }
+
+    grid > label:first-child { min-height: $medium_size; } // workaround to fix vertical-align
+
+    spinbutton:not(.vertical) { @extend %entry.flat; }
+
+    button.combo { @extend %combo_flat; }
   }
 
   scrolledwindow.raven-background { border-bottom-style: none; }
 
-  > stack > box > .raven-background {
-    border-bottom-style: none;
+  .raven-header.top + .raven-background {
+    border-style: none;
     background-color: $primary_color;
     color: $inverse_fg_color;
 
@@ -294,8 +276,8 @@ calendar.raven-calendar {
 
 // MPRIS Applet
 .raven-mpris {
-  color: $white;
   background-color: scale-alpha($black, $middle_opacity);
+  color: $white;
 
   label { min-height: 24px; }
 
@@ -377,7 +359,7 @@ calendar.raven-calendar {
 
   entry.search {
     font-size: 120%;
-    padding: 0 + $container_padding 8px + $container_padding;
+    padding: $container_padding 8px + $container_padding;
     box-shadow: inset 0 1px $highlight_color;
     background-color: transparent;
   }
