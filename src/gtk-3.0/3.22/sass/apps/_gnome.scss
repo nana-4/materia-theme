@@ -453,11 +453,7 @@ preferences stacksidebar.sidebar {
   &:dir(ltr),
   &:dir(rtl) { list { border-style: none; }}
 
-  list separator {
-    min-width: 0;
-    min-height: 0;
-    background-color: transparent;
-  }
+  list separator { @extend %hide_separators; }
 }
 
 preferences > box > box {
