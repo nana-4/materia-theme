@@ -73,6 +73,59 @@ button.raven-trigger {
   padding: 0 4px;
 }
 
+// Places Menu
+popover.background.places-menu {
+  padding: 8px;
+
+  // FIXME: untested
+  .message-bar {
+    // margin-bottom: 4px;
+  }
+
+  .name-button.text-button {
+    // padding: 4px 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+
+    image {
+      &:dir(ltr) { margin-right: 8px - 5px; }
+      &:dir(rtl) { margin-left: 8px - 5px; }
+    }
+  }
+
+  // FIXME: untested
+  .unmount-button {
+    // padding: ($medium_size - 24px) / 2;
+  }
+
+  .places-section-header > image {
+    &:dir(ltr) { margin: 0 8px - 10px 0 8px - 3px; }
+    &:dir(rtl) { margin: 0 8px - 3px 0 8px - 10px; }
+  }
+
+  .places-list {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid $border_color;
+    background-color: transparent;
+  }
+
+  row {
+    padding: 0;
+    box-shadow: none;
+    background-image: none;
+  }
+
+  // FIXME: untested
+  .unlock-area {
+    entry {
+    }
+
+    button {
+    }
+  }
+}
+
 // Panel
 .budgie-panel {
   background-color: $panel_bg_color;
