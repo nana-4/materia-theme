@@ -1,17 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="54" height="54" viewBox="0 0 54 54">
   <defs>
-    <filter id="a" style="color-interpolation-filters:sRGB" height="2" width="2" y="-.5" x="-.5">
-      <feFlood result="flood" flood-opacity=".12" flood-color="rgb(0,0,0)"/>
-      <feComposite operator="in" result="composite1" in2="SourceGraphic" in="flood"/>
-      <feGaussianBlur stdDeviation="1.5" result="blur" in="composite1"/>
-      <feOffset result="offset" dx="0" dy="1"/>
-      <feComposite operator="over" result="fbSourceGraphic" in2="offset" in="SourceGraphic"/>
-      <feColorMatrix values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0" result="fbSourceGraphicAlpha" in="fbSourceGraphic"/>
-      <feFlood result="flood" flood-color="rgb(0,0,0)" in="fbSourceGraphic" flood-opacity=".24"/>
-      <feComposite operator="in" result="composite1" in2="fbSourceGraphic" in="flood"/>
-      <feGaussianBlur result="blur" stdDeviation="1" in="composite1"/>
-      <feOffset result="offset" dx="0" dy="1"/>
-      <feComposite operator="over" result="composite2" in2="offset" in="fbSourceGraphic"/>
+    <filter id="a" color-interpolation-filters="sRGB" x="-0.5" y="-0.5" width="2" height="2">
+      <!-- <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.12"/> -->
+      <!-- <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.24"/> -->
+
+      <feFlood flood-color="#000000" flood-opacity="0.12" result="flood"/>
+      <feComposite operator="in" in="flood" in2="SourceGraphic" result="composite1"/>
+      <feGaussianBlur stdDeviation="1.5" in="composite1" result="blur"/>
+      <feOffset dx="0" dy="1" result="offset"/>
+      <feComposite in="SourceGraphic" in2="offset" result="fbSourceGraphic"/>
+
+      <feFlood flood-color="#000000" flood-opacity="0.24" in="fbSourceGraphic" result="flood"/>
+      <feComposite operator="in" in="flood" in2="fbSourceGraphic" result="composite1"/>
+      <feGaussianBlur stdDeviation="1" in="composite1" result="blur"/>
+      <feOffset dx="0" dy="1" result="offset"/>
+      <feComposite in="fbSourceGraphic" in2="offset" result="composite2"/>
     </filter>
   </defs>
   <rect x="4" y="23" width="46" height="8" rx="2" ry="2" fill="#FFFFFF" filter="url(#a)"/>

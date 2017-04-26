@@ -8,31 +8,37 @@
 
   <defs>
     <filter id="1" color-interpolation-filters="sRGB" x="0" y="0" width="1" height="1">
-      <feFlood result="flood" flood-color="#000000" flood-opacity="0.12"/>
-      <feComposite result="composite1" operator="in" in="flood" in2="SourceGraphic"/>
-      <feGaussianBlur result="blur" stdDeviation="1.5" in="composite1"/>
-      <feOffset result="offset" dx="0" dy="1"/>
-      <feComposite result="fbSourceGraphic" operator="over" in="SourceGraphic" in2="offset"/>
-      <feColorMatrix result="fbSourceGraphicAlpha" values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0" in="fbSourceGraphic"/>
-      <feFlood result="flood" flood-color="#000000" flood-opacity="0.24" in="fbSourceGraphic"/>
-      <feComposite result="composite1" operator="in" in="flood" in2="fbSourceGraphic"/>
-      <feGaussianBlur result="blur" stdDeviation="1" in="composite1"/>
-      <feOffset result="offset" dx="0" dy="1"/>
-      <feComposite result="composite2" operator="over" in="fbSourceGraphic" in2="offset"/>
+      <!-- <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.12"/> -->
+      <!-- <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.24"/> -->
+
+      <feFlood flood-color="#000000" flood-opacity="0.12" result="flood"/>
+      <feComposite operator="in" in="flood" in2="SourceGraphic" result="composite1"/>
+      <feGaussianBlur stdDeviation="1.5" in="composite1" result="blur"/>
+      <feOffset dx="0" dy="1" result="offset"/>
+      <feComposite in="SourceGraphic" in2="offset" result="fbSourceGraphic"/>
+
+      <feFlood flood-color="#000000" flood-opacity="0.24" in="fbSourceGraphic" result="flood"/>
+      <feComposite operator="in" in="flood" in2="fbSourceGraphic" result="composite1"/>
+      <feGaussianBlur stdDeviation="1" in="composite1" result="blur"/>
+      <feOffset dx="0" dy="1" result="offset"/>
+      <feComposite in="fbSourceGraphic" in2="offset" result="composite2"/>
     </filter>
 
     <filter id="2" color-interpolation-filters="sRGB" x="0" y="0" width="1" height="1">
-      <feFlood result="flood" flood-color="#000000" flood-opacity="0.16"/>
-      <feComposite result="composite1" operator="in" in="flood" in2="SourceGraphic"/>
-      <feGaussianBlur result="blur" stdDeviation="3" in="composite1"/>
-      <feOffset result="offset" dx="0" dy="3"/>
-      <feComposite result="fbSourceGraphic" operator="over" in="SourceGraphic" in2="offset"/>
-      <feColorMatrix result="fbSourceGraphicAlpha" values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0" in="fbSourceGraphic"/>
-      <feFlood result="flood" flood-color="#000000" flood-opacity="0.23" in="fbSourceGraphic"/>
-      <feComposite result="composite1" operator="in" in="flood" in2="fbSourceGraphic"/>
-      <feGaussianBlur result="blur" stdDeviation="3" in="composite1"/>
-      <feOffset result="offset" dx="0" dy="3"/>
-      <feComposite result="composite2" operator="over" in="fbSourceGraphic" in2="offset"/>
+      <!-- <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.16"/> -->
+      <!-- <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.23"/> -->
+
+      <feFlood flood-color="#000000" flood-opacity="0.16" result="flood"/>
+      <feComposite operator="in" in="flood" in2="SourceGraphic" result="composite1"/>
+      <feGaussianBlur stdDeviation="3" in="composite1" result="blur"/>
+      <feOffset dx="0" dy="3" result="offset"/>
+      <feComposite in="SourceGraphic" in2="offset" result="fbSourceGraphic"/>
+
+      <feFlood flood-color="#000000" flood-opacity="0.23" in="fbSourceGraphic" result="flood"/>
+      <feComposite operator="in" in="flood" in2="fbSourceGraphic" result="composite1"/>
+      <feGaussianBlur stdDeviation="3" in="composite1" result="blur"/>
+      <feOffset dx="0" dy="3" result="offset"/>
+      <feComposite in="fbSourceGraphic" in2="offset" result="composite2"/>
     </filter>
 
     <path id="checkbox-unchecked-path" d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
@@ -42,12 +48,12 @@
     <path id="radio-checked-path" d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
     <path id="radio-mixed-path" d="m12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 2c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8 3.58-8 8-8zm-5 7v2h10v-2h-10z"/>
 
-    <path id="menu-checkbox-unchecked-path" d="M 2 0 C 0.892 0 0 0.892 0 2 L 0 14 C 0 15.108 0.892 16 2 16 L 14 16 C 15.108 16 16 15.108 16 14 L 16 2 C 16 0.892 15.108 0 14 0 L 2 0 z M 2 2 L 14 2 L 14 14 L 2 14 L 2 2 z"/>
-    <path id="menu-checkbox-checked-path" d="M 2 0 C 0.892 0 0 0.892 0 2 L 0 14 C 0 15.108 0.892 16 2 16 L 14 16 C 15.108 16 16 15.108 16 14 L 16 2 C 16 0.892 15.108 0 14 0 L 2 0 z M 12.585938 3.5859375 L 14 5 L 6 13 L 2 9 L 3.4140625 7.5859375 L 6 10.171875 L 12.585938 3.5859375 z"/>
-    <path id="menu-checkbox-mixed-path" d="M 2 0 C 0.892 0 0 0.892 0 2 L 0 14 C 0 15.108 0.892 16 2 16 L 14 16 C 15.108 16 16 15.108 16 14 L 16 2 C 16 0.892 15.108 0 14 0 L 2 0 z M 4 7 L 12 7 L 12 9 L 4 9 L 4 7 z"/>
-    <path id="menu-radio-unchecked-path" d="M 8 0 A 8 8 0 0 0 0 8 A 8 8 0 0 0 8 16 A 8 8 0 0 0 16 8 A 8 8 0 0 0 8 0 z M 8 2 A 6 6 0 0 1 14 8 A 6 6 0 0 1 8 14 A 6 6 0 0 1 2 8 A 6 6 0 0 1 8 2 z"/>
-    <path id="menu-radio-checked-path" d="M 8 0 A 8 8 0 0 0 0 8 A 8 8 0 0 0 8 16 A 8 8 0 0 0 16 8 A 8 8 0 0 0 8 0 z M 8 2 A 6 6 0 0 1 14 8 A 6 6 0 0 1 8 14 A 6 6 0 0 1 2 8 A 6 6 0 0 1 8 2 z M 8 4 A 4 4 0 0 0 4 8 A 4 4 0 0 0 8 12 A 4 4 0 0 0 12 8 A 4 4 0 0 0 8 4 z"/>
-    <path id="menu-radio-mixed-path" d="M 8 0 A 8 8 0 0 0 0 8 A 8 8 0 0 0 8 16 A 8 8 0 0 0 16 8 A 8 8 0 0 0 8 0 z M 8 2 A 6 6 0 0 1 14 8 A 6 6 0 0 1 8 14 A 6 6 0 0 1 2 8 A 6 6 0 0 1 8 2 z M 4 7 L 4 9 L 12 9 L 12 7 L 4 7 z"/>
+    <path id="menu-checkbox-unchecked-path" d="m2 0a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-12zm0 2h12v12h-12v-12z"/>
+    <path id="menu-checkbox-checked-path" d="m2 0a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-12zm10.6 3.59l1.41 1.41-8 8-4-4 1.41-1.41 2.59 2.59 6.59-6.59z"/>
+    <path id="menu-checkbox-mixed-path" d="m2 0a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-12zm2 7h8v2h-8v-2z"/>
+    <path id="menu-radio-unchecked-path" d="m8 0a8 8 0 0 0 -8 8 8 8 0 0 0 8 8 8 8 0 0 0 8 -8 8 8 0 0 0 -8 -8zm0 2a6 6 0 0 1 6 6 6 6 0 0 1 -6 6 6 6 0 0 1 -6 -6 6 6 0 0 1 6 -6z"/>
+    <path id="menu-radio-checked-path" d="m8 0a8 8 0 0 0 -8 8 8 8 0 0 0 8 8 8 8 0 0 0 8 -8 8 8 0 0 0 -8 -8zm0 2a6 6 0 0 1 6 6 6 6 0 0 1 -6 6 6 6 0 0 1 -6 -6 6 6 0 0 1 6 -6zm0 2a4 4 0 0 0 -4 4 4 4 0 0 0 4 4 4 4 0 0 0 4 -4 4 4 0 0 0 -4 -4z"/>
+    <path id="menu-radio-mixed-path" d="m8 0a8 8 0 0 0 -8 8 8 8 0 0 0 8 8 8 8 0 0 0 8 -8 8 8 0 0 0 -8 -8zm0 2a6 6 0 0 1 6 6 6 6 0 0 1 -6 6 6 6 0 0 1 -6 -6 6 6 0 0 1 6 -6zm-4 5v2h8v-2h-8z"/>
 
     <rect id="button-fill" width="24" height="24" rx="2" ry="2"/>
     <path id="check-path" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
@@ -64,6 +70,9 @@
     <rect id="24x30" width="24" height="30" opacity="0"/>
     <rect id="40x40" width="40" height="40" opacity="0"/>
     <rect id="48x48" width="48" height="48" opacity="0"/>
+
+    <!-- <solidColor id="color-dark" solid-color="#000000" solid-opacity="0.8"/> -->
+    <!-- <solidColor id="color-light" solid-color="#FFFFFF"/> -->
 
     <linearGradient id="color-dark">
       <stop stop-color="#000000" stop-opacity="0.8"/>
