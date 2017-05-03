@@ -8,11 +8,13 @@ Summary
 How to tweak the theme
 ----------------------
 
-Flat-Plat is a complex theme, so to keep it maintainable it's written and
-processed in Sass.
+Like the upstream Adwaita, this theme is written and processed in Sass.
 
-Here's a rundown of the _supporting_ stylesheets, that are unlikely to be the
-right place for a drive by stylesheet fix:
+You can read about Sass at http://sass-lang.com/documentation/. Once you make
+your changes to the SCSS files, run the `./parse-sass.sh` script to rebuild the
+CSS files.
+
+Here's a rundown of the _supporting_ stylesheets:
 
 - `_variables.scss`
 
@@ -47,18 +49,14 @@ right place for a drive by stylesheet fix:
 
   app/extension specific stylings.
 
-You can read about Sass at http://sass-lang.com/documentation/. Once you make
-your changes to the SCSS files, run the `./parse-sass.sh` script to rebuild the
-CSS files.
-
 How to change the assets color
 ------------------------------
 
 To keep it maintainable, SVG files are basically edited on text-based.
 
 So if you just want to change the SVG assets color, we recommend using a
-**text editor** instead of **Inkscape**. But please note that in some cases
-Inkscape is needed to render the PNG assets.
+**text editor** instead of **Inkscape**. However, please note that Inkscape is
+required to render the PNG assets from the SVG files.
 
 Here's an example to change the _accent color_:
 
@@ -88,7 +86,7 @@ Here's an example to change the _accent color_:
 
 4. Run `./render-assets.sh` or `./render-assets-dark.sh` to render the PNG assets.
 
-  > Note: Inkscape is required to run the scripts.
+  > Note: Inkscape must be installed to run the scripts.
 
   - for gtk2:
 
