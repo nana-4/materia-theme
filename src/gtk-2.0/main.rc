@@ -6,7 +6,6 @@
 # so there will always be a visible difference between the GTK+ 2 and 3 theme.
 
 style "default" {
-
   xthickness = 1
   ythickness = 1
 
@@ -400,10 +399,12 @@ style "default" {
     }
 
     # Disable arrows for qt in scrollbars
+
     image {
       function = ARROW
       detail   = "vscrollbar"
     }
+
     image {
       function = ARROW
       detail   = "hscrollbar"
@@ -1028,7 +1029,6 @@ style "default" {
       direction   = RTL
     }
 
-
     # Horizontal sliders
 
     image {
@@ -1275,6 +1275,7 @@ style "default" {
       detail   = "hscale"
       file     = "assets/scale-slider-insensitive.png"
     }
+
     image {
       function = SLIDER
       state    = NORMAL
@@ -1350,7 +1351,6 @@ style "default" {
     # Entries #
     ###########
 
-
     image {
       function = SHADOW
       state    = ACTIVE
@@ -1396,6 +1396,7 @@ style "default" {
       detail   = "entry_bg"
       file     = "assets/entry-background.png"
     }
+
     #########
     # Spins #
     #########
@@ -1647,13 +1648,10 @@ style "default" {
     image {
       function = SHADOW
     }
-
   }
-
 }
 
 style "menubar" {
-
   bg[NORMAL]      = @titlebar_bg_color
   fg[NORMAL]      = mix(0.75, @titlebar_fg_color, @titlebar_bg_color)
   fg[PRELIGHT]    = @titlebar_fg_color
@@ -1661,11 +1659,9 @@ style "menubar" {
   # Needed to fix Firefox's menubar text
   bg[SELECTED]    = mix(0.15, @titlebar_fg_color, @titlebar_bg_color)
   fg[SELECTED]    = @titlebar_fg_color
-
 }
 
 style "menubar_item" {
-
   xthickness = 3
   ythickness = 4
 
@@ -1673,11 +1669,9 @@ style "menubar_item" {
   bg[PRELIGHT]    = mix(0.15, @titlebar_fg_color, @titlebar_bg_color)
   fg[PRELIGHT]    = @titlebar_fg_color
   fg[INSENSITIVE] = mix(0.3, @titlebar_fg_color, @titlebar_bg_color)
-
 }
 
 style "menu" {
-
   xthickness = 0
   ythickness = 0
 
@@ -1685,11 +1679,9 @@ style "menu" {
   bg[INSENSITIVE] = @base_color
   bg[PRELIGHT]    = @base_color
   bg[SELECTED]    = mix(0.15, @fg_color, @base_color)
-
 }
 
 style "menu_item" {
-
   xthickness = 4
   ythickness = 4
 
@@ -1698,7 +1690,6 @@ style "menu_item" {
   # Chromium uses this setting
   bg[SELECTED]   = mix(0.15, @fg_color, @base_color)
   text[SELECTED] = @fg_color
-
   # Some widgets use text, we need to handle that
   text[NORMAL]   = @fg_color
   text[PRELIGHT] = @fg_color
@@ -1906,15 +1897,10 @@ style "menu_item" {
       overlay_file    = "assets/menu-radio-mixed-insensitive.png"
       overlay_stretch = FALSE
     }
-
-
-
   }
-
 }
 
 style "separator_menu_item" {
-
   xthickness = 0
   ythickness = 2
 
@@ -1925,7 +1911,6 @@ style "separator_menu_item" {
       border   = {0, 0, 0, 1}
     }
   }
-
 }
 
 style "button_label" {
@@ -1943,7 +1928,6 @@ style "checkbutton_label" {
 }
 
 style "button" {
-
   xthickness = 4
   ythickness = 4
 
@@ -2000,33 +1984,27 @@ style "button" {
 }
 
 style "link_button" {
-
   # Disable the button effect, leave just the link
   engine "pixmap" {
     image {
       function = BOX
     }
   }
-
 }
 
 style "entry" {
-
   # We set this same as the border of the border of the entry
   # This way there's no overlap
   xthickness = 6
   ythickness = 6
-
 }
 
 style "combobox" {
-
   xthickness = 6
   ythickness = 6
 
   # This affects only the button beside an entry
   GtkButton::inner-border = {0, 0, 0, 0}
-
 }
 
 style "combobox_cellview" {
@@ -2037,7 +2015,6 @@ style "combobox_cellview" {
 }
 
 style "combobox_entry" {
-
   # Since one side of the button is missing, we need to shift the arrow a little to the right
   GtkButton::inner-border = {0, 2, 0, 0}
 
@@ -2198,26 +2175,20 @@ style "combobox_entry" {
       stretch   = TRUE
       direction = RTL
     }
-
   }
-
 }
 
 style "combo_button_padding" {
-
   # Since one side of the button is missing, we need to shift the arrow a
   # little to the right.
   # This is the same thing we've done above but the combo, unlike the combobox,
   # uses padding the same way as a button.
   GtkButton::inner-border = {3, 6, 3, 3}
-
 }
 
 style "notebook" {
-
   xthickness = 3
   ythickness = 3
-
 }
 
 style "notebook_tab_label" {
@@ -2237,9 +2208,7 @@ style "notebook_bg" {
 }
 
 style "notebook_entry" {
-
   engine "pixmap" {
-
     image {
       function = SHADOW
       state    = ACTIVE
@@ -2275,9 +2244,7 @@ style "normal_bg" {
 }
 
 style "normal_entry" {
-
   engine "pixmap" {
-
     image {
       function = SHADOW
       state    = ACTIVE
@@ -2307,7 +2274,6 @@ style "normal_entry" {
 }
 
 style "notebook_combo" {
-
   engine "pixmap" {
 
     #############
@@ -2377,9 +2343,7 @@ style "notebook_combo" {
       stretch   = TRUE
       direction = RTL
     }
-
   }
-
 }
 
 style "textview" {
@@ -2387,9 +2351,7 @@ style "textview" {
 }
 
 style "scale_horz" {
-
   engine "pixmap" {
-
     image {
       function    = BOX
       detail      = "trough-upper"
@@ -2405,15 +2367,11 @@ style "scale_horz" {
       border      = {4, 4, 0, 0}
       stretch     = TRUE
     }
-
   }
-
 }
 
 style "scale_vert" {
-
   engine "pixmap" {
-
     image {
       function    = BOX
       detail      = "trough-upper"
@@ -2429,20 +2387,16 @@ style "scale_vert" {
       border      = {0, 0, 4, 4}
       stretch     = TRUE
     }
-
   }
-
 }
 
 style "progressbar" {
-
   xthickness = 0
   ythickness = 0
 
   fg[PRELIGHT] = @selected_fg_color
 
   engine "pixmap" {
-
     image {
       function    = BOX
       detail      = "trough"
@@ -2460,13 +2414,10 @@ style "progressbar" {
       stretch     = TRUE
       orientation = VERTICAL
     }
-
   }
-
 }
 
 style "treeview_header" {
-
   xthickness = 2
   ythickness = 2
 
@@ -2478,7 +2429,6 @@ style "treeview_header" {
   GtkButton::inner-border = {4, 4, 0, 2}
 
   engine "pixmap" {
-
     image {
       function  = BOX
       state     = NORMAL
@@ -2580,13 +2530,10 @@ style "treeview_header" {
       overlay_stretch = FALSE
       arrow_direction = DOWN
     }
-
   }
-
 }
 
 style "scrolled_window" {
-
   engine "pixmap" {
     image {
       function = SHADOW
@@ -2595,13 +2542,10 @@ style "scrolled_window" {
       stretch  = TRUE
     }
   }
-
 }
 
 style "frame" {
-
   engine "pixmap" {
-
     image {
       function = SHADOW
       shadow   = NONE
@@ -2622,18 +2566,14 @@ style "frame" {
       gap_start_file = "assets/border.png"
       gap_end_file   = "assets/border.png"
     }
-
   }
-
 }
 
 style "tool_button" {
-
   GtkButton::inner-border = {2, 2, 2, 2}
 
   # For the sake of sanity style buttons this way
   engine "pixmap" {
-
     image {
       function = BOX
       state    = NORMAL
@@ -2690,7 +2630,6 @@ style "tool_button" {
 }
 
 style "toolbar_separator" {
-
   GtkWidget::wide-separators  = 1
   GtkWidget::separator-width  = 1
   GtkWidget::separator-height = 1
@@ -2701,11 +2640,9 @@ style "toolbar_separator" {
       file     = "assets/border.png"
     }
   }
-
 }
 
 style "inline_toolbar" {
-
   # GtkToolbar::button-relief = GTK_RELIEF_NORMAL
 
   engine "pixmap" {
@@ -2716,36 +2653,28 @@ style "inline_toolbar" {
       stretch  = TRUE
     }
   }
-
 }
 
 style "tooltip" {
-
   xthickness = 8
   ythickness = 8
 
   bg[NORMAL]   = @base_color
   fg[NORMAL]   = @fg_color
   bg[SELECTED] = @base_color
-
 }
 
-
 style "disable_text_shadow" {
-
   engine "murrine" {
     textstyle = 0
   }
-
 }
 
 style "disable_separator" {
-
   xthickness = 0
   ythickness = 0
 
   GtkWidget::wide-separators = 1
-
 }
 
 # Default style, containing theme properties and trying to match every widget as
@@ -2755,9 +2684,9 @@ style "disable_separator" {
 # every other style below.
 class "GtkWidget" style "default"
 
- ######################################
- # Override padding, style and colour #
- ######################################
+######################################
+# Override padding, style and colour #
+######################################
 
 class "GtkButton"                                                  style "button"
 class "GtkLinkButton"                                              style "link_button"
@@ -2787,6 +2716,7 @@ widget_class "*<GtkFileChooserDefault>*<GtkToolbar>"               style "inline
 
 # Fix padding on regular comboboxes
 widget_class "*<GtkComboBox>.<GtkButton>"                          style "combobox"
+
 # And disable separators on them
 widget_class "*<GtkComboBox>.<GtkButton>*<GtkSeparator>"           style "disable_separator"
 widget_class "*<GtkFontButton>*<GtkSeparator>"                     style "disable_separator"
@@ -2797,6 +2727,7 @@ widget_class "*<GtkComboBoxEntry>*"                                style "combob
 
 # Join the Combo entry and button
 widget_class "*<GtkCombo>*"                                        style "combobox_entry"
+
 # Tweak the padding on the button a little bit because it
 # uses it a bit differently
 widget_class "*<GtkCombo>.<GtkButton>"                             style "combo_button_padding"
