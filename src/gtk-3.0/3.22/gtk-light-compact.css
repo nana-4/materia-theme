@@ -840,37 +840,6 @@ modelbutton.flat,
   color: inherit;
 }
 
-modelbutton.flat check,
-modelbutton.flat radio,
-.menuitem.button.flat check,
-.menuitem.button.flat radio {
-  box-shadow: none;
-  background-image: none;
-}
-
-modelbutton.flat check:not(:checked):not(:indeterminate),
-modelbutton.flat radio:not(:checked):not(:indeterminate),
-.menuitem.button.flat check:not(:checked):not(:indeterminate),
-.menuitem.button.flat radio:not(:checked):not(:indeterminate) {
-  color: alpha(currentColor, 0.6);
-}
-
-modelbutton.flat check:last-child,
-modelbutton.flat radio:last-child,
-.menuitem.button.flat check:last-child,
-.menuitem.button.flat radio:last-child {
-  margin-left: -8px;
-  margin-right: -16px;
-}
-
-modelbutton.flat check:first-child,
-modelbutton.flat radio:first-child,
-.menuitem.button.flat check:first-child,
-.menuitem.button.flat radio:first-child {
-  margin-left: -16px;
-  margin-right: -8px;
-}
-
 modelbutton.flat arrow {
   background: none;
 }
@@ -2248,6 +2217,31 @@ radio:not(:checked):not(:indeterminate):active {
 row check:not(:checked):not(:indeterminate):disabled, row
 radio:not(:checked):not(:indeterminate):disabled {
   color: alpha(currentColor, 0.3);
+}
+
+popover check, popover check:hover, popover check:disabled, popover
+radio, popover
+radio:hover, popover
+radio:disabled {
+  box-shadow: none;
+  background-image: none;
+}
+
+popover check:not(:checked):not(:indeterminate), popover
+radio:not(:checked):not(:indeterminate) {
+  color: alpha(currentColor, 0.6);
+}
+
+popover check.left:dir(rtl), popover
+radio.left:dir(rtl) {
+  margin-left: -16px;
+  margin-right: -8px;
+}
+
+popover check.right:dir(ltr), popover
+radio.right:dir(ltr) {
+  margin-left: -8px;
+  margin-right: -16px;
 }
 
 menu menuitem check, menu menuitem

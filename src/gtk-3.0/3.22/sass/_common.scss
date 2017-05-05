@@ -604,18 +604,6 @@ modelbutton.flat,
   @extend %simple_flat_button;
 
   &:selected { @extend %selected_items; }
-
-  check,
-  radio {
-    box-shadow: none;
-    background-image: none;
-
-    &:not(:checked):not(:indeterminate) { color: gtkalpha(currentColor, $tertiary_opacity); }
-
-    &:last-child { margin-left: -8px; margin-right: -16px; }
-
-    &:first-child { margin-left: -16px; margin-right: -8px; }
-  }
 }
 
 modelbutton.flat arrow {
@@ -1965,6 +1953,25 @@ radio {
     &:hover, &:active { color: currentColor; }
 
     &:disabled { color: gtkalpha(currentColor, $secondary_opacity * $disabled_opacity); }
+  }
+
+  popover & {
+    &, &:hover, &:disabled {
+      box-shadow: none;
+      background-image: none;
+    }
+
+    &:not(:checked):not(:indeterminate) { color: gtkalpha(currentColor, $tertiary_opacity); }
+
+    &.left:dir(rtl) {
+      margin-left: -16px;
+      margin-right: -8px;
+    }
+
+    &.right:dir(ltr) {
+      margin-left: -8px;
+      margin-right: -16px;
+    }
   }
 
   menu menuitem & {
