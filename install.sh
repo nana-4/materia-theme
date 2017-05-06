@@ -172,6 +172,23 @@ for color in '' '-dark' '-light' ; do
         buttons${color} \
         ${themedir}/unity/buttons
     fi
+
+    # Install Xfwm Theme
+    install -d ${themedir}/xfwm4
+    cd ${srcdir}/xfwm4
+    cp -ur \
+      *.svg \
+      themerc \
+      ${themedir}/xfwm4
+    if [ "$color" != '-light' ] ; then
+      cp -ur \
+        assets \
+        ${themedir}/xfwm4
+    else
+      cp -urT \
+        assets${color} \
+        ${themedir}/xfwm4/assets
+    fi
   done
 done
 
