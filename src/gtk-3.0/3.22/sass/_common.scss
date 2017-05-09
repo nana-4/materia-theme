@@ -557,40 +557,60 @@ button {
 }
 
 // More inline toolbar buttons
-toolbar.inline-toolbar toolbutton:not(:only-child) {
+toolbar.inline-toolbar toolbutton {
   // > button.flat { @extend %linked_middle; }
 
-  // &:first-child > button.flat { @extend %linked_first; }
+  // &:first-child > button.flat { @extend %linked:first-child; }
 
-  // &:last-child > button.flat { @extend %linked_last; }
+  // &:last-child > button.flat { @extend %linked:last-child; }
+
+  // &:only-child > button.flat { @extend %linked:only-child; }
 }
 
-%linked:not(:only-child) {
-  @at-root %linked_middle,
-  & {
-    border-radius: 0;
-    -gtk-outline-radius: 2px;
-  }
-
-  @at-root %linked_first,
-  &:first-child { border-radius: 2px 0 0 2px; }
-
-  @at-root %linked_last,
-  &:last-child { border-radius: 0 2px 2px 0; }
+%linked_middle {
+  border-radius: 0;
+  -gtk-outline-radius: 2px;
 }
 
-%linked_vertical:not(:only-child) {
-  @at-root %linked_vertical_middle,
-  & {
-    border-radius: 0;
-    -gtk-outline-radius: 2px;
+%linked {
+  @extend %linked_middle;
+
+  &:first-child {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
   }
 
-  @at-root %linked_vertical_first,
-  &:first-child { border-radius: 2px 2px 0 0; }
+  &:last-child {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
 
-  @at-root %linked_vertical_last,
-  &:last-child { border-radius: 0 0 2px 2px; }
+  &:only-child {
+    border-radius: 2px;
+  }
+}
+
+%linked_vertical_middle {
+  border-radius: 0;
+  -gtk-outline-radius: 2px;
+}
+
+%linked_vertical{
+  @extend %linked_vertical_middle;
+
+  &:first-child {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+
+  &:only-child {
+    border-radius: 2px;
+  }
 }
 
 /* menu buttons */
@@ -814,20 +834,24 @@ combobox {
 // work, special case needed. See
 // https://bugzilla.gnome.org/show_bug.cgi?id=733979
 
-.linked:not(.vertical) > combobox:not(:only-child) {
+.linked:not(.vertical) > combobox {
   > box > button.combo { @extend %linked_middle; }
 
-  &:first-child > box > button.combo { @extend %linked_first; }
+  &:first-child > box > button.combo { @extend %linked:first-child; }
 
-  &:last-child > box > button.combo { @extend %linked_last; }
+  &:last-child > box > button.combo { @extend %linked:last-child; }
+
+  &:only-child > box > button.combo { @extend %linked:only-child; }
 }
 
-.linked.vertical > combobox:not(:only-child) {
+.linked.vertical > combobox {
   > box > button.combo { @extend %linked_vertical_middle; }
 
-  &:first-child > box > button.combo { @extend %linked_vertical_first; }
+  &:first-child > box > button.combo { @extend %linked_vertical:first-child; }
 
-  &:last-child > box > button.combo { @extend %linked_vertical_last; }
+  &:last-child > box > button.combo { @extend %linked_vertical:last-child; }
+
+  &:only-child > box > button.combo { @extend %linked_vertical:only-child; }
 }
 
 %combo_flat {

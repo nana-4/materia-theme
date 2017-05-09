@@ -804,30 +804,42 @@ button.needs-attention > image:dir(rtl), stacksidebar row.needs-attention > labe
   background-position: left 3px;
 }
 
-.linked:not(.vertical) > combobox:not(:only-child) > box > button.combo, .linked:not(.vertical) > spinbutton:not(:only-child):not(.vertical), .linked:not(.vertical) > entry:not(:only-child), .linked > button:not(:only-child) {
+.linked:not(.vertical) > spinbutton:not(.vertical), .linked:not(.vertical) > entry, .linked > button, .linked:not(.vertical) > combobox > box > button.combo {
   border-radius: 0;
   -gtk-outline-radius: 2px;
 }
 
-.linked:not(.vertical) > combobox:not(:only-child):first-child > box > button.combo, .linked:not(.vertical) > spinbutton:not(:only-child):first-child:not(.vertical), .linked:not(.vertical) > entry:not(:only-child):first-child, .linked > button:not(:only-child):first-child, combobox.linked button:not(:only-child):nth-child(2):dir(rtl) {
-  border-radius: 2px 0 0 2px;
+.linked:not(.vertical) > spinbutton:first-child:not(.vertical), .linked:not(.vertical) > entry:first-child, .linked > button:first-child, combobox.linked button:nth-child(2):dir(rtl), .linked:not(.vertical) > combobox:first-child > box > button.combo {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
 }
 
-.linked:not(.vertical) > combobox:not(:only-child):last-child > box > button.combo, .linked:not(.vertical) > spinbutton:not(:only-child):last-child:not(.vertical), .linked:not(.vertical) > entry:not(:only-child):last-child, .linked > button:not(:only-child):last-child, combobox.linked button:not(:only-child):nth-child(2):dir(ltr) {
-  border-radius: 0 2px 2px 0;
+.linked:not(.vertical) > spinbutton:last-child:not(.vertical), .linked:not(.vertical) > entry:last-child, .linked > button:last-child, combobox.linked button:nth-child(2):dir(ltr), .linked:not(.vertical) > combobox:last-child > box > button.combo {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
-.linked.vertical > combobox:not(:only-child) > box > button.combo, .linked.vertical > spinbutton:not(:only-child):not(.vertical), .linked.vertical > entry:not(:only-child), .linked.vertical > button:not(:only-child) {
+.linked:not(.vertical) > spinbutton:only-child:not(.vertical), .linked:not(.vertical) > entry:only-child, .linked > button:only-child, .linked:not(.vertical) > combobox:only-child > box > button.combo {
+  border-radius: 2px;
+}
+
+.linked.vertical > spinbutton:not(.vertical), .linked.vertical > entry, .linked.vertical > button, .linked.vertical > combobox > box > button.combo {
   border-radius: 0;
   -gtk-outline-radius: 2px;
 }
 
-.linked.vertical > combobox:not(:only-child):first-child > box > button.combo, .linked.vertical > spinbutton:not(:only-child):first-child:not(.vertical), .linked.vertical > entry:not(:only-child):first-child, .linked.vertical > button:not(:only-child):first-child {
-  border-radius: 2px 2px 0 0;
+.linked.vertical > spinbutton:first-child:not(.vertical), .linked.vertical > entry:first-child, .linked.vertical > button:first-child, .linked.vertical > combobox:first-child > box > button.combo {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 }
 
-.linked.vertical > combobox:not(:only-child):last-child > box > button.combo, .linked.vertical > spinbutton:not(:only-child):last-child:not(.vertical), .linked.vertical > entry:not(:only-child):last-child, .linked.vertical > button:not(:only-child):last-child {
-  border-radius: 0 0 2px 2px;
+.linked.vertical > spinbutton:last-child:not(.vertical), .linked.vertical > entry:last-child, .linked.vertical > button:last-child, .linked.vertical > combobox:last-child > box > button.combo {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.linked.vertical > spinbutton:only-child:not(.vertical), .linked.vertical > entry:only-child, .linked.vertical > button:only-child, .linked.vertical > combobox:only-child > box > button.combo {
+  border-radius: 2px;
 }
 
 /* menu buttons */
