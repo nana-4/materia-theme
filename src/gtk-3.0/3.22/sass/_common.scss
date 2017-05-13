@@ -193,13 +193,6 @@ assistant {
   to { -gtk-icon-transform: rotate(1turn); }
 }
 
-@keyframes spin_colors {
-  1% { color: $info_bg_color; } 25% { color: $info_bg_color; }
-  26% { color: $question_bg_color; } 50% { color: $question_bg_color; }
-  51% { color: $warning_bg_color; } 75% { color: $warning_bg_color; }
-  76% { color: $error_bg_color; } 100% { color: $error_bg_color; }
-}
-
 spinner {
   background: none;
   opacity: 0; // non spinning spinner makes no sense
@@ -207,7 +200,7 @@ spinner {
 
   &:checked {
     opacity: 1;
-    animation: spin 1s linear infinite, spin_colors 4s linear infinite;
+    animation: spin 1s linear infinite;
 
     &:disabled { opacity: $disabled_opacity; }
   }
