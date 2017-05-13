@@ -88,6 +88,8 @@ notebook:focus tab,
 
   &:disabled { color: $disabled_fg_color; }
 
+  &:hover, &:active, &:selected { border-radius: 2px; }
+
   selection,
   &:selected { @extend %selected_items; }
 }
@@ -96,11 +98,13 @@ textview {
   // FIXME: we need to override background-color to ensure text rendering
   text { background-color: $base_color; }
 
-  // FIXME: we cannot specify text color for the border node
-  border { background-color: $alt_base_color; }
+  border {
+    background-color: $alt_base_color;
+    color: $tertiary_fg_color; // FIXME: not working
+  }
 }
 
-iconview { border-radius: 2px; }
+// iconview { @extend .view; }
 
 .rubberband,
 rubberband {
@@ -114,7 +118,6 @@ flowbox {
   flowboxchild {
     padding: 4px;
     border-radius: 2px;
-    // outline-offset: -2px;
 
     &:selected { @extend %selected_items; }
   }
@@ -1202,6 +1205,8 @@ treeview.view {
   border-top-color: $border_color; // while this is the grid lines color, better then nothing
 
   rubberband { @extend rubberband; } // to avoid borders being overridden by the previously set props
+
+  &:hover, &:active, &:selected { border-radius: 0; }
 
   &.separator {
     min-height: 1px + 2px * 2;

@@ -89,16 +89,17 @@ notebook:focus tab,
   color: rgba(255, 255, 255, 0.4);
 }
 
+.view:hover, .view:active, .view:selected {
+  border-radius: 2px;
+}
+
 textview text {
   background-color: #50636c;
 }
 
 textview border {
   background-color: #4a5c64;
-}
-
-iconview, .nautilus-canvas-item, .caja-canvas-item {
-  border-radius: 2px;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .rubberband,
@@ -1392,6 +1393,10 @@ treeview.view {
   -GtkTreeView-tree-line-width: 1;
   -GtkTreeView-tree-line-pattern: '';
   -GtkTreeView-expander-size: 16;
+}
+
+treeview.view:hover, treeview.view:active, treeview.view:selected {
+  border-radius: 0;
 }
 
 treeview.view.separator {
