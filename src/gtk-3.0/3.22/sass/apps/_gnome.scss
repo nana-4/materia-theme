@@ -95,32 +95,8 @@
   // border-bottom: 1px solid $border_color;
 }
 
-// Libgd tag entries in the search. Sadly it requires this copy pasted css style.
-// https://git.gnome.org/browse/libgd/tree/libgd/gd-tagged-entry-default.css
 .documents-entry-tag {
-  // min-height: 24px;
-  margin: 3px -2px 3px 8px;
-  padding: 0 8px;
-  border-radius: $circular_radius;
-  box-shadow: none;
-  background-color: $primary_color;
-  color: $inverse_fg_color;
-
-  &:hover { box-shadow: $shadow_1; }
-}
-
-.documents-entry-tag.button {
-  // @extend %simple_flat_button;
-
-  // min-height: 24px;
-  // min-width: 24px;
-  margin: 0 -2px;
-  padding: 4px;
-  border-radius: $circular_radius;
-  box-shadow: none;
-  color: $secondary_inverse_fg_color;
-
-  &:hover, &:active { color: $inverse_fg_color; }
+  @extend .entry-tag;
 }
 
 // Workaround for the double border of the searchbar since we use a revealer which
@@ -648,7 +624,7 @@ GdMainIconView.content-view {
 }
 
 .photos-entry-tag {
-  @extend .documents-entry-tag;
+  @extend .entry-tag;
 }
 
 .documents-scrolledwin.frame {

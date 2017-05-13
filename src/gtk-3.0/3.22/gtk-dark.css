@@ -428,6 +428,41 @@ treeview entry.flat, treeview entry.flat:focus, treeview entry, treeview entry:f
   box-shadow: none;
 }
 
+.entry-tag, .documents-entry-tag, .photos-entry-tag {
+  margin: 6px;
+  border-radius: 9999px;
+  box-shadow: none;
+  background-color: #42A5F5;
+  color: #FFFFFF;
+}
+
+.entry-tag:hover, .documents-entry-tag:hover, .photos-entry-tag:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+:dir(ltr) .entry-tag, :dir(ltr) .documents-entry-tag, :dir(ltr) .photos-entry-tag {
+  margin-left: 8px;
+  margin-right: -2px;
+  padding-left: 8px;
+  padding-right: 4px;
+}
+
+:dir(rtl) .entry-tag, :dir(rtl) .documents-entry-tag, :dir(rtl) .photos-entry-tag {
+  margin-left: -2px;
+  margin-right: 8px;
+  padding-left: 4px;
+  padding-right: 8px;
+}
+
+.entry-tag.button, .button.documents-entry-tag, .button.photos-entry-tag {
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.entry-tag.button:not(:hover):not(:active), .button.documents-entry-tag:not(:hover):not(:active), .button.photos-entry-tag:not(:hover):not(:active) {
+  color: rgba(255, 255, 255, 0.75);
+}
+
 /***********
  * Buttons *
  ***********/
@@ -3662,31 +3697,6 @@ stackswitcher button.text-button.circular {
 .disk-space-display.free {
   background-color: alpha(currentColor, 0.3);
   color: rgba(255, 255, 255, 0.4);
-}
-
-.documents-entry-tag, .photos-entry-tag {
-  margin: 3px -2px 3px 8px;
-  padding: 0 8px;
-  border-radius: 9999px;
-  box-shadow: none;
-  background-color: #42A5F5;
-  color: #FFFFFF;
-}
-
-.documents-entry-tag:hover, .photos-entry-tag:hover {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-
-.documents-entry-tag.button, .button.photos-entry-tag {
-  margin: 0 -2px;
-  padding: 4px;
-  border-radius: 9999px;
-  box-shadow: none;
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.documents-entry-tag.button:hover, .button.photos-entry-tag:hover, .documents-entry-tag.button:active, .button.photos-entry-tag:active {
-  color: #FFFFFF;
 }
 
 .nautilus-window searchbar {

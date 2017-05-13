@@ -317,6 +317,43 @@ treeview entry {
   }
 }
 
+.entry-tag {
+  $tag_height: 24px;
+  $tag_margin: ($medium_size - $tag_height) / 2;
+
+  margin: $tag_margin; // instead of min-height: $tag_height;
+  border-radius: $circular_radius;
+  box-shadow: none;
+  background-color: $primary_color;
+  color: $inverse_fg_color;
+
+  &:hover { box-shadow: $shadow_1; }
+
+  // side margins: compensate the entry padding with a negative margin
+  // then the negative margin itself
+  :dir(ltr) & {
+    margin-left: 8px;
+    margin-right: $tag_margin - 8px;
+    padding-left: 8px;
+    padding-right: ($tag_height - 16px) / 2;
+  }
+
+  :dir(rtl) & {
+    margin-left: $tag_margin - 8px;
+    margin-right: 8px;
+    padding-left: ($tag_height - 16px) / 2;
+    padding-right: 8px;
+  }
+
+  // seems any sizing doesn't work
+  &.button {
+    box-shadow: none;
+    background-color: transparent;
+
+    &:not(:hover):not(:active) { color: $secondary_inverse_fg_color; }
+  }
+}
+
 
 /***********
  * Buttons *
