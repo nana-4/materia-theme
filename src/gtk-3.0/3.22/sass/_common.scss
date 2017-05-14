@@ -246,9 +246,15 @@ entry {
 
       &:disabled { color: gtkalpha(currentColor, $tertiary_opacity); }
 
-      &.left { margin-left: 2px; margin-right: 6px; }
+      &.left {
+        margin-left: ($medium_size - 16px) / 2 - 8px;
+        margin-right: 6px;
+      }
 
-      &.right { margin-left: 6px; margin-right: 2px; }
+      &.right {
+        margin-left: 6px;
+        margin-right: ($medium_size - 16px) / 2 - 8px;
+      }
     }
 
     undershoot {
