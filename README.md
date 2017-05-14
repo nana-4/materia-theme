@@ -60,12 +60,13 @@ GDM (Lock/Login Screen)
 -----------------------
 You can change the GDM theme by replacing the default GNOME Shell theme.  
 However, if it fails, the desktop environment may not operate correctly. So please **be careful** if doing this.
-> **:warning: Cautions:**
-> - When applying this, other third-party GNOME Shell themes would look broken.
-> - If GNOME Shell has been updated, you will need to install this again.
+
+#### :warning: Cautions:
+- When applying this, other third-party GNOME Shell themes would look broken until you restore to the original theme.
+- If GNOME Shell has been updated, it will be restored to the original theme, so you will need to install this again.
 
 ### Installation
-1. After selecting the GTK+ theme, back up and replace the existing `.gresource` file.
+1. First select the GTK+ theme, then back up and replace the existing `.gresource` file.
 
   ```sh
   GTK_THEME=$(gsettings get org.gnome.desktop.interface gtk-theme | sed "s/'//g")
@@ -75,7 +76,7 @@ However, if it fails, the desktop environment may not operate correctly. So plea
   > _Developer note:_  
   > If you don't want to overwrite the backup on the second and subsequent runs, delete the `--backup` option.
 
-2. Restart GNOME Shell. (press <kbd>Alt</kbd> + <kbd>F2</kbd>, then type `r`)
+2. Restart GNOME Shell. (If you are running _GNOME on Xorg_, press <kbd>Alt</kbd> + <kbd>F2</kbd> then type `r`.)
 
 ### Uninstallation
 1. Restore to the original theme from the backup.
@@ -84,7 +85,7 @@ However, if it fails, the desktop environment may not operate correctly. So plea
   sudo mv -iv /usr/share/gnome-shell/gnome-shell-theme.gresource{~,}
   ```
 
-2. Restart GNOME Shell. (press <kbd>Alt</kbd> + <kbd>F2</kbd>, then type `r`)
+2. Restart GNOME Shell. (If you are running _GNOME on Xorg_, press <kbd>Alt</kbd> + <kbd>F2</kbd> then type `r`.)
 
 Screenshots
 -----------
@@ -101,7 +102,7 @@ Screenshots
 Contributing
 ------------
 If you find any bugs or mistakes, please report it to the [issue tracker](https://github.com/nana-4/Flat-Plat/issues) or send a pull request.  
-Thank you in advance for your cooperation!
+Any contribution will be much appreciated.
 
 Planned Features
 ----------------
@@ -117,7 +118,9 @@ Flat-Plat is distributed under the terms of the GNU General Public License, vers
 
 Credits
 -------
+- This theme is based on [Adwaita](HACKING.md#useful-links) by GNOME.
 - The included symbolic icons are based on [Material Design icons](https://github.com/google/material-design-icons) by Google.
 - Chrome/Chromium scrollbars extension was forked from [Adwaita-chrome-scrollbar](https://github.com/gnome-integration-team/chrome-gnome-scrollbar) by GNOME Integration Team.
+- The original concept is Google's [Material Design](https://material.io).
 
-Also I am grateful to every upstream developers and all contributors.
+Also thank you for every upstream developers and all contributors.
