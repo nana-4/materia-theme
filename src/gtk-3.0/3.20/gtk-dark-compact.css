@@ -610,6 +610,12 @@ button.image-button {
 }
 
 
+button.text-button.image-button {
+  border-radius: 2px;
+  -gtk-outline-radius: 2px;
+}
+
+
 button.text-button.image-button label:first-child {
   margin-left: 12px;
 }
@@ -636,6 +642,21 @@ button.flat,
 .linked.vertical >
 button.flat {
   border-radius: 2px;
+}
+
+toolbar .linked > button.text-button.image-button, .titlebar:not(headerbar) .linked > button.text-button.image-button:not(.suggested-action):not(.destructive-action),
+headerbar .linked > button.text-button.image-button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked > button.text-button.image-button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked > button.text-button.image-button, toolbar
+.linked.vertical > button.text-button.image-button, .titlebar:not(headerbar)
+.linked.vertical > button.text-button.image-button:not(.suggested-action):not(.destructive-action),
+headerbar
+.linked.vertical > button.text-button.image-button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box
+.linked.vertical > button.text-button.image-button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification
+.linked.vertical > button.text-button.image-button, .linked >
+button.flat.text-button.image-button,
+.linked.vertical >
+button.flat.text-button.image-button {
+  border-radius: 2px;
+  -gtk-outline-radius: 2px;
 }
 
 infobar.info button:disabled, infobar.question button:disabled, infobar.warning button:disabled, infobar.error button:disabled, row:selected
@@ -775,13 +796,13 @@ button {
 }
 
 
-button.image-button:not(.text-button), toolbar .linked > button.image-button:not(.text-button), .titlebar:not(headerbar) .linked > button.image-button:not(.text-button):not(.suggested-action):not(.destructive-action),
-headerbar .linked > button.image-button:not(.text-button):not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked > button.image-button:not(.text-button):not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked > button.image-button:not(.text-button), toolbar
-.linked.vertical > button.image-button:not(.text-button),
+button.image-button, toolbar .linked > button.image-button, .titlebar:not(headerbar) .linked > button.image-button:not(.suggested-action):not(.destructive-action),
+headerbar .linked > button.image-button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked > button.image-button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked > button.image-button, toolbar
+.linked.vertical > button.image-button,
 headerbar
-.linked.vertical > button.image-button:not(.text-button):not(.suggested-action):not(.destructive-action), .app-notification
-.linked.vertical > button.image-button:not(.text-button), .linked > button.flat.image-button:not(.text-button),
-.linked.vertical > button.flat.image-button:not(.text-button), .inline-toolbar button:not(.text-button), check,
+.linked.vertical > button.image-button:not(.suggested-action):not(.destructive-action), .app-notification
+.linked.vertical > button.image-button, .linked > button.flat.image-button,
+.linked.vertical > button.flat.image-button, .inline-toolbar button:not(.text-button), check,
 radio, button.titlebutton, .nautilus-window headerbar > revealer > button, .raven .raven-header:not(.top) button.image-button, .raven .expander-button,
 button.close,
 button.circular {

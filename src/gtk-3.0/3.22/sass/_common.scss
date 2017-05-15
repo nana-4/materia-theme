@@ -429,10 +429,13 @@ button {
       min-width: 24px;
       padding: ($medium_size - 24px) / 2;
 
-      &:not(.text-button) { @extend %circular_button; }
+      @extend %circular_button;
     }
 
     &.text-button.image-button {
+      border-radius: 2px;
+      -gtk-outline-radius: 2px;
+
       label {
         &:first-child { margin-left: 16px - ($medium_size - 24px) / 2; }
 
@@ -450,7 +453,12 @@ button {
     .linked.vertical > &.flat {
       border-radius: 2px;
 
-      &.image-button:not(.text-button) { @extend %circular_button; }
+      &.image-button { @extend %circular_button; }
+
+      &.text-button.image-button {
+        border-radius: 2px;
+        -gtk-outline-radius: 2px;
+      }
     }
 
     &:drop(active) {
