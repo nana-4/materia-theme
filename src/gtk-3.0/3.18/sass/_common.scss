@@ -1367,8 +1367,8 @@ $_slider_fine_tune_margin: 6px;
  **********/
 
 GtkSwitch {
-  -GtkSwitch-slider-width: $small_size;
-  -GtkSwitch-slider-height: $small_size;
+  -GtkSwitch-slider-width: 20px;
+  -GtkSwitch-slider-height: 20px;
 
   outline-offset: -4px;
   outline-radius: 100px;
@@ -1390,7 +1390,7 @@ GtkSwitch {
     }
   }
   &.slider {
-    padding: 4px;
+    padding: 3px;
     border-radius: 100px;
     @include entry(normal);
     &:hover { @include entry(focus); }
@@ -1494,7 +1494,7 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
   outline-radius: 100px;
 
   &.fine-tune {
-    &.slider { background-size: 80%; }
+    &.slider { background-size: 60%; }
   }
 
   &.slider {
@@ -1512,11 +1512,12 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
                                       url('#{$_url}@2.png'));
         background-repeat: no-repeat;
         background-position: center;
-        background-size: 80%;
+        background-size: 70%;
         box-shadow: none;
       }
     }
-    &:hover, &:active { background-size: 100%; }
+    &:hover { background-size: 80%; }
+    &:active { background-size: 90%; }
     &:hover {
       // @include entry(focus);
       // border-radius: 50%; // needed for double marks scales
@@ -1530,14 +1531,14 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
     }
   }
   &.trough {
-    margin: 10px 12px;
+    margin: 11px 12px;
     background-color: $fill_color;
     &.highlight {
       background-color: $accent_color;
       &:insensitive { background-color: $fill_color; }
     }
     &:insensitive { color: $disabled_fg_color; }
-    &.vertical { margin: 12px 10px; }
+    &.vertical { margin: 12px 11px; }
     //OSD troughs
     .osd & {
     }
@@ -1581,16 +1582,16 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
 }
 
 %marks-before-horz {
-  .trough { margin: 15px 12px 10px; }
+  .trough { margin: 16px 12px 11px; }
 }
 %marks-after-horz {
- .trough { margin: 10px 12px 15px; }
+ .trough { margin: 11px 12px 16px; }
 }
 %marks-before-vert {
-  .trough { margin: 12px 10px 12px 15px; }
+  .trough { margin: 12px 11px 12px 16px; }
 }
 %marks-after-vert {
-  .trough { margin: 12px 15px 12px 10px; }
+  .trough { margin: 12px 16px 12px 11px; }
 }
 
 /*****************
