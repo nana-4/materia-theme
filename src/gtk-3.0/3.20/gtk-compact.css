@@ -2135,6 +2135,7 @@ scrollbar.horizontal button.up {
 switch {
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
   margin: 6px 0;
+  padding: 0 2px;
   border: 4px solid transparent;
   border-radius: 9999px;
   background-color: alpha(currentColor, 0.3);
@@ -2161,10 +2162,10 @@ switch slider {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   background-color: #FFFFFF;
   color: rgba(0, 0, 0, 0.8);
-  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1), margin 0;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1);
   min-width: 20px;
   min-height: 20px;
-  margin: -4px 0 -4px -4px;
+  margin: -3px -2px;
   border-radius: 9999px;
   -gtk-outline-radius: 9999px;
 }
@@ -2175,9 +2176,8 @@ switch:hover slider {
 }
 
 switch:checked slider {
-  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1), margin 0, background-image 0, background-color 0.00001s 0.3s;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1), background-image 0, background-color 0.00001s 0.3s;
   animation: needs_attention 0.3s cubic-bezier(0, 0, 0.2, 1);
-  margin: -4px -4px -4px 0;
   background-color: #FF4081;
   color: #FFFFFF;
 }

@@ -1918,6 +1918,7 @@ scrollbar {
 switch {
   transition: $longer_transition;
   margin: $container_padding 0;
+  padding: 0 2px;
   border: 4px solid transparent;
   border-radius: $circular_radius;
   background-color: $fill_color;
@@ -1938,10 +1939,10 @@ switch {
   slider {
     @include entry(normal);
 
-    transition: $longer_transition, $shadow_transition, margin 0;
-    min-width: $small_size;
-    min-height: $small_size;
-    margin: -4px 0 -4px -4px;
+    transition: $longer_transition, $shadow_transition;
+    min-width: 20px;
+    min-height: 20px;
+    margin: -3px -2px;
     border-radius: $circular_radius;
     -gtk-outline-radius: $circular_radius;
   }
@@ -1949,9 +1950,8 @@ switch {
   &:hover slider { @include entry(focus); }
 
   &:checked slider {
-    transition: $longer_transition, $shadow_transition, margin 0, background-image 0, background-color 0.00001s $longer_duration;
+    transition: $longer_transition, $shadow_transition, background-image 0, background-color 0.00001s $longer_duration;
     animation: needs_attention $longer_duration $deceleration_curve;
-    margin: -4px -4px -4px 0;
     background-color: $accent_color;
     color: $inverse_fg_color;
   }
