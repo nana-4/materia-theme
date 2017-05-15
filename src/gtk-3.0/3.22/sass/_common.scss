@@ -2242,11 +2242,13 @@ scale {
   $_marks_length: 8px;
   $_marks_distance: 8px;
 
+  $trough_size: 2px;
+
   $slider_size: 24px;
   $marks_slider_size: 30px;
 
-  $slider_margin: -($slider_size - $bar_size) / 2;
-  $marks_slider_margin: -($marks_slider_size - $bar_size) - $slider_margin;
+  $slider_margin: -($slider_size - $trough_size) / 2;
+  $marks_slider_margin: -($marks_slider_size - $trough_size) - $slider_margin;
 
   $color_slider_margin: -($slider_size) / 2;
   $color_marks_slider_margin: -($marks_slider_size - 16px) - $color_slider_margin;
@@ -2303,11 +2305,11 @@ scale {
       }
     }
 
-    background-size: calc(100% - 8px);
+    background-size: calc(100% - 10px);
 
-    &:hover { background-size: calc(100% - 4px); }
+    &:hover { background-size: calc(100% - 8px); }
 
-    &:active { background-size: calc(100% - 0px); }
+    &:active { background-size: calc(100% - 6px); }
   }
 
   // click-and-hold the slider to activate
@@ -2370,21 +2372,21 @@ scale {
             @if $marks_infix == 'marks-before' {
               margin-top: $marks_slider_margin;
 
-              background-position: center calc(100% - 4px);
+              background-position: center calc(100% - 5px);
 
-              &:hover { background-position: center calc(100% - 2px); }
+              &:hover { background-position: center calc(100% - 4px); }
 
-              &:active { background-position: center calc(100% - 0px); }
+              &:active { background-position: center calc(100% - 3px); }
             }
 
             @if $marks_infix == 'marks-after' {
               margin-bottom: $marks_slider_margin;
 
-              background-position: center calc(4px);
+              background-position: center calc(5px);
 
-              &:hover { background-position: center calc(2px); }
+              &:hover { background-position: center calc(4px); }
 
-              &:active { background-position: center calc(0px); }
+              &:active { background-position: center calc(3px); }
             }
           }
 
@@ -2395,21 +2397,21 @@ scale {
             @if $marks_infix == 'marks-before' {
               margin-left: $marks_slider_margin;
 
-              background-position: calc(4px) center;
+              background-position: calc(5px) center;
 
-              &:hover { background-position: calc(2px) center; }
+              &:hover { background-position: calc(4px) center; }
 
-              &:active { background-position: calc(0px) center; }
+              &:active { background-position: calc(3px) center; }
             }
 
             @if $marks_infix == 'marks-after' {
               margin-right: $marks_slider_margin;
 
-              background-position: calc(100% - 4px) center;
+              background-position: calc(100% - 5px) center;
 
-              &:hover { background-position: calc(100% - 2px) center; }
+              &:hover { background-position: calc(100% - 4px) center; }
 
-              &:active { background-position: calc(100% - 0px) center; }
+              &:active { background-position: calc(100% - 3px) center; }
             }
           }
         }
