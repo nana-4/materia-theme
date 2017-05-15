@@ -39,8 +39,8 @@ Fedora and EPEL users can also install from a [Copr repository](https://copr.fed
 
   ```sh
   cd /tmp
-  curl -sL https://github.com/nana-4/Flat-Plat/archive/v20170323.tar.gz | tar xz
-  cd Flat-Plat-20170323 && sudo ./install.sh
+  curl -sL https://github.com/nana-4/Flat-Plat/archive/v20170515.tar.gz | tar xz
+  cd Flat-Plat-20170515 && sudo ./install.sh
   ```
 
 2. Select the theme using `gnome-tweak-tool` or other suitable tools.
