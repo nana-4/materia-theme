@@ -1937,17 +1937,17 @@ switch {
   }
 
   slider {
-    @include entry(normal);
-
     transition: $longer_transition, $shadow_transition;
     min-width: 20px;
     min-height: 20px;
     margin: -3px -2px;
     border-radius: $circular_radius;
     -gtk-outline-radius: $circular_radius;
+    box-shadow: $shadow_1;
+    background-color: $base_color;
   }
 
-  &:hover slider { @include entry(focus); }
+  &:hover slider { box-shadow: $shadow_2; }
 
   &:checked slider {
     transition: $longer_transition, $shadow_transition, background-image 0, background-color 0.00001s $longer_duration;
@@ -1956,7 +1956,7 @@ switch {
     color: $inverse_fg_color;
   }
 
-  &:disabled slider { @include entry(disabled); }
+  &:disabled slider { background-color: $alt_base_color; }
 
   &:checked:disabled slider { animation: none; }
 
