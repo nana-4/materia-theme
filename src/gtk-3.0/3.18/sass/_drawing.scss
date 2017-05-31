@@ -172,7 +172,7 @@
 
   @if $t == checked-insensitive {
     background-color: $fill_color;
-    color: scale-alpha($primary_color, $disabled_opacity);
+    color: rgba($primary_color, $disabled_opacity);
     > .label { color: inherit; }
   }
 
@@ -250,7 +250,7 @@
   background-image: -gtk-gradient(radial,
                                   $_position, 0,
                                   $_position, 0.75,
-                                  to(scale-alpha($alt_primary_color, $lower_opacity)),
+                                  to(rgba($alt_primary_color, $lower_opacity)),
                                   to(transparent));
 
   background-repeat: no-repeat;
@@ -272,8 +272,8 @@
 // top, bottom, right, left
 //
 
-  $_undershoot_color_dark: scale-alpha($fg_color, $lower_opacity);
-  $_undershoot_color_light: scale-alpha($base_color, $lower_opacity);
+  $_undershoot_color_dark: $track_color;
+  $_undershoot_color_light: rgba($base_color, $lower_opacity);
 
   $_gradient_dir: left;
   $_dash_bg_size: 12px 1px;

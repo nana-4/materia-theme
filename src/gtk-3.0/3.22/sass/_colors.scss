@@ -5,10 +5,6 @@
   @return unquote("alpha(#{$c}, #{$a})");
 }
 
-@function scale-alpha($c, $a) {
-  @return scale-color($c, $alpha: percentage(-1 + $a));
-}
-
 @function chroma($c) {
   @return mix($c, $grey_800, 75%);
 }
@@ -16,32 +12,33 @@
 @import 'color-palette';
 
 // Foreground colors
-$dark_fg_color: scale-alpha($black, 0.8);
+$dark_fg_color: rgba($black, 0.87);
 $light_fg_color: $white;
 
-$fg_color: if($variant == 'light', $dark_fg_color, $light_fg_color);
-$secondary_fg_color: scale-alpha($fg_color, $secondary_opacity);
-$tertiary_fg_color: scale-alpha($fg_color, $tertiary_opacity);
+$fg_color:                    if($variant == 'light', rgba($black, 0.87), $white);
+$button_fg_color:             if($variant == 'light', rgba($black, 0.62), rgba($white, 0.8));
+$secondary_fg_color:          if($variant == 'light', rgba($black, 0.54), rgba($white, 0.7));
+$tertiary_fg_color:           if($variant == 'light', rgba($black, 0.38), rgba($white, 0.5));
+$disabled_fg_color:           if($variant == 'light', rgba($black, 0.38), rgba($white, 0.5));
+$disabled_secondary_fg_color: if($variant == 'light', rgba($black, 0.26), rgba($white, 0.3));
+$track_color:                 if($variant == 'light', rgba($black, 0.26), rgba($white, 0.3));
+$divider_color:               if($variant == 'light', rgba($black, 0.12), rgba($white, 0.12));
 
-$inverse_fg_color: $light_fg_color;
-$secondary_inverse_fg_color: scale-alpha($inverse_fg_color, $secondary_opacity);
-$tertiary_inverse_fg_color: scale-alpha($inverse_fg_color, $tertiary_opacity);
+$titlebar_fg_color:                    if($titlebar == 'light', rgba($black, 0.87), $white);
+$secondary_titlebar_fg_color:          if($titlebar == 'light', rgba($black, 0.54), rgba($white, 0.7));
+$tertiary_titlebar_fg_color:           if($titlebar == 'light', rgba($black, 0.38), rgba($white, 0.5));
+$disabled_titlebar_fg_color:           if($titlebar == 'light', rgba($black, 0.38), rgba($white, 0.5));
+$disabled_secondary_titlebar_fg_color: if($titlebar == 'light', rgba($black, 0.26), rgba($white, 0.3));
+$titlebar_track_color:                 if($titlebar == 'light', rgba($black, 0.26), rgba($white, 0.3));
+$titlebar_divider_color:               if($titlebar == 'light', rgba($black, 0.12), rgba($white, 0.12));
 
-$titlebar_fg_color: if($titlebar == 'dark', $inverse_fg_color, $fg_color);
-$secondary_titlebar_fg_color: if($titlebar == 'dark', $secondary_inverse_fg_color, $secondary_fg_color);
-$tertiary_titlebar_fg_color: if($titlebar == 'dark', $tertiary_inverse_fg_color, $tertiary_fg_color);
-
-$disabled_fg_color: scale-alpha($fg_color, $disabled_opacity);
-$disabled_secondary_fg_color: scale-alpha($secondary_fg_color, $disabled_opacity);
-$disabled_tertiary_fg_color: scale-alpha($tertiary_fg_color, $disabled_opacity);
-
-$disabled_inverse_fg_color: scale-alpha($inverse_fg_color, $disabled_opacity);
-$disabled_secondary_inverse_fg_color: scale-alpha($secondary_inverse_fg_color, $disabled_opacity);
-$disabled_tertiary_inverse_fg_color: scale-alpha($tertiary_inverse_fg_color, $disabled_opacity);
-
-$disabled_titlebar_fg_color: if($titlebar == 'dark', $disabled_inverse_fg_color, $disabled_fg_color);
-$disabled_secondary_titlebar_fg_color: if($titlebar == 'dark', $disabled_secondary_inverse_fg_color, $disabled_secondary_fg_color);
-$disabled_tertiary_titlebar_fg_color: if($titlebar == 'dark', $disabled_tertiary_inverse_fg_color, $disabled_tertiary_fg_color);
+$inverse_fg_color:                    $white;
+$secondary_inverse_fg_color:          rgba($white, 0.7);
+$tertiary_inverse_fg_color:           rgba($white, 0.5);
+$disabled_inverse_fg_color:           rgba($white, 0.5);
+$disabled_secondary_inverse_fg_color: rgba($white, 0.3);
+$inverse_track_color:                 rgba($white, 0.3);
+$inverse_divider_color:               rgba($white, 0.12);
 
 // Background colors
 $bg_color: if($variant == 'light', $grey_100, chroma($blue_grey_700));
@@ -62,6 +59,7 @@ $row_fill_color: gtkalpha(currentColor, 0.05);
 $primary_color: $blue_400;
 $alt_primary_color: $light_blue_A200;
 $accent_color: $pink_A200;
+$disabled_accent_color: rgba($accent_color, 0.5);
 
 $link_color: $primary_color;
 $visited_link_color: $purple_A200;
@@ -78,13 +76,15 @@ $question_bg_color: $blue_400;
 $warning_bg_color: $orange_400;
 $error_bg_color: $red_400;
 
-$border_color: if($variant == 'light', scale-alpha($black, 0.1), scale-alpha($black, 0.2));
-$highlight_color: if($variant == 'light', scale-alpha($white, 0.4), scale-alpha($white, 0.1));
-$alt_highlight_color: scale-alpha($white, 0.2);
-$unity_highlight_color: if($titlebar == 'dark', scale-alpha($white, 0.1), scale-alpha($white, 0.2));
-$titlebar_highlight_color: if($titlebar == 'dark', scale-alpha($white, 0.15), $highlight_color);
+$border_color: if($variant == 'light', rgba($black, 0.1), rgba($black, 0.2));
+$highlight_color: if($variant == 'light', rgba($white, 0.4), rgba($white, 0.1));
+$alt_highlight_color: rgba($white, 0.2);
+$unity_highlight_color: if($titlebar == 'dark', rgba($white, 0.1), rgba($white, 0.2));
+$titlebar_highlight_color: if($titlebar == 'dark', rgba($white, 0.15), $highlight_color);
 $titlebar_indicator_color: if($titlebar == 'dark', currentColor, $primary_color);
 
 // FIXME: @placeholder_text_color should really use $tertiary_fg_color, but
 // doesn't work translucent colors here. So we use an opaque color instead.
-$placeholder_text_color: mix($fg_color, $base_color, percentage($tertiary_opacity));
+$placeholder_text_color: if($variant == 'light',
+                            mix($black, $base_color, percentage(0.54)),
+                            mix($white, $base_color, percentage(0.7)));

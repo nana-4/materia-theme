@@ -134,7 +134,7 @@ popover.background.places-menu {
 
   button { border-radius: 0; }
 
-  separator { background-color: $fill_color; }
+  separator { background-color: $titlebar_track_color; }
 
   // used to indicate unread notifications
   .alert { color: $destructive_color; }
@@ -288,7 +288,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
     &.frame { border-style: solid none; }
 
-    > overlay > image { color: $fill_color; }
+    > overlay > image { color: $track_color; }
 
     grid > label:first-child { min-height: $medium_size; } // workaround to fix vertical-align
 
@@ -329,8 +329,8 @@ calendar.raven-calendar {
 
 // MPRIS Applet
 .raven-mpris {
-  background-color: scale-alpha($black, $middle_opacity);
-  color: $white;
+  background-color: rgba($black, $middle_opacity);
+  color: $inverse_fg_color;
 
   label { min-height: 24px; }
 
