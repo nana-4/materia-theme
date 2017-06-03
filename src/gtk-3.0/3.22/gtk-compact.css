@@ -1316,23 +1316,23 @@ headerbar.selection-mode:backdrop {
 .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
 headerbar.selection-mode button:not(.suggested-action):not(.destructive-action) {
   border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 0%, transparent 0%) 0 0 0/0 0 0px;
-  color: currentColor;
+  color: #FFFFFF;
 }
 
 .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):disabled,
 headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):disabled {
-  color: alpha(currentColor, 0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked,
 headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):checked {
   border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 100%, transparent 0%) 0 0 2/0 0 2px;
-  color: currentColor;
+  color: #FFFFFF;
 }
 
 .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled,
 headerbar.selection-mode button:not(.suggested-action):not(.destructive-action):checked:disabled {
-  color: alpha(currentColor, 0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .selection-mode.titlebar:not(headerbar) .selection-menu,
@@ -1566,7 +1566,7 @@ treeview.view.progressbar {
 }
 
 treeview.view.progressbar:selected {
-  border-bottom-color: currentColor;
+  border-bottom-color: #FFFFFF;
 }
 
 treeview.view.trough {
@@ -1576,7 +1576,7 @@ treeview.view.trough {
 }
 
 treeview.view.trough:selected {
-  border-bottom-color: alpha(currentColor, 0.3);
+  border-bottom-color: rgba(255, 255, 255, 0.3);
 }
 
 treeview.view header button {
@@ -2231,7 +2231,6 @@ switch:checked {
 
 switch:checked:disabled {
   background-color: rgba(255, 64, 129, 0.3);
-  color: rgba(0, 0, 0, 0.38);
 }
 
 switch slider {
@@ -2312,18 +2311,6 @@ radio {
   min-width: 24px;
   margin: -10px;
   padding: 10px;
-  color: rgba(0, 0, 0, 0.54);
-}
-
-check:hover, check:active,
-radio:hover,
-radio:active {
-  color: rgba(0, 0, 0, 0.87);
-}
-
-check:disabled,
-radio:disabled {
-  color: rgba(0, 0, 0, 0.26);
 }
 
 check:checked, check:indeterminate,
@@ -3304,7 +3291,7 @@ placessidebar row:disabled {
 }
 
 placessidebar row image.sidebar-icon {
-  opacity: 0.6;
+  color: rgba(0, 0, 0, 0.54);
 }
 
 placessidebar row image.sidebar-icon:dir(ltr) {
@@ -3313,6 +3300,10 @@ placessidebar row image.sidebar-icon:dir(ltr) {
 
 placessidebar row image.sidebar-icon:dir(rtl) {
   padding-left: 8px;
+}
+
+placessidebar row:selected image.sidebar-icon {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 placessidebar row label.sidebar-label:dir(ltr) {
@@ -3879,8 +3870,12 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal > box.horizontal:
 }
 
 .open-document-selector-path-label {
-  color: alpha(currentColor, 0.6);
+  color: rgba(0, 0, 0, 0.54);
   font-size: smaller;
+}
+
+.open-document-selector-path-label:selected {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .gedit-document-panel {
@@ -4044,11 +4039,11 @@ entry.search-missing {
 }
 
 window.workbench treeview.image {
-  color: rgba(0, 0, 0, 0.38);
+  color: rgba(0, 0, 0, 0.54);
 }
 
 window.workbench treeview.image:selected {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 popover.popover-selector list {

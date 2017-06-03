@@ -185,10 +185,10 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 
 // Only normal state is handle
 .open-document-selector-path-label {
-  color: gtkalpha(currentColor, $tertiary_opacity);
+  color: $secondary_fg_color;
   font-size: smaller;
 
-  // @extend .dim-label;
+  &:selected { color: $secondary_inverse_fg_color; }
 }
 
 .gedit-document-panel {
@@ -374,9 +374,9 @@ entry.search-missing {
 
 // tweak icons for treeviews
 window.workbench treeview.image {
-  color: $tertiary_fg_color;
+  color: $secondary_fg_color;
 
-  &:selected { color: $tertiary_inverse_fg_color; }
+  &:selected { color: $secondary_inverse_fg_color; }
 }
 
 popover.popover-selector list {
