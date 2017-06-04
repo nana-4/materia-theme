@@ -129,7 +129,7 @@ popover.background.places-menu {
 // Panel
 .budgie-panel {
   background-color: $panel_bg_color;
-  color: $inverse_fg_color;
+  color: $secondary_inverse_fg_color;
   font-weight: 500;
 
   button {
@@ -138,7 +138,7 @@ popover.background.places-menu {
     @extend %button_selected.flat;
   }
 
-  separator { background-color: $titlebar_track_color; }
+  separator { background-color: $inverse_track_color; }
 
   // used to indicate unread notifications
   .alert { color: $destructive_color; }
@@ -154,7 +154,11 @@ popover.background.places-menu {
 
     @extend %flat_button;
 
+    @extend %button_selected.flat;
+
     @extend %underscores;
+
+    &:checked { background-color: $inverse_divider_color; }
   }
 
   // Icon Tasklist
@@ -162,6 +166,8 @@ popover.background.places-menu {
     padding: 0;
 
     @extend %underscores;
+
+    &:checked { background-color: $inverse_divider_color; }
 
     &:not(:checked) {
       color: $tertiary_inverse_fg_color;
@@ -194,7 +200,6 @@ popover.background.places-menu {
                                       currentColor 100%,
                                       transparent 0%)
                                       #{$b_wid};
-        background-color: $inverse_divider_color;
       }
     }
   }
@@ -303,7 +308,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
     &.frame { border-style: solid none; }
 
-    > overlay image { color: $track_color; }
+    > overlay > widget > image { color: $divider_color; }
 
     grid > label:first-child { min-height: $medium_size; } // workaround to fix vertical-align
 

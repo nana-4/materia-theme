@@ -698,29 +698,29 @@ button:disabled {
   color: rgba(255, 255, 255, 0.3);
 }
 
-row:selected button.sidebar-button, infobar.info button.flat, infobar.question button.flat, infobar.warning button.flat, infobar.error button.flat, .budgie-panel button, .raven stackswitcher.linked > button, .raven-mpris button.image-button, row:selected
+row:selected button.sidebar-button, infobar.info button.flat, infobar.question button.flat, infobar.warning button.flat, infobar.error button.flat, .budgie-panel button, .budgie-panel #tasklist-button, .raven stackswitcher.linked > button, .raven-mpris button.image-button, row:selected
 button.flat {
   color: rgba(255, 255, 255, 0.7);
 }
 
-row:selected button.sidebar-button:hover, infobar.info button.flat:hover, infobar.question button.flat:hover, infobar.warning button.flat:hover, infobar.error button.flat:hover, .budgie-panel button:hover, .raven stackswitcher.linked > button:hover, .raven-mpris button.image-button:hover, row:selected button.sidebar-button:active, infobar.info button.flat:active, infobar.question button.flat:active, infobar.warning button.flat:active, infobar.error button.flat:active, .budgie-panel button:active, .raven stackswitcher.linked > button:active, .raven-mpris button.image-button:active, row:selected
+row:selected button.sidebar-button:hover, infobar.info button.flat:hover, infobar.question button.flat:hover, infobar.warning button.flat:hover, infobar.error button.flat:hover, .budgie-panel button:hover, .budgie-panel #tasklist-button:hover, .raven stackswitcher.linked > button:hover, .raven-mpris button.image-button:hover, row:selected button.sidebar-button:active, infobar.info button.flat:active, infobar.question button.flat:active, infobar.warning button.flat:active, infobar.error button.flat:active, .budgie-panel button:active, .budgie-panel #tasklist-button:active, .raven stackswitcher.linked > button:active, .raven-mpris button.image-button:active, row:selected
 button.flat:hover, row:selected
 button.flat:active {
   color: #FFFFFF;
 }
 
-row:selected button.sidebar-button:disabled, infobar.info button.flat:disabled, infobar.question button.flat:disabled, infobar.warning button.flat:disabled, infobar.error button.flat:disabled, .budgie-panel button:disabled, .raven stackswitcher.linked > button:disabled, .raven-mpris button.image-button:disabled, row:selected
+row:selected button.sidebar-button:disabled, infobar.info button.flat:disabled, infobar.question button.flat:disabled, infobar.warning button.flat:disabled, infobar.error button.flat:disabled, .budgie-panel button:disabled, .budgie-panel #tasklist-button:disabled, .raven stackswitcher.linked > button:disabled, .raven-mpris button.image-button:disabled, row:selected
 button.flat:disabled {
   color: rgba(255, 255, 255, 0.3);
 }
 
-row:selected button.sidebar-button:checked, infobar.info button.flat:checked, infobar.question button.flat:checked, infobar.warning button.flat:checked, infobar.error button.flat:checked, .budgie-panel button:checked, .raven stackswitcher.linked > button:checked, .raven-mpris button.image-button:checked, row:selected
+row:selected button.sidebar-button:checked, infobar.info button.flat:checked, infobar.question button.flat:checked, infobar.warning button.flat:checked, infobar.error button.flat:checked, .budgie-panel button:checked, .budgie-panel #tasklist-button:checked, .raven stackswitcher.linked > button:checked, .raven-mpris button.image-button:checked, row:selected
 button.flat:checked {
   background-color: rgba(255, 255, 255, 0.3);
   color: #FFFFFF;
 }
 
-row:selected button.sidebar-button:checked:disabled, infobar.info button.flat:checked:disabled, infobar.question button.flat:checked:disabled, infobar.warning button.flat:checked:disabled, infobar.error button.flat:checked:disabled, .budgie-panel button:checked:disabled, .raven stackswitcher.linked > button:checked:disabled, .raven-mpris button.image-button:checked:disabled, row:selected
+row:selected button.sidebar-button:checked:disabled, infobar.info button.flat:checked:disabled, infobar.question button.flat:checked:disabled, infobar.warning button.flat:checked:disabled, infobar.error button.flat:checked:disabled, .budgie-panel button:checked:disabled, .budgie-panel #tasklist-button:checked:disabled, .raven stackswitcher.linked > button:checked:disabled, .raven-mpris button.image-button:checked:disabled, row:selected
 button.flat:checked:disabled {
   background-color: rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.5);
@@ -5006,7 +5006,7 @@ popover.background.places-menu row {
 
 .budgie-panel {
   background-color: rgba(0, 0, 0, 0.6);
-  color: #FFFFFF;
+  color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
 }
 
@@ -5015,7 +5015,7 @@ popover.background.places-menu row {
 }
 
 .budgie-panel separator {
-  background-color: rgba(0, 0, 0, 0.26);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .budgie-panel .alert {
@@ -5026,8 +5026,16 @@ popover.background.places-menu row {
   padding: 0 4px;
 }
 
+.budgie-panel #tasklist-button:checked {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
 .budgie-panel button.flat.launcher {
   padding: 0;
+}
+
+.budgie-panel button.flat.launcher:checked {
+  background-color: rgba(255, 255, 255, 0.12);
 }
 
 .budgie-panel button.flat.launcher:not(:checked) {
@@ -5050,7 +5058,6 @@ popover.background.places-menu row {
 .budgie-panel .pinned button.flat.launcher.running,
 .budgie-panel .pinned .top button.flat.launcher.running {
   border-image: radial-gradient(circle closest-corner at center calc(1px), currentColor 100%, transparent 0%) 2 0 0 0/2px 0 0 0;
-  background-color: rgba(255, 255, 255, 0.12);
 }
 
 .bottom .budgie-panel #tasklist-button, .budgie-panel .bottom #tasklist-button, .bottom .budgie-panel button.flat.launcher, .budgie-panel .bottom button.flat.launcher {
@@ -5061,7 +5068,6 @@ popover.background.places-menu row {
 .budgie-panel .pinned button.flat.launcher.running,
 .budgie-panel .pinned .bottom button.flat.launcher.running {
   border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), currentColor 100%, transparent 0%) 0 0 2 0/0 0 2px 0;
-  background-color: rgba(255, 255, 255, 0.12);
 }
 
 .left .budgie-panel #tasklist-button, .budgie-panel .left #tasklist-button, .left .budgie-panel button.flat.launcher, .budgie-panel .left button.flat.launcher {
@@ -5072,7 +5078,6 @@ popover.background.places-menu row {
 .budgie-panel .pinned button.flat.launcher.running,
 .budgie-panel .pinned .left button.flat.launcher.running {
   border-image: radial-gradient(circle closest-corner at calc(1px) center, currentColor 100%, transparent 0%) 0 2 0 0/0 2px 0 0;
-  background-color: rgba(255, 255, 255, 0.12);
 }
 
 .right .budgie-panel #tasklist-button, .budgie-panel .right #tasklist-button, .right .budgie-panel button.flat.launcher, .budgie-panel .right button.flat.launcher {
@@ -5083,7 +5088,6 @@ popover.background.places-menu row {
 .budgie-panel .pinned button.flat.launcher.running,
 .budgie-panel .pinned .right button.flat.launcher.running {
   border-image: radial-gradient(circle closest-corner at calc(100% - 1px) center, currentColor 100%, transparent 0%) 0 0 0 2/0 0 0 2px;
-  background-color: rgba(255, 255, 255, 0.12);
 }
 
 frame.raven-frame > border {
@@ -5181,8 +5185,8 @@ frame.raven-frame > border {
   border-style: solid none;
 }
 
-.raven .raven-background > overlay image {
-  color: rgba(0, 0, 0, 0.26);
+.raven .raven-background > overlay > widget > image {
+  color: rgba(0, 0, 0, 0.12);
 }
 
 .raven .raven-background grid > label:first-child {
