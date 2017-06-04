@@ -49,7 +49,9 @@ $darker_bg_color: if($variant == 'light', $grey_200, chroma($blue_grey_900));
 
 $titlebar_bg_color: if($variant == 'light', if($titlebar == 'dark', $blue_grey_700, $grey_300), $blue_grey_800);
 $alt_titlebar_bg_color: if($titlebar == 'dark', $blue_grey_800, mix($grey_300, $grey_400, 50%));
-$panel_bg_color: if($titlebar == 'dark', $blue_grey_900, mix($grey_300, $grey_400, 50%));
+$panel_bg_color: if($titlebar == 'dark', $blue_grey_900, rgba($black, $middle_opacity));
+$unity_panel_bg_color: if($titlebar == 'dark', $blue_grey_900, mix($grey_300, $grey_400, 50%));
+$alt_panel_bg_color: rgba($black, $lower_opacity);
 
 $fill_color: gtkalpha(currentColor, $lower_opacity);
 $semi_fill_color: gtkalpha(currentColor, $lower_opacity / 2);
