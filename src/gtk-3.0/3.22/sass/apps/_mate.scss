@@ -11,19 +11,40 @@
 }
 
 // let's start it
-#PanelPlug,
+#PanelPlug, // FIXME: this cannot be transparent
 PanelToplevel.background {
-  background-color: $panel_bg_color;
-  color: $inverse_fg_color;
+  background-color: $unity_panel_bg_color;
+  color: $titlebar_fg_color;
   font-weight: 500;
 }
 
+// FIXME: this should really die if #PanelPlug can be transparent
+%mate_panel_button {
+  color: $secondary_titlebar_fg_color;
+
+  &:hover, &:active { color: $titlebar_fg_color; }
+
+  &:disabled { color: $disabled_secondary_titlebar_fg_color; }
+
+  &:checked {
+    background-color: $titlebar_track_color;
+    color: $titlebar_fg_color;
+  }
+
+  &:checked:disabled {
+    background-color: $titlebar_divider_color;
+    color: $disabled_titlebar_fg_color;
+  }
+}
+
 // hide buttons
-PanelToplevel > widget > button {
+PanelToplevel > grid > button {
   padding: 0 4px;
   border-radius: 0;
 
   @extend %simple_flat_button;
+
+  @extend %mate_panel_button;
 }
 
 #PanelApplet {
@@ -31,14 +52,14 @@ PanelToplevel > widget > button {
 }
 
 PanelSeparator {
-  color: $border_color;
+  color: $titlebar_divider_color;
 }
 
 // the grid left from na-tray and wncktasklist
 MatePanelAppletFrameDBus {
   border-style: solid;
   border-width: 0 1px;
-  border-color: $border_color;
+  border-color: $titlebar_divider_color;
 }
 
 // main menu
@@ -59,7 +80,9 @@ MatePanelAppletFrameDBus {
   padding: 4px;
   border-radius: 0;
 
-  &:not(.flat) { @extend %flat_button; }
+  @extend %flat_button;
+
+  @extend %mate_panel_button;
 }
 
 // WnckPager
