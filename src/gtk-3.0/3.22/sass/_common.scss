@@ -475,7 +475,28 @@ button {
   }
 
   @at-root %button_selected, row:selected & {
-    &:disabled { color: $disabled_secondary_inverse_fg_color; }
+    &:disabled {
+      background-color: $inverse_divider_color;
+      color: $disabled_secondary_inverse_fg_color;
+    }
+
+    &.flat {
+      color: $secondary_inverse_fg_color;
+
+      &:hover, &:active { color: $inverse_fg_color; }
+
+      &:disabled { color: $disabled_secondary_inverse_fg_color; }
+
+      &:checked {
+        background-color: $inverse_track_color;
+        color: $inverse_fg_color;
+      }
+
+      &:checked:disabled {
+        background-color: $inverse_divider_color;
+        color: $disabled_inverse_fg_color;
+      }
+    }
   }
 
   // big standalone buttons like in Documents pager
@@ -2966,8 +2987,7 @@ placessidebar {
 
       @extend %small_button;
 
-      row:selected & {
-      }
+      row:selected & { @extend %button_selected.flat; }
     }
 
     &.sidebar-placeholder-row {
