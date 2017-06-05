@@ -2322,8 +2322,6 @@ scale {
   min-width: $medium_size - $slider_size;
   padding: ($slider_size / 2);
 
-  * { transition: $longer_transition; }
-
   // the slider is inside the trough, so to have make it bigger there's a negative margin
   slider {
     min-height: $slider_size;
@@ -2333,6 +2331,7 @@ scale {
 
   // the backing bit
   trough {
+    transition: $longer_transition;
     outline-offset: 2px;
     background-color: $track_color;
 
@@ -2341,6 +2340,7 @@ scale {
 
   // the colored part of the backing bit
   highlight {
+    transition: $longer_transition;
     background-color: $accent_color;
 
     &:disabled { background-color: transparent; }
@@ -2349,6 +2349,7 @@ scale {
   // this is another differently styled part of the backing bit, the most relevant use case is for example
   // in media player to indicate how much video stream as been cached
   fill {
+    transition: $longer_transition;
     background-color: $track_color;
 
     &:disabled { background-color: transparent; }
@@ -2383,6 +2384,7 @@ scale {
     slider { background-size: calc(100% - 12px); }
   }
 
+  marks label,
   value { color: $tertiary_fg_color; }
 
   marks {
