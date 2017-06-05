@@ -55,7 +55,7 @@
                                   $fc 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
-    box-shadow: inset 0 -1px if($fc == $primary_color, $fill_color, $fc);
+    box-shadow: inset 0 -1px if($fc == $primary_color, $track_color, $fc);
     background-color: transparent;
     color: $fg_color;
   }
@@ -65,11 +65,11 @@
                                   $fc 100%,
                                   transparent 0%)
                                   0 0 2 / 0 0 2px;
-    box-shadow: inset 0 -1px if($fc == $primary_color, $fill_color, $fc);
+    box-shadow: inset 0 -1px if($fc == $primary_color, $track_color, $fc);
   }
 
   @if $t == flat-disabled {
-    box-shadow: inset 0 -1px $fill_color;
+    box-shadow: inset 0 -1px $divider_color;
     background-color: transparent;
     color: $disabled_fg_color;
   }
@@ -97,7 +97,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1000% 1000%;
-    color: $secondary_fg_color;
+    color: $button_fg_color;
   }
 
   @if $t == hover {
@@ -120,7 +120,7 @@
 
   @if $t == disabled {
     box-shadow: none;
-    background-color: $fill_color;
+    background-color: $divider_color;
     color: if($c == $lighter_bg_color, $disabled_secondary_fg_color, $disabled_fg_color);
   }
 
@@ -130,8 +130,8 @@
   }
 
   @if $t == checked-disabled {
-    background-color: $fill_color;
-    color: scale-alpha($primary_color, $disabled_opacity);
+    background-color: rgba($primary_color, $lower_opacity);
+    color: rgba($primary_color, $disabled_opacity);
   }
 
   @if $t == flat-normal {
@@ -146,12 +146,12 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1000% 1000%;
-    color: gtkalpha(currentColor, $secondary_opacity);
+    color: $secondary_fg_color;
   }
 
   @if $t == flat-hover {
     box-shadow: inset 0 0 0 9999px $semi_fill_color;
-    color: currentColor;
+    color: $fg_color;
   }
 
   @if $t == flat-active {
@@ -164,25 +164,23 @@
                                       $semi_fill_color 10%,
                                       transparent 0%);
     background-size: 0% 0%;
-    color: currentColor;
+    color: $fg_color;
   }
 
   @if $t == flat-disabled {
     box-shadow: none;
     background-color: transparent;
-    color: if($c == $lighter_bg_color,
-              gtkalpha(currentColor, $secondary_opacity * $disabled_opacity),
-              gtkalpha(currentColor, $disabled_opacity));
+    color: if($c == $lighter_bg_color, $disabled_secondary_fg_color, $disabled_fg_color);
   }
 
   @if $t == flat-checked {
-    background-color: $fill_color;
-    color: currentColor;
+    background-color: $track_color;
+    color: $fg_color;
   }
 
   @if $t == flat-checked-disabled {
-    background-color: $fill_color;
-    color: gtkalpha(currentColor, $disabled_opacity);
+    background-color: $divider_color;
+    color: $disabled_fg_color;
   }
 }
 
@@ -206,7 +204,7 @@
   background-image: -gtk-gradient(radial,
                                   $_position, 0,
                                   $_position, 0.75,
-                                  to(scale-alpha($alt_primary_color, $lower_opacity)),
+                                  to(rgba($alt_primary_color, $lower_opacity)),
                                   to(transparent));
 
   background-repeat: no-repeat;
@@ -228,8 +226,8 @@
 // top, bottom, right, left
 //
 
-  $_undershoot_color_dark: scale-alpha($fg_color, $lower_opacity);
-  $_undershoot_color_light: scale-alpha($base_color, $lower_opacity);
+  $_undershoot_color_dark: $track_color;
+  $_undershoot_color_light: rgba($base_color, $lower_opacity);
 
   $_gradient_dir: left;
   $_dash_bg_size: 12px 1px;

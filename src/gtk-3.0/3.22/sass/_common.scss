@@ -109,7 +109,7 @@ textview {
 .rubberband,
 rubberband {
   border: 1px solid $alt_primary_color;
-  background-color: scale-alpha($alt_primary_color, $lower_opacity);
+  background-color: rgba($alt_primary_color, $lower_opacity);
 }
 
 flowbox {
@@ -240,11 +240,11 @@ entry {
       // min-width: $small_size;
       // border-radius: $circular_radius;
       // -gtk-outline-radius: $circular_radius;
-      color: gtkalpha(currentColor, $secondary_opacity);
+      color: $secondary_fg_color;
 
-      &:hover, &:active { color: currentColor; }
+      &:hover, &:active { color: $fg_color; }
 
-      &:disabled { color: gtkalpha(currentColor, $tertiary_opacity); }
+      &:disabled { color: $tertiary_fg_color; }
 
       &.left {
         margin-left: ($medium_size - 16px) / 2 - 8px;
@@ -281,6 +281,14 @@ entry {
           &:focus { @include entry(flat-focus, $e_color); }
 
           &:disabled { @include entry(flat-disabled, $e_color); }
+        }
+
+        image {
+          color: $secondary_inverse_fg_color;
+
+          &:hover, &:active { color: $inverse_fg_color; }
+
+          &:disabled { color: $tertiary_inverse_fg_color; }
         }
       }
     }
@@ -467,7 +475,28 @@ button {
   }
 
   @at-root %button_selected, row:selected & {
-    &:disabled { color: $disabled_secondary_inverse_fg_color; }
+    &:disabled {
+      background-color: $inverse_divider_color;
+      color: $disabled_secondary_inverse_fg_color;
+    }
+
+    &.flat {
+      color: $secondary_inverse_fg_color;
+
+      &:hover, &:active { color: $inverse_fg_color; }
+
+      &:disabled { color: $disabled_secondary_inverse_fg_color; }
+
+      &:checked {
+        background-color: $inverse_track_color;
+        color: $inverse_fg_color;
+      }
+
+      &:checked:disabled {
+        background-color: $inverse_divider_color;
+        color: $disabled_inverse_fg_color;
+      }
+    }
   }
 
   // big standalone buttons like in Documents pager
@@ -501,7 +530,7 @@ button {
 
         &:disabled { @include button(flat-disabled, $b_color); }
 
-        &:checked { background-color: $fill_color; }
+        &:checked { background-color: rgba($b_color, 0.3); }
       }
 
       .osd & {
@@ -908,7 +937,7 @@ combobox {
 
   @include entry(flat-normal);
 
-  &:hover { box-shadow: inset 0 -2px $fill_color; }
+  &:hover { box-shadow: inset 0 -2px $tertiary_fg_color; }
 
   &:checked {
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
@@ -1034,19 +1063,44 @@ headerbar {
                                   $titlebar_indicator_color 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
+    color: $secondary_titlebar_fg_color;
+
+    &:hover, &:active { color: $titlebar_fg_color; }
+
+    &:disabled { color: $disabled_secondary_titlebar_fg_color; }
 
     &:checked {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                     $titlebar_indicator_color 100%,
                                     transparent 0%)
                                     0 0 2 / 0 0 2px;
+      color: $titlebar_fg_color;
+
+      &:disabled { color: $disabled_titlebar_fg_color; }
 
       &, &:disabled { background-color: transparent; }
+    }
+
+    &:backdrop {
+      color: $tertiary_titlebar_fg_color;
+
+      &:hover, &:active { color: $secondary_titlebar_fg_color; }
+
+      &:disabled { color: $disabled_secondary_titlebar_fg_color; }
+
+      &:checked {
+        color: $secondary_titlebar_fg_color;
+
+        &:disabled { color: $disabled_secondary_titlebar_fg_color; }
+      }
     }
   }
 
   button.suggested-action, button.destructive-action {
-    &:disabled { color: gtkalpha(currentColor, $disabled_opacity); }
+    &:disabled {
+      background-color: $titlebar_divider_color;
+      color: $disabled_titlebar_fg_color;
+    }
   }
 
   &.selection-mode {
@@ -1069,18 +1123,30 @@ headerbar {
                                     currentColor 0%,
                                     transparent 0%)
                                     0 0 0 / 0 0 0px;
-      color: currentColor;
+      color: $inverse_fg_color;
 
-      &:disabled { color: gtkalpha(currentColor, $disabled_opacity); }
+      &:disabled { color: $disabled_inverse_fg_color; }
 
       &:checked {
         border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                       currentColor 100%,
                                       transparent 0%)
                                       0 0 2 / 0 0 2px;
-        color: currentColor;
+        color: $inverse_fg_color;
 
-        &:disabled { color: gtkalpha(currentColor, $disabled_opacity); }
+        &:disabled { color: $disabled_inverse_fg_color; }
+      }
+
+      &:backdrop {
+        color: $secondary_inverse_fg_color;
+
+        &:disabled { color: $disabled_secondary_inverse_fg_color; }
+
+        &:checked {
+          color: $secondary_inverse_fg_color;
+
+          &:disabled { color: $disabled_secondary_inverse_fg_color; }
+        }
       }
     }
 
@@ -1245,8 +1311,10 @@ treeview.view {
     -GtkTreeView-expander-size: 16;
   }
 
-  border-left-color: $fill_color;  // this is actually the tree lines color,
+  border-left-color: $track_color; // this is actually the tree lines color,
   border-top-color: $border_color; // while this is the grid lines color, better then nothing
+
+  &:selected { border-left-color: $inverse_track_color; }
 
   rubberband { @extend rubberband; } // to avoid borders being overridden by the previously set props
 
@@ -1295,15 +1363,15 @@ treeview.view {
     box-shadow: none;
     background-color: transparent;
 
-    &:selected { border-bottom-color: currentColor; }
+    &:selected { border-bottom-color: $inverse_fg_color; }
   }
 
   &.trough { // progress bar trough in treeviews
-    border-bottom: $bar_size solid scale-alpha($primary_color, $lower_opacity);
+    border-bottom: $bar_size solid rgba($primary_color, $lower_opacity);
     box-shadow: none;
     background-color: transparent;
 
-    &:selected { border-bottom-color: $fill_color; }
+    &:selected { border-bottom-color: $inverse_track_color; }
   }
 
   header {
@@ -1360,7 +1428,7 @@ menubar,
 
     &:hover { // Seems like it :hover even with keyboard focus
       transition: none;
-      background-color: $semi_fill_color;
+      background-color: $titlebar_divider_color;
       color: $titlebar_fg_color;
     }
 
@@ -1394,7 +1462,7 @@ menu,
 
     &:hover {
       transition: none;
-      background-color: $semi_fill_color;
+      background-color: $divider_color;
     }
 
     &:disabled { color: $disabled_fg_color; }
@@ -1443,7 +1511,7 @@ menu,
     }
 
     &:hover {
-      background-image: image($semi_fill_color);
+      background-image: image($divider_color);
       color: $fg_color;
     }
 
@@ -1459,28 +1527,28 @@ menu,
 }
 
 menuitem {
-  accelerator { color: gtkalpha(currentColor, $tertiary_opacity); }
+  accelerator { color: $secondary_fg_color; }
 }
 
 // FIXME: THIS IS A REALLY UGLY WORKAROUND!
 // Electron/Atom render all translucent colors in opaque colors.
 // It's a very critical issue for this theme and should be fixed by upstream...
 .popup:not(.csd) menu {
-  $opaque_fg_color: if($variant == 'light', mix($black, $base_color, percentage(0.8)), $white);
-  $opaque_semi_fill_color: mix($opaque_fg_color, $base_color, percentage($lower_opacity / 2));
-  $opaque_disabled_fg_color: mix($opaque_fg_color, $base_color, percentage($disabled_opacity));
-  $opaque_tertiary_fg_color: mix($opaque_fg_color, $base_color, percentage($tertiary_opacity));
+  $opaque_fg_color: if($variant == 'light', $grey_900, $white);
+  $opaque_divider_color: if($variant == 'light', $grey_300, mix($white, $base_color, percentage(0.12)));
+  $opaque_disabled_fg_color: if($variant == 'light', $grey_500, mix($white, $base_color, percentage(0.5)));
+  $opaque_secondary_fg_color: if($variant == 'light', $grey_600, mix($white, $base_color, percentage(0.7)));
 
   menuitem {
     color: $opaque_fg_color;
 
-    &:hover { background-color: $opaque_semi_fill_color; }
+    &:hover { background-color: $opaque_divider_color; }
 
     &:disabled { color: $opaque_disabled_fg_color; } // separator/border also use this color.
   }
 
   // TODO: not working this, where/how i can set the accelerators?
-  accelerator { color: $opaque_tertiary_fg_color; }
+  accelerator { color: $opaque_secondary_fg_color; }
 }
 
 
@@ -1556,7 +1624,7 @@ notebook {
         margin-bottom: -1px;
         > tab {
 
-          &:hover { box-shadow: inset 0 -2px $fill_color; }
+          &:hover { box-shadow: inset 0 -2px $track_color; }
 
           &:checked { box-shadow: inset 0 -2px $primary_color; }
         }
@@ -1569,7 +1637,7 @@ notebook {
         margin-top: -1px;
         > tab {
 
-          &:hover { box-shadow: inset 0 2px $fill_color; }
+          &:hover { box-shadow: inset 0 2px $track_color; }
 
           &:checked { box-shadow: inset 0 2px $primary_color; }
         }
@@ -1582,7 +1650,7 @@ notebook {
         margin-right: -1px;
         > tab {
 
-          &:hover { box-shadow: inset -2px 0 $fill_color; }
+          &:hover { box-shadow: inset -2px 0 $track_color; }
 
           &:checked { box-shadow: inset -2px 0 $primary_color; }
         }
@@ -1595,7 +1663,7 @@ notebook {
         margin-left: -1px;
         > tab {
 
-          &:hover { box-shadow: inset 2px 0 $fill_color; }
+          &:hover { box-shadow: inset 2px 0 $track_color; }
 
           &:checked { box-shadow: inset 2px 0 $primary_color; }
         }
@@ -1822,7 +1890,7 @@ scrollbar {
 
     &:active { background-color: $fg_color; }
 
-    &:disabled { background-color: $disabled_tertiary_fg_color; }
+    &:disabled { background-color: $disabled_secondary_fg_color; }
   }
 
   &.fine-tune {
@@ -1846,20 +1914,20 @@ scrollbar {
         min-width: 4px;
         min-height: 4px;
         margin: 4px - 1px;
-        border: 1px solid scale-alpha($base_color, $lower_opacity);
+        border: 1px solid rgba($base_color, $lower_opacity);
       }
 
       button {
         min-width: 4px;
         min-height: 4px;
         margin: 4px - 1px;
-        border: 1px solid scale-alpha($base_color, $lower_opacity);
+        border: 1px solid rgba($base_color, $lower_opacity);
         border-radius: $circular_radius;
         background-color: $tertiary_fg_color;
         background-clip: padding-box;
         -gtk-icon-source: none;
 
-        &:disabled { background-color: $disabled_tertiary_fg_color; }
+        &:disabled { background-color: $disabled_secondary_fg_color; }
       }
 
       &.horizontal {
@@ -1876,7 +1944,7 @@ scrollbar {
     }
 
     &.dragging,
-    &.hovering { background-color: scale-alpha($base_color, $higher_opacity); }
+    &.hovering { background-color: rgba($base_color, $higher_opacity); }
   }
 
   &.horizontal slider { min-width: $_slider_min_length; }
@@ -1921,19 +1989,16 @@ switch {
   padding: 0 2px;
   border: 4px solid transparent;
   border-radius: $circular_radius;
-  background-color: $fill_color;
+  background-color: $track_color;
   background-clip: padding-box;
   font-size: 0;
 
-  &:disabled { color: gtkalpha(currentColor, $disabled_opacity); }
+  &:disabled { background-color: $divider_color; }
 
   &:checked {
-    background-color: scale-alpha($accent_color, 0.5);
+    background-color: rgba($accent_color, 0.5);
 
-    &:disabled {
-      background-color: scale-alpha($accent_color, 0.5 * $disabled_opacity);
-      color: $disabled_fg_color;
-    }
+    &:disabled { background-color: rgba($accent_color, 0.3); }
   }
 
   slider {
@@ -2017,17 +2082,17 @@ radio {
   &:checked, &:indeterminate {
     color: $accent_color;
 
-    &:disabled { color: scale-alpha($accent_color, $disabled_opacity); }
+    &:disabled { color: $disabled_accent_color; }
   }
 
   // &:only-child { margin: -12px; }
 
-  row &:not(:checked):not(:indeterminate) {
-    color: gtkalpha(currentColor, $secondary_opacity);
+  row:selected &:not(:checked):not(:indeterminate) {
+    color: $secondary_inverse_fg_color;
 
-    &:hover, &:active { color: currentColor; }
+    &:hover, &:active { color: $inverse_fg_color; }
 
-    &:disabled { color: gtkalpha(currentColor, $secondary_opacity * $disabled_opacity); }
+    &:disabled { color: $disabled_secondary_inverse_fg_color; }
   }
 
   popover & {
@@ -2036,7 +2101,7 @@ radio {
       background-image: none;
     }
 
-    &:not(:checked):not(:indeterminate) { color: gtkalpha(currentColor, $tertiary_opacity); }
+    &:not(:checked):not(:indeterminate):not(:disabled) { color: $secondary_fg_color; }
 
     &.left:dir(rtl) {
       margin-left: -16px;
@@ -2060,7 +2125,7 @@ radio {
 
     &:dir(rtl) { margin-left: 8px; }
 
-    &:not(:checked):not(:indeterminate) { color: gtkalpha(currentColor, $tertiary_opacity); }
+    &:not(:checked):not(:indeterminate):not(:disabled) { color: $secondary_fg_color; }
 
     &, &:hover, &:disabled {
       box-shadow: none;
@@ -2117,7 +2182,7 @@ radio {
     border-image-source: -gtk-gradient(radial,
                                        center center, 0,
                                        center center, $radio_indicator,
-                                       to(scale-alpha($accent_color, $disabled_opacity)),
+                                       to($disabled_accent_color),
                                        to(transparent));
   }
 }
@@ -2211,7 +2276,7 @@ treeview.view radio {
 
     &:checked, &:indeterminate { color: $accent_color; }
 
-    &:checked:disabled, &:indeterminate:disabled { color: scale-alpha($accent_color, $disabled_opacity); }
+    &:checked:disabled, &:indeterminate:disabled { color: $disabled_accent_color; }
   }
 
   &:selected {
@@ -2223,7 +2288,7 @@ treeview.view radio {
 
     &:checked, &:indeterminate { color: $accent_color; }
 
-    &:checked:disabled, &:indeterminate:disabled { color: scale-alpha($accent_color, $disabled_opacity); }
+    &:checked:disabled, &:indeterminate:disabled { color: $disabled_accent_color; }
   }
 }
 
@@ -2269,9 +2334,9 @@ scale {
   // the backing bit
   trough {
     outline-offset: 2px;
-    background-color: $fill_color;
+    background-color: $track_color;
 
-    &:disabled { color: $disabled_fg_color; }
+    &:disabled { background-color: $divider_color; }
   }
 
   // the colored part of the backing bit
@@ -2284,7 +2349,7 @@ scale {
   // this is another differently styled part of the backing bit, the most relevant use case is for example
   // in media player to indicate how much video stream as been cached
   fill {
-    background-color: $fill_color;
+    background-color: $track_color;
 
     &:disabled { background-color: transparent; }
   }
@@ -2318,10 +2383,10 @@ scale {
     slider { background-size: calc(100% - 12px); }
   }
 
-  value { color: gtkalpha(currentColor, $tertiary_opacity); }
+  value { color: $tertiary_fg_color; }
 
   marks {
-    color: $fill_color;
+    color: $track_color;
 
     @each $marks_class, $marks_pos, $marks_margin in (top, top, bottom),
                                                      (bottom, bottom, top),
@@ -2490,7 +2555,7 @@ progressbar {
   color: $tertiary_fg_color;
   font-size: smaller;
 
-  trough { background-color: scale-alpha($primary_color, $lower_opacity); }
+  trough { background-color: rgba($primary_color, $lower_opacity); }
 
   progress { background-color: $primary_color; }
 
@@ -2552,10 +2617,7 @@ levelbar {
 
     &.full { background-color: $success_color; }
 
-    &.empty {
-      background-color: $fill_color;
-      color: $disabled_fg_color;
-    }
+    &.empty { background-color: $divider_color; }
   }
 }
 
@@ -2775,11 +2837,11 @@ calendar {
   &.button { @extend %simple_flat_button; }
 
   &.highlight {
-    color: gtkalpha(currentColor, $tertiary_opacity);
+    color: $secondary_fg_color;
     font-weight: 500;
   }
 
-  &:indeterminate { color: gtkalpha(currentColor, $disabled_opacity); }
+  &:indeterminate { color: $disabled_secondary_fg_color; }
 }
 
 
@@ -2909,11 +2971,13 @@ placessidebar {
     &:disabled { color: $disabled_fg_color; }
 
     image.sidebar-icon {
-      opacity: $tertiary_opacity; // dim the device icons
+      color: $secondary_fg_color; // dim the device icons
 
       &:dir(ltr) { padding-right: 8px; }
       &:dir(rtl) { padding-left: 8px; }
     }
+
+    &:selected image.sidebar-icon { color: $secondary_inverse_fg_color; }
 
     label.sidebar-label {
       &:dir(ltr) { padding-right: 2px; }
@@ -2925,8 +2989,7 @@ placessidebar {
 
       @extend %small_button;
 
-      row:selected & {
-      }
+      row:selected & { @extend %button_selected.flat; }
     }
 
     &.sidebar-placeholder-row {
@@ -3062,7 +3125,7 @@ tooltip {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
     box-shadow: inset 0 1px $highlight_color;
-    background-color: scale-alpha($base_color, $higher_opacity);
+    background-color: rgba($base_color, $higher_opacity);
   }
 
   // @extend %osd;

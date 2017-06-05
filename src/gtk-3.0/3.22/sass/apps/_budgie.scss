@@ -129,12 +129,16 @@ popover.background.places-menu {
 // Panel
 .budgie-panel {
   background-color: $panel_bg_color;
-  color: $titlebar_fg_color;
+  color: $secondary_inverse_fg_color;
   font-weight: 500;
 
-  button { border-radius: 0; }
+  button {
+    border-radius: 0;
 
-  separator { background-color: $fill_color; }
+    @extend %button_selected.flat;
+  }
+
+  separator { background-color: $inverse_track_color; }
 
   // used to indicate unread notifications
   .alert { color: $destructive_color; }
@@ -150,7 +154,11 @@ popover.background.places-menu {
 
     @extend %flat_button;
 
+    @extend %button_selected.flat;
+
     @extend %underscores;
+
+    &:checked { background-color: $inverse_divider_color; }
   }
 
   // Icon Tasklist
@@ -158,6 +166,16 @@ popover.background.places-menu {
     padding: 0;
 
     @extend %underscores;
+
+    &:checked { background-color: $inverse_divider_color; }
+
+    &:not(:checked) {
+      color: $tertiary_inverse_fg_color;
+
+      &:hover, &:active { color: $secondary_inverse_fg_color; }
+
+      &:disabled { color: $inverse_track_color; }
+    }
   }
 
   .unpinned button.flat.launcher,
@@ -218,6 +236,8 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
   stackswitcher.linked > button {
     @extend %flat_button;
+
+    @extend %button_selected.flat;
 
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                   $warning_bg_color 0%,
@@ -288,7 +308,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
     &.frame { border-style: solid none; }
 
-    > overlay > image { color: $fill_color; }
+    > overlay > widget > image { color: $divider_color; }
 
     grid > label:first-child { min-height: $medium_size; } // workaround to fix vertical-align
 
@@ -329,12 +349,16 @@ calendar.raven-calendar {
 
 // MPRIS Applet
 .raven-mpris {
-  background-color: scale-alpha($black, $middle_opacity);
-  color: $white;
+  background-color: rgba($black, $middle_opacity);
+  color: $inverse_fg_color;
 
   label { min-height: 24px; }
 
-  button.image-button { padding: ($large_size - 24px) / 2; }
+  button.image-button {
+    padding: ($large_size - 24px) / 2;
+
+    @extend %button_selected.flat;
+  }
 }
 
 // Notifications

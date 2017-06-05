@@ -41,12 +41,12 @@ UnityDecoration {
   .bottom {}
 
   .menuitem {
-    color: gtkalpha(currentColor, $secondary_opacity);
+    color: $secondary_titlebar_fg_color;
 
     &:hover {
       box-shadow: inset 0 -2px $titlebar_indicator_color;
       background-color: transparent;
-      color: currentColor;
+      color: $titlebar_fg_color;
     }
   }
 }
@@ -65,7 +65,7 @@ sheet-style-dialog.unity-force-quit {
 // Panel Style
 UnityPanelWidget,
 .unity-panel {
-  background-color: $panel_bg_color;
+  background-color: $unity_panel_bg_color;
   color: $titlebar_fg_color;
 
   &:backdrop { color: $secondary_titlebar_fg_color; }
@@ -77,14 +77,14 @@ UnityPanelWidget,
 
 .unity-panel.menuitem,
 .unity-panel .menuitem {
-  color: gtkalpha(currentColor, $secondary_opacity);
+  color: $secondary_titlebar_fg_color;
 }
 
 .unity-panel.menubar.menuitem:hover,
 .unity-panel.menubar .menuitem *:hover {
   box-shadow: inset 0 -2px $titlebar_indicator_color;
   background-color: transparent;
-  color: currentColor;
+  color: $titlebar_fg_color;
 }
 
 .menu IdoPlaybackMenuItem.menuitem:active {

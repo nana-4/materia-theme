@@ -109,7 +109,7 @@
 
 .rubberband {
   border: 1px solid $alt_primary_color;
-  background-color: scale-alpha($alt_primary_color, $lower_opacity);
+  background-color: rgba($alt_primary_color, $lower_opacity);
 }
 
 .label {
@@ -877,7 +877,7 @@ GtkTreeView.view {
     &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
     &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
     &:selected {
-      color: scale-alpha($inverse_fg_color, $secondary_opacity);
+      color: $secondary_inverse_fg_color;
       &:hover, &:active { color: $inverse_fg_color; }
     }
   }
@@ -893,7 +893,7 @@ GtkTreeView.view {
   &.trough { // progress bar trough in treeviews
     @extend .entry.progressbar;
     border-width: 4px;
-    border-color: scale-alpha($primary_color, $lower_opacity);
+    border-color: rgba($primary_color, $lower_opacity);
     &:selected {
       border-color: $fill_color;
     }
@@ -1268,7 +1268,7 @@ $_slider_fine_tune_margin: 6px;
 
       .slider {
         margin: $_slider_margin - 1px;
-        border: 1px solid scale-alpha($base_color, $lower_opacity);
+        border: 1px solid rgba($base_color, $lower_opacity);
         // background-clip: padding-box;
       }
 
@@ -1282,7 +1282,7 @@ $_slider_fine_tune_margin: 6px;
     &.dragging,
     &.hovering {
       .trough {
-        background-color: scale-alpha($base_color, $higher_opacity);
+        background-color: rgba($base_color, $higher_opacity);
       }
     }
   }
@@ -1383,9 +1383,9 @@ GtkSwitch {
       color: gtkalpha(currentColor, $disabled_opacity);
     }
     &:active {
-      background-color: scale-alpha($accent_color, 0.5);
+      background-color: rgba($accent_color, 0.5);
       &:insensitive {
-        background-color: scale-alpha($accent_color, 0.5 * $disabled_opacity);
+        background-color: rgba($accent_color, 0.3);
       }
     }
   }
@@ -1611,7 +1611,7 @@ GtkProgressBar {
   }
   &.trough {  // background
     border-radius: 0;
-    background-color: scale-alpha($primary_color, $lower_opacity);
+    background-color: rgba($primary_color, $lower_opacity);
     &.osd {
       border-style: none;
       box-shadow: none;
@@ -2053,7 +2053,7 @@ GtkInfoBar {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
     box-shadow: inset 0 1px $highlight_color;
-    background-color: scale-alpha($base_color, $higher_opacity);
+    background-color: rgba($base_color, $higher_opacity);
   }
 
   // @extend %osd;

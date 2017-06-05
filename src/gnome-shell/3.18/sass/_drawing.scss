@@ -98,7 +98,7 @@
   @if $t == normal {
     background-color: if($fc == $primary_color, rgba($base_color, 0.01), rgba($bg_color, 0.01));
     border-color: transparent;
-    box-shadow: inset 0 -1px if($fc == $primary_color, $fill_color, $fc);
+    box-shadow: inset 0 -1px if($fc == $primary_color, $track_color, $fc);
   }
 
   @if $t == focus {
@@ -112,7 +112,7 @@
   @if $t == insensitive {
     color: $disabled_fg_color;
     border-color: transparent;
-    box-shadow: inset 0 -1px if($fc == $primary_color, $disabled_fill_color, $fc);
+    box-shadow: inset 0 -1px if($fc == $primary_color, $divider_color, $fc);
   }
 }
 
@@ -127,7 +127,7 @@
 //
 
   @if $t == normal {
-    color: if($tc == $fg_color, $secondary_fg_color, $tc);
+    color: if($tc == $fg_color, $button_fg_color, $tc);
     background-color: $c;
     border-color: transparent;
     box-shadow: $shadow_1;
@@ -140,7 +140,7 @@
     text-shadow: none;
     icon-shadow: none;
     box-shadow: $shadow_0;
-    // box-shadow: inset 0px 0px 0px 2px $fill_color;
+    // box-shadow: inset 0px 0px 0px 2px $divider_color;
   }
 
   @if $t == hover {
@@ -163,7 +163,7 @@
 
   @if $t == insensitive {
     color: if($tc == $fg_color, $disabled_secondary_fg_color, $tc);
-    background-color: if($c == $base_color, $disabled_fill_color, $c);
+    background-color: if($c == $base_color, $divider_color, $c);
     border-color: transparent;
     box-shadow: $shadow_0;
     text-shadow: none;
@@ -184,12 +184,12 @@
     text-shadow: none;
     icon-shadow: none;
     box-shadow: $shadow_0;
-    // box-shadow: inset 0px 0px 0px 2px $fill_color;
+    // box-shadow: inset 0px 0px 0px 2px $divider_color;
   }
 
   @if $t == flat-hover {
     color: if($tc != $inverse_fg_color, $fg_color, $inverse_fg_color);
-    background-color: if($tc != $inverse_fg_color, $semi_fill_color, $semi_inverse_fill_color);
+    background-color: if($tc != $inverse_fg_color, $divider_color, $inverse_divider_color);
     border-color: transparent;
     box-shadow: $shadow_0;
     text-shadow: none;
@@ -198,7 +198,7 @@
 
   @if $t == flat-active {
     color: if($tc != $inverse_fg_color, $fg_color, $inverse_fg_color);
-    background-color: if($tc != $inverse_fg_color, $fill_color, $inverse_fill_color);
+    background-color: if($tc != $inverse_fg_color, $track_color, $inverse_track_color);
     border-color: transparent;
     box-shadow: $shadow_0;
     text-shadow: none;

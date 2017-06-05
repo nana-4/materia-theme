@@ -22,7 +22,7 @@
 }
 
 .nautilus-desktop.nautilus-canvas-item:not(:selected) {
-  // background-color: scale-alpha($black, $lower_opacity);
+  // background-color: rgba($black, $lower_opacity);
   color: $inverse_fg_color;
   text-shadow: $shadow_1;
 }
@@ -83,10 +83,7 @@
 
   &.used { background-color: $primary_color; }
 
-  &.free {
-    background-color: $fill_color;
-    color: $disabled_fg_color;
-  }
+  &.free { background-color: $divider_color; }
 }
 
 // View
@@ -129,10 +126,10 @@
 
 // Only normal state is handle
 .open-document-selector-path-label {
-  color: gtkalpha(currentColor, $tertiary_opacity);
+  color: $secondary_fg_color;
   font-size: smaller;
 
-  // @extend .dim-label;
+  &:selected { color: $secondary_inverse_fg_color; }
 }
 
 .gedit-document-panel {
@@ -165,7 +162,7 @@
 
       .gedit-search-entry-occurrences-tag {
         all: unset;
-        color: gtkalpha(currentColor, $tertiary_opacity);
+        color: $tertiary_fg_color;
       }
     }
 
@@ -342,9 +339,9 @@ entry.search-missing {
 
 // tweak icons for treeviews
 workbench treeview.image {
-  color: gtkalpha(currentColor, $tertiary_opacity);
+  color: $secondary_fg_color;
 
-  &:selected { color: $tertiary_inverse_fg_color; }
+  &:selected { color: $secondary_inverse_fg_color; }
 }
 
 dockbin {
@@ -393,7 +390,7 @@ docktab {
   font-weight: 500;
 
   &:hover {
-    box-shadow: inset 0 -2px $fill_color;
+    box-shadow: inset 0 -2px $track_color;
     color: $fg_color;
   }
 
@@ -419,12 +416,12 @@ dockoverlayedge {
   }
 
   &.left-edge docktab {
-    &:hover { box-shadow: inset -2px 0 $fill_color; }
+    &:hover { box-shadow: inset -2px 0 $track_color; }
     &:checked { box-shadow: inset -2px 0 $primary_color; }
   }
 
   &.right-edge docktab {
-    &:hover { box-shadow: inset 2px 0 $fill_color; }
+    &:hover { box-shadow: inset 2px 0 $track_color; }
     &:checked { box-shadow: inset 2px 0 $primary_color; }
   }
 }
@@ -664,8 +661,8 @@ list.categories { background-image: image($lighter_bg_color); }
   min-height: 24px;
   padding: 0 4px;
   border-radius: $material_radius;
-  background-color: scale-alpha($black, $lower_opacity);
-  color: $white;
+  background-color: rgba($black, $lower_opacity);
+  color: $inverse_fg_color;
 }
 
 
