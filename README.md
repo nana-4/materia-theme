@@ -1,7 +1,7 @@
 Flat-Plat
 =========
 Flat-Plat is a [Material Design](https://material.io)-like theme for GNOME/GTK+ based desktop environments.  
-It supports GTK3, GTK2, Metacity, GNOME Shell, Unity, MATE, LightDM, GDM, Chrome theme, etc.
+It supports GTK3, GTK2, Metacity, GNOME Shell, Unity, Budgie, MATE, LightDM, GDM, Chrome theme, etc.
 
 Features
 --------
@@ -26,6 +26,7 @@ Requirements
 ##### Supported desktop environments are:
 - GNOME Shell 3.18 or later
 - Unity 7.4 or later
+- Budgie 10.2.5 or later
 - MATE 1.14 or later
 
 Installation
