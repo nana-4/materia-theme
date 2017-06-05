@@ -670,3 +670,28 @@ list.categories { background-image: image($lighter_bg_color); }
  * Calculator *
  **************/
 button.title label { min-height: $medium_size; }
+
+
+/*********
+ * Geary *
+ *********/
+// fix a issue that separator seems double
+.geary-titlebar-left {
+  &:dir(ltr) {
+    margin-right: 5px;
+    padding-right: 0;
+  }
+
+  &:dir(rtl) {
+    margin-left: 5px;
+    padding-left: 0;
+  }
+
+  > separator { background-color: rgba($black, 0.05); }
+}
+
+.geary-titlebar-right {
+  &:dir(ltr) { margin-left: -5px; }
+
+  &:dir(rtl) { margin-right: -5px; }
+}
