@@ -88,17 +88,17 @@ However, if it fails, the desktop environment may not operate correctly. So plea
 
 2. Restart GNOME Shell. (If you are running _GNOME on Xorg_, press <kbd>Alt</kbd> + <kbd>F2</kbd> then type `r`.)
 
-Screenshots
------------
-##### GNOME Shell 3.20
-![GNOME Shell 3.20](../images/Screenshot1.png?raw=true)
-##### Unity 7.4
-![Unity 7.4](../images/Screenshot2.png?raw=true)
+Preview
+-------
+##### GNOME Shell
+![GNOME Shell](../images/gnome.png?raw=true)
+##### Budgie Desktop
+![Budgie Desktop](../images/budgie.png?raw=true)
 ##### GDM Lock Screen
-![GDM Lock Screen](../images/Screenshot3.png?raw=true)
+![GDM Lock Screen](../images/gdm-lock.png?raw=true)
 ##### GDM Unlock Screen
-![GDM Unlock Screen](../images/Screenshot4.png?raw=true)
-<sub>**Screenshots Details:** Icons: [Paper](https://github.com/snwh/paper-icon-theme) | Font: [M+ 1C](https://mplus-fonts.osdn.jp) 10.5pt | Dock's icon size: 48px + fixed | [Wallpapers](http://imgur.com/a/v2Ovx)</sub>
+![GDM Unlock Screen](../images/gdm-unlock.png?raw=true)
+<sub>**Preview Details:** Icons: [Paper](https://github.com/snwh/paper-icon-theme) | Font: [M+ 1C](https://mplus-fonts.osdn.jp) 9.75pt | Dock's icon size: 48px + fixed | [Wallpapers](http://imgur.com/a/v2Ovx)</sub>
 
 Contributing
 ------------
