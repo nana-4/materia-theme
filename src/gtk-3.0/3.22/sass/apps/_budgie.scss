@@ -43,9 +43,15 @@
     &:disabled { color: $disabled_fg_color; }
 
     &:checked { @extend %selected_items; }
+
+    &:checked:disabled { background-color: $primary_color; } // overriding
   }
 
-  row { all: unset; }
+  row {
+    padding: 0;
+
+    &:hover { box-shadow: none; }
+  }
 }
 
 // Menu Button
