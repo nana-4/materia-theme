@@ -1538,7 +1538,7 @@ window.csd > .titlebar:not(headerbar) {
  * Tree Views *
  **************/
 treeview.view {
-  border-left-color: alpha(currentColor, 0.3);
+  border-left-color: rgba(0, 0, 0, 0.26);
   border-top-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -1549,6 +1549,10 @@ treeview.view {
   -GtkTreeView-tree-line-width: 1;
   -GtkTreeView-tree-line-pattern: '';
   -GtkTreeView-expander-size: 16;
+}
+
+treeview.view:selected {
+  border-left-color: rgba(255, 255, 255, 0.3);
 }
 
 treeview.view:hover, treeview.view:active, treeview.view:selected {
@@ -4750,11 +4754,11 @@ PanelApplet.wnck-applet .wnck-pager {
 }
 
 PanelApplet.wnck-applet .wnck-pager:hover {
-  background-color: alpha(currentColor, 0.15);
+  background-color: rgba(255, 255, 255, 0.12);
 }
 
 PanelApplet.wnck-applet .wnck-pager:active {
-  background-color: alpha(currentColor, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 PanelApplet.wnck-applet .wnck-pager:selected {
