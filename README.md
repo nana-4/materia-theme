@@ -71,7 +71,7 @@ However, if it fails, the desktop environment may not operate correctly. So plea
 
   ```sh
   GTK_THEME=$(gsettings get org.gnome.desktop.interface gtk-theme | sed "s/'//g")
-  sudo cp -iv --backup /usr/share{/themes/$GTK_THEME,}/gnome-shell/gnome-shell-theme.gresource
+  sudo cp -v --backup /usr/share{/themes/$GTK_THEME,}/gnome-shell/gnome-shell-theme.gresource
   ```
 
   > _Developer note:_  
@@ -83,7 +83,7 @@ However, if it fails, the desktop environment may not operate correctly. So plea
 1. Restore to the original theme from the backup.
 
   ```sh
-  sudo mv -iv /usr/share/gnome-shell/gnome-shell-theme.gresource{~,}
+  sudo mv -v /usr/share/gnome-shell/gnome-shell-theme.gresource{~,}
   ```
 
 2. Restart GNOME Shell. (If you are running _GNOME on Xorg_, press <kbd>Alt</kbd> + <kbd>F2</kbd> then type `r`.)

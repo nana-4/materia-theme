@@ -79,9 +79,9 @@ Here's an example to change the _accent color_:
 3. For gtk2 and gtk3, delete all PNG assets before redrawing them.
 
   ```sh
-  rm -v ./src/gtk-2.0/assets/*.png
-  rm -v ./src/gtk-2.0/assets-dark/*.png
-  rm -v ./src/gtk-3.0/gtk-common/assets/*.png
+  rm ./src/gtk-2.0/assets/*.png
+  rm ./src/gtk-2.0/assets-dark/*.png
+  rm ./src/gtk-3.0/gtk-common/assets/*.png
   ```
 
 4. Run `./render-assets.sh` or `./render-assets-dark.sh` to render the PNG assets.
@@ -107,7 +107,7 @@ Useful Links
 ------------
 
 Upstream theme sources:
-- [GTK+ 4](https://github.com/GNOME/gtk/tree/master/gtk/theme/Adwaita)
+- [GTK+ 4.0](https://github.com/GNOME/gtk/tree/master/gtk/theme/Adwaita)
   - [3.22](https://github.com/GNOME/gtk/tree/gtk-3-22/gtk/theme/Adwaita)
   - [3.20](https://github.com/GNOME/gtk/tree/gtk-3-20/gtk/theme/Adwaita)
   - [3.18](https://github.com/GNOME/gtk/tree/gtk-3-18/gtk/theme/Adwaita)
