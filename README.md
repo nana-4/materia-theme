@@ -67,7 +67,7 @@ However, if it fails, the desktop environment may not operate correctly. So plea
 - If GNOME Shell has been updated, it will be restored to the original theme, so you will need to install this again.
 
 ### Installation
-1. First select the GTK+ theme, then back up and replace the existing `.gresource` file.
+1. Select a GTK+ theme, then run the following commands to back up and replace the existing theme file.
 
   ```sh
   GTK_THEME=$(gsettings get org.gnome.desktop.interface gtk-theme | sed "s/'//g")
@@ -102,7 +102,7 @@ Preview
 
 Contributing
 ------------
-If you find any bugs or mistakes, please report it to the [issue tracker](https://github.com/nana-4/Flat-Plat/issues) or send a pull request.  
+If you find bugs or have suggestions, please report it to the [issue tracker](https://github.com/nana-4/Flat-Plat/issues).  
 Any contribution will be much appreciated.
 
 Planned Features
