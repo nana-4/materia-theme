@@ -123,7 +123,7 @@ StScrollBar {
 
   StButton#vhandle, StButton#hhandle {
     border-radius: 100px;
-    background-color: $tertiary_fg_color;
+    background-color: $hint_fg_color;
     //border: 4px solid transparent; //would be nice to margin or at least to transparent
     margin: 4px;
     &:hover { background-color: $secondary_fg_color; }
@@ -137,8 +137,8 @@ StScrollBar {
   }
 
   StButton#vhandle, StButton#hhandle {
-    background-color: $tertiary_inverse_fg_color;
-    &:hover { background-color: $secondary_inverse_fg_color; }
+    background-color: $inverse_hint_fg_color;
+    &:hover { background-color: $inverse_secondary_fg_color; }
     &:active { background-color: $inverse_fg_color; }
   }
 }
@@ -247,7 +247,7 @@ StScrollBar {
   .run-dialog-label {
     font-size: 1em;
     font-weight: normal;
-    color: $tertiary_fg_color;
+    color: $hint_fg_color;
     padding-bottom: .4em;
   }
 
@@ -300,7 +300,7 @@ StScrollBar {
   }
 
   .end-session-dialog-shutdown-icon {
-    color: $tertiary_fg_color;
+    color: $hint_fg_color;
     width: 48px;
     height: 48px;
   }
@@ -333,7 +333,7 @@ StScrollBar {
   }
 
   .end-session-dialog-app-list-item-description {
-    color: $tertiary_fg_color;
+    color: $hint_fg_color;
     font-size: 1em;
   }
 
@@ -535,7 +535,7 @@ StScrollBar {
   }
 
   .access-dialog-subtitle {
-    color: $tertiary_fg_color;
+    color: $hint_fg_color;
     font-weight: bold;
   }
 
@@ -561,7 +561,7 @@ StScrollBar {
   }
 
   .geolocation-dialog-reason {
-    color: $tertiary_fg_color;
+    color: $hint_fg_color;
     font-weight: bold;
   }
 
@@ -609,7 +609,7 @@ StScrollBar {
         background-color: mix($inverse_fg_color, $primary_color, percentage($lower_opacity));
         color: $inverse_fg_color !important;
       }
-      &:insensitive { color: $disabled_inverse_fg_color; }
+      &:insensitive { color: $inverse_disabled_fg_color; }
     }
     &.selected {
       background-color: $divider_color;
@@ -628,7 +628,7 @@ StScrollBar {
   .popup-inactive-menu-item { //all icons and other graphical elements
     color: $fg_color;
 
-    &:insensitive { color: $tertiary_fg_color; }
+    &:insensitive { color: $hint_fg_color; }
   }
   //.popup-status-menu-item { font-weight: normal;  color: pink; } //dunno what that is
   &.panel-menu {
@@ -760,7 +760,7 @@ StScrollBar {
 
   .switcher-arrow {
     border-color: rgba(0,0,0,0);
-    color: $tertiary_fg_color;
+    color: $hint_fg_color;
     &:highlighted {
       color: $fg_color;
     }
@@ -871,7 +871,7 @@ StScrollBar {
     -natural-hpadding: 12px;
     -minimum-hpadding: 6px;
     font-weight: bold;
-    color: $secondary_inverse_fg_color;
+    color: $inverse_secondary_fg_color;
     transition-duration: $longer_duration;
 
     .app-menu-icon {
@@ -899,7 +899,7 @@ StScrollBar {
     .unlock-screen &,
     .login-screen &,
     .lock-screen & {
-      color: $secondary_inverse_fg_color;
+      color: $inverse_secondary_fg_color;
       &:focus, &:hover, &:active { color: $inverse_fg_color; }
     }
   }
@@ -1048,7 +1048,7 @@ StScrollBar {
         padding: 7px 0 0;
         border-radius: 100px;
         background-color: transparent;
-        color: $tertiary_fg_color;
+        color: $hint_fg_color;
         @include font(caption);
         font-weight: bold;
         text-align: center;
@@ -1087,7 +1087,7 @@ StScrollBar {
         padding: 7px 0 0;
         border-radius: 100px;
         background-color: transparent;
-        color: $tertiary_fg_color;
+        color: $hint_fg_color;
         font-size: inherit;
         font-weight: bold;
         text-align: center;
@@ -1209,7 +1209,7 @@ StScrollBar {
               border: none;
               border-radius: 2px;
               background-color: $divider_color;
-              color: $tertiary_fg_color;
+              color: $hint_fg_color;
             }
           }
 
@@ -1329,7 +1329,7 @@ StScrollBar {
 
   .nm-dialog-icons { spacing: .5em; }
   .nm-dialog-icon { icon-size: 16px; }
-  .no-networks-label { color: $tertiary_fg_color; }
+  .no-networks-label { color: $hint_fg_color; }
   .no-networks-box { spacing: 12px; }
 
 /* OVERVIEW */
@@ -1376,7 +1376,7 @@ StScrollBar {
     width: 320px - 8px * 2;
     padding: 0 8px;
     border-radius: 0;
-    color: $tertiary_inverse_fg_color;
+    color: $inverse_hint_fg_color;
     selection-background-color: $inverse_track_color;
     selected-color: $inverse_fg_color;
     @include entry(normal,$fc:$inverse_track_color);
@@ -1387,7 +1387,7 @@ StScrollBar {
       color: $inverse_fg_color;
     }
 
-    .search-entry-icon { icon-size: 16px; padding: 0 0; color: $tertiary_inverse_fg_color; }
+    .search-entry-icon { icon-size: 16px; padding: 0 0; color: $inverse_hint_fg_color; }
 
     &:hover, &:focus {
       .search-entry-icon { color: $inverse_fg_color; }
@@ -1423,7 +1423,7 @@ StScrollBar {
 
   .list-search-result-content { spacing: 12px; padding: 12px; }
   .list-search-result-title { @include font(headline); color: $inverse_fg_color; }
-  .list-search-result-description { color: $secondary_inverse_fg_color; }
+  .list-search-result-description { color: $inverse_secondary_fg_color; }
   .search-provider-icon { padding: 15px; }
   .search-provider-icon-more {
     width: 16px;
@@ -1492,7 +1492,7 @@ StScrollBar {
   .app-view-control { //favorties | all toggle button
     padding: 0 16px;
     font-weight: bold;
-    color: $secondary_inverse_fg_color;
+    color: $inverse_secondary_fg_color;
     &:hover {
       color: $inverse_fg_color;
       background-color: $inverse_divider_color !important;
@@ -1574,7 +1574,7 @@ StScrollBar {
   }
 
   .show-apps .show-apps-icon {
-    color: $secondary_inverse_fg_color;
+    color: $inverse_secondary_fg_color;
   }
 
   .show-apps:hover .show-apps-icon,
@@ -1608,15 +1608,15 @@ StScrollBar {
       height: 12px;
       border-radius: 12px;
       background-image: none;
-      background-color: $disabled_secondary_inverse_fg_color;
+      background-color: $inverse_disabled_secondary_fg_color;
     }
     &:hover .page-indicator-icon {
       background-image: none;
-      background-color: $disabled_inverse_fg_color;
+      background-color: $inverse_disabled_fg_color;
     }
     &:active .page-indicator-icon {
       background-image: none;
-      background-color: $secondary_inverse_fg_color;
+      background-color: $inverse_secondary_fg_color;
     }
     &:checked .page-indicator-icon {
       background-image: none;
@@ -1667,7 +1667,7 @@ StScrollBar {
 
 %status_text {
   @include font(display-2);
-  color: $tertiary_inverse_fg_color;
+  color: $inverse_hint_fg_color;
 }
 
 /* NOTIFICATIONS & MESSAGE TRAY */
@@ -1741,7 +1741,7 @@ StScrollBar {
   .chat-meta-message {
     padding-left: 4px;
     @include font(caption);
-    color: $tertiary_fg_color;
+    color: $hint_fg_color;
     &:rtl { padding-left: 0; padding-right: 4px; }
   }
 
@@ -1881,8 +1881,8 @@ $legacy_icon_size: 24px;
 
   .candidate-index {
     padding: 0 4px 0 0;
-    color: $tertiary_fg_color;
-    .candidate-box:selected & { color: $tertiary_inverse_fg_color; }
+    color: $hint_fg_color;
+    .candidate-box:selected & { color: $inverse_hint_fg_color; }
   }
 
   .candidate-box {
@@ -1944,7 +1944,7 @@ $legacy_icon_size: 24px;
     &:focus { @include entry(focus, $fc:$inverse_fg_color); }
     &:insensitive {
       @include entry(insensitive, $fc:$inverse_divider_color);
-      color: $disabled_inverse_fg_color;
+      color: $inverse_disabled_fg_color;
     }
   }
 
@@ -1960,13 +1960,13 @@ $legacy_icon_size: 24px;
       @include button(normal, $c: $suggested_color, $tc: $inverse_fg_color);
       &:hover,&:focus { @include button(hover, $c: $suggested_color, $tc: $inverse_fg_color); }
       &:active { @include button(active, $c: $suggested_color, $tc: $inverse_fg_color); }
-      &:insensitive { @include button(insensitive, $c: $inverse_divider_color, $tc: $disabled_inverse_fg_color); }
+      &:insensitive { @include button(insensitive, $c: $inverse_divider_color, $tc: $inverse_disabled_fg_color); }
     }
   }
 }
 
   .login-dialog-logo-bin { padding: 24px 0px; }
-  .login-dialog-banner { color: $secondary_inverse_fg_color; }
+  .login-dialog-banner { color: $inverse_secondary_fg_color; }
   .login-dialog-button-box { spacing: 5px; }
   .login-dialog-message-warning { color: $warning_color; }
   .login-dialog-message-hint { padding-top: 0; padding-bottom: 20px; }
@@ -1983,7 +1983,7 @@ $legacy_icon_size: 24px;
   .login-dialog-not-listed-label {
     font-size: 1em;
     font-weight: bold;
-    color: $secondary_inverse_fg_color;
+    color: $inverse_secondary_fg_color;
     padding-top: 1em;
     &:hover { color: $inverse_fg_color; }
     &:focus { background-color: $inverse_divider_color; }
@@ -2002,7 +2002,7 @@ $legacy_icon_size: 24px;
   .login-dialog-user-list-item {
     border-radius: 2px;
     padding: 4px 4px 0;
-    color: $secondary_inverse_fg_color;
+    color: $inverse_secondary_fg_color;
     &:ltr { padding-right: 1em; }
     &:rtl { padding-left: 1em; }
     &:hover { background-color: $inverse_divider_color; color: $inverse_fg_color; }
@@ -2035,7 +2035,7 @@ $legacy_icon_size: 24px;
   }
 
   .login-dialog-prompt-label {
-      color: $tertiary_inverse_fg_color;
+      color: $inverse_hint_fg_color;
       font-size: 1em;
       padding-top: 1em;
   }
@@ -2045,7 +2045,7 @@ $legacy_icon_size: 24px;
   }
 
   .login-dialog-session-list-button {
-      color: $secondary_inverse_fg_color;
+      color: $inverse_secondary_fg_color;
       &:hover,&:focus { color: $inverse_fg_color; }
       &:active { color: $inverse_fg_color; }
   }
@@ -2110,7 +2110,7 @@ $legacy_icon_size: 24px;
 .screen-shield-notification-count-text {
   min-height: $small_size - 2px;
   padding: 2px 0px 0px 16px;
-  color: $secondary_inverse_fg_color;
+  color: $inverse_secondary_fg_color;
 }
 
 #panel.lock-screen { background-color: $alt_bg_color; }
@@ -2150,7 +2150,7 @@ $legacy_icon_size: 24px;
     -natural-hpadding: 12px;
     -minimum-hpadding: 6px;
     font-weight: bold;
-    color: $tertiary_fg_color;
+    color: $hint_fg_color;
     transition-duration: $longer_duration;
     padding-left: 16px;
     padding-right: 16px;

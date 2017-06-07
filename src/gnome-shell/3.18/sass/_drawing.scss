@@ -171,7 +171,7 @@
   }
 
   @if $t == flat-normal {
-    color: if($tc != $inverse_fg_color, $secondary_fg_color, $secondary_inverse_fg_color);
+    color: if($tc != $inverse_fg_color, $secondary_fg_color, $inverse_secondary_fg_color);
     background-color: transparent;
     border-color: transparent;
     box-shadow: $shadow_0;
@@ -206,7 +206,7 @@
   }
 
   @if $t == flat-insensitive {
-    color: if($tc != $inverse_fg_color, $disabled_secondary_fg_color, $disabled_secondary_inverse_fg_color);
+    color: if($tc != $inverse_fg_color, $disabled_secondary_fg_color, $inverse_disabled_secondary_fg_color);
     background-color: transparent;
     border-color: transparent;
     box-shadow: $shadow_0;
