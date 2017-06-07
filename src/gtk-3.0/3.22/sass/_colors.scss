@@ -1,53 +1,53 @@
 // When color definition differs for dark and light variant,
 // it gets @if ed depending on $variant
 
+@import 'color-palette';
+
 @function gtkalpha($c, $a) {
   @return unquote("alpha(#{$c}, #{$a})");
 }
 
-@function chroma($c) {
+@function fade($c) {
   @return mix($c, $grey_800, 75%);
 }
-
-@import 'color-palette';
 
 // Foreground colors
 $dark_fg_color: rgba($black, 0.87);
 $light_fg_color: $white;
+$button_fg_color:             if($variant == 'light', rgba($black, 0.62), rgba($white, 0.8));
 
 $fg_color:                    if($variant == 'light', rgba($black, 0.87), $white);
-$button_fg_color:             if($variant == 'light', rgba($black, 0.62), rgba($white, 0.8));
 $secondary_fg_color:          if($variant == 'light', rgba($black, 0.54), rgba($white, 0.7));
-$tertiary_fg_color:           if($variant == 'light', rgba($black, 0.38), rgba($white, 0.5));
+$hint_fg_color:               if($variant == 'light', rgba($black, 0.38), rgba($white, 0.5));
 $disabled_fg_color:           if($variant == 'light', rgba($black, 0.38), rgba($white, 0.5));
 $disabled_secondary_fg_color: if($variant == 'light', rgba($black, 0.26), rgba($white, 0.3));
 $track_color:                 if($variant == 'light', rgba($black, 0.26), rgba($white, 0.3));
 $divider_color:               if($variant == 'light', rgba($black, 0.12), rgba($white, 0.12));
 
 $titlebar_fg_color:                    if($titlebar == 'light', rgba($black, 0.87), $white);
-$secondary_titlebar_fg_color:          if($titlebar == 'light', rgba($black, 0.54), rgba($white, 0.7));
-$tertiary_titlebar_fg_color:           if($titlebar == 'light', rgba($black, 0.38), rgba($white, 0.5));
-$disabled_titlebar_fg_color:           if($titlebar == 'light', rgba($black, 0.38), rgba($white, 0.5));
-$disabled_secondary_titlebar_fg_color: if($titlebar == 'light', rgba($black, 0.26), rgba($white, 0.3));
+$titlebar_secondary_fg_color:          if($titlebar == 'light', rgba($black, 0.54), rgba($white, 0.7));
+$titlebar_hint_fg_color:               if($titlebar == 'light', rgba($black, 0.38), rgba($white, 0.5));
+$titlebar_disabled_fg_color:           if($titlebar == 'light', rgba($black, 0.38), rgba($white, 0.5));
+$titlebar_disabled_secondary_fg_color: if($titlebar == 'light', rgba($black, 0.26), rgba($white, 0.3));
 $titlebar_track_color:                 if($titlebar == 'light', rgba($black, 0.26), rgba($white, 0.3));
 $titlebar_divider_color:               if($titlebar == 'light', rgba($black, 0.12), rgba($white, 0.12));
 
 $inverse_fg_color:                    $white;
-$secondary_inverse_fg_color:          rgba($white, 0.7);
-$tertiary_inverse_fg_color:           rgba($white, 0.5);
-$disabled_inverse_fg_color:           rgba($white, 0.5);
-$disabled_secondary_inverse_fg_color: rgba($white, 0.3);
+$inverse_secondary_fg_color:          rgba($white, 0.7);
+$inverse_hint_fg_color:               rgba($white, 0.5);
+$inverse_disabled_fg_color:           rgba($white, 0.5);
+$inverse_disabled_secondary_fg_color: rgba($white, 0.3);
 $inverse_track_color:                 rgba($white, 0.3);
 $inverse_divider_color:               rgba($white, 0.12);
 
 // Background colors
-$bg_color: if($variant == 'light', $grey_100, chroma($blue_grey_700));
-$base_color: if($variant == 'light', $white, chroma($blue_grey_600));
+$bg_color: if($variant == 'light', $grey_100, fade($blue_grey_700));
+$base_color: if($variant == 'light', $white, fade($blue_grey_600));
 $alt_base_color: if($variant == 'light', $grey_50, mix($base_color, $bg_color, 50%));
-$lighter_bg_color: if($variant == 'light', $grey_50, chroma($blue_grey_500));
-$darker_bg_color: if($variant == 'light', $grey_200, chroma($blue_grey_900));
+$lighter_bg_color: if($variant == 'light', $grey_50, fade($blue_grey_500));
+$darker_bg_color: if($variant == 'light', $grey_200, fade($blue_grey_900));
 
-$titlebar_bg_color: if($variant == 'light', if($titlebar == 'dark', $blue_grey_700, $grey_300), $blue_grey_800);
+$titlebar_bg_color: if($titlebar == 'dark', if($variant == 'light', $blue_grey_700, $blue_grey_800), $grey_300);
 $alt_titlebar_bg_color: if($titlebar == 'dark', $blue_grey_800, mix($grey_300, $grey_400, 50%));
 $panel_bg_color: if($titlebar == 'dark', $blue_grey_900, rgba($black, $middle_opacity));
 $unity_panel_bg_color: if($titlebar == 'dark', $blue_grey_900, mix($grey_300, $grey_400, 50%));
@@ -80,9 +80,9 @@ $error_bg_color: $red_400;
 
 $border_color: if($variant == 'light', rgba($black, 0.1), rgba($black, 0.2));
 $highlight_color: if($variant == 'light', rgba($white, 0.4), rgba($white, 0.1));
-$alt_highlight_color: rgba($white, 0.2);
-$unity_highlight_color: if($titlebar == 'dark', rgba($white, 0.1), rgba($white, 0.2));
 $titlebar_highlight_color: if($titlebar == 'dark', rgba($white, 0.15), $highlight_color);
+$unity_highlight_color: if($titlebar == 'dark', rgba($white, 0.1), rgba($white, 0.2));
+$alt_highlight_color: rgba($white, 0.2);
 $titlebar_indicator_color: if($titlebar == 'dark', currentColor, $primary_color);
 
 // FIXME: @placeholder_text_color should really use $tertiary_fg_color, but

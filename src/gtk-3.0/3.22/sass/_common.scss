@@ -100,7 +100,7 @@ textview {
 
   border {
     background-color: $alt_base_color;
-    color: $tertiary_fg_color; // FIXME: not working
+    color: $hint_fg_color; // FIXME: not working
   }
 }
 
@@ -162,7 +162,7 @@ label {
   }
 }
 
-.dim-label { opacity: $tertiary_opacity; }
+.dim-label { opacity: $hint_opacity; }
 
 assistant {
   .sidebar {
@@ -176,7 +176,7 @@ assistant {
   .sidebar label {
     min-height: $medium_size;
     padding: 0 12px;
-    color: $tertiary_fg_color;
+    color: $hint_fg_color;
     font-weight: 500;
 
     &.highlight { color: $fg_color; }
@@ -244,7 +244,7 @@ entry {
 
       &:hover, &:active { color: $fg_color; }
 
-      &:disabled { color: $tertiary_fg_color; }
+      &:disabled { color: $hint_fg_color; }
 
       &.left {
         margin-left: ($medium_size - 16px) / 2 - 8px;
@@ -284,11 +284,11 @@ entry {
         }
 
         image {
-          color: $secondary_inverse_fg_color;
+          color: $inverse_secondary_fg_color;
 
           &:hover, &:active { color: $inverse_fg_color; }
 
-          &:disabled { color: $tertiary_inverse_fg_color; }
+          &:disabled { color: $inverse_hint_fg_color; }
         }
       }
     }
@@ -364,7 +364,7 @@ treeview entry {
     box-shadow: none;
     background-color: transparent;
 
-    &:not(:hover):not(:active) { color: $secondary_inverse_fg_color; }
+    &:not(:hover):not(:active) { color: $inverse_secondary_fg_color; }
   }
 }
 
@@ -477,15 +477,15 @@ button {
   @at-root %button_selected, row:selected & {
     &:disabled {
       background-color: $inverse_divider_color;
-      color: $disabled_secondary_inverse_fg_color;
+      color: $inverse_disabled_secondary_fg_color;
     }
 
     &.flat {
-      color: $secondary_inverse_fg_color;
+      color: $inverse_secondary_fg_color;
 
       &:hover, &:active { color: $inverse_fg_color; }
 
-      &:disabled { color: $disabled_secondary_inverse_fg_color; }
+      &:disabled { color: $inverse_disabled_secondary_fg_color; }
 
       &:checked {
         background-color: $inverse_track_color;
@@ -494,7 +494,7 @@ button {
 
       &:checked:disabled {
         background-color: $inverse_divider_color;
-        color: $disabled_inverse_fg_color;
+        color: $inverse_disabled_fg_color;
       }
     }
   }
@@ -937,7 +937,7 @@ combobox {
 
   @include entry(flat-normal);
 
-  &:hover { box-shadow: inset 0 -2px $tertiary_fg_color; }
+  &:hover { box-shadow: inset 0 -2px $hint_fg_color; }
 
   &:checked {
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
@@ -1032,12 +1032,12 @@ headerbar {
   background-color: $titlebar_bg_color;
   color: $titlebar_fg_color;
 
-  &:disabled :not(button) > label { color: $disabled_titlebar_fg_color; }
+  &:disabled :not(button) > label { color: $titlebar_disabled_fg_color; }
 
   &:backdrop {
-    color: $secondary_titlebar_fg_color;
+    color: $titlebar_secondary_fg_color;
 
-    &:disabled :not(button) > label { color: $disabled_secondary_titlebar_fg_color; }
+    &:disabled :not(button) > label { color: $titlebar_disabled_secondary_fg_color; }
   }
 
   .title {
@@ -1063,11 +1063,11 @@ headerbar {
                                   $titlebar_indicator_color 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
-    color: $secondary_titlebar_fg_color;
+    color: $titlebar_secondary_fg_color;
 
     &:hover, &:active { color: $titlebar_fg_color; }
 
-    &:disabled { color: $disabled_secondary_titlebar_fg_color; }
+    &:disabled { color: $titlebar_disabled_secondary_fg_color; }
 
     &:checked {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
@@ -1076,22 +1076,22 @@ headerbar {
                                     0 0 2 / 0 0 2px;
       color: $titlebar_fg_color;
 
-      &:disabled { color: $disabled_titlebar_fg_color; }
+      &:disabled { color: $titlebar_disabled_fg_color; }
 
       &, &:disabled { background-color: transparent; }
     }
 
     &:backdrop {
-      color: $tertiary_titlebar_fg_color;
+      color: $titlebar_hint_fg_color;
 
-      &:hover, &:active { color: $secondary_titlebar_fg_color; }
+      &:hover, &:active { color: $titlebar_secondary_fg_color; }
 
-      &:disabled { color: $disabled_secondary_titlebar_fg_color; }
+      &:disabled { color: $titlebar_disabled_secondary_fg_color; }
 
       &:checked {
-        color: $secondary_titlebar_fg_color;
+        color: $titlebar_secondary_fg_color;
 
-        &:disabled { color: $disabled_secondary_titlebar_fg_color; }
+        &:disabled { color: $titlebar_disabled_secondary_fg_color; }
       }
     }
   }
@@ -1099,7 +1099,7 @@ headerbar {
   button.suggested-action, button.destructive-action {
     &:disabled {
       background-color: $titlebar_divider_color;
-      color: $disabled_titlebar_fg_color;
+      color: $titlebar_disabled_fg_color;
     }
   }
 
@@ -1113,7 +1113,7 @@ headerbar {
     color: $inverse_fg_color;
 
     &:backdrop {
-      color: $secondary_inverse_fg_color;
+      color: $inverse_secondary_fg_color;
     }
 
     .subtitle:link { @extend *:link:selected; }
@@ -1125,7 +1125,7 @@ headerbar {
                                     0 0 0 / 0 0 0px;
       color: $inverse_fg_color;
 
-      &:disabled { color: $disabled_inverse_fg_color; }
+      &:disabled { color: $inverse_disabled_fg_color; }
 
       &:checked {
         border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
@@ -1134,18 +1134,18 @@ headerbar {
                                       0 0 2 / 0 0 2px;
         color: $inverse_fg_color;
 
-        &:disabled { color: $disabled_inverse_fg_color; }
+        &:disabled { color: $inverse_disabled_fg_color; }
       }
 
       &:backdrop {
-        color: $secondary_inverse_fg_color;
+        color: $inverse_secondary_fg_color;
 
-        &:disabled { color: $disabled_secondary_inverse_fg_color; }
+        &:disabled { color: $inverse_disabled_secondary_fg_color; }
 
         &:checked {
-          color: $secondary_inverse_fg_color;
+          color: $inverse_secondary_fg_color;
 
-          &:disabled { color: $disabled_secondary_inverse_fg_color; }
+          &:disabled { color: $inverse_disabled_secondary_fg_color; }
         }
       }
     }
@@ -1350,11 +1350,11 @@ treeview.view {
     &:disabled { color: $disabled_secondary_fg_color; }
 
     &:selected {
-      color: $secondary_inverse_fg_color;
+      color: $inverse_secondary_fg_color;
 
       &:hover, &:active { color: $inverse_fg_color; }
 
-      &:disabled { color: $disabled_secondary_inverse_fg_color; }
+      &:disabled { color: $inverse_disabled_secondary_fg_color; }
     }
   }
 
@@ -1424,7 +1424,7 @@ menubar,
     transition: $shorter_transition;
     min-height: 20px;
     padding: 4px 8px;
-    color: $secondary_titlebar_fg_color;
+    color: $titlebar_secondary_fg_color;
 
     &:hover { // Seems like it :hover even with keyboard focus
       transition: none;
@@ -1432,7 +1432,7 @@ menubar,
       color: $titlebar_fg_color;
     }
 
-    &:disabled { color: $disabled_secondary_titlebar_fg_color; }
+    &:disabled { color: $titlebar_disabled_secondary_fg_color; }
   }
 }
 
@@ -1535,9 +1535,9 @@ menuitem {
 // It's a very critical issue for this theme and should be fixed by upstream...
 .popup:not(.csd) menu {
   $opaque_fg_color: if($variant == 'light', $grey_900, $white);
-  $opaque_divider_color: if($variant == 'light', $grey_300, mix($white, $base_color, percentage(0.12)));
-  $opaque_disabled_fg_color: if($variant == 'light', $grey_500, mix($white, $base_color, percentage(0.5)));
   $opaque_secondary_fg_color: if($variant == 'light', $grey_600, mix($white, $base_color, percentage(0.7)));
+  $opaque_disabled_fg_color: if($variant == 'light', $grey_500, mix($white, $base_color, percentage(0.5)));
+  $opaque_divider_color: if($variant == 'light', $grey_300, mix($white, $base_color, percentage(0.12)));
 
   menuitem {
     color: $opaque_fg_color;
@@ -1884,7 +1884,7 @@ scrollbar {
     border: 4px solid transparent;
     border-radius: $circular_radius;
     background-clip: padding-box;
-    background-color: $tertiary_fg_color;
+    background-color: $hint_fg_color;
 
     &:hover { background-color: $secondary_fg_color; }
 
@@ -1923,7 +1923,7 @@ scrollbar {
         margin: 4px - 1px;
         border: 1px solid rgba($base_color, $lower_opacity);
         border-radius: $circular_radius;
-        background-color: $tertiary_fg_color;
+        background-color: $hint_fg_color;
         background-clip: padding-box;
         -gtk-icon-source: none;
 
@@ -2088,11 +2088,11 @@ radio {
   // &:only-child { margin: -12px; }
 
   row:selected &:not(:checked):not(:indeterminate) {
-    color: $secondary_inverse_fg_color;
+    color: $inverse_secondary_fg_color;
 
     &:hover, &:active { color: $inverse_fg_color; }
 
-    &:disabled { color: $disabled_secondary_inverse_fg_color; }
+    &:disabled { color: $inverse_disabled_secondary_fg_color; }
   }
 
   popover & {
@@ -2280,11 +2280,11 @@ treeview.view radio {
   }
 
   &:selected {
-    color: $secondary_inverse_fg_color;
+    color: $inverse_secondary_fg_color;
 
     &:hover, &:active { color: $inverse_fg_color; }
 
-    &:disabled { color: $disabled_secondary_inverse_fg_color; }
+    &:disabled { color: $inverse_disabled_secondary_fg_color; }
 
     &:checked, &:indeterminate { color: $accent_color; }
 
@@ -2385,7 +2385,7 @@ scale {
   }
 
   marks label,
-  value { color: $tertiary_fg_color; }
+  value { color: $hint_fg_color; }
 
   marks {
     color: $track_color;
@@ -2554,7 +2554,7 @@ progressbar {
   }
 
   // FIXME: insensitive state missing and some other state should be set probably
-  color: $tertiary_fg_color;
+  color: $hint_fg_color;
   font-size: smaller;
 
   trough { background-color: rgba($primary_color, $lower_opacity); }
@@ -2805,11 +2805,11 @@ expander {
     &:disabled { color: $disabled_secondary_fg_color; }
 
     &:selected {
-      color: $secondary_inverse_fg_color;
+      color: $inverse_secondary_fg_color;
 
       &:hover, &:active { color: $inverse_fg_color; }
 
-      &:disabled { color: $disabled_secondary_inverse_fg_color; }
+      &:disabled { color: $inverse_disabled_secondary_fg_color; }
     }
   }
 }
@@ -2979,7 +2979,7 @@ placessidebar {
       &:dir(rtl) { padding-left: 8px; }
     }
 
-    &:selected image.sidebar-icon { color: $secondary_inverse_fg_color; }
+    &:selected image.sidebar-icon { color: $inverse_secondary_fg_color; }
 
     label.sidebar-label {
       &:dir(ltr) { padding-right: 2px; }
@@ -3389,7 +3389,7 @@ button.titlebutton {
   @at-root %nobg_selected_items, & {
     color: $inverse_fg_color;
 
-    &:disabled { color: $disabled_inverse_fg_color; }
+    &:disabled { color: $inverse_disabled_fg_color; }
   }
 }
 

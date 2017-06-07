@@ -126,7 +126,7 @@
 }
 
 .dim-label {
-  opacity: $tertiary_opacity;
+  opacity: $hint_opacity;
 }
 
 GtkAssistant {
@@ -138,7 +138,7 @@ GtkAssistant {
   }
   // &.csd .sidebar { border-top-style: none; }
   .sidebar .label {
-    opacity: $tertiary_opacity;
+    opacity: $hint_opacity;
     padding: 5px 12px 6px;
     font-weight: 500;
   }
@@ -241,7 +241,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
 
   &.image { // entry icons colors
     &:not(:hover):not(:active) { color: gtkalpha(currentColor, $secondary_opacity); }
-    &:insensitive { color: gtkalpha(currentColor, $tertiary_opacity); }
+    &:insensitive { color: gtkalpha(currentColor, $hint_opacity); }
   }
 
   .osd & {
@@ -703,7 +703,7 @@ GtkComboBox {
   color: $titlebar_fg_color;
 
   &:backdrop {
-    color: $secondary_titlebar_fg_color;
+    color: $titlebar_secondary_fg_color;
   }
 
   .title {
@@ -765,7 +765,7 @@ GtkComboBox {
     background-color: $primary_color;
     color: $inverse_fg_color;
     &:backdrop {
-      color: $secondary_inverse_fg_color;
+      color: $inverse_secondary_fg_color;
     }
 
     .subtitle:link { @extend *:link:selected;  }
@@ -777,7 +777,7 @@ GtkComboBox {
                                   to($inverse_fg_color),
                                   to(transparent))
                                   0 0 0 / 0 0 0px;
-      color: $secondary_inverse_fg_color;
+      color: $inverse_secondary_fg_color;
       &:hover, &:active, &:checked {
         color: $inverse_fg_color;
       }
@@ -794,7 +794,7 @@ GtkComboBox {
                                     0 0 2 / 0 0 2px;
         color: $inverse_fg_color;
         &:insensitive {
-          color: $disabled_inverse_fg_color;
+          color: $inverse_disabled_fg_color;
           > .label { color: inherit; }
         }
       }
@@ -877,7 +877,7 @@ GtkTreeView.view {
     &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
     &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
     &:selected {
-      color: $secondary_inverse_fg_color;
+      color: $inverse_secondary_fg_color;
       &:hover, &:active { color: $inverse_fg_color; }
     }
   }
@@ -945,14 +945,14 @@ column-header.button.dnd { // for treeview-like derive widgets
   & > .menuitem {
     transition: $shorter_transition;
     padding: 4px 8px;
-    color: $secondary_titlebar_fg_color;
+    color: $titlebar_secondary_fg_color;
     &:hover { //Seems like it :hover even with keyboard focus
       transition: none;
       background-color: gtkalpha(currentColor, $lower_opacity / 2);
       color: $titlebar_fg_color;
     }
     &:insensitive {
-      color: $disabled_secondary_titlebar_fg_color;
+      color: $titlebar_disabled_secondary_fg_color;
       box-shadow: none;
     }
   }
@@ -998,7 +998,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   }
 }
 
-.menuitem .accelerator { color: gtkalpha(currentColor, $tertiary_opacity); }
+.menuitem .accelerator { color: gtkalpha(currentColor, $hint_opacity); }
 
 .csd.popup { border-radius: 2px; }
 
@@ -1296,7 +1296,7 @@ $_slider_fine_tune_margin: 6px;
 
   // slider coloring
   .slider {
-    background-color: $tertiary_fg_color;
+    background-color: $hint_fg_color;
     &:hover { background-color: $secondary_fg_color; }
     &:active { background-color: $fg_color; }
     &:insensitive {
@@ -1440,7 +1440,7 @@ GtkSwitch {
                   (':checked', '-checked'),
                   (':checked:insensitive', '-checked-disabled') {
     .menu .menuitem.#{$w}#{$s} {
-      // color: gtkalpha(currentColor, $tertiary_opacity);
+      // color: gtkalpha(currentColor, $hint_opacity);
       // -gtk-icon-source: -gtk-icontheme('#{$a}-symbolic');
       // &:active, &:checked { -gtk-icon-source: -gtk-icontheme('#{$a}-checked-symbolic'); }
       // &:inconsistent { -gtk-icon-source: -gtk-icontheme('#{$a}-mixed-symbolic'); }
@@ -1603,7 +1603,7 @@ GtkProgressBar {
   -GtkProgressBar-min-vertical-bar-width: 4;
   padding: 0;
   font-size: smaller;
-  color: $tertiary_fg_color;
+  color: $hint_fg_color;
   &.osd {
     -GtkProgressBar-xspacing: 0;
     -GtkProgressBar-yspacing: 0;
@@ -1779,11 +1779,11 @@ $row_transition: $longer_transition, background-color 0, color 0;
 .list-row:selected {
   @extend %selected_items;
   .button {
-    &:insensitive { color: $disabled_secondary_inverse_fg_color; }
+    &:insensitive { color: $inverse_disabled_secondary_fg_color; }
     &.flat {
-      color: $secondary_inverse_fg_color;
+      color: $inverse_secondary_fg_color;
       &:hover, &:active { color: $inverse_fg_color; }
-      &:insensitive { color: $disabled_secondary_inverse_fg_color; }
+      &:insensitive { color: $inverse_disabled_secondary_fg_color; }
     }
   }
 }
@@ -1845,7 +1845,7 @@ GtkCalendar {
   &:inconsistent { color: gtkalpha(currentColor, $disabled_opacity); }
   &.highlight {
     font-size: smaller;
-    color: gtkalpha(currentColor, $tertiary_opacity);
+    color: gtkalpha(currentColor, $hint_opacity);
   }
 }
 
@@ -1918,7 +1918,7 @@ GtkSidebarRow {
     padding: 4px 14px 4px 12px;
   }
   .sidebar-icon {
-    opacity: $tertiary_opacity; // dim the device icons
+    opacity: $hint_opacity; // dim the device icons
     &:dir(ltr) { padding-right: 8px; }
     &:dir(rtl) { padding-left: 8px; }
   }
@@ -2038,7 +2038,7 @@ GtkInfoBar {
   color: $inverse_fg_color;
   .button {
     // @extend .list-row:selected.button;
-    &:insensitive { color: $disabled_secondary_inverse_fg_color; }
+    &:insensitive { color: $inverse_disabled_secondary_fg_color; }
   }
   .label:selected {
   }
@@ -2272,7 +2272,7 @@ GtkVolumeButton.button {
 %selected_items {
   background-color: $primary_color;
   color: $inverse_fg_color;
-  &:insensitive { color: $disabled_inverse_fg_color; }
+  &:insensitive { color: $inverse_disabled_fg_color; }
 }
 
 .monospace {

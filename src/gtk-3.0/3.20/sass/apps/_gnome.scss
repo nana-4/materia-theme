@@ -129,7 +129,7 @@
   color: $secondary_fg_color;
   font-size: smaller;
 
-  &:selected { color: $secondary_inverse_fg_color; }
+  &:selected { color: $inverse_secondary_fg_color; }
 }
 
 .gedit-document-panel {
@@ -162,7 +162,7 @@
 
       .gedit-search-entry-occurrences-tag {
         all: unset;
-        color: $tertiary_fg_color;
+        color: $hint_fg_color;
       }
     }
 
@@ -187,11 +187,11 @@
     }
 
     &.error ~ button {
-      color: $secondary_inverse_fg_color;
+      color: $inverse_secondary_fg_color;
 
       &:hover, &:active { color: $inverse_fg_color; }
 
-      &:disabled { color: $disabled_secondary_inverse_fg_color; }
+      &:disabled { color: $inverse_disabled_secondary_fg_color; }
     }
   }
 
@@ -341,7 +341,7 @@ entry.search-missing {
 workbench treeview.image {
   color: $secondary_fg_color;
 
-  &:selected { color: $secondary_inverse_fg_color; }
+  &:selected { color: $inverse_secondary_fg_color; }
 }
 
 dockbin {
@@ -494,7 +494,7 @@ GdMainIconView.content-view {
 
   // Make spinner visible on both dark and bright backgrounds w/o making
   // it look ugly/weird.
-  // &.cell:active { color: $tertiary_fg_color; }
+  // &.cell:active { color: $hint_fg_color; }
 }
 
 .documents-counter {
