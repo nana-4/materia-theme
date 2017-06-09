@@ -1160,9 +1160,9 @@ headerbar {
     }
   }
 
-  .fullscreen &,
   .tiled &,
-  .maximized & {
+  .maximized &,
+  .fullscreen & {
     border-radius: 0; // squared corners when the window is fullscreen, maximized or tiled
     box-shadow: $shadow_1;
   }
@@ -1172,9 +1172,9 @@ headerbar {
     padding: $container_padding;
     box-shadow: inset 0 1px $titlebar_highlight_color;
 
-    .fullscreen &,
     .tiled &,
-    .maximized & { box-shadow: none; }
+    .maximized &,
+    .fullscreen & { box-shadow: none; }
 
     button.titlebutton {
       min-height: $small_size;
