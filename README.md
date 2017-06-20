@@ -25,7 +25,7 @@ Requirements
 
 ##### Build dependency:
 - `glib2` on Arch Linux
-- `glib2-devel` on Fedora, OpenSUSE, etc
+- `glib2-devel` on Fedora, openSUSE, etc
 - `libglib2.0-dev` on Debian, Ubuntu, etc
 
 ##### Supported desktop environments are:
