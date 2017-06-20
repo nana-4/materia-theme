@@ -23,6 +23,11 @@ Requirements
 - pixmap (or pixbuf) engine
 - murrine engine
 
+##### Build dependency:
+- `glib2` on Arch Linux
+- `glib2-devel` on Fedora, OpenSUSE, etc
+- `libglib2.0-dev` on Debian, Ubuntu, etc
+
 ##### Supported desktop environments are:
 - GNOME Shell 3.18 or later
 - Unity 7.4 or later
