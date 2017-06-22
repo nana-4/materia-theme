@@ -47,6 +47,9 @@ $alt_base_color:   if($variant == 'light', $grey_50,  mix($base_color, $bg_color
 $lighter_bg_color: if($variant == 'light', $grey_50,  fade($blue_grey_500));
 $darker_bg_color:  if($variant == 'light', $grey_200, fade($blue_grey_900));
 
+$osd_bg_color:         rgba($base_color, $higher_opacity);
+$lighter_osd_bg_color: rgba($lighter_bg_color, $higher_opacity);
+
 $titlebar_bg_color:     if($titlebar == 'dark', if($variant == 'light', $blue_grey_700, $blue_grey_800), $grey_300);
 $alt_titlebar_bg_color: if($titlebar == 'dark', $blue_grey_800, mix($grey_300, $grey_400, 50%));
 $panel_bg_color:        if($titlebar == 'dark', $blue_grey_900, rgba($black, $middle_opacity));

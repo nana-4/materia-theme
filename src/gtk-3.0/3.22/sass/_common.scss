@@ -183,7 +183,7 @@ assistant {
   }
 }
 
-%osd, .osd { opacity: $higher_opacity; }
+%osd, .osd { background-color: $lighter_osd_bg_color; }
 
 
 /*********************
@@ -969,7 +969,7 @@ toolbar {
     padding: $container_padding;
     border-radius: 2px;
     box-shadow: $shadow_2, inset 0 1px $highlight_color;
-    background-color: $base_color;
+    background-color: $osd_bg_color;
 
     &:backdrop { box-shadow: $shadow_1, inset 0 1px $highlight_color; }
 
@@ -1944,7 +1944,7 @@ scrollbar {
     }
 
     &.dragging,
-    &.hovering { background-color: rgba($base_color, $higher_opacity); }
+    &.hovering { background-color: $osd_bg_color; }
   }
 
   &.horizontal slider { min-width: $_slider_min_length; }
@@ -2564,7 +2564,7 @@ progressbar {
   &.osd { // progressbar.osd used for epiphany page loading progress
     // min-width: $bar_size;
     // min-height: $bar_size;
-    // background-color: transparent;
+    background-color: transparent;
 
     // trough { background-color: transparent; }
 
@@ -2770,8 +2770,6 @@ row {
  * App Notifications *
  *********************/
 .app-notification {
-  @extend %osd;
-
   @extend toolbar.osd;
 
   margin: 8px;
@@ -3127,10 +3125,8 @@ tooltip {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
     box-shadow: inset 0 1px $highlight_color;
-    background-color: rgba($base_color, $higher_opacity);
+    background-color: $osd_bg_color;
   }
-
-  // @extend %osd;
 
   // padding: 4px; /* not working */
   border-radius: 2px;
@@ -3282,7 +3278,7 @@ colorchooser .popover.osd {
   transition: $shadow_transition;
   border-radius: 2px;
   box-shadow: $shadow_2, inset 0 1px $highlight_color;
-  background-color: $base_color;
+  background-color: $osd_bg_color;
 
   &:backdrop { box-shadow: $shadow_1, inset 0 1px $highlight_color; }
 
