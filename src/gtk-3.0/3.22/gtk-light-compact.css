@@ -1141,7 +1141,7 @@ notebook > stack:not(:only-child) button.combo:disabled, .raven .raven-backgroun
  ************/
 toolbar {
   -GtkWidget-window-dragging: true;
-  padding: 3px;
+  padding: 2px;
   background-color: #F5F5F5;
 }
 
@@ -1165,19 +1165,19 @@ toolbar.osd.left, .left.app-notification, frame.left.documents-dropdown, toolbar
   border-radius: 0;
 }
 
-toolbar.horizontal separator {
-  margin: 3px;
+toolbar.horizontal > separator {
+  margin: 2px;
 }
 
-toolbar.vertical separator {
-  margin: 3px;
+toolbar.vertical > separator {
+  margin: 2px;
 }
 
 toolbar:not(.inline-toolbar):not(.osd) scale,
 toolbar:not(.inline-toolbar):not(.osd) entry,
 toolbar:not(.inline-toolbar):not(.osd) spinbutton,
 toolbar:not(.inline-toolbar):not(.osd) button {
-  margin: 3px;
+  margin: 2px;
 }
 
 toolbar:not(.inline-toolbar):not(.osd) .linked entry:not(:first-child),
@@ -1192,8 +1192,13 @@ toolbar:not(.inline-toolbar):not(.osd) .linked button:not(:last-child) {
   margin-right: 0;
 }
 
+toolbar:not(.inline-toolbar):not(.osd) spinbutton entry,
+toolbar:not(.inline-toolbar):not(.osd) spinbutton button {
+  margin: 0;
+}
+
 toolbar:not(.inline-toolbar):not(.osd) switch {
-  margin: 9px 3px;
+  margin: 8px 2px;
 }
 
 .inline-toolbar {

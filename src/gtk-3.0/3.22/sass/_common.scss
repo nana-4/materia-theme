@@ -955,7 +955,7 @@ combobox {
  ************/
 toolbar {
   -GtkWidget-window-dragging: true;
-  padding: $container_padding / 2;
+  padding: 2px;
   background-color: $bg_color;
 
   button { @extend %button_basic.flat; }
@@ -980,14 +980,14 @@ toolbar {
   }
 
   // toolbar separators
-  &.horizontal separator { margin: $container_padding / 2; }
-  &.vertical separator { margin: $container_padding / 2; }
+  &.horizontal > separator { margin: 2px; }
+  &.vertical > separator { margin: 2px; }
 
   &:not(.inline-toolbar):not(.osd) {
     scale,
     entry,
     spinbutton,
-    button { margin: $container_padding / 2; }
+    button { margin: 2px; }
 
     .linked entry,
     .linked spinbutton,
@@ -996,7 +996,12 @@ toolbar {
       &:not(:last-child) { margin-right: 0; }
     }
 
-    switch { margin: ($container_padding / 2 + $container_padding) ($container_padding / 2); }
+    spinbutton {
+      entry,
+      button { margin: 0; }
+    }
+
+    switch { margin: 2px + $container_padding 2px; }
   }
 }
 
@@ -1163,7 +1168,7 @@ headerbar {
   .tiled &,
   .maximized &,
   .fullscreen & {
-    border-radius: 0; // squared corners when the window is fullscreen, maximized or tiled
+    border-radius: 0; // squared corners when the window is maximized, tiled, or fullscreen
     box-shadow: $shadow_1;
   }
 
