@@ -1131,8 +1131,8 @@ StScrollBar {
             color: $fg_color;
             icon-size: 16px;
             -st-icon-style: requested;
-            padding: 4px 0px 4px 4px;
-            &:rtl { padding: 4px 4px 4px 0px; }
+            margin: 4px 0px 4px 4px;
+            &:rtl { margin: 4px 4px 4px 0px; }
           }
 
           .message-secondary-bin {
@@ -1202,7 +1202,8 @@ StScrollBar {
 
           .media-message-cover-icon {
             icon-size: 32px !important;
-            margin: 8px 0;
+            margin: 8px 0px 8px 4px !important;
+            &:rtl { margin: 8px 4px 8px 0px !important; }
             &.fallback {
               icon-size: 16px !important;
               padding: 8px;
