@@ -6,23 +6,6 @@
   <rect sodipodi:insensitive="true" width="200" height="480" fill="url(#color-bg)"/>
 
   <defs>
-    <filter id="1" color-interpolation-filters="sRGB" x="0" y="0" width="1" height="1">
-      <!-- <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.12"/> -->
-      <!-- <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.24"/> -->
-
-      <feFlood flood-color="#000000" flood-opacity="0.12" result="flood"/>
-      <feComposite operator="in" in="flood" in2="SourceGraphic" result="composite1"/>
-      <feGaussianBlur stdDeviation="1.5" in="composite1" result="blur"/>
-      <feOffset dx="0" dy="1" result="offset"/>
-      <feComposite in="SourceGraphic" in2="offset" result="fbSourceGraphic"/>
-
-      <feFlood flood-color="#000000" flood-opacity="0.24" result="flood"/>
-      <feComposite operator="in" in="flood" in2="fbSourceGraphic" result="composite1"/>
-      <feGaussianBlur stdDeviation="1" in="composite1" result="blur"/>
-      <feOffset dx="0" dy="1" result="offset"/>
-      <feComposite in="fbSourceGraphic" in2="offset" result="composite2"/>
-    </filter>
-
     <linearGradient id="color-fg">
       <stop stop-color="#000000" stop-opacity="0.87"/>
     </linearGradient>
@@ -74,6 +57,23 @@
     <linearGradient id="color-border">
       <stop stop-color="#000000" stop-opacity="0.12"/>
     </linearGradient>
+
+    <filter id="1" color-interpolation-filters="sRGB" x="0" y="0" width="1" height="1">
+      <!-- <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.12"/> -->
+      <!-- <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.24"/> -->
+
+      <feFlood flood-color="#000000" flood-opacity="0.12" result="flood"/>
+      <feComposite operator="in" in="flood" in2="SourceGraphic" result="composite1"/>
+      <feGaussianBlur stdDeviation="1.5" in="composite1" result="blur"/>
+      <feOffset dx="0" dy="1" result="offset"/>
+      <feComposite in="SourceGraphic" in2="offset" result="fbSourceGraphic"/>
+
+      <feFlood flood-color="#000000" flood-opacity="0.24" result="flood"/>
+      <feComposite operator="in" in="flood" in2="fbSourceGraphic" result="composite1"/>
+      <feGaussianBlur stdDeviation="1" in="composite1" result="blur"/>
+      <feOffset dx="0" dy="1" result="offset"/>
+      <feComposite in="fbSourceGraphic" in2="offset" result="composite2"/>
+    </filter>
 
     <rect id="1x1" width="1" height="1"/>
     <rect id="2x2" width="2" height="2"/>
