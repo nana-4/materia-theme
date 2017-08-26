@@ -20,11 +20,30 @@ fi
 
 echo
 
-for color in '' '-dark' '-light' ; do
-  for size in '' '-compact' ; do
+themedir_base_fallback=${destdir}/usr/share/themes/Flat-Plat
+themedir_base=${THEME_DIR_BASE:-$themedir_base_fallback}
+
+_COLOR_VARIANTS=(
+	''
+	'-dark'
+	'-light'
+)
+if [ ! -z "${COLOR_VARIANTS:-}" ] ; then
+	IFS=', ' read -r -a _COLOR_VARIANTS <<< "${COLOR_VARIANTS:-}"
+fi
+_SIZE_VARIANTS=(
+	''
+	'-compact'
+)
+if [ ! -z "${SIZE_VARIANTS:-}" ] ; then
+	IFS=', ' read -r -a _SIZE_VARIANTS <<< "${SIZE_VARIANTS:-}"
+fi
+
+for color in "${_COLOR_VARIANTS[@]}" ; do
+  for size in "${_SIZE_VARIANTS[@]}" ; do
     echo Installing Flat-Plat${color}${size} ...
 
-    themedir=${destdir}/usr/share/themes/Flat-Plat${color}${size}
+    themedir=${themedir_base}${color}${size}
     install -d ${themedir}
 
     # Copy COPYING
