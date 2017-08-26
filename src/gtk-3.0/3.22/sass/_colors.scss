@@ -50,7 +50,7 @@ $darker_bg_color:  if($variant == 'light', $grey_200, fade($blue_grey_900));
 $titlebar_bg_color:     if($titlebar == 'dark', if($variant == 'light', $blue_grey_700, $blue_grey_800), $grey_300);
 $alt_titlebar_bg_color: if($titlebar == 'dark', $blue_grey_800, mix($grey_300, $grey_400, 50%));
 $panel_bg_color:        if($titlebar == 'dark', $blue_grey_900, rgba($black, $middle_opacity));
-$unity_panel_bg_color:  if($titlebar == 'dark', $blue_grey_900, mix($grey_300, $grey_400, 50%));
+$unity_panel_bg_color:  if($titlebar == 'dark', $blue_grey_900, mix($grey_300, $grey_400, 50%)); // translucent colors cannot be used for Unity and MATE panels
 $alt_panel_bg_color:    rgba($black, $lower_opacity);
 
 $fill_color:      gtkalpha(currentColor, $lower_opacity);
@@ -82,11 +82,11 @@ $border_color:             if($variant == 'light', rgba($black, 0.12), rgba($bla
 $highlight_color:          if($variant == 'light', rgba($white, 0.4),  rgba($white, 0.1));
 $titlebar_highlight_color: if($titlebar == 'dark', rgba($white, 0.1),  rgba($white, 0.4));
 $unity_highlight_color:    if($titlebar == 'dark', rgba($white, 0.1),  rgba($white, 0.2));
-$alt_highlight_color:      rgba($white, 0.2);
+$alt_highlight_color:      rgba($white, 0.2); // for selection-mode headerbar which colored with primary color
 $titlebar_indicator_color: if($titlebar == 'dark', currentColor, $primary_color);
 
-// FIXME: @placeholder_text_color should really use $tertiary_fg_color, but
-// doesn't work translucent colors here. So we use an opaque color instead.
+// FIXME: gtk's @placeholder_text_color API really should use $secondary_fg_color,
+// but it doesn't work with translucent colors. So we use opaque colors instead.
 $placeholder_text_color: if($variant == 'light',
                             mix($black, $base_color, percentage(0.54)),
                             mix($white, $base_color, percentage(0.7)));
