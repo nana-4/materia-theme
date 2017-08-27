@@ -1,4 +1,6 @@
 #!/bin/bash
+set -ueo pipefail
+#set -x
 
 repodir=$(cd $(dirname $0) && pwd)
 srcdir=${repodir}/src
@@ -20,7 +22,7 @@ fi
 
 echo
 
-themedir_base_fallback=${destdir}/usr/share/themes/Flat-Plat
+themedir_base_fallback=${destdir:-}/usr/share/themes/Flat-Plat
 themedir_base=${THEME_DIR_BASE:-$themedir_base_fallback}
 
 _COLOR_VARIANTS=(
@@ -44,6 +46,9 @@ for color in "${_COLOR_VARIANTS[@]}" ; do
     echo Installing Flat-Plat${color}${size} ...
 
     themedir=${themedir_base}${color}${size}
+	if [[ -d ${themedir} ]] ; then
+		rm -r ${themedir}
+	fi
     install -d ${themedir}
 
     # Copy COPYING
@@ -141,7 +146,7 @@ for color in "${_COLOR_VARIANTS[@]}" ; do
         cp -ur \
           gtk${color}.css \
           ${themedir}/gtk-3.0/gtk.css
-        if [ "$color" != '-dark' ] ; then
+        if [ "$color" != '-dark' ] && [ -f gtk-dark.css ]; then
           cp -ur \
             gtk-dark.css \
             ${themedir}/gtk-3.0
@@ -155,7 +160,7 @@ for color in "${_COLOR_VARIANTS[@]}" ; do
         cp -ur \
           gtk${color}${size}.css \
           ${themedir}/gtk-${version}/gtk.css
-        if [ "$color" != '-dark' ] ; then
+        if [ "$color" != '-dark' ] && [ -f gtk-dark.css ]; then
           cp -ur \
             gtk-dark${size}.css \
             ${themedir}/gtk-${version}/gtk-dark.css
