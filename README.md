@@ -3,6 +3,8 @@ Flat-Plat
 Flat-Plat is a [Material Design](https://material.io)-like theme for GNOME/GTK+ based desktop environments.  
 It supports GTK3, GTK2, Metacity, GNOME Shell, Unity, Budgie, MATE, LightDM, GDM, Chrome theme, etc.
 
+Also Flat-Plat has compatibility with [oomox](https://github.com/actionless/oomox).
+
 Features
 --------
 <img src="../images/Button.gif" alt="Button" align="right"/>
@@ -128,5 +130,6 @@ Credits
 - The included symbolic icons are based on [Material Design icons](https://github.com/google/material-design-icons) by Google.
 - Chrome/Chromium scrollbars extension was forked from [Adwaita-chrome-scrollbar](https://github.com/gnome-integration-team/chrome-gnome-scrollbar) by GNOME Integration Team.
 - The original concept is Google's [Material Design](https://material.io).
+- Yauhen Kirylau (@actionless) who is oomox author polished scripts and supported Flat-Plat with [oomox](https://github.com/actionless/oomox).
 
 Also thank you for every upstream developers and all contributors.
