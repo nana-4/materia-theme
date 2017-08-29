@@ -7,20 +7,20 @@ srcdir=${repodir}/src
 
 
 if [[ $(which gnome-shell > /dev/null) ]] ; then
-	gnomever_major=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 1)
-	gnomever_minor=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 2)
+  gnomever_major=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 1)
+  gnomever_minor=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 2)
 
-	if [ -z $gnomever_minor ]; then
-	  gnomever=3.18
-	elif [ -e ${srcdir}/gnome-shell/$gnomever_major.$gnomever_minor ]; then
-	  gnomever=$gnomever_major.$gnomever_minor
-	elif [ -e ${srcdir}/gnome-shell/$gnomever_major.$(($gnomever_minor + 1)) ]; then
-	  gnomever=$gnomever_major.$(($gnomever_minor + 1))
-	elif [ -e ${srcdir}/gnome-shell/$gnomever_major.$(($gnomever_minor - 1)) ]; then
-	  gnomever=$gnomever_major.$(($gnomever_minor - 1))
-	else
-	  gnomever=3.18
-	fi
+  if [ -z $gnomever_minor ]; then
+    gnomever=3.18
+  elif [ -e ${srcdir}/gnome-shell/$gnomever_major.$gnomever_minor ]; then
+    gnomever=$gnomever_major.$gnomever_minor
+  elif [ -e ${srcdir}/gnome-shell/$gnomever_major.$(($gnomever_minor + 1)) ]; then
+    gnomever=$gnomever_major.$(($gnomever_minor + 1))
+  elif [ -e ${srcdir}/gnome-shell/$gnomever_major.$(($gnomever_minor - 1)) ]; then
+    gnomever=$gnomever_major.$(($gnomever_minor - 1))
+  else
+    gnomever=3.18
+  fi
 else
   gnomever=3.18
 fi
@@ -31,19 +31,19 @@ themedir_base_fallback=${destdir:-}/usr/share/themes/Flat-Plat
 themedir_base=${THEME_DIR_BASE:-$themedir_base_fallback}
 
 _COLOR_VARIANTS=(
-	''
-	'-dark'
-	'-light'
+  ''
+  '-dark'
+  '-light'
 )
 if [ ! -z "${COLOR_VARIANTS:-}" ] ; then
-	IFS=', ' read -r -a _COLOR_VARIANTS <<< "${COLOR_VARIANTS:-}"
+  IFS=', ' read -r -a _COLOR_VARIANTS <<< "${COLOR_VARIANTS:-}"
 fi
 _SIZE_VARIANTS=(
-	''
-	'-compact'
+  ''
+  '-compact'
 )
 if [ ! -z "${SIZE_VARIANTS:-}" ] ; then
-	IFS=', ' read -r -a _SIZE_VARIANTS <<< "${SIZE_VARIANTS:-}"
+  IFS=', ' read -r -a _SIZE_VARIANTS <<< "${SIZE_VARIANTS:-}"
 fi
 
 for color in "${_COLOR_VARIANTS[@]}" ; do
@@ -51,9 +51,9 @@ for color in "${_COLOR_VARIANTS[@]}" ; do
     echo Installing Flat-Plat${color}${size} ...
 
     themedir=${themedir_base}${color}${size}
-	if [[ -d ${themedir} ]] ; then
-		rm -r ${themedir}
-	fi
+    if [[ -d ${themedir} ]] ; then
+      rm -r ${themedir}
+    fi
     install -d ${themedir}
 
     # Copy COPYING
@@ -232,3 +232,5 @@ done
 
 echo
 echo Done.
+
+# vim: set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab:
