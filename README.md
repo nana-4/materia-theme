@@ -114,11 +114,11 @@ Any contribution will be much appreciated.
 
 Planned Features
 ----------------
-- Supports of Xfce theme
-- Supports of Firefox theme ([in progress](https://github.com/nana-4/Flat-Plat/issues/78))
-- Supports of overlay scrollbars for Chrome/Chromium extension
-- GNOME Terminal color pallet (if possible)
-- Material Design like cursor theme
+- Supports of Xfce theme (waiting for the upstream to complete `gtk3` port)
+- Supports of Firefox theme ([in progress](https://github.com/nana-4/Flat-Plat/issues/78), waiting for [the upstream to provide next-gen themes](https://blog.mozilla.org/addons/2017/02/24/improving-themes-in-firefox/))
+- Supports of overlay scrollbars for Chrome/Chromium extension (low priority)
+- GNOME Terminal color pallet (if possible, _help wanted_)
+- Material Design like cursor theme (low priority)
 
 License
 -------
