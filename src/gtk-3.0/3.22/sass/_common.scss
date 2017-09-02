@@ -3459,3 +3459,61 @@ stackswitcher button.text-button.circular { // FIXME aggregate with buttons
   min-height: $medium_size;
   padding: 0;
 }
+
+popover.emoji-picker {
+  padding: 0;
+
+  entry {
+    border-bottom: 1px solid $border_color;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: none;
+  }
+
+  scrolledwindow { border-bottom: 1px solid $border_color; }
+}
+
+// mimic tab style
+button.emoji-section {
+  margin-top: -1px;
+  padding: 0 8px;
+  min-width: 24px;
+  min-height: $medium_size;
+  border-radius: 0;
+  outline-offset: -6px;
+  box-shadow: none;
+
+  &:hover { box-shadow: inset 0 2px $track_color; }
+
+  &:active {
+    box-shadow: inset 0 2px $primary_color;
+    background-image: radial-gradient(circle farthest-corner at center,
+                                      rgba($primary_color, 0.7) 10%,
+                                      transparent 0%);
+  }
+
+  &:checked {
+    box-shadow: inset 0 2px $primary_color;
+    background-color: transparent;
+  }
+
+  &:first-child { margin-left: 4px; }
+
+  &:last-child { margin-right: 4px; }
+}
+
+.emoji {
+  min-width: 3em;
+  min-height: 3em;
+  padding: 0;
+  // font-size: large;
+
+  // FIXME: .emoji:hover doesn't work?
+  // &:hover { font-size: larger; }
+
+  widget {
+    transition: $shorter_transition;
+
+    &:hover { font-size: larger; }
+  }
+}
