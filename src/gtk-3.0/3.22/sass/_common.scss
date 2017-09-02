@@ -1030,7 +1030,7 @@ searchbar,
  ***************/
 %titlebar,
 headerbar {
-  transition: background-color $shorter_duration $deceleration_curve;
+  transition: background-color $shorter_duration $deceleration_curve, color $longer_duration $deceleration_curve;
   min-height: $large_size;
   padding: 0 $container_padding;
   box-shadow: $shadow_1, inset 0 1px $titlebar_highlight_color;
@@ -1046,13 +1046,11 @@ headerbar {
   }
 
   .title {
-    transition: $longer_transition;
     padding: 0 12px;
     font-weight: bold;
   }
 
   .subtitle {
-    transition: $longer_transition;
     padding: 0 12px;
     font-size: smaller;
 
@@ -1111,7 +1109,7 @@ headerbar {
   &.selection-mode {
     // FIXME: 0.00001s is workaround for transition bug of gtk+ 3.22
     // see https://bugzilla.gnome.org/show_bug.cgi?id=774064
-    transition: background-color 0.00001s $longer_duration;
+    transition: background-color 0.00001s $longer_duration, color $longer_duration $deceleration_curve;
     animation: header_ripple_effect $longer_duration $deceleration_curve;
     box-shadow: $shadow_1, inset 0 1px $alt_highlight_color;
     background-color: $primary_color;
