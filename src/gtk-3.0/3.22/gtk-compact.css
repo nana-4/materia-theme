@@ -2919,14 +2919,28 @@ progressbar trough.empty progress {
 /*************
  * Level Bar *
  *************/
-levelbar block {
-  min-width: 32px;
+levelbar.horizontal block {
   min-height: 4px;
+}
+
+levelbar.horizontal.discrete block {
+  min-width: 32px;
+}
+
+levelbar.horizontal.discrete block:not(:last-child) {
+  margin-right: 2px;
 }
 
 levelbar.vertical block {
   min-width: 4px;
+}
+
+levelbar.vertical.discrete block {
   min-height: 32px;
+}
+
+levelbar.vertical.discrete block:not(:last-child) {
+  margin-bottom: 2px;
 }
 
 levelbar trough {
@@ -2938,22 +2952,6 @@ levelbar trough {
 
 levelbar trough:disabled {
   background-color: #FAFAFA;
-}
-
-levelbar.horizontal.discrete block {
-  margin: 0 1px;
-}
-
-levelbar.horizontal.discrete trough {
-  padding: 2px 1px;
-}
-
-levelbar.vertical.discrete block {
-  margin: 1px 0;
-}
-
-levelbar.vertical.discrete trough {
-  padding: 1px 2px;
 }
 
 levelbar block.low {

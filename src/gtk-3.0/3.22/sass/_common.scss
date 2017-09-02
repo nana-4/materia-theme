@@ -2582,14 +2582,24 @@ progressbar {
  * Level Bar *
  *************/
 levelbar {
-  block {
-    min-width: $medium_size;
-    min-height: $bar_size;
+  &.horizontal {
+    block { min-height: $bar_size; }
+
+    &.discrete block {
+      min-width: $medium_size;
+
+      &:not(:last-child) { margin-right: 2px; }
+    }
   }
 
-  &.vertical block {
-    min-width: $bar_size;
-    min-height: $medium_size;
+  &.vertical {
+    block { min-width: $bar_size; }
+
+    &.discrete block {
+      min-height: $medium_size;
+
+      &:not(:last-child) { margin-bottom: 2px; }
+    }
   }
 
   // imitate the entry style
@@ -2600,18 +2610,6 @@ levelbar {
     background-color: $base_color;
 
     &:disabled { background-color: $alt_base_color; }
-  }
-
-  &.horizontal.discrete {
-    block { margin: 0 1px; }
-
-    trough { padding: 2px 1px; }
-  }
-
-  &.vertical.discrete {
-    block { margin: 1px 0; }
-
-    trough { padding: 1px 2px; }
   }
 
   block {
