@@ -116,6 +116,81 @@ window.background:not(.csd) {
 }
 
 
+/************
+ * Inkscape *
+ ************/
+#ToolboxCommon {
+  > #AuxToolbox {
+    #StyleSwatch { font-size: smaller; }
+
+    #Kludge { padding: 0; }
+
+    spinbutton,
+    entry { min-height: 32px; }
+
+    button:not(.up):not(.down) {
+      min-height: 24px;
+      min-width: 16px;
+      padding: 4px 8px;
+      border-radius: 2px;
+      -gtk-outline-radius: 2px;
+    }
+
+    spinbutton button { border-width: 4px; }
+  }
+
+  > toolbar.vertical {
+    margin-top: -4px;
+
+    button {
+      min-height: 24px;
+      min-width: 24px;
+      padding: 4px;
+      border-radius: 2px;
+      -gtk-outline-radius: 2px;
+    }
+  }
+}
+
+#CanvasTable {
+  button {
+    min-height: 16px;
+    min-width: 16px;
+    padding: 0;
+  }
+
+  #HorizontalScrollbar { border-top: 1px solid $border_color; }
+
+  #VerticalScrollbar {
+    &:dir(ltr) { border-left: 1px solid $border_color; }
+
+    &:dir(rtl) { border-right: 1px solid $border_color; }
+  }
+}
+
+#Canvas_and_Dock {
+  frame > border { border: none; }
+
+  // each canvases' titlebar
+  widget > widget {
+    > button.flat {
+      min-height: 16px;
+      min-width: 16px;
+      padding: 4px;
+    }
+
+    > box.horizontal image { padding: 4px; }
+  }
+
+  // vertical dock buttons
+  box.horizontal > box.vertical > button.flat {
+    min-height: 16px;
+    min-width: 24px;
+    padding: 8px 4px;
+  }
+}
+
+
 /***********
  * Synapse *
  ***********/
