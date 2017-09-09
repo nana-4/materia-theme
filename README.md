@@ -1,7 +1,7 @@
 Flat-Plat
 =========
 Flat-Plat is a [Material Design](https://material.io)-like theme for GNOME/GTK+ based desktop environments.  
-It supports GTK3, GTK2, Metacity, GNOME Shell, Unity, Budgie, MATE, LightDM, GDM, Chrome theme, etc.
+It supports GTK+ 3, GTK+ 2, Metacity, GNOME Shell, Unity, Budgie, MATE, LightDM, GDM, Chrome theme, etc.
 
 Also Flat-Plat has compatibility with [oomox](https://github.com/actionless/oomox).
 
@@ -9,64 +9,63 @@ Features
 --------
 <img src="../images/Button.gif" alt="Button" align="right"/>
 
-- Supports ripple effect animations (only GTK3 apps).
+- Supports ripple effect animations for GTK+ 3.
 - Supports both light and dark variants.
 - Supports dark or light titlebar versions.
 - Supports compact version for low resolution.
-- Supports [Dash to Dock](https://github.com/micheleg/dash-to-dock) extension's theming.
-- Supports [Workspaces to Dock](https://github.com/passingthru67/workspaces-to-dock) extension's theming.
-- Supports Chrome/Chromium theme and scrollbars extension.
-- Appears more beautifully when you use a font family including `Medium` and `Light` weights.
 
 Requirements
 ------------
-- GTK+ 3.18 or later
+- GTK+ `>=3.18`
 - `gnome-themes-standard`
 - pixmap (or pixbuf) engine
 - murrine engine
 
-##### Build dependency:
+#### Build dependency
 - `glib2` on Arch Linux
 - `glib2-devel` on Fedora, openSUSE, etc
 - `libglib2.0-dev` on Debian, Ubuntu, etc
 
-##### Supported desktop environments are:
-- GNOME Shell 3.18 or later
-- Unity 7.4 or later
-- Budgie 10.2.5 or later
-- MATE 1.14 or later
+#### Supported desktop environments
+- GNOME Shell `>=3.18`
+- Unity `>=7.4`
+- Budgie `>=10.2.5`
+- MATE `>=1.14`
 
 Installation
 ------------
-Arch Linux users can install from the [AUR package](https://aur.archlinux.org/packages/flatplat-theme) maintained by @cthbleachbit.
+For **Arch Linux**, the [AUR package](https://aur.archlinux.org/packages/flatplat-theme) maintained by @cthbleachbit is available.
 
-Fedora and EPEL users can also install from a [Copr repository](https://copr.fedorainfracloud.org/coprs/tcg/themes/).
+For **Fedora** or **EPEL**, the [Copr repository](https://copr.fedorainfracloud.org/coprs/tcg/themes/) maintained by @LaurentTreguier is available.
 
-### Manual Installation
-1. Open the terminal and run the following commands:
+#### Manual Installation
+Run the following commands in the terminal.
 
-  ```sh
-  cd /tmp
-  curl -sL https://github.com/nana-4/Flat-Plat/archive/v20170605.tar.gz | tar xz
-  cd Flat-Plat-20170605 && sudo ./install.sh
-  ```
+```sh
+cd /tmp && curl -sL https://github.com/nana-4/Flat-Plat/archive/v20170605.tar.gz | tar xz
+cd Flat-Plat-20170605
+sudo ./install.sh
+```
 
-2. Select the theme using `gnome-tweak-tool` or other suitable tools.
+#### Manual Uninstallation
+Delete the installed directories.
 
-3. Optionally;
-  - Set the font size to `9.75` (= 13px at 96dpi) or `10.5` (= 14px at 96dpi).
-  - Open the `chrome` folder on `/usr/share/themes/Flat-Plat`* and drag and drop the `.crx` files onto the Chrome/Chromium _Extensions_ page.
+```sh
+sudo rm -rf /usr/share/themes/Flat-Plat{,-compact,-dark,-dark-compact,-light,-light-compact}
+```
 
-### Manual Uninstallation
-- Delete the installed directories.
+Recommendations
+---------------
+#### Font
+- Use a font family including `Medium` weight (like [Roboto](https://github.com/google/roboto) or [M+](https://mplus-fonts.osdn.jp)) to properly display the theme.
+- Set the font size to `9.75` (= 13px at 96dpi) or `10.5` (= 14px at 96dpi).
 
-  ```sh
-  sudo rm -rf /usr/share/themes/Flat-Plat{,-compact,-dark,-dark-compact,-light,-light-compact}
-  ```
+#### Chrome Theme
+To use the Chrome theme, open the `chrome` folder on `/usr/share/themes/Flat-Plat<-variant>` and drag and drop the `.crx` files onto the Chrome/Chromium _Extensions_ page.
 
-GDM (Lock/Login Screen)
------------------------
-You can change the GDM theme by replacing the default GNOME Shell theme.  
+GDM Theme
+---------
+You can change the GDM theme (a.k.a. lock/login screen) by replacing the default GNOME Shell theme.  
 However, if it fails, the desktop environment may not operate correctly. So please **be careful** if doing this.
 
 #### :warning: Cautions:
@@ -74,17 +73,17 @@ However, if it fails, the desktop environment may not operate correctly. So plea
 - If GNOME Shell has been updated, it will be restored to the original theme, so you will need to install this again.
 
 ### Installation
-1. Select a GTK+ theme, then run the following commands to back up and replace the existing theme file.
+1. Select a **GTK+** theme to decide which variant to install.
+2. Run the following commands to back up and replace the default theme file.
 
   ```sh
   GTK_THEME=$(gsettings get org.gnome.desktop.interface gtk-theme | sed "s/'//g")
   sudo cp -v --backup /usr/share{/themes/$GTK_THEME,}/gnome-shell/gnome-shell-theme.gresource
   ```
 
-  > _Developer note:_  
-  > If you don't want to overwrite the backup on the second and subsequent runs, delete the `--backup` option.
+  > **Note:** If you don't want to overwrite the backup on the second and subsequent runs, delete the `--backup` option.
 
-2. Restart GNOME Shell. (If you are running _GNOME on Xorg_, press <kbd>Alt</kbd> + <kbd>F2</kbd> then type `r`.)
+3. Restart GNOME Shell. (If you are running _GNOME on Xorg_, press <kbd>Alt</kbd> + <kbd>F2</kbd> then type `r`.)
 
 ### Uninstallation
 1. Restore to the original theme from the backup.
@@ -101,10 +100,8 @@ Preview
 ![GNOME Shell](../images/gnome.png?raw=true)
 ##### Budgie Desktop
 ![Budgie Desktop](../images/budgie.png?raw=true)
-##### GDM Lock Screen
-![GDM Lock Screen](../images/gdm-lock.png?raw=true)
-##### GDM Unlock Screen
-![GDM Unlock Screen](../images/gdm-unlock.png?raw=true)
+##### GDM
+![GDM](../images/gdm-unlock.png?raw=true)
 <sub>**Preview Details:** Icons: [Paper](https://github.com/snwh/paper-icon-theme) | Font: [M+ 1C](https://mplus-fonts.osdn.jp) 9.75pt | Dock's icon size: 48px + fixed | [Wallpapers](http://imgur.com/a/v2Ovx)</sub>
 
 Contributing
@@ -132,4 +129,4 @@ Credits
 - The original concept is Google's [Material Design](https://material.io).
 - Yauhen Kirylau (@actionless) who is oomox author polished scripts and supported Flat-Plat with [oomox](https://github.com/actionless/oomox).
 
-Also thank you for every upstream developers and all contributors.
+Also thank you for all contributors and upstream developers.
