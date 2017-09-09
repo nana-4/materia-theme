@@ -36,7 +36,16 @@ Installation
 ------------
 For **Arch Linux**, the [AUR package](https://aur.archlinux.org/packages/flatplat-theme) maintained by @cthbleachbit is available.
 
+```sh
+sudo yaourt -S flatplat-theme
+```
+
 For **Fedora** or **EPEL**, the [Copr repository](https://copr.fedorainfracloud.org/coprs/tcg/themes/) maintained by @LaurentTreguier is available.
+
+```sh
+sudo dnf copr enable tcg/themes
+sudo dnf install Flat-Plat-theme
+```
 
 #### Manual Installation
 Run the following commands in the terminal.
