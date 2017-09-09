@@ -227,9 +227,9 @@ if [[ ${GTK3_GENERATE_DARK} != "true" ]] ; then
 	rm ./src/gtk-3.0/3.{20,22}/gtk-dark-compact.scss
 	rm ./src/gtk-3.0/3.{18,20,22}/gtk-dark.scss
 fi
-#if [[ ${GTK2_HIDPI} == "true" ]] ; then
-	#mv ./gtk-2.0/gtkrc.hidpi ./gtk-2.0/gtkrc
-#fi
+if [[ ${GTK2_HIDPI} == "true" ]] ; then
+	mv ./src/gtk-2.0/main.rc.hidpi ./src/gtk-2.0/main.rc
+fi
 if [[ ${EXPORT_QT5CT} = 1 ]] ; then
 	config_home=${XDG_CONFIG_HOME:-}
 	if [[ -z "${config_home}" ]] ; then
@@ -256,7 +256,7 @@ rm ./src/gtk-3.0/gtk-common/assets/*.png || true
 
 echo "== Rendering GTK+2 assets..."
 cd ./src/gtk-2.0
-./render-assets.sh
+GTK2_HIDPI=${GTK2_HIDPI} ./render-assets.sh
 cd ../../
 
 echo "== Rendering GTK+3 assets..."
