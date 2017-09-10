@@ -2954,6 +2954,13 @@ stacksidebar {
 /****************
  * File chooser *
  ****************/
+// dim the sidebar icons, see bug #786613 for details on this oddity
+row {
+  image.sidebar-icon { color: $secondary_fg_color; }
+
+  &:selected image.sidebar-icon { color: $inverse_secondary_fg_color; }
+}
+
 placessidebar {
   > viewport.frame { border-style: none; }
 
@@ -2974,13 +2981,9 @@ placessidebar {
     &:disabled { color: $disabled_fg_color; }
 
     image.sidebar-icon {
-      color: $secondary_fg_color; // dim the device icons
-
       &:dir(ltr) { padding-right: 8px; }
       &:dir(rtl) { padding-left: 8px; }
     }
-
-    &:selected image.sidebar-icon { color: $inverse_secondary_fg_color; }
 
     label.sidebar-label {
       &:dir(ltr) { padding-right: 2px; }
@@ -3460,6 +3463,10 @@ stackswitcher button.text-button.circular { // FIXME aggregate with buttons
   padding: 0;
 }
 
+
+/*********
+ * Emoji *
+ *********/
 popover.emoji-picker {
   padding: 0;
 
@@ -3507,9 +3514,6 @@ button.emoji-section {
   min-height: 3em;
   padding: 0;
   // font-size: large;
-
-  // FIXME: .emoji:hover doesn't work?
-  // &:hover { font-size: larger; }
 
   widget {
     transition: $shorter_transition;
