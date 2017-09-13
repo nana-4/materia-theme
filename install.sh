@@ -6,7 +6,7 @@ repodir=$(cd $(dirname $0) && pwd)
 srcdir=${repodir}/src
 
 
-if [[ $(which gnome-shell > /dev/null) ]] ; then
+if [[ $(which gnome-shell 2> /dev/null) ]] ; then
   gnomever_major=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 1)
   gnomever_minor=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 2)
 
