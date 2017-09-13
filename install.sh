@@ -10,9 +10,7 @@ if [[ $(which gnome-shell 2> /dev/null) ]] ; then
   gnomever_major=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 1)
   gnomever_minor=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 2)
 
-  if [ -z $gnomever_minor ]; then
-    gnomever=3.18
-  elif [ -e ${srcdir}/gnome-shell/$gnomever_major.$gnomever_minor ]; then
+  if [ -e ${srcdir}/gnome-shell/$gnomever_major.$gnomever_minor ]; then
     gnomever=$gnomever_major.$gnomever_minor
   elif [ -e ${srcdir}/gnome-shell/$gnomever_major.$(($gnomever_minor + 1)) ]; then
     gnomever=$gnomever_major.$(($gnomever_minor + 1))
