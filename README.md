@@ -1,7 +1,7 @@
 Flat-Plat
 =========
 Flat-Plat is a [Material Design](https://material.io)-like theme for GNOME/GTK+ based desktop environments.  
-It supports GTK+ 3, GTK+ 2, Metacity, GNOME Shell, Unity, Budgie, MATE, LightDM, GDM, Chrome theme, etc.
+It supports GTK+ 3, GTK+ 2, GNOME Shell, Budgie, MATE, Unity, LightDM, GDM, Chrome theme, etc.
 
 Also Flat-Plat has compatibility with [oomox](https://github.com/actionless/oomox).
 
@@ -11,26 +11,25 @@ Features
 
 - Supports ripple effect animations for GTK+ 3.
 - Supports both light and dark variants.
-- Supports dark or light titlebar versions.
-- Supports compact version for low resolution.
+- Supports dark and light titlebar variants.
+- Supports compact variant for low resolution.
 
 Requirements
 ------------
 - GTK+ `>=3.18`
 - `gnome-themes-standard`
-- pixmap (or pixbuf) engine
 - murrine engine
+
+#### Supported desktop environments
+- GNOME Shell `>=3.18`
+- Budgie `>=10.2.5`
+- MATE `>=1.14`
+- Unity `>=7.4`
 
 #### Build dependency
 - `glib2` on Arch Linux
 - `glib2-devel` on Fedora, openSUSE, etc
 - `libglib2.0-dev` on Debian, Ubuntu, etc
-
-#### Supported desktop environments
-- GNOME Shell `>=3.18`
-- Unity `>=7.4`
-- Budgie `>=10.2.5`
-- MATE `>=1.14`
 
 Installation
 ------------
@@ -66,7 +65,7 @@ sudo rm -rf /usr/share/themes/Flat-Plat{,-compact,-dark,-dark-compact,-light,-li
 Recommendations
 ---------------
 #### Font
-- Use a font family including `Medium` weight (like [Roboto](https://github.com/google/roboto) or [M+](https://mplus-fonts.osdn.jp)) to properly display the theme.
+- To properly display the theme, use a font family including `Medium` weight (like [Roboto](https://github.com/google/roboto) or [M+](https://mplus-fonts.osdn.jp)).
 - Set the font size to `9.75` (= 13px at 96dpi) or `10.5` (= 14px at 96dpi).
 
 #### Chrome Theme
@@ -74,7 +73,7 @@ To use the Chrome theme, open the `chrome` folder on `/usr/share/themes/Flat-Pla
 
 GDM Theme
 ---------
-You can change the GDM theme (a.k.a. lock/login screen) by replacing the default GNOME Shell theme.  
+You can change the GDM (lock/login screen) theme by replacing the default GNOME Shell theme.  
 However, if it fails, the desktop environment may not operate correctly. So please **be careful** if doing this.
 
 #### :warning: Cautions:
@@ -113,11 +112,6 @@ Preview
 ![GDM](../images/gdm-unlock.png?raw=true)
 <sub>**Preview Details:** Icons: [Paper](https://github.com/snwh/paper-icon-theme) | Font: [M+ 1C](https://mplus-fonts.osdn.jp) 9.75pt | Dock's icon size: 48px + fixed | [Wallpapers](http://imgur.com/a/v2Ovx)</sub>
 
-Contributing
-------------
-If you find bugs or have suggestions, please report it to the [issue tracker](https://github.com/nana-4/Flat-Plat/issues).  
-Any contribution will be much appreciated.
-
 Planned Features
 ----------------
 - Supports of Xfce theme (waiting for the upstream to complete `gtk3` port)
@@ -125,6 +119,11 @@ Planned Features
 - Supports of overlay scrollbars for Chrome/Chromium extension (low priority)
 - GNOME Terminal color pallet (if possible, _help wanted_)
 - Material Design like cursor theme (low priority)
+
+Contributing
+------------
+If you find bugs or have suggestions, please report it to the [issue tracker](https://github.com/nana-4/Flat-Plat/issues).  
+Any contribution will be much appreciated.
 
 License
 -------
