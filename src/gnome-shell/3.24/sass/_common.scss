@@ -1036,10 +1036,14 @@ StScrollBar {
       margin: 2px;
       border-radius: 100px;
       &:hover,&:focus { background-color: $divider_color; }
-      // &:active { background-color: $track_color; }
-      &:active, &:selected {
+      &:active {
+        color: inherit;
+        background-color: $track_color;
+        border-color: transparent; //avoid jumparound due to today
+      }
+      &:selected {
         color: $inverse_fg_color;
-        background-color: $primary_color !important;
+        background-color: $primary_color;
         border-color: transparent; //avoid jumparound due to today
       }
       &.calendar-day-heading {  //day of week heading
