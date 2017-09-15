@@ -835,7 +835,9 @@ StScrollBar {
 /* TOP BAR */
 
 #panel {
-  background-color: $panel_bg_color;
+  background-color: $bg_color;
+  /* transition from solid to transparent */
+  transition-duration: 300ms;
   font-weight: bold;
   height: $menuitem_size;
 
@@ -872,6 +874,7 @@ StScrollBar {
     -minimum-hpadding: 6px;
     font-weight: bold;
     color: $inverse_secondary_fg_color;
+    text-shadow: none;
     transition-duration: $longer_duration;
 
     .app-menu-icon {
@@ -881,8 +884,21 @@ StScrollBar {
       //dimensions of the icon are hardcoded
     }
 
+    .system-status-icon,
+    .app-menu-icon > StIcon,
+    .popup-menu-arrow {
+      icon-shadow: none;
+    }
+
     &:hover {
       color: $inverse_fg_color;
+      text-shadow: none;
+
+      .system-status-icon,
+      .app-menu-icon > StIcon,
+      .popup-menu-arrow {
+        icon-shadow: none;
+      }
     }
 
     &:active, &:overview, &:focus, &:checked {
@@ -915,6 +931,31 @@ StScrollBar {
   }
 
   .screencast-indicator { color: $warning_color; }
+
+  &.solid {
+    background-color: $panel_bg_color;
+    /* transition from transparent to solid */
+    transition-duration: 300ms;
+
+    .panel-corner {
+      -panel-corner-background-color: $panel_bg_color;
+    }
+
+    .panel-button {
+      color: $inverse_secondary_fg_color;
+      text-shadow: none;
+
+      &:hover {
+        color: $inverse_fg_color;
+      }
+    }
+
+    .system-status-icon,
+    .app-menu-icon > StIcon,
+    .popup-menu-arrow {
+      icon-shadow: none;
+    }
+  }
 }
 
   // calendar popover
