@@ -366,28 +366,28 @@ StScrollBar {
 
   .mount-dialog {
     spacing: 24px;
-  }
 
-  .mount-dialog-subject {
-    padding-top: 10px;
-    padding-left: 17px;
-    padding-bottom: 6px;
-    max-width: 34em;
-  }
+    .message-dialog-title {
+      padding-top: 10px;
+      padding-left: 17px;
+      padding-bottom: 6px;
+      max-width: 34em;
+    }
 
-  .mount-dialog-subject:rtl {
-    padding-left: 0px;
-    padding-right: 17px;
-  }
+    .message-dialog-title:rtl {
+      padding-left: 0px;
+      padding-right: 17px;
+    }
 
-  .mount-dialog-description {
-    padding-left: 17px;
-    width: 28em;
-  }
+    .message-dialog-body {
+      padding-left: 17px;
+      width: 28em;
+    }
 
-  .mount-dialog-description:rtl {
-    padding-left: 0px;
-    padding-right: 17px;
+    .message-dialog-body:rtl {
+      padding-left: 0px;
+      padding-right: 17px;
+    }
   }
 
   .mount-dialog-app-list {
@@ -425,21 +425,11 @@ StScrollBar {
   //this is the width of the entire modal popup
   width: 34em;
   border: none;
+
+  .message-dialog-main-layout { spacing: 24px; padding: 10px; }
+  .message-dialog-content { spacing: 16px; }
+  .message-dialog-title { @include font(title); color: $fg_color; }
 }
-
-  .prompt-dialog-main-layout {
-    spacing: 24px;
-    padding: 10px;
-  }
-
-  .prompt-dialog-message-layout {
-    spacing: 16px;
-  }
-
-  .prompt-dialog-headline {
-    @include font(title);
-    color: $fg_color;
-  }
 
   .prompt-dialog-description:rtl {
     text-align: right;
@@ -532,55 +522,10 @@ StScrollBar {
   spacing: 30px;
 }
 
-  .access-dialog-main-layout {
-    padding: 12px 20px 0;
-    spacing: 12px;
-  }
-
-  .access-dialog-content {
-    max-width: 28em;
-    spacing: 20px;
-  }
-
-  .access-dialog-icon {
-    min-width: 48px;
-    icon-size: 48px;
-  }
-
-  .access-dialog-title {
-    font-weight: bold;
-  }
-
-  .access-dialog-subtitle {
-    color: $hint_fg_color;
-    font-weight: bold;
-  }
-
 /* Geolocation Dialog */
 .geolocation-dialog {
   spacing: 30px;
 }
-
-  .geolocation-dialog-main-layout {
-    spacing: 12px;
-  }
-
-  .geolocation-dialog-content {
-    spacing: 20px;
-  }
-
-  .geolocation-dialog-icon {
-    icon-size: 48px;
-  }
-
-  .geolocation-dialog-title {
-    font-weight: bold;
-  }
-
-  .geolocation-dialog-reason {
-    color: $hint_fg_color;
-    font-weight: bold;
-  }
 
 /* Extension Dialog */
 .extension-dialog {
