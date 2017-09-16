@@ -86,9 +86,7 @@ for color in "${_COLOR_VARIANTS[@]}" ; do
     install -d ${themedir}/gnome-shell
     cd ${srcdir}/gnome-shell/${gnomever}
     cp -ur \
-      no-events.svg \
-      no-notifications.svg \
-      process-working.svg \
+      *.svg \
       ${themedir}/gnome-shell
     cp -urL \
       extensions \
