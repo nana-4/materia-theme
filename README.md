@@ -50,8 +50,8 @@ sudo dnf install Flat-Plat-theme
 Run the following commands in the terminal.
 
 ```sh
-cd /tmp && curl -sL https://github.com/nana-4/Flat-Plat/archive/v20170916.tar.gz | tar xz
-cd Flat-Plat-20170916
+cd /tmp && curl -sL https://github.com/nana-4/Flat-Plat/archive/v20170917.tar.gz | tar xz
+cd Flat-Plat-20170917
 sudo ./install.sh
 ```
 
