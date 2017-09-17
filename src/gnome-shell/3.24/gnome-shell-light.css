@@ -375,35 +375,11 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   padding-bottom: .4em;
 }
 
-.mount-dialog-subject,
+.show-processes-dialog-subject,
+.mount-question-dialog-subject,
 .end-session-dialog-subject {
   font-size: 15pt;
   font-weight: 500;
-}
-
-/* Message Dialog */
-.message-dialog-main-layout {
-  padding: 12px 20px 0;
-  spacing: 12px;
-}
-
-.message-dialog-content {
-  max-width: 28em;
-  spacing: 20px;
-}
-
-.message-dialog-icon {
-  min-width: 48px;
-  icon-size: 48px;
-}
-
-.message-dialog-title {
-  font-weight: bold;
-}
-
-.message-dialog-subtitle {
-  color: rgba(0, 0, 0, 0.54);
-  font-weight: bold;
 }
 
 /* End Session Dialog */
@@ -496,69 +472,76 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   icon-size: 48px;
 }
 
-.mount-dialog {
+.show-processes-dialog,
+.mount-question-dialog {
   spacing: 24px;
 }
 
-.mount-dialog .message-dialog-title {
+.show-processes-dialog-subject,
+.mount-question-dialog-subject {
   padding-top: 10px;
   padding-left: 17px;
   padding-bottom: 6px;
+}
+
+.mount-question-dialog-subject {
   max-width: 34em;
 }
 
-.mount-dialog .message-dialog-title:rtl {
+.show-processes-dialog-subject:rtl,
+.mount-question-dialog-subject:rtl {
   padding-left: 0px;
   padding-right: 17px;
 }
 
-.mount-dialog .message-dialog-body {
+.show-processes-dialog-description,
+.mount-question-dialog-description {
   padding-left: 17px;
   width: 28em;
 }
 
-.mount-dialog .message-dialog-body:rtl {
-  padding-left: 0px;
+.show-processes-dialog-description:rtl,
+.mount-question-dialog-description:rtl {
   padding-right: 17px;
 }
 
-.mount-dialog-app-list {
+.show-processes-dialog-app-list {
   max-height: 200px;
   padding-top: 24px;
   padding-left: 49px;
   padding-right: 32px;
 }
 
-.mount-dialog-app-list:rtl {
+.show-processes-dialog-app-list:rtl {
   padding-right: 49px;
   padding-left: 32px;
 }
 
-.mount-dialog-app-list-item {
+.show-processes-dialog-app-list-item {
   color: rgba(0, 0, 0, 0.87);
 }
 
-.mount-dialog-app-list-item:hover {
+.show-processes-dialog-app-list-item:hover {
   color: rgba(0, 0, 0, 0.87);
 }
 
-.mount-dialog-app-list-item:ltr {
+.show-processes-dialog-app-list-item:ltr {
   padding-right: 1em;
 }
 
-.mount-dialog-app-list-item:rtl {
+.show-processes-dialog-app-list-item:rtl {
   padding-left: 1em;
 }
 
-.mount-dialog-app-list-item-icon:ltr {
+.show-processes-dialog-app-list-item-icon:ltr {
   padding-right: 17px;
 }
 
-.mount-dialog-app-list-item-icon:rtl {
+.show-processes-dialog-app-list-item-icon:rtl {
   padding-left: 17px;
 }
 
-.mount-dialog-app-list-item-name {
+.show-processes-dialog-app-list-item-name {
   font-size: 1em;
 }
 
@@ -568,16 +551,16 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   border: none;
 }
 
-.prompt-dialog .message-dialog-main-layout {
+.prompt-dialog-main-layout {
   spacing: 24px;
   padding: 10px;
 }
 
-.prompt-dialog .message-dialog-content {
+.prompt-dialog-message-layout {
   spacing: 16px;
 }
 
-.prompt-dialog .message-dialog-title {
+.prompt-dialog-headline {
   font-size: 15pt;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.87);
@@ -676,24 +659,54 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   spacing: 30px;
 }
 
+.access-dialog-main-layout {
+  padding: 12px 20px 0;
+  spacing: 12px;
+}
+
+.access-dialog-content {
+  max-width: 28em;
+  spacing: 20px;
+}
+
+.access-dialog-icon {
+  min-width: 48px;
+  icon-size: 48px;
+}
+
+.access-dialog-title {
+  font-weight: bold;
+}
+
+.access-dialog-subtitle {
+  color: rgba(0, 0, 0, 0.38);
+  font-weight: bold;
+}
+
 /* Geolocation Dialog */
 .geolocation-dialog {
   spacing: 30px;
 }
 
-/* Extension Dialog */
-.extension-dialog .message-dialog-main-layout {
-  spacing: 24px;
-  padding: 10px;
+.geolocation-dialog-main-layout {
+  spacing: 12px;
 }
 
-.extension-dialog .message-dialog-title {
-  color: rgba(0, 0, 0, 0.54);
+.geolocation-dialog-content {
+  spacing: 20px;
 }
 
-/* Inhibit-Shortcuts Dialog */
-.inhibit-shortcuts-dialog {
-  spacing: 30px;
+.geolocation-dialog-icon {
+  icon-size: 48px;
+}
+
+.geolocation-dialog-title {
+  font-weight: bold;
+}
+
+.geolocation-dialog-reason {
+  color: rgba(0, 0, 0, 0.38);
+  font-weight: bold;
 }
 
 /* Network Agent Dialog */
@@ -993,8 +1006,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 /* TOP BAR */
 #panel {
   background-color: rgba(0, 0, 0, 0.6);
-  /* transition from solid to transparent */
-  transition-duration: 250ms;
   font-weight: bold;
   height: 32px;
 }
@@ -1029,7 +1040,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   -minimum-hpadding: 6px;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.7);
-  text-shadow: none;
   transition-duration: 150ms;
 }
 
@@ -1039,21 +1049,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   margin-right: 4px;
 }
 
-#panel .panel-button .system-status-icon,
-#panel .panel-button .app-menu-icon > StIcon,
-#panel .panel-button .popup-menu-arrow {
-  icon-shadow: none;
-}
-
 #panel .panel-button:hover {
   color: #FFFFFF;
-  text-shadow: none;
-}
-
-#panel .panel-button:hover .system-status-icon,
-#panel .panel-button:hover .app-menu-icon > StIcon,
-#panel .panel-button:hover .popup-menu-arrow {
-  icon-shadow: none;
 }
 
 #panel .panel-button:active, #panel .panel-button:overview, #panel .panel-button:focus, #panel .panel-button:checked {
@@ -1098,31 +1095,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 #panel .screencast-indicator {
   color: #FF6D00;
-}
-
-#panel.solid {
-  background-color: rgba(0, 0, 0, 0.6);
-  /* transition from transparent to solid */
-  transition-duration: 250ms;
-}
-
-#panel.solid .panel-corner {
-  -panel-corner-background-color: rgba(0, 0, 0, 0.6);
-}
-
-#panel.solid .panel-button {
-  color: rgba(255, 255, 255, 0.7);
-  text-shadow: none;
-}
-
-#panel.solid .panel-button:hover {
-  color: #FFFFFF;
-}
-
-#panel.solid .system-status-icon,
-#panel.solid .app-menu-icon > StIcon,
-#panel.solid .popup-menu-arrow {
-  icon-shadow: none;
 }
 
 #calendarArea {
@@ -1707,13 +1679,15 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .window-picker {
-  -horizontal-spacing: 16px;
-  -vertical-spacing: 16px;
-  padding: 0 16px 16px;
+  -horizontal-spacing: 32px;
+  -vertical-spacing: 32px;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 48px;
 }
 
 .window-picker.external-monitor {
-  padding: 16px;
+  padding: 32px;
 }
 
 .window-clone-border {
@@ -1725,9 +1699,15 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 .window-caption {
   spacing: 25px;
   color: #FFFFFF;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: transparent;
   border-radius: 2px;
   padding: 4px 8px;
+  -shell-caption-spacing: 12px;
+}
+
+.window-caption:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
 }
 
 .search-entry {
@@ -1783,37 +1763,36 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .search-section-separator {
+  -gradient-height: 1px;
+  -gradient-start: rgba(255, 255, 255, 0);
+  -gradient-end: rgba(255, 255, 255, 0.4);
+  -margin-horizontal: 1.5em;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.12);
 }
 
 .list-search-result-content {
-  spacing: 30px;
+  spacing: 12px;
+  padding: 12px;
 }
 
 .list-search-result-title {
-  font-size: 12pt;
+  font-size: 18pt;
   font-weight: 400;
   color: #FFFFFF;
-  spacing: 12px;
 }
 
 .list-search-result-description {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.list-search-provider-details {
-  width: 150px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 0.24em;
-}
-
-.list-search-provider-content {
-  spacing: 20px;
-}
-
 .search-provider-icon {
   padding: 15px;
+}
+
+.search-provider-icon-more {
+  width: 16px;
+  height: 16px;
+  background-image: url("assets/more-results.svg");
 }
 
 /* DASHBOARD */
@@ -1865,14 +1844,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .icon-grid .overview-icon {
   icon-size: 96px;
-}
-
-.system-action-icon {
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-  background-color: #212121;
-  color: #FFFFFF;
-  border-radius: 99px;
-  icon-size: 48px;
 }
 
 .app-view-controls {
@@ -2284,6 +2255,61 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 /* Eeeky things */
+.legacy-tray {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #FFFFFF;
+  border: none;
+  border-bottom-width: 0;
+}
+
+.legacy-tray:ltr {
+  border-radius: 0 2px 0 0;
+  border-left-width: 0;
+}
+
+.legacy-tray:rtl {
+  border-radius: 2px 0 0 0;
+  border-right-width: 0;
+}
+
+.legacy-tray-handle,
+.legacy-tray-icon {
+  padding: 6px;
+}
+
+.legacy-tray-handle StIcon,
+.legacy-tray-icon StIcon {
+  icon-size: 24px;
+}
+
+.legacy-tray-handle:hover, .legacy-tray-handle:focus,
+.legacy-tray-icon:hover,
+.legacy-tray-icon:focus {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.legacy-tray-handle:active,
+.legacy-tray-icon:active {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.legacy-tray-icon-box {
+  spacing: 12px;
+}
+
+.legacy-tray-icon-box:ltr {
+  padding-left: 12px;
+}
+
+.legacy-tray-icon-box:rtl {
+  padding-right: 12px;
+}
+
+.legacy-tray-icon-box StButton {
+  width: 24px;
+  height: 24px;
+}
+
 .magnifier-zoom-region {
   border: 2px solid #42A5F5;
 }
@@ -2615,7 +2641,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   width: 23em;
 }
 
-.login-dialog-user-list:expanded .login-dialog-user-list-item:selected {
+.login-dialog-user-list:expanded .login-dialog-user-list-item:focus {
   background-color: rgba(255, 255, 255, 0.12);
   color: #FFFFFF;
 }
