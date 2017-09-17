@@ -253,34 +253,10 @@ StScrollBar {
 
 }
 
-  .mount-dialog-subject,
+  .show-processes-dialog-subject,
+  .mount-question-dialog-subject,
   .end-session-dialog-subject { //this should be a generic header class
     @include font(title);
-  }
-
-/* Message Dialog */
-  .message-dialog-main-layout {
-    padding: 12px 20px 0;
-    spacing: 12px;
-  }
-
-  .message-dialog-content {
-    max-width: 28em;
-    spacing: 20px;
-  }
-
-  .message-dialog-icon {
-    min-width: 48px;
-    icon-size: 48px;
-  }
-
-  .message-dialog-title {
-    font-weight: bold;
-  }
-
-  .message-dialog-subtitle {
-    color: $secondary_fg_color;
-    font-weight: bold;
   }
 
 /* End Session Dialog */
@@ -364,57 +340,64 @@ StScrollBar {
 /* ShellMountOperation Dialogs */
 .shell-mount-operation-icon { icon-size: 48px; }
 
-  .mount-dialog {
+  .show-processes-dialog,
+  .mount-question-dialog {
     spacing: 24px;
-
-    .message-dialog-title {
-      padding-top: 10px;
-      padding-left: 17px;
-      padding-bottom: 6px;
-      max-width: 34em;
-    }
-
-    .message-dialog-title:rtl {
-      padding-left: 0px;
-      padding-right: 17px;
-    }
-
-    .message-dialog-body {
-      padding-left: 17px;
-      width: 28em;
-    }
-
-    .message-dialog-body:rtl {
-      padding-left: 0px;
-      padding-right: 17px;
-    }
   }
 
-  .mount-dialog-app-list {
+  .show-processes-dialog-subject,
+  .mount-question-dialog-subject {
+    padding-top: 10px;
+    padding-left: 17px;
+    padding-bottom: 6px;
+  }
+
+  .mount-question-dialog-subject {
+      max-width: 34em;
+  }
+
+  .show-processes-dialog-subject:rtl,
+  .mount-question-dialog-subject:rtl {
+    padding-left: 0px;
+    padding-right: 17px;
+  }
+
+  .show-processes-dialog-description,
+  .mount-question-dialog-description {
+    padding-left: 17px;
+    width: 28em;
+  }
+
+  .show-processes-dialog-description:rtl,
+  .mount-question-dialog-description:rtl {
+    padding-right: 17px;
+  }
+
+  .show-processes-dialog-app-list {
     max-height: 200px;
     padding-top: 24px;
     padding-left: 49px;
     padding-right: 32px;
   }
 
-  .mount-dialog-app-list:rtl {
+  .show-processes-dialog-app-list:rtl {
     padding-right: 49px;
     padding-left: 32px;
   }
 
-  .mount-dialog-app-list-item {
+  .show-processes-dialog-app-list-item {
     color: $fg_color;
     &:hover { color: $fg_color; }
     &:ltr { padding-right: 1em; }
     &:rtl { padding-left: 1em; }
   }
 
-  .mount-dialog-app-list-item-icon {
+  .show-processes-dialog-app-list-item-icon {
     &:ltr { padding-right: 17px; }
     &:rtl { padding-left: 17px; }
   }
 
-  .mount-dialog-app-list-item-name {
+  .show-processes-dialog-app-list-item-name {
     font-size: 1em;
   }
 
@@ -425,11 +408,21 @@ StScrollBar {
   //this is the width of the entire modal popup
   width: 34em;
   border: none;
-
-  .message-dialog-main-layout { spacing: 24px; padding: 10px; }
-  .message-dialog-content { spacing: 16px; }
-  .message-dialog-title { @include font(title); color: $fg_color; }
 }
+
+  .prompt-dialog-main-layout {
+    spacing: 24px;
+    padding: 10px;
+  }
+
+  .prompt-dialog-message-layout {
+    spacing: 16px;
+  }
+
+  .prompt-dialog-headline {
+    @include font(title);
+    color: $fg_color;
+  }
 
   .prompt-dialog-description:rtl {
     text-align: right;
@@ -522,21 +515,55 @@ StScrollBar {
   spacing: 30px;
 }
 
+  .access-dialog-main-layout {
+    padding: 12px 20px 0;
+    spacing: 12px;
+  }
+
+  .access-dialog-content {
+    max-width: 28em;
+    spacing: 20px;
+  }
+
+  .access-dialog-icon {
+    min-width: 48px;
+    icon-size: 48px;
+  }
+
+  .access-dialog-title {
+    font-weight: bold;
+  }
+
+  .access-dialog-subtitle {
+    color: $hint_fg_color;
+    font-weight: bold;
+  }
+
 /* Geolocation Dialog */
 .geolocation-dialog {
   spacing: 30px;
 }
 
-/* Extension Dialog */
-.extension-dialog {
-  .message-dialog-main-layout { spacing: 24px; padding: 10px; }
-  .message-dialog-title { color: $secondary_fg_color; }
-}
+  .geolocation-dialog-main-layout {
+    spacing: 12px;
+  }
 
-/* Inhibit-Shortcuts Dialog */
-.inhibit-shortcuts-dialog {
-  spacing: 30px;
-}
+  .geolocation-dialog-content {
+    spacing: 20px;
+  }
+
+  .geolocation-dialog-icon {
+    icon-size: 48px;
+  }
+
+  .geolocation-dialog-title {
+    font-weight: bold;
+  }
+
+  .geolocation-dialog-reason {
+    color: $hint_fg_color;
+    font-weight: bold;
+  }
 
 /* Network Agent Dialog */
 
@@ -808,9 +835,7 @@ StScrollBar {
 /* TOP BAR */
 
 #panel {
-  background-color: $bg_color;
-  /* transition from solid to transparent */
-  transition-duration: 250ms;
+  background-color: $panel_bg_color;
   font-weight: bold;
   height: $menuitem_size;
 
@@ -847,7 +872,6 @@ StScrollBar {
     -minimum-hpadding: 6px;
     font-weight: bold;
     color: $inverse_secondary_fg_color;
-    text-shadow: none;
     transition-duration: $longer_duration;
 
     .app-menu-icon {
@@ -857,21 +881,8 @@ StScrollBar {
       //dimensions of the icon are hardcoded
     }
 
-    .system-status-icon,
-    .app-menu-icon > StIcon,
-    .popup-menu-arrow {
-      icon-shadow: none;
-    }
-
     &:hover {
       color: $inverse_fg_color;
-      text-shadow: none;
-
-      .system-status-icon,
-      .app-menu-icon > StIcon,
-      .popup-menu-arrow {
-        icon-shadow: none;
-      }
     }
 
     &:active, &:overview, &:focus, &:checked {
@@ -904,31 +915,6 @@ StScrollBar {
   }
 
   .screencast-indicator { color: $warning_color; }
-
-  &.solid {
-    background-color: $panel_bg_color;
-    /* transition from transparent to solid */
-    transition-duration: 250ms;
-
-    .panel-corner {
-      -panel-corner-background-color: $panel_bg_color;
-    }
-
-    .panel-button {
-      color: $inverse_secondary_fg_color;
-      text-shadow: none;
-
-      &:hover {
-        color: $inverse_fg_color;
-      }
-    }
-
-    .system-status-icon,
-    .app-menu-icon > StIcon,
-    .popup-menu-arrow {
-      icon-shadow: none;
-    }
-  }
 }
 
   // calendar popover
@@ -1363,11 +1349,13 @@ StScrollBar {
 }
 
   .window-picker { //container around window thumbnails
-    -horizontal-spacing: 16px;
-    -vertical-spacing: 16px;
-    padding: 0 16px 16px;
+    -horizontal-spacing: 32px;
+    -vertical-spacing: 32px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 48px;
 
-    &.external-monitor { padding: 16px; }
+    &.external-monitor { padding: 32px; }
   }
 
   .window-clone-border {
@@ -1381,9 +1369,11 @@ StScrollBar {
   .window-caption {
     spacing: 25px;
     color: $inverse_fg_color;
-    background-color: $bg_color;
+    background-color: transparent;
     border-radius: 2px;
     padding: 4px 8px;
+    -shell-caption-spacing: 12px;
+    &:hover { background-color: $inverse_track_color; color: $inverse_fg_color; }
   }
 
   //search entry
@@ -1428,14 +1418,23 @@ StScrollBar {
   }
   .list-search-results { spacing: 3px; }
 
-  .search-section-separator { height: 1px; background-color: $inverse_divider_color; }
+  .search-section-separator {
+    -gradient-height: 1px;
+    -gradient-start: rgba(255,255,255,0);
+    -gradient-end: rgba(255,255,255,0.4);
+    -margin-horizontal: 1.5em;
+    height: 1px;
+  }
 
-  .list-search-result-content { spacing: 30px; }
-  .list-search-result-title { @include font(subheading); color: $inverse_fg_color; spacing: 12px; }
+  .list-search-result-content { spacing: 12px; padding: 12px; }
+  .list-search-result-title { @include font(headline); color: $inverse_fg_color; }
   .list-search-result-description { color: $inverse_secondary_fg_color; }
-  .list-search-provider-details { width: 150px; color: $inverse_secondary_fg_color; margin-top: 0.24em; }
-  .list-search-provider-content { spacing: 20px; }
   .search-provider-icon { padding: 15px; }
+  .search-provider-icon-more {
+    width: 16px;
+    height: 16px;
+    background-image: url("assets/more-results.svg");
+  }
 
 
   /* DASHBOARD */
@@ -1490,14 +1489,6 @@ StScrollBar {
     .overview-icon { icon-size: 96px; }
   }
   //.app-display { spacing: 20px; }
-
-  .system-action-icon {
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2); // FIXME: this should really have a highlight
-    background-color: $grey_900;
-    color: $white;
-    border-radius: 99px;
-    icon-size: 48px;
-  }
 
   .app-view-controls { //favorties | all toggle container
     width: 320px;
@@ -1805,6 +1796,32 @@ StScrollBar {
 
 /* Eeeky things */
 
+$legacy_icon_size: 24px;
+
+.legacy-tray {
+  background-color: $bg_color;
+  color: $inverse_fg_color;
+  border: none;
+  border-bottom-width: 0;
+  &:ltr { border-radius: 0 2px 0 0; border-left-width: 0; }
+  &:rtl { border-radius: 2px 0 0 0; border-right-width: 0; }
+}
+
+.legacy-tray-handle,
+.legacy-tray-icon {
+  padding: 6px;
+  & StIcon { icon-size: $legacy_icon_size; }
+  &:hover,&:focus { background-color: $inverse_divider_color; }
+  &:active { background-color: $inverse_track_color; }
+}
+
+.legacy-tray-icon-box {
+  spacing: 12px;
+  &:ltr { padding-left: 12px; }
+  &:rtl { padding-right: 12px; }
+  & StButton { width: $legacy_icon_size; height: $legacy_icon_size }
+}
+
 //magnifier
 
 .magnifier-zoom-region {
@@ -1980,7 +1997,7 @@ StScrollBar {
     spacing: 12px;
     padding: .2em;
     width: 23em;
-    &:expanded .login-dialog-user-list-item:selected { background-color: $inverse_divider_color; color: $inverse_fg_color; }
+    &:expanded .login-dialog-user-list-item:focus { background-color: $inverse_divider_color; color: $inverse_fg_color; }
     &:expanded .login-dialog-user-list-item:hover { background-color: $inverse_divider_color; color: $inverse_fg_color; }
     &:expanded .login-dialog-user-list-item:active { background-color: $inverse_track_color; color: $inverse_fg_color; }
     &:expanded .login-dialog-user-list-item:logged-in { border-right: 2px solid $inverse_fg_color; }
