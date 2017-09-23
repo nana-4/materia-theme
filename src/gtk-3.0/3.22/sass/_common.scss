@@ -3220,24 +3220,16 @@ colorswatch {
     }
   }
 
-  &.dark overlay { color: $light_fg_color; }
+  &.dark { color: $light_fg_color; }
 
-  &.light overlay { color: $dark_fg_color; }
-
-  &.dark { color: $light_fg_color; } // for focus ring
-
-  &.light { color: $dark_fg_color; } // for focus ring
+  &.light { color: $dark_fg_color; }
 
   &:drop(active) {
     box-shadow: none;
 
-    &.light overlay {
-      box-shadow: $shadow_1, 0 0 0 2px $accent_color;
-    }
+    &.light overlay { box-shadow: $shadow_1, 0 0 0 2px $accent_color; }
 
-    &.dark overlay {
-      box-shadow: $shadow_1, 0 0 0 2px $accent_color;
-    }
+    &.dark overlay { box-shadow: $shadow_1, 0 0 0 2px $accent_color; }
   }
 
   overlay {
@@ -3249,7 +3241,7 @@ colorswatch {
 
   &#add-color-button {
     border-radius: $material_radius $material_radius 0 0;
-    color: $light_fg_color; // for focus ring
+    color: $light_fg_color;
 
     &:only-child { border-radius: $material_radius; }
 
@@ -3259,7 +3251,6 @@ colorswatch {
                                         $warning_bg_color 25%, $warning_bg_color 50%,
                                         $info_bg_color 50%, $info_bg_color 75%,
                                         $question_bg_color 75%);
-      color: $light_fg_color;
     }
   }
 
