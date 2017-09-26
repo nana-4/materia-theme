@@ -28,8 +28,7 @@ Here's a rundown of the _supporting_ stylesheets:
 - `_colors.scss`
 
   global color definitions. We keep the number of defined colors to a necessary
-  minimum, most colors are derived from a handful of basics. It covers both the
-  light variant and the dark variant.
+  minimum. It covers both the light variant and the dark variant.
 
 - `_colors-public.scss`
 
@@ -74,39 +73,16 @@ Here's an example to change the _accent color_:
 
 2. Search `#FF4081` (default accent color) and replace with your favorite color.
 
-  - The recommended color palette is: https://material.io/guidelines/style/color.html#color-color-palette
+  > The recommended color palette is: https://material.io/guidelines/style/color.html#color-color-palette
 
-3. For gtk2 and gtk3, delete all PNG assets before redrawing them.
+3. Run `./render-assets.sh` to render the PNG assets for gtk2 and gtk3.
 
-  ```sh
-  rm ./src/gtk-2.0/assets/*.png
-  rm ./src/gtk-2.0/assets-dark/*.png
-  rm ./src/gtk-3.0/gtk-common/assets/*.png
-  ```
-
-4. Run `./render-assets.sh` or `./render-assets-dark.sh` to render the PNG assets.
-
-  > Note: Inkscape must be installed to run the scripts.
-
-  - for gtk2:
-
-    ```sh
-    cd ./src/gtk-2.0
-    ./render-assets.sh
-    ./render-assets-dark.sh
-    ```
-
-  - for gtk3:
-
-    ```sh
-    cd ./src/gtk-3.0/gtk-common
-    ./render-assets.sh
-    ```
+  > Note: `inkscape` and `optipng` must be installed to run the script.
 
 Useful Links
 ------------
 
-Upstream theme sources:
+#### Upstream theme sources
 - [GTK+ 4.0](https://github.com/GNOME/gtk/tree/master/gtk/theme/Adwaita)
   - [3.22](https://github.com/GNOME/gtk/tree/gtk-3-22/gtk/theme/Adwaita)
   - [3.20](https://github.com/GNOME/gtk/tree/gtk-3-20/gtk/theme/Adwaita)
@@ -115,7 +91,7 @@ Upstream theme sources:
 - [GNOME Shell](https://github.com/GNOME/gnome-shell/tree/master/data/theme)
   - [Sass sources](https://github.com/GNOME/gnome-shell-sass)
 
-Tips:
+#### Tips
 - [Unity/Theming](https://wiki.ubuntu.com/Unity/Theming)
 - [Material Design Guidelines](https://www.material.io/guidelines/)
 - [Personal CSS Guidelines](https://github.com/nana-4/Flat-Plat/wiki/CSS-Guidelines)
