@@ -613,6 +613,90 @@ button.run-arrow-button {
   padding-right: ($medium_size - 16px) / 2;
 }
 
+//
+// Additional styles for 3.26
+//
+
+button.dzlmenubutton image {
+  min-width: $medium_size - 6px;
+
+  &.arrow { min-width: $medium_size - 9px; }
+}
+
+button.dzlmenubuttonitem {
+  color: $fg_color;
+  font-weight: normal;
+
+  &:disabled { color: $disabled_fg_color; }
+}
+
+idelayoutstackheader {
+  border-bottom: 1px solid $border_color;
+
+  button:checked { color: $fg_color; }
+}
+
+// utilities stack switcher
+ideeditorutilities > dzldockpaned > box > stackswitcher {
+  padding: 8px 0;
+  background-color: $bg_color;
+
+  &:dir(ltr) { border-right: 1px solid $border_color; }
+
+  &:dir(rtl) { border-left: 1px solid $border_color; }
+
+  button {
+    border-radius: 0;
+    outline-offset: -6px;
+    box-shadow: none;
+    background-color: transparent;
+
+    &:active {
+      background-image: radial-gradient(circle farthest-corner at center,
+                                        rgba($primary_color, 0.7) 10%,
+                                        transparent 0%);
+    }
+
+    &:checked {
+      background-color: transparent;
+      color: $fg_color;
+    }
+
+    &:dir(ltr) {
+      margin-right: -1px;
+
+      &:hover { box-shadow: inset -2px 0 $track_color; }
+
+      &:active,
+      &:checked { box-shadow: inset -2px 0 $primary_color; }
+    }
+
+    &:dir(rtl) {
+      margin-left: -1px;
+
+      &:hover { box-shadow: inset 2px 0 $track_color; }
+
+      &:active,
+      &:checked { box-shadow: inset 2px 0 $primary_color; }
+    }
+  }
+}
+
+// buildui panel
+ideeditorsidebar notebook header {
+  background: transparent;
+}
+
+popover.messagepopover {
+  // padding: 0;
+
+  list {
+    border: 1px solid $border_color;
+
+    row:not(:last-child) { border-bottom: 1px solid $border_color; }
+  }
+}
+
 
 /**********
  * Photos *
