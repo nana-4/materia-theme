@@ -317,6 +317,23 @@ frame.gedit-map-frame > border {
   border: 1px solid $border_color;
 }
 
+// Workaround for 3.26
+
+row#Focus,
+row#StaticWorkspaceTweak,
+row#PrimaryWorkspaceTweak {
+  padding: 0;
+  border: 1px solid $border_color;
+
+  row:not(:last-child) { border-bottom: 1px solid $border_color; }
+}
+
+// Add more spaces between title and list
+row#Focus,
+row#PrimaryWorkspaceTweak {
+  margin-top: 4px;
+}
+
 
 /***********
  * Builder *
