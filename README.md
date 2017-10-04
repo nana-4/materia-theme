@@ -1,12 +1,12 @@
-Materia
-=======
+# Materia
+
 Materia (formerly named Flat-Plat) is a [Material Design](https://material.io)-like theme for GNOME/GTK+ based desktop environments.  
 It supports GTK+ 3, GTK+ 2, GNOME Shell, Budgie, MATE, Unity, LightDM, GDM, Chrome theme, etc.
 
 Also Materia has compatibility with [oomox theme designer](https://github.com/actionless/oomox).
 
-Features
---------
+## Features
+
 **Ripple effect** animations for GTK+ 3 are supported.
 
 ![Button](../images/Button.gif?raw=true)
@@ -27,8 +27,8 @@ Various **desktop environments** are supported.
 - Unity `>=7.4`
 - ... and more DEs are [planned](TODO.md#supports).
 
-Installation
-------------
+## Installation
+
 #### Packages
 
 || **Install command** |
@@ -71,19 +71,22 @@ Delete the installed directories.
 sudo rm -rf /usr/share/themes/Flat-Plat{,-compact,-dark,-dark-compact,-light,-light-compact}
 ```
 
-Recommendations
----------------
+## Recommendations
+
 #### Font
+
 - To properly display the theme, use a font family including `Medium` weight (such as [Roboto](https://github.com/google/roboto) or [M+](https://mplus-fonts.osdn.jp)).
 - Set the font size to `9.75` (= 13px at 96dpi) or `10.5` (= 14px at 96dpi).
 
 #### Chrome Theme
+
 To use the Chrome theme,
+
 1. Open the `chrome` folder on `/usr/share/themes/Flat-Plat<-variant>`.
 2. Drag and drop the `.crx` files onto the Chrome/Chromium _Extensions_ page: `chrome://extensions`
 
-GDM Theme
----------
+## GDM Theme
+
 You can change the GDM (lock/login screen) theme by replacing the default GNOME Shell theme.  
 However, if it fails, the desktop environment may not operate correctly. So please **be careful** if doing this.
 
@@ -113,28 +116,31 @@ However, if it fails, the desktop environment may not operate correctly. So plea
 
 2. Restart GNOME Shell. (If you are running _GNOME on Xorg_, press <kbd>Alt</kbd> + <kbd>F2</kbd> then type `r`.)
 
-Previews
---------
+## Previews
+
 ##### GNOME Shell
 ![GNOME Shell](../images/gnome.png?raw=true)
+
 ##### Budgie Desktop
 ![Budgie Desktop](../images/budgie.png?raw=true)
+
 ##### GDM
 ![GDM](../images/gdm-unlock.png?raw=true)
+
 <sub>**Preview Details:** Icons: [Paper](https://github.com/snwh/paper-icon-theme) | Font: [M+ 1C](https://mplus-fonts.osdn.jp) 9.75pt | Dock's icon size: 48px + fixed | [Wallpapers](https://imgur.com/a/v2Ovx)</sub>
 
-Contributing
-------------
+## Contributing
+
 If you find bugs or have suggestions, please report it to the [issue tracker](https://github.com/nana-4/materia-theme/issues). Any contribution would be much appreciated.
 
 See also (if necessary): [`TODO.md`](TODO.md) and [`HACKING.md`](HACKING.md)
 
-License
--------
+## License
+
 Materia is distributed under the terms of the GNU General Public License, version 2 or later. See the [`COPYING`](COPYING) file for details.
 
-Credits
--------
+## Credits
+
 - This theme is based on [Adwaita](HACKING.md#upstream-theme-sources) by GNOME.
 - The included symbolic icons are based on [Material Design icons](https://github.com/google/material-design-icons) by Google.
 - Chrome/Chromium scrollbars extension was forked from [Adwaita-chrome-scrollbar](https://github.com/gnome-integration-team/chrome-gnome-scrollbar) by GNOME Integration Team.

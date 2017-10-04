@@ -1,12 +1,10 @@
-Summary
--------
+## Summary
 
 - Do not edit the CSS directly, edit the source SCSS files and run `./parse-sass.sh`
 - To be able to use the latest/adequate version of Sass, install `sassc`
 - To change the SVG assets color, use a text editor instead of a image editor
 
-How to tweak the theme
-----------------------
+## How to tweak the theme
 
 Like the upstream Adwaita, this theme is written and processed in Sass.
 
@@ -48,8 +46,7 @@ Here's a rundown of the _supporting_ stylesheets:
 
   app/extension specific stylings.
 
-How to change the assets color
-------------------------------
+## How to change the assets color
 
 To keep it maintainable, SVG files are basically edited on text-based.
 
@@ -79,10 +76,10 @@ Here's an example to change the _accent color_:
 
   > Note: `inkscape` and `optipng` must be installed to run the script.
 
-Useful Links
-------------
+## Useful Links
 
 #### Upstream theme sources
+
 - [GTK+ 4.0](https://github.com/GNOME/gtk/tree/master/gtk/theme/Adwaita)
   - [3.22](https://github.com/GNOME/gtk/tree/gtk-3-22/gtk/theme/Adwaita)
   - [3.20](https://github.com/GNOME/gtk/tree/gtk-3-20/gtk/theme/Adwaita)
@@ -92,6 +89,7 @@ Useful Links
   - [Sass sources](https://github.com/GNOME/gnome-shell-sass)
 
 #### Tips
+
 - [Unity/Theming](https://wiki.ubuntu.com/Unity/Theming)
 - [Material Design Guidelines](https://www.material.io/guidelines/)
 - [Personal CSS Guidelines](https://github.com/nana-4/materia-theme/wiki/CSS-Guidelines)
