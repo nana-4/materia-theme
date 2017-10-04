@@ -5,7 +5,7 @@ set -ueo pipefail
 repodir=$(cd $(dirname $0) && pwd)
 srcdir=${repodir}/src
 
-themedir_base_fallback=${destdir:-}/usr/share/themes/Flat-Plat
+themedir_base_fallback=${destdir:-}/usr/share/themes/Materia
 themedir_base=${THEME_DIR_BASE:-$themedir_base_fallback}
 
 if [[ $(which gnome-shell 2> /dev/null) ]]; then
@@ -46,7 +46,7 @@ echo
 
 for color in "${_COLOR_VARIANTS[@]}"; do
   for size in "${_SIZE_VARIANTS[@]}"; do
-    echo Installing Flat-Plat${color}${size} ...
+    echo Installing Materia${color}${size} ...
 
     themedir=${themedir_base}${color}${size}
     if [[ -d ${themedir} ]]; then
@@ -70,15 +70,15 @@ for color in "${_COLOR_VARIANTS[@]}"; do
     install -d ${themedir}/chrome
     cd ${srcdir}/chrome
     cp -ur \
-      "Flat-Plat${color} Theme.crx" \
+      "Materia${color} Theme.crx" \
       ${themedir}/chrome
     if [ "$color" != '-dark' ]; then
       cp -ur \
-        "Flat-Plat Scrollbars.crx" \
+        "Materia Scrollbars.crx" \
         ${themedir}/chrome
     else
       cp -ur \
-        "Flat-Plat${color} Scrollbars.crx" \
+        "Materia${color} Scrollbars.crx" \
         ${themedir}/chrome
     fi
 

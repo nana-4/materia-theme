@@ -5,7 +5,7 @@ it is very likely an upstream issue.
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 If you report a bug or ask a question, please include the following information as required:
-- Flat-Plat version
+- Materia version
 - GTK+ 3 version (You can check it with `pkg-config --modversion gtk+-3.0`)
 - Distribution (and version)
 - Desktop environment (and version)

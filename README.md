@@ -1,9 +1,9 @@
-Flat-Plat
+Materia
 =========
-Flat-Plat is a [Material Design](https://material.io)-like theme for GNOME/GTK+ based desktop environments.  
+Materia (formerly named Flat-Plat) is a [Material Design](https://material.io)-like theme for GNOME/GTK+ based desktop environments.  
 It supports GTK+ 3, GTK+ 2, GNOME Shell, Budgie, MATE, Unity, LightDM, GDM, Chrome theme, etc.
 
-Also Flat-Plat has compatibility with [oomox](https://github.com/actionless/oomox).
+Also Materia has compatibility with [oomox](https://github.com/actionless/oomox).
 
 Features
 --------
@@ -50,8 +50,8 @@ sudo dnf install Flat-Plat-theme
 Run the following commands in the terminal.
 
 ```sh
-cd /tmp && curl -sL https://github.com/nana-4/Flat-Plat/archive/v20170917.tar.gz | tar xz
-cd Flat-Plat-20170917
+cd /tmp && curl -sL https://github.com/nana-4/materia-theme/archive/v20170917.tar.gz | tar xz
+cd materia-theme-20170917
 sudo ./install.sh
 ```
 
@@ -114,14 +114,14 @@ Preview
 
 Contributing
 ------------
-If you find bugs or have suggestions, please report it to the [issue tracker](https://github.com/nana-4/Flat-Plat/issues).  
+If you find bugs or have suggestions, please report it to the [issue tracker](https://github.com/nana-4/materia-theme/issues).  
 Any contribution will be much appreciated.
 
 See also (if necessary): [`TODO.md`](TODO.md) and [`HACKING.md`](HACKING.md)
 
 License
 -------
-Flat-Plat is distributed under the terms of the GNU General Public License, version 2 or later. See the [`COPYING`](COPYING) file for details.
+Materia is distributed under the terms of the GNU General Public License, version 2 or later. See the [`COPYING`](COPYING) file for details.
 
 Credits
 -------
@@ -129,6 +129,6 @@ Credits
 - The included symbolic icons are based on [Material Design icons](https://github.com/google/material-design-icons) by Google.
 - Chrome/Chromium scrollbars extension was forked from [Adwaita-chrome-scrollbar](https://github.com/gnome-integration-team/chrome-gnome-scrollbar) by GNOME Integration Team.
 - The original concept is Google's [Material Design](https://material.io).
-- Yauhen Kirylau (@actionless) who is oomox author polished scripts and supported Flat-Plat with [oomox](https://github.com/actionless/oomox).
+- Yauhen Kirylau (@actionless) who is oomox author polished scripts and supported Materia with [oomox](https://github.com/actionless/oomox).
 
 Also thank you for all contributors and upstream developers.
