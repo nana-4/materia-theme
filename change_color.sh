@@ -85,7 +85,7 @@ HDR_BTN_FG=${HDR_BTN_FG-$BTN_FG}
 WM_BORDER_FOCUS=${WM_BORDER_FOCUS-$SEL_BG}
 WM_BORDER_UNFOCUS=${WM_BORDER_UNFOCUS-$MENU_BG}
 
-FLATPACK_STYLE_COMPACT=$(echo ${FLATPACK_STYLE_COMPACT-True} | tr '[:upper:]' '[:lower:]')
+MATERIA_STYLE_COMPACT=$(echo ${MATERIA_STYLE_COMPACT-True} | tr '[:upper:]' '[:lower:]')
 GTK3_GENERATE_DARK=$(echo ${GTK3_GENERATE_DARK-True} | tr '[:upper:]' '[:lower:]')
 GTK2_HIDPI=$(echo ${GTK2_HIDPI-False} | tr '[:upper:]' '[:lower:]')
 UNITY_DEFAULT_LAUNCHER_STYLE=$(echo ${UNITY_DEFAULT_LAUNCHER_STYLE-False} | tr '[:upper:]' '[:lower:]')
@@ -156,7 +156,7 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/#414f56/%MENU_BG3%/g' \
 		-e 's/$grey_50/%BTN_BG%/g' \
 		-e 's/#FAFAFA/%BTN_BG%/g' \
-		-e 's/Flat-Plat/%OUTPUT_THEME_NAME%/g' \
+		-e 's/Materia/%OUTPUT_THEME_NAME%/g' \
 		{} \; ;
 done
 
@@ -243,7 +243,7 @@ if [[ ${UNITY_DEFAULT_LAUNCHER_STYLE} == "true" ]] ; then
 	rm ./src/unity/launcher*.svg
 fi
 
-if [[ ${FLATPACK_STYLE_COMPACT}  == "true" ]] ; then
+if [[ ${MATERIA_STYLE_COMPACT}  == "true" ]] ; then
 	SIZE_VARIANTS="-compact"
 else
 	SIZE_VARIANTS=","
