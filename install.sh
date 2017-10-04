@@ -5,8 +5,10 @@ set -ueo pipefail
 repodir=$(cd $(dirname $0) && pwd)
 srcdir=${repodir}/src
 
+themedir_base_fallback=${destdir:-}/usr/share/themes/Flat-Plat
+themedir_base=${THEME_DIR_BASE:-$themedir_base_fallback}
 
-if [[ $(which gnome-shell 2> /dev/null) ]] ; then
+if [[ $(which gnome-shell 2> /dev/null) ]]; then
   gnomever_major=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 1)
   gnomever_minor=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 2)
 
@@ -23,33 +25,31 @@ else
   gnomever=3.18
 fi
 
-echo
-
-themedir_base_fallback=${destdir:-}/usr/share/themes/Flat-Plat
-themedir_base=${THEME_DIR_BASE:-$themedir_base_fallback}
-
 _COLOR_VARIANTS=(
   ''
   '-dark'
   '-light'
 )
-if [ ! -z "${COLOR_VARIANTS:-}" ] ; then
+if [ ! -z "${COLOR_VARIANTS:-}" ]; then
   IFS=', ' read -r -a _COLOR_VARIANTS <<< "${COLOR_VARIANTS:-}"
 fi
+
 _SIZE_VARIANTS=(
   ''
   '-compact'
 )
-if [ ! -z "${SIZE_VARIANTS:-}" ] ; then
+if [ ! -z "${SIZE_VARIANTS:-}" ]; then
   IFS=', ' read -r -a _SIZE_VARIANTS <<< "${SIZE_VARIANTS:-}"
 fi
 
-for color in "${_COLOR_VARIANTS[@]}" ; do
-  for size in "${_SIZE_VARIANTS[@]}" ; do
+echo
+
+for color in "${_COLOR_VARIANTS[@]}"; do
+  for size in "${_SIZE_VARIANTS[@]}"; do
     echo Installing Flat-Plat${color}${size} ...
 
     themedir=${themedir_base}${color}${size}
-    if [[ -d ${themedir} ]] ; then
+    if [[ -d ${themedir} ]]; then
       rm -r ${themedir}
     fi
     install -d ${themedir}
@@ -72,7 +72,7 @@ for color in "${_COLOR_VARIANTS[@]}" ; do
     cp -ur \
       "Flat-Plat${color} Theme.crx" \
       ${themedir}/chrome
-    if [ "$color" != '-dark' ] ; then
+    if [ "$color" != '-dark' ]; then
       cp -ur \
         "Flat-Plat Scrollbars.crx" \
         ${themedir}/chrome
@@ -92,7 +92,7 @@ for color in "${_COLOR_VARIANTS[@]}" ; do
       extensions \
       pad-osd.css \
       ${themedir}/gnome-shell
-    if [ "$color" != '-dark' ] ; then
+    if [ "$color" != '-dark' ]; then
       cp -urL \
         assets \
         ${themedir}/gnome-shell
@@ -117,7 +117,7 @@ for color in "${_COLOR_VARIANTS[@]}" ; do
       hacks.rc \
       main.rc \
       ${themedir}/gtk-2.0
-    if [ "$color" != '-dark' ] ; then
+    if [ "$color" != '-dark' ]; then
       cp -ur \
         assets \
         ${themedir}/gtk-2.0
@@ -137,8 +137,8 @@ for color in "${_COLOR_VARIANTS[@]}" ; do
       assets \
       ${themedir}/gtk-common
 
-    for version in '3.18' '3.20' '3.22' ; do
-      if [ "$version" == '3.18' ] ; then
+    for version in '3.18' '3.20' '3.22'; do
+      if [ "$version" == '3.18' ]; then
         install -d ${themedir}/gtk-3.0
         cd ${srcdir}/gtk-3.0/${version}
         cp -ur \
@@ -175,7 +175,7 @@ for color in "${_COLOR_VARIANTS[@]}" ; do
     cp -ur \
       *.svg \
       ${themedir}/metacity-1
-    if [ "$color" != '-light' ] ; then
+    if [ "$color" != '-light' ]; then
       cp -ur \
         metacity-theme-2.xml \
         metacity-theme-3.xml \
@@ -197,7 +197,7 @@ for color in "${_COLOR_VARIANTS[@]}" ; do
       *.png \
       *.json \
       ${themedir}/unity
-    if [ "$color" != '-light' ] ; then
+    if [ "$color" != '-light' ]; then
       cp -ur \
         buttons \
         ${themedir}/unity
@@ -214,7 +214,7 @@ for color in "${_COLOR_VARIANTS[@]}" ; do
       *.svg \
       themerc \
       ${themedir}/xfwm4
-    if [ "$color" != '-light' ] ; then
+    if [ "$color" != '-light' ]; then
       cp -ur \
         assets \
         ${themedir}/xfwm4
