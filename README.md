@@ -112,18 +112,12 @@ Preview
 ![GDM](../images/gdm-unlock.png?raw=true)
 <sub>**Preview Details:** Icons: [Paper](https://github.com/snwh/paper-icon-theme) | Font: [M+ 1C](https://mplus-fonts.osdn.jp) 9.75pt | Dock's icon size: 48px + fixed | [Wallpapers](https://imgur.com/a/v2Ovx)</sub>
 
-Planned Features
-----------------
-- Supports of Xfce theme (waiting for the upstream to complete `gtk3` port)
-- Supports of Firefox theme ([in progress](https://github.com/nana-4/Flat-Plat/issues/78), waiting for [the upstream to provide next-gen themes](https://blog.mozilla.org/addons/2017/02/24/improving-themes-in-firefox/))
-- Supports of overlay scrollbars for Chrome/Chromium extension (low priority)
-- GNOME Terminal color palette (if possible, _help wanted_)
-- Material Design like cursor theme (low priority)
-
 Contributing
 ------------
 If you find bugs or have suggestions, please report it to the [issue tracker](https://github.com/nana-4/Flat-Plat/issues).  
 Any contribution will be much appreciated.
+
+See also (if necessary): [`TODO.md`](TODO.md) and [`HACKING.md`](HACKING.md)
 
 License
 -------
