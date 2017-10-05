@@ -1,6 +1,6 @@
 # Materia
 
-Materia (formerly named Flat-Plat) is a [Material Design](https://material.io)-like theme for GNOME/GTK+ based desktop environments.  
+Materia (formerly Flat-Plat) is a [Material Design](https://material.io)-like theme for GNOME/GTK+ based desktop environments.  
 It supports GTK+ 3, GTK+ 2, GNOME Shell, Budgie, MATE, Unity, LightDM, GDM, Chrome theme, etc.
 
 Also Materia has compatibility with [oomox theme designer](https://github.com/actionless/oomox).
@@ -58,8 +58,8 @@ Check the dependencies first.
 Install the theme with the following commands.
 
 ```sh
-cd /tmp && curl -sL https://github.com/nana-4/materia-theme/archive/v20170917.tar.gz | tar xz
-cd materia-theme-20170917
+cd /tmp && curl -sL https://github.com/nana-4/materia-theme/archive/v20171005.tar.gz | tar xz
+cd materia-theme-20171005
 sudo ./install.sh
 ```
 
@@ -68,7 +68,7 @@ sudo ./install.sh
 Delete the installed directories.
 
 ```sh
-sudo rm -rf /usr/share/themes/Flat-Plat{,-compact,-dark,-dark-compact,-light,-light-compact}
+sudo rm -rf /usr/share/themes/{Materia,Flat-Plat}{,-compact,-dark,-dark-compact,-light,-light-compact}
 ```
 
 ## Recommendations
@@ -82,7 +82,7 @@ sudo rm -rf /usr/share/themes/Flat-Plat{,-compact,-dark,-dark-compact,-light,-li
 
 To use the Chrome theme,
 
-1. Open the `chrome` folder on `/usr/share/themes/Flat-Plat<-variant>`.
+1. Open the `chrome` folder on `/usr/share/themes/Materia<-variant>`.
 2. Drag and drop the `.crx` files onto the Chrome/Chromium _Extensions_ page: `chrome://extensions`
 
 ## GDM Theme
