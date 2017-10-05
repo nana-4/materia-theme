@@ -2,7 +2,30 @@
 
 - Improve directory structure (`help wanted`, ideas very welcome)
 
+  - I'd like to simplify complicated directory structure and symbolic links.
+
+  - Especially for Sass. Two `_colors.scss` should be lumped together and all CSSs need to reference it.
+
 - Use `make` or `meson` for building? (`help wanted`)
+
+- Improve `install.sh` script? (PRs very welcome)
+
+  Currently, `install.sh` allows such arguments (thanks to @actionless):
+
+  ```sh
+  # This will install only normal color variant of compact theme into ~/.themes dir as MyTheme,
+  # ie ~/.themes/MyTheme-compact
+  COLOR_VARIANTS="," SIZE_VARIANTS="-compact" THEME_DIR_BASE=~/.themes/MyTheme ./install.sh
+  ```
+
+  My alternative idea is (more like shell option):
+
+  ```sh
+  # Note that this is just a draft.
+  ./install.sh --color - --size compact --dir ~/.themes --name MyTheme
+  # and/or shorter
+  ./install.sh -c - -s compact -d ~/.themes -n MyTheme
+  ```
 
 ## Supports
 
