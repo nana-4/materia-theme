@@ -33,7 +33,7 @@ Various **desktop environments** are supported.
 
 || **Install command** |
 |:-|:-|
-| **Arch Linux** [1] | `sudo yaourt -S materia-theme` |
+| **Arch Linux** [1] | `yaourt -S materia-theme` |
 | **Fedora / EPEL** [2] | `sudo dnf copr enable tcg/themes && sudo dnf install materia-theme` |
 
 1. The [AUR package](https://aur.archlinux.org/packages/materia-theme/) is maintained by [@cthbleachbit](https://github.com/cthbleachbit).
