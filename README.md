@@ -83,38 +83,12 @@ sudo rm -rf /usr/share/themes/{Materia,Flat-Plat}{,-compact,-dark,-dark-compact,
 To use the Chrome theme,
 
 1. Open the `chrome` folder on `/usr/share/themes/Materia<-variant>`.
-2. Drag and drop the `.crx` files onto the Chrome/Chromium _Extensions_ page: `chrome://extensions`
+2. Drag and drop the `.crx` files onto the Chrome/Chromium Extensions page: `chrome://extensions`
 
-## GDM Theme
+#### GDM Theme
 
 You can change the GDM (lock/login screen) theme by replacing the default GNOME Shell theme.  
-However, if it fails, the desktop environment may not operate correctly. So please **be careful** if doing this.
-
-#### :warning: Cautions:
-- When applying this, other third-party GNOME Shell themes would look broken until you restore to the original theme.
-- If GNOME Shell has been updated, it will be restored to the original theme, so you will need to install this again.
-
-### Installation
-1. Select a **GTK+** theme to decide which variant to install.
-2. Run the following commands to back up and replace the default theme file.
-
-  ```sh
-  GTK_THEME=$(gsettings get org.gnome.desktop.interface gtk-theme | sed "s/'//g")
-  sudo cp -v --backup /usr/share{/themes/$GTK_THEME,}/gnome-shell/gnome-shell-theme.gresource
-  ```
-
-  > **Note:** If you don't want to overwrite the backup on the second and subsequent runs, delete the `--backup` option.
-
-3. Restart GNOME Shell. (If you are running _GNOME on Xorg_, press <kbd>Alt</kbd> + <kbd>F2</kbd> then type `r`.)
-
-### Uninstallation
-1. Restore to the original theme from the backup.
-
-  ```sh
-  sudo mv -v /usr/share/gnome-shell/gnome-shell-theme.gresource{~,}
-  ```
-
-2. Restart GNOME Shell. (If you are running _GNOME on Xorg_, press <kbd>Alt</kbd> + <kbd>F2</kbd> then type `r`.)
+See the wiki for details: https://github.com/nana-4/materia-theme/wiki/GDM-Theme
 
 ## Previews
 
