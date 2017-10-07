@@ -33,10 +33,10 @@ Various **desktop environments** are supported.
 
 || **Install command** |
 |:-|:-|
-| **Arch Linux** [1] | `sudo yaourt -S flatplat-theme` |
-| **Fedora / EPEL** [2] | `sudo dnf copr enable tcg/themes && sudo dnf install Flat-Plat-theme` |
+| **Arch Linux** [1] | `sudo yaourt -S materia-theme` |
+| **Fedora / EPEL** [2] | `sudo dnf copr enable tcg/themes && sudo dnf install materia-theme` |
 
-1. The [AUR package](https://aur.archlinux.org/packages/flatplat-theme/) is maintained by [@cthbleachbit](https://github.com/cthbleachbit).
+1. The [AUR package](https://aur.archlinux.org/packages/materia-theme/) is maintained by [@cthbleachbit](https://github.com/cthbleachbit).
 2. The [Copr repository](https://copr.fedorainfracloud.org/coprs/tcg/themes/) is maintained by [@LaurentTreguier](https://github.com/LaurentTreguier).
 
 #### Manual Installation
