@@ -1,6 +1,6 @@
 # Materia
 
-Materia (formerly Flat-Plat) is a [Material Design](https://material.io)-like theme for GNOME/GTK+ based desktop environments.  
+Materia (formerly Flat-Plat) is a [Material Design](https://material.io) theme for GNOME/GTK+ based desktop environments.  
 It supports GTK+ 3, GTK+ 2, GNOME Shell, Budgie, MATE, Unity, LightDM, GDM, Chrome theme, etc.
 
 Also Materia has compatibility with [oomox theme designer](https://github.com/actionless/oomox).
