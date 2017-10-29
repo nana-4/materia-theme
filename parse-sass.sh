@@ -28,6 +28,7 @@ SASSC_OPT="-M -t expanded"
 echo "== Generating the CSS..."
 
 for color in "${_COLOR_VARIANTS[@]}"; do
+  # The '-compact' variant is not supported for gtk '3.18'
   sassc $SASSC_OPT src/gtk-3.0/3.18/gtk${color}.{scss,css}
 
   for size in "${_SIZE_VARIANTS[@]}"; do
