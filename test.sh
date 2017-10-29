@@ -42,7 +42,7 @@ test() {
   ln -sfT ${SRC_PATH}/gtk-3.0/${GTK_VERSION}/gtk-dark${size}.css                  ${THEME_DIR}/gtk-3.0/gtk-dark.css
 
   mkdir -p                                                                        ${THEME_DIR}/metacity-1
-# ln -sfT ${SRC_PATH}/metacity-1/*.svg                                            ${THEME_DIR}/metacity-1/*.svg
+  ln -sfT ${SRC_PATH}/metacity-1/assets                                           ${THEME_DIR}/metacity-1/assets
   ln -sfT ${SRC_PATH}/metacity-1/metacity-theme-2${ELSE_LIGHT}.xml                ${THEME_DIR}/metacity-1/metacity-theme-2.xml
   ln -sfT ${SRC_PATH}/metacity-1/metacity-theme-3${ELSE_LIGHT}.xml                ${THEME_DIR}/metacity-1/metacity-theme-3.xml
 

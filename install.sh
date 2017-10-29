@@ -173,7 +173,7 @@ for color in "${_COLOR_VARIANTS[@]}"; do
     install -d ${themedir}/metacity-1
     cd ${srcdir}/metacity-1
     cp -ur \
-      *.svg \
+      assets \
       ${themedir}/metacity-1
     if [ "$color" != '-light' ]; then
       cp -ur \
