@@ -1,14 +1,10 @@
 ## General
 
-- Improve directory structure (`help wanted`, ideas very welcome)
-
-  - I'd like to simplify complicated directory structure and symbolic links.
-
-  - Especially for Sass. Two `_colors.scss` should be lumped together and all CSSs need to reference it.
+- Improve directory structure ([#170](../../issues/170), `help wanted`)
 
 - Use `make` or `meson` for building? (`help wanted`)
 
-- Improve `install.sh` script? (PRs very welcome)
+- Improve `install.sh` script? (`help wanted`)
 
   Currently, `install.sh` allows such arguments (thanks to @actionless):
 
@@ -35,7 +31,7 @@
 
   - Or, is it unnecessary because the new interface is well integrated with this theme?
 
-- Xfce theme ([#60](../../issues/60), [#61](../../issues/61), [#92](../../issues/92))
+- Xfce theme ([#60](../../issues/60))
 
   - waiting for the upstream to complete `gtk3` port
 
@@ -45,11 +41,11 @@
 
 - GtkSourceView theme ([#150](../../issues/150))
 
-- Color scheme for GNOME Terminal (if possible, `help wanted`)
+- Color scheme for GNOME Terminal ([#157](../../issues/157))
 
 - Overlay scrollbars extension for Chrome/Chromium (`low priority`)
 
-- Cursor theme like Material Design (`low priority`)
+- Cursor theme like Material Design ([#156](../../issues/156), `low priority`)
 
 ## UI changes
 
@@ -61,11 +57,15 @@
 
 - Use lighter background color for popups such as menu in dark variant
 
+- Change gtk2 spinbutton to flat button style
+
+- Make card/dialog button style closer to the Material Design guidelines
+
 - Rework the focus state styles
 
 ## Others
 
-- Polish Inkscape styling
+- Polish Inkscape (using gtk3) styling
 
 - Polish Xfwm styling
 
