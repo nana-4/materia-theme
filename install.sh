@@ -199,12 +199,12 @@ for color in "${_COLOR_VARIANTS[@]}"; do
       ${themedir}/unity
     if [ "$color" != '-light' ]; then
       cp -ur \
-        buttons \
+        assets \
         ${themedir}/unity
     else
       cp -urT \
-        buttons${color} \
-        ${themedir}/unity/buttons
+        assets${color} \
+        ${themedir}/unity/assets
     fi
 
     # Install Xfwm Theme
