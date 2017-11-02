@@ -55,6 +55,8 @@ Check the dependencies first.
   - `glib2-devel` on Fedora, openSUSE, etc.
   - `libglib2.0-dev` on Debian, Ubuntu, etc.
 
+Did you get the error: `XMLLINT not set and xmllint not found in path`? Then you'll also need to install `libxml2-utils`.
+
 Install the theme with the following commands.
 
 ```sh
