@@ -891,6 +891,17 @@ StScrollBar {
       color: $inverse_secondary_fg_color;
       &:focus, &:hover, &:active { color: $inverse_fg_color; }
     }
+
+    &.clock-display {
+      > StBoxLayout > StIcon {
+        color: rgba($accent_color, 0.7);
+      }
+
+      &:hover,
+      &:active {
+        > StBoxLayout > StIcon { color: $accent_color; }
+      }
+    }
   }
 
   .panel-status-indicators-box,
