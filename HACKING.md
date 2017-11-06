@@ -76,6 +76,28 @@ Here's an example to change the _accent color_:
 
   > Note: `inkscape` and `optipng` must be installed to run the script.
 
+## Changing the color scheme with script
+
+To easily change the color scheme, you can use the `change_color.sh` script (or
+just use the [oomox](https://github.com/actionless/oomox) app).
+
+Originally `change_color.sh` (and the `scripts/` dir) was implemented for oomox,
+but you can also run it on the command line without oomox like this:
+
+> Note: This script only supports GTK2 and GTK3 for now.
+
+For `bash`:
+
+```bash
+./change_color.sh -o my-test-theme <(echo -e "BG=F5F5F5\nFG=000000\nMENU_BG=FFFFFF\nMENU_FG=000000\nSEL_BG=42A5F5\nSEL_FG=FFFFFF\nTXT_BG=FFFFFF\nTXT_FG=000000\nBTN_BG=FAFAFA\nBTN_FG=000000\nACCENT_BG=FF4081\n")
+```
+
+For `fish`:
+
+```fish
+./change_color.sh -o my-test-theme (echo -e "BG=F5F5F5\nFG=000000\nMENU_BG=FFFFFF\nMENU_FG=000000\nSEL_BG=42A5F5\nSEL_FG=FFFFFF\nTXT_BG=FFFFFF\nTXT_FG=000000\nBTN_BG=FAFAFA\nBTN_FG=000000\nACCENT_BG=FF4081\n" | psub)
+```
+
 ## Useful Links
 
 #### Upstream theme sources
@@ -87,10 +109,20 @@ Here's an example to change the _accent color_:
 - [GTK+ 2](https://github.com/GNOME/gnome-themes-standard/tree/master/themes/Adwaita/gtk-2.0)
 - [GNOME Shell](https://github.com/GNOME/gnome-shell/tree/master/data/theme)
   - [Sass sources](https://github.com/GNOME/gnome-shell-sass)
+- [Metacity](https://github.com/GNOME/gnome-themes-standard/tree/gnome-3-14/themes/Adwaita/metacity-1) (legacy)
+
+> For other upstream theme sources of apps/DEs, see the comments in the source code.
 
 #### Tips
 
-- [Unity/Theming](https://wiki.ubuntu.com/Unity/Theming)
 - [Material Design Guidelines](https://www.material.io/guidelines/)
-- [Personal CSS Guidelines](https://github.com/nana-4/materia-theme/wiki/CSS-Guidelines)
+- [CSS Guidelines for Materia](https://github.com/nana-4/materia-theme/wiki/CSS-Guidelines)
 - [The GTK+ Inspector](https://blog.gtk.org/2017/04/05/the-gtk-inspector/)
+- [Theming in GTK+ 4](https://developer.gnome.org/gtk4/stable/theming.html)
+- [Theming in GTK+ 3](https://developer.gnome.org/gtk3/stable/theming.html)
+- [GTK+ 2 Theming Tutorial](https://wiki.gnome.org/Attic/GnomeArt/Tutorials/GtkThemes)
+- [The Pixmap Engine](https://wiki.gnome.org/Attic/GnomeArt/Tutorials/GtkEngines/PixmapEngine)
+- [Designing Metacity Themes](https://wiki.gnome.org/Attic/GnomeArt/Tutorials/MetacityThemes)
+- [Unity/Theming](https://wiki.ubuntu.com/Unity/Theming)
+- [Xfwm4 theme how-to](https://wiki.xfce.org/howto/xfwm4_theme)
+- [Chrome Themes](https://developer.chrome.com/extensions/themes)
