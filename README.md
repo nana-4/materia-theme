@@ -41,7 +41,7 @@ Various **desktop environments** are supported.
 
 #### Manual Installation
 
-Check the dependencies first.
+Check the dependencies first:
 
 - GTK+ `>=3.18`
 - `gnome-themes-standard`
@@ -57,7 +57,7 @@ Check the dependencies first.
 
 Did you get the error: `XMLLINT not set and xmllint not found in path`? Then you'll also need to install `libxml2-utils`.
 
-Install the theme with the following commands.
+Install the theme with the following commands:
 
 ```sh
 cd /tmp && curl -sL https://github.com/nana-4/materia-theme/archive/v20171005.tar.gz | tar xz
@@ -67,7 +67,7 @@ sudo ./install.sh
 
 #### Manual Uninstallation
 
-Delete the installed directories.
+Delete the installed directories:
 
 ```sh
 sudo rm -rf /usr/share/themes/{Materia,Flat-Plat}{,-compact,-dark,-dark-compact,-light,-light-compact}
@@ -82,7 +82,7 @@ sudo rm -rf /usr/share/themes/{Materia,Flat-Plat}{,-compact,-dark,-dark-compact,
 
 #### Chrome Theme
 
-To use the Chrome theme,
+To use the Chrome theme;
 
 1. Open the `chrome` folder on `/usr/share/themes/Materia<-variant>`.
 2. Drag and drop the `.crx` files onto the Chrome/Chromium Extensions page: `chrome://extensions`
@@ -103,7 +103,7 @@ See the wiki for details: https://github.com/nana-4/materia-theme/wiki/GDM-Theme
 ##### GDM
 ![GDM](../images/gdm-unlock.png?raw=true)
 
-<sub>**Preview Details:** Icons: [Paper](https://github.com/snwh/paper-icon-theme) | Font: [M+ 1C](https://mplus-fonts.osdn.jp) 9.75pt | Dock's icon size: 48px + fixed | [Wallpapers](https://imgur.com/a/v2Ovx)</sub>
+<sub>**Previews Info:** Icon Theme: [Paper](https://github.com/snwh/paper-icon-theme) | Font: [M+ 1C](https://mplus-fonts.osdn.jp) 9.75pt | Dock's icon size: 48px + fixed | [Wallpapers](https://imgur.com/a/v2Ovx)</sub>
 
 ## Contributing
 
