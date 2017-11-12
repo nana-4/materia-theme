@@ -1163,10 +1163,15 @@ headerbar {
     }
   }
 
+  // squared corners when the window is maximized, tiled, or fullscreen
   .tiled &,
+  .tiled-top &,
+  .tiled-right &,
+  .tiled-bottom &,
+  .tiled-left &,
   .maximized &,
   .fullscreen & {
-    border-radius: 0; // squared corners when the window is maximized, tiled, or fullscreen
+    border-radius: 0;
     box-shadow: $shadow_1;
   }
 
@@ -1223,21 +1228,49 @@ headerbar {
   }
 }
 
-.background:not(.tiled):not(.maximized):not(.fullscreen):not(.solid-csd) .titlebar {
+.background .titlebar {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
 }
 
+.background.tiled .titlebar,
+.background.tiled-top .titlebar,
+.background.tiled-right .titlebar,
+.background.tiled-bottom .titlebar,
+.background.tiled-left .titlebar,
+.background.maximized .titlebar,
+.background.solid-csd .titlebar {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 headerbar { // headerbar border rounding
-  window:not(.tiled):not(.maximized):not(.fullscreen):not(.solid-csd) separator:first-child + &, // tackles the paned container case
-  window:not(.tiled):not(.maximized):not(.fullscreen):not(.solid-csd) &:first-child { border-top-left-radius: 2px; }
+  window separator:first-child + &, // tackles the paned container case
+  window &:first-child { border-top-left-radius: 2px; }
 
-  window:not(.tiled):not(.maximized):not(.fullscreen):not(.solid-csd) &:last-child { border-top-right-radius: 2px; }
+  window &:last-child { border-top-right-radius: 2px; }
 
-  window:not(.tiled):not(.maximized):not(.fullscreen):not(.solid-csd) stack & { // tackles the stacked headerbars case
+  window stack & { // tackles the stacked headerbars case
     &:first-child, &:last-child {
       border-top-left-radius: 2px;
       border-top-right-radius: 2px;
+    }
+  }
+
+  window.tiled &,
+  window.tiled-top &,
+  window.tiled-right &,
+  window.tiled-bottom &,
+  window.tiled-left &,
+  window.maximized &,
+  window.fullscreen &,
+  window.solid-csd & {
+    &,
+    &:first-child,
+    &:last-child,
+    &:only-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
     }
   }
 }
@@ -3333,7 +3366,11 @@ decoration {
 
   .maximized &,
   .fullscreen &,
-  .tiled & { border-radius: 0; }
+  .tiled &,
+  .tiled-top &,
+  .tiled-right &,
+  .tiled-bottom &,
+  .tiled-left & { border-radius: 0; }
 
   .popup & { box-shadow: none; }
 

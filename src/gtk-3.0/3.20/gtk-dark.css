@@ -1403,8 +1403,20 @@ headerbar.selection-mode .selection-menu .arrow {
 }
 
 .tiled .titlebar:not(headerbar),
+.tiled-top .titlebar:not(headerbar),
+.tiled-right .titlebar:not(headerbar),
+.tiled-bottom .titlebar:not(headerbar),
+.tiled-left .titlebar:not(headerbar),
 .maximized .titlebar:not(headerbar),
 .fullscreen .titlebar:not(headerbar), .tiled
+headerbar,
+.tiled-top
+headerbar,
+.tiled-right
+headerbar,
+.tiled-bottom
+headerbar,
+.tiled-left
 headerbar,
 .maximized
 headerbar,
@@ -1462,23 +1474,67 @@ headerbar spinbutton button {
   margin-bottom: 0;
 }
 
-.background:not(.tiled):not(.maximized):not(.fullscreen):not(.solid-csd) .titlebar {
+.background .titlebar {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
 }
 
-window:not(.tiled):not(.maximized):not(.fullscreen):not(.solid-csd) separator:first-child + headerbar,
-window:not(.tiled):not(.maximized):not(.fullscreen):not(.solid-csd) headerbar:first-child {
+.background.tiled .titlebar,
+.background.tiled-top .titlebar,
+.background.tiled-right .titlebar,
+.background.tiled-bottom .titlebar,
+.background.tiled-left .titlebar,
+.background.maximized .titlebar,
+.background.solid-csd .titlebar {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+window separator:first-child + headerbar,
+window headerbar:first-child {
   border-top-left-radius: 2px;
 }
 
-window:not(.tiled):not(.maximized):not(.fullscreen):not(.solid-csd) headerbar:last-child {
+window headerbar:last-child {
   border-top-right-radius: 2px;
 }
 
-window:not(.tiled):not(.maximized):not(.fullscreen):not(.solid-csd) stack headerbar:first-child, window:not(.tiled):not(.maximized):not(.fullscreen):not(.solid-csd) stack headerbar:last-child {
+window stack headerbar:first-child, window stack headerbar:last-child {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
+}
+
+window.tiled headerbar, window.tiled headerbar:first-child, window.tiled headerbar:last-child, window.tiled headerbar:only-child,
+window.tiled-top headerbar,
+window.tiled-top headerbar:first-child,
+window.tiled-top headerbar:last-child,
+window.tiled-top headerbar:only-child,
+window.tiled-right headerbar,
+window.tiled-right headerbar:first-child,
+window.tiled-right headerbar:last-child,
+window.tiled-right headerbar:only-child,
+window.tiled-bottom headerbar,
+window.tiled-bottom headerbar:first-child,
+window.tiled-bottom headerbar:last-child,
+window.tiled-bottom headerbar:only-child,
+window.tiled-left headerbar,
+window.tiled-left headerbar:first-child,
+window.tiled-left headerbar:last-child,
+window.tiled-left headerbar:only-child,
+window.maximized headerbar,
+window.maximized headerbar:first-child,
+window.maximized headerbar:last-child,
+window.maximized headerbar:only-child,
+window.fullscreen headerbar,
+window.fullscreen headerbar:first-child,
+window.fullscreen headerbar:last-child,
+window.fullscreen headerbar:only-child,
+window.solid-csd headerbar,
+window.solid-csd headerbar:first-child,
+window.solid-csd headerbar:last-child,
+window.solid-csd headerbar:only-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 window.csd > .titlebar:not(headerbar) {
@@ -3649,7 +3705,11 @@ decoration:backdrop {
 
 .maximized decoration,
 .fullscreen decoration,
-.tiled decoration {
+.tiled decoration,
+.tiled-top decoration,
+.tiled-right decoration,
+.tiled-bottom decoration,
+.tiled-left decoration {
   border-radius: 0;
 }
 
