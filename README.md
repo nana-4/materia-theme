@@ -60,8 +60,8 @@ Did you get the error: `XMLLINT not set and xmllint not found in path`? Then you
 Install the theme with the following commands:
 
 ```sh
-cd /tmp && curl -sL https://github.com/nana-4/materia-theme/archive/v20171005.tar.gz | tar xz
-cd materia-theme-20171005
+cd /tmp && curl -sL https://github.com/nana-4/materia-theme/archive/v20171112.tar.gz | tar xz
+cd materia-theme-20171112
 sudo ./install.sh
 ```
 
