@@ -86,6 +86,7 @@ WM_BORDER_FOCUS=${WM_BORDER_FOCUS-$SEL_BG}
 WM_BORDER_UNFOCUS=${WM_BORDER_UNFOCUS-$MENU_BG}
 
 MATERIA_STYLE_COMPACT=$(echo ${MATERIA_STYLE_COMPACT-True} | tr '[:upper:]' '[:lower:]')
+MATERIA_MENUBAR_STYLE=$(echo ${MATERIA_MENUBAR_STYLE-contrast} | tr '[:upper:]' '[:lower:]')
 GTK3_GENERATE_DARK=$(echo ${GTK3_GENERATE_DARK-True} | tr '[:upper:]' '[:lower:]')
 GTK2_HIDPI=$(echo ${GTK2_HIDPI-False} | tr '[:upper:]' '[:lower:]')
 UNITY_DEFAULT_LAUNCHER_STYLE=$(echo ${UNITY_DEFAULT_LAUNCHER_STYLE-False} | tr '[:upper:]' '[:lower:]')
@@ -132,12 +133,19 @@ cd ${tempdir}
 echo "== Converting theme into template..."
 for FILEPATH in "${PATHLIST[@]}"; do
 	find "${FILEPATH}" -type f -exec sed -i'' \
+		-e 's/$grey_50/%BTN_BG%/g' \
+		-e 's/#FAFAFA/%BTN_BG%/g' \
 		-e 's/$grey_100/%BG%/g' \
 		-e 's/#F5F5F5/%BG%/g' \
 		-e 's/$grey_200/%BG2%/g' \
-		-e 's/$black/%FG%/g' \
+		-e 's/$grey_300/%MENU_BG%/g' \
+		-e 's/#E0E0E0/%MENU_BG%/g' \
+		-e 's/$grey_400/%MENU_BG2%/g' \
+		-e 's/#BDBDBD/%MENU_BG2%/g' \
 		-e 's/$grey_900/%FG%/g' \
 		-e 's/#212121/%FG%/g' \
+		-e 's/$black/%FG%/g' \
+		-e 's/#000000/%FG%/g' \
 		-e 's/$pink_A200/%ACCENT_BG%/g' \
 		-e 's/#FF4081/%ACCENT_BG%/g' \
 		-e 's/$blue_400/%SEL_BG%/g' \
@@ -145,8 +153,6 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/$light_blue_A200/%SEL_BG2%/g' \
 		-e 's/$white/%TXT_BG%/g' \
 		-e 's/#FFFFFF/%TXT_BG%/g' \
-		-e 's/$black/%TXT_FG%/g' \
-		-e 's/#000000/%TXT_FG%/g' \
 		-e 's/$blue_grey_700/%MENU_BG%/g' \
 		-e 's/#333e43/%MENU_BG%/g' \
 		-e 's/#455A64/%MENU_BG%/g' \
@@ -154,8 +160,6 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/#3b484e/%MENU_BG2%/g' \
 		-e 's/$blue_grey_900/%MENU_BG3%/g' \
 		-e 's/#414f56/%MENU_BG3%/g' \
-		-e 's/$grey_50/%BTN_BG%/g' \
-		-e 's/#FAFAFA/%BTN_BG%/g' \
 		-e 's/Materia/%OUTPUT_THEME_NAME%/g' \
 		{} \; ;
 done
@@ -220,7 +224,11 @@ for FILEPATH in "${PATHLIST[@]}"; do
 done
 
 rm ./src/gtk-3.0/3.{18,20,22}/*.css
-rm ./src/gtk-3.0/3.{18,20,22}/gtk-light*.scss
+if [[ ${MATERIA_MENUBAR_STYLE}  == "contrast" ]] ; then
+	rm ./src/gtk-3.0/3.{18,20,22}/gtk-light*.scss
+else
+	rm ./src/gtk-3.0/3.{18,20,22}/gtk{,-compact}.scss || true
+fi
 if [[ ${GTK3_GENERATE_DARK} != "true" ]] ; then
 	grep -v "\-dark" ./src/gtk-3.0/gtk-common/assets.txt > ./new_assets.txt
 	mv ./new_assets.txt ./src/gtk-3.0/gtk-common/assets.txt
@@ -248,7 +256,13 @@ if [[ ${MATERIA_STYLE_COMPACT}  == "true" ]] ; then
 else
 	SIZE_VARIANTS=","
 fi
-SIZE_VARIANTS="${SIZE_VARIANTS}" COLOR_VARIANTS="," THEME_DIR_BASE=${DEST_PATH} ./parse-sass.sh
+if [[ ${MATERIA_MENUBAR_STYLE}  == "contrast" ]] ; then
+	COLOR_VARIANTS=","
+else
+	COLOR_VARIANTS="-light"
+fi
+
+SIZE_VARIANTS="${SIZE_VARIANTS}" COLOR_VARIANTS="${COLOR_VARIANTS}" THEME_DIR_BASE=${DEST_PATH} ./parse-sass.sh
 
 rm ./src/gtk-2.0/assets/*.png || true
 rm ./src/gtk-2.0/assets-dark/*.png || true
@@ -264,9 +278,9 @@ cd ./src/gtk-3.0/gtk-common
 ./render-assets.sh
 cd ../../..
 
-SIZE_VARIANTS="${SIZE_VARIANTS}" COLOR_VARIANTS="," THEME_DIR_BASE=${DEST_PATH} ./install.sh
+SIZE_VARIANTS="${SIZE_VARIANTS}" COLOR_VARIANTS="${COLOR_VARIANTS}" THEME_DIR_BASE=${DEST_PATH} ./install.sh
 
 echo
 echo "== SUCCESS"
-echo "== The theme was installed to '${DEST_PATH}$(tr -d ',' <<<${SIZE_VARIANTS})'"
+echo "== The theme was installed to '${DEST_PATH}$(tr -d ',' <<<${SIZE_VARIANTS})$(tr -d ',' <<<${COLOR_VARIANTS})'"
 exit 0
