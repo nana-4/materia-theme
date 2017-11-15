@@ -119,8 +119,6 @@ DEST_PATH="$HOME/.themes/${OUTPUT_THEME_NAME/\//-}"
 test "$SRC_PATH" = "$DEST_PATH" && echo "can't do that" && exit 1
 
 
-#rm -r "$DEST_PATH" || true
-mkdir -p "$DEST_PATH"
 tempdir=$(mktemp -d)
 function post_clean_up {
 	rm -r "${tempdir}" || true
@@ -280,7 +278,13 @@ cd ../../..
 
 SIZE_VARIANTS="${SIZE_VARIANTS}" COLOR_VARIANTS="${COLOR_VARIANTS}" THEME_DIR_BASE=${DEST_PATH} ./install.sh
 
+GENERATED_PATH="${DEST_PATH}$(tr -d ',' <<<${COLOR_VARIANTS})$(tr -d ',' <<<${SIZE_VARIANTS})"
+if [[ -d "${DEST_PATH}" ]] ; then
+	rm -r "${DEST_PATH}"
+fi
+mv "${GENERATED_PATH}" "${DEST_PATH}"
+
 echo
 echo "== SUCCESS"
-echo "== The theme was installed to '${DEST_PATH}$(tr -d ',' <<<${SIZE_VARIANTS})$(tr -d ',' <<<${COLOR_VARIANTS})'"
+echo "== The theme was installed to '${DEST_PATH}'"
 exit 0
