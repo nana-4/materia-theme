@@ -134,9 +134,12 @@ popover.background.places-menu {
 
 // Panel
 .budgie-panel {
-  background-color: $panel_bg_color;
+  transition: background-color $longer_duration $deceleration_curve;
+  background-color: $solid_panel_bg_color;
   color: $inverse_secondary_fg_color;
   font-weight: 500;
+
+  &.transparent { background-color: $panel_bg_color; }
 
   button {
     border-radius: 0;
