@@ -8,6 +8,134 @@
 // this transparent..
 .budgie-container { background-color: transparent; }
 
+.budgie-settings-window buttonbox.inline-toolbar {
+  border-style: none none solid;
+
+  button {
+    border-radius: 2px;
+
+    @extend %simple_flat_button;
+  }
+}
+
+// for Show Desktop Button
+.budgie-panel button { padding: 0 8px; }
+
+.budgie-popover {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.3);
+  border-radius: $material_radius + 1px;
+  box-shadow: $shadow_2;
+  background-color: $lighter_bg_color;
+
+  .container { padding: 2px; }
+
+  border { border: none; }
+
+  list { background-color: transparent; }
+
+  row {
+    padding: 0;
+
+    &:hover { box-shadow: none; }
+  }
+
+  &:not(.budgie-menu) button.flat:not(.image-button) {
+    min-height: $menuitem_size;
+    padding: 0 8px;
+    color: $fg_color;
+    font-weight: normal;
+
+    &:disabled { color: $disabled_fg_color; }
+  }
+
+  &.user-menu {
+    .container { padding: 8px; }
+
+    separator { margin: 4px 0; }
+  }
+
+  &.sound-popover {
+    separator { margin: 3px 0; }
+  }
+
+  &.night-light-indicator {
+    .container { padding: 8px; }
+  }
+
+  &.places-menu {
+    .container { padding: 8px; }
+
+    .places-list {
+      margin-top: 4px;
+      padding-top: 4px;
+      border-top: 1px solid $border_color;
+    }
+  }
+
+  &.workspace-popover {
+    .container { padding: 2px 8px 8px; }
+
+    separator { margin: 4px 0; }
+
+    flowboxchild { padding: 0; }
+  }
+}
+
+.workspace-switcher {
+  .workspace-layout {
+    border: 0 solid $inverse_divider_color;
+
+    .top &,
+    .bottom & {
+      &:dir(ltr) { border-left-width: 1px; }
+
+      &:dir(rtl) { border-right-width: 1px; }
+    }
+
+    .left &,
+    .right & { border-top-width: 1px; }
+  }
+
+  .workspace-item,
+  .workspace-add-button {
+    border: 0 solid $inverse_divider_color;
+
+    .top &,
+    .bottom & {
+      &:dir(ltr) { border-right-width: 1px; }
+
+      &:dir(rtl) { border-left-width: 1px; }
+    }
+
+    .left &,
+    .right & { border-bottom-width: 1px; }
+  }
+
+  .workspace-item {
+    transition: $shorter_transition;
+
+    &.current-workspace { background-color: $inverse_divider_color; }
+  }
+
+  .workspace-add-button {
+    padding: 0;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+
+    &:active image { margin: 1px 0 -1px; }
+  }
+
+  .workspace-icon-button {
+    min-height: 24px;
+    min-width: 24px;
+    padding: 0;
+    border-radius: 2px;
+  }
+}
+
 // Budgie Menu
 .budgie-menu {
   &.background {
