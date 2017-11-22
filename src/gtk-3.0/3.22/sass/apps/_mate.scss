@@ -169,6 +169,46 @@ na-tray-applet widget box widget {
   frame > border { border-style: none; }
 }
 
+// mate-menu
+
+// mimic menubar menuitem style
+#PanelApplet {
+  &:not(:selected) > box { transition: $shorter_transition; }
+
+  &:selected > box {
+    background-color: $titlebar_divider_color;
+    color: $titlebar_fg_color;
+  }
+}
+
+#mate-menu {
+  // FIXME, does not work
+  border: 1px solid $border_color;
+
+  button {
+    @extend %simple_flat_button;
+
+    min-height: 24px;
+    min-width: 24px;
+    padding: 4px 0;
+    color: $fg_color;
+    font-weight: normal;
+
+    label:not(:first-child) { color: $secondary_fg_color; }
+  }
+
+  entry {
+    margin: 0 0 8px;
+
+    image { margin: 0; }
+
+    + button {
+      margin: 0 4px 8px;
+      padding: ($medium_size - 24px) / 2;
+    }
+  }
+}
+
 
 /*********************
  * CAJA File manager *
