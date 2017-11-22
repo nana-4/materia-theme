@@ -381,7 +381,29 @@ print_assets_summary () {
     printf "%-25s%-10s%-10s%-8s\n" "color-accent-disabled" "${old_color_accent_disabled}" "${color_accent}" "0.5"
 }
 # Render asset
-render_asset () {
+render_asset_gtk2 () {
+    local assets_src_file=${1}
+    local assets_dir=${2}
+    local asset_name=${3}
+    local gtk2_hidpi=$(echo ${GTK2_HIDPI-False} | tr '[:upper:]' '[:lower:]')
+    local hidpi_option=""
+    if [ "gtk2_hidpi" == "true" ]; then
+        hidpi_option="--export-dpi=192"
+    fi
+    INKSCAPE=$(which inkscape)
+    OPTIPNG=$(which optipng)
+    
+    if [ -f ${assets_dir}/${asset_name}.png ]; then
+        echo "assets/${asset_name}.png exists."
+    else
+        echo Rendering assets/${asset_name}.png
+        $INKSCAPE --export-id=${asset_name} --export-id-only ${hidpi_option} \
+                  --export-background-opacity=0 \
+                  --export-png="${assets_dir}/${asset_name}.png" ${assets_src_file} >/dev/null \
+        && $OPTIPNG -o7 --quiet ${assets_dir}/${asset_name}.png
+    fi
+}
+render_asset_gtk3 () {
     local assets_src_file=${1}
     local assets_dir=${2}
     local asset_name=${3}
@@ -404,40 +426,44 @@ render_asset () {
                   --export-png="${assets_dir}/${asset_name}@2.png" ${assets_src_file} >/dev/null \
         && $OPTIPNG -o7 --quiet ${assets_dir}/${asset_name}@2.png
     fi
-#TODO: support custom assets dpi
-#    if [ ! -z ${asset_dpi_x4} ]; then
-#        if [ -f ${assets_dir}/${asset_name}@4.png ]; then
-#            echo "${assets_dir}/${asset_name}@4.png exists."
-#        else 
-#            echo Rendering ${assets_dir}/${asset_name}@4.png
-#            $INKSCAPE --export-id=${asset_name} --export-id-only --export-dpi=360 \
-#                      --export-png="${assets_dir}/${asset_name}@4.png" ${assets_src_file} >/dev/null \
-#            && $OPTIPNG -o7 --quiet ${assets_dir}/${asset_name}@4.png
-#        fi
-#    fi
 }
 # Rendering assets
 render_assets () {
-    if [ ! -d "$SRC_DIR/gtk-3.0/gtk-common/assets_original" ]; then
-        echo " assets_original not exist"
-        mv "$SRC_DIR/gtk-3.0/gtk-common/assets" "$SRC_DIR/gtk-3.0/gtk-common/assets_original"
+    if [ "$1" == "gtk3" ]; then
+        if [ ! -d "$SRC_DIR/gtk-3.0/gtk-common/assets" ]; then
+            mkdir -p "${SRC_DIR}/gtk-3.0/gtk-common/assets"
+        elif [ ! -d "$SRC_DIR/gtk-3.0/gtk-common/assets_original" ]; then
+            mv "$SRC_DIR/gtk-3.0/gtk-common/assets" "$SRC_DIR/gtk-3.0/gtk-common/assets_original"
+        fi
+        local assets_src_file="${SRC_DIR}/gtk-3.0/gtk-common/assets.svg"
+        local assets_dir="${SRC_DIR}/gtk-3.0/gtk-common/assets"
+        local assets_index="${SRC_DIR}/gtk-3.0/gtk-common/assets.txt"
+    elif [ "$1" == "gtk2" ]; then
+        if [ ! -d "$SRC_DIR/gtk-2.0/assets" ]; then
+            mkdir -p "${SRC_DIR}/gtk-2.0/assets"
+        elif [ ! -d "$SRC_DIR/gtk-2.0/assets_original" ]; then
+            mv "$SRC_DIR/gtk-2.0/assets" "$SRC_DIR/gtk-2.0/assets_original"
+        fi
+        mkdir -p "${SRC_DIR}/gtk-2.0/assets"
+        local assets_src_file="${SRC_DIR}/gtk-2.0/assets.svg"
+        local assets_dir="${SRC_DIR}/gtk-2.0/assets"
+        local assets_index="${SRC_DIR}/gtk-2.0/assets.txt"
     fi
-    local assets_src_file="${SRC_DIR}/gtk-3.0/gtk-common/assets.svg"
-    local assets_dir="${SRC_DIR}/gtk-3.0/gtk-common/assets"
-    local assets_index="${SRC_DIR}/gtk-3.0/gtk-common/assets.txt"
-    install -d ${assets_dir}
+    #install -d ${assets_dir}
     if [[ $(which parallel 2>/dev/null) ]]; then
         printf "\n%s\n\n" "Start rendering ..."
-        export -f render_asset
-        parallel --load 85% --noswap -a ${assets_index} render_asset ${assets_src_file} ${assets_dir}
-        unset -f render_asset
+        export -f render_asset_${1}
+        parallel --load 85% --noswap -a ${assets_index} render_asset_${1} ${assets_src_file} ${assets_dir} 
+        unset -f render_asset_${1}
         printf "\n%s\n\n" "Finished rendering."
     else
-        printf "\n%s\n\n" "We recommend installing 'parallel' for faster rendering"
+        printf "\n%s\n" "We recommend installing 'parallel' for faster rendering"
+        printf "%s\n" "Start rendering ..."
         while read i; do 
-            render_asset ${assets_src_file} ${assets_dir} ${i}
+            render_asset_${1} ${assets_src_file} ${assets_dir} "${i}"
         done < ${assets_index}
         printf "\n%s\n\n" "We recommend installing 'parallel' for faster rendering"
+        printf "%s\n" "Finished rendering ..."
     fi
 }
 
@@ -573,11 +599,27 @@ elif [ "${1}" == "assets" ]; then
     change_assets_color
     echo
 elif [ "${1}" == "render-assets" ]; then
-    render_assets
+    shift
+    while [ $# -ne 0 ] && [ "$1" != "--" ]; do
+        case "$1" in
+            --gtk2)
+                render_assets "gtk2"
+                shift 
+                ;;
+            --gtk3)
+                render_assets "gtk3"
+                shift
+                ;;
+            *)
+                echo "ERROR: Unrecognized rendering option '$1'."
+                echo "Try '$0 --help' for more information"
+                exit 1
+                ;; 
+        esac
+    done
 elif [ "${1}" == "--help" -o "${1}" == "-h" ]; then
     usage
-else
-    echo "ERROR: Unrecognized option."
+
     echo "Try '${0} --help' for more information."
 fi
 exit 0
