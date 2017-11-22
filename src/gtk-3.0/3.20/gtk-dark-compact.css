@@ -4788,7 +4788,7 @@ UnityPanelWidget:backdrop,
 #PanelPlug,
 PanelToplevel.background {
   background-color: #263238;
-  color: #FFFFFF;
+  color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
 }
 
@@ -4805,7 +4805,7 @@ PanelToplevel > grid > button:disabled, .mate-panel-menu-bar #PanelApplet button
 }
 
 PanelToplevel > grid > button:checked, .mate-panel-menu-bar #PanelApplet button:checked {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.12);
   color: #FFFFFF;
 }
 
@@ -4815,7 +4815,9 @@ PanelToplevel > grid > button:checked:disabled, .mate-panel-menu-bar #PanelApple
 }
 
 PanelToplevel > grid > button {
-  padding: 0 4px;
+  min-height: 24px;
+  min-width: 24px;
+  padding: 0;
   border-radius: 0;
 }
 
@@ -4829,15 +4831,26 @@ PanelSeparator {
 
 MatePanelAppletFrameDBus {
   border-style: solid;
-  border-width: 0 1px;
   border-color: rgba(255, 255, 255, 0.12);
 }
 
-.mate-panel-menu-bar menubar menuitem {
-  padding: 4px;
+.mate-panel-menu-bar.horizontal MatePanelAppletFrameDBus {
+  border-width: 0 1px;
 }
 
-.mate-panel-menu-bar menubar menu menuitem {
+.mate-panel-menu-bar.vertical MatePanelAppletFrameDBus {
+  border-width: 1px 0;
+}
+
+.mate-panel-menu-bar.horizontal menubar > menuitem {
+  padding: 0 8px;
+}
+
+.mate-panel-menu-bar.vertical menubar > menuitem {
+  padding: 8px 0;
+}
+
+.mate-panel-menu-bar menubar menu > menuitem {
   padding: 6px;
 }
 
@@ -4845,6 +4858,18 @@ MatePanelAppletFrameDBus {
   -GtkWidget-window-dragging: true;
   padding: 4px;
   border-radius: 0;
+}
+
+#tasklist-button image:dir(ltr), #tasklist-button label:dir(rtl) {
+  padding-left: 4px;
+}
+
+#tasklist-button label:dir(ltr), #tasklist-button image:dir(rtl) {
+  padding-right: 4px;
+}
+
+.mate-panel-menu-bar.vertical #tasklist-button {
+  min-height: 32px;
 }
 
 PanelApplet.wnck-applet .wnck-pager {
@@ -4864,6 +4889,14 @@ PanelApplet.wnck-applet .wnck-pager:selected {
   background-color: #42A5F5;
 }
 
+.mate-panel-menu-bar.horizontal #clock-applet-button label {
+  padding: 0 8px;
+}
+
+.mate-panel-menu-bar.vertical #clock-applet-button label {
+  padding: 8px 0;
+}
+
 #MatePanelPopupWindow {
   border: 1px solid rgba(0, 0, 0, 0.26);
   border-radius: 3px;
@@ -4874,8 +4907,16 @@ PanelApplet.wnck-applet .wnck-pager:selected {
   border-style: none;
 }
 
+#MatePanelPopupWindow button {
+  padding: 4px 16px;
+}
+
 #MatePanelPopupWindow ClockMap {
   border: 1px solid rgba(0, 0, 0, 0.26);
+}
+
+#MatePanelPopupWindow widget {
+  color: rgba(0, 0, 0, 0.26);
 }
 
 na-tray-applet {
@@ -4888,18 +4929,10 @@ na-tray-applet {
 }
 
 .mate-panel-applet-slider {
-  background-color: transparent;
-}
-
-.mate-panel-applet-slider frame {
   border: 1px solid rgba(0, 0, 0, 0.26);
   border-radius: 3px;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
   background-color: #333e43;
-}
-
-.mate-panel-applet-slider frame frame {
-  all: unset;
 }
 
 .mate-panel-applet-slider frame > border {

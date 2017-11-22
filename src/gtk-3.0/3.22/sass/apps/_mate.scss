@@ -14,7 +14,7 @@
 #PanelPlug, // FIXME: this cannot be transparent
 PanelToplevel.background {
   background-color: $unity_panel_bg_color;
-  color: $titlebar_fg_color;
+  color: $titlebar_secondary_fg_color;
   font-weight: 500;
 }
 
@@ -27,7 +27,7 @@ PanelToplevel.background {
   &:disabled { color: $titlebar_disabled_secondary_fg_color; }
 
   &:checked {
-    background-color: $titlebar_track_color;
+    background-color: $titlebar_divider_color;
     color: $titlebar_fg_color;
   }
 
@@ -39,7 +39,9 @@ PanelToplevel.background {
 
 // hide buttons
 PanelToplevel > grid > button {
-  padding: 0 4px;
+  min-height: 24px;
+  min-width: 24px;
+  padding: 0;
   border-radius: 0;
 
   @extend %simple_flat_button;
@@ -63,17 +65,20 @@ PanelSeparator {
 // the grid left from na-tray and wncktasklist
 MatePanelAppletFrameDBus {
   border-style: solid;
-  border-width: 0 1px;
   border-color: $titlebar_divider_color;
+
+  .mate-panel-menu-bar.horizontal & { border-width: 0 1px; }
+  .mate-panel-menu-bar.vertical & { border-width: 1px 0; }
 }
 
 // main menu
-.mate-panel-menu-bar menubar {
+.mate-panel-menu-bar {
   // set normal menubar button
-  menuitem { padding: 4px; }
+  &.horizontal menubar > menuitem { padding: 0 8px; }
+  &.vertical menubar > menuitem { padding: 8px 0; }
 
   // set normal menubar menuitem
-  menu menuitem {
+  menubar menu > menuitem {
     padding: 6px;
     // font-weight: initial;
   }
@@ -90,6 +95,16 @@ MatePanelAppletFrameDBus {
   @extend %mate_panel_button;
 }
 
+#tasklist-button {
+  // instead of #tasklist-button { padding: 0 4px; }
+  // since the button padding is hard-coded to 0
+  image:dir(ltr), label:dir(rtl) { padding-left: 4px; }
+  label:dir(ltr), image:dir(rtl) { padding-right: 4px; }
+
+  // #tasklist-button is always horizontal even if the panel is vertical
+  .mate-panel-menu-bar.vertical & { min-height: 32px; }
+}
+
 // WnckPager
 PanelApplet.wnck-applet .wnck-pager {
   background-color: transparent;
@@ -103,7 +118,9 @@ PanelApplet.wnck-applet .wnck-pager {
 }
 
 #clock-applet-button {
-  // font-weight: initial;
+  // since the button padding is hard-coded to 0, add to the label node instead
+  .mate-panel-menu-bar.horizontal & label { padding: 0 8px; }
+  .mate-panel-menu-bar.vertical & label { padding: 8px 0; }
 }
 
 #MatePanelPopupWindow {
@@ -113,8 +130,13 @@ PanelApplet.wnck-applet .wnck-pager {
 
   frame > border { border-style: none; }
 
+  button { padding: 4px 16px; }
+
   // FIXME, does not work
   ClockMap { border: 1px solid $border_color; }
+
+  // Instead, this works
+  widget { color: $border_color; }
 }
 
 na-tray-applet {
@@ -139,18 +161,12 @@ na-tray-applet widget box widget {
 
 // volume applet, brightness applet
 .mate-panel-applet-slider {
-  background-color: transparent;
+  border: 1px solid $border_color;
+  border-radius: $material_radius + 1px;
+  box-shadow: inset 0 1px $highlight_color;
+  background-color: $bg_color;
 
-  frame {
-    border: 1px solid $border_color;
-    border-radius: $material_radius + 1px;
-    box-shadow: inset 0 1px $highlight_color;
-    background-color: $bg_color;
-
-    frame { all: unset; }
-
-    > border { border-style: none; }
-  }
+  frame > border { border-style: none; }
 }
 
 
