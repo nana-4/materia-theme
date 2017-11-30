@@ -41,6 +41,7 @@ usage() {
     printf "  %-20s%s\n" "--sbg" "Change theme selection-bg-color"
     printf "  %-20s%s\n" "--accent" "Change theme accent-color"
     printf "  %-20s%s\n" "--btn-fg" "Change theme buttons-fg-color"
+    printf "  %-20s%s\n" "--btn2-fg" "Change theme suggested and destructive action buttons fg-color"
     printf "\n%s\n" "ASSETS OPTIONS:"
     printf "  %-25s%s\n" "--fg" "Change assets color-fg"
     printf "  %-25s%s\n" "--fg-dark" "Change assets color-fg-dark"
@@ -88,7 +89,7 @@ usage() {
     printf "%s\n" "Install Materia solarized light version"
     printf "\t%s\t%s\n" " ./materia.sh install --color dark --size compact --bg "#fdf6e3" --bg2 "#eee8d5"  --fg "#657b83" --sbg "#eee8d5" --sfg "#268bd2" --accent "#6c71c4"  --tbg "#073642"  -n Materia-SolarizedLight" 
     printf "%s\n" "Install Materia solarized dark version"
-    printf "\t%s\t%s\n" " ./materia.sh install --color dark --size compact --bg "#002b36" --bg2 "#073642"  --fg "#839496" --sbg "#073642" --sfg "#859900" --accent "#6c71c4"  --tbg "#073642"  -n Materia-SolarizedDark" 
+    printf "\t%s\t%s\n" " ./materia.sh install --color dark --size compact --bg "#002b36" --bg2 "#073642"  --fg "#839496" --sbg "#073642" --sfg "#859900" --accent "#6c71c4"  --tbg "#073642" --btn2-fg "#000000" -n Materia-SolarizedDark" 
     printf "\n%s\n" "CUSTOM ASSETS COLORS EXAMPLES:"
     printf "%s\n" "Follow these steps to change assets colors"
     printf "  %s\n" "1- Change assets color"
@@ -630,6 +631,11 @@ change_colors_scss () {
     else
         cp ${gtk3_sass_dir}/_colors-original.scss ${gtk3_sass_dir}/_colors.scss
     fi
+    if [ ! -f "${gtk3_sass_dir}/_common-original.scss"  ]; then
+        cp ${gtk3_sass_dir}/_common.scss ${gtk3_sass_dir}/_common-original.scss
+    else
+        cp ${gtk3_sass_dir}/_common-original.scss ${gtk3_sass_dir}/_common.scss
+    fi
     if [ ! -f "${gs_sass_dir}/_colors-original.scss"  ]; then
         cp ${gs_sass_dir}/_colors.scss ${gs_sass_dir}/_colors-original.scss
     else
@@ -753,6 +759,9 @@ change_colors_scss () {
         if [ "${iFlags[12]}" == "true" ]; then
             sed -i "s/\(\\\$accent_color: \).[^;]*/\1${accent_color}/g" ${colors_scss_file}
         fi
+        if [ "${iFlags[14]}" == "true" ]; then
+            sed -i "/\&\.#{\\\$b_type}/{n;n;s/\\\$inverse_fg_color/${btn2_fg_color}/g}" ${gtk3_sass_dir}/_common.scss
+        fi
     done
     #change gtk2 colors
     if [ "${iFlags[4]}" == "true" ]; then
@@ -795,7 +804,7 @@ rFlags=('false' 'false')                                 # rendering flag
 OPTS=$(getopt -o c:s:n:d: -l color:,size:,name:,assets:, render-assets,\
     gtk2,gtk3,fg:,fg-dark:,fg2:,fg2-dark:,fg2-disabled:,fg2-dark-disabled:,\
     bg:,bg-dark:,bg-lighter:,bg-lighter-dark:,base:,base-dark:,primary:,\
-    divider:,accent:,dest:,bg2:,bg3:,tbg:,tfg:,sfg:,sbg: -n $0 -- "$@")
+    divider:,accent:,dest:,bg2:,bg3:,tbg:,tfg:,sfg:,sbg:btn-fg:,btn2-fg:, -n $0 -- "$@")
 if [ $? -ne 0 ]; then
     echo "Failed parsing options, Try '$0 --help' for more info"
     exit 1
@@ -881,8 +890,15 @@ if [ "${1}" == "install" ]; then
                 iFlags[13]='true'
                 shift 2
                 ;;
+            --btn2-fg)
+                # Suggested and Destructive Action buttons
+                # bg of btn2 will be same as accent color
+                is_valid_color "${1}" "${2}"
+                btn2_fg_color="${2}"
+                iFlags[14]='true'
+                shift 2
+                ;;
             -d|--dest)
-                #TODO: prompt the user to run as root when outside $HOME 
                 theme_dst_dir="${2}"
                 if [ ! -d "${theme_dst_dir}" ]; then
                     echo "ERROR: destination directory does not exist."
@@ -903,15 +919,15 @@ if [ "${1}" == "install" ]; then
                 ;;
         esac
     done
+    if [ "${iFlags[3]}" == "false" -a $(id -u) != 0 ]; then
+        echo "Please run as root." 
+        exit 1
+    fi
     if [[ "${iFlags[@]:4}" =~ "true" && "${iFlags[0]}" = "true" ]]; then
         change_colors_scss 
     elif [[ "${iFlags[@]:4}" =~ "true" && "${iFlags[0]}" = "false" ]]; then
         echo "ERROR: Please specify color variant [light|dark]."
         echo "Try '$0 --help' for more information"
-        exit 1
-    fi
-    if [ "${iFlags[3]}" == "false" ]; then
-        echo "Please run as root." 
         exit 1
     fi
     set_theme_variant "${color}" "${size}"
