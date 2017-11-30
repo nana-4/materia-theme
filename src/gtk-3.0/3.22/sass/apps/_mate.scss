@@ -13,8 +13,10 @@
 // let's start it
 .mate-panel-menu-bar {
   background-color: $solid_panel_bg_color;
-  color: $inverse_secondary_fg_color;
   font-weight: 500;
+
+  // Avoid changing the menu text color
+  &:not(.popup) { color: $inverse_secondary_fg_color; }
 
   button {
     @extend %flat_button;
