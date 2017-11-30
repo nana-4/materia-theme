@@ -11,28 +11,31 @@
 }
 
 // let's start it
-#PanelPlug,
-PanelToplevel.background {
+.mate-panel-menu-bar {
   background-color: $solid_panel_bg_color;
   color: $inverse_secondary_fg_color;
   font-weight: 500;
+
+  button {
+    @extend %flat_button;
+    @extend %button_selected.flat;
+
+    min-height: 16px;
+    min-width: 16px;
+    padding: 0; // NOTE: Most buttons padding are hard-coded to 0 (except hide buttons)
+    border-radius: 0;
+
+    &:checked { background-color: $inverse_divider_color; }
+  }
 }
 
 // hide buttons
-PanelToplevel > grid > button {
-  min-height: 24px;
+PanelToplevel.horizontal > grid > button {
   min-width: 24px;
-  padding: 0;
-  border-radius: 0;
-
-  @extend %simple_flat_button;
-
-  @extend %button_selected.flat;
 }
 
-// for small arrows
-PanelWidget button {
-  &, &:hover, &:active { color: $inverse_secondary_fg_color; }
+PanelToplevel.vertical > grid > button {
+  min-height: 24px;
 }
 
 #PanelApplet {
@@ -60,7 +63,9 @@ MatePanelAppletFrameDBus {
 
   // set normal menubar menuitem
   menubar menu > menuitem {
-    padding: 6px;
+    // adjust sizing since the menuitem has large icons
+    min-height: $menuitem_size;
+    padding: 0 6px;
     // font-weight: initial;
   }
 }
@@ -68,22 +73,40 @@ MatePanelAppletFrameDBus {
 // all applets
 .mate-panel-menu-bar #PanelApplet button {
   -GtkWidget-window-dragging: true;
-  padding: 4px;
-  border-radius: 0;
-
-  @extend %flat_button;
-
-  @extend %button_selected.flat;
+  // padding: 4px;
 }
 
 #tasklist-button {
+  border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
+                                $titlebar_indicator_color 0%,
+                                transparent 0%)
+                                0 0 0 / 0 0 0px;
+
+  &:checked {
+    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
+                                  $titlebar_indicator_color 100%,
+                                  transparent 0%)
+                                  0 0 2 / 0 0 2px;
+  }
+
   // instead of #tasklist-button { padding: 0 4px; }
-  // since the button padding is hard-coded to 0
   image:dir(ltr), label:dir(rtl) { padding-left: 4px; }
   label:dir(ltr), image:dir(rtl) { padding-right: 4px; }
 
   // #tasklist-button is always horizontal even if the panel is vertical
   .mate-panel-menu-bar.vertical & { min-height: 32px; }
+}
+
+#showdesktop-button {
+  .mate-panel-menu-bar.horizontal & image {
+    min-width: 24px;
+    padding: 0 4px;
+  }
+
+  .mate-panel-menu-bar.vertical & image {
+    min-height: 24px;
+    padding: 4px 0;
+  }
 }
 
 // WnckPager
@@ -99,7 +122,6 @@ PanelApplet.wnck-applet .wnck-pager {
 }
 
 #clock-applet-button {
-  // since the button padding is hard-coded to 0, add to the label node instead
   .mate-panel-menu-bar.horizontal & label { padding: 0 8px; }
   .mate-panel-menu-bar.vertical & label { padding: 8px 0; }
 }
