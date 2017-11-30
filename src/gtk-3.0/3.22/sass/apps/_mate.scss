@@ -60,6 +60,17 @@ MatePanelAppletFrameDBus {
 // main menu
 .mate-panel-menu-bar {
   // set normal menubar button
+  menubar > menuitem {
+    color: $inverse_secondary_fg_color;
+
+    &:hover {
+      background-color: $inverse_divider_color;
+      color: $inverse_fg_color;
+    }
+
+    &:disabled { color: $inverse_disabled_secondary_fg_color; }
+  }
+
   &.horizontal menubar > menuitem { padding: 0 8px; }
   &.vertical menubar > menuitem { padding: 8px 0; }
 
