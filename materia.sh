@@ -292,8 +292,12 @@ install_gnome_shell () {
         cp -urL ${gs_src_dir}/assets-dark ${gs_dst_dir}/assets
     fi
     # Compile .scss files to .css files 
-    set_gnome_shell_scss
-    sassc "${gs_scss_file}" "${gs_dst_dir}/gnome-shell.css"
+    if [ "$cFlags" == 'true' ]; then
+        set_gnome_shell_scss
+        sassc "${gs_scss_file}" "${gs_dst_dir}/gnome-shell.css"
+    else
+        cp "${gs_src_dir}/gnome-shell${1}${2}.css" "${gs_dst_dir}/gnome-shell.css"
+    fi
     # Create a binary resource bundle from .gresource.xml
     glib-compile-resources --sourcedir=${gs_dst_dir} \
         --target=${gs_dst_dir}/gnome-shell-theme.gresource \
@@ -310,9 +314,14 @@ install_gtk2_theme () {
     else
         cp -ur ${SRC_DIR}/gtk-2.0/main.rc ${3}/gtk-2.0/main.rc
     fi
-    set_gtk2_gtkrc "${1}"
     cp -ur ${SRC_DIR}/gtk-2.0/{apps,hacks}.rc ${3}/gtk-2.0
-    cp -ur ${SRC_DIR}/gtk-2.0/gtkrc ${3}/gtk-2.0/gtkrc
+    if [ "$cFlags" == 'true' ]; then
+        set_gtk2_gtkrc "${1}"
+        cp -ur ${SRC_DIR}/gtk-2.0/gtkrc ${3}/gtk-2.0/gtkrc
+    else
+        echo here
+        cp -ur ${SRC_DIR}/gtk-2.0/gtkrc${1} ${3}/gtk-2.0/gtkrc
+    fi
     if [ "${1}" == "-dark" ]; then
         cp -ur ${SRC_DIR}/gtk-2.0/assets${1} ${3}/gtk-2.0/assets
     else
@@ -324,21 +333,41 @@ install_gtk2_theme () {
 install_gtk3_theme () {
     install -d "${3}/gtk-common"
     cp -ur ${SRC_DIR}/gtk-3.0/gtk-common/assets ${3}/gtk-common
-    set_gtk3_scss "${1}" "${2}"
+    #set_gtk3_scss "${1}" "${2}"
     for ver in "${gtk_ver[@]}"; do 
         if [ "${ver}"  == "3.18" ]; then
             install -d "${3}/gtk-3.0"
             cp -ur ${SRC_DIR}/gtk-3.0/${ver}/assets ${3}/gtk-3.0
-            sassc "${SRC_DIR}/gtk-3.0/${ver}/gtk.scss" "${3}/gtk-3.0/gtk.css" #2>/dev/null
+            if [ "$cFlags" == 'true' ]; then
+                set_gtk3_scss "${1}" "${2}"
+                sassc "${SRC_DIR}/gtk-3.0/${ver}/gtk.scss" "${3}/gtk-3.0/gtk.css" #2>/dev/null
+            else
+                cp "${SRC_DIR}/gtk-3.0/${ver}/gtk${1}.css" "${3}/gtk-3.0/gtk.css" #2>/dev/null
+            fi
             if [ "${1}" != "-dark" ]; then
-                sassc "${SRC_DIR}/gtk-3.0/${ver}/gtk-dark.scss" "${3}/gtk-3.0/gtk-drak.css" #2>/dev/null
+                if [ "$cFlags" == 'true' ]; then
+                    set_gtk3_scss "${1}" "${2}"
+                    sassc "${SRC_DIR}/gtk-3.0/${ver}/gtk-dark.scss" "${3}/gtk-3.0/gtk-drak.css" #2>/dev/null
+                else
+                    cp "${SRC_DIR}/gtk-3.0/${ver}/gtk-dark.css" "${3}/gtk-3.0/gtk-dark.css" #2>/dev/null
+                fi
             fi
         else
             install -d "${3}/gtk-${ver}"
             cp -ur ${SRC_DIR}/gtk-3.0/${ver}/assets ${3}/gtk-${ver}
-            sassc "${SRC_DIR}/gtk-3.0/${ver}/gtk.scss" "${3}/gtk-${ver}/gtk.css" #2>/dev/null
+            if [ "$cFlags" == 'true' ]; then
+                set_gtk3_scss "${1}" "${2}"
+                sassc "${SRC_DIR}/gtk-3.0/${ver}/gtk.scss" "${3}/gtk-${ver}/gtk.css" #2>/dev/null
+            else
+                cp "${SRC_DIR}/gtk-3.0/${ver}/gtk${1}${2}.css" "${3}/gtk-${ver}/gtk.css" #2>/dev/null
+            fi
             if [ "${1}" != "-dark" ]; then
-                sassc "${SRC_DIR}/gtk-3.0/${ver}/gtk-dark.scss" "${3}/gtk-${ver}/gtk-drak.css" #2>/dev/null
+                if [ "$cFlags" == 'true' ]; then
+                    set_gtk3_scss "${1}" "${2}"
+                    sassc "${SRC_DIR}/gtk-3.0/${ver}/gtk-dark.scss" "${3}/gtk-${ver}/gtk-drak.css" #2>/dev/null
+                else
+                    cp "${SRC_DIR}/gtk-3.0/${ver}/gtk-dark${2}.css" "${3}/gtk-${ver}/gtk-dark.css" #2>/dev/null
+                fi
             fi
         fi
     done
@@ -799,7 +828,8 @@ aFlags=('false' 'false'  'false' 'false' 'false' \      # assets flags
         'false' 'false'  'false' 'false' 'false' \ 
         'false' 'false'  'false' 'false' 'false' \ 
         'false')
-rFlags=('false' 'false')                                 # rendering flag 
+rFlags=('false' 'false')                                 # rendering flags 
+cFlags='false'      # compiling flag 
 
 OPTS=$(getopt -o c:s:n:d: -l color:,size:,name:,assets:, render-assets,\
     gtk2,gtk3,fg:,fg-dark:,fg2:,fg2-dark:,fg2-disabled:,fg2-dark-disabled:,\
@@ -924,6 +954,7 @@ if [ "${1}" == "install" ]; then
         exit 1
     fi
     if [[ "${iFlags[@]:4}" =~ "true" && "${iFlags[0]}" = "true" ]]; then
+        cFlags='true'
         change_colors_scss 
     elif [[ "${iFlags[@]:4}" =~ "true" && "${iFlags[0]}" = "false" ]]; then
         echo "ERROR: Please specify color variant [light|dark]."
