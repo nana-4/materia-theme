@@ -319,7 +319,6 @@ install_gtk2_theme () {
         set_gtk2_gtkrc "${1}"
         cp -ur ${SRC_DIR}/gtk-2.0/gtkrc ${3}/gtk-2.0/gtkrc
     else
-        echo here
         cp -ur ${SRC_DIR}/gtk-2.0/gtkrc${1} ${3}/gtk-2.0/gtkrc
     fi
     if [ "${1}" == "-dark" ]; then
