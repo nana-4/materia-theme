@@ -279,10 +279,12 @@ cd ../../..
 SIZE_VARIANTS="${SIZE_VARIANTS}" COLOR_VARIANTS="${COLOR_VARIANTS}" THEME_DIR_BASE=${DEST_PATH} ./install.sh
 
 GENERATED_PATH="${DEST_PATH}$(tr -d ',' <<<${COLOR_VARIANTS})$(tr -d ',' <<<${SIZE_VARIANTS})"
-if [[ -d "${DEST_PATH}" ]] ; then
-	rm -r "${DEST_PATH}"
+if [[ ! "${GENERATED_PATH}" = "${DEST_PATH}" ]] ; then
+	if [[ -d "${DEST_PATH}" ]] ; then
+		rm -r "${DEST_PATH}"
+	fi
+	mv "${GENERATED_PATH}" "${DEST_PATH}"
 fi
-mv "${GENERATED_PATH}" "${DEST_PATH}"
 
 echo
 echo "== SUCCESS"
