@@ -89,7 +89,7 @@ MatePanelAppletFrameDBus {
   // padding: 4px;
 }
 
-#tasklist-button {
+.mate-panel-menu-bar #tasklist-button {
   border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                 currentColor 0%,
                                 transparent 0%)
@@ -105,10 +105,10 @@ MatePanelAppletFrameDBus {
   // instead of #tasklist-button { padding: 0 4px; }
   image:dir(ltr), label:dir(rtl) { padding-left: 4px; }
   label:dir(ltr), image:dir(rtl) { padding-right: 4px; }
-
-  // #tasklist-button is always horizontal even if the panel is vertical
-  .mate-panel-menu-bar.vertical & { min-height: 32px; }
 }
+
+// #tasklist-button is always horizontal even if the panel is vertical
+.mate-panel-menu-bar.vertical #tasklist-button { min-height: 32px; }
 
 #showdesktop-button {
   .mate-panel-menu-bar.horizontal & image {

@@ -13,13 +13,11 @@
 
   button {
     border-radius: 2px;
+    -gtk-outline-radius: 2px;
 
     @extend %simple_flat_button;
   }
 }
-
-// for Show Desktop Button
-.budgie-panel button { padding: 0 8px; }
 
 .budgie-popover {
   border-style: solid;
@@ -50,6 +48,10 @@
     &:disabled { color: $disabled_fg_color; }
   }
 
+  &.budgie-menu {
+    .container { padding: 0; }
+  }
+
   &.user-menu {
     .container { padding: 8px; }
 
@@ -67,10 +69,16 @@
   &.places-menu {
     .container { padding: 8px; }
 
-    .places-list {
+    .places-list:not(.always-expand) {
       margin-top: 4px;
       padding-top: 4px;
       border-top: 1px solid $border_color;
+    }
+
+    // I guess this really should be hard-coded as well as other dim-labels.
+    .alternative-label {
+      padding: 3px;
+      font-size: 15px;
     }
   }
 
@@ -83,6 +91,7 @@
   }
 }
 
+// FIXME: workspace has unnecessary/unknown margin
 .workspace-switcher {
   .workspace-layout {
     border: 0 solid $inverse_divider_color;
@@ -120,19 +129,20 @@
   }
 
   .workspace-add-button {
-    padding: 0;
-    box-shadow: none;
-    background-color: transparent;
-    background-image: none;
+    &:hover { box-shadow: none; }
+
+    &:active { background-image: none; }
 
     &:active image { margin: 1px 0 -1px; }
   }
 
   .workspace-icon-button {
-    min-height: 24px;
-    min-width: 24px;
-    padding: 0;
-    border-radius: 2px;
+    .budgie-panel & { // to overwrite the .budgie-panel button style below
+      min-height: 24px;
+      min-width: 24px;
+      padding: 0;
+      border-radius: 2px;
+    }
   }
 }
 
@@ -184,7 +194,7 @@
 
 // Menu Button
 button.budgie-menu-launcher {
-  padding: 0 2px;
+  // padding: 0 2px;
 }
 
 // User Menu
@@ -204,7 +214,7 @@ popover.background.user-menu {
 
 // Raven Trigger
 button.raven-trigger {
-  padding: 0 4px;
+  // padding: 0 4px;
 }
 
 // Places Menu
@@ -270,10 +280,20 @@ popover.background.places-menu {
   &.transparent { background-color: $panel_bg_color; }
 
   button {
+    @extend %flat_button;
+    @extend %button_selected.flat;
+
+    min-height: 16px;
+    min-width: 16px;
+    padding: 0;
     border-radius: 0;
 
-    @extend %button_selected.flat;
+    &:checked { background-color: $inverse_divider_color; }
   }
+
+  &.horizontal button { padding: 0 4px; }
+
+  &.vertical button { padding: 4px 0; }
 
   separator { background-color: $inverse_track_color; }
 
@@ -289,14 +309,10 @@ popover.background.places-menu {
   #tasklist-button {
     padding: 0 4px;
 
-    @extend %flat_button;
-
-    @extend %button_selected.flat;
-
     @extend %underscores;
-
-    &:checked { background-color: $inverse_divider_color; }
   }
+
+  &.vertical #tasklist-button { min-height: 32px; }
 
   // Icon Tasklist
   button.flat.launcher {
@@ -304,8 +320,7 @@ popover.background.places-menu {
 
     @extend %underscores;
 
-    &:checked { background-color: $inverse_divider_color; }
-
+    // for indicator colors
     &:not(:checked) {
       color: $inverse_hint_fg_color;
 
@@ -322,8 +337,8 @@ popover.background.places-menu {
 %underscores {
   @each $pos, $b_pos, $b_wid in (top,    center calc(1px),        2 0 0 0 / 2px 0 0 0),
                                 (bottom, center calc(100% - 1px), 0 0 2 0 / 0 0 2px 0),
-                                (left,   calc(1px) center,        0 2 0 0 / 0 2px 0 0),
-                                (right,  calc(100% - 1px) center, 0 0 0 2 / 0 0 0 2px) {
+                                (left,   calc(1px) center,        0 0 0 2 / 0 0 0 2px),
+                                (right,  calc(100% - 1px) center, 0 2 0 0 / 0 2px 0 0) {
     .#{$pos} & {
       & {
         border-image: radial-gradient(circle closest-corner at #{$b_pos},
@@ -367,13 +382,16 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 .raven {
   background-color: $lighter_bg_color;
 
+  // for >=10.4
+  > box { margin-bottom: -10px; }
+
+  // for <10.4
   > stack { margin-bottom: -10px; }
 
   // > stack > box:last-child > stack { margin-top: -6px; }
 
   stackswitcher.linked > button {
     @extend %flat_button;
-
     @extend %button_selected.flat;
 
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
@@ -415,13 +433,16 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
         min-height: $medium_size;
       }
 
+      // for <10.4
       button.image-button {
         &:dir(ltr) { margin-right: 2px; }
         &:dir(rtl) { margin-left: 2px; }
       }
 
+      // for <10.4
       > image { margin: 0 8px; }
 
+      // for <10.4
       > label {
         margin: 0 -8px;
         font-weight: bold;
@@ -443,19 +464,24 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
     // &.middle { border-bottom-style: none; } // applet background between two headers
 
+    // for <10.4
     &.frame { border-style: solid none; }
 
     > overlay > widget > image { color: $divider_color; }
 
+    // for <10.4
     grid > label:first-child { min-height: $medium_size; } // workaround to fix vertical-align
 
+    // for <10.4
     spinbutton:not(.vertical) { @extend %entry.flat; }
 
+    // for <10.4
     button.combo { @extend %combo_flat; }
   }
 
   scrolledwindow.raven-background { border-bottom-style: none; }
 
+  // for <10.4
   .raven-header.top + .raven-background {
     border-style: none;
     background-color: $primary_color;
