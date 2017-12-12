@@ -4172,19 +4172,32 @@ frame.gedit-map-frame > border:dir(rtl) {
 
 row#Focus,
 row#StaticWorkspaceTweak,
-row#PrimaryWorkspaceTweak {
+row#dynamic-workspaces,
+row#PrimaryWorkspaceTweak,
+row#workspaces-only-on-primary {
   padding: 0;
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 row#Focus row:not(:last-child),
 row#StaticWorkspaceTweak row:not(:last-child),
-row#PrimaryWorkspaceTweak row:not(:last-child) {
+row#dynamic-workspaces row:not(:last-child),
+row#PrimaryWorkspaceTweak row:not(:last-child),
+row#workspaces-only-on-primary row:not(:last-child) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
+row#Focus.tweak > list,
+row#StaticWorkspaceTweak.tweak > list,
+row#dynamic-workspaces.tweak > list,
+row#PrimaryWorkspaceTweak.tweak > list,
+row#workspaces-only-on-primary.tweak > list {
+  margin-top: -3px;
+}
+
 row#Focus,
-row#PrimaryWorkspaceTweak {
+row#PrimaryWorkspaceTweak,
+row#workspaces-only-on-primary {
   margin-top: 4px;
 }
 

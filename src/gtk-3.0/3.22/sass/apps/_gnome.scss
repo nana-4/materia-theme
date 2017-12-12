@@ -322,17 +322,22 @@ frame.gedit-map-frame > border {
 //
 
 row#Focus,
-row#StaticWorkspaceTweak,
-row#PrimaryWorkspaceTweak {
+row#StaticWorkspaceTweak, // for 3.26.0
+row#dynamic-workspaces,
+row#PrimaryWorkspaceTweak, // for 3.26.0
+row#workspaces-only-on-primary {
   padding: 0;
   border: 1px solid $border_color;
 
   row:not(:last-child) { border-bottom: 1px solid $border_color; }
+
+  &.tweak > list { margin-top: -3px; }
 }
 
 // Add more spaces between title and list
 row#Focus,
-row#PrimaryWorkspaceTweak {
+row#PrimaryWorkspaceTweak, // for 3.26.0
+row#workspaces-only-on-primary {
   margin-top: 4px;
 }
 
