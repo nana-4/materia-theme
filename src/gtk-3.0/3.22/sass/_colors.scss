@@ -14,9 +14,9 @@
 // Foreground colors
 $dark_fg_color:   rgba($black, 0.87);
 $light_fg_color:  $white;
-$button_fg_color: if($variant == 'light', rgba($black, 0.62), rgba($white, 0.8)); // extra fg color for raised buttons
 
 $fg_color:                    if($variant == 'light', rgba($black, 0.87), $white);
+$button_fg_color:             if($variant == 'light', rgba($black, 0.62), rgba($white, 0.8)); // extra fg color for raised buttons
 $secondary_fg_color:          if($variant == 'light', rgba($black, 0.54), rgba($white, 0.7));
 $hint_fg_color:               if($variant == 'light', rgba($black, 0.38), rgba($white, 0.5));
 $disabled_fg_color:           if($variant == 'light', rgba($black, 0.38), rgba($white, 0.5));
@@ -48,10 +48,10 @@ $lighter_bg_color: if($variant == 'light', $grey_50,  fade($blue_grey_500));
 $darker_bg_color:  if($variant == 'light', $grey_200, fade($blue_grey_900));
 
 $titlebar_bg_color:     if($titlebar == 'dark', if($variant == 'light', $blue_grey_700, $blue_grey_800), $grey_300);
-$alt_titlebar_bg_color: if($titlebar == 'dark', $blue_grey_800, mix($grey_300, $grey_400, 50%));
+$alt_titlebar_bg_color: if($titlebar == 'dark', $blue_grey_800, $grey_300);
 $panel_bg_color:        rgba($black, $middle_opacity);
 $solid_panel_bg_color:  if($titlebar == 'dark', $blue_grey_900, $panel_bg_color);
-$unity_panel_bg_color:  if($titlebar == 'dark', $blue_grey_900, mix($grey_300, $grey_400, 50%)); // for Unity panel which cannot use translucent colors
+$opaque_panel_bg_color: if($titlebar == 'dark', $blue_grey_900, mix($grey_300, $grey_400, 50%)); // for Unity panel which cannot use translucent colors
 $alt_panel_bg_color:    rgba($black, $lower_opacity);
 
 $fill_color:      gtkalpha(currentColor, $lower_opacity);
@@ -80,10 +80,9 @@ $warning_bg_color:  $orange_400;
 $error_bg_color:    $red_400;
 
 $border_color:             if($variant == 'light', rgba($black, 0.12), rgba($black, 0.26));
-$alt_border_color:         rgba($black, 0.2); // for non-native GTK+ apps (e.g. Firefox and Chrome)
+$alt_border_color:         rgba($black, 0.26); // for non-native GTK+ apps (e.g. Firefox and Chrome)
 $highlight_color:          if($variant == 'light', rgba($white, 0.4),  rgba($white, 0.1));
 $titlebar_highlight_color: if($titlebar == 'dark', rgba($white, 0.1),  rgba($white, 0.4));
-$unity_highlight_color:    if($titlebar == 'dark', rgba($white, 0.1),  rgba($white, 0.2));
 $alt_highlight_color:      rgba($white, 0.2); // for selection-mode headerbar which colored with $primary_color
 $titlebar_indicator_color: if($titlebar == 'dark', currentColor, $primary_color);
 
