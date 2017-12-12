@@ -131,19 +131,21 @@ cd ${tempdir}
 echo "== Converting theme into template..."
 for FILEPATH in "${PATHLIST[@]}"; do
 	find "${FILEPATH}" -type f -exec sed -i'' \
-		-e 's/$grey_50/%BTN_BG%/g' \
-		-e 's/#FAFAFA/%BTN_BG%/g' \
-		-e 's/$grey_100/%BG%/g' \
-		-e 's/#F5F5F5/%BG%/g' \
-		-e 's/$grey_200/%BG2%/g' \
-		-e 's/$grey_300/%MENU_BG%/g' \
-		-e 's/#E0E0E0/%MENU_BG%/g' \
-		-e 's/$grey_400/%MENU_BG2%/g' \
-		-e 's/#BDBDBD/%MENU_BG2%/g' \
-		-e 's/$grey_900/%FG%/g' \
-		-e 's/#212121/%FG%/g' \
 		-e 's/$black/%FG%/g' \
 		-e 's/#000000/%FG%/g' \
+		-e 's/$grey_900/%FG%/g' \
+		-e 's/#212121/%FG%/g' \
+		-e 's/$grey_500/%INACTIVE_FG%/g' \
+		-e 's/$9E9E9E/%INACTIVE_FG%/g' \
+		-e 's/$grey_400/%MENU_BG2%/g' \
+		-e 's/#BDBDBD/%MENU_BG2%/g' \
+		-e 's/$grey_300/%SEL_BG%/g' \
+		-e 's/#E0E0E0/%SEL_BG%/g' \
+		-e 's/$grey_200/%BG2%/g' \
+		-e 's/$grey_100/%BG%/g' \
+		-e 's/#F5F5F5/%BG%/g' \
+		-e 's/$grey_50/%BTN_BG%/g' \
+		-e 's/#FAFAFA/%BTN_BG%/g' \
 		-e 's/$pink_A200/%ACCENT_BG%/g' \
 		-e 's/#FF4081/%ACCENT_BG%/g' \
 		-e 's/$blue_400/%SEL_BG%/g' \
