@@ -41,23 +41,21 @@ tooltip.chromium { background-color: $base_color; }
 /***********
  * Firefox *
  ***********/
-$firefox_border_color: rgba($black, 0.2);
-
 window.background:not(.csd) {
   > widget {
     // for the bookmark toolbar's separators
-    > separator { color: $firefox_border_color; }
+    > separator { color: $alt_border_color; }
 
     // avoid black border
     > scrollbar { background-clip: border-box; }
 
     // emphasize borders color
     > scrollbar,
-    > frame > border { border-color: $firefox_border_color; }
+    > frame > border { border-color: $alt_border_color; }
 
     > entry,
     > button > button {
-      border: 1px solid $firefox_border_color;
+      border: 1px solid $alt_border_color;
       border-radius: 2px + 1px;
       box-shadow: none;
     }
@@ -103,7 +101,7 @@ window.background:not(.csd) {
       &:disabled { color: $titlebar_disabled_secondary_fg_color; }
     }
 
-    > frame { color: $firefox_border_color; }
+    > frame { color: $alt_border_color; }
 
     > checkbutton > check,
     > radiobutton > radio {

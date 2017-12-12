@@ -1575,11 +1575,6 @@ menuitem {
 // Electron/Atom render all translucent colors in opaque colors.
 // It's a very critical issue for this theme and should be fixed by upstream...
 .popup:not(.csd) menu {
-  $opaque_fg_color:           if($variant == 'light', $grey_900, $white);
-  $opaque_secondary_fg_color: if($variant == 'light', $grey_600, mix($white, $base_color, percentage(0.7)));
-  $opaque_disabled_fg_color:  if($variant == 'light', $grey_500, mix($white, $base_color, percentage(0.5)));
-  $opaque_divider_color:      if($variant == 'light', $grey_300, mix($white, $base_color, percentage(0.12)));
-
   menuitem {
     color: $opaque_fg_color;
 
@@ -1588,7 +1583,7 @@ menuitem {
     &:disabled { color: $opaque_disabled_fg_color; } // separator/border also use this color.
   }
 
-  // TODO: not working this, where/how i can set the accelerators?
+  // FIXME: not working this
   accelerator { color: $opaque_secondary_fg_color; }
 }
 

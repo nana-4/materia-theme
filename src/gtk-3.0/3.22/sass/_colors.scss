@@ -51,7 +51,7 @@ $titlebar_bg_color:     if($titlebar == 'dark', if($variant == 'light', $blue_gr
 $alt_titlebar_bg_color: if($titlebar == 'dark', $blue_grey_800, mix($grey_300, $grey_400, 50%));
 $panel_bg_color:        rgba($black, $middle_opacity);
 $solid_panel_bg_color:  if($titlebar == 'dark', $blue_grey_900, $panel_bg_color);
-$unity_panel_bg_color:  if($titlebar == 'dark', $blue_grey_900, mix($grey_300, $grey_400, 50%)); // translucent colors cannot be used for Unity panel
+$unity_panel_bg_color:  if($titlebar == 'dark', $blue_grey_900, mix($grey_300, $grey_400, 50%)); // for Unity panel which cannot use translucent colors
 $alt_panel_bg_color:    rgba($black, $lower_opacity);
 
 $fill_color:      gtkalpha(currentColor, $lower_opacity);
@@ -80,11 +80,18 @@ $warning_bg_color:  $orange_400;
 $error_bg_color:    $red_400;
 
 $border_color:             if($variant == 'light', rgba($black, 0.12), rgba($black, 0.26));
+$alt_border_color:         rgba($black, 0.2); // for non-native GTK+ apps (e.g. Firefox and Chrome)
 $highlight_color:          if($variant == 'light', rgba($white, 0.4),  rgba($white, 0.1));
 $titlebar_highlight_color: if($titlebar == 'dark', rgba($white, 0.1),  rgba($white, 0.4));
 $unity_highlight_color:    if($titlebar == 'dark', rgba($white, 0.1),  rgba($white, 0.2));
-$alt_highlight_color:      rgba($white, 0.2); // for selection-mode headerbar which colored with primary color
+$alt_highlight_color:      rgba($white, 0.2); // for selection-mode headerbar which colored with $primary_color
 $titlebar_indicator_color: if($titlebar == 'dark', currentColor, $primary_color);
+
+// for Electron/Atom menu which cannot use translucent colors
+$opaque_fg_color:           if($variant == 'light', $grey_900, $white);
+$opaque_secondary_fg_color: if($variant == 'light', $grey_600, mix($white, $base_color, percentage(0.7)));
+$opaque_disabled_fg_color:  if($variant == 'light', $grey_500, mix($white, $base_color, percentage(0.5)));
+$opaque_divider_color:      if($variant == 'light', $grey_300, mix($white, $base_color, percentage(0.12)));
 
 // FIXME: gtk's @placeholder_text_color API really should use $secondary_fg_color,
 // but it doesn't work with translucent colors. So we use opaque colors instead.
