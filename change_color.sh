@@ -86,7 +86,7 @@ WM_BORDER_FOCUS=${WM_BORDER_FOCUS-$SEL_BG}
 WM_BORDER_UNFOCUS=${WM_BORDER_UNFOCUS-$MENU_BG}
 
 MATERIA_STYLE_COMPACT=$(echo ${MATERIA_STYLE_COMPACT-True} | tr '[:upper:]' '[:lower:]')
-MATERIA_MENUBAR_STYLE=$(echo ${MATERIA_MENUBAR_STYLE-contrast} | tr '[:upper:]' '[:lower:]')
+MATERIA_MENUBAR_STYLE=$(echo ${MATERIA_MENUBAR_STYLE-same} | tr '[:upper:]' '[:lower:]')
 GTK3_GENERATE_DARK=$(echo ${GTK3_GENERATE_DARK-True} | tr '[:upper:]' '[:lower:]')
 GTK2_HIDPI=$(echo ${GTK2_HIDPI-False} | tr '[:upper:]' '[:lower:]')
 UNITY_DEFAULT_LAUNCHER_STYLE=$(echo ${UNITY_DEFAULT_LAUNCHER_STYLE-False} | tr '[:upper:]' '[:lower:]')
@@ -131,6 +131,51 @@ cd ${tempdir}
 echo "== Converting theme into template..."
 for FILEPATH in "${PATHLIST[@]}"; do
 	find "${FILEPATH}" -type f -exec sed -i'' \
+		-e 's/^\(\$dark_fg_color:\).*;.*$/\1 %FG%;/g' \
+		-e 's/^\(\$light_fg_color:\).*;.*$/\1 %BG%;/g' \
+		\
+		-e 's/^\(\$fg_color:\).*;.*$/\1 %FG%;/g' \
+		-e 's/^\(\$button_fg_color:\).*;.*$/\1 %BTN_FG%;/g' \
+		-e 's/^\(\$secondary_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%BTN_FG%\2%BTN_FG%\3/g' \
+		-e 's/^\(\$hint_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%FG%\2%FG%\3/g' \
+		-e 's/^\(\$disabled_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%FG%\2%FG%\3/g' \
+		-e 's/^\(\$disabled_secondary_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%BTN_FG%\2%BTN_FG%\3/g' \
+		-e 's/^\(\$track_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%FG%\2%FG%\3/g' \
+		-e 's/^\(\$divider_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%FG%\2%FG%\3/g' \
+		\
+		-e 's/^\(\$titlebar_fg_color:\).*;.*$/\1 %MENU_FG%;/g' \
+		-e 's/^\(\$titlebar_secondary_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
+		-e 's/^\(\$titlebar_hint_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
+		-e 's/^\(\$titlebar_disabled_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
+		-e 's/^\(\$titlebar_disabled_secondary_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
+		-e 's/^\(\$titlebar_track_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
+		-e 's/^\(\$titlebar_divider_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
+		\
+		-e 's/^\(\$inverse_fg_color:\).*;.*$/\1 %SEL_FG%;/g' \
+		-e 's/^\(\$inverse_secondary_fg_color:.*\)$white\(.*\)$/\1%SEL_FG%\2/g' \
+		-e 's/^\(\$inverse_hint_fg_color:.*\)\$white\(.*\)$/\1%SEL_FG%\2/g' \
+		-e 's/^\(\$inverse_disabled_fg_color:.*\)\$white\(.*\)$/\1%SEL_FG%\2/g' \
+		-e 's/^\(\$inverse_disabled_secondary_fg_color:.*\)\$white\(.*\)$/\1%SEL_FG%\2/g' \
+		-e 's/^\(\$inverse_track_color:.*\)\$white\(.*\)$/\1%SEL_FG%\2/g' \
+		-e 's/^\(\$inverse_divider_color:.*\)\$white\(.*\)$/\1%SEL_FG%\2/g' \
+		\
+		-e 's/^\(\$bg_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%BG%\2%MENU_BG%\3/g' \
+		-e 's/^\(\$base_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%TXT_BG%\2%MENU_BG%\3/g' \
+		-e 's/^\(\$alt_base_color:.*\$variant.*\)\$\w\+\(.*\)$/\1%BTN_BG%\2/g' \
+		-e 's/^\(\$lighter_bg_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%BTN_BG%\2%BTN_BG%\3/g' \
+		-e 's/^\(\$darker_bg_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%BG%\2%MENU_BG%\3/g' \
+		\
+		-e 's/^\(\$titlebar_bg_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%MENU_BG%\2%MENU_BG%\3%MENU_BG%\4/g' \
+		-e 's/^\(\$alt_titlebar_bg_color:.*\$titlebar.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%MENU_BG%\2%MENU_BG%\3/g' \
+		-e 's/^\(\$panel_bg_color:.*\)$black\(.*\)$/\1%MENU_BG%\2/g' \
+		-e 's/^\(\$solid_panel_bg_color:.*\$titlebar.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%MENU_BG%\2%MENU_BG%\3/g' \
+		-e 's/^\(\$opaque_panel_bg_color:.*\$titlebar.*\)\$\w\+\(.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%MENU_BG%\2%MENU_BG%\3%MENU_BG%\4/g' \
+		-e 's/^\(\$alt_panel_bg_color:.*\)$black\(.*\)$/\1%MENU_BG%\2/g' \
+		\
+		-e 's/^\(\$primary_color:\).*;.*$/\1 %SEL_BG%;/g' \
+		-e 's/^\(\$alt_primary_color:\).*;.*$/\1 %SEL_BG2%;/g' \
+		-e 's/^\(\$accent_color:\).*;.*$/\1 %ACCENT_BG%;/g' \
+		\
 		-e 's/$black/%FG%/g' \
 		-e 's/#000000/%FG%/g' \
 		-e 's/$grey_900/%FG%/g' \
@@ -165,17 +210,12 @@ for FILEPATH in "${PATHLIST[@]}"; do
 done
 
 #Not implemented yet:
-		#-e 's/%SEL_FG%/'"$SEL_FG"'/g' \
-		#-e 's/%MENU_FG%/'"$MENU_FG"'/g' \
-		#-e 's/%BTN_FG%/'"$BTN_FG"'/g' \
 		#-e 's/%HDR_BTN_BG%/'"$HDR_BTN_BG"'/g' \
 		#-e 's/%HDR_BTN_FG%/'"$HDR_BTN_FG"'/g' \
 		#-e 's/%WM_BORDER_FOCUS%/'"$WM_BORDER_FOCUS"'/g' \
 		#-e 's/%WM_BORDER_UNFOCUS%/'"$WM_BORDER_UNFOCUS"'/g' \
 		#-e 's/%ROUNDNESS%/'"$ROUNDNESS"'/g' \
-		#-e 's/%ROUNDNESS_GTK2_HIDPI%/'"$ROUNDNESS_GTK2_HIDPI"'/g' \
 		#-e 's/%SPACING%/'"$SPACING"'/g' \
-		#-e 's/%GRADIENT%/'"$GRADIENT"'/g' \
 		#-e 's/%INACTIVE_FG%/'"$INACTIVE_FG"'/g' \
 		#-e 's/%INACTIVE_TXT_FG%/'"$INACTIVE_TXT_FG"'/g' \
 		#-e 's/%INACTIVE_MENU_FG%/'"$INACTIVE_MENU_FG"'/g' \
@@ -209,9 +249,7 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/%WM_BORDER_FOCUS%/#'"$WM_BORDER_FOCUS"'/g' \
 		-e 's/%WM_BORDER_UNFOCUS%/#'"$WM_BORDER_UNFOCUS"'/g' \
 		-e 's/%ROUNDNESS%/'"$ROUNDNESS"'/g' \
-		-e 's/%ROUNDNESS_GTK2_HIDPI%/'"$ROUNDNESS_GTK2_HIDPI"'/g' \
 		-e 's/%SPACING%/'"$SPACING"'/g' \
-		-e 's/%GRADIENT%/'"$GRADIENT"'/g' \
 		-e 's/%INACTIVE_FG%/#'"$INACTIVE_FG"'/g' \
 		-e 's/%INACTIVE_TXT_FG%/#'"$INACTIVE_TXT_FG"'/g' \
 		-e 's/%INACTIVE_MENU_FG%/#'"$INACTIVE_MENU_FG"'/g' \
