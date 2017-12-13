@@ -157,7 +157,7 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/^\(\$lighter_bg_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%BTN_BG%\2%BTN_BG%\3/g' \
 		-e 's/^\(\$darker_bg_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%BG%\2%MENU_BG%\3/g' \
 		\
-		-e 's/^\(\$titlebar_bg_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%MENU_BG%\2%MENU_BG%\3%MENU_BG%\4/g' \
+		-e 's/^\(\$titlebar_bg_color:\).*;.*$/\1 %MENU_BG%;/g' \
 		-e 's/^\(\$alt_titlebar_bg_color:.*\$titlebar.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%MENU_BG%\2%MENU_BG%\3/g' \
 		-e 's/^\(\$panel_bg_color:.*\)$black\(.*\)$/\1%MENU_BG%\2/g' \
 		-e 's/^\(\$solid_panel_bg_color:.*\$titlebar.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%MENU_BG%\2%MENU_BG%\3/g' \
@@ -167,6 +167,8 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/^\(\$primary_color:\).*;.*$/\1 %SEL_BG%;/g' \
 		-e 's/^\(\$alt_primary_color:\).*;.*$/\1 %SEL_BG2%;/g' \
 		-e 's/^\(\$accent_color:\).*;.*$/\1 %ACCENT_BG%;/g' \
+		\
+		-e 's/^\(\$titlebar_highlight_color:\).*;.*$/\1 %MENU_BG%;/g' \
 		\
 		-e 's/$black/%FG%/g' \
 		-e 's/#000000/%FG%/g' \
