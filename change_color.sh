@@ -99,6 +99,7 @@ ROUNDNESS_GTK2_HIDPI=$(( ${ROUNDNESS} * 2 ))
 INACTIVE_FG=$(mix ${FG} ${BG} 0.75)
 INACTIVE_MENU_FG=$(mix ${MENU_FG} ${MENU_BG} 0.75)
 INACTIVE_TXT_FG=$(mix ${TXT_FG} ${TXT_BG} 0.75)
+INACTIVE_TXT_BG=$(mix ${TXT_BG} ${BG} 0.60)
 
 light_folder_base_fallback="$(darker ${SEL_BG} -10)"
 medium_base_fallback="$(darker ${SEL_BG} 37)"
@@ -161,7 +162,7 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		\
 		-e 's/^\(\$bg_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%BG%\2%MENU_BG%\3/g' \
 		-e 's/^\(\$base_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%TXT_BG%\2%MENU_BG%\3/g' \
-		-e 's/^\(\$alt_base_color:.*\$variant.*\)\$\w\+\(.*\)$/\1%BTN_BG%\2/g' \
+		-e 's/^\(\$alt_base_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%INACTIVE_TXT_BG%\2%INACTIVE_TXT_BG%\3%MENU_BG%\4/g' \
 		-e 's/^\(\$lighter_bg_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%BTN_BG%\2%BTN_BG%\3/g' \
 		-e 's/^\(\$darker_bg_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%BG%\2%MENU_BG%\3/g' \
 		\
@@ -224,7 +225,9 @@ done
 		#-e 's/%ICONS_LIGHT%/'"$ICONS_LIGHT"'/g' \
 		#-e 's/%ICONS_LIGHT_FOLDER%/'"$ICONS_LIGHT_FOLDER"'/g' \
 
-#echo "You can debug TEMP DIR: ${tempdir}, press [Enter] when finish" && read
+if [[ ! -z "${DEBUG:-}" ]] ; then
+	echo "You can debug TEMP DIR: ${tempdir}, press [Enter] when finish" && read
+fi
 
 echo "== Filling the template with the new colorscheme..."
 for FILEPATH in "${PATHLIST[@]}"; do
@@ -252,6 +255,7 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/%SPACING%/'"$SPACING"'/g' \
 		-e 's/%INACTIVE_FG%/#'"$INACTIVE_FG"'/g' \
 		-e 's/%INACTIVE_TXT_FG%/#'"$INACTIVE_TXT_FG"'/g' \
+		-e 's/%INACTIVE_TXT_BG%/#'"$INACTIVE_TXT_BG"'/g' \
 		-e 's/%INACTIVE_MENU_FG%/#'"$INACTIVE_MENU_FG"'/g' \
 		-e 's/%ICONS_DARK%/#'"$ICONS_DARK"'/g' \
 		-e 's/%ICONS_MEDIUM%/#'"$ICONS_MEDIUM"'/g' \
