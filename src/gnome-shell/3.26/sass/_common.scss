@@ -710,6 +710,7 @@ StScrollBar {
     padding: 8px;
     border: none;
     background-color: $divider_color;
+    color: $fg_color; // for Ubuntu session
   }
 
   .switcher-list .item-box:selected {
@@ -909,6 +910,10 @@ StScrollBar {
     background-color: $panel_bg_color;
     /* transition from transparent to solid */
     transition-duration: 250ms;
+    background-gradient-direction: none; // for Ubuntu session
+    text-shadow: none; // for Ubuntu session
+
+    &:overview { background-color: transparent; } // for Ubuntu session
 
     .panel-corner {
       -panel-corner-background-color: $panel_bg_color;
