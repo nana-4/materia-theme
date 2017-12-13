@@ -1225,6 +1225,12 @@ StScrollBar {
   .aggregate-menu {
     min-width: 280px;
     .popup-menu-icon { padding: 0 4px; }
+    .popup-sub-menu .popup-menu-item :first-child {
+      &:ltr { /* 8px spacing + 2*4px padding */
+              padding-left: 16px; margin-left: em(16px); }
+      &:rtl { /* 8px spacing + 2*4px padding */
+              padding-right: 16px; margin-right: em(16px); }
+    }
   }
 
   .system-menu-action {
