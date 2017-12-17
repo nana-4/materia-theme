@@ -16,6 +16,7 @@ print_usage() {
 	echo "examples:"
 	echo "       $0 -o my-theme-name <(echo -e "BG=d8d8d8\\nFG=101010\\nMENU_BG=3c3c3c\\nMENU_FG=e6e6e6\\nSEL_BG=ad7fa8\\nSEL_FG=ffffff\\nTXT_BG=ffffff\\nTXT_FG=1a1a1a\\nBTN_BG=f5f5f5\\nBTN_FG=111111\\n")"
 	echo "       $0 ../colors/retro/twg"
+	echo "       $0 --hidpi True ../colors/retro/clearlooks"
 	exit 1
 }
 
@@ -29,6 +30,10 @@ do
 		;;
 		-o|--output)
 			OUTPUT_THEME_NAME="${2}"
+			shift
+		;;
+		-d|--hidpi)
+			OPTION_GTK2_HIDPI="${2}"
 			shift
 		;;
 		*)
@@ -68,6 +73,9 @@ for FILEPATH in "${PATHLIST[@]}"; do
 	fi
 done
 
+OPTION_GTK2_HIDPI=$(echo ${OPTION_GTK2_HIDPI-False} | tr '[:upper:]' '[:lower:]')
+
+
 if [[ ${THEME} == */* ]] || [[ ${THEME} == *.* ]] ; then
 	source "$THEME"
 	THEME=$(basename ${THEME})
@@ -88,7 +96,6 @@ WM_BORDER_UNFOCUS=${WM_BORDER_UNFOCUS-$MENU_BG}
 MATERIA_STYLE_COMPACT=$(echo ${MATERIA_STYLE_COMPACT-True} | tr '[:upper:]' '[:lower:]')
 MATERIA_MENUBAR_STYLE=$(echo ${MATERIA_MENUBAR_STYLE-same} | tr '[:upper:]' '[:lower:]')
 GTK3_GENERATE_DARK=$(echo ${GTK3_GENERATE_DARK-True} | tr '[:upper:]' '[:lower:]')
-GTK2_HIDPI=$(echo ${GTK2_HIDPI-False} | tr '[:upper:]' '[:lower:]')
 UNITY_DEFAULT_LAUNCHER_STYLE=$(echo ${UNITY_DEFAULT_LAUNCHER_STYLE-False} | tr '[:upper:]' '[:lower:]')
 
 SPACING=${SPACING-3}
@@ -262,7 +269,7 @@ if [[ ${GTK3_GENERATE_DARK} != "true" ]] ; then
 	rm ./src/gtk-3.0/3.{20,22}/gtk-dark-compact.scss
 	rm ./src/gtk-3.0/3.{18,20,22}/gtk-dark.scss
 fi
-if [[ ${GTK2_HIDPI} == "true" ]] ; then
+if [[ ${OPTION_GTK2_HIDPI} == "true" ]] ; then
 	mv ./src/gtk-2.0/main.rc.hidpi ./src/gtk-2.0/main.rc
 fi
 if [[ ${EXPORT_QT5CT} = 1 ]] ; then
@@ -297,7 +304,7 @@ rm ./src/gtk-3.0/gtk-common/assets/*.png || true
 
 echo "== Rendering GTK+2 assets..."
 cd ./src/gtk-2.0
-GTK2_HIDPI=${GTK2_HIDPI} ./render-assets.sh
+GTK2_HIDPI=${OPTION_GTK2_HIDPI} ./render-assets.sh
 cd ../../
 
 echo "== Rendering GTK+3 assets..."
