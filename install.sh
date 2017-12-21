@@ -90,6 +90,7 @@ for color in "${_COLOR_VARIANTS[@]}"; do
       ${themedir}/gnome-shell
     cp -urL \
       extensions \
+      noise-texture.png \
       pad-osd.css \
       ${themedir}/gnome-shell
     if [ "$color" != '-dark' ]; then
