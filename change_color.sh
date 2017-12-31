@@ -53,6 +53,7 @@ if [[ -z "${THEME:-}" ]] ; then
 fi
 
 PATHLIST=(
+	'./src/chrome'
 	'./src/gtk-2.0/gtkrc'
 	'./src/gtk-2.0/gtkrc-dark'
 	'./src/gtk-2.0/gtkrc-light'
@@ -61,6 +62,9 @@ PATHLIST=(
 	'./src/gtk-2.0/assets.svg'
 	'./src/gtk-2.0/assets-dark.svg'
 	'./src/gtk-3.0/gtk-common/assets.svg'
+	'./src/metacity-1'
+	'./src/unity'
+	'./src/xfwm4'
 )
 if [ ! -z "${CUSTOM_PATHLIST:-}" ] ; then
 	IFS=', ' read -r -a PATHLIST <<< "${CUSTOM_PATHLIST:-}"
@@ -182,7 +186,9 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/$grey_900/%FG%/g' \
 		-e 's/#212121/%FG%/g' \
 		-e 's/$grey_500/%INACTIVE_FG%/g' \
-		-e 's/$9E9E9E/%INACTIVE_FG%/g' \
+		-e 's/#757575/%INACTIVE_FG%/g' \
+		-e 's/#9E9E9E/%INACTIVE_FG%/g' \
+		-e 's/#c3c8ca/%INACTIVE_FG%/g' \
 		-e 's/$grey_400/%MENU_BG2%/g' \
 		-e 's/#BDBDBD/%MENU_BG2%/g' \
 		-e 's/$grey_300/%SEL_BG%/g' \
@@ -202,6 +208,7 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/$blue_grey_700/%MENU_BG%/g' \
 		-e 's/#333e43/%MENU_BG%/g' \
 		-e 's/#455A64/%MENU_BG%/g' \
+		-e 's/#37474F/%MENU_BG%/g' \
 		-e 's/$blue_grey_800/%MENU_BG2%/g' \
 		-e 's/#3b484e/%MENU_BG2%/g' \
 		-e 's/$blue_grey_900/%MENU_BG3%/g' \
