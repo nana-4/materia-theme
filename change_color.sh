@@ -139,16 +139,20 @@ cd ${tempdir}
 
 
 echo "== Converting theme into template..."
+
 for FILEPATH in "${GNOME_SHELL_PATHLIST[@]}"; do
 	sed -i'' \
+		-e 's/^\($bg_color:.*,\) $middle_opacity/\1 %GNOME_SHELL_PANEL_OPACITY%/g' \
+		-e 's/^\(\$dark_fg_color:.*rgba(\)$.*\(,.*;\).*$/\1 %MENU_FG% \2/g' \
+		-e 's/^\(\$light_fg_color:\).*$.*;.*$/\1 %MENU_FG%;/g' \
+		-e 's/^\(\$base_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%MENU_BG%\2%MENU_BG%\3/g' \
+		-e 's/^\(\$alt_base_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%INACTIVE_MENU_BG%\2%INACTIVE_MENU_BG%\3/g' \
 		-e 's/$black/%MENU_BG%/g' \
 		-e 's/$grey_900/%MENU_BG%/g' \
 		-e 's/$white/%MENU_FG%/g' \
-		-e 's/^\($bg_color:.*,\) $middle_opacity/\1 %GNOME_SHELL_PANEL_OPACITY%/g' \
-		-e 's/^\(\$base_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%MENU_BG%\2%MENU_BG%\3/g' \
-		-e 's/^\(\$alt_base_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%INACTIVE_MENU_BG%\2%INACTIVE_MENU_BG%\3/g' \
 		${FILEPATH}
 done
+
 for FILEPATH in "${PATHLIST[@]}"; do
 	find "${FILEPATH}" -type f -exec sed -i'' \
 		-e 's/^\(\$dark_fg_color:\).*$.*;.*$/\1 %FG%;/g' \
