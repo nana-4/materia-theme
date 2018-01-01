@@ -54,6 +54,7 @@ fi
 
 PATHLIST=(
 	'./src/chrome'
+	'./src/gnome-shell'
 	'./src/gtk-2.0/gtkrc'
 	'./src/gtk-2.0/gtkrc-dark'
 	'./src/gtk-2.0/gtkrc-light'
