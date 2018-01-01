@@ -132,6 +132,10 @@ cd ${tempdir}
 
 
 echo "== Converting theme into template..."
+sed -i'' \
+	-e 's/$black/%MENU_BG%/g' \
+	-e 's/$white/%MENU_FG%/g' \
+	./src/gnome-shell/3.18/sass/_colors.scss
 for FILEPATH in "${PATHLIST[@]}"; do
 	find "${FILEPATH}" -type f -exec sed -i'' \
 		-e 's/^\(\$dark_fg_color:\).*;.*$/\1 %FG%;/g' \
