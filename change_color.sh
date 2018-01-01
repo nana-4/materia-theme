@@ -106,9 +106,11 @@ SPACING=${SPACING-3}
 GRADIENT=${GRADIENT-0}
 ROUNDNESS=${ROUNDNESS-2}
 ROUNDNESS_GTK2_HIDPI=$(( ${ROUNDNESS} * 2 ))
+GNOME_SHELL_PANEL_OPACITY=${GNOME_SHELL_PANEL_OPACITY-0.6}
 
 INACTIVE_FG=$(mix ${FG} ${BG} 0.75)
 INACTIVE_MENU_FG=$(mix ${MENU_FG} ${MENU_BG} 0.75)
+INACTIVE_MENU_BG=$(mix ${MENU_BG} ${MENU_FG} 0.75)
 INACTIVE_TXT_FG=$(mix ${TXT_FG} ${TXT_BG} 0.75)
 INACTIVE_TXT_BG=$(mix ${TXT_BG} ${BG} 0.60)
 
@@ -134,12 +136,16 @@ cd ${tempdir}
 echo "== Converting theme into template..."
 sed -i'' \
 	-e 's/$black/%MENU_BG%/g' \
+	-e 's/$grey_900/%MENU_BG%/g' \
 	-e 's/$white/%MENU_FG%/g' \
+	-e 's/^\($bg_color:.*,\) $middle_opacity/\1 %GNOME_SHELL_PANEL_OPACITY%/g' \
+	-e 's/^\(\$base_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%MENU_BG%\2%MENU_BG%\3/g' \
+	-e 's/^\(\$alt_base_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%INACTIVE_MENU_BG%\2%INACTIVE_MENU_BG%\3/g' \
 	./src/gnome-shell/3.18/sass/_colors.scss
 for FILEPATH in "${PATHLIST[@]}"; do
 	find "${FILEPATH}" -type f -exec sed -i'' \
-		-e 's/^\(\$dark_fg_color:\).*;.*$/\1 %FG%;/g' \
-		-e 's/^\(\$light_fg_color:\).*;.*$/\1 %BG%;/g' \
+		-e 's/^\(\$dark_fg_color:\).*$.*;.*$/\1 %FG%;/g' \
+		-e 's/^\(\$light_fg_color:\).*$.*;.*$/\1 %BG%;/g' \
 		\
 		-e 's/^\(\$fg_color:\).*;.*$/\1 %FG%;/g' \
 		-e 's/^\(\$button_fg_color:\).*;.*$/\1 %BTN_FG%;/g' \
@@ -210,6 +216,7 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/$white/%TXT_BG%/g' \
 		-e 's/#FFFFFF/%TXT_BG%/g' \
 		-e 's/$blue_grey_700/%MENU_BG%/g' \
+		-e 's/$blue_grey_600/%MENU_BG%/g' \
 		-e 's/#333e43/%MENU_BG%/g' \
 		-e 's/#455A64/%MENU_BG%/g' \
 		-e 's/#37474F/%MENU_BG%/g' \
@@ -264,6 +271,8 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/%INACTIVE_TXT_FG%/#'"$INACTIVE_TXT_FG"'/g' \
 		-e 's/%INACTIVE_TXT_BG%/#'"$INACTIVE_TXT_BG"'/g' \
 		-e 's/%INACTIVE_MENU_FG%/#'"$INACTIVE_MENU_FG"'/g' \
+		-e 's/%INACTIVE_MENU_BG%/#'"$INACTIVE_MENU_BG"'/g' \
+		-e 's/%GNOME_SHELL_PANEL_OPACITY%/#'"$GNOME_SHELL_PANEL_OPACITY"'/g' \
 		-e 's/%OUTPUT_THEME_NAME%/'"$OUTPUT_THEME_NAME"'/g' \
 		{} \; ;
 done
