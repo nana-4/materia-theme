@@ -145,6 +145,8 @@ for FILEPATH in "${GNOME_SHELL_PATHLIST[@]}"; do
 	sed -i'' \
 		-e 's/^\(\$dark_fg_color:.*rgba(\)$.*\(,.*;\).*$/\1 %MENU_FG% \2/g' \
 		-e 's/^\(\$light_fg_color:\).*$.*;.*$/\1 %MENU_FG%;/g' \
+		-e 's/^\(\$button_fg_color:\).*$.*;.*$/\1 %MENU_FG%;/g' \
+		-e 's/^\(\$fg_color:\).*$.*;.*$/\1 %MENU_FG%;/g' \
 		-e 's/^\(\$secondary_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
 		-e 's/^\(\$hint_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
 		-e 's/^\(\$disabled_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
@@ -174,8 +176,8 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/^\(\$dark_fg_color:\).*$.*;.*$/\1 %FG%;/g' \
 		-e 's/^\(\$light_fg_color:\).*$.*;.*$/\1 %BG%;/g' \
 		\
-		-e 's/^\(\$fg_color:\).*;.*$/\1 %FG%;/g' \
-		-e 's/^\(\$button_fg_color:\).*;.*$/\1 %BTN_FG%;/g' \
+		-e 's/^\(\$fg_color:\).*$.*;.*$/\1 %FG%;/g' \
+		-e 's/^\(\$button_fg_color:\).*$.*;.*$/\1 %BTN_FG%;/g' \
 		-e 's/^\(\$secondary_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%BTN_FG%\2%BTN_FG%\3/g' \
 		-e 's/^\(\$hint_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%FG%\2%FG%\3/g' \
 		-e 's/^\(\$disabled_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%FG%\2%FG%\3/g' \
