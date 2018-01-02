@@ -155,7 +155,7 @@ for FILEPATH in "${GNOME_SHELL_PATHLIST[@]}"; do
 done
 
 for FILEPATH in "${PATHLIST[@]}"; do
-	find "${FILEPATH}" -type f -exec sed -i'' \
+	find "${FILEPATH}" -type f -not -name '_color-palette.scss' -exec sed -i'' \
 		-e 's/^\(\$dark_fg_color:\).*$.*;.*$/\1 %FG%;/g' \
 		-e 's/^\(\$light_fg_color:\).*$.*;.*$/\1 %BG%;/g' \
 		\
