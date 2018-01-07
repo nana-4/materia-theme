@@ -53,15 +53,25 @@ if [[ -z "${THEME:-}" ]] ; then
 fi
 
 PATHLIST=(
+	'./src/chrome'
+	'./src/gnome-shell'
 	'./src/gtk-2.0/gtkrc'
 	'./src/gtk-2.0/gtkrc-dark'
 	'./src/gtk-2.0/gtkrc-light'
 	'./src/gtk-3.0/3.22/sass/_colors.scss'
-	'./src/gnome-shell/3.18/sass/_colors.scss'
 	'./src/gtk-2.0/assets.svg'
 	'./src/gtk-2.0/assets-dark.svg'
 	'./src/gtk-3.0/gtk-common/assets.svg'
+	'./src/metacity-1'
+	'./src/unity'
+	'./src/xfwm4'
 )
+GNOME_SHELL_PATHLIST=(
+	'./src/gnome-shell/3.18/sass/_colors.scss'
+	'./src/gnome-shell/3.20/sass/_colors.scss'
+	'./src/gnome-shell/3.22/sass/_colors.scss'
+)
+PATHLIST=("${PATHLIST[@]}" "${GNOME_SHELL_PATHLIST[@]}")
 if [ ! -z "${CUSTOM_PATHLIST:-}" ] ; then
 	IFS=', ' read -r -a PATHLIST <<< "${CUSTOM_PATHLIST:-}"
 fi
@@ -102,9 +112,11 @@ SPACING=${SPACING-3}
 GRADIENT=${GRADIENT-0}
 ROUNDNESS=${ROUNDNESS-2}
 ROUNDNESS_GTK2_HIDPI=$(( ${ROUNDNESS} * 2 ))
+GNOME_SHELL_PANEL_OPACITY=${GNOME_SHELL_PANEL_OPACITY-0.6}
 
 INACTIVE_FG=$(mix ${FG} ${BG} 0.75)
 INACTIVE_MENU_FG=$(mix ${MENU_FG} ${MENU_BG} 0.75)
+INACTIVE_MENU_BG=$(mix ${MENU_BG} ${MENU_FG} 0.75)
 INACTIVE_TXT_FG=$(mix ${TXT_FG} ${TXT_BG} 0.75)
 INACTIVE_TXT_BG=$(mix ${TXT_BG} ${BG} 0.60)
 
@@ -128,13 +140,44 @@ cd ${tempdir}
 
 
 echo "== Converting theme into template..."
-for FILEPATH in "${PATHLIST[@]}"; do
-	find "${FILEPATH}" -type f -exec sed -i'' \
-		-e 's/^\(\$dark_fg_color:\).*;.*$/\1 %FG%;/g' \
-		-e 's/^\(\$light_fg_color:\).*;.*$/\1 %BG%;/g' \
+
+for FILEPATH in "${GNOME_SHELL_PATHLIST[@]}"; do
+	sed -i'' \
+		-e 's/^\(\$dark_fg_color:.*rgba(\)$.*\(,.*;\).*$/\1 %MENU_FG% \2/g' \
+		-e 's/^\(\$light_fg_color:\).*$.*;.*$/\1 %MENU_FG%;/g' \
+		-e 's/^\(\$button_fg_color:\).*$.*;.*$/\1 %MENU_FG%;/g' \
+		-e 's/^\(\$fg_color:\).*$.*;.*$/\1 %MENU_FG%;/g' \
+		-e 's/^\(\$secondary_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
+		-e 's/^\(\$hint_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
+		-e 's/^\(\$disabled_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
+		-e 's/^\(\$disabled_secondary_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
+		-e 's/^\(\$track_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
+		-e 's/^\(\$divider_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
 		\
-		-e 's/^\(\$fg_color:\).*;.*$/\1 %FG%;/g' \
-		-e 's/^\(\$button_fg_color:\).*;.*$/\1 %BTN_FG%;/g' \
+		-e 's/^\(\$inverse_fg_color:\).*$.*;.*$/\1 mix(%MENU_FG%, %SEL_BG%, 50%);/g' \
+		-e 's/^\(\$inverse_hint_fg_color:.*rgba(\)$.*\(,.*;\).*$/\1 if(lightness(%MENU_FG%) > 50, %MENU_FG%, %MENU_BG%) \2/g' \
+		-e 's/^\(\$inverse_disabled_fg_color:.*rgba(\)$.*\(,.*;\).*$/\1 mix(%MENU_FG%, %SEL_BG%, 50%) \2/g' \
+		-e 's/^\(\$inverse_disabled_secondary_fg_color:.*rgba(\)$.*\(,.*;\).*$/\1 mix(%MENU_FG%, %SEL_BG%, 50%) \2/g' \
+		-e 's/^\(\$inverse_track_fg_color:.*rgba(\)$.*\(,.*;\).*$/\1 mix(%MENU_FG%, %SEL_BG%, 50%) \2/g' \
+		-e 's/^\(\$inverse_divider_fg_color:.*rgba(\)$.*\(,.*;\).*$/\1 mix(%MENU_FG%, %SEL_BG%, 50%) \2/g' \
+		\
+		-e 's/^\(\$base_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%MENU_BG%\2%MENU_BG%\3/g' \
+		-e 's/^\(\$alt_base_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%INACTIVE_MENU_BG%\2%INACTIVE_MENU_BG%\3/g' \
+		-e 's/^\($bg_color:.*,\) $middle_opacity/\1 %GNOME_SHELL_PANEL_OPACITY%/g' \
+		\
+		-e 's/$black/%MENU_BG%/g' \
+		-e 's/$grey_900/%MENU_BG%/g' \
+		-e 's/$white/%MENU_FG%/g' \
+		${FILEPATH}
+done
+
+for FILEPATH in "${PATHLIST[@]}"; do
+	find "${FILEPATH}" -type f -not -name '_color-palette.scss' -exec sed -i'' \
+		-e 's/^\(\$dark_fg_color:\).*$.*;.*$/\1 %FG%;/g' \
+		-e 's/^\(\$light_fg_color:\).*$.*;.*$/\1 %BG%;/g' \
+		\
+		-e 's/^\(\$fg_color:\).*$.*;.*$/\1 %FG%;/g' \
+		-e 's/^\(\$button_fg_color:\).*$.*;.*$/\1 %BTN_FG%;/g' \
 		-e 's/^\(\$secondary_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%BTN_FG%\2%BTN_FG%\3/g' \
 		-e 's/^\(\$hint_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%FG%\2%FG%\3/g' \
 		-e 's/^\(\$disabled_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%FG%\2%FG%\3/g' \
@@ -150,7 +193,7 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/^\(\$titlebar_track_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
 		-e 's/^\(\$titlebar_divider_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
 		\
-		-e 's/^\(\$inverse_fg_color:\).*;.*$/\1 %SEL_FG%;/g' \
+		-e 's/^\(\$inverse_fg_color:\).*$.*;.*$/\1 %SEL_FG%;/g' \
 		-e 's/^\(\$inverse_secondary_fg_color:.*\)$white\(.*\)$/\1%SEL_FG%\2/g' \
 		-e 's/^\(\$inverse_hint_fg_color:.*\)\$white\(.*\)$/\1%SEL_FG%\2/g' \
 		-e 's/^\(\$inverse_disabled_fg_color:.*\)\$white\(.*\)$/\1%SEL_FG%\2/g' \
@@ -182,7 +225,9 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/$grey_900/%FG%/g' \
 		-e 's/#212121/%FG%/g' \
 		-e 's/$grey_500/%INACTIVE_FG%/g' \
-		-e 's/$9E9E9E/%INACTIVE_FG%/g' \
+		-e 's/#757575/%INACTIVE_FG%/g' \
+		-e 's/#9E9E9E/%INACTIVE_FG%/g' \
+		-e 's/#c3c8ca/%INACTIVE_FG%/g' \
 		-e 's/$grey_400/%MENU_BG2%/g' \
 		-e 's/#BDBDBD/%MENU_BG2%/g' \
 		-e 's/$grey_300/%SEL_BG%/g' \
@@ -200,8 +245,10 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/$white/%TXT_BG%/g' \
 		-e 's/#FFFFFF/%TXT_BG%/g' \
 		-e 's/$blue_grey_700/%MENU_BG%/g' \
+		-e 's/$blue_grey_600/%MENU_BG%/g' \
 		-e 's/#333e43/%MENU_BG%/g' \
 		-e 's/#455A64/%MENU_BG%/g' \
+		-e 's/#37474F/%MENU_BG%/g' \
 		-e 's/$blue_grey_800/%MENU_BG2%/g' \
 		-e 's/#3b484e/%MENU_BG2%/g' \
 		-e 's/$blue_grey_900/%MENU_BG3%/g' \
@@ -253,6 +300,8 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/%INACTIVE_TXT_FG%/#'"$INACTIVE_TXT_FG"'/g' \
 		-e 's/%INACTIVE_TXT_BG%/#'"$INACTIVE_TXT_BG"'/g' \
 		-e 's/%INACTIVE_MENU_FG%/#'"$INACTIVE_MENU_FG"'/g' \
+		-e 's/%INACTIVE_MENU_BG%/#'"$INACTIVE_MENU_BG"'/g' \
+		-e 's/%GNOME_SHELL_PANEL_OPACITY%/'"$GNOME_SHELL_PANEL_OPACITY"'/g' \
 		-e 's/%OUTPUT_THEME_NAME%/'"$OUTPUT_THEME_NAME"'/g' \
 		{} \; ;
 done
