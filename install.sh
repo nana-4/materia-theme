@@ -1,233 +1,202 @@
 #!/bin/bash
-set -ueo pipefail
+#set -ueo pipefail
 #set -x
 
-repodir=$(cd $(dirname $0) && pwd)
-srcdir=${repodir}/src
+DEST_DIR=/usr/share/themes
+THEME_NAME=Materia
+COLOR_VARIANTS=('' '-dark' '-light')
+SIZE_VARIANTS=('' '-compact')
 
-themedir_base_fallback=${destdir:-}/usr/share/themes/Materia
-themedir_base=${THEME_DIR_BASE:-$themedir_base_fallback}
+GTK_VERSIONS=('3.18' '3.20' '3.22')
+GS_VERSIONS=('3.18' '3.20' '3.22' '3.24' '3.26')
+LATEST_GS_VERSION=${GS_VERSIONS[@]: -1}
 
+# Set a proper gnome-shell theme version
 if [[ $(which gnome-shell 2> /dev/null) ]]; then
-  gnomever_major=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 1)
-  gnomever_minor=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 2)
-
-  if [ -e ${srcdir}/gnome-shell/$gnomever_major.$gnomever_minor ]; then
-    gnomever=$gnomever_major.$gnomever_minor
-  elif [ -e ${srcdir}/gnome-shell/$gnomever_major.$(($gnomever_minor + 1)) ]; then
-    gnomever=$gnomever_major.$(($gnomever_minor + 1))
-  elif [ -e ${srcdir}/gnome-shell/$gnomever_major.$(($gnomever_minor - 1)) ]; then
-    gnomever=$gnomever_major.$(($gnomever_minor - 1))
-  else
-    gnomever=3.18
-  fi
+  CURRENT_GS_VERSION=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -2)
+  for version in "${GS_VERSIONS[@]}"; do
+    if (( $(echo "$CURRENT_GS_VERSION <= $version" | bc) )); then
+      GS_VERSION=${version}
+      break
+    elif (( $(echo "$CURRENT_GS_VERSION > $LATEST_GS_VERSION" | bc) )); then
+      GS_VERSION=${LATEST_GS_VERSION}
+      break
+    fi
+  done
 else
-  gnomever=3.18
+  GS_VERSION=${LATEST_GS_VERSION}
 fi
 
-_COLOR_VARIANTS=(
-  ''
-  '-dark'
-  '-light'
-)
-if [ ! -z "${COLOR_VARIANTS:-}" ]; then
-  IFS=', ' read -r -a _COLOR_VARIANTS <<< "${COLOR_VARIANTS:-}"
-fi
+usage() {
+  printf "%s\n" "Usage: $0 [OPTIONS...]"
+  printf "\n%s\n" "OPTIONS:"
+  printf "  %-25s%s\n" "-d, --dest DIR" "Specify theme destination directory (Default: ${DEST_DIR})"
+  printf "  %-25s%s\n" "-n, --name NAME" "Specify theme name (Default: ${THEME_NAME})"
+  printf "  %-25s%s\n" "-c, --color VARIANTS..." "Specify theme color variants [standard|dark|light] (Default: All variants)"
+  printf "  %-25s%s\n" "-s, --size VARIANT" "Specify theme size variant [standard|compact] (Default: All variants)"
+  printf "  %-25s%s\n" "-h, --help" "Show this help"
+  printf "\n%s\n" "INSTALLATION EXAMPLES:"
+  printf "%s\n" "Install all theme variants into ~/.themes"
+  printf "  %s\n" "$0 --dest ~/.themes"
+  printf "%s\n" "Install standard theme variant only"
+  printf "  %s\n" "$0 --color standard --size standard"
+  printf "%s\n" "Install specific theme variants with different name into ~/.themes"
+  printf "  %s\n" "$0 --dest ~/.themes --name MyTheme --color light dark --size compact"
+}
 
-_SIZE_VARIANTS=(
-  ''
-  '-compact'
-)
-if [ ! -z "${SIZE_VARIANTS:-}" ]; then
-  IFS=', ' read -r -a _SIZE_VARIANTS <<< "${SIZE_VARIANTS:-}"
-fi
+install() {
+  local dest=${1}
+  local name=${2}
+  local color=${3}
+  local size=${4}
 
-echo
+  [[ ${color} == '-dark' ]] && local ELSE_DARK=${color}
+  [[ ${color} == '-light' ]] && local ELSE_LIGHT=${color}
 
-for color in "${_COLOR_VARIANTS[@]}"; do
-  for size in "${_SIZE_VARIANTS[@]}"; do
-    echo Installing Materia${color}${size} ...
+  local THEME_DIR=${dest}/${name}${color}${size}
 
-    themedir=${themedir_base}${color}${size}
-    if [[ -d ${themedir} ]]; then
-      rm -r ${themedir}
-    fi
-    install -d ${themedir}
+  [[ -d ${THEME_DIR} ]] && rm -rf ${THEME_DIR}
 
-    # Copy COPYING
-    cd ${repodir}
-    cp -ur \
-      COPYING \
-      ${themedir}
+  echo "Installing '${THEME_DIR}'..."
 
-    # Install index.theme
-    cd ${srcdir}
-    cp -ur \
-      index${color}${size}.theme \
-      ${themedir}/index.theme
+  mkdir -p                                                                      ${THEME_DIR}
+  cp -ur COPYING                                                                ${THEME_DIR}
+  cp -ur src/index${color}${size}.theme                                         ${THEME_DIR}/index.theme
 
-    # Install Chrome Theme/Extention
-    install -d ${themedir}/chrome
-    cd ${srcdir}/chrome
-    cp -ur \
-      "Materia${color} Theme.crx" \
-      ${themedir}/chrome
-    if [ "$color" != '-dark' ]; then
-      cp -ur \
-        "Materia Scrollbars.crx" \
-        ${themedir}/chrome
+  mkdir -p                                                                      ${THEME_DIR}/chrome
+  cp -ur "src/chrome/Materia${color} Theme.crx"                                 ${THEME_DIR}/chrome #/${name}${color} Theme.crx
+  cp -ur "src/chrome/Materia${ELSE_DARK} Scrollbars.crx"                        ${THEME_DIR}/chrome #/${name}${ELSE_DARK} Scrollbars.crx
+
+  mkdir -p                                                                      ${THEME_DIR}/gnome-shell
+  cp -ur  src/gnome-shell/${GS_VERSION}/*.svg                                   ${THEME_DIR}/gnome-shell
+  cp -urL src/gnome-shell/${GS_VERSION}/{extensions,noise-texture.png,pad-osd.css} ${THEME_DIR}/gnome-shell
+  cp -urL src/gnome-shell/${GS_VERSION}/assets${ELSE_DARK}                      ${THEME_DIR}/gnome-shell/assets
+  cp -ur  src/gnome-shell/${GS_VERSION}/gnome-shell${color}${size}.css          ${THEME_DIR}/gnome-shell/gnome-shell.css
+  glib-compile-resources \
+    --sourcedir=${THEME_DIR}/gnome-shell \
+    --target=${THEME_DIR}/gnome-shell/gnome-shell-theme.gresource \
+    src/gnome-shell/${GS_VERSION}/gnome-shell-theme.gresource.xml
+
+  mkdir -p                                                                      ${THEME_DIR}/gtk-2.0
+  cp -ur src/gtk-2.0/{apps.rc,hacks.rc,main.rc}                                 ${THEME_DIR}/gtk-2.0
+  cp -ur src/gtk-2.0/assets${ELSE_DARK}                                         ${THEME_DIR}/gtk-2.0/assets
+  cp -ur src/gtk-2.0/gtkrc${color}                                              ${THEME_DIR}/gtk-2.0/gtkrc
+
+  mkdir -p                                                                      ${THEME_DIR}/gtk-common
+  cp -ur src/gtk-3.0/gtk-common/assets                                          ${THEME_DIR}/gtk-common
+
+  for version in "${GTK_VERSIONS[@]}"; do
+    if [[ ${version} == '3.18' ]]; then
+      mkdir -p                                                                  ${THEME_DIR}/gtk-3.0
+      cp -ur src/gtk-3.0/${version}/assets                                      ${THEME_DIR}/gtk-3.0
+      cp -ur src/gtk-3.0/${version}/gtk${color}.css                             ${THEME_DIR}/gtk-3.0/gtk.css
+      [[ ${color} != '-dark' ]] && \
+      cp -ur src/gtk-3.0/${version}/gtk-dark.css                                ${THEME_DIR}/gtk-3.0/gtk-dark.css
     else
-      cp -ur \
-        "Materia${color} Scrollbars.crx" \
-        ${themedir}/chrome
+      mkdir -p                                                                  ${THEME_DIR}/gtk-${version}
+      cp -ur src/gtk-3.0/${version}/assets                                      ${THEME_DIR}/gtk-${version}
+      cp -ur src/gtk-3.0/${version}/gtk${color}${size}.css                      ${THEME_DIR}/gtk-${version}/gtk.css
+      [[ ${color} != '-dark' ]] && \
+      cp -ur src/gtk-3.0/${version}/gtk-dark${size}.css                         ${THEME_DIR}/gtk-${version}/gtk-dark.css
     fi
+  done
 
-    # Install GNOME Shell Theme
-    install -d ${themedir}/gnome-shell
-    cd ${srcdir}/gnome-shell/${gnomever}
-    cp -ur \
-      *.svg \
-      ${themedir}/gnome-shell
-    cp -urL \
-      extensions \
-      noise-texture.png \
-      pad-osd.css \
-      ${themedir}/gnome-shell
-    if [ "$color" != '-dark' ]; then
-      cp -urL \
-        assets \
-        ${themedir}/gnome-shell
-    else
-      cp -urL \
-        assets${color} \
-        ${themedir}/gnome-shell/assets
-    fi
-    cp -ur \
-      gnome-shell${color}${size}.css \
-      ${themedir}/gnome-shell/gnome-shell.css
-    glib-compile-resources \
-      --sourcedir=${themedir}/gnome-shell \
-      --target=${themedir}/gnome-shell/gnome-shell-theme.gresource \
-      gnome-shell-theme.gresource.xml
+  mkdir -p                                                                      ${THEME_DIR}/metacity-1
+  cp -ur src/metacity-1/assets                                                  ${THEME_DIR}/metacity-1
+  cp -ur src/metacity-1/metacity-theme-2${ELSE_LIGHT}.xml                       ${THEME_DIR}/metacity-1/metacity-theme-2.xml
+  cp -ur src/metacity-1/metacity-theme-3${ELSE_LIGHT}.xml                       ${THEME_DIR}/metacity-1/metacity-theme-3.xml
 
-    # Install GTK+ 2 Theme
-    install -d ${themedir}/gtk-2.0
-    cd ${srcdir}/gtk-2.0
-    cp -ur \
-      apps.rc \
-      hacks.rc \
-      main.rc \
-      ${themedir}/gtk-2.0
-    if [ "$color" != '-dark' ]; then
-      cp -ur \
-        assets \
-        ${themedir}/gtk-2.0
-    else
-      cp -ur \
-        assets${color} \
-        ${themedir}/gtk-2.0/assets
-    fi
-    cp -ur \
-      gtkrc${color} \
-      ${themedir}/gtk-2.0/gtkrc
+  mkdir -p                                                                      ${THEME_DIR}/unity
+  cp -ur src/unity/{*.svg,*.png,dash-widgets.json}                              ${THEME_DIR}/unity
+  cp -ur src/unity/assets${ELSE_LIGHT}                                          ${THEME_DIR}/unity/assets
 
-    # Install GTK+ 3 Theme
-    install -d ${themedir}/gtk-common
-    cd ${srcdir}/gtk-3.0/gtk-common
-    cp -ur \
-      assets \
-      ${themedir}/gtk-common
+  mkdir -p                                                                      ${THEME_DIR}/xfwm4
+  cp -ur src/xfwm4/{*.svg,themerc}                                              ${THEME_DIR}/xfwm4
+  cp -ur src/xfwm4/assets${ELSE_LIGHT}                                          ${THEME_DIR}/xfwm4/assets
+}
 
-    for version in '3.18' '3.20' '3.22'; do
-      if [ "$version" == '3.18' ]; then
-        install -d ${themedir}/gtk-3.0
-        cd ${srcdir}/gtk-3.0/${version}
-        cp -ur \
-          assets \
-          ${themedir}/gtk-3.0
-        cp -ur \
-          gtk${color}.css \
-          ${themedir}/gtk-3.0/gtk.css
-        if [ "$color" != '-dark' ] && [ -f gtk-dark.css ]; then
-          cp -ur \
-            gtk-dark.css \
-            ${themedir}/gtk-3.0
-        fi
-      else
-        install -d ${themedir}/gtk-${version}
-        cd ${srcdir}/gtk-3.0/${version}
-        cp -ur \
-          assets \
-          ${themedir}/gtk-${version}
-        cp -ur \
-          gtk${color}${size}.css \
-          ${themedir}/gtk-${version}/gtk.css
-        if [ "$color" != '-dark' ] && [ -f gtk-dark.css ]; then
-          cp -ur \
-            gtk-dark${size}.css \
-            ${themedir}/gtk-${version}/gtk-dark.css
-        fi
+while [[ $# -gt 0 ]]; do
+  case "${1}" in
+    -d|--dest)
+      dest="${2}"
+      if [[ ! -d "${dest}" ]]; then
+        echo "ERROR: Destination directory does not exist."
+        exit 1
       fi
-    done
+      shift 2
+      ;;
+    -n|--name)
+      name="${2}"
+      shift 2
+      ;;
+    -c|--color)
+      for variant in "${@}"; do
+        case "${variant}" in
+          standard)
+            colors+=("${COLOR_VARIANTS[0]}")
+            shift
+            ;;
+          dark)
+            colors+=("${COLOR_VARIANTS[1]}")
+            shift
+            ;;
+          light)
+            colors+=("${COLOR_VARIANTS[2]}")
+            shift
+            ;;
+          "*") # FIXME: Why doesn't it work without quotes?
+            echo "ERROR: Unrecognized color variant '$2'."
+            echo "Try '$0 --help' for more information."
+            exit 1
+            ;;
+        esac
+      done
+      shift
+      ;;
+    -s|--size)
+      for variant in "${@}"; do
+        case "${variant}" in
+          # FIXME: Why cannot it use the "standard" string as an argument?
+          # standard)
+          normal)
+            sizes+=("${SIZE_VARIANTS[0]}")
+            shift
+            ;;
+          compact)
+            sizes+=("${SIZE_VARIANTS[1]}")
+            shift
+            ;;
+          "*") # FIXME: Why doesn't it work without quotes?
+            echo "ERROR: Unrecognized size variant '$2'."
+            echo "Try '$0 --help' for more information."
+            exit 1
+            ;;
+        esac
+      done
+      shift
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "ERROR: Unrecognized installation option '$1'."
+      echo "Try '$0 --help' for more information."
+      exit 1
+      ;;
+  esac
+done
 
-    # Install Metacity Theme
-    install -d ${themedir}/metacity-1
-    cd ${srcdir}/metacity-1
-    cp -ur \
-      assets \
-      ${themedir}/metacity-1
-    if [ "$color" != '-light' ]; then
-      cp -ur \
-        metacity-theme-2.xml \
-        metacity-theme-3.xml \
-        ${themedir}/metacity-1
-    else
-      cp -ur \
-        metacity-theme-2${color}.xml \
-        ${themedir}/metacity-1/metacity-theme-2.xml
-      cp -ur \
-        metacity-theme-3${color}.xml \
-        ${themedir}/metacity-1/metacity-theme-3.xml
-    fi
+if [[ ! -w "${dest:-${DEST_DIR}}" ]]; then
+  echo "Please run as root."
+  exit 1
+fi
 
-    # Install Unity Theme
-    install -d ${themedir}/unity
-    cd ${srcdir}/unity
-    cp -ur \
-      *.svg \
-      *.png \
-      *.json \
-      ${themedir}/unity
-    if [ "$color" != '-light' ]; then
-      cp -ur \
-        assets \
-        ${themedir}/unity
-    else
-      cp -urT \
-        assets${color} \
-        ${themedir}/unity/assets
-    fi
-
-    # Install Xfwm Theme
-    install -d ${themedir}/xfwm4
-    cd ${srcdir}/xfwm4
-    cp -ur \
-      *.svg \
-      themerc \
-      ${themedir}/xfwm4
-    if [ "$color" != '-light' ]; then
-      cp -ur \
-        assets \
-        ${themedir}/xfwm4
-    else
-      cp -urT \
-        assets${color} \
-        ${themedir}/xfwm4/assets
-    fi
+for color in "${colors[@]:-${COLOR_VARIANTS[@]}}"; do
+  for size in "${sizes[@]:-${SIZE_VARIANTS[@]}}"; do
+    install "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${size}"
   done
 done
 
 echo
 echo Done.
-
-# vim: set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab:
