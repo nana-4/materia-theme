@@ -4,7 +4,7 @@
   <name>Materia</name>
   <author>nana-4</author>
   <copyright>GPL</copyright>
-  <date>2016</date>
+  <date>2017</date>
   <description>Materia Metacity theme</description>
 </info>
 
@@ -14,57 +14,60 @@
 <constant name="C_titlebar" value="#37474F"/>
 <constant name="C_titlebar_alt" value="gtk:custom(theme_bg_color,gtk:bg[NORMAL])"/>
 
-<constant name="C_highlight" value="blend/#37474F/#FFFFFF/0.2"/>
+<constant name="C_highlight" value="blend/#37474F/#FFFFFF/0.1"/>
 <constant name="C_highlight_alt" value="blend/gtk:custom(theme_bg_color,gtk:bg[NORMAL])/#FFFFFF/0.4"/>
 
 <constant name="C_title_focused" value="#FFFFFF"/>
-<constant name="C_title_unfocused" value="blend/#37474F/#FFFFFF/0.75"/>
+<constant name="C_title_unfocused" value="blend/#37474F/#FFFFFF/0.7"/>
 <constant name="C_title_alt_focused" value="gtk:custom(theme_fg_color,gtk:fg[NORMAL])"/>
-<constant name="C_title_alt_unfocused" value="blend/gtk:custom(theme_bg_color,gtk:bg[NORMAL])/gtk:custom(theme_fg_color,gtk:fg[NORMAL])/0.75"/>
+<constant name="C_title_alt_unfocused" value="blend/gtk:custom(theme_bg_color,gtk:bg[NORMAL])/gtk:custom(theme_fg_color,gtk:fg[NORMAL])/0.7"/>
 
 
 <!-- geometries -->
 
 <frame_geometry name="normal" title_scale="medium" rounded_top_left="2" rounded_top_right="2">
-  <distance name="left_width" value="0"/>
-  <distance name="right_width" value="0"/>
-  <distance name="bottom_height" value="0"/>
+  <distance name="left_width" value="1"/>
+  <distance name="right_width" value="1"/>
+  <distance name="bottom_height" value="1"/>
   <distance name="left_titlebar_edge" value="0"/>
   <distance name="right_titlebar_edge" value="0"/>
-  <distance name="title_vertical_pad" value="14"/>
+  <distance name="title_vertical_pad" value="12"/>
   <border name="title_border" left="10" right="10" top="0" bottom="0"/>
   <border name="button_border" left="0" right="0" top="0" bottom="0"/>
   <aspect_ratio name="button" value="1"/>
 </frame_geometry>
 
-<frame_geometry name="max" title_scale="medium" rounded_top_left="false" rounded_top_right="false" parent="normal">
+<frame_geometry name="max" rounded_top_left="false" rounded_top_right="false" parent="normal">
   <distance name="left_width" value="0"/>
   <distance name="right_width" value="0"/>
   <distance name="bottom_height" value="0"/>
 </frame_geometry>
 
-<frame_geometry name="tiled_left" title_scale="medium" rounded_top_left="false" rounded_top_right="false" parent="max">
+<frame_geometry name="tiled_left" parent="max">
   <distance name="right_width" value="0"/>
 </frame_geometry>
 
-<frame_geometry name="tiled_right" title_scale="medium" rounded_top_left="false" rounded_top_right="false" parent="max">
+<frame_geometry name="tiled_right" parent="max">
   <distance name="left_width" value="0"/>
 </frame_geometry>
 
 <frame_geometry name="nobuttons" hide_buttons="true" parent="normal">
 </frame_geometry>
 
-<frame_geometry name="modal" title_scale="small" hide_buttons="true" rounded_top_left="2" rounded_top_right="2" parent="normal">
+<frame_geometry name="modal" title_scale="small" hide_buttons="true" parent="normal">
+  <distance name="left_width" value="0"/>
+  <distance name="right_width" value="0"/>
+  <distance name="bottom_height" value="0"/>
   <distance name="title_vertical_pad" value="8"/>
 </frame_geometry>
 
-<frame_geometry name="small" title_scale="small" rounded_top_left="2" rounded_top_right="2" parent="normal">
+<frame_geometry name="small" title_scale="small" parent="normal">
   <distance name="title_vertical_pad" value="8"/>
   <border name="title_border" left="10" right="10" top="0" bottom="0"/>
   <border name="button_border" left="0" right="0" top="0" bottom="0"/>
 </frame_geometry>
 
-<frame_geometry name="border" has_title="false" rounded_top_left="false" rounded_top_right="false" parent="normal" >
+<frame_geometry name="border" has_title="false" rounded_top_left="false" rounded_top_right="false" parent="normal">
   <distance name="left_width" value="1"/>
   <distance name="right_width" value="1"/>
   <distance name="bottom_height" value="1"/>
@@ -73,7 +76,7 @@
   <border name="button_border" left="0" right="0" top="0" bottom="0"/>
 </frame_geometry>
 
-<frame_geometry name="borderless" has_title="false" rounded_top_left="false" rounded_top_right="false" parent="normal" >
+<frame_geometry name="borderless" has_title="false" rounded_top_left="false" rounded_top_right="false" parent="normal">
   <distance name="left_width" value="0"/>
   <distance name="right_width" value="0"/>
   <distance name="bottom_height" value="0"/>
@@ -82,8 +85,8 @@
   <border name="title_border" left="0" right="0" top="0" bottom="0"/>
 </frame_geometry>
 
-<frame_geometry name="attached" title_scale="medium" hide_buttons="true" rounded_top_left="2" rounded_top_right="2" rounded_bottom_left="2" rounded_bottom_right="2" parent="normal">
-  <distance name="title_vertical_pad" value="6"/>
+<frame_geometry name="attached" hide_buttons="true" rounded_bottom_left="2" rounded_bottom_right="2" parent="normal">
+  <distance name="title_vertical_pad" value="4"/>
 </frame_geometry>
 
 
@@ -108,7 +111,7 @@
     y="(0 `max` ((height - title_height) / 2))"
     color="C_title_unfocused"/>
   <title version=">= 3.1"
-    x="(0 `max` ((frame_x_center - title_width/2) `min` (width - title_width)))"
+    x="(0 `max` ((frame_x_center - title_width / 2) `min` (width - title_width)))"
     y="(0 `max` ((height - title_height) / 2))"
     ellipsize_width="width"
     color="C_title_unfocused"/>
@@ -132,7 +135,7 @@
     y="(0 `max` ((height - title_height) / 2))"
     color="C_title_alt_unfocused"/>
   <title version=">= 3.1"
-    x="(0 `max` ((frame_x_center - title_width/2) `min` (width - title_width)))"
+    x="(0 `max` ((frame_x_center - title_width / 2) `min` (width - title_width)))"
     y="(0 `max` ((height - title_height) / 2))"
     ellipsize_width="width"
     color="C_title_alt_unfocused"/>
@@ -156,15 +159,15 @@
 </draw_ops>
 
 <draw_ops name="highlight">
-  <line color="C_highlight" x1="2" y1="0" x2="width-3" y2="0"/>
-  <arc color="C_highlight" x="0-1" y="0" width="5" height="5"  start_angle="270" extent_angle="90"/>
-  <arc color="C_highlight" x="width-5" y="0" width="5" height="5"  start_angle="0" extent_angle="90"/>
+  <line color="C_highlight" x1="2" y1="0" x2="width - 3" y2="0"/>
+  <arc color="C_highlight" x="0 - 1" y="0" width="5" height="5" start_angle="270" extent_angle="90"/>
+  <arc color="C_highlight" x="width - 5" y="0" width="5" height="5" start_angle="0" extent_angle="90"/>
 </draw_ops>
 
 <draw_ops name="highlight_alt">
-  <line color="C_highlight_alt" x1="2" y1="0" x2="width-3" y2="0"/>
-  <arc color="C_highlight_alt" x="0-1" y="0" width="5" height="5"  start_angle="270" extent_angle="90"/>
-  <arc color="C_highlight_alt" x="width-5" y="0" width="5" height="5"  start_angle="0" extent_angle="90"/>
+  <line color="C_highlight_alt" x1="2" y1="0" x2="width - 3" y2="0"/>
+  <arc color="C_highlight_alt" x="0 - 1" y="0" width="5" height="5" start_angle="270" extent_angle="90"/>
+  <arc color="C_highlight_alt" x="width - 5" y="0" width="5" height="5" start_angle="0" extent_angle="90"/>
 </draw_ops>
 
 <draw_ops name="titlebar_focused">
@@ -192,11 +195,11 @@
 
 <!-- close -->
 <draw_ops name="close_focused">
-  <image filename="assets/close.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.75" colorize="C_title_focused"/>
+  <image filename="assets/close.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="close_focused_prelight">
-  <image filename="assets/close.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="1" colorize="C_title_focused"/>
+  <image filename="assets/close.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="close_focused_pressed">
@@ -204,11 +207,11 @@
 </draw_ops>
 
 <draw_ops name="close_unfocused">
-  <image filename="assets/close.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.75" colorize="C_title_unfocused"/>
+  <image filename="assets/close.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="close_unfocused_prelight">
-  <image filename="assets/close.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="1" colorize="C_title_unfocused"/>
+  <image filename="assets/close.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="close_unfocused_pressed">
@@ -217,11 +220,11 @@
 
 <!-- maximize -->
 <draw_ops name="maximize_focused">
-  <image filename="assets/maximize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.75" colorize="C_title_focused"/>
+  <image filename="assets/maximize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="maximize_focused_prelight">
-  <image filename="assets/maximize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="1" colorize="C_title_focused"/>
+  <image filename="assets/maximize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="maximize_focused_pressed">
@@ -229,11 +232,11 @@
 </draw_ops>
 
 <draw_ops name="maximize_unfocused">
-  <image filename="assets/maximize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.75" colorize="C_title_unfocused"/>
+  <image filename="assets/maximize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="maximize_unfocused_prelight">
-  <image filename="assets/maximize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="1" colorize="C_title_unfocused"/>
+  <image filename="assets/maximize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="maximize_unfocused_pressed">
@@ -242,11 +245,11 @@
 
 <!-- unmaximize -->
 <draw_ops name="unmaximize_focused">
-  <image filename="assets/unmaximize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.75" colorize="C_title_focused"/>
+  <image filename="assets/unmaximize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="unmaximize_focused_prelight">
-  <image filename="assets/unmaximize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="1" colorize="C_title_focused"/>
+  <image filename="assets/unmaximize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="unmaximize_focused_pressed">
@@ -254,11 +257,11 @@
 </draw_ops>
 
 <draw_ops name="unmaximize_unfocused">
-  <image filename="assets/unmaximize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.75" colorize="C_title_unfocused"/>
+  <image filename="assets/unmaximize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="unmaximize_unfocused_prelight">
-  <image filename="assets/unmaximize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="1" colorize="C_title_unfocused"/>
+  <image filename="assets/unmaximize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="unmaximize_unfocused_pressed">
@@ -267,11 +270,11 @@
 
 <!-- minimize -->
 <draw_ops name="minimize_focused">
-  <image filename="assets/minimize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.75" colorize="C_title_focused"/>
+  <image filename="assets/minimize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="minimize_focused_prelight">
-  <image filename="assets/minimize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="1" colorize="C_title_focused"/>
+  <image filename="assets/minimize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="minimize_focused_pressed">
@@ -279,11 +282,11 @@
 </draw_ops>
 
 <draw_ops name="minimize_unfocused">
-  <image filename="assets/minimize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.75" colorize="C_title_unfocused"/>
+  <image filename="assets/minimize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="minimize_unfocused_prelight">
-  <image filename="assets/minimize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="1" colorize="C_title_unfocused"/>
+  <image filename="assets/minimize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="minimize_unfocused_pressed">
@@ -292,11 +295,11 @@
 
 <!-- menu -->
 <draw_ops name="menu_focused">
-  <image filename="assets/menu.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.75" colorize="C_title_focused"/>
+  <image filename="assets/menu.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="menu_focused_prelight">
-  <image filename="assets/menu.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="1" colorize="C_title_focused"/>
+  <image filename="assets/menu.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="menu_focused_pressed">
@@ -304,11 +307,11 @@
 </draw_ops>
 
 <draw_ops name="menu_unfocused">
-  <image filename="assets/menu.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.75" colorize="C_title_unfocused"/>
+  <image filename="assets/menu.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="menu_unfocused_prelight">
-  <image filename="assets/menu.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="1" colorize="C_title_unfocused"/>
+  <image filename="assets/menu.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="menu_unfocused_pressed">
@@ -317,11 +320,11 @@
 
 <!-- shade -->
 <draw_ops name="shade_focused">
-  <image filename="assets/shade.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.75" colorize="C_title_focused"/>
+  <image filename="assets/shade.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="shade_focused_prelight">
-  <image filename="assets/shade.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="1" colorize="C_title_focused"/>
+  <image filename="assets/shade.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="shade_focused_pressed">
@@ -329,11 +332,11 @@
 </draw_ops>
 
 <draw_ops name="shade_unfocused">
-  <image filename="assets/shade.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.75" colorize="C_title_unfocused"/>
+  <image filename="assets/shade.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="shade_unfocused_prelight">
-  <image filename="assets/shade.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="1" colorize="C_title_unfocused"/>
+  <image filename="assets/shade.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="shade_unfocused_pressed">
@@ -342,11 +345,11 @@
 
 <!-- unshade -->
 <draw_ops name="unshade_focused">
-  <image filename="assets/unshade.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.75" colorize="C_title_focused"/>
+  <image filename="assets/unshade.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="unshade_focused_prelight">
-  <image filename="assets/unshade.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="1" colorize="C_title_focused"/>
+  <image filename="assets/unshade.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="unshade_focused_pressed">
@@ -354,11 +357,11 @@
 </draw_ops>
 
 <draw_ops name="unshade_unfocused">
-  <image filename="assets/unshade.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.75" colorize="C_title_unfocused"/>
+  <image filename="assets/unshade.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="unshade_unfocused_prelight">
-  <image filename="assets/unshade.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="1" colorize="C_title_unfocused"/>
+  <image filename="assets/unshade.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="unshade_unfocused_pressed">
@@ -370,7 +373,7 @@
 
 <draw_ops name="appmenu_icon_focused">
   <icon
-    x="(width-D_appmenu_icon_size)/2" y="(height-D_appmenu_icon_size)/2" 
+    x="(width - D_appmenu_icon_size) / 2" y="(height - D_appmenu_icon_size) / 2"
     width="D_appmenu_icon_size" height="D_appmenu_icon_size"/>
 </draw_ops>
 
@@ -388,9 +391,9 @@
 
 <draw_ops name="appmenu_icon_unfocused">
   <icon
-    x="(width-D_appmenu_icon_size)/2" y="(height-D_appmenu_icon_size)/2" 
+    x="(width - D_appmenu_icon_size) / 2" y="(height - D_appmenu_icon_size) / 2"
     width="D_appmenu_icon_size" height="D_appmenu_icon_size"
-    alpha="0.75"/>
+    alpha="0.7"/>
 </draw_ops>
 
 <draw_ops name="appmenu_unfocused">
@@ -412,22 +415,22 @@
 </draw_ops>
 
 <draw_ops name="button_focused_prelight">
-  <image filename="assets/button.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.15" colorize="C_title_focused"/>
+  <image filename="assets/button.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.15" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="button_focused_pressed">
-  <image filename="assets/button.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.3" colorize="C_title_focused"/>
+  <image filename="assets/button.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.3" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="button_unfocused">
 </draw_ops>
 
 <draw_ops name="button_unfocused_prelight">
-  <image filename="assets/button.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.15" colorize="C_title_unfocused"/>
+  <image filename="assets/button.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.15" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="button_unfocused_pressed">
-  <image filename="assets/button.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.3" colorize="C_title_unfocused"/>
+  <image filename="assets/button.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.3" colorize="C_title_unfocused"/>
 </draw_ops>
 
 

@@ -856,15 +856,15 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .osd-window .level {
-  height: 0.6em;
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.12);
+  height: 8px;
+  border-radius: 0;
+  background-color: rgba(66, 165, 245, 0.3);
   color: rgba(0, 0, 0, 0.87);
 }
 
 .osd-window .level-bar {
   background-color: #42A5F5;
-  border-radius: 2px;
+  border-radius: 0;
 }
 
 /* Pad OSD */
@@ -1518,6 +1518,18 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   padding: 0 4px;
 }
 
+.aggregate-menu .popup-sub-menu .popup-menu-item :first-child:ltr {
+  /* 8px spacing + 2*4px padding */
+  padding-left: 16px;
+  margin-left: 1.14286em;
+}
+
+.aggregate-menu .popup-sub-menu .popup-menu-item :first-child:rtl {
+  /* 8px spacing + 2*4px padding */
+  padding-right: 16px;
+  margin-right: 1.14286em;
+}
+
 .system-menu-action {
   color: rgba(0, 0, 0, 0.54);
   border-radius: 100px;
@@ -1545,12 +1557,15 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 .ripple-box {
   width: 48px;
   height: 48px;
-  background-image: url("assets/corner-ripple-ltr.svg");
-  background-size: contain;
+  border-radius: 0 0 48px 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  background-image: none;
+  background-size: auto;
 }
 
 .ripple-box:rtl {
-  background-image: url("assets/corner-ripple-rtl.svg");
+  border-radius: 0 0 0 48px;
+  background-image: none;
 }
 
 .popup-menu-arrow {
@@ -2819,7 +2834,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #lockDialogGroup {
-  background: #607D8B url("assets/noise-texture.svg");
+  background: #455A64;
   background-size: cover;
 }
 

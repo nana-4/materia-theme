@@ -690,14 +690,14 @@ StScrollBar {
 
   .osd-monitor-label { @include font(display-2); }
   .level {
-    height: 0.6em;
-    border-radius: 4px;
-    background-color: $divider_color;
+    height: 8px;
+    border-radius: 0;
+    background-color: rgba($primary_color, $lower_opacity);
     color: $fg_color;
   }
   .level-bar {
     background-color: $primary_color;
-    border-radius: 2px;
+    border-radius: 0;
   }
 }
 
@@ -1225,6 +1225,12 @@ StScrollBar {
   .aggregate-menu {
     min-width: 280px;
     .popup-menu-icon { padding: 0 4px; }
+    .popup-sub-menu .popup-menu-item :first-child {
+      &:ltr { /* 8px spacing + 2*4px padding */
+              padding-left: 16px; margin-left: em(16px); }
+      &:rtl { /* 8px spacing + 2*4px padding */
+              padding-right: 16px; margin-right: em(16px); }
+    }
   }
 
   .system-menu-action {
@@ -1248,12 +1254,15 @@ StScrollBar {
 .ripple-box {
   width: 48px;
   height: 48px;
-  background-image: url("assets/corner-ripple-ltr.svg");
-  background-size: contain;
+  border-radius: 0 0 48px 0;
+  background-color: $inverse_track_color;
+  background-image: none;
+  background-size: auto;
 }
 
 .ripple-box:rtl {
-  background-image: url("assets/corner-ripple-rtl.svg");
+  border-radius: 0 0 0 48px;
+  background-image: none;
 }
 
 // not really top bar only
@@ -2112,7 +2121,7 @@ $legacy_icon_size: 24px;
 }
 
 #lockDialogGroup {
-  background: #607D8B url("assets/noise-texture.svg");
+  background: $gdm_bg_color;
   background-size: cover;
 }
 

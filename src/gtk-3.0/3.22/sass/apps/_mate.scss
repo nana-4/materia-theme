@@ -11,45 +11,33 @@
 }
 
 // let's start it
-#PanelPlug, // FIXME: this cannot be transparent
-PanelToplevel.background {
-  background-color: $unity_panel_bg_color;
-  color: $titlebar_fg_color;
+.mate-panel-menu-bar {
+  background-color: $solid_panel_bg_color;
   font-weight: 500;
-}
 
-// FIXME: this should really die if #PanelPlug can be transparent
-%mate_panel_button {
-  color: $titlebar_secondary_fg_color;
+  // Avoid changing the menu text color
+  &:not(.popup) { color: $inverse_secondary_fg_color; }
 
-  &:hover, &:active { color: $titlebar_fg_color; }
+  button {
+    @extend %flat_button;
+    @extend %button_selected.flat;
 
-  &:disabled { color: $titlebar_disabled_secondary_fg_color; }
+    min-height: 16px;
+    min-width: 16px;
+    padding: 0; // NOTE: Most buttons padding are hard-coded to 0 (except hide buttons)
+    border-radius: 0;
 
-  &:checked {
-    background-color: $titlebar_track_color;
-    color: $titlebar_fg_color;
-  }
-
-  &:checked:disabled {
-    background-color: $titlebar_divider_color;
-    color: $titlebar_disabled_fg_color;
+    &:checked { background-color: $inverse_divider_color; }
   }
 }
 
 // hide buttons
-PanelToplevel > grid > button {
-  padding: 0 4px;
-  border-radius: 0;
-
-  @extend %simple_flat_button;
-
-  @extend %mate_panel_button;
+PanelToplevel.horizontal > grid > button {
+  min-width: 24px;
 }
 
-// for small arrows
-PanelWidget button {
-  &, &:hover, &:active { color: $titlebar_secondary_fg_color; }
+PanelToplevel.vertical > grid > button {
+  min-height: 24px;
 }
 
 #PanelApplet {
@@ -57,24 +45,40 @@ PanelWidget button {
 }
 
 PanelSeparator {
-  color: $titlebar_divider_color;
+  color: $inverse_divider_color;
 }
 
 // the grid left from na-tray and wncktasklist
 MatePanelAppletFrameDBus {
   border-style: solid;
-  border-width: 0 1px;
-  border-color: $titlebar_divider_color;
+  border-color: $inverse_divider_color;
+
+  .mate-panel-menu-bar.horizontal & { border-width: 0 1px; }
+  .mate-panel-menu-bar.vertical & { border-width: 1px 0; }
 }
 
 // main menu
-.mate-panel-menu-bar menubar {
+.mate-panel-menu-bar {
   // set normal menubar button
-  menuitem { padding: 4px; }
+  menubar > menuitem {
+    color: $inverse_secondary_fg_color;
+
+    &:hover {
+      background-color: $inverse_divider_color;
+      color: $inverse_fg_color;
+    }
+
+    &:disabled { color: $inverse_disabled_secondary_fg_color; }
+  }
+
+  &.horizontal menubar > menuitem { padding: 0 8px; }
+  &.vertical menubar > menuitem { padding: 8px 0; }
 
   // set normal menubar menuitem
-  menu menuitem {
-    padding: 6px;
+  menubar menu > menuitem {
+    // adjust sizing since the menuitem has large icons
+    min-height: $menuitem_size;
+    padding: 0 6px;
     // font-weight: initial;
   }
 }
@@ -82,12 +86,40 @@ MatePanelAppletFrameDBus {
 // all applets
 .mate-panel-menu-bar #PanelApplet button {
   -GtkWidget-window-dragging: true;
-  padding: 4px;
-  border-radius: 0;
+  // padding: 4px;
+}
 
-  @extend %flat_button;
+.mate-panel-menu-bar #tasklist-button {
+  border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
+                                currentColor 0%,
+                                transparent 0%)
+                                0 0 0 / 0 0 0px;
 
-  @extend %mate_panel_button;
+  &:checked {
+    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
+                                  currentColor 100%,
+                                  transparent 0%)
+                                  0 0 2 / 0 0 2px;
+  }
+
+  // instead of #tasklist-button { padding: 0 4px; }
+  image:dir(ltr), label:dir(rtl) { padding-left: 4px; }
+  label:dir(ltr), image:dir(rtl) { padding-right: 4px; }
+}
+
+// #tasklist-button is always horizontal even if the panel is vertical
+.mate-panel-menu-bar.vertical #tasklist-button { min-height: 32px; }
+
+#showdesktop-button {
+  .mate-panel-menu-bar.horizontal & image {
+    min-width: 24px;
+    padding: 0 4px;
+  }
+
+  .mate-panel-menu-bar.vertical & image {
+    min-height: 24px;
+    padding: 4px 0;
+  }
 }
 
 // WnckPager
@@ -95,15 +127,16 @@ PanelApplet.wnck-applet .wnck-pager {
   background-color: transparent;
   color: $alt_primary_color;
 
-  &:hover { background-color: $titlebar_divider_color; }
+  &:hover { background-color: $inverse_divider_color; }
 
-  &:active { background-color: $titlebar_track_color; }
+  &:active { background-color: $inverse_track_color; }
 
   &:selected { background-color: $primary_color; }
 }
 
 #clock-applet-button {
-  // font-weight: initial;
+  .mate-panel-menu-bar.horizontal & label { padding: 0 8px; }
+  .mate-panel-menu-bar.vertical & label { padding: 8px 0; }
 }
 
 #MatePanelPopupWindow {
@@ -113,8 +146,13 @@ PanelApplet.wnck-applet .wnck-pager {
 
   frame > border { border-style: none; }
 
+  button { padding: 4px 16px; }
+
   // FIXME, does not work
   ClockMap { border: 1px solid $border_color; }
+
+  // Instead, this works
+  widget { color: $border_color; }
 }
 
 na-tray-applet {
@@ -139,17 +177,51 @@ na-tray-applet widget box widget {
 
 // volume applet, brightness applet
 .mate-panel-applet-slider {
-  background-color: transparent;
+  border: 1px solid $border_color;
+  border-radius: $material_radius + 1px;
+  box-shadow: inset 0 1px $highlight_color;
+  background-color: $bg_color;
 
-  frame {
-    border: 1px solid $border_color;
-    border-radius: $material_radius + 1px;
-    box-shadow: inset 0 1px $highlight_color;
-    background-color: $bg_color;
+  frame > border { border-style: none; }
+}
 
-    frame { all: unset; }
+// mate-menu
 
-    > border { border-style: none; }
+// mimic menubar menuitem style
+#PanelApplet {
+  &:not(:selected) > box { transition: $shorter_transition; }
+
+  &:selected > box {
+    background-color: $inverse_divider_color;
+    color: $inverse_fg_color;
+  }
+}
+
+#mate-menu {
+  // FIXME, does not work
+  border: 1px solid $border_color;
+
+  button {
+    @extend %simple_flat_button;
+
+    min-height: 24px;
+    min-width: 24px;
+    padding: 4px 0;
+    color: $fg_color;
+    font-weight: normal;
+
+    label:not(:first-child) { color: $secondary_fg_color; }
+  }
+
+  entry {
+    margin: 0 0 8px;
+
+    image { margin: 0; }
+
+    + button {
+      margin: 0 4px 8px;
+      padding: ($medium_size - 24px) / 2;
+    }
   }
 }
 

@@ -60,24 +60,18 @@ Did you get the error: `XMLLINT not set and xmllint not found in path`? Then you
 Install the theme with the following commands:
 
 ```sh
-cd /tmp && curl -sL https://github.com/nana-4/materia-theme/archive/v20171112.tar.gz | tar xz
-cd materia-theme-20171112
-sudo ./materia.sh install
+cd /tmp && wget -qO - https://github.com/nana-4/materia-theme/archive/master.tar.gz | tar xz
+cd materia-theme-master
+sudo ./install.sh
 ```
-### Custom Installation
-Install theme light variants
+
+#### Manual Uninstallation
+
+Delete the installed directories:
+
 ```sh
-sudo ./materia.sh -c light
- ```
- Install the compact version of the light variant
- ```sh
- sudo ./materia.sh -c light -s compact
- ```
- Install Materia with a different name
-  ```sh
- sudo ./materia.sh install -n mytheme
- ```
- See './materia.sh --help' for more custom installation.
+sudo rm -rf /usr/share/themes/{Materia,Flat-Plat}{,-compact,-dark,-dark-compact,-light,-light-compact}
+```
 
 ## Recommendations
 
@@ -130,4 +124,3 @@ Materia is distributed under the terms of the GNU General Public License, versio
 - Yauhen Kirylau (@actionless) who is oomox author polished scripts and supported Materia with [oomox](https://github.com/actionless/oomox).
 
 Also thank you to all contributors and upstream developers.
-

@@ -1,6 +1,10 @@
 #!/bin/bash
 #
 # Once run the script, no need to run ./install.sh for testing. ;)
+# Without an argument, this will install only normal variant.
+# Valid arguments are:
+#
+#   compact dark dark-compact light light-compact all uninstall
 #
 # FIXME: `unity` and `xfwm4` are not fully supported for now since `*.svg` link incorrect locales (with '-light' variant).
 # FIXME: Multiple arguments should be allowed.
@@ -108,11 +112,19 @@ case "${1}" in
   light-compact)
     test '-light' '-compact'
     ;;
+  all)
+    test '' ''
+    test '' '-compact'
+    test '-dark' ''
+    test '-dark' '-compact'
+    test '-light' ''
+    test '-light' '-compact'
+    ;;
   uninstall)
     rm -rf ${THEMES_DIR}/${THEME_NAME}{,-compact,-dark,-dark-compact,-light,-light-compact}
     ;;
   *)
-    echo "Unknown argument: '${1}'"
-    echo "Use 'compact', 'dark', 'dark-compact', 'light', 'light-compact' or 'uninstall' as an argument."
+    echo "Invalid argument: ${1}"
+    echo "Valid arguments are: compact dark dark-compact light light-compact all uninstall"
     ;;
 esac
