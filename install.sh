@@ -12,7 +12,7 @@ COLOR_VARIANTS=('' '-dark' '-light')
 SIZE_VARIANTS=('' '-compact')
 
 usage() {
-    printf "%s\n" "Usage: $0 install [OPTIONS...] [DEST-DIR]"
+    printf "%s\n" "Usage: $0 [OPTIONS...] [DEST-DIR]"
     printf "\n%s\n" "OPTIONS:"
     printf "  %-20s%s\n" "-c, --color" "Specify theme color variant [dark|light] (Default to ALL variants)"
     printf "  %-20s%s\n" "-s, --size" "Specify theme size variant [compact] (Default to ALL sizes)"
@@ -21,17 +21,17 @@ usage() {
     printf "  %-20s%s\n" "-h, --help" "Show this help"
     printf "%s\n" "INSTALLATION EXAMPLES:"
     printf "%s\n" "Install all theme variants with default name"
-    printf "\t%s\t%s\n" "./materia install" 
+    printf "\t%s\t%s\n" "./materia" 
     printf "%s\n" "Install all theme variants with different name"
-    printf "\t%s\t%s\n" "./materia install -n mytheme"
+    printf "\t%s\t%s\n" "./materia -n mytheme"
     printf "%s\n" "Install one theme variant with both sizes"
-    printf "\t%s\t%s\n" "./materia install --color dark"
-    printf "\t%s\t%s\n" "./materia install --color light"
+    printf "\t%s\t%s\n" "./materia --color dark"
+    printf "\t%s\t%s\n" "./materia --color light"
     printf "%s\n" "Install all compact variants"
-    printf "\t%s\t%s\n" "./materia install --size compact"
+    printf "\t%s\t%s\n" "./materia --size compact"
     printf "%s\n" "Install only one specific theme variant"
-    printf "\t%s\t%s\n" "./materia install --color light --size compact"
-    printf "\t%s\t%s\n" "./materia install --color light --size compact -n mytheme"
+    printf "\t%s\t%s\n" "./materia --color light --size compact"
+    printf "\t%s\t%s\n" "./materia --color light --size compact -n mytheme"
 }
 # Get gnome-shell version
 latest_gs_ver=${GS_VER[@]: -1}
