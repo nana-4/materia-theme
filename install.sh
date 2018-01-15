@@ -32,7 +32,7 @@ usage() {
   printf "\n%s\n" "OPTIONS:"
   printf "  %-25s%s\n" "-d, --dest DIR" "Specify theme destination directory (Default: ${DEST_DIR})"
   printf "  %-25s%s\n" "-n, --name NAME" "Specify theme name (Default: ${THEME_NAME})"
-  printf "  %-25s%s\n" "-c, --color VARIANTS..." "Specify theme color variants [standard|dark|light] (Default: All variants)"
+  printf "  %-25s%s\n" "-c, --color VARIANTS..." "Specify theme color variant(s) [standard|dark|light] (Default: All variants)"
   printf "  %-25s%s\n" "-s, --size VARIANT" "Specify theme size variant [standard|compact] (Default: All variants)"
   printf "  %-25s%s\n" "-h, --help" "Show this help"
   printf "\n%s\n" "INSTALLATION EXAMPLES:"
