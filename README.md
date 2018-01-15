@@ -65,6 +65,17 @@ cd materia-theme-master
 sudo ./install.sh
 ```
 
+> Note: `./install.sh` allows the following options:
+>
+> ```
+> -d, --dest DIR           Specify theme destination directory
+> -n, --name NAME          Specify theme name
+> -c, --color VARIANTS...  Specify theme color variant(s) [standard|dark|light]
+> -s, --size VARIANT       Specify theme size variant [standard|compact]
+> ```
+>
+> Please run `./install.sh --help` for more information.
+
 #### Manual Uninstallation
 
 Delete the installed directories:
@@ -122,5 +133,6 @@ Materia is distributed under the terms of the GNU General Public License, versio
 - Chrome/Chromium scrollbars extension was forked from [Adwaita-chrome-scrollbar](https://github.com/gnome-integration-team/chrome-gnome-scrollbar) by GNOME Integration Team.
 - The original concept is Google's [Material Design](https://material.io).
 - Yauhen Kirylau (@actionless) who is oomox author polished scripts and supported Materia with [oomox](https://github.com/actionless/oomox).
+- @n3oxmind helped improve the installation script.
 
 Also thank you to all contributors and upstream developers.
