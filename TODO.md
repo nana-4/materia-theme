@@ -1,6 +1,6 @@
 ## General
 
-- Improve directory structure ([#170](../../issues/170), `help wanted`)
+- Improve directory structure ([#170](../../issues/170))
 
 - Use `make` or `meson` for building? (`help wanted`)
 
@@ -47,7 +47,5 @@
 ## Others
 
 - Polish Inkscape (using gtk3) styling
-
-- Polish Xfwm styling
 
 - Use gtk3 color vars for `metacity-theme-3.xml`
