@@ -336,13 +336,17 @@ fi
 
 if [[ ${MATERIA_STYLE_COMPACT}  == "true" ]] ; then
 	SIZE_VARIANTS="-compact"
+	SIZE_VARIANT="compact"
 else
 	SIZE_VARIANTS=","
+	SIZE_VARIANT="standard"
 fi
 if [[ ${MATERIA_MENUBAR_STYLE}  == "contrast" ]] ; then
 	COLOR_VARIANTS=","
+	COLOR_VARIANT="standard"
 else
 	COLOR_VARIANTS="-light"
+	COLOR_VARIANT="light"
 fi
 
 SIZE_VARIANTS="${SIZE_VARIANTS}" COLOR_VARIANTS="${COLOR_VARIANTS}" THEME_DIR_BASE=${DEST_PATH} ./parse-sass.sh
@@ -361,7 +365,7 @@ cd ./src/gtk-3.0/gtk-common
 ./render-assets.sh
 cd ../../..
 
-SIZE_VARIANTS="${SIZE_VARIANTS}" COLOR_VARIANTS="${COLOR_VARIANTS}" THEME_DIR_BASE=${DEST_PATH} ./install.sh
+./install.sh --dest "$HOME/.themes" --name "${OUTPUT_THEME_NAME/\//-}" --color "${COLOR_VARIANT}" --size "${SIZE_VARIANT}"
 
 GENERATED_PATH="${DEST_PATH}$(tr -d ',' <<<${COLOR_VARIANTS})$(tr -d ',' <<<${SIZE_VARIANTS})"
 if [[ ! "${GENERATED_PATH}" = "${DEST_PATH}" ]] ; then
