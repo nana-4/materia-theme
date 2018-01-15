@@ -130,6 +130,7 @@ while [[ $# -gt 0 ]]; do
       shift 2
       ;;
     -c|--color)
+      shift
       for variant in "${@}"; do
         case "${variant}" in
           standard)
@@ -144,21 +145,22 @@ while [[ $# -gt 0 ]]; do
             colors+=("${COLOR_VARIANTS[2]}")
             shift
             ;;
-          "*") # FIXME: Why doesn't it work without quotes?
-            echo "ERROR: Unrecognized color variant '$2'."
+          -*|--*)
+            break
+            ;;
+          *)
+            echo "ERROR: Unrecognized color variant '$1'."
             echo "Try '$0 --help' for more information."
             exit 1
             ;;
         esac
       done
-      shift
       ;;
     -s|--size)
+      shift
       for variant in "${@}"; do
         case "${variant}" in
-          # FIXME: Why cannot it use the "standard" string as an argument?
-          # standard)
-          normal)
+          standard)
             sizes+=("${SIZE_VARIANTS[0]}")
             shift
             ;;
@@ -166,14 +168,16 @@ while [[ $# -gt 0 ]]; do
             sizes+=("${SIZE_VARIANTS[1]}")
             shift
             ;;
-          "*") # FIXME: Why doesn't it work without quotes?
-            echo "ERROR: Unrecognized size variant '$2'."
+          -*|--*)
+            break
+            ;;
+          *)
+            echo "ERROR: Unrecognized size variant '$1'."
             echo "Try '$0 --help' for more information."
             exit 1
             ;;
         esac
       done
-      shift
       ;;
     -h|--help)
       usage
