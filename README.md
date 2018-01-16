@@ -7,11 +7,11 @@ Also Materia has compatibility with [oomox theme designer](https://github.com/ac
 
 ## Features
 
-**Ripple effect** animations for GTK+ 3 are supported.
+**Ripple effect** animations for GTK+ 3 are supported:
 
 ![Button](../images/Button.gif?raw=true)
 
-**Three color variants** and **two size variants** are available.
+**Three color variants** and **two size variants** are available:
 
 | **Materia** | **-** | **compact** |
 |:-:|:-:|:-:|
@@ -19,7 +19,7 @@ Also Materia has compatibility with [oomox theme designer](https://github.com/ac
 | **dark** | ![Materia-dark](../images/Materia-dark.png?raw=true) | ![Materia-dark-compact](../images/Materia-dark-compact.png?raw=true) |
 | **light** | ![Materia-light](../images/Materia-light.png?raw=true) | ![Materia-light-compact](../images/Materia-light-compact.png?raw=true) |
 
-Various **desktop environments** are supported.
+Various **desktop environments** are supported:
 
 - GNOME Shell `>=3.18`
 - Budgie `>=10.2.5`
@@ -57,7 +57,7 @@ Check the dependencies first:
 
 Did you get the error: `XMLLINT not set and xmllint not found in path`? Then you'll also need to install `libxml2-utils`.
 
-Install the theme with the following commands:
+Run the following commands in the terminal:
 
 ```sh
 cd /tmp && wget -qO - https://github.com/nana-4/materia-theme/archive/master.tar.gz | tar xz
@@ -65,23 +65,33 @@ cd materia-theme-master
 sudo ./install.sh
 ```
 
-> Note: `./install.sh` allows the following options:
->
-> ```
-> -d, --dest DIR           Specify theme destination directory
-> -n, --name NAME          Specify theme name
-> -c, --color VARIANTS...  Specify theme color variant(s) [standard|dark|light]
-> -s, --size VARIANT       Specify theme size variant [standard|compact]
-> ```
->
-> Please run `./install.sh --help` for more information.
+#### Custom Installation
+
+`./install.sh` allows the following options:
+
+```
+-d, --dest DIR           Specify theme destination directory (Default: /usr/share/themes)
+-n, --name NAME          Specify theme name (Default: Materia)
+-c, --color VARIANTS...  Specify theme color variant(s) [standard|dark|light] (Default: All variants)
+-s, --size VARIANT       Specify theme size variant [standard|compact] (Default: All variants)
+```
+
+For example, to install only `Materia-dark` into `~/.themes`, run:
+
+```sh
+./install.sh -c dark -s standard -d ~/.themes
+```
+
+For further details, run `./install.sh --help`.
+
+To change the color scheme of the theme, see [the page](HACKING.md#changing-the-color-scheme-with-script).
 
 #### Manual Uninstallation
 
 Delete the installed directories:
 
 ```sh
-sudo rm -rf /usr/share/themes/{Materia,Flat-Plat}{,-compact,-dark,-dark-compact,-light,-light-compact}
+sudo rm -rf /usr/share/themes/Materia{,-compact,-dark,-dark-compact,-light,-light-compact}
 ```
 
 ## Recommendations
