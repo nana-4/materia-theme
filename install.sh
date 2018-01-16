@@ -64,8 +64,8 @@ install() {
   cp -ur src/index${color}${size}.theme                                         ${THEME_DIR}/index.theme
 
   mkdir -p                                                                      ${THEME_DIR}/chrome
-  cp -ur "src/chrome/Materia${color} Theme.crx"                                 ${THEME_DIR}/chrome #/${name}${color} Theme.crx
-  cp -ur "src/chrome/Materia${ELSE_DARK} Scrollbars.crx"                        ${THEME_DIR}/chrome #/${name}${ELSE_DARK} Scrollbars.crx
+  cp -ur src/chrome/chrome-theme${color}.crx                                    ${THEME_DIR}/chrome/chrome-theme.crx
+  cp -ur src/chrome/chrome-scrollbar${ELSE_DARK}.crx                            ${THEME_DIR}/chrome/chrome-scrollbar.crx
 
   mkdir -p                                                                      ${THEME_DIR}/gnome-shell
   cp -ur  src/gnome-shell/${GS_VERSION}/*.svg                                   ${THEME_DIR}/gnome-shell
