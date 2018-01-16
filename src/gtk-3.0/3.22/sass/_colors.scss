@@ -45,14 +45,19 @@ $bg_color:         if($variant == 'light', $grey_100, fade($blue_grey_700));
 $base_color:       if($variant == 'light', $white,    fade($blue_grey_600));
 $alt_base_color:   if($variant == 'light', $grey_50,  mix($base_color, $bg_color, 50%));
 $lighter_bg_color: if($variant == 'light', $grey_50,  fade($blue_grey_500));
+$alt_lighter_bg_color: if($variant == 'light', $grey_200, fade($blue_grey_600)); // for gnome-shell sub menu
 $darker_bg_color:  if($variant == 'light', $grey_200, fade($blue_grey_900));
 
 $titlebar_bg_color:     if($titlebar == 'dark', if($variant == 'light', $blue_grey_700, $blue_grey_800), $grey_300);
 $alt_titlebar_bg_color: if($titlebar == 'dark', $blue_grey_800, $grey_300);
+
 $panel_bg_color:        rgba($black, $middle_opacity);
+$alt_panel_bg_color:    rgba($black, $lower_opacity);
+$inverse_panel_bg_color: rgba($inverse_fg_color, 0.1);
 $solid_panel_bg_color:  if($titlebar == 'dark', $blue_grey_900, $panel_bg_color);
 $opaque_panel_bg_color: if($titlebar == 'dark', $blue_grey_900, mix($grey_300, $grey_400, 50%)); // for Unity panel which cannot use translucent colors
-$alt_panel_bg_color:    rgba($black, $lower_opacity);
+
+$gdm_bg_color: if($variant == 'light', $blue_grey_700, $blue_grey_800);
 
 $fill_color:      gtkalpha(currentColor, $lower_opacity);
 $semi_fill_color: gtkalpha(currentColor, $lower_opacity / 2);

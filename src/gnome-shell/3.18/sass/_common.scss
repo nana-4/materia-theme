@@ -232,7 +232,7 @@ StScrollBar {
 .modal-dialog {
   border-radius: 2px;
   color: $fg_color;
-  background-color: $base_color;
+  background-color: $lighter_bg_color;
   border: none;
   box-shadow: $shadow_4;
   .modal-dialog-content-box {
@@ -584,7 +584,7 @@ StScrollBar {
 
   .popup-menu-arrow { } //defined globally in the TOP BAR
   .popup-sub-menu {
-    background-color: $alt_base_color;
+    background-color: $alt_lighter_bg_color;
     box-shadow: $shadow_0;
   }
 
@@ -654,7 +654,7 @@ StScrollBar {
     -arrow-rise: 0;
     -arrow-box-shadow: none; //dreaming. bug #689995
     margin: 5px 8px 8px;
-    background-color: $base_color;
+    background-color: $lighter_bg_color;
     border-radius: 2px;
     box-shadow: $shadow_2;
   }
@@ -704,7 +704,7 @@ StScrollBar {
 /* Pad OSD */
 .pad-osd-window {
   padding: 32px;
-  background-color: $bg_color;
+  background-color: $panel_bg_color;
 }
 
 .combo-box-label {
@@ -804,7 +804,7 @@ StScrollBar {
 
 %osd-panel {
   color: $fg_color;
-  background-color: $base_color;
+  background-color: $lighter_bg_color;
   border: none;
   box-shadow: $shadow_4;
   border-radius: 2px;
@@ -832,7 +832,7 @@ StScrollBar {
 /* TOP BAR */
 
 #panel {
-  background-color: $panel_bg_color;
+  background-color: $solid_panel_bg_color;
   font-weight: bold;
   height: $menuitem_size;
 
@@ -849,7 +849,7 @@ StScrollBar {
 
   .panel-corner {
     -panel-corner-radius: $panel-corner-radius;
-    -panel-corner-background-color: $bg_color;
+    -panel-corner-background-color: $panel_bg_color;
     -panel-corner-border-width: 2px;
     -panel-corner-border-color: transparent;
 
@@ -885,7 +885,7 @@ StScrollBar {
     &:active, &:overview, &:focus, &:checked {
       // Trick due to St limitations. It needs a background to draw
       // a box-shadow
-      background-color: rgba($bg_color, 0.01);
+      background-color: rgba($panel_bg_color, 0.01);
       box-shadow: inset 0 -2px 0px $inverse_fg_color;
       color: $inverse_fg_color;
 
@@ -1437,7 +1437,7 @@ StScrollBar {
   #dash {
     font-size: 1em;
     color: $inverse_fg_color;
-    background-color: $inverse_bg_color;
+    background-color: $inverse_panel_bg_color;
     padding: 3px 0;
     border: none;
     border-left: 0px;
@@ -1469,7 +1469,7 @@ StScrollBar {
     border-radius: 2px;
     padding: 7px 8px;
     color: $fg_color;
-    background-color: $base_color;
+    background-color: $lighter_bg_color;
     box-shadow: $shadow_2;
     text-align: center;
     -x-offset: 8px;
@@ -1503,7 +1503,7 @@ StScrollBar {
     }
     &:checked {
       color: $inverse_fg_color;
-      background-color: rgba($bg_color, 0.01) !important;
+      background-color: rgba($panel_bg_color, 0.01) !important;
       box-shadow: inset 0 2px 0 $inverse_fg_color;
     }
     &:first-child {
@@ -1570,7 +1570,7 @@ StScrollBar {
   }
 
   .app-well-app.app-folder > .overview-icon {
-    background-color: $inverse_bg_color;
+    background-color: $inverse_panel_bg_color;
   }
 
   .show-apps .show-apps-icon {
@@ -1589,7 +1589,7 @@ StScrollBar {
   // Collections
   .app-folder-popup { //expanded collection
     -arrow-border-radius: 2px;
-    -arrow-background-color: $inverse_bg_color;
+    -arrow-background-color: $inverse_panel_bg_color;
     -arrow-base: 24px;
     -arrow-rise: 12px;
   }
@@ -1661,7 +1661,7 @@ StScrollBar {
 
 %overview-panel {
   color: $inverse_fg_color;
-  background-color: $inverse_bg_color;
+  background-color: $inverse_panel_bg_color;
   border: none;
 }
 
@@ -1682,11 +1682,11 @@ StScrollBar {
     margin: 5px;
     border-radius: 2px;
     color: $fg_color;
-    background-color: $base_color;
+    background-color: $lighter_bg_color;
     border: none;
     box-shadow: $shadow_2;
-    &:hover { background-color: $base_color; }
-    &:focus { background-color: $base_color; }
+    &:hover { background-color: $lighter_bg_color; }
+    &:focus { background-color: $lighter_bg_color; }
 
     .notification-icon { padding: 5px; }
     .notification-content { padding: 5px; spacing: 5px; }
@@ -1794,7 +1794,7 @@ StScrollBar {
 $legacy_icon_size: 24px;
 
 .legacy-tray {
-  background-color: $bg_color;
+  background-color: $panel_bg_color;
   color: $inverse_fg_color;
   border: none;
   border-bottom-width: 0;
@@ -1828,7 +1828,7 @@ $legacy_icon_size: 24px;
 /* On-screen Keyboard */
 
 #keyboard {
-    background-color: $alt_bg_color;
+    background-color: $alt_panel_bg_color;
 }
 
   .keyboard-layout {
@@ -1851,9 +1851,9 @@ $legacy_icon_size: 24px;
     &:hover,&:checked { @include button(hover); }
     &:active { @include button(active);}
     &:grayed { //FIXME
-      background-color: $alt_bg_color;
+      background-color: $alt_panel_bg_color;
       color: $inverse_fg_color;
-      border-color: $alt_bg_color;
+      border-color: $alt_panel_bg_color;
     }
   }
 
@@ -1867,7 +1867,7 @@ $legacy_icon_size: 24px;
     -arrow-base: 0;
     -arrow-rise: 0;
     -boxpointer-gap: 5px;
-    background-color: $base_color;
+    background-color: $lighter_bg_color;
     border-radius: 2px;
     box-shadow: $shadow_2;
   }
@@ -2093,7 +2093,7 @@ $legacy_icon_size: 24px;
   .screen-shield-notification-source {
     padding: 8px;
     border: none;
-    background-color: $alt_bg_color;
+    background-color: $alt_panel_bg_color;
     color: $inverse_fg_color;
     border-radius: 2px;
   }
@@ -2113,7 +2113,7 @@ $legacy_icon_size: 24px;
   color: $inverse_secondary_fg_color;
 }
 
-#panel.lock-screen { background-color: $alt_bg_color; }
+#panel.lock-screen { background-color: $alt_panel_bg_color; }
 
 .screen-shield-background { //just the shadow, really
   background: black;
@@ -2132,7 +2132,7 @@ $legacy_icon_size: 24px;
 
 // Looking Glass
 #LookingGlassDialog {
-  background-color: $base_color;
+  background-color: $lighter_bg_color;
   spacing: 4px;
   padding: 0;
   border: none;
@@ -2142,7 +2142,7 @@ $legacy_icon_size: 24px;
     padding: 0 8px;
     border: none;
     border-radius: 0;
-    background-color: rgba($base_color, 0.01);
+    background-color: rgba($lighter_bg_color, 0.01);
     box-shadow: inset 0 -1px 0 $border_color;
   }
   .labels { spacing: 0; }
@@ -2164,7 +2164,7 @@ $legacy_icon_size: 24px;
     &:selected {
       border-bottom-width: 0;
       border-color: transparent;
-      background-color: rgba($base_color, 0.01);
+      background-color: rgba($lighter_bg_color, 0.01);
       box-shadow: inset 0 -2px 0px $primary_color;
       color: $fg_color;
       text-shadow: none;
@@ -2230,7 +2230,7 @@ $legacy_icon_size: 24px;
   }
 
   #LookingGlassPropertyInspector {
-    background: $base_color;
+    background: $lighter_bg_color;
     border: none;
     border-radius: 2px;
     padding: 6px;
