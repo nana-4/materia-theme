@@ -50,8 +50,8 @@ test() {
   ln -sfT ${SRC_PATH}/index${color}${size}.theme                                  ${THEME_DIR}/index.theme
 
   mkdir -p                                                                        ${THEME_DIR}/gnome-shell
-  ln -sf  ${SRC_PATH}/gnome-shell/${GS_VERSION}/{extensions,pad-osd.css}          ${THEME_DIR}/gnome-shell
-  ln -sfT ${SRC_PATH}/gnome-shell/${GS_VERSION}/assets${ELSE_DARK}                ${THEME_DIR}/gnome-shell/assets
+  ln -sf  ${SRC_PATH}/gnome-shell/{extensions,pad-osd.css}                        ${THEME_DIR}/gnome-shell
+  ln -sfT ${SRC_PATH}/gnome-shell/assets${ELSE_DARK}                              ${THEME_DIR}/gnome-shell/assets
   ln -sfT ${SRC_PATH}/gnome-shell/${GS_VERSION}/gnome-shell${color}${size}.css    ${THEME_DIR}/gnome-shell/gnome-shell.css
 
   mkdir -p                                                                        ${THEME_DIR}/gtk-2.0
@@ -59,22 +59,19 @@ test() {
   ln -sfT ${SRC_PATH}/gtk-2.0/assets${ELSE_DARK}                                  ${THEME_DIR}/gtk-2.0/assets
   ln -sfT ${SRC_PATH}/gtk-2.0/gtkrc${color}                                       ${THEME_DIR}/gtk-2.0/gtkrc
 
-  mkdir -p                                                                        ${THEME_DIR}/gtk-common
-  ln -sf  ${SRC_PATH}/gtk-3.0/gtk-common/assets                                   ${THEME_DIR}/gtk-common
-
   for version in "${GTK_VERSIONS[@]}"; do
     if [[ ${version} == '3.18' ]]; then
       mkdir -p                                                                    ${THEME_DIR}/gtk-3.0
-      ln -sf  ${SRC_PATH}/gtk-3.0/${version}/assets                               ${THEME_DIR}/gtk-3.0
-      ln -sfT ${SRC_PATH}/gtk-3.0/${version}/gtk${color}.css                      ${THEME_DIR}/gtk-3.0/gtk.css
+      ln -sf  ${SRC_PATH}/gtk/assets                                              ${THEME_DIR}/gtk-3.0
+      ln -sfT ${SRC_PATH}/gtk/${version}/gtk${color}.css                          ${THEME_DIR}/gtk-3.0/gtk.css
       [[ ${color} != '-dark' ]] && \
-      ln -sfT ${SRC_PATH}/gtk-3.0/${version}/gtk-dark.css                         ${THEME_DIR}/gtk-3.0/gtk-dark.css
+      ln -sfT ${SRC_PATH}/gtk/${version}/gtk-dark.css                             ${THEME_DIR}/gtk-3.0/gtk-dark.css
     else
       mkdir -p                                                                    ${THEME_DIR}/gtk-${version}
-      ln -sf  ${SRC_PATH}/gtk-3.0/${version}/assets                               ${THEME_DIR}/gtk-${version}
-      ln -sfT ${SRC_PATH}/gtk-3.0/${version}/gtk${color}${size}.css               ${THEME_DIR}/gtk-${version}/gtk.css
+      ln -sf  ${SRC_PATH}/gtk/assets                                              ${THEME_DIR}/gtk-${version}
+      ln -sfT ${SRC_PATH}/gtk/${version}/gtk${color}${size}.css                   ${THEME_DIR}/gtk-${version}/gtk.css
       [[ ${color} != '-dark' ]] && \
-      ln -sfT ${SRC_PATH}/gtk-3.0/${version}/gtk-dark${size}.css                  ${THEME_DIR}/gtk-${version}/gtk-dark.css
+      ln -sfT ${SRC_PATH}/gtk/${version}/gtk-dark${size}.css                      ${THEME_DIR}/gtk-${version}/gtk-dark.css
     fi
   done
 

@@ -58,10 +58,10 @@ PATHLIST=(
 	'./src/gtk-2.0/gtkrc'
 	'./src/gtk-2.0/gtkrc-dark'
 	'./src/gtk-2.0/gtkrc-light'
-	'./src/gtk-3.0/3.22/sass/_colors.scss'
+	'./src/_sass/_colors.scss'
 	'./src/gtk-2.0/assets.svg'
 	'./src/gtk-2.0/assets-dark.svg'
-	'./src/gtk-3.0/gtk-common/assets.svg'
+	'./src/gtk/assets.svg'
 	'./src/metacity-1'
 	'./src/unity'
 	'./src/xfwm4'
@@ -306,17 +306,17 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		{} \; ;
 done
 
-rm ./src/gtk-3.0/3.{18,20,22}/*.css
+rm ./src/gtk/3.{18,20,22}/*.css
 if [[ ${MATERIA_MENUBAR_STYLE}  == "contrast" ]] ; then
-	rm ./src/gtk-3.0/3.{18,20,22}/gtk-light*.scss
+	rm ./src/gtk/3.{18,20,22}/gtk-light*.scss
 else
-	rm ./src/gtk-3.0/3.{18,20,22}/gtk{,-compact}.scss || true
+	rm ./src/gtk/3.{18,20,22}/gtk{,-compact}.scss || true
 fi
 if [[ ${GTK3_GENERATE_DARK} != "true" ]] ; then
-	grep -v "\-dark" ./src/gtk-3.0/gtk-common/assets.txt > ./new_assets.txt
-	mv ./new_assets.txt ./src/gtk-3.0/gtk-common/assets.txt
-	rm ./src/gtk-3.0/3.{20,22}/gtk-dark-compact.scss
-	rm ./src/gtk-3.0/3.{18,20,22}/gtk-dark.scss
+	grep -v "\-dark" ./src/gtk/assets.txt > ./new_assets.txt
+	mv ./new_assets.txt ./src/gtk/assets.txt
+	rm ./src/gtk/3.{20,22}/gtk-dark-compact.scss
+	rm ./src/gtk/3.{18,20,22}/gtk-dark.scss
 fi
 if [[ ${OPTION_GTK2_HIDPI} == "true" ]] ; then
 	mv ./src/gtk-2.0/main.rc.hidpi ./src/gtk-2.0/main.rc
@@ -353,7 +353,7 @@ SIZE_VARIANTS="${SIZE_VARIANTS}" COLOR_VARIANTS="${COLOR_VARIANTS}" THEME_DIR_BA
 
 rm ./src/gtk-2.0/assets/*.png || true
 rm ./src/gtk-2.0/assets-dark/*.png || true
-rm ./src/gtk-3.0/gtk-common/assets/*.png || true
+rm ./src/gtk/assets/*.png || true
 
 echo "== Rendering GTK+2 assets..."
 cd ./src/gtk-2.0
@@ -361,9 +361,9 @@ GTK2_HIDPI=${OPTION_GTK2_HIDPI} ./render-assets.sh
 cd ../../
 
 echo "== Rendering GTK+3 assets..."
-cd ./src/gtk-3.0/gtk-common
+cd ./src/gtk
 ./render-assets.sh
-cd ../../..
+cd ../../
 
 ./install.sh --dest "$HOME/.themes" --name "${OUTPUT_THEME_NAME/\//-}" --color "${COLOR_VARIANT}" --size "${SIZE_VARIANT}"
 

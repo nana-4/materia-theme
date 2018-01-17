@@ -8,7 +8,7 @@ COLOR_VARIANTS=('' '-dark' '-light')
 SIZE_VARIANTS=('' '-compact')
 
 GTK_VERSIONS=('3.18' '3.20' '3.22')
-GS_VERSIONS=('3.18' '3.20' '3.22' '3.24' '3.26')
+GS_VERSIONS=('3.18' '3.24' '3.26')
 LATEST_GS_VERSION=${GS_VERSIONS[@]: -1}
 
 # Set a proper gnome-shell theme version
@@ -68,36 +68,34 @@ install() {
   cp -ur src/chrome/chrome-scrollbar${ELSE_DARK}.crx                            ${THEME_DIR}/chrome/chrome-scrollbar.crx
 
   mkdir -p                                                                      ${THEME_DIR}/gnome-shell
-  cp -ur  src/gnome-shell/${GS_VERSION}/*.svg                                   ${THEME_DIR}/gnome-shell
-  cp -urL src/gnome-shell/${GS_VERSION}/{extensions,noise-texture.png,pad-osd.css} ${THEME_DIR}/gnome-shell
-  cp -urL src/gnome-shell/${GS_VERSION}/assets${ELSE_DARK}                      ${THEME_DIR}/gnome-shell/assets
-  cp -ur  src/gnome-shell/${GS_VERSION}/gnome-shell${color}${size}.css          ${THEME_DIR}/gnome-shell/gnome-shell.css
+  cp -ur src/gnome-shell/{*.svg,extensions,noise-texture.png,pad-osd.css}       ${THEME_DIR}/gnome-shell
+  cp -ur src/gnome-shell/assets${ELSE_DARK}                                     ${THEME_DIR}/gnome-shell/assets
+  cp -ur src/gnome-shell/${GS_VERSION}/gnome-shell${color}${size}.css           ${THEME_DIR}/gnome-shell/gnome-shell.css
   glib-compile-resources \
     --sourcedir=${THEME_DIR}/gnome-shell \
     --target=${THEME_DIR}/gnome-shell/gnome-shell-theme.gresource \
-    src/gnome-shell/${GS_VERSION}/gnome-shell-theme.gresource.xml
+    src/gnome-shell/gnome-shell-theme.gresource.xml
 
   mkdir -p                                                                      ${THEME_DIR}/gtk-2.0
   cp -ur src/gtk-2.0/{apps.rc,hacks.rc,main.rc}                                 ${THEME_DIR}/gtk-2.0
   cp -ur src/gtk-2.0/assets${ELSE_DARK}                                         ${THEME_DIR}/gtk-2.0/assets
   cp -ur src/gtk-2.0/gtkrc${color}                                              ${THEME_DIR}/gtk-2.0/gtkrc
 
-  mkdir -p                                                                      ${THEME_DIR}/gtk-common
-  cp -ur src/gtk-3.0/gtk-common/assets                                          ${THEME_DIR}/gtk-common
+  cp -ur src/gtk/assets                                                         ${THEME_DIR}/gtk-assets
 
   for version in "${GTK_VERSIONS[@]}"; do
     if [[ ${version} == '3.18' ]]; then
       mkdir -p                                                                  ${THEME_DIR}/gtk-3.0
-      cp -ur src/gtk-3.0/${version}/assets                                      ${THEME_DIR}/gtk-3.0
-      cp -ur src/gtk-3.0/${version}/gtk${color}.css                             ${THEME_DIR}/gtk-3.0/gtk.css
+      ln -sf ../gtk-assets                                                      ${THEME_DIR}/gtk-3.0/assets
+      cp -ur src/gtk/${version}/gtk${color}.css                                 ${THEME_DIR}/gtk-3.0/gtk.css
       [[ ${color} != '-dark' ]] && \
-      cp -ur src/gtk-3.0/${version}/gtk-dark.css                                ${THEME_DIR}/gtk-3.0/gtk-dark.css
+      cp -ur src/gtk/${version}/gtk-dark.css                                    ${THEME_DIR}/gtk-3.0/gtk-dark.css
     else
       mkdir -p                                                                  ${THEME_DIR}/gtk-${version}
-      cp -ur src/gtk-3.0/${version}/assets                                      ${THEME_DIR}/gtk-${version}
-      cp -ur src/gtk-3.0/${version}/gtk${color}${size}.css                      ${THEME_DIR}/gtk-${version}/gtk.css
+      ln -sf ../gtk-assets                                                      ${THEME_DIR}/gtk-${version}/assets
+      cp -ur src/gtk/${version}/gtk${color}${size}.css                          ${THEME_DIR}/gtk-${version}/gtk.css
       [[ ${color} != '-dark' ]] && \
-      cp -ur src/gtk-3.0/${version}/gtk-dark${size}.css                         ${THEME_DIR}/gtk-${version}/gtk-dark.css
+      cp -ur src/gtk/${version}/gtk-dark${size}.css                             ${THEME_DIR}/gtk-${version}/gtk-dark.css
     fi
   done
 

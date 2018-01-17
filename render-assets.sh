@@ -10,8 +10,8 @@ if [ ! "$(which optipng 2> /dev/null)" ]; then
   exit 1
 fi
 
-gtk3() (
-  cd src/gtk-3.0/gtk-common
+gtk() (
+  cd src/gtk
   rm assets/*.png
   ./render-assets.sh
 )
@@ -30,12 +30,12 @@ gtk2_dark() (
 
 case "${1}" in
   "")
-    gtk3
+    gtk
     gtk2_light
     gtk2_dark
     ;;
-  gtk3)
-    gtk3
+  gtk)
+    gtk
     ;;
   gtk2)
     gtk2_light
@@ -49,6 +49,6 @@ case "${1}" in
     ;;
   *)
     echo "Unknown argument: '${1}'"
-    echo "Use 'gtk3', 'gtk2', 'gtk2-light' or 'gtk2-dark' as an argument."
+    echo "Use 'gtk', 'gtk2', 'gtk2-light' or 'gtk2-dark' as an argument."
     ;;
 esac
