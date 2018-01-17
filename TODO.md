@@ -1,7 +1,5 @@
 ## General
 
-- Improve directory structure ([#170](../../issues/170))
-
 - Use `make` or `meson` for building? (`help wanted`)
 
 ## Supports

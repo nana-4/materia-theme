@@ -60,7 +60,7 @@ Here's an example to change the _accent color_:
 
   - `./src/gtk-2.0/assets.svg`
   - `./src/gtk-2.0/assets-dark.svg`
-  - `./src/gtk-3.0/gtk-common/assets.svg`
+  - `./src/gtk/assets.svg`
   - `./src/gnome-shell/3.18/assets/checkbox.svg`
   - `./src/gnome-shell/3.18/assets/more-results.svg`
   - `./src/gnome-shell/3.18/assets/toggle-on.svg`
