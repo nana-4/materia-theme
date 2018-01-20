@@ -66,12 +66,6 @@ PATHLIST=(
 	'./src/unity'
 	'./src/xfwm4'
 )
-GNOME_SHELL_PATHLIST=(
-	'./src/gnome-shell/3.18/sass/_colors.scss'
-	'./src/gnome-shell/3.20/sass/_colors.scss'
-	'./src/gnome-shell/3.22/sass/_colors.scss'
-)
-PATHLIST=("${PATHLIST[@]}" "${GNOME_SHELL_PATHLIST[@]}")
 if [ ! -z "${CUSTOM_PATHLIST:-}" ] ; then
 	IFS=', ' read -r -a PATHLIST <<< "${CUSTOM_PATHLIST:-}"
 fi
@@ -141,36 +135,6 @@ cd ${tempdir}
 
 echo "== Converting theme into template..."
 
-for FILEPATH in "${GNOME_SHELL_PATHLIST[@]}"; do
-	sed -i'' \
-		-e 's/^\(\$dark_fg_color:.*rgba(\)$.*\(,.*;\).*$/\1 %MENU_FG% \2/g' \
-		-e 's/^\(\$light_fg_color:\).*$.*;.*$/\1 %MENU_FG%;/g' \
-		-e 's/^\(\$button_fg_color:\).*$.*;.*$/\1 %MENU_FG%;/g' \
-		-e 's/^\(\$fg_color:\).*$.*;.*$/\1 %MENU_FG%;/g' \
-		-e 's/^\(\$secondary_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
-		-e 's/^\(\$hint_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
-		-e 's/^\(\$disabled_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
-		-e 's/^\(\$disabled_secondary_fg_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
-		-e 's/^\(\$track_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
-		-e 's/^\(\$divider_color:.*\)\$black\(.*\)\$white\(.*\)$/\1%MENU_FG%\2%MENU_FG%\3/g' \
-		\
-		-e 's/^\(\$inverse_fg_color:\).*$.*;.*$/\1 mix(%MENU_FG%, %SEL_BG%, 50%);/g' \
-		-e 's/^\(\$inverse_hint_fg_color:.*rgba(\)$.*\(,.*;\).*$/\1 if(lightness(%MENU_FG%) > 50, %MENU_FG%, %MENU_BG%) \2/g' \
-		-e 's/^\(\$inverse_disabled_fg_color:.*rgba(\)$.*\(,.*;\).*$/\1 mix(%MENU_FG%, %SEL_BG%, 50%) \2/g' \
-		-e 's/^\(\$inverse_disabled_secondary_fg_color:.*rgba(\)$.*\(,.*;\).*$/\1 mix(%MENU_FG%, %SEL_BG%, 50%) \2/g' \
-		-e 's/^\(\$inverse_track_fg_color:.*rgba(\)$.*\(,.*;\).*$/\1 mix(%MENU_FG%, %SEL_BG%, 50%) \2/g' \
-		-e 's/^\(\$inverse_divider_fg_color:.*rgba(\)$.*\(,.*;\).*$/\1 mix(%MENU_FG%, %SEL_BG%, 50%) \2/g' \
-		\
-		-e 's/^\(\$base_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%MENU_BG%\2%MENU_BG%\3/g' \
-		-e 's/^\(\$alt_base_color:.*\$variant.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%INACTIVE_MENU_BG%\2%INACTIVE_MENU_BG%\3/g' \
-		-e 's/^\($bg_color:.*,\) $middle_opacity/\1 %GNOME_SHELL_PANEL_OPACITY%/g' \
-		\
-		-e 's/$black/%MENU_BG%/g' \
-		-e 's/$grey_900/%MENU_BG%/g' \
-		-e 's/$white/%MENU_FG%/g' \
-		${FILEPATH}
-done
-
 for FILEPATH in "${PATHLIST[@]}"; do
 	find "${FILEPATH}" -type f -not -name '_color-palette.scss' -exec sed -i'' \
 		-e 's/^\(\$dark_fg_color:\).*$.*;.*$/\1 %FG%;/g' \
@@ -209,7 +173,7 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		\
 		-e 's/^\(\$titlebar_bg_color:\).*;.*$/\1 %MENU_BG%;/g' \
 		-e 's/^\(\$alt_titlebar_bg_color:.*\$titlebar.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%MENU_BG%\2%MENU_BG%\3/g' \
-		-e 's/^\(\$panel_bg_color:.*\)$black\(.*\)$/\1%MENU_BG%\2/g' \
+		-e 's/^\(\$panel_bg_color:.*\)$black\(.*\)$middle_opacity\(.*\)$/\1%MENU_BG%\2%GNOME_SHELL_PANEL_OPACITY%\3/g' \
 		-e 's/^\(\$solid_panel_bg_color:.*\$titlebar.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%MENU_BG%\2%MENU_BG%\3/g' \
 		-e 's/^\(\$opaque_panel_bg_color:.*\$titlebar.*\)\$\w\+\(.*\)\$\w\+\(.*\)\$\w\+\(.*\)$/\1%MENU_BG%\2%MENU_BG%\3%MENU_BG%\4/g' \
 		-e 's/^\(\$alt_panel_bg_color:.*\)$black\(.*\)$/\1%MENU_BG%\2/g' \
