@@ -6,19 +6,12 @@ if [ ! "$(which sassc 2> /dev/null)" ]; then
   exit 1
 fi
 
-_COLOR_VARIANTS=(
-  ''
-  '-dark'
-  '-light'
-)
+_COLOR_VARIANTS=('' '-dark' '-light')
 if [ ! -z "${COLOR_VARIANTS:-}" ]; then
   IFS=', ' read -r -a _COLOR_VARIANTS <<< "${COLOR_VARIANTS:-}"
 fi
 
-_SIZE_VARIANTS=(
-  ''
-  '-compact'
-)
+_SIZE_VARIANTS=('' '-compact')
 if [ ! -z "${SIZE_VARIANTS:-}" ]; then
   IFS=', ' read -r -a _SIZE_VARIANTS <<< "${SIZE_VARIANTS:-}"
 fi
@@ -42,3 +35,6 @@ for color in "${_COLOR_VARIANTS[@]}"; do
     done
   done
 done
+
+sassc $SASSC_OPT src/chrome/chrome-scrollbar/scrollbars.{scss,css}
+sassc $SASSC_OPT src/chrome/chrome-scrollbar-dark/scrollbars.{scss,css}
