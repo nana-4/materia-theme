@@ -2,6 +2,7 @@
 #set -ueo pipefail
 #set -x
 
+SRC_DIR=`dirname "$0"`
 DEST_DIR=/usr/share/themes
 THEME_NAME=Materia
 COLOR_VARIANTS=('' '-dark' '-light')
@@ -59,58 +60,58 @@ install() {
 
   echo "Installing '${THEME_DIR}'..."
 
-  mkdir -p                                                                      ${THEME_DIR}
-  cp -ur COPYING                                                                ${THEME_DIR}
-  cp -ur src/index${color}${size}.theme                                         ${THEME_DIR}/index.theme
+  mkdir -p                                                                           ${THEME_DIR}
+  cp -ur ${SRC_DIR}/COPYING                                                          ${THEME_DIR}
+  cp -ur ${SRC_DIR}/src/index${color}${size}.theme                                   ${THEME_DIR}/index.theme
 
-  mkdir -p                                                                      ${THEME_DIR}/chrome
-  cp -ur src/chrome/chrome-theme${color}.crx                                    ${THEME_DIR}/chrome/chrome-theme.crx
-  cp -ur src/chrome/chrome-scrollbar${ELSE_DARK}.crx                            ${THEME_DIR}/chrome/chrome-scrollbar.crx
+  mkdir -p                                                                           ${THEME_DIR}/chrome
+  cp -ur ${SRC_DIR}/src/chrome/chrome-theme${color}.crx                              ${THEME_DIR}/chrome/chrome-theme.crx
+  cp -ur ${SRC_DIR}/src/chrome/chrome-scrollbar${ELSE_DARK}.crx                      ${THEME_DIR}/chrome/chrome-scrollbar.crx
 
-  mkdir -p                                                                      ${THEME_DIR}/gnome-shell
-  cp -ur src/gnome-shell/{*.svg,extensions,noise-texture.png,pad-osd.css}       ${THEME_DIR}/gnome-shell
-  cp -ur src/gnome-shell/assets${ELSE_DARK}                                     ${THEME_DIR}/gnome-shell/assets
-  cp -ur src/gnome-shell/${GS_VERSION}/gnome-shell${color}${size}.css           ${THEME_DIR}/gnome-shell/gnome-shell.css
+  mkdir -p                                                                           ${THEME_DIR}/gnome-shell
+  cp -ur ${SRC_DIR}/src/gnome-shell/{*.svg,extensions,noise-texture.png,pad-osd.css} ${THEME_DIR}/gnome-shell
+  cp -ur ${SRC_DIR}/src/gnome-shell/assets${ELSE_DARK}                               ${THEME_DIR}/gnome-shell/assets
+  cp -ur ${SRC_DIR}/src/gnome-shell/${GS_VERSION}/gnome-shell${color}${size}.css     ${THEME_DIR}/gnome-shell/gnome-shell.css
   glib-compile-resources \
     --sourcedir=${THEME_DIR}/gnome-shell \
     --target=${THEME_DIR}/gnome-shell/gnome-shell-theme.gresource \
-    src/gnome-shell/gnome-shell-theme.gresource.xml
+    ${SRC_DIR}/src/gnome-shell/gnome-shell-theme.gresource.xml
 
-  mkdir -p                                                                      ${THEME_DIR}/gtk-2.0
-  cp -ur src/gtk-2.0/{apps.rc,hacks.rc,main.rc}                                 ${THEME_DIR}/gtk-2.0
-  cp -ur src/gtk-2.0/assets${ELSE_DARK}                                         ${THEME_DIR}/gtk-2.0/assets
-  cp -ur src/gtk-2.0/gtkrc${color}                                              ${THEME_DIR}/gtk-2.0/gtkrc
+  mkdir -p                                                                           ${THEME_DIR}/gtk-2.0
+  cp -ur ${SRC_DIR}/src/gtk-2.0/{apps.rc,hacks.rc,main.rc}                           ${THEME_DIR}/gtk-2.0
+  cp -ur ${SRC_DIR}/src/gtk-2.0/assets${ELSE_DARK}                                   ${THEME_DIR}/gtk-2.0/assets
+  cp -ur ${SRC_DIR}/src/gtk-2.0/gtkrc${color}                                        ${THEME_DIR}/gtk-2.0/gtkrc
 
-  cp -ur src/gtk/assets                                                         ${THEME_DIR}/gtk-assets
+  cp -ur ${SRC_DIR}/src/gtk/assets                                                   ${THEME_DIR}/gtk-assets
 
   for version in "${GTK_VERSIONS[@]}"; do
     if [[ ${version} == '3.18' ]]; then
-      mkdir -p                                                                  ${THEME_DIR}/gtk-3.0
-      ln -sf ../gtk-assets                                                      ${THEME_DIR}/gtk-3.0/assets
-      cp -ur src/gtk/${version}/gtk${color}.css                                 ${THEME_DIR}/gtk-3.0/gtk.css
+      mkdir -p                                                                       ${THEME_DIR}/gtk-3.0
+      ln -sf ../gtk-assets                                                           ${THEME_DIR}/gtk-3.0/assets
+      cp -ur ${SRC_DIR}/src/gtk/${version}/gtk${color}.css                           ${THEME_DIR}/gtk-3.0/gtk.css
       [[ ${color} != '-dark' ]] && \
-      cp -ur src/gtk/${version}/gtk-dark.css                                    ${THEME_DIR}/gtk-3.0/gtk-dark.css
+      cp -ur ${SRC_DIR}/src/gtk/${version}/gtk-dark.css                              ${THEME_DIR}/gtk-3.0/gtk-dark.css
     else
-      mkdir -p                                                                  ${THEME_DIR}/gtk-${version}
-      ln -sf ../gtk-assets                                                      ${THEME_DIR}/gtk-${version}/assets
-      cp -ur src/gtk/${version}/gtk${color}${size}.css                          ${THEME_DIR}/gtk-${version}/gtk.css
+      mkdir -p                                                                       ${THEME_DIR}/gtk-${version}
+      ln -sf ../gtk-assets                                                           ${THEME_DIR}/gtk-${version}/assets
+      cp -ur ${SRC_DIR}/src/gtk/${version}/gtk${color}${size}.css                    ${THEME_DIR}/gtk-${version}/gtk.css
       [[ ${color} != '-dark' ]] && \
-      cp -ur src/gtk/${version}/gtk-dark${size}.css                             ${THEME_DIR}/gtk-${version}/gtk-dark.css
+      cp -ur ${SRC_DIR}/src/gtk/${version}/gtk-dark${size}.css                       ${THEME_DIR}/gtk-${version}/gtk-dark.css
     fi
   done
 
-  mkdir -p                                                                      ${THEME_DIR}/metacity-1
-  cp -ur src/metacity-1/assets                                                  ${THEME_DIR}/metacity-1
-  cp -ur src/metacity-1/metacity-theme-2${ELSE_LIGHT}.xml                       ${THEME_DIR}/metacity-1/metacity-theme-2.xml
-  cp -ur src/metacity-1/metacity-theme-3${ELSE_LIGHT}.xml                       ${THEME_DIR}/metacity-1/metacity-theme-3.xml
+  mkdir -p                                                                           ${THEME_DIR}/metacity-1
+  cp -ur ${SRC_DIR}/src/metacity-1/assets                                            ${THEME_DIR}/metacity-1
+  cp -ur ${SRC_DIR}/src/metacity-1/metacity-theme-2${ELSE_LIGHT}.xml                 ${THEME_DIR}/metacity-1/metacity-theme-2.xml
+  cp -ur ${SRC_DIR}/src/metacity-1/metacity-theme-3${ELSE_LIGHT}.xml                 ${THEME_DIR}/metacity-1/metacity-theme-3.xml
 
-  mkdir -p                                                                      ${THEME_DIR}/unity
-  cp -ur src/unity/{*.svg,*.png,dash-widgets.json}                              ${THEME_DIR}/unity
-  cp -ur src/unity/assets${ELSE_LIGHT}                                          ${THEME_DIR}/unity/assets
+  mkdir -p                                                                           ${THEME_DIR}/unity
+  cp -ur ${SRC_DIR}/src/unity/{*.svg,*.png,dash-widgets.json}                        ${THEME_DIR}/unity
+  cp -ur ${SRC_DIR}/src/unity/assets${ELSE_LIGHT}                                    ${THEME_DIR}/unity/assets
 
-  mkdir -p                                                                      ${THEME_DIR}/xfwm4
-  cp -ur src/xfwm4/{*.svg,themerc}                                              ${THEME_DIR}/xfwm4
-  cp -ur src/xfwm4/assets${ELSE_LIGHT}                                          ${THEME_DIR}/xfwm4/assets
+  mkdir -p                                                                           ${THEME_DIR}/xfwm4
+  cp -ur ${SRC_DIR}/src/xfwm4/{*.svg,themerc}                                        ${THEME_DIR}/xfwm4
+  cp -ur ${SRC_DIR}/src/xfwm4/assets${ELSE_LIGHT}                                    ${THEME_DIR}/xfwm4/assets
 }
 
 while [[ $# -gt 0 ]]; do
