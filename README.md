@@ -11,13 +11,20 @@ Also Materia has compatibility with [oomox theme designer](https://github.com/ac
 
 ![Button](../images/Button.gif?raw=true)
 
-**Three color variants** and **two size variants** are available:
+**3 color variants** and **2 size variants** are available:
 
 | **Materia** | **-** | **compact** |
 |:-:|:-:|:-:|
-| **-** | ![Materia](../images/Materia.png?raw=true) | ![Materia-compact](../images/Materia-compact.png?raw=true) |
-| **dark** | ![Materia-dark](../images/Materia-dark.png?raw=true) | ![Materia-dark-compact](../images/Materia-dark-compact.png?raw=true) |
-| **light** | ![Materia-light](../images/Materia-light.png?raw=true) | ![Materia-light-compact](../images/Materia-light-compact.png?raw=true) |
+| **-** | ![Materia][1] | ![Materia-compact][2] |
+| **dark** | ![Materia-dark][3] | ![Materia-dark-compact][4] |
+| **light** | ![Materia-light][5] | ![Materia-light-compact][6] |
+
+[1]: ../images/Materia.png?raw=true
+[2]: ../images/Materia-compact.png?raw=true
+[3]: ../images/Materia-dark.png?raw=true
+[4]: ../images/Materia-dark-compact.png?raw=true
+[5]: ../images/Materia-light.png?raw=true
+[6]: ../images/Materia-light-compact.png?raw=true
 
 Various **desktop environments** are supported:
 
@@ -41,23 +48,40 @@ Various **desktop environments** are supported:
   - `glib2-devel` on Fedora, openSUSE, etc.
   - `libglib2.0-dev` on Debian, Ubuntu, etc.
 
-For Ubuntu, you'll also need the `libxml2-utils` package.
+For Ubuntu, you also need the `libxml2-utils` package.
 
 ## Installation
 
-#### Packages
+### Arch Linux
 
-|| **Install command** |
-|:-|:-|
-| **Arch Linux** [1] | `yaourt -S materia-theme` |
-| **Fedora / EPEL** [2] | `sudo dnf copr enable tcg/themes && sudo dnf install materia-theme` |
-| **Ubuntu** [3] | `sudo add-apt-repository ppa:dyatlov-igor/materia-theme` <br> `sudo apt update` <br> `sudo apt install materia-theme` |
+Package is available via [AUR](https://aur.archlinux.org/packages/materia-theme/) (maintained by @cthbleachbit):
 
-1. The [AUR package](https://aur.archlinux.org/packages/materia-theme/) is maintained by [@cthbleachbit](https://github.com/cthbleachbit).
-2. The [Copr repository](https://copr.fedorainfracloud.org/coprs/tcg/themes/) is maintained by [@LaurentTreguier](https://github.com/LaurentTreguier).
-3. The [Ubuntu PPA](https://launchpad.net/~dyatlov-igor/+archive/ubuntu/materia-theme) is maintained by [@igor-dyatlov](https://github.com/igor-dyatlov).
+```
+yaourt -S materia-theme
+```
 
-#### Manual Installation
+### Fedora / EPEL
+
+Package is available via [Copr](https://copr.fedorainfracloud.org/coprs/tcg/themes/) (maintained by @LaurentTreguier):
+
+```
+sudo dnf copr enable tcg/themes
+sudo dnf install materia-theme
+```
+
+### Ubuntu
+
+Package is available via [PPA](https://launchpad.net/~dyatlov-igor/+archive/ubuntu/materia-theme) (maintained by @igor-dyatlov):
+
+```
+sudo add-apt-repository ppa:dyatlov-igor/materia-theme
+sudo apt update
+sudo apt install materia-theme
+```
+
+### From Source
+
+#### Installation
 
 Run the following commands in the terminal:
 
@@ -67,9 +91,7 @@ cd materia-theme-master
 sudo ./install.sh
 ```
 
-#### Custom Installation
-
-`./install.sh` allows the following options:
+**Note:** `./install.sh` allows the following options:
 
 ```
 -d, --dest DIR           Specify theme destination directory (Default: /usr/share/themes)
@@ -78,17 +100,12 @@ sudo ./install.sh
 -s, --size VARIANT       Specify theme size variant [standard|compact] (Default: All variants)
 ```
 
-For example, to install only `Materia-dark` into `~/.themes`, run:
+Without any options, **Materia** will be installed with **all variants** into `/usr/share/themes`.  
+Try `./install.sh --help` for more information.
 
-```sh
-./install.sh -c dark -s standard -d ~/.themes
-```
+**Note 2:** To change the color scheme of the theme, see [`HACKING.md`](HACKING.md#changing-the-color-scheme-with-script).
 
-For further details, run `./install.sh --help`.
-
-To change the color scheme of the theme, see [the page](HACKING.md#changing-the-color-scheme-with-script).
-
-#### Manual Uninstallation
+#### Uninstallation
 
 Delete the installed directories:
 
@@ -98,19 +115,19 @@ sudo rm -rf /usr/share/themes/Materia{,-compact,-dark,-dark-compact,-light,-ligh
 
 ## Recommendations
 
-#### Font
+### Font
 
-- To properly display the theme, use a font family including `Medium` weight (such as [Roboto](https://github.com/google/roboto) or [M+](https://mplus-fonts.osdn.jp)).
-- Set the font size to `9.75` (= 13px at 96dpi) or `10.5` (= 14px at 96dpi).
+- To properly display the theme, use a font family including **Medium** weight (e.g. [Roboto](https://github.com/google/roboto) or [M+](https://mplus-fonts.osdn.jp)).
+- Set the font size to `9.75` or `10.5` (i.e. 13px or 14px at 96dpi).
 
-#### Chrome Theme
+### Chrome Theme
 
 To use the Chrome theme;
 
 1. Open the `chrome` folder on `/usr/share/themes/Materia<-variant>`.
-2. Drag and drop the `.crx` files onto the Chrome/Chromium Extensions page: `chrome://extensions`
+2. Drag and drop the `.crx` files into the Chrome/Chromium Extensions page (`chrome://extensions`).
 
-#### GDM Theme
+### GDM Theme
 
 You can change the GDM (lock/login screen) theme by replacing the default GNOME Shell theme.  
 See the wiki for details: https://github.com/nana-4/materia-theme/wiki/GDM-Theme
@@ -140,11 +157,11 @@ Materia is distributed under the terms of the GNU General Public License, versio
 
 ## Credits
 
-- This theme is based on [Adwaita](HACKING.md#upstream-theme-sources) by GNOME.
+- Materia is based on [Adwaita](HACKING.md#upstream-theme-sources) by GNOME.
 - The included symbolic icons are based on [Material Design icons](https://github.com/google/material-design-icons) by Google.
 - Chrome/Chromium scrollbars extension was forked from [Adwaita-chrome-scrollbar](https://github.com/gnome-integration-team/chrome-gnome-scrollbar) by GNOME Integration Team.
-- The original concept is Google's [Material Design](https://material.io).
+- Design and specifications are based on Google's [Material Design](https://material.io).
 - Yauhen Kirylau (@actionless) who is oomox author polished scripts and supported Materia with [oomox](https://github.com/actionless/oomox).
-- @n3oxmind helped improve the installation script.
+- @n3oxmind who helped improve the installation script.
 
 Also thank you to all contributors and upstream developers.
