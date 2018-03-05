@@ -34,22 +34,6 @@ Various **desktop environments** are supported:
 - Unity `>=7.4`
 - ... and more DEs are [planned](TODO.md#supports).
 
-## Requirements
-
-- GTK+ `>=3.18`
-- `gnome-themes-standard`
-- Murrine engine - The package name depends on the distro.
-  - `gtk-engine-murrine` on Arch Linux
-  - `gtk-murrine-engine` on Fedora
-  - `gtk2-engine-murrine` on openSUSE
-  - `gtk2-engines-murrine` on Debian, Ubuntu, etc.
-- `glib-compile-resources` - The package name depends on the distro.
-  - `glib2` on Arch Linux
-  - `glib2-devel` on Fedora, openSUSE, etc.
-  - `libglib2.0-dev` on Debian, Ubuntu, etc.
-
-For Ubuntu, you also need the `libxml2-utils` package.
-
 ## Installation
 
 ### Arch Linux
@@ -81,6 +65,24 @@ sudo apt install materia-theme
 
 ### From Source
 
+#### Requirements
+
+You need to have the following dependencies:
+
+- GTK+ `>=3.18`
+- `gnome-themes-standard`
+- Murrine engine - The package name depends on the distro.
+  - `gtk-engine-murrine` on Arch Linux
+  - `gtk-murrine-engine` on Fedora
+  - `gtk2-engine-murrine` on openSUSE
+  - `gtk2-engines-murrine` on Debian, Ubuntu, etc.
+- `glib-compile-resources` - The package name depends on the distro.
+  - `glib2` on Arch Linux
+  - `glib2-devel` on Fedora, openSUSE, etc.
+  - `libglib2.0-dev` on Debian, Ubuntu, etc.
+
+For Ubuntu, you also need the `libxml2-utils` package.
+
 #### Installation
 
 Run the following commands in the terminal:
@@ -102,8 +104,6 @@ sudo ./install.sh
 
 Without any options, **Materia** will be installed with **all variants** into `/usr/share/themes`.  
 Try `./install.sh --help` for more information.
-
-**Note 2:** To change the color scheme of the theme, see [`HACKING.md`](HACKING.md#changing-the-color-scheme-with-script).
 
 #### Uninstallation
 
@@ -145,11 +145,15 @@ See the wiki for details: https://github.com/nana-4/materia-theme/wiki/GDM-Theme
 
 <sub>**Previews Info:** Icon Theme: [Paper](https://github.com/snwh/paper-icon-theme) | Font: [M+ 1C](https://mplus-fonts.osdn.jp) 9.75pt | Dock's icon size: 48px + fixed | [Wallpapers](https://imgur.com/a/v2Ovx)</sub>
 
+## Customization
+
+Materia allows you to change the color scheme relatively easily. See [`HACKING.md`](HACKING.md#changing-the-color-scheme-with-script) for details.
+
 ## Contributing
 
 If you find bugs or have suggestions, please report it to the [issue tracker](https://github.com/nana-4/materia-theme/issues). Any contribution would be much appreciated.
 
-See also (if necessary): [`TODO.md`](TODO.md) and [`HACKING.md`](HACKING.md)
+ToDo list can be found here: [`TODO.md`](TODO.md)
 
 ## License
 
@@ -158,9 +162,9 @@ Materia is distributed under the terms of the GNU General Public License, versio
 ## Credits
 
 - Materia is based on [Adwaita](HACKING.md#upstream-theme-sources) by GNOME.
+- Design and specifications are based on Google's [Material Design](https://material.io).
 - The included symbolic icons are based on [Material Design icons](https://github.com/google/material-design-icons) by Google.
 - Chrome/Chromium scrollbars extension was forked from [Adwaita-chrome-scrollbar](https://github.com/gnome-integration-team/chrome-gnome-scrollbar) by GNOME Integration Team.
-- Design and specifications are based on Google's [Material Design](https://material.io).
 - Yauhen Kirylau (@actionless) who is oomox author polished scripts and supported Materia with [oomox](https://github.com/actionless/oomox).
 - @n3oxmind who helped improve the installation script.
 
