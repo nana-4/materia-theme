@@ -63,6 +63,25 @@ sudo apt update
 sudo apt install materia-theme
 ```
 
+#### Debian sid
+
+[Official package](https://packages.debian.org/unstable/materia-gtk-theme) (maintained by @isaagar) is available:
+
+```
+sudo apt install materia-gtk-theme
+```
+
+#### Flatpak
+
+3 variants (Materia, Materia-dark, Materia-light) are available via Flathub:
+
+```
+flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub org.gtk.Gtk3theme.Materia
+flatpak install flathub org.gtk.Gtk3theme.Materia-dark
+flatpak install flathub org.gtk.Gtk3theme.Materia-light
+```
+
 ### Manual Installation
 
 #### Requirements
