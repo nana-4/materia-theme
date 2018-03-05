@@ -13,9 +13,9 @@ Also Materia has compatibility with [oomox theme designer](https://github.com/ac
 
 **3 color variants** and **2 size variants** are available:
 
-| **Materia** | **-** | **compact** |
+| **Materia** | **standard** | **compact** |
 |:-:|:-:|:-:|
-| **-** | ![Materia][1] | ![Materia-compact][2] |
+| **standard** | ![Materia][1] | ![Materia-compact][2] |
 | **dark** | ![Materia-dark][3] | ![Materia-dark-compact][4] |
 | **light** | ![Materia-light][5] | ![Materia-light-compact][6] |
 
@@ -36,7 +36,7 @@ Various **desktop environments** are supported:
 
 ## Installation
 
-### Arch Linux
+#### Arch Linux
 
 Package is available via [AUR](https://aur.archlinux.org/packages/materia-theme/) (maintained by @cthbleachbit):
 
@@ -44,7 +44,7 @@ Package is available via [AUR](https://aur.archlinux.org/packages/materia-theme/
 yaourt -S materia-theme
 ```
 
-### Fedora / EPEL
+#### Fedora / EPEL
 
 Package is available via [Copr](https://copr.fedorainfracloud.org/coprs/tcg/themes/) (maintained by @LaurentTreguier):
 
@@ -53,7 +53,7 @@ sudo dnf copr enable tcg/themes
 sudo dnf install materia-theme
 ```
 
-### Ubuntu
+#### Ubuntu
 
 Package is available via [PPA](https://launchpad.net/~dyatlov-igor/+archive/ubuntu/materia-theme) (maintained by @igor-dyatlov):
 
@@ -63,7 +63,7 @@ sudo apt update
 sudo apt install materia-theme
 ```
 
-### From Source
+### Manual Installation
 
 #### Requirements
 
@@ -96,10 +96,10 @@ sudo ./install.sh
 **Note:** `./install.sh` allows the following options:
 
 ```
--d, --dest DIR           Specify theme destination directory (Default: /usr/share/themes)
--n, --name NAME          Specify theme name (Default: Materia)
--c, --color VARIANTS...  Specify theme color variant(s) [standard|dark|light] (Default: All variants)
--s, --size VARIANT       Specify theme size variant [standard|compact] (Default: All variants)
+-d, --dest DIR           Specify destination directory
+-n, --name NAME          Specify theme name
+-c, --color VARIANTS...  Specify color variant(s) [standard|dark|light]
+-s, --size VARIANT       Specify size variant [standard|compact]
 ```
 
 Without any options, **Materia** will be installed with **all variants** into `/usr/share/themes`.  
@@ -115,19 +115,19 @@ sudo rm -rf /usr/share/themes/Materia{,-compact,-dark,-dark-compact,-light,-ligh
 
 ## Recommendations
 
-### Font
+#### Font
 
 - To properly display the theme, use a font family including **Medium** weight (e.g. [Roboto](https://github.com/google/roboto) or [M+](https://mplus-fonts.osdn.jp)).
 - Set the font size to `9.75` or `10.5` (i.e. 13px or 14px at 96dpi).
 
-### Chrome Theme
+#### Chrome Theme
 
 To use the Chrome theme;
 
 1. Open the `chrome` folder on `/usr/share/themes/Materia<-variant>`.
 2. Drag and drop the `.crx` files into the Chrome/Chromium Extensions page (`chrome://extensions`).
 
-### GDM Theme
+#### GDM Theme
 
 You can change the GDM (lock/login screen) theme by replacing the default GNOME Shell theme.  
 See the wiki for details: https://github.com/nana-4/materia-theme/wiki/GDM-Theme
