@@ -89,13 +89,13 @@ flatpak install flathub org.gtk.Gtk3theme.Materia-light
 You need to have the following dependencies:
 
 - GTK+ `>=3.18`
-- `gnome-themes-standard`
-- Murrine engine - The package name depends on the distro.
+- `gnome-themes-standard` or `gnome-themes-extra` — The package name depends on the distro.
+- Murrine engine — The package name depends on the distro.
   - `gtk-engine-murrine` on Arch Linux
   - `gtk-murrine-engine` on Fedora
   - `gtk2-engine-murrine` on openSUSE
   - `gtk2-engines-murrine` on Debian, Ubuntu, etc.
-- `glib-compile-resources` - The package name depends on the distro.
+- `glib-compile-resources` — The package name depends on the distro.
   - `glib2` on Arch Linux
   - `glib2-devel` on Fedora, openSUSE, etc.
   - `libglib2.0-dev` on Debian, Ubuntu, etc.
