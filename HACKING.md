@@ -102,14 +102,14 @@ For `fish`:
 
 #### Upstream theme sources
 
-- [GTK+ 4.0](https://github.com/GNOME/gtk/tree/master/gtk/theme/Adwaita)
-  - [3.22](https://github.com/GNOME/gtk/tree/gtk-3-22/gtk/theme/Adwaita)
-  - [3.20](https://github.com/GNOME/gtk/tree/gtk-3-20/gtk/theme/Adwaita)
-  - [3.18](https://github.com/GNOME/gtk/tree/gtk-3-18/gtk/theme/Adwaita)
-- [GTK+ 2](https://github.com/GNOME/gnome-themes-standard/tree/master/themes/Adwaita/gtk-2.0)
-- [GNOME Shell](https://github.com/GNOME/gnome-shell/tree/master/data/theme)
-  - [Sass sources](https://github.com/GNOME/gnome-shell-sass)
-- [Metacity](https://github.com/GNOME/gnome-themes-standard/tree/gnome-3-14/themes/Adwaita/metacity-1) (legacy)
+- [GTK+ 4.0](https://gitlab.gnome.org/GNOME/gtk/tree/master/gtk/theme/Adwaita) (master)
+  - [3.22](https://gitlab.gnome.org/GNOME/gtk/tree/gtk-3-22/gtk/theme/Adwaita)
+  - [3.20](https://gitlab.gnome.org/GNOME/gtk/tree/gtk-3-20/gtk/theme/Adwaita)
+  - [3.18](https://gitlab.gnome.org/GNOME/gtk/tree/gtk-3-18/gtk/theme/Adwaita)
+- [GTK+ 2](https://gitlab.gnome.org/GNOME/gnome-themes-extra/tree/master/themes/Adwaita/gtk-2.0)
+- [GNOME Shell](https://gitlab.gnome.org/GNOME/gnome-shell/tree/master/data/theme)
+  - [Sass sources](https://github.com/GNOME/gnome-shell-sass) (legacy)
+- [Metacity](https://gitlab.gnome.org/GNOME/gnome-themes-extra/tree/gnome-3-14/themes/Adwaita/metacity-1) (legacy)
 
 > For other upstream theme sources of apps/DEs, see the comments in the source code.
 
