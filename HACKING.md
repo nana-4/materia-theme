@@ -2,9 +2,11 @@
 
 - Do not edit the CSS directly, edit the source SCSS files and run `./parse-sass.sh`
 - To be able to use the latest/adequate version of Sass, install `sassc`
+- Do not edit the PNG directly, edit the source SVG files and run `./render-assets.sh`
+- To be able to render the PNG assets, install `inkscape` and `optipng`
 - To change the SVG assets color, use a text editor instead of a image editor
 
-## How to tweak the theme
+## How to tweak the CSS/SCSS
 
 Like the upstream Adwaita, this theme is written and processed in Sass.
 
@@ -46,45 +48,17 @@ Here's a rundown of the _supporting_ stylesheets:
 
   app/extension specific stylings.
 
-## How to change the assets color
+## How to change the color scheme
 
-To keep it maintainable, SVG files are basically edited on text-based.
-
-So if you just want to change the SVG assets color, we recommend using a
-**text editor** instead of **Inkscape**. However, please note that Inkscape is
-required to render the PNG assets from the SVG files.
-
-Here's an example to change the _accent color_:
-
-1. Open the following SVG files with a **text editor**.
-
-  - `./src/gtk-2.0/assets.svg`
-  - `./src/gtk-2.0/assets-dark.svg`
-  - `./src/gtk/assets.svg`
-  - `./src/gnome-shell/3.18/assets/checkbox.svg`
-  - `./src/gnome-shell/3.18/assets/more-results.svg`
-  - `./src/gnome-shell/3.18/assets/toggle-on.svg`
-  - `./src/gnome-shell/3.18/assets-dark/checkbox.svg`
-  - `./src/gnome-shell/3.18/assets-dark/more-results.svg`
-  - `./src/gnome-shell/3.18/assets-dark/toggle-on.svg`
-
-2. Search `#FF4081` (default accent color) and replace with your favorite color.
-
-  > The recommended color palette is: https://material.io/guidelines/style/color.html#color-color-palette
-
-3. Run `./render-assets.sh` to render the PNG assets for gtk2 and gtk3.
-
-  > Note: `inkscape` and `optipng` must be installed to run the script.
-
-## Changing the color scheme with script
+### With script
 
 To easily change the color scheme, you can use the `change_color.sh` script (or
 just use the [oomox](https://github.com/actionless/oomox) app).
 
 Originally `change_color.sh` (and the `scripts/` dir) was implemented for oomox,
-but you can also run it on the command line without oomox like this:
+but you can also run it on the command line without the app as follows:
 
-> Note: This script only supports GTK2 and GTK3 for now.
+> Note: This script doesn't support Chrome extensions for now.
 
 For `bash`:
 
@@ -97,6 +71,36 @@ For `fish`:
 ```fish
 ./change_color.sh -o my-test-theme (echo -e "BG=F5F5F5\nFG=000000\nMENU_BG=FFFFFF\nMENU_FG=000000\nSEL_BG=42A5F5\nSEL_FG=FFFFFF\nTXT_BG=FFFFFF\nTXT_FG=000000\nBTN_BG=FAFAFA\nBTN_FG=000000\nACCENT_BG=FF4081\n" | psub)
 ```
+
+### Manually
+
+If you want to change the color scheme in more detail, edit the following files
+that define color:
+
+- `src/_sass/_color-palette.scss`
+- `src/_sass/_colors.scss`
+- `src/chrome/chrome-scrollbar{,-dark}/icons/*.svg`
+- `src/chrome/chrome-theme{,-dark,-light}/*.svg`
+- `src/chrome/chrome-theme{,-dark,-light}/manifest.json`
+- `src/gnome-shell/assets{,-dark}/*.svg`
+- `src/gtk/assets.svg`
+- `src/gtk-2.0/assets{,-dark}.svg`
+- `src/gtk-2.0/gtkrc{,-dark,-light}`
+- `src/metacity-1/metacity-theme-2{,-light}.xml`
+- `src/metacity-1/metacity-theme-3{,-light}.xml`
+- `src/unity/*.svg`
+- `src/unity/assets{,-light}/*.svg`
+- `src/xfwm4/assets{,-light}/*.svg`
+- `src/xfwm4/assets{,-light}/themerc`
+
+NOTES:
+
+- To edit the colors of `.svg` files, use a text editor instead of a image editor.
+- After editing the colors of `.scss` files, run `./parse-sass.sh` to rebuild the CSS files.
+- After editing the colors of `src/gtk/assets.svg` and `src/gtk-2.0/assets{,-dark}.svg`, run `./render-assets.sh` to render the PNG assets.
+- The colors of `manifest.json` are defined in RGB format, so you need to convert your colors from HEX format to RGB format.
+
+After all the steps, run `./parse-sass.sh`.
 
 ## Useful Links
 
