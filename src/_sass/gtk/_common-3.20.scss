@@ -2104,12 +2104,14 @@ radiobutton.text-button {
   label:not(:only-child) { margin: 0 4px; }
 }
 
+$check_radio_size: 40px;
+
 check,
 radio {
   min-height: 24px;
   min-width: 24px;
-  margin: -($large_size - 24px) / 2;
-  padding: ($large_size - 24px) / 2;
+  margin: -($check_radio_size - 24px) / 2;
+  padding: ($check_radio_size - 24px) / 2;
 
   @extend %simple_flat_button;
 
@@ -2140,13 +2142,13 @@ radio {
     &:not(:checked):not(:indeterminate):not(:disabled) { color: $secondary_fg_color; }
 
     &.left:dir(rtl) {
-      margin-left: -16px;
-      margin-right: -8px;
+      margin-left: -12px;
+      margin-right: -4px;
     }
 
     &.right:dir(ltr) {
-      margin-left: -8px;
-      margin-right: -16px;
+      margin-left: -4px;
+      margin-right: -12px;
     }
   }
 
@@ -2191,10 +2193,10 @@ radio {
   &:indeterminate { -gtk-icon-source: image(-gtk-recolor(url("assets/scalable/radio-mixed-symbolic.svg")),
                                             -gtk-recolor(url("assets/scalable/radio-mixed-symbolic.symbolic.png"))); }
 
-  border-image-slice: $large_size / 2px;
-  border-image-width: $large_size / 2;
+  border-image-slice: $check_radio_size / 2px;
+  border-image-width: $check_radio_size / 2;
 
-  $radio_indicator: 10px / $large_size / 2;
+  $radio_indicator: 10px / $check_radio_size / 2;
 
   & {
     border-image-source: -gtk-gradient(radial,
