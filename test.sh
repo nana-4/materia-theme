@@ -18,7 +18,7 @@ COLOR_VARIANTS=('' '-dark' '-light')
 SIZE_VARIANTS=('' '-compact')
 
 GTK_VERSIONS=('3.18' '3.20' '3.22')
-GS_VERSIONS=('3.18' '3.20' '3.22' '3.24' '3.26')
+GS_VERSIONS=('3.18' '3.24' '3.26')
 LATEST_GS_VERSION=${GS_VERSIONS[@]: -1}
 
 # Set a proper gnome-shell theme version
@@ -45,6 +45,8 @@ test() {
   [[ ${color} == '-light' ]] && local ELSE_LIGHT=${color}
 
   local THEME_DIR=${DEST_DIR}/${THEME_NAME}${color}${size}
+
+  [[ -d ${THEME_DIR} ]] && rm -rf ${THEME_DIR}
 
   mkdir -p                                                                      ${THEME_DIR}
   ln -sT ${SRC_DIR}/index${color}${size}.theme                                  ${THEME_DIR}/index.theme
