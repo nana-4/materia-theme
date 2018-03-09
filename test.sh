@@ -10,7 +10,7 @@
 # FIXME: Multiple arguments should be allowed.
 
 REPO_DIR=$(cd $(dirname $0) && pwd)
-SRC_PATH=${REPO_DIR}/src
+SRC_DIR=${REPO_DIR}/src
 
 DEST_DIR=~/.themes
 THEME_NAME=Materia.dev
@@ -46,47 +46,47 @@ test() {
 
   local THEME_DIR=${DEST_DIR}/${THEME_NAME}${color}${size}
 
-  mkdir -p                                                                        ${THEME_DIR}
-  ln -sfT ${SRC_PATH}/index${color}${size}.theme                                  ${THEME_DIR}/index.theme
+  mkdir -p                                                                      ${THEME_DIR}
+  ln -sT ${SRC_DIR}/index${color}${size}.theme                                  ${THEME_DIR}/index.theme
 
-  mkdir -p                                                                        ${THEME_DIR}/gnome-shell
-  ln -sf  ${SRC_PATH}/gnome-shell/{extensions,pad-osd.css}                        ${THEME_DIR}/gnome-shell
-  ln -sfT ${SRC_PATH}/gnome-shell/assets${ELSE_DARK}                              ${THEME_DIR}/gnome-shell/assets
-  ln -sfT ${SRC_PATH}/gnome-shell/${GS_VERSION}/gnome-shell${color}${size}.css    ${THEME_DIR}/gnome-shell/gnome-shell.css
+  mkdir -p                                                                      ${THEME_DIR}/gnome-shell
+  ln -s  ${SRC_DIR}/gnome-shell/{extensions,pad-osd.css}                        ${THEME_DIR}/gnome-shell
+  ln -sT ${SRC_DIR}/gnome-shell/assets${ELSE_DARK}                              ${THEME_DIR}/gnome-shell/assets
+  ln -sT ${SRC_DIR}/gnome-shell/${GS_VERSION}/gnome-shell${color}${size}.css    ${THEME_DIR}/gnome-shell/gnome-shell.css
 
-  mkdir -p                                                                        ${THEME_DIR}/gtk-2.0
-  ln -sf  ${SRC_PATH}/gtk-2.0/{apps.rc,hacks.rc,main.rc}                          ${THEME_DIR}/gtk-2.0
-  ln -sfT ${SRC_PATH}/gtk-2.0/assets${ELSE_DARK}                                  ${THEME_DIR}/gtk-2.0/assets
-  ln -sfT ${SRC_PATH}/gtk-2.0/gtkrc${color}                                       ${THEME_DIR}/gtk-2.0/gtkrc
+  mkdir -p                                                                      ${THEME_DIR}/gtk-2.0
+  ln -s  ${SRC_DIR}/gtk-2.0/{apps.rc,hacks.rc,main.rc}                          ${THEME_DIR}/gtk-2.0
+  ln -sT ${SRC_DIR}/gtk-2.0/assets${ELSE_DARK}                                  ${THEME_DIR}/gtk-2.0/assets
+  ln -sT ${SRC_DIR}/gtk-2.0/gtkrc${color}                                       ${THEME_DIR}/gtk-2.0/gtkrc
 
   for version in "${GTK_VERSIONS[@]}"; do
     if [[ ${version} == '3.18' ]]; then
-      mkdir -p                                                                    ${THEME_DIR}/gtk-3.0
-      ln -sf  ${SRC_PATH}/gtk/assets                                              ${THEME_DIR}/gtk-3.0
-      ln -sfT ${SRC_PATH}/gtk/${version}/gtk${color}.css                          ${THEME_DIR}/gtk-3.0/gtk.css
+      mkdir -p                                                                  ${THEME_DIR}/gtk-3.0
+      ln -s  ${SRC_DIR}/gtk/assets                                              ${THEME_DIR}/gtk-3.0
+      ln -sT ${SRC_DIR}/gtk/${version}/gtk${color}.css                          ${THEME_DIR}/gtk-3.0/gtk.css
       [[ ${color} != '-dark' ]] && \
-      ln -sfT ${SRC_PATH}/gtk/${version}/gtk-dark.css                             ${THEME_DIR}/gtk-3.0/gtk-dark.css
+      ln -sT ${SRC_DIR}/gtk/${version}/gtk-dark.css                             ${THEME_DIR}/gtk-3.0/gtk-dark.css
     else
-      mkdir -p                                                                    ${THEME_DIR}/gtk-${version}
-      ln -sf  ${SRC_PATH}/gtk/assets                                              ${THEME_DIR}/gtk-${version}
-      ln -sfT ${SRC_PATH}/gtk/${version}/gtk${color}${size}.css                   ${THEME_DIR}/gtk-${version}/gtk.css
+      mkdir -p                                                                  ${THEME_DIR}/gtk-${version}
+      ln -s  ${SRC_DIR}/gtk/assets                                              ${THEME_DIR}/gtk-${version}
+      ln -sT ${SRC_DIR}/gtk/${version}/gtk${color}${size}.css                   ${THEME_DIR}/gtk-${version}/gtk.css
       [[ ${color} != '-dark' ]] && \
-      ln -sfT ${SRC_PATH}/gtk/${version}/gtk-dark${size}.css                      ${THEME_DIR}/gtk-${version}/gtk-dark.css
+      ln -sT ${SRC_DIR}/gtk/${version}/gtk-dark${size}.css                      ${THEME_DIR}/gtk-${version}/gtk-dark.css
     fi
   done
 
-  mkdir -p                                                                        ${THEME_DIR}/metacity-1
-  ln -sf  ${SRC_PATH}/metacity-1/assets                                           ${THEME_DIR}/metacity-1
-  ln -sfT ${SRC_PATH}/metacity-1/metacity-theme-2${ELSE_LIGHT}.xml                ${THEME_DIR}/metacity-1/metacity-theme-2.xml
-  ln -sfT ${SRC_PATH}/metacity-1/metacity-theme-3${ELSE_LIGHT}.xml                ${THEME_DIR}/metacity-1/metacity-theme-3.xml
+  mkdir -p                                                                      ${THEME_DIR}/metacity-1
+  ln -s  ${SRC_DIR}/metacity-1/assets                                           ${THEME_DIR}/metacity-1
+  ln -sT ${SRC_DIR}/metacity-1/metacity-theme-2${ELSE_LIGHT}.xml                ${THEME_DIR}/metacity-1/metacity-theme-2.xml
+  ln -sT ${SRC_DIR}/metacity-1/metacity-theme-3${ELSE_LIGHT}.xml                ${THEME_DIR}/metacity-1/metacity-theme-3.xml
 
-  mkdir -p                                                                        ${THEME_DIR}/unity
-  ln -sf  ${SRC_PATH}/unity/{*.svg,*.png,dash-widgets.json}                       ${THEME_DIR}/unity
-  ln -sfT ${SRC_PATH}/unity/assets${ELSE_LIGHT}                                   ${THEME_DIR}/unity/assets
+  mkdir -p                                                                      ${THEME_DIR}/unity
+  ln -s  ${SRC_DIR}/unity/{*.svg,*.png,dash-widgets.json}                       ${THEME_DIR}/unity
+  ln -sT ${SRC_DIR}/unity/assets${ELSE_LIGHT}                                   ${THEME_DIR}/unity/assets
 
-  mkdir -p                                                                        ${THEME_DIR}/xfwm4
-  ln -sf  ${SRC_PATH}/xfwm4/{*.svg,themerc}                                       ${THEME_DIR}/xfwm4
-  ln -sfT ${SRC_PATH}/xfwm4/assets${ELSE_LIGHT}                                   ${THEME_DIR}/xfwm4/assets
+  mkdir -p                                                                      ${THEME_DIR}/xfwm4
+  ln -s  ${SRC_DIR}/xfwm4/{*.svg,themerc}                                       ${THEME_DIR}/xfwm4
+  ln -sT ${SRC_DIR}/xfwm4/assets${ELSE_LIGHT}                                   ${THEME_DIR}/xfwm4/assets
 
   echo Installed to ${THEME_DIR}
 }
