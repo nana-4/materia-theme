@@ -100,7 +100,7 @@ NOTES:
 - After editing the colors of `src/gtk/assets.svg` and `src/gtk-2.0/assets{,-dark}.svg`, run `./render-assets.sh` to render the PNG assets.
 - The colors of `manifest.json` are defined in RGB format, so you need to convert your colors from HEX format to RGB format.
 
-After all the steps, run `./parse-sass.sh`.
+After all the steps, run `./install.sh`.
 
 ## Useful Links
 
