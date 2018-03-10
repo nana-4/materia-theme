@@ -1842,7 +1842,7 @@ StScrollBar {
 .word-suggestions {
     @include font(subheading);
     spacing: 12px;
-    min-height: 1em;
+    min-height: 40px;
 }
 
 #keyboard {
@@ -1875,11 +1875,13 @@ StScrollBar {
       border-color: transparent;
       background-color: $lighter_bg_color;
       background-size: 24px;
+      &:active { background-color: mix($fg_color, $lighter_bg_color, percentage($lower_opacity)); }
     }
     &.enter-key {
       border-color: transparent;
-      background-color: $accent_color;
+      background-color: $suggested_color;
       background-image: url("assets/key-enter.svg");
+      &:active { background-color: mix($inverse_fg_color, $suggested_color, percentage($lower_opacity)); }
     }
     &.shift-key-lowercase {
       background-image: url("assets/key-shift.svg");
