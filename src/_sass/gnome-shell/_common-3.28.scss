@@ -1839,17 +1839,20 @@ StScrollBar {
 
 //Keyboard
 /* On-screen Keyboard */
+.word-suggestions {
+    @include font(subheading);
+    spacing: 12px;
+    min-height: 1em;
+}
 
 #keyboard {
     background-color: $alt_panel_bg_color;
 }
 
-  .keyboard-layout {
-    spacing: 10px;
-    padding: 10px;
+  .key-container {
+    padding: 4px;
+    spacing: 4px;
   }
-
-  .keyboard-row { spacing: 15px; }
 
   .keyboard-key {
     min-height: $medium_size * 2;
@@ -1867,6 +1870,31 @@ StScrollBar {
       background-color: $alt_panel_bg_color;
       color: $inverse_fg_color;
       border-color: $alt_panel_bg_color;
+    }
+    &.default-key {
+      border-color: transparent;
+      background-color: $lighter_bg_color;
+      background-size: 24px;
+    }
+    &.enter-key {
+      border-color: transparent;
+      background-color: $accent_color;
+      background-image: url("assets/key-enter.svg");
+    }
+    &.shift-key-lowercase {
+      background-image: url("assets/key-shift.svg");
+    }
+    &.shift-key-uppercase {
+      background-image: url("assets/key-shift-uppercase.svg");
+    }
+    &.shift-key-uppercase:latched {
+      background-image: url("assets/key-shift-latched-uppercase.svg");
+    }
+    &.hide-key {
+      background-image: url("assets/key-hide.svg");
+    }
+    &.layout-key {
+      background-image: url("assets/key-layout.svg");
     }
   }
 
