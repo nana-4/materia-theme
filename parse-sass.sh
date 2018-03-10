@@ -30,7 +30,7 @@ for color in "${_COLOR_VARIANTS[@]}"; do
     done
 
     # This gnome-shell theme can skip versions '3.20' & '2.22'
-    for version in '3.18' '3.24' '3.26'; do
+    for version in '3.18' '3.24' '3.26' '3.28'; do
       sassc $SASSC_OPT src/gnome-shell/${version}/gnome-shell${color}${size}.{scss,css}
     done
   done

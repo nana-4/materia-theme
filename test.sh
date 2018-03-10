@@ -18,7 +18,7 @@ COLOR_VARIANTS=('' '-dark' '-light')
 SIZE_VARIANTS=('' '-compact')
 
 GTK_VERSIONS=('3.18' '3.20' '3.22')
-GS_VERSIONS=('3.18' '3.24' '3.26')
+GS_VERSIONS=('3.18' '3.24' '3.26' '3.28')
 LATEST_GS_VERSION=${GS_VERSIONS[@]: -1}
 
 # Set a proper gnome-shell theme version
