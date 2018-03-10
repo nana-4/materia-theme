@@ -2320,17 +2320,20 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 /* On-screen Keyboard */
+.word-suggestions {
+  font-size: 11.25pt;
+  font-weight: 400;
+  spacing: 12px;
+  min-height: 1em;
+}
+
 #keyboard {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.keyboard-layout {
-  spacing: 10px;
-  padding: 10px;
-}
-
-.keyboard-row {
-  spacing: 15px;
+.key-container {
+  padding: 4px;
+  spacing: 4px;
 }
 
 .keyboard-key {
@@ -2378,6 +2381,38 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   background-color: rgba(0, 0, 0, 0.3);
   color: #FFFFFF;
   border-color: rgba(0, 0, 0, 0.3);
+}
+
+.keyboard-key.default-key {
+  border-color: transparent;
+  background-color: #414f56;
+  background-size: 24px;
+}
+
+.keyboard-key.enter-key {
+  border-color: transparent;
+  background-color: #FF4081;
+  background-image: url("assets/key-enter.svg");
+}
+
+.keyboard-key.shift-key-lowercase {
+  background-image: url("assets/key-shift.svg");
+}
+
+.keyboard-key.shift-key-uppercase {
+  background-image: url("assets/key-shift-uppercase.svg");
+}
+
+.keyboard-key.shift-key-uppercase:latched {
+  background-image: url("assets/key-shift-latched-uppercase.svg");
+}
+
+.keyboard-key.hide-key {
+  background-image: url("assets/key-hide.svg");
+}
+
+.keyboard-key.layout-key {
+  background-image: url("assets/key-layout.svg");
 }
 
 .keyboard-subkeys {
