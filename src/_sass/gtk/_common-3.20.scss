@@ -33,7 +33,6 @@
   -gtk-secondary-caret-color: $primary_color;
 }
 
-switch:focus slider,
 notebook:focus tab,
 *:focus { outline-color: $fill_color; }
 
@@ -2038,28 +2037,29 @@ switch {
   }
 
   slider {
-    transition: $longer_transition, $shadow_transition;
+    transition: $shorter_transition, $shadow_transition;
     min-width: 20px;
     min-height: 20px;
     margin: -3px -2px;
     border-radius: $circular_radius;
+    outline-width: 0;
+    outline-color: $divider_color;
+    outline-offset: 0;
     -gtk-outline-radius: $circular_radius;
     box-shadow: $shadow_1;
-    background-color: $base_color;
+    background-color: $lighter_bg_color;
   }
+
+  &:focus slider { outline-width: (48px - 20px) / 2; }
 
   &:hover slider { box-shadow: $shadow_2; }
 
   &:checked slider {
-    transition: $longer_transition, $shadow_transition, background-image 0, background-color 0.00001s $longer_duration;
-    animation: needs_attention $longer_duration $deceleration_curve;
     background-color: $accent_color;
-    color: $inverse_fg_color;
+    outline-color: rgba($accent_color, 0.2);
   }
 
-  &:disabled slider { background-color: $alt_base_color; }
-
-  &:checked:disabled slider { animation: none; }
+  &:disabled slider { background-color: $bg_color; }
 
   row:selected & {
   }
