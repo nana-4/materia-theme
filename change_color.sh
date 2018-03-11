@@ -236,6 +236,8 @@ if [[ ! -z "${DEBUG:-}" ]] ; then
 	echo "You can debug TEMP DIR: ${tempdir}, press [Enter] when finish" && read
 fi
 
+mv ./src/_sass/_colors.scss.template ./src/_sass/_colors.scss
+
 echo "== Filling the template with the new colorscheme..."
 for FILEPATH in "${PATHLIST[@]}"; do
 	find "${FILEPATH}" -type f -exec sed -i'' \
