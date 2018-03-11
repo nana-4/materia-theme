@@ -2,13 +2,10 @@
 // it gets @if ed depending on $variant
 
 @import 'color-palette';
+$grey_850: #303030; // extra color from Material Design Guidelines
 
 @function gtkalpha($c, $a) {
   @return unquote("alpha(#{$c}, #{$a})");
-}
-
-@function fade($c) {
-  @return mix($c, $grey_900, 50%);
 }
 
 // Foreground colors
@@ -41,32 +38,32 @@ $inverse_track_color:                 rgba($white, 0.3);
 $inverse_divider_color:               rgba($white, 0.12);
 
 // Background colors
-$bg_color:             if($variant == 'light', $grey_100, fade($blue_grey_700));
-$base_color:           if($variant == 'light', $white,    fade($blue_grey_600));
-$alt_base_color:       if($variant == 'light', $grey_50,  mix($base_color, $bg_color, 50%));
-$lighter_bg_color:     if($variant == 'light', $grey_50,  fade($blue_grey_500));
-$alt_lighter_bg_color: if($variant == 'light', $grey_200, fade($blue_grey_600)); // for gnome-shell sub menu
-$darker_bg_color:      if($variant == 'light', $grey_200, fade($blue_grey_900));
+$bg_color:             if($variant == 'light', $grey_200, $grey_900);
+$base_color:           if($variant == 'light', $white,    $grey_850);
+$alt_base_color:       if($variant == 'light', $grey_100, mix($base_color, $bg_color, 50%));
+$lighter_bg_color:     if($variant == 'light', $grey_50,  $grey_800);
+$alt_lighter_bg_color: if($variant == 'light', $grey_200, $grey_850); // for gnome-shell sub menu
+$darker_bg_color:      if($variant == 'light', $grey_200, $grey_900);
 
-$titlebar_bg_color:     if($titlebar == 'dark', if($variant == 'light', $blue_grey_700, $blue_grey_800), $grey_300);
-$alt_titlebar_bg_color: if($titlebar == 'dark', $blue_grey_800, $grey_300);
+$titlebar_bg_color:     if($titlebar == 'dark', $grey_850, $grey_300);
+$alt_titlebar_bg_color: if($titlebar == 'dark', $grey_850, $grey_300);
 
 $panel_bg_color:         rgba($black, $middle_opacity);
 $alt_panel_bg_color:     rgba($black, $lower_opacity);
 $inverse_panel_bg_color: rgba($inverse_fg_color, 0.1);
-$solid_panel_bg_color:   if($titlebar == 'dark', $blue_grey_900, $panel_bg_color);
-$opaque_panel_bg_color:  if($titlebar == 'dark', $blue_grey_900, mix($grey_300, $grey_400, 50%)); // for Unity panel which cannot use translucent colors
+$solid_panel_bg_color:   if($titlebar == 'dark', $grey_900, $panel_bg_color);
+$opaque_panel_bg_color:  if($titlebar == 'dark', $grey_900, mix($grey_300, $grey_400, 50%)); // for Unity panel which cannot use translucent colors
 
-$gdm_bg_color: if($variant == 'light', $blue_grey_700, $blue_grey_800);
+$gdm_bg_color: $grey_850;
 
 $fill_color:      gtkalpha(currentColor, $lower_opacity);
 $semi_fill_color: gtkalpha(currentColor, $lower_opacity / 2);
 $row_fill_color:  gtkalpha(currentColor, 0.05);
 
 // Misc colors
-$primary_color:         $blue_400;
+$primary_color:         $blue_600;
 $alt_primary_color:     $light_blue_A200;
-$accent_color:          $pink_A200;
+$accent_color:          $teal_500;
 $disabled_accent_color: rgba($accent_color, 0.5);
 
 $link_color:         $primary_color;
