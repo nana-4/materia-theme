@@ -1,0 +1,104 @@
+// When color definition differs for dark and light variant,
+// it gets @if ed depending on $variant
+
+@import 'color-palette';
+
+@function gtkalpha($c, $a) {
+  @return unquote("alpha(#{$c}, #{$a})");
+}
+
+@function fade($c) {
+  @return mix($c, %FG%, 50%);
+}
+
+// Foreground colors
+$dark_fg_color: %FG%;
+$light_fg_color: %BG%;
+
+$fg_color: %FG%;
+$button_fg_color: %BTN_FG%;
+$secondary_fg_color:          if($variant == 'light', rgba(%BTN_FG%, 0.54), rgba(%BTN_FG%, 0.7));
+$hint_fg_color:               if($variant == 'light', rgba(%FG%, 0.38), rgba(%FG%, 0.5));
+$disabled_fg_color:           if($variant == 'light', rgba(%FG%, 0.38), rgba(%FG%, 0.5));
+$disabled_secondary_fg_color: if($variant == 'light', rgba(%BTN_FG%, 0.26), rgba(%BTN_FG%, 0.3));
+$track_color:                 if($variant == 'light', rgba(%FG%, 0.26), rgba(%FG%, 0.3));
+$divider_color:               if($variant == 'light', rgba(%FG%, 0.12), rgba(%FG%, 0.12));
+
+$titlebar_fg_color: %MENU_FG%;
+$titlebar_secondary_fg_color:          if($titlebar == 'light', rgba(%MENU_FG%, 0.54), rgba(%MENU_FG%, 0.7));
+$titlebar_hint_fg_color:               if($titlebar == 'light', rgba(%MENU_FG%, 0.38), rgba(%MENU_FG%, 0.5));
+$titlebar_disabled_fg_color:           if($titlebar == 'light', rgba(%MENU_FG%, 0.38), rgba(%MENU_FG%, 0.5));
+$titlebar_disabled_secondary_fg_color: if($titlebar == 'light', rgba(%MENU_FG%, 0.26), rgba(%MENU_FG%, 0.3));
+$titlebar_track_color:                 if($titlebar == 'light', rgba(%MENU_FG%, 0.26), rgba(%MENU_FG%, 0.3));
+$titlebar_divider_color:               if($titlebar == 'light', rgba(%MENU_FG%, 0.12), rgba(%MENU_FG%, 0.12));
+
+$inverse_fg_color: %SEL_FG%;
+$inverse_secondary_fg_color:          rgba(%SEL_FG%, 0.7);
+$inverse_hint_fg_color:               rgba(%SEL_FG%, 0.5);
+$inverse_disabled_fg_color:           rgba(%SEL_FG%, 0.5);
+$inverse_disabled_secondary_fg_color: rgba(%SEL_FG%, 0.3);
+$inverse_track_color:                 rgba(%SEL_FG%, 0.3);
+$inverse_divider_color:               rgba(%SEL_FG%, 0.12);
+
+// Background colors
+$bg_color:             if($variant == 'light', %BG%, fade(%MENU_BG%));
+$base_color:           if($variant == 'light', %TXT_BG%,    fade(%MENU_BG%));
+$alt_base_color:       if($variant == 'light', %INACTIVE_TXT_BG%,  mix(%INACTIVE_TXT_BG%, %MENU_BG%, 50%));
+$lighter_bg_color:     if($variant == 'light', %BTN_BG%,  fade(%BTN_BG%));
+$alt_lighter_bg_color: if($variant == 'light', %BG2%, fade(%MENU_BG%)); // for gnome-shell sub menu
+$darker_bg_color:      if($variant == 'light', %BG%, fade(%MENU_BG%));
+
+$titlebar_bg_color: %MENU_BG%;
+$alt_titlebar_bg_color: if($titlebar == 'dark', %MENU_BG%, %MENU_BG%);
+
+$panel_bg_color:         rgba(%MENU_BG%, %GNOME_SHELL_PANEL_OPACITY%);
+$alt_panel_bg_color:     rgba(%MENU_BG%, $lower_opacity);
+$inverse_panel_bg_color: rgba($inverse_fg_color, 0.1);
+$solid_panel_bg_color:   if($titlebar == 'dark', %MENU_BG%, %MENU_BG%);
+$opaque_panel_bg_color:  if($titlebar == 'dark', %MENU_BG%, mix(%MENU_BG%, %MENU_BG%, 50%)); // for Unity panel which cannot use translucent colors
+
+$gdm_bg_color: if($variant == 'light', %MENU_BG%, %MENU_BG2%);
+
+$fill_color:      gtkalpha(currentColor, $lower_opacity);
+$semi_fill_color: gtkalpha(currentColor, $lower_opacity / 2);
+$row_fill_color:  gtkalpha(currentColor, 0.05);
+
+// Misc colors
+$primary_color: %SEL_BG%;
+$alt_primary_color: %SEL_BG2%;
+$accent_color: %ACCENT_BG%;
+$disabled_accent_color: rgba($accent_color, 0.5);
+
+$link_color:         $primary_color;
+$visited_link_color: $purple_A200;
+
+$warning_color: $orange_A700;
+$error_color:   $deep_orange_A700;
+$success_color: $green_A700;
+
+$suggested_color:   $accent_color;
+$destructive_color: $red_A200;
+
+$info_bg_color:     $green_400;
+$question_bg_color: %SEL_BG%;
+$warning_bg_color:  $orange_400;
+$error_bg_color:    $red_400;
+
+$border_color:             if($variant == 'light', rgba(%FG%, 0.12), rgba(%FG%, 0.26));
+$alt_border_color:         rgba(%FG%, 0.26); // for non-native GTK+ apps (e.g. Firefox and Chrome)
+$highlight_color:          if($variant == 'light', rgba(%TXT_BG%, 0.4),  rgba(%TXT_BG%, 0.1));
+$titlebar_highlight_color: %MENU_BG%;
+$alt_highlight_color:      rgba(%TXT_BG%, 0.2); // for selection-mode headerbar which colored with $primary_color
+$titlebar_indicator_color: if($titlebar == 'dark', currentColor, $primary_color);
+
+// for Electron/Atom menu which cannot use translucent colors
+$opaque_fg_color:           if($variant == 'light', %FG%, %TXT_BG%);
+$opaque_secondary_fg_color: if($variant == 'light', $grey_600, mix(%TXT_BG%, $base_color, percentage(0.7)));
+$opaque_disabled_fg_color:  if($variant == 'light', %INACTIVE_FG%, mix(%TXT_BG%, $base_color, percentage(0.5)));
+$opaque_divider_color:      if($variant == 'light', %SEL_BG%, mix(%TXT_BG%, $base_color, percentage(0.12)));
+
+// FIXME: gtk's @placeholder_text_color API really should use $secondary_fg_color,
+// but it doesn't work with translucent colors. So we use opaque colors instead.
+$placeholder_text_color: if($variant == 'light',
+                            mix(%FG%, $base_color, percentage(0.54)),
+                            mix(%TXT_BG%, $base_color, percentage(0.7)));
