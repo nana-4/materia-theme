@@ -72,12 +72,13 @@ install() {
 
   mkdir -p                                                                      ${THEME_DIR}/gnome-shell
   cp -r ${SRC_DIR}/gnome-shell/{*.svg,extensions,noise-texture.png,pad-osd.css} ${THEME_DIR}/gnome-shell
+  cp -r ${SRC_DIR}/gnome-shell/gnome-shell-theme.gresource.xml                  ${THEME_DIR}/gnome-shell
   cp -r ${SRC_DIR}/gnome-shell/assets${ELSE_DARK}                               ${THEME_DIR}/gnome-shell/assets
   cp -r ${SRC_DIR}/gnome-shell/${GS_VERSION}/gnome-shell${color}${size}.css     ${THEME_DIR}/gnome-shell/gnome-shell.css
-  glib-compile-resources \
-    --sourcedir=${THEME_DIR}/gnome-shell \
-    --target=${THEME_DIR}/gnome-shell/gnome-shell-theme.gresource \
-    ${SRC_DIR}/gnome-shell/gnome-shell-theme.gresource.xml
+# glib-compile-resources \
+#   --sourcedir=${THEME_DIR}/gnome-shell \
+#   --target=${THEME_DIR}/gnome-shell/gnome-shell-theme.gresource \
+#   ${SRC_DIR}/gnome-shell/gnome-shell-theme.gresource.xml
 
   mkdir -p                                                                      ${THEME_DIR}/gtk-2.0
   cp -r ${SRC_DIR}/gtk-2.0/{apps.rc,hacks.rc,main.rc}                           ${THEME_DIR}/gtk-2.0

@@ -95,12 +95,6 @@ You need to have the following dependencies:
   - `gtk-murrine-engine` on Fedora
   - `gtk2-engine-murrine` on openSUSE
   - `gtk2-engines-murrine` on Debian, Ubuntu, etc.
-- `glib-compile-resources` — The package name depends on the distro.
-  - `glib2` on Arch Linux
-  - `glib2-devel` on Fedora, openSUSE, etc.
-  - `libglib2.0-dev` on Debian, Ubuntu, etc.
-
-For Ubuntu, you also need the `libxml2-utils` package.
 
 #### Installation
 
