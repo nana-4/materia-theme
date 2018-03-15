@@ -3146,8 +3146,9 @@ tooltip {
   &.background {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
-    box-shadow: inset 0 1px $highlight_color;
-    background-color: rgba($base_color, $higher_opacity);
+    // box-shadow: inset 0 1px $highlight_color;
+    background-color: rgba($tooltip_bg_color, $higher_opacity);
+    color: $inverse_fg_color;
   }
 
   // @extend %osd;
@@ -3157,9 +3158,9 @@ tooltip {
   box-shadow: none; // otherwise it gets inherited by windowframe.csd
 
   &:not(.csd):not(.unity-csd) {
-    border: 1px solid $border_color;
-    border-radius: 2px + 1px;
-    background-clip: $extra_background_clip;
+    // border: 1px solid $border_color;
+    // border-radius: 2px + 1px;
+    // background-clip: $extra_background_clip;
   }
 
   // FIXME: we need a border or tooltips vanish on black background.
@@ -3365,7 +3366,7 @@ decoration {
 
   tooltip.csd & {
     border-radius: 2px;
-    box-shadow: $shadow_2;
+    box-shadow: none;
   }
 
   messagedialog.csd & {
