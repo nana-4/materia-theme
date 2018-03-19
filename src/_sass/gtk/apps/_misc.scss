@@ -80,6 +80,16 @@ window.background:not(.csd) {
     > checkbutton > check { @extend %small_check; }
 
     > radiobutton > radio { @extend %small_radio; }
+
+    // make check/radio visible regardless of whether the background is bright or dark
+    > checkbutton > check:not(:checked),
+    > radiobutton > radio:not(:checked) {
+      color: $grey_600;
+
+      &:hover, &:active { color: $grey_900; }
+
+      &:disabled { color: rgba($grey_600, 0.5); }
+    }
   }
 
   // remove ugly border around the menus

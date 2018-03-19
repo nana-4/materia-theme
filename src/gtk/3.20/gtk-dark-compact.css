@@ -4572,6 +4572,22 @@ window.background:not(.csd) > widget > button > button:active {
   background-image: image(alpha(currentColor, 0.1));
 }
 
+window.background:not(.csd) > widget > checkbutton > check:not(:checked),
+window.background:not(.csd) > widget > radiobutton > radio:not(:checked) {
+  color: #757575;
+}
+
+window.background:not(.csd) > widget > checkbutton > check:not(:checked):hover, window.background:not(.csd) > widget > checkbutton > check:not(:checked):active,
+window.background:not(.csd) > widget > radiobutton > radio:not(:checked):hover,
+window.background:not(.csd) > widget > radiobutton > radio:not(:checked):active {
+  color: #212121;
+}
+
+window.background:not(.csd) > widget > checkbutton > check:not(:checked):disabled,
+window.background:not(.csd) > widget > radiobutton > radio:not(:checked):disabled {
+  color: rgba(117, 117, 117, 0.5);
+}
+
 window.background:not(.csd) > window > menu,
 window.background:not(.csd) > menu > menu {
   border: none;

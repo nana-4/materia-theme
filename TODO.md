@@ -30,7 +30,7 @@
 
 - Make gtk2 check/radio buttons a bit smaller for Qt apps ([#78](../../issues/78))
 
-- Use `#757575` as check/radio buttons color for only web interfaces ([#123](../../issues/123), if possible)
+- Use `#757575` as check/radio buttons color for some web interfaces ([#123](../../issues/123), if possible)
 
 - Make compact variant more compact ([#79](../../issues/79))
 
