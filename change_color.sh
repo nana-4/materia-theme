@@ -140,20 +140,16 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/#000000/%FG%/g' \
 		-e 's/#212121/%FG%/g' \
 		-e 's/#757575/%INACTIVE_FG%/g' \
-		-e 's/#9E9E9E/%INACTIVE_FG%/g' \
-		-e 's/#c3c8ca/%INACTIVE_FG%/g' \
-		-e 's/#BDBDBD/%MENU_BG2%/g' \
-		-e 's/#E0E0E0/%SEL_BG%/g' \
-		-e 's/#F5F5F5/%BG%/g' \
+		-e 's/#BDBDBD/%INACTIVE_FG%/g' \
+		-e 's/#EEEEEE/%BG%/g' \
 		-e 's/#FAFAFA/%BTN_BG%/g' \
-		-e 's/#FF4081/%ACCENT_BG%/g' \
-		-e 's/#42A5F5/%SEL_BG%/g' \
+		-e 's/#009688/%ACCENT_BG%/g' \
+		-e 's/#338DD6/%SEL_BG%/g' \
 		-e 's/#FFFFFF/%TXT_BG%/g' \
-		-e 's/#333e43/%MENU_BG%/g' \
-		-e 's/#455A64/%MENU_BG%/g' \
-		-e 's/#37474F/%MENU_BG%/g' \
-		-e 's/#3b484e/%MENU_BG2%/g' \
-		-e 's/#414f56/%MENU_BG3%/g' \
+		-e 's/#303030/%MENU_BG%/g' \
+		-e 's/#E0E0E0/%MENU_BG%/g' \
+		-e 's/#212121/%MENU_BG2%/g' \
+		-e 's/#303030/%MENU_BG3%/g' \
 		-e 's/Materia/%OUTPUT_THEME_NAME%/g' \
 		{} \; ;
 done
