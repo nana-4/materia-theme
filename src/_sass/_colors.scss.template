@@ -57,8 +57,6 @@ $inverse_panel_bg_color: rgba($inverse_fg_color, 0.1);
 $solid_panel_bg_color:   if($titlebar == 'dark', %MENU_BG%, %MENU_BG%);
 $opaque_panel_bg_color:  if($titlebar == 'dark', %MENU_BG%, mix(%MENU_BG%, %MENU_BG%, 50%)); // for Unity panel which cannot use translucent colors
 
-$tooltip_bg_color: %MENU_BG%;
-
 $gdm_bg_color: if($variant == 'light', %MENU_BG%, %MENU_BG2%);
 
 $fill_color:      gtkalpha(currentColor, $lower_opacity);
@@ -85,6 +83,9 @@ $info_bg_color: %TERMINAL_COLOR12%;
 $question_bg_color: $info_bg_color;
 $warning_bg_color: $warning_color;
 $error_bg_color: $error_color;
+
+$tooltip_bg_color: %MENU_BG%;
+$tooltip_fg_color: %MENU_FG%;
 
 $border_color:             if($variant == 'light', rgba(%FG%, 0.12), rgba(%FG%, 0.26));
 $alt_border_color:         rgba(%FG%, 0.26); // for non-native GTK+ apps (e.g. Firefox and Chrome)
