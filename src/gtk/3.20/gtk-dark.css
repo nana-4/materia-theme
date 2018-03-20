@@ -1208,7 +1208,7 @@ toolbar:not(.inline-toolbar):not(.osd) switch {
   background-color: #292929;
 }
 
-searchbar,
+searchbar > revealer > box,
 .location-bar {
   padding: 6px;
   border-style: solid;
@@ -1216,6 +1216,11 @@ searchbar,
   border-color: rgba(0, 0, 0, 0.26);
   background-color: #212121;
   background-clip: border-box;
+}
+
+searchbar > revealer > box {
+  margin: -6px;
+  padding: 6px;
 }
 
 /***************
@@ -3952,14 +3957,6 @@ button.emoji-section:last-child {
 
 .disk-space-display.free {
   background-color: rgba(255, 255, 255, 0.12);
-}
-
-.nautilus-window searchbar {
-  border-top: 1px solid rgba(0, 0, 0, 0.26);
-}
-
-.nautilus-window .searchbar-container {
-  margin-top: -1px;
 }
 
 .nautilus-window paned > separator {
