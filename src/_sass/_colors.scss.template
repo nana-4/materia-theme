@@ -57,7 +57,7 @@ $inverse_panel_bg_color: rgba($inverse_fg_color, 0.1);
 $solid_panel_bg_color:   if($titlebar == 'dark', %MENU_BG%, %MENU_BG%);
 $opaque_panel_bg_color:  if($titlebar == 'dark', %MENU_BG%, mix(%MENU_BG%, %MENU_BG%, 50%)); // for Unity panel which cannot use translucent colors
 
-$tooltip_bg_color: $grey_800;
+$tooltip_bg_color: %MENU_BG%;
 
 $gdm_bg_color: if($variant == 'light', %MENU_BG%, %MENU_BG2%);
 
@@ -71,20 +71,20 @@ $alt_primary_color: %SEL_BG2%;
 $accent_color: %ACCENT_BG%;
 $disabled_accent_color: rgba($accent_color, 0.5);
 
-$link_color:         $primary_color;
-$visited_link_color: $purple_A200;
+$link_color:   %TERMINAL_COLOR4%;
+$visited_link_color: %TERMINAL_COLOR5%;
 
-$warning_color: $orange_A700;
-$error_color:   $deep_orange_A700;
-$success_color: $green_A700;
+$warning_color: %TERMINAL_COLOR11%;
+$error_color: %TERMINAL_COLOR9%;
+$success_color: %TERMINAL_COLOR10%;
 
 $suggested_color:   $accent_color;
-$destructive_color: $red_A200;
+$destructive_color: $error_color;
 
-$info_bg_color:     $green_400;
-$question_bg_color: %SEL_BG%;
-$warning_bg_color:  $orange_400;
-$error_bg_color:    $red_400;
+$info_bg_color: %TERMINAL_COLOR12%;
+$question_bg_color: $info_bg_color;
+$warning_bg_color: $warning_color;
+$error_bg_color: $error_color;
 
 $border_color:             if($variant == 'light', rgba(%FG%, 0.12), rgba(%FG%, 0.26));
 $alt_border_color:         rgba(%FG%, 0.26); // for non-native GTK+ apps (e.g. Firefox and Chrome)
@@ -95,7 +95,7 @@ $titlebar_indicator_color: if($titlebar == 'dark', currentColor, $primary_color)
 
 // for Electron/Atom menu which cannot use translucent colors
 $opaque_fg_color:           if($variant == 'light', %FG%, %TXT_BG%);
-$opaque_secondary_fg_color: if($variant == 'light', $grey_600, mix(%TXT_BG%, $base_color, percentage(0.7)));
+$opaque_secondary_fg_color: if($variant == 'light', %FG%, mix(%TXT_BG%, $base_color, percentage(0.7)));
 $opaque_disabled_fg_color:  if($variant == 'light', %INACTIVE_FG%, mix(%TXT_BG%, $base_color, percentage(0.5)));
 $opaque_divider_color:      if($variant == 'light', %SEL_BG%, mix(%TXT_BG%, $base_color, percentage(0.12)));
 
