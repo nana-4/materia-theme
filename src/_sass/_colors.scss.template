@@ -41,23 +41,23 @@ $inverse_track_color:                 rgba(%SEL_FG%, 0.3);
 $inverse_divider_color:               rgba(%SEL_FG%, 0.12);
 
 // Background colors
-$bg_color:             if($variant == 'light', %BG%, fade(%MENU_BG%));
-$base_color:           if($variant == 'light', %TXT_BG%,    fade(%MENU_BG%));
-$alt_base_color:       if($variant == 'light', %INACTIVE_TXT_BG%,  mix(%INACTIVE_TXT_BG%, %MENU_BG%, 50%));
-$lighter_bg_color:     if($variant == 'light', %BTN_BG%,  fade(%BTN_BG%));
-$alt_lighter_bg_color: if($variant == 'light', %BG2%, fade(%MENU_BG%)); // for gnome-shell sub menu
-$darker_bg_color:      if($variant == 'light', %BG%, fade(%MENU_BG%));
+$bg_color:             %BG%;
+$base_color:           %TXT_BG%;
+$alt_base_color:       %INACTIVE_TXT_BG%;
+$lighter_bg_color:     %BTN_BG%;
+$alt_lighter_bg_color: if($variant == 'light', %BG2%, %MENU_BG%); // for gnome-shell sub menu
+$darker_bg_color:      if($variant == 'light', %BG%, %MENU_BG%);
 
 $titlebar_bg_color: %MENU_BG%;
-$alt_titlebar_bg_color: if($titlebar == 'dark', %MENU_BG%, %MENU_BG%);
+$alt_titlebar_bg_color: %MENU_BG%;
 
 $panel_bg_color:         rgba(%MENU_BG%, %GNOME_SHELL_PANEL_OPACITY%);
 $alt_panel_bg_color:     rgba(%MENU_BG%, $lower_opacity);
 $inverse_panel_bg_color: rgba($inverse_fg_color, 0.1);
-$solid_panel_bg_color:   if($titlebar == 'dark', %MENU_BG%, %MENU_BG%);
+$solid_panel_bg_color:   %MENU_BG%;
 $opaque_panel_bg_color:  if($titlebar == 'dark', %MENU_BG%, mix(%MENU_BG%, %MENU_BG%, 50%)); // for Unity panel which cannot use translucent colors
 
-$gdm_bg_color: if($variant == 'light', %MENU_BG%, %MENU_BG2%);
+$gdm_bg_color: %MENU_BG%;
 
 $fill_color:      gtkalpha(currentColor, $lower_opacity);
 $semi_fill_color: gtkalpha(currentColor, $lower_opacity / 2);
@@ -87,11 +87,11 @@ $error_bg_color: $error_color;
 $tooltip_bg_color: %MENU_BG%;
 $tooltip_fg_color: %MENU_FG%;
 
-$border_color:             if($variant == 'light', rgba(%FG%, 0.12), rgba(%FG%, 0.26));
+$border_color:             if($variant == 'light', rgba(%FG%, 0.12), rgba(%MENU_BG%, 0.26));
 $alt_border_color:         rgba(%FG%, 0.26); // for non-native GTK+ apps (e.g. Firefox and Chrome)
-$highlight_color:          if($variant == 'light', rgba(%TXT_BG%, 0.4),  rgba(%TXT_BG%, 0.1));
-$titlebar_highlight_color: %MENU_BG%;
-$alt_highlight_color:      rgba(%TXT_BG%, 0.2); // for selection-mode headerbar which colored with $primary_color
+$highlight_color:          if($variant == 'light', rgba(%TXT_BG%, 0.4),  rgba(%TXT_FG%, 0.1));
+$titlebar_highlight_color: if($titlebar == 'dark', rgba(%MENU_BG%, 0.1),  rgba(%MENU_FG%, 0.4));
+$alt_highlight_color:      if($variant == 'light', rgba(%TXT_BG%, 0.2), rgba(%TXT_FG%, 0.2)); // for selection-mode headerbar which colored with $primary_color
 $titlebar_indicator_color: if($titlebar == 'dark', currentColor, $primary_color);
 
 // for Electron/Atom menu which cannot use translucent colors
