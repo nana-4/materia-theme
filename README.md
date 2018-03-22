@@ -41,7 +41,9 @@ Various **desktop environments** are supported:
 Package is available via [AUR](https://aur.archlinux.org/packages/materia-theme/) (maintained by @cthbleachbit):
 
 ```
-yaourt -S materia-theme
+git clone https://aur.archlinux.org/materia-theme.git
+cd materia-theme
+makepkg -si
 ```
 
 #### Fedora / EPEL
