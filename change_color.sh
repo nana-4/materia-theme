@@ -176,6 +176,7 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/#212121/%FG%/g' \
 		-e 's/#757575/%INACTIVE_FG%/g' \
 		-e 's/#BDBDBD/%INACTIVE_FG%/g' \
+		-e 's/#F5F5F5/%INACTIVE_TXT_BG%/g' \
 		-e 's/#EEEEEE/%BG%/g' \
 		-e 's/#FAFAFA/%BTN_BG%/g' \
 		-e 's/#009688/%ACCENT_BG%/g' \
@@ -184,7 +185,6 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/#303030/%MENU_BG%/g' \
 		-e 's/#E0E0E0/%MENU_BG%/g' \
 		-e 's/#212121/%MENU_BG2%/g' \
-		-e 's/#303030/%MENU_BG3%/g' \
 		-e 's/Materia/%OUTPUT_THEME_NAME%/g' \
 		{} \; ;
     else
@@ -193,6 +193,7 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/#212121/%BG%/g' \
 		-e 's/#757575/%INACTIVE_FG%/g' \
 		-e 's/#BDBDBD/%INACTIVE_FG%/g' \
+		-e 's/#292929/%INACTIVE_TXT_BG%/g' \
 		-e 's/#EEEEEE/%FG%/g' \
 		-e 's/#FAFAFA/%BTN_FG%/g' \
 		-e 's/#424242/%BTN_BG%/g' \
@@ -202,7 +203,6 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/#303030/%TXT_BG%/g' \
 		-e 's/#E0E0E0/%MENU_BG%/g' \
 		-e 's/#212121/%MENU_BG2%/g' \
-		-e 's/#303030/%MENU_BG3%/g' \
 		-e 's/Materia/%OUTPUT_THEME_NAME%/g' \
 		{} \; ;
 
