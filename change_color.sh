@@ -195,6 +195,7 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/#BDBDBD/%INACTIVE_FG%/g' \
 		-e 's/#EEEEEE/%FG%/g' \
 		-e 's/#FAFAFA/%BTN_FG%/g' \
+		-e 's/#424242/%BTN_BG%/g' \
 		-e 's/#009688/%ACCENT_BG%/g' \
 		-e 's/#338DD6/%SEL_BG%/g' \
 		-e 's/#FFFFFF/%TXT_FG%/g' \

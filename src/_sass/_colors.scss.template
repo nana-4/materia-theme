@@ -95,10 +95,10 @@ $alt_highlight_color:      if($variant == 'light', rgba(%TXT_BG%, 0.2), rgba(%TX
 $titlebar_indicator_color: if($titlebar == 'dark', currentColor, $primary_color);
 
 // for Electron/Atom menu which cannot use translucent colors
-$opaque_fg_color:           if($variant == 'light', %FG%, %TXT_BG%);
-$opaque_secondary_fg_color: if($variant == 'light', %FG%, mix(%TXT_BG%, $base_color, percentage(0.7)));
-$opaque_disabled_fg_color:  if($variant == 'light', %INACTIVE_FG%, mix(%TXT_BG%, $base_color, percentage(0.5)));
-$opaque_divider_color:      if($variant == 'light', %SEL_BG%, mix(%TXT_BG%, $base_color, percentage(0.12)));
+$opaque_fg_color:           %FG%;
+$opaque_secondary_fg_color: mix(%FG%, $base_color, percentage(0.7));
+$opaque_disabled_fg_color:  mix(%FG%, $base_color, percentage(0.5));
+$opaque_divider_color:      mix(%FG%, $base_color, percentage(0.12));
 
 // FIXME: gtk's @placeholder_text_color API really should use $secondary_fg_color,
 // but it doesn't work with translucent colors. So we use opaque colors instead.
