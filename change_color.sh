@@ -9,6 +9,15 @@ darker () {
 mix () {
 	"${SRC_PATH}/scripts/mix.sh" $@
 }
+is_dark() {
+	hexinput=$(echo $1 | tr '[:lower:]' '[:upper:]')
+	half_darker="$(darker ${hexinput} 88)"
+	if [[ "${half_darker}" = "000000" ]] ; then
+		true
+	else
+		return
+	fi
+}
 
 
 print_usage() {
@@ -105,7 +114,7 @@ WM_BORDER_FOCUS=${WM_BORDER_FOCUS-$SEL_BG}
 WM_BORDER_UNFOCUS=${WM_BORDER_UNFOCUS-$MENU_BG}
 
 MATERIA_STYLE_COMPACT=$(echo ${MATERIA_STYLE_COMPACT-True} | tr '[:upper:]' '[:lower:]')
-MATERIA_COLOR_VARIANT=$(echo ${MATERIA_COLOR_VARIANT-light} | tr '[:upper:]' '[:lower:]')
+MATERIA_COLOR_VARIANT=$(echo ${MATERIA_COLOR_VARIANT:-} | tr '[:upper:]' '[:lower:]')
 UNITY_DEFAULT_LAUNCHER_STYLE=$(echo ${UNITY_DEFAULT_LAUNCHER_STYLE-False} | tr '[:upper:]' '[:lower:]')
 
 SPACING=${SPACING-3}
@@ -144,6 +153,18 @@ function post_clean_up {
 trap post_clean_up EXIT SIGHUP SIGINT SIGTERM
 cp -r ${SRC_PATH}/* ${tempdir}/
 cd ${tempdir}
+
+
+# autodetection which color variant to use
+if [[ -z "${MATERIA_COLOR_VARIANT}" ]] ; then
+        if is_dark ${BG} ; then
+            echo "== Dark background color detected. Setting color variant to dark."
+            MATERIA_COLOR_VARIANT="dark"
+        else
+            echo "== Light background color detected. Setting color variant to light."
+            MATERIA_COLOR_VARIANT="light"
+        fi
+fi
 
 
 echo "== Converting theme into template..."
