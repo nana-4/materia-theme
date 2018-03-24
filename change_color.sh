@@ -9,6 +9,15 @@ darker () {
 mix () {
 	"${SRC_PATH}/scripts/mix.sh" $@
 }
+is_dark() {
+	hexinput=$(echo $1 | tr '[:lower:]' '[:upper:]')
+	half_darker="$(darker ${hexinput} 88)"
+	if [[ "${half_darker}" = "000000" ]] ; then
+		true
+	else
+		return
+	fi
+}
 
 
 print_usage() {
@@ -105,8 +114,7 @@ WM_BORDER_FOCUS=${WM_BORDER_FOCUS-$SEL_BG}
 WM_BORDER_UNFOCUS=${WM_BORDER_UNFOCUS-$MENU_BG}
 
 MATERIA_STYLE_COMPACT=$(echo ${MATERIA_STYLE_COMPACT-True} | tr '[:upper:]' '[:lower:]')
-MATERIA_MENUBAR_STYLE=$(echo ${MATERIA_MENUBAR_STYLE-same} | tr '[:upper:]' '[:lower:]')
-GTK3_GENERATE_DARK=$(echo ${GTK3_GENERATE_DARK-True} | tr '[:upper:]' '[:lower:]')
+MATERIA_COLOR_VARIANT=$(echo ${MATERIA_COLOR_VARIANT:-} | tr '[:upper:]' '[:lower:]')
 UNITY_DEFAULT_LAUNCHER_STYLE=$(echo ${UNITY_DEFAULT_LAUNCHER_STYLE-False} | tr '[:upper:]' '[:lower:]')
 
 SPACING=${SPACING-3}
@@ -147,14 +155,28 @@ cp -r ${SRC_PATH}/* ${tempdir}/
 cd ${tempdir}
 
 
+# autodetection which color variant to use
+if [[ -z "${MATERIA_COLOR_VARIANT}" ]] ; then
+        if is_dark ${BG} ; then
+            echo "== Dark background color detected. Setting color variant to dark."
+            MATERIA_COLOR_VARIANT="dark"
+        else
+            echo "== Light background color detected. Setting color variant to light."
+            MATERIA_COLOR_VARIANT="light"
+        fi
+fi
+
+
 echo "== Converting theme into template..."
 
 for FILEPATH in "${PATHLIST[@]}"; do
+    if [[ ${MATERIA_COLOR_VARIANT}  != "dark" ]] ; then
 	find "${FILEPATH}" -type f -not -name '_color-palette.scss' -exec sed -i'' \
 		-e 's/#000000/%FG%/g' \
 		-e 's/#212121/%FG%/g' \
 		-e 's/#757575/%INACTIVE_FG%/g' \
 		-e 's/#BDBDBD/%INACTIVE_FG%/g' \
+		-e 's/#F5F5F5/%INACTIVE_TXT_BG%/g' \
 		-e 's/#EEEEEE/%BG%/g' \
 		-e 's/#FAFAFA/%BTN_BG%/g' \
 		-e 's/#009688/%ACCENT_BG%/g' \
@@ -163,9 +185,28 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/#303030/%MENU_BG%/g' \
 		-e 's/#E0E0E0/%MENU_BG%/g' \
 		-e 's/#212121/%MENU_BG2%/g' \
-		-e 's/#303030/%MENU_BG3%/g' \
 		-e 's/Materia/%OUTPUT_THEME_NAME%/g' \
 		{} \; ;
+    else
+	find "${FILEPATH}" -type f -not -name '_color-palette.scss' -exec sed -i'' \
+		-e 's/#000000/%BG%/g' \
+		-e 's/#212121/%BG%/g' \
+		-e 's/#757575/%INACTIVE_FG%/g' \
+		-e 's/#BDBDBD/%INACTIVE_FG%/g' \
+		-e 's/#292929/%INACTIVE_TXT_BG%/g' \
+		-e 's/#EEEEEE/%FG%/g' \
+		-e 's/#FAFAFA/%BTN_FG%/g' \
+		-e 's/#424242/%BTN_BG%/g' \
+		-e 's/#009688/%ACCENT_BG%/g' \
+		-e 's/#338DD6/%SEL_BG%/g' \
+		-e 's/#FFFFFF/%TXT_FG%/g' \
+		-e 's/#303030/%TXT_BG%/g' \
+		-e 's/#E0E0E0/%MENU_BG%/g' \
+		-e 's/#212121/%MENU_BG2%/g' \
+		-e 's/Materia/%OUTPUT_THEME_NAME%/g' \
+		{} \; ;
+
+    fi
 done
 
 #Not implemented yet:
@@ -226,16 +267,23 @@ for FILEPATH in "${PATHLIST[@]}"; do
 done
 
 rm ./src/gtk/3.{18,20,22}/*.css
-if [[ ${MATERIA_MENUBAR_STYLE}  == "contrast" ]] ; then
+if [[ ${MATERIA_COLOR_VARIANT}  == "standard" ]] ; then
 	rm ./src/gtk/3.{18,20,22}/gtk-light*.scss
-else
-	rm ./src/gtk/3.{18,20,22}/gtk{,-compact}.scss || true
+	rm ./src/gtk/3.{18,20,22}/gtk-dark*.scss
+	COLOR_VARIANTS=","
+	COLOR_VARIANT="standard"
 fi
-if [[ ${GTK3_GENERATE_DARK} != "true" ]] ; then
-	grep -v "\-dark" ./src/gtk/assets.txt > ./new_assets.txt
-	mv ./new_assets.txt ./src/gtk/assets.txt
-	rm ./src/gtk/3.{20,22}/gtk-dark-compact.scss
-	rm ./src/gtk/3.{18,20,22}/gtk-dark.scss
+if [[ ${MATERIA_COLOR_VARIANT}  == "light" ]] ; then
+	rm ./src/gtk/3.{18,20,22}/gtk-dark*.scss 
+	rm ./src/gtk/3.{18,20,22}/gtk{,-compact}.scss || true
+	COLOR_VARIANTS="-light"
+	COLOR_VARIANT="light"
+fi
+if [[ ${MATERIA_COLOR_VARIANT}  == "dark" ]] ; then
+	rm ./src/gtk/3.{18,20,22}/gtk-light*.scss
+	rm ./src/gtk/3.{18,20,22}/gtk{,-compact}.scss || true
+	COLOR_VARIANTS="-dark"
+	COLOR_VARIANT="dark"
 fi
 if [[ ${OPTION_GTK2_HIDPI} == "true" ]] ; then
 	mv ./src/gtk-2.0/main.rc.hidpi ./src/gtk-2.0/main.rc
@@ -260,29 +308,19 @@ else
 	SIZE_VARIANTS=","
 	SIZE_VARIANT="standard"
 fi
-if [[ ${MATERIA_MENUBAR_STYLE}  == "contrast" ]] ; then
-	COLOR_VARIANTS=","
-	COLOR_VARIANT="standard"
-else
-	COLOR_VARIANTS="-light"
-	COLOR_VARIANT="light"
-fi
 
 SIZE_VARIANTS="${SIZE_VARIANTS}" COLOR_VARIANTS="${COLOR_VARIANTS}" THEME_DIR_BASE=${DEST_PATH} ./parse-sass.sh
 
-rm ./src/gtk-2.0/assets/*.png || true
-rm ./src/gtk-2.0/assets-dark/*.png || true
-rm ./src/gtk/assets/*.png || true
-
+# NOTE we use the functions we already have in render-assets.sh
 echo "== Rendering GTK+2 assets..."
-cd ./src/gtk-2.0
-GTK2_HIDPI=${OPTION_GTK2_HIDPI} ./render-assets.sh
-cd ../../
+if [[ ${MATERIA_COLOR_VARIANT}  != "dark" ]] ; then
+        GTK2_HIDPI=${OPTION_GTK2_HIDPI} ./render-assets.sh gtk2-light
+else
+        GTK2_HIDPI=${OPTION_GTK2_HIDPI} ./render-assets.sh gtk2-dark
+fi
 
 echo "== Rendering GTK+3 assets..."
-cd ./src/gtk
-./render-assets.sh
-cd ../../
+./render-assets.sh gtk
 
 ./install.sh --dest "$HOME/.themes" --name "${OUTPUT_THEME_NAME/\//-}" --color "${COLOR_VARIANT}" --size "${SIZE_VARIANT}"
 
