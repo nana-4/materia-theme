@@ -55,7 +55,7 @@ sudo dnf copr enable tcg/themes
 sudo dnf install materia-theme
 ```
 
-#### Ubuntu
+#### Ubuntu 16.04 / 17.10
 
 Package is available via [PPA](https://launchpad.net/~dyatlov-igor/+archive/ubuntu/materia-theme) (maintained by @igor-dyatlov):
 
@@ -65,7 +65,7 @@ sudo apt update
 sudo apt install materia-gtk-theme
 ```
 
-#### Debian sid
+#### Ubuntu 18.04 / Debian sid
 
 [Official package](https://packages.debian.org/unstable/materia-gtk-theme) (maintained by @isaagar) is available:
 
