@@ -62,7 +62,7 @@ Package is available via [PPA](https://launchpad.net/~dyatlov-igor/+archive/ubun
 ```
 sudo add-apt-repository ppa:dyatlov-igor/materia-theme
 sudo apt update
-sudo apt install materia-theme
+sudo apt install materia-gtk-theme
 ```
 
 #### Debian sid
