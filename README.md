@@ -36,6 +36,24 @@ Various **desktop environments** are supported:
 
 ## Installation
 
+#### Ubuntu 18.04 / Debian sid
+
+[Official package](https://packages.debian.org/unstable/materia-gtk-theme) (maintained by @isaagar) is available:
+
+```
+sudo apt install materia-gtk-theme
+```
+
+#### Ubuntu 16.04 / 17.10
+
+Package is available via [PPA](https://launchpad.net/~dyatlov-igor/+archive/ubuntu/materia-theme) (maintained by @igor-dyatlov):
+
+```
+sudo add-apt-repository ppa:dyatlov-igor/materia-theme
+sudo apt update
+sudo apt install materia-gtk-theme
+```
+
 #### Arch Linux
 
 Package is available via [AUR](https://aur.archlinux.org/packages/materia-theme/) (maintained by @cthbleachbit):
@@ -53,24 +71,6 @@ Package is available via [Copr](https://copr.fedorainfracloud.org/coprs/tcg/them
 ```
 sudo dnf copr enable tcg/themes
 sudo dnf install materia-theme
-```
-
-#### Ubuntu 16.04 / 17.10
-
-Package is available via [PPA](https://launchpad.net/~dyatlov-igor/+archive/ubuntu/materia-theme) (maintained by @igor-dyatlov):
-
-```
-sudo add-apt-repository ppa:dyatlov-igor/materia-theme
-sudo apt update
-sudo apt install materia-gtk-theme
-```
-
-#### Ubuntu 18.04 / Debian sid
-
-[Official package](https://packages.debian.org/unstable/materia-gtk-theme) (maintained by @isaagar) is available:
-
-```
-sudo apt install materia-gtk-theme
 ```
 
 #### Flatpak
