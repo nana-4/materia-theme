@@ -25,6 +25,7 @@ for color in "${_COLOR_VARIANTS[@]}"; do
   sassc $SASSC_OPT src/gtk/3.18/gtk${color}.{scss,css}
 
   for size in "${_SIZE_VARIANTS[@]}"; do
+    sassc $SASSC_OPT src/cinnamon/cinnamon${color}${size}.{scss,css}
     for version in '3.20' '3.22'; do
       sassc $SASSC_OPT src/gtk/${version}/gtk${color}${size}.{scss,css}
     done
@@ -38,3 +39,4 @@ done
 
 sassc $SASSC_OPT src/chrome/chrome-scrollbar/scrollbars.{scss,css}
 sassc $SASSC_OPT src/chrome/chrome-scrollbar-dark/scrollbars.{scss,css}
+
