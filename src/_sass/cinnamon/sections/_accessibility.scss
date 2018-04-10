@@ -1,0 +1,36 @@
+// on screen keyboard
+#keyboard {
+    background-color: $panel_bg_color;
+}
+.keyboard-key {
+    @extend %icon-button-shared;
+    @include font(button);
+}
+.keyboard-layout {
+    spacing: 8px;
+    padding: 8px;
+}
+.keyboard-row {
+    spacing: 16px;
+}
+.keyboard-subkeys { //long press on a key popup
+    color: inherit;
+    padding: 5px;
+    -arrow-border-radius: 0;
+    -arrow-background-color: transparent;
+    -arrow-border-width: 0;
+    -arrow-border-color: transparent;
+    -arrow-base: 0;
+    -arrow-rise: 0;
+    -boxpointer-gap: 5px;
+    background-color: $bg_color;
+    border-radius: 2px;
+    box-shadow: $shadow_2;
+}
+// desktop zoom feature
+.magnifier-zoom-region {
+    border: 3px solid $border_color;
+    &.full-screen {
+        border-width: 0;
+    }
+}

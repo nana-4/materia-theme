@@ -1,0 +1,162 @@
+// extend-elements
+
+%button-shared {
+    @include button(normal);
+    @include font(button);
+    
+    min-height: $medium_size;
+    padding: 0 16px;
+    border-radius: 2px; 
+    &:focus { @include button(focus); }
+    &:hover, &:checked { @include button(hover); }
+    &:active { @include button(active);}
+    &:insensitive { @include button(insensitive);}
+}
+
+%icon-button-shared {
+    @include button(normal);
+    
+    min-height: $medium_size;
+    min-width: $medium_size;
+    padding: 6px;
+    border-radius: 2px; 
+    &:focus { @include button(focus); }
+    &:hover, &:checked { @include button(hover); }
+    &:active { @include button(active);}
+    &:insensitive { @include button(insensitive);}
+}
+
+%slider-shared {
+   height: 20px;
+   color: $accent_color;
+  -slider-height: 2px;
+  -slider-background-color: $track_color; //background of the trough
+  -slider-border-color: transparent; //trough border color
+  -slider-active-background-color: $accent_color; //active trough fill
+  -slider-active-border-color: transparent; //active trough border
+  -slider-border-width: 0;
+  -slider-handle-radius: 7px;
+}
+
+
+%separator-shared {
+    -gradient-height: 1px;
+    -gradient-start: $border_color;
+    -gradient-end: $border_color;
+    -margin-horizontal: 4px;
+    height: 1.5em;
+}
+
+
+%dialog-entry {
+    width: 320px;
+    padding: 4px 8px;
+    border-radius: 0;
+    color: $hint_fg_color;
+    caret-color: $hint_fg_color;
+    selection-background-color: $track_color;
+    selected-color: $fg_color;
+    @include entry(normal,$fc:$track_color);
+    &:focus {
+      @include entry(focus,$fc:$fg_color);
+      padding: 4px 8px;
+      border-width: 0;
+      color: $fg_color;
+    }
+}
+
+
+%desklet-shared {
+  color: $fg_color;
+  border: none;
+  padding: 12px;
+  box-shadow: $shadow_4;
+}
+
+
+%calendar-shared {
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    transition-duration: $shorter_duration;
+    &:active { background-color: $track_color;}
+}
+
+
+%shared-menu {
+    background-color: $alt_lighter_bg_color;
+    border: 1px solid $border_color;
+    border-radius: 2px;
+    color: $fg_color;
+    box-shadow: $shadow_6;
+}
+
+
+%menu-button-label-shared {
+    &:ltr {
+        padding-left: 4px;
+    }
+    &:rtl {
+        padding-right: 4px;
+    }
+}
+
+
+%shared-dialogs-subject {
+    font-weight: bold;
+    color: $fg_color;
+    padding-top: 10px;
+    padding-left: 17px;
+    padding-bottom: 6px;
+}
+
+
+%shared-dialogs-subject-rtl {
+    padding-left: 0;
+    padding-right: 17px;
+}
+
+
+%shared-dialogs-description {
+    color: $fg_color;
+    padding-left: 17px;
+    width: 28em;
+}
+
+
+%check-box-shared {
+    width: 24px;
+    height: 24px;
+    padding: ($medium_size - 24px) / 2;
+    border-radius: 100px;
+    background-image: url(assets/checkbox-off.svg);
+}
+
+
+%radiobutton-shared {
+    width: 20px;
+    height: 20px;
+    padding: ($medium_size - 20px) / 2;
+    border-radius: 100px;
+    background-image: url(assets/radiobutton-off.svg);
+}
+
+%tile-shared {
+    background-color: $alt_panel_bg_color;
+    border: 2px solid $border_color;
+}
+
+
+%tile-shared-snap {
+    background-color: $alt_panel_bg_color;
+    border: 2px solid $accent_color;
+}
+
+%osd-panel {
+  color: $fg_color;
+  background-color: $alt_lighter_bg_color;
+  border: none;
+  border-radius: 2px;
+  padding: 12px;
+  box-shadow: $shadow_4;
+}

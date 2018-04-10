@@ -1,0 +1,59 @@
+// notification system
+#notification {
+    background-color: $alt_lighter_bg_color;
+    border-radius: 2px;
+    border: 1px solid $border_color;
+    padding: 8px;
+    spacing-rows: 4px;
+    spacing-columns: 8px;
+    margin-from-right-edge-of-screen: 20px;
+    width: 34em;
+    min-height: $menuitem_size * 2;
+    color: $fg_color;
+    box-shadow: $shadow_2;
+    &.multi-line-notification {
+        padding-bottom: 8px;
+    }
+    StEntry {
+        @extend %dialog-entry;
+    }
+    .url-highlighter {
+        link-color: $link_color;
+    }
+}
+.notification-with-image {
+    min-height: 159px;
+    color: $fg_color;
+}
+#notification-scrollview {
+    max-height: 10em;
+    > {
+        .top-shadow {
+            height: 1em;
+        }
+        .bottom-shadow {
+            height: 1em;
+        }
+    }
+    &:ltr > StScrollBar {
+        padding-left: 6px;
+    }
+    &:rtl > StScrollBar {
+        padding-right: 6px;
+    }
+}
+#notification-body {
+    spacing: 4px;
+}
+#notification-actions {
+    spacing: 8px;
+}
+.notification-button {
+    @extend %button-shared;
+}
+.notification-icon-button {
+    @extend %icon-button-shared;
+    > StIcon {
+        icon-size: 1.5em;
+    }
+}

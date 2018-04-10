@@ -1,0 +1,65 @@
+// desklets - the base .desklet selector is for 'undecorated' desklets however some subtle background themeing is desirable
+// to maintain visibility irrespctive of wallpaper and to allow for the highlighting scheme to work
+.desklet {
+    @include font(caption);
+    
+    color: $titlebar_fg_color;
+    border: none;
+    box-shadow: $shadow_4;
+    padding: 12px;
+    background-color: $alt_panel_bg_color;
+    border-radius: 2px
+}
+// these do not inherit from .desklet
+.desklet-with-borders {
+    @extend %desklet-shared;
+    @include font(caption);
+
+	background-color: $alt_lighter_bg_color;
+    border-radius: 2px;
+    &:highlight {
+        background-color: $highlight_color;
+    }
+}
+.desklet-with-borders-and-header {
+    @extend %desklet-shared;
+    @include font(caption);
+    
+    background-color: $alt_lighter_bg_color;
+    border-radius-bottomleft: 2px;
+    border-radius-bottomright: 2px;
+    &:highlight {
+        background-color: $highlight_color;
+    }
+}
+.desklet-header {
+    @include font(title)
+    @extend %desklet-shared;
+
+    background-color: $alt_lighter_bg_color;
+    border-radius-topleft: 2px;
+    border-radius-topright: 2px;
+    &:highlight {
+        background-color: $highlight_color;
+    }
+}
+.photoframe-box {
+    @extend %desklet-shared;
+    
+    background-color: $alt_lighter_bg_color;
+    border-radius: 2px;
+    &:highlight {
+        background-color: $highlight_color;
+    }
+}
+.desklet-drag-placeholder {
+    border: 2px solid $accent_color;
+    background-color: $alt_panel_bg_color;
+    border-radius: 2px;
+}
+.launcher {
+    padding: 1px;
+    .icon-box {
+        padding-top: 2px;
+    }
+}

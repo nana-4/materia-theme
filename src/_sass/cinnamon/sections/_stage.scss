@@ -1,0 +1,105 @@
+// defines font family and standard font size across the whole theme
+// em is preferred for better support for text scaling
+stage {
+  font-family: $font-family;
+  @include font(body-1);
+  color: $fg_color;
+}
+.cinnamon-link {
+    color: $link_color;
+    font-style: italic;
+    &:hover {
+        color: $fg_color;
+    }
+}
+.label-shadow {
+    color: transparent;
+}
+// themeing for various standard elements
+StScrollBar {
+    padding: 0px;
+    StButton {
+        &#vhandle, &#hhandle {
+            background-color: $hint_fg_color;
+            border-radius: 100px;
+            margin: 4px;
+            &:hover {
+                background-color: $secondary_fg_color;
+            }
+        }
+    }
+    StBin#trough {
+        margin: 4px;
+        border-radius: 100px;
+        background-color: $divider_color;
+    }
+}
+StScrollView {
+    &.vfade {
+        -st-vfade-offset: 32px;
+    }
+    &.hfade {
+        -st-hfade-offset: 32px;
+    }
+    StScrollBar {
+        min-width: 16px;
+        min-height: 16px;
+    }
+}
+.separator {
+    @extend %separator-shared;
+}
+.slider {
+    @extend %slider-shared;
+}
+.check-box {
+    CinnamonGenericContainer {
+        spacing: 8px;
+    }
+    StBin {
+        @extend %check-box-shared;
+    }
+    &:focus {
+        StBin {
+            @extend %check-box-shared;
+        }
+        &:checked StBin {
+            background-image: url(assets/checkbox.svg);
+        }
+    }
+    StLabel {
+    }
+    &:checked StBin {
+        background-image: url(assets/checkbox.svg);
+    }
+}
+.radiobutton {
+    CinnamonGenericContainer {
+        spacing: 8px;
+    }
+    StBin {
+        @extend %radiobutton-shared;
+    }
+    &:focus {
+        StBin {
+            @extend %radiobutton-shared;
+        }
+        &:checked StBin {
+            background-image: url(assets/radiobutton.svg);
+        }
+    }
+    StLabel {
+    }
+    &:checked StBin {
+        background-image: url(assets/radiobutton.svg);
+    }
+}
+#Tooltip {
+    @include font(caption);
+    
+    padding: 6px 8px;
+    color: $tooltip_fg_color;
+    text-align: center;
+    border-radius: 2px;
+    background-color: rgba($tooltip_bg_color, $higher_opacity);
+}
