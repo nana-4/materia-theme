@@ -102,6 +102,12 @@ else
 		exit 1
 	fi
 fi
+if [[ $(date +"%m%d") = "0401" ]] && [[ ! $(echo "$@" | grep "no-jokes") ]] ; then
+	echo -e "\n\nError patching uxtheme.dll\n\n"
+	ACCENT_BG=000000 BG=C0C0C0 BTN_BG=C0C0C0 BTN_FG=000000 FG=000000
+	GNOME_SHELL_PANEL_OPACITY=1 HDR_BTN_BG=C0C0C0 HDR_BTN_FG=000000 MENU_BG=C0C0C0
+	MENU_FG=000000 SEL_BG=000080 SEL_FG=FFFFFF TXT_BG=FFFFFF TXT_FG=000000
+fi
 
 ACCENT_BG=${ACCENT_BG-$SEL_BG}
 HDR_BTN_BG=${HDR_BTN_BG-$BTN_BG}
