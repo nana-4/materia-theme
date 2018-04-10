@@ -69,6 +69,11 @@ install() {
   mkdir -p                                                                      ${THEME_DIR}/chrome
   cp -r ${SRC_DIR}/chrome/chrome-theme${color}.crx                              ${THEME_DIR}/chrome/chrome-theme.crx
   cp -r ${SRC_DIR}/chrome/chrome-scrollbar${ELSE_DARK}.crx                      ${THEME_DIR}/chrome/chrome-scrollbar.crx
+  
+  mkdir -p                                                                      ${THEME_DIR}/cinnamon
+  cp -r ${SRC_DIR}/cinnamon/cinnamon${color}${size}.css                         ${THEME_DIR}/cinnamon/cinnamon.css
+  cp -r ${SRC_DIR}/cinnamon/thumbnail.png                                       ${THEME_DIR}/cinnamon/thumbnail.png
+  cp -r ${SRC_DIR}/cinnamon/assets                                              ${THEME_DIR}/cinnamon/assets
 
   mkdir -p                                                                      ${THEME_DIR}/gnome-shell
   cp -r ${SRC_DIR}/gnome-shell/{*.svg,extensions,noise-texture.png,pad-osd.css} ${THEME_DIR}/gnome-shell
