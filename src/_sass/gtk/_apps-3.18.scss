@@ -96,7 +96,28 @@ NautilusListView .view {
   // border-bottom: 1px solid $border_color;
 }
 
-
+/********
+ * Nemo *
+ *******/
+NemoWindow .nemo-inactive-pane .view, NemoWindow .nemo-inactive-pane iconview {
+        background-color: $alt_base_color;
+        color: $fg_color;
+}
+NemoWindow .sidebar .cell {
+		background-color: $bg_color;
+		color: $fg_color;
+		&:selected {
+		    color: $inverse_fg_color;
+		    background-color: $primary_color;
+		}
+}
+.nemo-desktop.nemo-canvas-item {
+  color: $inverse_fg_color;
+  text-shadow: $shadow_1;
+  &:selected {
+      text-shadow: none;
+  }   
+}
 /**************
  * Tweak Tool *
  **************/
