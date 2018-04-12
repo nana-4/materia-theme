@@ -254,8 +254,8 @@ GtkTextView {
 }
 
 .linked > .entry.flat, .notebook GtkGrid.linked > .entry,
-.linked.vertical > .entry.flat, .notebook
-GtkGrid.linked.vertical > .entry {
+.linked.vertical > .entry.flat,
+.notebook GtkGrid.linked.vertical > .entry {
   border-radius: 0;
 }
 
@@ -456,8 +456,7 @@ GtkTreeView .entry:not(:selected), GtkTreeView .entry:not(:selected):focus {
   color: alpha(currentColor, 0.375);
 }
 
-.spinbutton .button:insensitive > .label, .popover .linked > .button:insensitive > .label, .notebook tab .button:insensitive > .label, GtkCalendar.button:insensitive > .label, .message-dialog.csd .dialog-action-area .button:insensitive > .label, .sidebar-button.button:insensitive > .label, .toolbar:not(.search-bar) .button:insensitive > .label, .titlebar .button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
-.header-bar .button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .frame.action-bar .button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .app-notification .button:insensitive > .label,
+.spinbutton .button:insensitive > .label, .popover .linked > .button:insensitive > .label, .notebook tab .button:insensitive > .label, GtkCalendar.button:insensitive > .label, .message-dialog.csd .dialog-action-area .button:insensitive > .label, .sidebar-button.button:insensitive > .label, .toolbar:not(.search-bar) .button:insensitive > .label, .titlebar .button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .header-bar .button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .frame.action-bar .button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .app-notification .button:insensitive > .label,
 .button.flat:insensitive > .label {
   color: inherit;
 }
@@ -476,8 +475,7 @@ GtkTreeView .entry:not(:selected), GtkTreeView .entry:not(:selected):focus {
   color: alpha(currentColor, 0.5);
 }
 
-.toolbar:not(.search-bar) .button:checked:insensitive > .label, .titlebar .button:checked:insensitive:not(.suggested-action):not(.destructive-action) > .label,
-.header-bar .button:checked:insensitive:not(.suggested-action):not(.destructive-action) > .label, .frame.action-bar .button:checked:insensitive:not(.suggested-action):not(.destructive-action) > .label, .app-notification .button:checked:insensitive > .label,
+.toolbar:not(.search-bar) .button:checked:insensitive > .label, .titlebar .button:checked:insensitive:not(.suggested-action):not(.destructive-action) > .label, .header-bar .button:checked:insensitive:not(.suggested-action):not(.destructive-action) > .label, .frame.action-bar .button:checked:insensitive:not(.suggested-action):not(.destructive-action) > .label, .app-notification .button:checked:insensitive > .label,
 .button.flat:checked:insensitive > .label {
   color: inherit;
 }
@@ -531,8 +529,7 @@ GtkTreeView .entry:not(:selected), GtkTreeView .entry:not(:selected):focus {
   color: alpha(currentColor, 0.5);
 }
 
-.toolbar:not(.search-bar) .suggested-action.button:insensitive > .label, .titlebar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
-.header-bar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .frame.action-bar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .app-notification .suggested-action.button:insensitive > .label,
+.toolbar:not(.search-bar) .suggested-action.button:insensitive > .label, .titlebar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .header-bar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .frame.action-bar .suggested-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .app-notification .suggested-action.button:insensitive > .label,
 .button.suggested-action.flat:insensitive > .label {
   color: inherit;
 }
@@ -581,8 +578,7 @@ GtkTreeView .entry:not(:selected), GtkTreeView .entry:not(:selected):focus {
   color: alpha(currentColor, 0.5);
 }
 
-.toolbar:not(.search-bar) .destructive-action.button:insensitive > .label, .titlebar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label,
-.header-bar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .frame.action-bar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .app-notification .destructive-action.button:insensitive > .label,
+.toolbar:not(.search-bar) .destructive-action.button:insensitive > .label, .titlebar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .header-bar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .frame.action-bar .destructive-action.button:insensitive:not(.suggested-action):not(.destructive-action) > .label, .app-notification .destructive-action.button:insensitive > .label,
 .button.destructive-action.flat:insensitive > .label {
   color: inherit;
 }
@@ -638,9 +634,7 @@ GtkVolumeButton.button.text-button {
   padding-bottom: 3px;
 }
 
-
-.stack-switcher >
-.button.text-button {
+.stack-switcher > .button.text-button {
   padding: 7px 10px 8px;
 }
 
@@ -663,13 +657,12 @@ GtkVolumeButton.button.text-button {
 }
 
 .toolbar:not(.search-bar) .linked > .button, .titlebar .linked > .button:not(.suggested-action):not(.destructive-action),
-.header-bar .linked > .button:not(.suggested-action):not(.destructive-action), .frame.action-bar .linked > .button:not(.suggested-action):not(.destructive-action), .app-notification .linked > .button, .toolbar:not(.search-bar)
-.linked.vertical > .button, .titlebar
-.linked.vertical > .button:not(.suggested-action):not(.destructive-action),
-.header-bar
-.linked.vertical > .button:not(.suggested-action):not(.destructive-action), .frame.action-bar
-.linked.vertical > .button:not(.suggested-action):not(.destructive-action), .app-notification
-.linked.vertical > .button, .linked >
+.header-bar .linked > .button:not(.suggested-action):not(.destructive-action), .frame.action-bar .linked > .button:not(.suggested-action):not(.destructive-action), .app-notification .linked > .button,
+.toolbar:not(.search-bar) .linked.vertical > .button,
+.titlebar .linked.vertical > .button:not(.suggested-action):not(.destructive-action),
+.header-bar .linked.vertical > .button:not(.suggested-action):not(.destructive-action),
+.frame.action-bar .linked.vertical > .button:not(.suggested-action):not(.destructive-action),
+.app-notification .linked.vertical > .button, .linked >
 .button.flat,
 .linked.vertical >
 .button.flat {
@@ -677,13 +670,12 @@ GtkVolumeButton.button.text-button {
 }
 
 .toolbar:not(.search-bar) .linked > .image-button.button, .titlebar .linked > .image-button.button:not(.suggested-action):not(.destructive-action),
-.header-bar .linked > .image-button.button:not(.suggested-action):not(.destructive-action), .frame.action-bar .linked > .image-button.button:not(.suggested-action):not(.destructive-action), .app-notification .linked > .image-button.button, .toolbar:not(.search-bar)
-.linked.vertical > .image-button.button, .titlebar
-.linked.vertical > .image-button.button:not(.suggested-action):not(.destructive-action),
-.header-bar
-.linked.vertical > .image-button.button:not(.suggested-action):not(.destructive-action), .frame.action-bar
-.linked.vertical > .image-button.button:not(.suggested-action):not(.destructive-action), .app-notification
-.linked.vertical > .image-button.button, .linked >
+.header-bar .linked > .image-button.button:not(.suggested-action):not(.destructive-action), .frame.action-bar .linked > .image-button.button:not(.suggested-action):not(.destructive-action), .app-notification .linked > .image-button.button,
+.toolbar:not(.search-bar) .linked.vertical > .image-button.button,
+.titlebar .linked.vertical > .image-button.button:not(.suggested-action):not(.destructive-action),
+.header-bar .linked.vertical > .image-button.button:not(.suggested-action):not(.destructive-action),
+.frame.action-bar .linked.vertical > .image-button.button:not(.suggested-action):not(.destructive-action),
+.app-notification .linked.vertical > .image-button.button, .linked >
 .button.flat.image-button,
 .linked.vertical >
 .button.flat.image-button {
@@ -692,17 +684,13 @@ GtkVolumeButton.button.text-button {
 }
 
 .toolbar:not(.search-bar) .linked > .text-button.image-button.button, .titlebar .linked > .text-button.image-button.button:not(.suggested-action):not(.destructive-action),
-.header-bar .linked > .text-button.image-button.button:not(.suggested-action):not(.destructive-action), .frame.action-bar .linked > .text-button.image-button.button:not(.suggested-action):not(.destructive-action), .app-notification .linked > .text-button.image-button.button, .toolbar:not(.search-bar)
-.linked.vertical > .text-button.image-button.button, .titlebar
-.linked.vertical > .text-button.image-button.button:not(.suggested-action):not(.destructive-action),
-.header-bar
-.linked.vertical > .text-button.image-button.button:not(.suggested-action):not(.destructive-action), .frame.action-bar
-.linked.vertical > .text-button.image-button.button:not(.suggested-action):not(.destructive-action), .app-notification
-.linked.vertical > .text-button.image-button.button,
-.linked >
-.button.flat.text-button.image-button,
-.linked.vertical >
-.button.flat.text-button.image-button {
+.header-bar .linked > .text-button.image-button.button:not(.suggested-action):not(.destructive-action), .frame.action-bar .linked > .text-button.image-button.button:not(.suggested-action):not(.destructive-action), .app-notification .linked > .text-button.image-button.button,
+.toolbar:not(.search-bar) .linked.vertical > .text-button.image-button.button,
+.titlebar .linked.vertical > .text-button.image-button.button:not(.suggested-action):not(.destructive-action),
+.header-bar .linked.vertical > .text-button.image-button.button:not(.suggested-action):not(.destructive-action),
+.frame.action-bar .linked.vertical > .text-button.image-button.button:not(.suggested-action):not(.destructive-action),
+.app-notification .linked.vertical > .text-button.image-button.button, .linked > .button.flat.text-button.image-button,
+.linked.vertical > .button.flat.text-button.image-button {
   outline-radius: 2px;
   border-radius: 2px;
 }
@@ -717,20 +705,16 @@ GtkVolumeButton.button, .header-bar .button.titlebutton,
   background-size: 45px 45px, auto;
 }
 
-.stack-switcher >
-.button.needs-attention > .label,
-.stack-switcher >
-.button.needs-attention > GtkImage, .sidebar-item.needs-attention > .label {
+.stack-switcher > .button.needs-attention > .label,
+.stack-switcher > .button.needs-attention > GtkImage, .sidebar-item.needs-attention > .label {
   animation: needs_attention 270ms cubic-bezier(0, 0, 0.2, 1) forwards;
   background-repeat: no-repeat;
   background-position: right 3px;
   background-size: 6px 6px;
 }
 
-.stack-switcher >
-.button.needs-attention > .label:dir(rtl),
-.stack-switcher >
-.button.needs-attention > GtkImage:dir(rtl), .sidebar-item.needs-attention > .label:dir(rtl) {
+.stack-switcher > .button.needs-attention > .label:dir(rtl),
+.stack-switcher > .button.needs-attention > GtkImage:dir(rtl), .sidebar-item.needs-attention > .label:dir(rtl) {
   background-position: left 3px;
 }
 
@@ -3088,6 +3072,33 @@ EelEditableLabel.entry {
 }
 
 /* View */
+/********
+ * Nemo *
+ *******/
+NemoWindow .nemo-inactive-pane .view, NemoWindow .nemo-inactive-pane iconview {
+  background-color: #F5F5F5;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+NemoWindow .sidebar .cell {
+  background-color: #EEEEEE;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+NemoWindow .sidebar .cell:selected {
+  color: #FFFFFF;
+  background-color: #338DD6;
+}
+
+.nemo-desktop.nemo-canvas-item {
+  color: #FFFFFF;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.nemo-desktop.nemo-canvas-item:selected {
+  text-shadow: none;
+}
+
 /**************
  * Tweak Tool *
  **************/
