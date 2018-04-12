@@ -32,7 +32,7 @@
     background-image: url(assets/close-window.svg);
     height: 32px;
     width: 32px;
-    -cinnamon-close-overlap: 16px;
+    -cinnamon-close-overlap: 20px;
     &:rtl {
         -st-background-image-shadow: 2px 2px 6px rgba(0,0,0,0.5);
     }
@@ -44,7 +44,7 @@
 .window-caption {
     @include font(caption);
     background-color: rgba(0, 0, 0, 0.01);
-    color: $titlebar_hint_fg_color;
+    color: $titlebar_secondary_fg_color;
     padding: 4px 6px;
     text-align: center;
     height: 1.5em;
@@ -76,21 +76,25 @@
 .expo-workspaces-name-entry {
     @include font(body-1);
     background-color: rgba(0, 0, 0, 0.01);
-    color: $titlebar_hint_fg_color; 
+    color: $titlebar_secondary_fg_color; 
     padding: 4px 6px;
     selection-background-color: $titlebar_track_color;
     selected-color: $titlebar_fg_color;
     caret-color: $titlebar_hint_fg_color;
     text-align: center;
     height: 1.5em;
+    border-radius: 2px;
     -cinnamon-caption-spacing: 12px;
     &#selected {
-        box-shadow: 0 -3px 0 0 $accent-color inset;
+        color: $titlebar_fg_color;
+        background-color: $titlebar_track_color;
     }
     &:focus {
         color: $titlebar_fg_color;
+        box-shadow: 0 -3px 0 0 $accent-color inset;
     }
-    &:hover {   
+    &:hover {
+        box-shadow: 0 -3px 0 0 $accent-color inset;   
     }
 }
 // hot corners animation
