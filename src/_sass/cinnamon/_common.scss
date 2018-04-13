@@ -1,0 +1,1434 @@
+// defines font family and standard font size across the whole theme
+// em is preferred for better support for text scaling
+stage {
+  @include font(body-1);
+
+  font-family: $font-family;
+  color: $fg_color;
+}
+.cinnamon-link {
+  color: $link_color;
+  font-style: italic;
+  &:hover {
+    color: $fg_color;
+  }
+}
+.label-shadow {
+  color: transparent;
+}
+// themeing for various standard elements
+StScrollBar {
+  padding: 0px;
+  StButton {
+    &#vhandle, &#hhandle {
+      background-color: $hint_fg_color;
+      border-radius: 100px;
+      margin: 4px;
+      &:hover {
+        background-color: $secondary_fg_color;
+      }
+    }
+  }
+  StBin#trough {
+    margin: 4px;
+    border-radius: 100px;
+    background-color: $divider_color;
+  }
+}
+StScrollView {
+  &.vfade {
+    -st-vfade-offset: 32px;
+  }
+  &.hfade {
+    -st-hfade-offset: 32px;
+  }
+  StScrollBar {
+    min-width: 16px;
+    min-height: 16px;
+  }
+}
+.separator {
+  @extend %separator-shared;
+}
+.slider {
+  @extend %slider-shared;
+}
+#Tooltip {
+  @include font(caption);
+  
+  padding: 6px 8px;
+  color: $tooltip_fg_color;
+  text-align: center;
+  border-radius: 2px;
+  background-color: rgba($tooltip_bg_color, $higher_opacity);
+}
+// applet menus. Note that cinnamon versions before 3.2 uses deprecated styles
+// .popup-menu and .popup-menu-boxpointer. These are excluded as it is not possible
+// due to other upstream changes to create a universal cinnamon theme that supports pre and post cinnamon 3.2
+.menu {
+  @extend %menu-shared;
+  min-width: 100px;
+  margin: 4px;
+}
+.popup-sub-menu {
+  background-color: $alt_lighter_bg_color;
+}
+.popup-menu-arrow {
+  icon-size: 1.14em;
+}
+// scale view right click menu
+.popup-combo-menu {
+  @extend %menu-shared;
+  padding: 8px;
+}
+.popup-menu-content{
+  padding: 8px;
+}
+
+// individual menu entries are themed here
+.popup-menu-item {
+	padding: 0.4em 4px;
+	transition-duration: $shorter_duration;
+  &:active {
+    background-color: $track_color;
+    color: $fg_color;
+    transition-duration: $longer_duration;
+  }
+  &:insensitive { color: $disabled_fg_color; }
+  }
+.popup-image-menu-item {
+  color: $secondary_fg_color;
+}
+.popup-combobox-item {
+  padding: 0.4em 4px;
+}
+// sliders and separators in menus
+.popup-separator-menu-item {
+  @extend %separator-shared;
+}
+.popup-slider-menu-item {
+  @extend %slider-shared;
+}
+.popup-device-menu-item {
+  spacing: .5em;
+}
+.popup-inactive-menu-item {
+  color: $fg_color;
+  &:insensitive { color: $hint_fg_color; }
+}
+.popup-subtitle-menu-item {
+  font-weight: bold;
+}
+.popup-menu-icon {
+  icon-size: 1.14em;
+  padding: 0px 4px;
+}
+.popup-menu-item-dot {
+}
+.popup-submenu-menu-item:open {
+}
+.popup-alternating-menu-item:alternate {
+  font-weight: bold;
+}
+// toggles in menus
+.toggle-switch {
+   width: 40px;
+   height: 20px;
+}
+.toggle-switch-us, .toggle-switch-intl {
+  background-image: url(assets/toggle-off.svg);
+  &:checked {
+    background-image: url(assets/toggle-on.svg);
+  }
+}
+.nm-menu-item-icons {
+  spacing: .5em;
+  icon-size: 1.14em;
+}
+// panels can be on any side of the screen
+// some panel item theming is specific to panel orientation and is included in this section
+// each panel is also split into three zones
+// dnd is for panel edit mode
+// dummy is for adding or moving panels
+#panel {
+  color: $titlebar_secondary_fg_color;
+  background-color: $panel-bg-color;
+  height: 2.5em;
+  width: 3.2em;
+  &:highlight {
+    background-color: $titlebar_track_color;
+  }
+}
+.panel-dummy {
+  background-color: rgba(255, 0, 0, 0.6);
+  &:entered {
+    background-color: rgba(0, 255, 0, 0.6);
+  }
+}
+.panelLeft {
+  spacing: 4px;
+  &:dnd {
+    background-color: rgba(255, 0, 0, 0.6);
+  }
+  &:ltr {
+    padding-right: 4px;
+  }
+  &:rtl {
+    padding-left: 4px;
+  }
+  &.vertical {
+    padding: 0;
+    &:dnd {
+    }
+  }
+}
+.panelCenter {
+  spacing: 4px;
+  &:dnd {
+    background-color: rgba(0, 255, 0, 0.6);
+  }
+  &.vertical {
+    padding-left: 0;
+    padding-right: 0;
+    &:dnd {
+    }
+  }
+}
+.panelRight {
+  spacing: 4px;
+  &:dnd {
+    background-color: rgba(0, 0, 255, 0.6);
+  }
+  &:ltr {
+    padding-left: 0;
+    spacing: 0;
+  }
+  &:rtl {
+    padding-right: 0;
+    spacing: 0;
+  }
+  &.vertical {
+    padding: 0;
+    &:dnd {
+    }
+  }
+}
+// orientation specific panel-item theming is defined here
+// non orientation specific theming for panel-items is defined later in the stylesheet
+.panel-top {
+  .window-list-item-box {
+    &:hover {
+      box-shadow: 0 3px 0 0 $accent-color inset;
+    }
+    &:active, &:checked, &:focus {
+      background-color: $titlebar_track_color;
+      color: $titlebar_fg_color;
+      &:hover {
+        box-shadow: 0 3px 0 0 $accent-color inset;
+      }
+    }
+  }
+  .workspace-switcher, .workspace-graph, .workspace-button {
+    padding: 1px 4px;
+  }
+  .workspace-graph, .workspace-button {;
+    &:hover {
+      box-shadow: 0 3px 0 0 $accent-color inset;
+    }
+  }
+  .applet-box {
+    padding: 1px 4px;
+    margin: 1px 0;
+    &:hover {
+      box-shadow: 0 3px 0 0 $accent-color inset;
+    }
+  }
+  .applet-label {
+  }
+  .panel-launchers .launcher:hover {
+    box-shadow: 0 3px 0 0 $accent-color inset;
+  }
+  .applet-separator {
+    padding: 3px 4px;
+  }
+  .systray:hover {
+    box-shadow: 0 4px 0 0 $accent-color inset;
+  }
+}
+.panel-bottom {
+  .window-list-item-box {
+    &:hover {
+      box-shadow: 0 -3px 0 0 $accent-color inset;
+    }
+    &:active, &:checked, &:focus {
+      background-color: $titlebar_track_color;
+      color: $titlebar_fg_color;
+      &:hover {
+        box-shadow: 0 -3px 0 0 $accent-color inset;
+      }
+    }
+  }
+  .workspace-switcher, .workspace-graph, .workspace-button {
+    padding: 1px 4px;
+  }
+  .workspace-graph, .workspace-button {;
+    &:hover {
+      box-shadow: 0 -3px 0 0 $accent-color inset;
+    }
+  }
+  .applet-box {
+    padding: 1px 4px;
+    margin: 1px 0;
+    &:hover {
+      box-shadow: 0 -3px 0 0 $accent-color inset;
+    }
+  }
+  .applet-label {
+  }
+  .panel-launchers .launcher:hover {
+    box-shadow: 0 -3px 0 0 $accent-color inset;
+  }
+  .applet-separator {
+    padding: 3px 4px;
+  }
+  .systray:hover {
+    box-shadow: 0 4px 0 0 $accent-color inset;
+  }
+}
+.panel-left {
+  .window-list-item-box {
+    &:hover {
+      box-shadow: 3px 0 0 0 $accent-color inset;
+    }
+    &:active, &:checked, &:focus {
+      background-color: $titlebar_track_color;
+      color: $titlebar_fg_color;
+      &:hover {
+        box-shadow: 3px 0 0 0 $accent-color inset;
+      }
+    }
+  }
+  .workspace-switcher, .workspace-graph, .workspace-button {
+    padding: 1px 4px;
+  }
+  .workspace-graph, .workspace-button {;
+    &:hover {
+      box-shadow: 3px 0 0 0 $accent-color inset;
+    }
+  }
+  .applet-box {
+    padding: 4px 1px;
+    margin: 0 1px;
+    &:hover {
+      box-shadow: 3px 0 0 0 $accent-color inset;
+    }
+  }
+  .applet-label {
+  }
+  .panel-launchers .launcher:hover {
+    box-shadow: 3px 0 0 0 $accent-color inset;
+  }
+  .applet-separator {
+    padding: 4px 3px;
+  }
+  .systray:hover {
+    box-shadow: 4px 0 0 0 $accent-color inset;
+  }
+}
+.panel-right {
+    .window-list-item-box {
+    &:hover {
+      box-shadow: -3px 0 0 0 $accent-color inset;
+    }
+    &:active, &:checked, &:focus {
+      background-color: $titlebar_track_color;
+      color: $titlebar_fg_color;
+      &:hover {
+        box-shadow: -3px 0 0 0 $accent-color inset;
+      }
+    }
+  }
+  .workspace-switcher, .workspace-graph, .workspace-button {
+    padding: 1px 4px;
+  }
+  .workspace-graph, .workspace-button {;
+    &:hover {
+      box-shadow: -3px 0 0 0 $accent-color inset;
+    }
+  }
+  .applet-box {
+    padding: 4px 1px;
+    margin: 0 1px;
+    &:hover {
+      box-shadow: -3px 0 0 0 $accent-color inset;
+    }
+  }
+  .applet-label {
+  }
+  .panel-launchers .launcher:hover {
+    box-shadow: -3px 0 0 0 $accent-color inset;
+  }
+  .applet-separator {
+    padding: 4px 3px;
+  }
+  .systray:hover {
+    box-shadow: -4px 0 0 0 $accent-color inset;
+  }
+}
+// possibily deprecated - referenced in keyboard applet only
+.panel-status-button {
+  -natural-hpadding: 4px;
+  -minimum-hpadding: 4px;
+  font-weight: bold;
+  color: $titlebar_secondary_fg_color;
+  height: 2em;
+  &:hover {
+    color: $titlebar_fg_color;
+  }
+}
+// used by power applet to warn of low battery
+.system-status-icon {
+  icon-size: 1.14em;
+  padding: 0;
+  spacing: 0;
+  &.warning {
+    color: $warning_color;
+  }
+  &.error {
+    color: $error_color;
+  }
+}
+// a non feature - not worth themeing
+.panel-corner {
+  &:active {
+  }
+  &:overview {
+  }
+  &:focus {
+  }
+}
+// expo & scale view section
+#overview {
+  spacing: 12px;
+}
+.window-caption {
+  @include font(caption);
+
+  background-color: rgba(0, 0, 0, 0.01);
+  color: $titlebar_secondary_fg_color;
+  padding: 4px 6px;
+  text-align: center;
+  height: 1.5em;
+  -cinnamon-caption-spacing: 12px;
+  &#selected {
+    color: $titlebar_fg_color;
+    box-shadow: 0 -3px 0 0 $accent-color inset;
+  }
+}
+.workspace-controls {
+  visible-height: 32px;
+}
+.workspace-thumbnails-background {
+  color: $titlebar_secondary_fg_color;
+  background-color: $inverse_panel_bg_color;
+  border: none;
+  padding: 8px;
+  border-radius: 2px 0 0 2px;
+  &:rtl { border-radius: 0 2px 2px 0;}
+}
+.workspace-thumbnails {
+  spacing: 32px;
+}
+.workspace-add-button {
+  background-image: url(assets/add-workspace.svg);
+  height: 200px;
+  width: 35px;
+  transition-duration: shorter_duration;
+  &:hover {
+    background-image: url(assets/add-workspace-hover.svg);
+  }
+  &:active {
+    background-image: url(assets/add-workspace-active.svg);
+  }
+}
+.workspace-close-button, .window-close {
+  background-image: url(assets/close-window.svg);
+  height: 32px;
+  width: 32px;
+  -cinnamon-close-overlap: 20px;
+  &:rtl {
+    -st-background-image-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+  }
+}
+.window-close-area {
+  background-image: url(assets/trash-icon.png);
+  background-size: 100px;
+  background-color: $alt_panel_bg_color;
+  border: 1px solid $border_color;
+  border-bottom-width: 0;
+  border-radius: 20px 20px 0 0;
+  height: 120px;
+  width: 400px;
+}
+// this is OK with solid or transparent backgrounds
+.expo-background {
+  background-color: $panel_bg_color;
+}
+// this always looks better semi transparent
+.workspace-overview-background-shade {
+  background-color: $panel_bg_color;
+}
+.expo-workspace-thumbnail-frame {
+  border: 1px solid $border_color;
+  &#active {
+    border: 1px solid $accent_color;
+  }
+}
+// dialog box for the cinnamon debug utility
+#LookingGlassDialog {
+  @extend %osd-panel-shared;
+
+  spacing: 4px;
+  padding: 8px;
+}
+// the calendar displayed by the calendar applet is a heavily modified menu and inherits from the .menu selectosr
+// indivudual elements within the menu can be themed seperately with these selectors
+.calendar {
+  padding: 4px 8px;
+  spacing-rows: 2px;
+  spacing-columns: 4px;
+}
+// also covers the year label
+.datemenu-date-label {
+    @include font(title);
+
+    height: $menuitem_size - 2px * 2;
+    margin: 2px;
+    padding: 6px 16px;
+    border-radius: 2px;
+    color: $fg_color;
+    text-align: center;
+    &:focus { background-color: $divider_color }; 
+}
+.calendar-month-label {
+    @include font(body-2);
+
+    height: $menuitem_size - 6px * 2;
+    margin: 2px;
+    padding: 6px 16px;
+    border-radius: 2px;
+    color: $fg_color;
+    text-align: center;
+    &:focus { background-color: $divider_color }; 
+}
+.calendar-change-month-back {
+  @extend %calendar-shared;
+
+  background-image: url(assets/calendar-arrow-left.svg);
+  &:rtl {
+    background-image: url(assets/calendar-arrow-right.svg);
+  }
+}
+.calendar-change-month-forward {
+  @extend %calendar-shared;
+
+  background-image: url(assets/calendar-arrow-right.svg);
+  &:rtl {
+    background-image: url(assets/calendar-arrow-left.svg);
+  }
+}
+.calendar-day-base {
+  @include font(caption);
+
+  text-align: center;
+  width: $menuitem_size; height: $menuitem_size;
+  padding: 0;
+  margin: 2px;
+  border-radius: 100px;
+  &:hover,&:focus { background-color: $track_color; }
+  &:active {
+    color: $inverse_fg_color;
+    background-color: $accent_color;
+    border-color: transparent; 
+  }
+}
+.calendar-week-number {
+  @include font(caption);
+
+  width: $menuitem_size - 7px; height: $menuitem_size;
+  margin: 2px;
+  padding: 0;
+  border-radius: 100px;
+  background-color: transparent;
+  color: $hint_fg_color;
+  text-align: center;
+}
+.calendar-day-heading  {
+  @include font(caption);
+
+  width: $menuitem_size; height: $menuitem_size - 7px;
+  margin: 2px;
+  padding: 0;
+  border-radius: 100px;
+  background-color: transparent;
+  color: $hint_fg_color;
+  text-align: center;
+}
+.calendar-day {
+  border-width: 0;
+}
+.calendar-day-top { 
+  border-top-width: 0; 
+}
+.calendar-day-left {
+  border-left-width: 0; 
+}
+.calendar-work-day {
+}
+.calendar-nonwork-day {
+  color: $fg_color;
+}
+.calendar-today {
+  font-weight: bold;
+  border: none;
+}
+.calendar-day-with-events {
+  color: $link_color;
+  font-weight: normal;
+  text-decoration: underline;
+  background-image: none;
+}
+.calendar-other-month-day {
+  color: $disabled_secondary_fg_color;
+  opacity: 0.5;
+}
+.calendar-week-number {
+  width: $menuitem_size; height: $menuitem_size - 7px;
+  margin: 2px;
+  padding: 7px 0 0;
+  border-radius: 100px;
+  background-color: transparent;
+  color: $hint_fg_color;
+  font-size: inherit;
+  font-weight: bold;
+  text-align: center;
+}
+// notification system
+#notification {
+  background-color: $alt_lighter_bg_color;
+  border-radius: 2px;
+  border: 1px solid $border_color;
+  padding: 8px;
+  spacing-rows: 4px;
+  spacing-columns: 8px;
+  margin-from-right-edge-of-screen: 20px;
+  width: 34em;
+  color: $fg_color;
+  box-shadow: $shadow_2;
+  &.multi-line-notification {
+    padding-bottom: 8px;
+  }
+  StEntry {
+    @extend %dialog-entry-shared;
+  }
+  .url-highlighter {
+    link-color: $link_color;
+  }
+}
+// min height 159px is required to avoid stretching/distortion of notification image
+.notification-with-image {
+  min-height: 159px;
+  color: $fg_color;
+}
+#notification-scrollview {
+  max-height: 10em;
+  > {
+    .top-shadow {
+      height: 1em;
+    }
+    .bottom-shadow {
+      height: 1em;
+    }
+  }
+  &:ltr > StScrollBar {
+    padding-left: 6px;
+  }
+  &:rtl > StScrollBar {
+    padding-right: 6px;
+  }
+}
+#notification-body {
+  spacing: 4px;
+}
+#notification-actions {
+  spacing: 8px;
+}
+.notification-button {
+  @extend %button-shared;
+}
+.notification-icon-button {
+  @extend %icon-button-shared;
+
+  > StIcon {
+    icon-size: 1.5em;
+  }
+}
+// non 3D alt-tab options
+#altTabPopup {
+  padding: 8px;
+  spacing: 16px;
+}
+.switcher-list {
+  @extend %osd-panel-shared;
+
+  transition-duration: $shorter_duration;
+  .item-box {
+    padding: 8px;
+    border-radius: 2px;
+    &:selected {
+      background-color: $divider_color;
+    }
+  }
+  .thumbnail-box {
+    padding: 2px;
+    spacing: 4px;
+  }
+  .thumbnail {
+    width:  256px
+  }
+  .separator {
+    width: 1px;
+    background: $border_color;
+  }
+}
+.switcher-list-item-container {
+  spacing: 8px;
+}
+.thumbnail-scroll-gradient-left {
+  background-gradient-direction: horizontal;
+  background-gradient-start: rgba(51, 51, 51, 1.0);
+  background-gradient-end: rgba(51, 51, 51, 0);
+  border-radius: 2px;
+  border-radius-topright: 0;
+  border-radius-bottomright: 0;
+  width: 60px;
+}
+.thumbnail-scroll-gradient-right {
+  background-gradient-direction: horizontal;
+  background-gradient-start: rgba(51, 51, 51, 0);
+  background-gradient-end: rgba(51, 51, 51, 1.0);
+  border-radius: 2px;
+  border-radius-topleft: 0;
+  border-radius-bottomleft: 0;
+  width: 60px;
+}
+.switcher-arrow {
+  border-color: rgba(0,0,0,0);
+  color: $hint_fg_color;
+  &:highlighted {
+    color: $fg_color;
+  }
+}
+.switcher-preview-backdrop {
+  background-color: $panel_bg_color;
+}
+// hot corners animation
+.ripple-box {
+  width: 104px;
+  height: 104px;
+  background-image: url(assets/corner-ripple.png);
+  background-color: $accent_color;
+  border-radius: 52px;
+}
+// on screen messages and input boxes
+.modal-dialog {
+	@extend %osd-panel-shared;
+
+  padding: 16px 20px;
+}
+.modal-dialog-button-box {
+  spacing: 16px;
+}
+.modal-dialog-button {
+  @extend %button-shared;
+}
+.info-osd {
+  @extend %osd-info-workspace-shared;
+}
+// run dialog (ALT-F2)
+.run-dialog-label {
+  color: $hint_fg_color;
+  padding-bottom: .4em;
+}
+.run-dialog-error-label {
+  color: $error_color;
+}
+.run-dialog-error-box {
+  padding-top: 16px;
+  spacing: 6px;
+}
+.run-dialog-completion-box {
+  padding-left: 15px;
+}
+.run-dialog-entry {
+    @extend %dialog-entry-shared;
+}
+.run-dialog {
+  border-radius: 2px;
+  padding: 16px 20px;
+}
+// this is an full screen overlay that is displayed with any cinnamon OSD or modal dialog which needs to always be semi transparent
+.lightbox {
+  background-color: $alt_panel_bg_color;
+}
+// removable media dialogs
+.cinnamon-mount-operation-icon {
+  icon-size: 4.8em;
+}
+.mount-password-reask {
+  color: $warning_color;
+}
+.show-processes-dialog {
+  spacing: 24px;
+}
+.mount-question-dialog {
+  spacing: 24px;
+}
+.show-processes-dialog-subject {
+  @extend %dialogs-subject-shared;
+
+  &:rtl {
+    @extend %dialogs-subject-rtl-shared;
+  }
+}
+.mount-question-dialog-subject {
+  @extend %dialogs-subject-shared;
+
+  &:rtl {
+    @extend %dialogs-subject-rtl-shared;
+  }
+}
+.show-processes-dialog-description {
+  @extend %dialogs-description-shared;
+
+  &:rtl {
+    padding-right: 17px;
+  }
+}
+.mount-question-dialog-description {
+  @extend %dialogs-description-shared;
+
+  &:rtl {
+    padding-right: 17px;
+  }
+}
+.show-processes-dialog-app-list {
+  max-height: 200px;
+  padding-top: 24px;
+  padding-left: 49px;
+  padding-right: 32px;
+  &:rtl {
+    padding-right: 49px;
+    padding-left: 32px;
+  }
+}
+.show-processes-dialog-app-list-item {
+  color: $fg_color;
+  &:hover {
+    color: $fg_color;
+  }
+  &:ltr {
+    padding-right: 1em;
+  }
+  &:rtl {
+    padding-left: 1em;
+  }
+}
+.show-processes-dialog-app-list-item-icon {
+  &:ltr {
+    padding-right: 17px;
+  }
+  &:rtl {
+    padding-left: 17px;
+  }
+}
+.show-processes-dialog-app-list-item-name {
+}
+// desktop zoom feature
+.magnifier-zoom-region {
+  border: 3px solid $border_color;
+  &.full-screen {
+    border-width: 0;
+  }
+}
+// on screen keyboard
+#keyboard {
+  background-color: $panel_bg_color;
+}
+.keyboard-key {
+  @extend %icon-button-shared;
+  @include font(button);
+}
+.keyboard-layout {
+  spacing: 8px;
+  padding: 8px;
+}
+.keyboard-row {
+  spacing: 16px;
+}
+.keyboard-subkeys { //long press on a key popup
+  color: inherit;
+  padding: 5px;
+  -arrow-border-radius: 0;
+  -arrow-background-color: transparent;
+  -arrow-border-width: 0;
+  -arrow-border-color: transparent;
+  -arrow-base: 0;
+  -arrow-rise: 0;
+  -boxpointer-gap: 5px;
+  background-color: $bg_color;
+  border-radius: 2px;
+  box-shadow: $shadow_2;
+}
+// main menu applet
+.menu-favorites-box {
+  padding: 8px;
+}
+.menu-favorites-button {
+  padding: 0.4em 4px;
+  &:hover {
+     background-color: $divider_color;
+     border-radius: 2px;
+     color: $fg_color;
+  }
+}
+.menu-categories-box {
+  padding: 8px;
+}
+.menu-applications-inner-box {
+  padding: 8px;
+}
+.menu-applications-outer-box {
+  padding: 8px;
+  border-radius: 2px;
+}
+.menu-application-button {
+  padding: 0.4em 4px;
+  &:highlighted {
+    font-weight: bold;
+  }
+}
+.menu-application-button-selected {
+  padding: 0.4em 4px;
+  background-color: $divider_color;
+  border-radius: 2px;
+  color: $fg_color;
+  &:highlighted {
+    font-weight: bold;
+  }
+}
+.menu-application-button-label {
+  @extend %menu-button-label-shared;
+}
+.menu-category-button {
+	padding: 0.4em 4px;
+}
+.menu-category-button-greyed {
+  padding: 0.4em 4px;
+  color: $secondary_fg_color;
+  font-style: italic;
+}
+.menu-category-button-selected {
+  padding: 0.4em 4px;
+  background-color: $divider_color;
+  border-radius: 2px;
+  color: $fg_color;
+  &:hover {
+  }
+}
+.menu-category-button-label {
+  @extend %menu-button-label-shared;
+}
+// in the stock menu app descriptions are shown at the base of the menu
+.menu-selected-app-box {
+  padding: 8px;
+  margin-bottom: 4px;
+  text-align: right;
+  &:rtl {
+    text-align: left;
+  }
+}
+.menu-selected-app-title {
+  @include font(caption);
+}
+.menu-selected-app-description {
+  @include font(caption);
+
+  max-width: 150px;
+}
+// the menus search box
+.menu-search-box {
+  &:ltr {
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+  &:rtl {
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+}
+#menu-search-entry {
+  @extend %dialog-entry-shared;
+}
+.menu-search-entry-icon {
+  icon-size: 1em;
+  padding: 0 0;
+  color: $hint_fg_color;
+}
+// the window list applet. Some third party applets inherit some of this theming.
+.window-list-box {
+  @include font(caption);
+  
+  spacing: 4px;
+  padding: 0 3px;
+  &.vertical {
+    spacing: 4px;
+    padding: 3px 0;
+  }
+  #appMenuIcon {
+  }
+  &:highlight {
+    background: $titlebar_track_color;
+    color: $titlebar_fg_color;
+    }
+}
+.window-list-item-label {
+}
+// progress was added with cinnamon 3.6 and allows compatible applications to use the window list as a progress bar
+.window-list-item-box {
+  background-color: rgba(0, 0, 0, 0.01);
+  transition-duration: $shorter_duration;
+  &:hover {
+    color: $titlebar_fg_color;
+  }
+  &:highlight {
+  }
+  .progress {
+    background-color: $success_color;
+  }
+}
+.window-list-item-demands-attention {
+  background-color: $info_bg_color;
+  color: $titlebar_secondary_fg_color;
+}
+// cinnamon 3.8 will support an improved window-list-thumbnail preview which now has it's own selector
+.window-list-preview {
+  background-color: $alt_lighter_bg_color;
+  border-radius: 2px;
+  padding: 10px 15px;
+  spacing: 1em;
+  color: $fg_color;
+}
+// the sound player applet
+.sound-player {
+  StButton {
+    @extend %icon-button-shared;
+
+    &:small {
+      min-width: $small_size;
+      min-height: $small_size;
+      padding: 4px;
+      StIcon {
+        icon-size: 1em;
+      }
+    }
+    StIcon {
+      icon-size: 1.5em;
+    }
+  }
+  .slider {
+    @extend %slider-shared;
+
+    height: 5px;
+  }
+  StBoxLayout {
+    spacing: 0.5em;
+  }
+  > StBoxLayout {
+    padding: 5px;
+  }
+}
+.sound-player-generic-coverart {
+  background: rgba(0,0,0,0.2);
+}
+.sound-player-overlay {
+  background-color: $alt_lighter_bg_color;
+  min-width: 300px;
+  padding: 12px 16px;
+  spacing: 0.5em;
+  color: $secondary_fg_color;
+}
+// workspace switcher applet simple button view
+.workspace-button {
+  background-color: $opaque_panel_bg_color;
+  width: 2em;
+  height: 1em;
+  color: $titlebar_secondary_fg_color;
+  margin: 2px;
+  &:outlined {
+    background-color: $titlebar_track_color;
+    color: $titlebar_fg_color;
+  }
+}
+// workspace switcher applet graph view
+.workspace-graph {
+   background-color: $panel_bg_color;
+  .workspace {
+    background-color: $opaque_panel_bg_color;
+    border: 1px solid $border_color;
+    &:active {
+      background-color: $titlebar_track_color;
+
+      border: 1px solid $border_color;
+      .windows {
+        -active-window-background: rgba(255, 255, 255, 0.8);
+        -active-window-border: rgba(0, 0, 0, 0.9);
+        -inactive-window-background: rgba(140, 140, 140, 0.8);
+        -inactive-window-border: rgba(0, 0, 0, 0.7);
+      }
+    }
+    .windows {
+      -active-window-background: rgba(140, 140, 140, 0.8);
+      -active-window-border: rgba(0, 0, 0, 0.7);
+      -inactive-window-background: rgba(140, 140, 140, 0.8);
+      -inactive-window-border: rgba(0, 0, 0, 0.7);
+    }
+  }
+}
+// most panel launcher themeing is orientation specific
+.panel-launchers {
+  padding: 0 4px;
+  spacing: 4px;
+  transition-duration: $shorter_duration;
+  .launcher {
+    background-color:rgba(0, 0, 0, 0.01);
+  }
+  &.vertical {
+    padding: 4px 0;
+    spacing: 4px;
+    .launcher .icon-box {
+      padding-top: 0;
+    }
+  }
+}
+// applets in general
+.applet-separator-line, .applet-separator-line-vertical {
+  width: 2px;
+  background: $titlebar_divider_color;
+}
+.applet-spacer:highlight {
+  background: $highlight_color;
+}
+.applet-box {
+  background-color: rgba(0, 0, 0, 0.01);
+  color: $titlebar_secondary_fg_color;
+  transition-duration: $shorter_duration;
+  &:checked {
+    color: $titlebar_fg_color;
+    .applet-label {
+      color: $titlebar_fg_color;
+    }
+  }
+  &:hover {
+    color: $titlebar_fg_color;
+    .applet-label {
+      color: $titlebar_fg_color;
+    }
+  }
+  &:highlight {
+    background: $titlebar_track_color;
+    color: $titlebar_fg_color;
+    .applet-label {
+      color: $titlebar_fg_color;
+    }
+  }
+}
+.applet-label {
+  @include font(body-2);
+
+  color: $titlebar_secondary_fg_color;
+}
+// icon-size set to 22 to match hard-coded menu icon size - applet-icon style is used for search provider results in menu
+.applet-icon {
+  color: $titlebar_secondary_fg_color;
+  padding: 0;
+  spacing: 0;
+  icon-size: 22px;
+}
+// desklets - the base .desklet selector is for 'undecorated' desklets however some subtle background themeing is desirable
+// to maintain visibility irrespctive of wallpaper and to allow for the highlighting scheme to work
+.desklet {
+  @include font(caption);
+  
+  color: $titlebar_fg_color;
+  border: none;
+  box-shadow: $shadow_4;
+  padding: 12px;
+  background-color: $alt_panel_bg_color;
+  border-radius: 2px
+}
+// these do not inherit from .desklet
+.desklet-with-borders {
+  @extend %desklet-shared;
+  @include font(caption);
+
+	background-color: $alt_lighter_bg_color;
+  border-radius: 2px;
+  &:highlight {
+    background-color: $highlight_color;
+  }
+}
+.desklet-with-borders-and-header {
+  @extend %desklet-shared;
+  @include font(caption);
+  
+  background-color: $alt_lighter_bg_color;
+  border-radius-bottomleft: 2px;
+  border-radius-bottomright: 2px;
+  &:highlight {
+    background-color: $highlight_color;
+  }
+}
+.desklet-header {
+  @include font(title)
+  @extend %desklet-shared;
+
+  background-color: $alt_lighter_bg_color;
+  border-radius-topleft: 2px;
+  border-radius-topright: 2px;
+  &:highlight {
+    background-color: $highlight_color;
+  }
+}
+.photoframe-box {
+  @extend %desklet-shared;
+  
+  background-color: $alt_lighter_bg_color;
+  border-radius: 2px;
+  &:highlight {
+    background-color: $highlight_color;
+  }
+}
+.desklet-drag-placeholder {
+  border: 2px solid $accent_color;
+  background-color: $alt_panel_bg_color;
+  border-radius: 2px;
+}
+.launcher {
+  padding: 1px;
+  .icon-box {
+    padding-top: 2px;
+  }
+}
+// applet 'about' OSDs - inherits from modal dialogs
+.about-content {
+  min-width: 250px;
+  min-height: 150px;
+  spacing: 8px;
+  padding-bottom: 16px;
+}
+.about-title {
+  @include font(title);
+}
+.about-uuid {
+  @include font(caption);
+}
+.about-icon {
+  padding-right: 20px;
+}
+.about-scrollBox {
+  border: 1px solid $border_color;
+  border-radius: 2px;
+}
+.about-scrollBox-innerBox {
+  padding: 1.2em;
+  spacing: 1.2em;
+}
+.about-description {
+  padding-top: 4px;
+}
+.about-version {
+  padding-left: 7px;
+}
+.workspace-osd {
+  @extend %osd-info-workspace-shared;  
+}
+.expo-workspaces-name-entry {
+  @include font(body-1);
+
+  background-color: rgba(0, 0, 0, 0.01);
+  color: $titlebar_secondary_fg_color; 
+  padding: 4px 6px;
+  selection-background-color: $titlebar_track_color;
+  selected-color: $titlebar_fg_color;
+  caret-color: $titlebar_hint_fg_color;
+  text-align: center;
+  height: 1.5em;
+  border-radius: 2px;
+  -cinnamon-caption-spacing: 12px;
+  &#selected {
+    color: $titlebar_fg_color;
+    background-color: $titlebar_track_color;
+  }
+  &:focus {
+    color: $titlebar_fg_color;
+    box-shadow: 0 -3px 0 0 $accent-color inset;
+  }
+  &:hover {
+    box-shadow: 0 -3px 0 0 $accent-color inset;
+  }
+}
+.notification-applet-padding {
+  padding: .5em 1em;
+}
+.notification-applet-container {
+  max-height: 100px;
+}
+.check-box {
+  CinnamonGenericContainer {
+    spacing: 8px;
+  }
+  StBin {
+    @extend %check-box-shared;
+  }
+  &:focus {
+    StBin {
+      @extend %check-box-shared;
+    }
+    &:checked StBin {
+      background-image: url(assets/checkbox.svg);
+    }
+  }
+  StLabel {
+  }
+  &:checked StBin {
+    background-image: url(assets/checkbox.svg);
+  }
+}
+.radiobutton {
+  CinnamonGenericContainer {
+    spacing: 8px;
+  }
+  StBin {
+    @extend %radiobutton-shared;
+  }
+  &:focus {
+    StBin {
+      @extend %radiobutton-shared;
+    }
+    &:checked StBin {
+      background-image: url(assets/radiobutton.svg);
+    }
+  }
+  StLabel {
+  }
+  &:checked StBin {
+    background-image: url(assets/radiobutton.svg);
+  }
+}
+.flashspot {
+  background-color: $accent_color;
+}
+// displayed when media keys are pressed.
+.osd-window {
+  @extend %osd-panel-shared;
+
+  spacing: 1em;
+  padding: 16px;
+  .level {
+    height: 0.7em;
+    border-radius: 0.3em;
+    background-color: $track_color;
+  }
+  .level-bar {
+    border-radius: 0.3em;
+    background-color: $accent_color;
+  }
+}
+// on screen preview of windows tiling placement
+.tile-preview {
+  @extend %tile-shared;
+
+  &.snap {
+    @extend %tile-shared-snap;
+  }
+}
+.tile-hud {
+  @extend %tile-shared;
+
+  &.snap {
+    @extend %tile-shared-snap;
+  }
+  &:top {
+    border-top-width: 0;
+
+    border-radius: 0 0 10px 10px;
+  }
+  &:bottom {
+    border-bottom-width: 0;
+
+    border-radius: 2px 2px 0 0;
+  }
+  &:left {
+    border-left-width: 0;
+
+    border-radius: 0 10px 10px 0;
+  }
+  &:right {
+    border-right-width: 0;
+
+    border-radius: 10px 0 0 10px;
+  }
+  &:top-left {
+    border-top-width: 0;
+    border-left-width: 0;
+
+    border-radius: 0 0 10px 0;
+  }
+  &:top-right {
+    border-top-width: 0;
+    border-right-width: 0;
+
+    border-radius: 0 0 0 10px;
+  }
+  &:bottom-left {
+    border-bottom-width: 0;
+    border-left-width: 0;
+
+    border-radius: 0 10px 0 0;
+  }
+  &:bottom-right {
+    border-bottom-width: 0;
+    border-right-width: 0;
+
+    border-radius: 10px 0 0 0;
+  }
+}
+.systray {
+  spacing: 4px;
+}
+// user-applet specific themeing - overrides applet stylesheet
+.user-box {
+  padding: 0.4em 1.3em;
+  spacing: 10px;
+}
+.user-icon {
+  padding: 4px;
+  border: none;
+}
+.user-label {
+  color: $titlebar_secondary_fg_color;
+  font-weight: bold;
+}

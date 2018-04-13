@@ -63,6 +63,8 @@ fi
 
 PATHLIST=(
 	'./src/chrome'
+	'./src/cinnamon'
+    './src/cinnamon/assets'
 	'./src/gnome-shell'
 	'./src/gtk-2.0/gtkrc'
 	'./src/gtk-2.0/gtkrc-dark'
