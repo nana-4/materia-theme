@@ -56,12 +56,10 @@ sudo apt install materia-gtk-theme
 
 #### Arch Linux
 
-Package is available via [AUR](https://aur.archlinux.org/packages/materia-theme/) (maintained by @cthbleachbit):
+[Official package](https://www.archlinux.org/packages/community/any/materia-gtk-theme/) (maintained by @ArchangeGabriel):
 
 ```
-git clone https://aur.archlinux.org/materia-theme.git
-cd materia-theme
-makepkg -si
+sudo pacman -S materia-gtk-theme
 ```
 
 #### Fedora / EPEL
