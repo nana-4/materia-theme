@@ -1,8 +1,8 @@
 #! /bin/bash
 set -ueo pipefail
 
-INKSCAPE="/usr/bin/inkscape"
-OPTIPNG="/usr/bin/optipng"
+INKSCAPE="$(which inkscape)"
+OPTIPNG="$(which optipng)"
 
 SRC_FILE="assets-dark.svg"
 ASSETS_DIR="assets-dark"
