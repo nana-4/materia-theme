@@ -2025,7 +2025,7 @@ scrollbar {
  * Switch *
  **********/
 switch {
-  transition: $longer_transition;
+  transition: background-color 100ms $deceleration_curve, opacity $longer_duration $deceleration_curve;
   margin: $container_padding 0;
   padding: 0 2px;
   border: 5px solid transparent;
@@ -2034,38 +2034,31 @@ switch {
   background-clip: padding-box;
   font-size: 0;
 
-  &:disabled { background-color: $divider_color; }
+  &:checked { background-color: rgba($accent_color, 0.5); }
 
-  &:checked {
-    background-color: rgba($accent_color, 0.5);
-
-    &:disabled { background-color: rgba($accent_color, 0.3); }
-  }
+  &:disabled { opacity: 0.5; }
 
   slider {
-    transition: $shorter_transition, $shadow_transition;
+    transition: all 100ms $deceleration_curve, box-shadow $longer_duration $deceleration_curve;
     min-width: 20px;
     min-height: 20px;
     margin: -3px -2px;
     border-radius: $circular_radius;
-    outline-width: 0;
-    outline-color: $divider_color;
-    outline-offset: 0;
-    -gtk-outline-radius: $circular_radius;
-    box-shadow: $shadow_1;
+    box-shadow: 0 0 0 10px transparent, $shadow_1;
     background-color: $lighter_bg_color;
+    color: $secondary_fg_color;
   }
 
-  &:focus slider { outline-width: (48px - 20px) / 2; }
+  &:hover slider { box-shadow: 0 0 0 10px gtkalpha(currentColor, 0.16), $shadow_1; }
 
-  &:hover slider { box-shadow: $shadow_2; }
+  &:focus slider { box-shadow: 0 0 0 10px gtkalpha(currentColor, 0.2), $shadow_1; }
+
+  &:focus:hover slider { box-shadow: 0 0 0 10px gtkalpha(currentColor, 0.24), $shadow_1; }
 
   &:checked slider {
     background-color: $accent_color;
-    outline-color: rgba($accent_color, 0.2);
+    color: $accent_color;
   }
-
-  &:disabled slider { background-color: $bg_color; }
 
   row:selected & {
   }
