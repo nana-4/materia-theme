@@ -2267,7 +2267,7 @@ radio:not(:checked) {
   & {
     transition: $longer_transition,
                 background-size $ripple_duration $deceleration_curve,
-                background-image $ripple_duration * 2 $deceleration_curve,
+                background-image $ripple_opacity_duration $deceleration_curve,
                 -gtk-icon-transform 0;
   }
 
@@ -2754,7 +2754,7 @@ row {
   &.activatable {
     transition: $row_transition,
                 background-size $ripple_duration $deceleration_curve,
-                background-image $ripple_duration * 2 $deceleration_curve;
+                background-image $ripple_opacity_duration $deceleration_curve;
     box-shadow: inset 0 0 0 9999px transparent;
     background-image: radial-gradient(circle farthest-corner at center,
                                       transparent 10%,
@@ -2767,7 +2767,7 @@ row {
       transition: $row_transition,
                   box-shadow 0,
                   background-size $ripple_duration $deceleration_curve,
-                  background-image $ripple_duration * 2 $deceleration_curve;
+                  background-image $ripple_opacity_duration $deceleration_curve;
       box-shadow: inset 0 0 0 9999px $row_fill_color;
     }
 
