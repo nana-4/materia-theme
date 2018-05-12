@@ -125,16 +125,15 @@
     <rect id="button-fill" width="24" height="24" rx="2" ry="2"/>
     <path id="check-path" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
 
-    <path id="slider-fill" d="M 21,10.5 A 10.5,10.5 0 0 1 10.5,21 10.5,10.5 0 0 1 0,10.5 10.5,10.5 0 0 1 10.5,0 10.5,10.5 0 0 1 21,10.5 Z"/>
-    <path id="slider-stroke" d="m10.5 0a10.5 10.5 0 0 0 -10.5 10.5 10.5 10.5 0 0 0 10.5 10.5 10.5 10.5 0 0 0 10.5 -10.5 10.5 10.5 0 0 0 -10.5 -10.5zm0 3a7.5 7.5 0 0 1 7.5 7.5 7.5 7.5 0 0 1 -7.5 7.5 7.5 7.5 0 0 1 -7.5 -7.5 7.5 7.5 0 0 1 7.5 -7.5z"/>
-    <path id="marks-slider-fill" d="m10.5 0a10.5 10.5 0 0 0 -10.5 10.5 10.5 10.5 0 0 0 10.5 10.5h10.5v-10.5a10.5 10.5 0 0 0 -10.5 -10.5z"/>
-    <path id="marks-slider-stroke" d="m10.5 0a10.5 10.5 0 0 0 -10.5 10.5 10.5 10.5 0 0 0 10.5 10.5h10.5v-10.5a10.5 10.5 0 0 0 -10.5 -10.5zm0 3a7.5 7.5 0 0 1 7.5 7.5v7.5h-7.5a7.5 7.5 0 0 1 -7.5 -7.5 7.5 7.5 0 0 1 7.5 -7.5z"/>
+    <circle id="slider-fill" cx="12" cy="12" r="6"/>
+    <circle id="slider-stroke" cx="12" cy="12" r="5"/>
+    <path id="marks-slider-fill" d="M12 6a6 6 0 0 0-6 6 6 6 0 0 0 6 6h6v-6a6 6 0 0 0-6-6z"/>
+    <path id="marks-slider-stroke" d="M12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h5v-5a5 5 0 0 0-5-5z"/>
 
     <rect id="box-fill" width="32" height="32" rx="2" ry="2"/>
 
     <rect id="16x16" width="16" height="16" opacity="0"/>
-    <rect id="21x21" width="21" height="21" opacity="0"/>
-    <rect id="21x26" width="21" height="26" opacity="0"/>
+    <rect id="24x24" width="24" height="24" opacity="0"/>
     <rect id="40x40" width="40" height="40" opacity="0"/>
     <rect id="48x48" width="48" height="48" opacity="0"/>
 
@@ -270,47 +269,47 @@
     </g>
 
     <g id="base-scale-slider">
-      <use xlink:href="#21x21"/>
+      <use xlink:href="#24x24"/>
       <use xlink:href="#slider-fill" fill="url(#color-accent)"/>
     </g>
 
     <g id="base-scale-slider-disabled">
-      <use xlink:href="#21x21"/>
+      <use xlink:href="#24x24"/>
       <use xlink:href="#slider-fill" fill="url(#color-bg)"/>
-      <use xlink:href="#slider-stroke" fill="url(#color-divider)"/>
+      <use xlink:href="#slider-stroke" fill="none" stroke="url(#color-divider)" stroke-width="2"/>
     </g>
 
     <g id="base-scale-slider-disabled-dark">
-      <use xlink:href="#21x21"/>
+      <use xlink:href="#24x24"/>
       <use xlink:href="#slider-fill" fill="url(#color-bg-dark)"/>
-      <use xlink:href="#slider-stroke" fill="url(#color-divider-dark)"/>
+      <use xlink:href="#slider-stroke" fill="none" stroke="url(#color-divider-dark)" stroke-width="2"/>
     </g>
 
     <g id="base-scale-horz-marks-after-slider">
-      <use xlink:href="#21x26"/>
-      <use xlink:href="#marks-slider-fill" transform="rotate(45 10.5 10.5)" fill="url(#color-accent)"/>
+      <use xlink:href="#24x24"/>
+      <use xlink:href="#marks-slider-fill" transform="rotate(45 12 12)" fill="url(#color-accent)"/>
     </g>
-    <use xlink:href="#base-scale-horz-marks-after-slider" id="base-scale-vert-marks-before-slider" transform="rotate(90 10.5 10.5)"/>
-    <use xlink:href="#base-scale-horz-marks-after-slider" id="base-scale-horz-marks-before-slider" transform="rotate(180 10.5 10.5)"/>
-    <use xlink:href="#base-scale-horz-marks-after-slider" id="base-scale-vert-marks-after-slider" transform="rotate(270 10.5 10.5)"/>
+    <use xlink:href="#base-scale-horz-marks-after-slider" id="base-scale-vert-marks-before-slider" transform="rotate(90 12 12)"/>
+    <use xlink:href="#base-scale-horz-marks-after-slider" id="base-scale-horz-marks-before-slider" transform="rotate(180 12 12)"/>
+    <use xlink:href="#base-scale-horz-marks-after-slider" id="base-scale-vert-marks-after-slider" transform="rotate(270 12 12)"/>
 
     <g id="base-scale-horz-marks-after-slider-disabled">
-      <use xlink:href="#21x26"/>
-      <use xlink:href="#marks-slider-fill" transform="rotate(45 10.5 10.5)" fill="url(#color-bg)"/>
-      <use xlink:href="#marks-slider-stroke" transform="rotate(45 10.5 10.5)" fill="url(#color-divider)"/>
+      <use xlink:href="#24x24"/>
+      <use xlink:href="#marks-slider-fill" transform="rotate(45 12 12)" fill="url(#color-bg)"/>
+      <use xlink:href="#marks-slider-stroke" transform="rotate(45 12 12)" fill="none" stroke="url(#color-divider)" stroke-width="2"/>
     </g>
-    <use xlink:href="#base-scale-horz-marks-after-slider-disabled" id="base-scale-vert-marks-before-slider-disabled" transform="rotate(90 10.5 10.5)"/>
-    <use xlink:href="#base-scale-horz-marks-after-slider-disabled" id="base-scale-horz-marks-before-slider-disabled" transform="rotate(180 10.5 10.5)"/>
-    <use xlink:href="#base-scale-horz-marks-after-slider-disabled" id="base-scale-vert-marks-after-slider-disabled" transform="rotate(270 10.5 10.5)"/>
+    <use xlink:href="#base-scale-horz-marks-after-slider-disabled" id="base-scale-vert-marks-before-slider-disabled" transform="rotate(90 12 12)"/>
+    <use xlink:href="#base-scale-horz-marks-after-slider-disabled" id="base-scale-horz-marks-before-slider-disabled" transform="rotate(180 12 12)"/>
+    <use xlink:href="#base-scale-horz-marks-after-slider-disabled" id="base-scale-vert-marks-after-slider-disabled" transform="rotate(270 12 12)"/>
 
     <g id="base-scale-horz-marks-after-slider-disabled-dark">
-      <use xlink:href="#21x26"/>
-      <use xlink:href="#marks-slider-fill" transform="rotate(45 10.5 10.5)" fill="url(#color-bg-dark)"/>
-      <use xlink:href="#marks-slider-stroke" transform="rotate(45 10.5 10.5)" fill="url(#color-divider-dark)"/>
+      <use xlink:href="#24x24"/>
+      <use xlink:href="#marks-slider-fill" transform="rotate(45 12 12)" fill="url(#color-bg-dark)"/>
+      <use xlink:href="#marks-slider-stroke" transform="rotate(45 12 12)" fill="none" stroke="url(#color-divider-dark)" stroke-width="2"/>
     </g>
-    <use xlink:href="#base-scale-horz-marks-after-slider-disabled-dark" id="base-scale-vert-marks-before-slider-disabled-dark" transform="rotate(90 10.5 10.5)"/>
-    <use xlink:href="#base-scale-horz-marks-after-slider-disabled-dark" id="base-scale-horz-marks-before-slider-disabled-dark" transform="rotate(180 10.5 10.5)"/>
-    <use xlink:href="#base-scale-horz-marks-after-slider-disabled-dark" id="base-scale-vert-marks-after-slider-disabled-dark" transform="rotate(270 10.5 10.5)"/>
+    <use xlink:href="#base-scale-horz-marks-after-slider-disabled-dark" id="base-scale-vert-marks-before-slider-disabled-dark" transform="rotate(90 12 12)"/>
+    <use xlink:href="#base-scale-horz-marks-after-slider-disabled-dark" id="base-scale-horz-marks-before-slider-disabled-dark" transform="rotate(180 12 12)"/>
+    <use xlink:href="#base-scale-horz-marks-after-slider-disabled-dark" id="base-scale-vert-marks-after-slider-disabled-dark" transform="rotate(270 12 12)"/>
 
     <g id="base-box">
       <use xlink:href="#48x48"/>

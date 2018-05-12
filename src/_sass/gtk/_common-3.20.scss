@@ -2323,22 +2323,25 @@ treeview.view radio:checked {
 scale {
   // sizing
   $_marks_length: 8px;
-  $_marks_distance: 8px;
+  $_marks_distance: 7px;
 
   $trough_size: 2px;
+  $finetune_trough_size: 4px;
 
-  $slider_size: 24px;
-  $marks_slider_size: 30px;
+  $slider_size: 32px;
 
   $slider_margin: -($slider_size - $trough_size) / 2;
-  $marks_slider_margin: -($marks_slider_size - $trough_size) - $slider_margin;
+  $finetune_slider_margin: -($slider_size - $finetune_trough_size) / 2;
 
-  $color_slider_margin: -($slider_size) / 2;
-  $color_marks_slider_margin: -($marks_slider_size - 16px) - $color_slider_margin;
+  $color_slider_margin: -($slider_size) * 3 / 4;
+  $color_marks_slider_margin: -($slider_size - 16px) - $color_slider_margin;
 
-  min-height: $medium_size - $slider_size;
-  min-width: $medium_size - $slider_size;
-  padding: ($slider_size / 2);
+  min-height: $trough_size;
+  min-width: $trough_size;
+
+  &.horizontal { padding: ($medium_size - $trough_size) / 2 12px; }
+
+  &.vertical { padding: 12px ($medium_size - $trough_size) / 2; }
 
   // the slider is inside the trough, so to have make it bigger there's a negative margin
   slider {
@@ -2347,10 +2350,28 @@ scale {
     margin: $slider_margin;
   }
 
+  // click-and-hold the slider to activate
+  &.fine-tune {
+    &.horizontal {
+      min-height: $finetune_trough_size;
+      padding-top: ($medium_size - $finetune_trough_size) / 2;
+      padding-bottom: ($medium_size - $finetune_trough_size) / 2;
+    }
+
+    &.vertical {
+      min-width: $finetune_trough_size;
+      padding-left: ($medium_size - $finetune_trough_size) / 2;
+      padding-right: ($medium_size - $finetune_trough_size) / 2;
+    }
+
+    // to make the trough grow in fine-tune mode
+    slider { margin: $finetune_slider_margin; }
+  }
+
   // the backing bit
   trough {
-    transition: $longer_transition;
-    outline-offset: 2px;
+    transition: background-color $longer_duration $deceleration_curve;
+    outline: none;
     background-color: $track_color;
 
     &:disabled { background-color: $divider_color; }
@@ -2358,7 +2379,7 @@ scale {
 
   // the colored part of the backing bit
   highlight {
-    transition: $longer_transition;
+    transition: background-color $longer_duration $deceleration_curve;
     background-color: $accent_color;
 
     &:disabled { background-color: transparent; }
@@ -2367,39 +2388,47 @@ scale {
   // this is another differently styled part of the backing bit, the most relevant use case is for example
   // in media player to indicate how much video stream as been cached
   fill {
-    transition: $longer_transition;
+    transition: background-color $longer_duration $deceleration_curve;
     background-color: $track_color;
 
     &:disabled { background-color: transparent; }
   }
 
   slider {
-    transition: all $shorter_duration $standard_curve;
-    // border-radius: 100%;
-    // background-color: $accent_color;
+    transition: background-color $longer_duration $deceleration_curve,
+                background-size $ripple_duration $deceleration_curve,
+                background-image $ripple_opacity_duration $deceleration_curve;
     background-repeat: no-repeat;
     background-position: center;
+    background-size: auto, 1000% 1000%;
+    border-radius: 50%;
+    color: transparent;
 
     @each $s, $as in ('', ''),
                      (':disabled', '-disabled') {
       &#{$s} {
         $_url: 'assets/scale-slider#{$as}#{$asset_suffix}';
 
-        background-image: -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png'));
+        background-image: -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png')),
+                          radial-gradient(circle farthest-corner at center,
+                                          currentColor 10%,
+                                          transparent 0%);
       }
     }
 
-    background-size: calc(100% - 10px);
+    &:focus { background-color: rgba($accent_color, 0.16); }
 
-    &:hover { background-size: calc(100% - 8px); }
+    &:hover { background-color: rgba($accent_color, 0.12); }
 
-    &:active { background-size: calc(100% - 6px); }
-  }
-
-  // click-and-hold the slider to activate
-  &.fine-tune {
-    // to make the slider shrink in fine-tune mode
-    slider { background-size: calc(100% - 12px); }
+    &:active {
+      transition: background-color $longer_duration $deceleration_curve,
+                  background-size 0,
+                  background-image 0;
+      animation: scale_ripple_effect $longer_duration $deceleration_curve forwards;
+      background-size: auto, 0% 0%;
+      background-color: rgba($accent_color, 0.12);
+      color: rgba($accent_color, 0.12);
+    }
   }
 
   marks label,
@@ -2410,11 +2439,23 @@ scale {
 
     @each $marks_class, $marks_pos, $marks_margin in (top, top, bottom),
                                                      (bottom, bottom, top),
-                                                     (top, left, right),
-                                                     (bottom, right, left) {
+                                                     (left, left, right),
+                                                     (right, right, left) {
       &.#{$marks_class} {
         margin-#{$marks_margin}: $_marks_distance;
         margin-#{$marks_pos}: -($_marks_distance + $_marks_length);
+      }
+    }
+  }
+
+  &.fine-tune marks {
+    @each $marks_class, $marks_pos, $marks_margin in (top, top, bottom),
+                                                     (bottom, bottom, top),
+                                                     (left, left, right),
+                                                     (right, right, left) {
+      &.#{$marks_class} {
+        margin-#{$marks_margin}: $_marks_distance - 1px;
+        margin-#{$marks_pos}: -($_marks_distance + $_marks_length - 1px);
       }
     }
   }
@@ -2446,72 +2487,11 @@ scale {
             &#{$state} {
               $_scale_asset: 'assets/scale-#{$dir_infix}-#{$marks_infix}-slider#{$state_infix}#{$asset_suffix}';
 
-              background-image: -gtk-scaled(url('#{$_scale_asset}.png'), url('#{$_scale_asset}@2.png'));
+              background-image: -gtk-scaled(url('#{$_scale_asset}.png'), url('#{$_scale_asset}@2.png')),
+                                radial-gradient(circle farthest-corner at center,
+                                                currentColor 10%,
+                                                transparent 0%);
             }
-          }
-
-          @if $dir_class == 'horizontal' {
-            min-height: $marks_slider_size;
-            min-width: $slider_size;
-
-            @if $marks_infix == 'marks-before' {
-              margin-top: $marks_slider_margin;
-
-              background-position: center calc(100% - 5px);
-
-              &:hover { background-position: center calc(100% - 4px); }
-
-              &:active { background-position: center calc(100% - 3px); }
-            }
-
-            @if $marks_infix == 'marks-after' {
-              margin-bottom: $marks_slider_margin;
-
-              background-position: center calc(5px);
-
-              &:hover { background-position: center calc(4px); }
-
-              &:active { background-position: center calc(3px); }
-            }
-          }
-
-          @if $dir_class == 'vertical' {
-            min-height: $slider_size;
-            min-width: $marks_slider_size;
-
-            @if $marks_infix == 'marks-before' {
-              margin-left: $marks_slider_margin;
-
-              background-position: calc(5px) center;
-
-              &:hover { background-position: calc(4px) center; }
-
-              &:active { background-position: calc(3px) center; }
-            }
-
-            @if $marks_infix == 'marks-after' {
-              margin-right: $marks_slider_margin;
-
-              background-position: calc(100% - 5px) center;
-
-              &:hover { background-position: calc(100% - 4px) center; }
-
-              &:active { background-position: calc(100% - 3px) center; }
-            }
-          }
-        }
-
-        &.fine-tune slider {
-          @if $dir_class == 'horizontal' {
-            @if $marks_infix == 'marks-before' { background-position: center calc(100% - 6px); }
-
-            @if $marks_infix == 'marks-after' { background-position: center calc(6px); }
-          }
-
-          @if $dir_class == 'vertical' {
-            @if $marks_infix == 'marks-before' { background-position: calc(6px) center; }
-
-            @if $marks_infix == 'marks-after' { background-position: calc(100% - 6px) center; }
           }
         }
       }
