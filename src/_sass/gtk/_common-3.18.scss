@@ -158,7 +158,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
   &:selected { @extend %selected_items; }
 }
 
-%osd, .osd { opacity: 0.9; }
+// %osd, .osd { opacity: 0.9; }
 
 /*********************
  * Spinner Animation *
@@ -1047,7 +1047,7 @@ column-header.button.dnd { // for treeview-like derive widgets
     }
   }
 
-  &.osd { @extend %osd; }
+  // &.osd { @extend %osd; }
 }
 
 /*****************
@@ -1800,7 +1800,7 @@ $row_transition: $longer_transition, background-color 0, color 0;
 
 .app-notification,
 .app-notification.frame {
-  @extend %osd;
+  // @extend %osd;
   @extend .toolbar.osd;
   .button { @extend %button.flat; }
 }
@@ -2056,7 +2056,6 @@ GtkInfoBar {
     background-color: $tooltip_bg_color;
   }
 
-  // @extend %osd;
   color: $tooltip_fg_color;
   padding: 4px; /* not working */
   border-radius: 2px;
@@ -2182,7 +2181,7 @@ GtkColorSwatch {
 
 .scale-popup {
 
-   .osd & { @extend %osd; }
+   // .osd & { @extend %osd; }
 
    .osd & .button.flat {  //FIXME: quick hack, redo properly
    }
