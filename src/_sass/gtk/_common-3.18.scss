@@ -1013,7 +1013,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   border: 1px solid;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.3);
   border-radius: 2px + 1px;
-  background-color: $lighter_bg_color;
+  background-color: $popup_bg_color;
   box-shadow:  $shadow_2; // TODO: this should really have a highlight
   &:backdrop { box-shadow: $shadow_1; }
 
@@ -1858,11 +1858,11 @@ GtkCalendar {
 }
 
 .message-dialog { // Message Dialog styling
-  &.background { background-color: $lighter_bg_color; }
+  &.background { background-color: $popup_bg_color; }
   .titlebar {
     border-style: none;
     box-shadow: inset 0 1px $highlight_color;
-    background-color: $lighter_bg_color;
+    background-color: $popup_bg_color;
   }
   &.csd { // rounded bottom border styling for csd version
     &.background {
@@ -1900,7 +1900,7 @@ GtkFileChooserDialog {
 
 .sidebar {
   border: none;
-  background-color: $lighter_bg_color;
+  background-color: $popup_bg_color;
 
   &:selected {
     @extend %selected_items;

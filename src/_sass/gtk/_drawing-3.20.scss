@@ -80,7 +80,7 @@
 }
 
 
-@mixin button($t, $c: $lighter_bg_color) {
+@mixin button($t, $c: $popup_bg_color) {
 //
 // button
 //
@@ -125,7 +125,7 @@
   @if $t == disabled {
     box-shadow: none;
     background-color: $divider_color;
-    color: if($c == $lighter_bg_color, $disabled_secondary_fg_color, $disabled_fg_color);
+    color: if($c == $popup_bg_color, $disabled_secondary_fg_color, $disabled_fg_color);
   }
 
   @if $t == checked {
@@ -174,7 +174,7 @@
   @if $t == flat-disabled {
     box-shadow: none;
     background-color: transparent;
-    color: if($c == $lighter_bg_color, $disabled_secondary_fg_color, $disabled_fg_color);
+    color: if($c == $popup_bg_color, $disabled_secondary_fg_color, $disabled_fg_color);
   }
 
   @if $t == flat-checked {
