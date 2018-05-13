@@ -661,7 +661,7 @@ GtkComboBox {
                   10 / 10px stretch;
     border-radius: 2px;
     // box-shadow: $shadow_2, inset 0 1px $highlight_color;
-    background-color: $base_color;
+    background-color: $popup_bg_color;
     &:backdrop {
       border-image: -gtk-scaled(url("assets/box-shadow-backdrop#{$asset_suffix}.png"),
                                 url("assets/box-shadow-backdrop#{$asset_suffix}@2.png"))
@@ -962,7 +962,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   margin: 4px 0;
   padding: 4px 0;
   box-shadow: inset 0 1px $highlight_color;
-  background-color: $base_color;
+  background-color: $popup_bg_color;
   border: 1px solid $border_color; // adds borders in a non composited env
   .csd & {
     border: none; // axes borders in a composited env
@@ -1900,7 +1900,7 @@ GtkFileChooserDialog {
 
 .sidebar {
   border: none;
-  background-color: $popup_bg_color;
+  background-color: $alt_base_color;
 
   &:selected {
     @extend %selected_items;
@@ -2321,7 +2321,7 @@ GtkVolumeButton.button {
 .touch-selection {
   font: initial;
   color: $fg_color;
-  background-color: $base_color;
+  background-color: $popup_bg_color;
   box-shadow: $shadow_2;
   &:backdrop { box-shadow: $shadow_1; }
   .button {

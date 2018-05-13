@@ -118,7 +118,7 @@
 }
 
 
-@mixin button($t, $c: $popup_bg_color) {
+@mixin button($t, $c: $button_bg_color) {
 //
 // button
 //
@@ -160,7 +160,7 @@
   @if $t == insensitive {
     box-shadow: none;
     background-color: $fill_color;
-    color: if($c == $popup_bg_color, $disabled_secondary_fg_color, $disabled_fg_color);
+    color: if($c == $button_bg_color, $disabled_secondary_fg_color, $disabled_fg_color);
 
     > .label { color: inherit; }
   }
@@ -210,7 +210,7 @@
   @if $t == flat-insensitive {
     box-shadow: none;
     background-color: transparent;
-    color: if($c == $popup_bg_color,
+    color: if($c == $button_bg_color,
               gtkalpha(currentColor, 0.3),
               gtkalpha(currentColor, 0.5));
 

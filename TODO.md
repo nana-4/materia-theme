@@ -34,13 +34,11 @@
 
 - Make compact variant more compact ([#79](../../issues/79))
 
-- Use lighter background color for popups such as menu in dark variant
-
 - Change gtk2 spinbutton to flat button style
 
-- Make card/dialog button style closer to the Material Design guidelines
+- Make card/dialog button style closer to the Material Design guidelines (WIP)
 
-- Rework the focus state styles
+- Rework the focus state styles (WIP)
 
 ## Others
 
