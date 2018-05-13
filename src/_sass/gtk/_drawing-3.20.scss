@@ -134,8 +134,8 @@
   }
 
   @if $t == checked-disabled {
-    background-color: rgba($primary_color, $lower_opacity);
-    color: rgba($primary_color, $disabled_opacity);
+    background-color: rgba($primary_color, 0.3);
+    color: rgba($primary_color, 0.5);
   }
 
   @if $t == flat-normal {
@@ -208,7 +208,7 @@
   background-image: -gtk-gradient(radial,
                                   $_position, 0,
                                   $_position, 0.75,
-                                  to(rgba($alt_primary_color, $lower_opacity)),
+                                  to(rgba($alt_primary_color, 0.3)),
                                   to(transparent));
 
   background-repeat: no-repeat;
@@ -231,7 +231,7 @@
 //
 
   $_undershoot_color_dark: $track_color;
-  $_undershoot_color_light: rgba($base_color, $lower_opacity);
+  $_undershoot_color_light: rgba($base_color, 0.3);
 
   $_gradient_dir: left;
   $_dash_bg_size: 12px 1px;

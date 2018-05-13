@@ -108,7 +108,7 @@ textview {
 .rubberband,
 rubberband {
   border: 1px solid $alt_primary_color;
-  background-color: rgba($alt_primary_color, $lower_opacity);
+  background-color: rgba($alt_primary_color, 0.3);
 }
 
 flowbox {
@@ -161,7 +161,7 @@ label {
   }
 }
 
-.dim-label { opacity: $hint_opacity; }
+.dim-label { opacity: 0.6; }
 
 assistant {
   .sidebar {
@@ -182,7 +182,7 @@ assistant {
   }
 }
 
-%osd, .osd { opacity: $higher_opacity; }
+%osd, .osd { opacity: 0.9; }
 
 
 /*********************
@@ -201,7 +201,7 @@ spinner {
     opacity: 1;
     animation: spin 1s linear infinite;
 
-    &:disabled { opacity: $disabled_opacity; }
+    &:disabled { opacity: 0.5; }
   }
 }
 
@@ -521,7 +521,7 @@ button {
 
       &:disabled { @include button(disabled, $b_color); }
 
-      &:checked { background-color: mix($inverse_fg_color, $b_color, percentage($lower_opacity)); }
+      &:checked { background-color: mix($inverse_fg_color, $b_color, percentage(0.3)); }
 
       &.flat {
         background-color: transparent;
@@ -1411,7 +1411,7 @@ treeview.view {
   }
 
   &.trough { // progress bar trough in treeviews
-    border-bottom: $bar_size solid rgba($primary_color, $lower_opacity);
+    border-bottom: $bar_size solid rgba($primary_color, 0.3);
     box-shadow: none;
     background-color: transparent;
 
@@ -1955,14 +1955,14 @@ scrollbar {
         min-width: 4px;
         min-height: 4px;
         margin: 4px - 1px;
-        border: 1px solid rgba($base_color, $lower_opacity);
+        border: 1px solid rgba($base_color, 0.3);
       }
 
       button {
         min-width: 4px;
         min-height: 4px;
         margin: 4px - 1px;
-        border: 1px solid rgba($base_color, $lower_opacity);
+        border: 1px solid rgba($base_color, 0.3);
         border-radius: $circular_radius;
         background-color: $hint_fg_color;
         background-clip: padding-box;
@@ -1985,7 +1985,7 @@ scrollbar {
     }
 
     &.dragging,
-    &.hovering { background-color: rgba($base_color, $higher_opacity); }
+    &.hovering { background-color: rgba($base_color, 0.9); }
   }
 
   &.horizontal slider { min-width: $_slider_min_length; }
@@ -2564,7 +2564,7 @@ progressbar {
   color: $hint_fg_color;
   font-size: smaller;
 
-  trough { background-color: rgba($primary_color, $lower_opacity); }
+  trough { background-color: rgba($primary_color, 0.3); }
 
   progress { background-color: $primary_color; }
 
@@ -3264,7 +3264,7 @@ colorswatch {
   }
 
   &:disabled {
-    opacity: $disabled_opacity;
+    opacity: 0.5;
 
     overlay { box-shadow: none; }
   }
