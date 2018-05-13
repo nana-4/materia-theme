@@ -8,17 +8,17 @@
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.001,
-                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
+                                    to($semi_fill_color),
                                     to(transparent)),
-                      linear-gradient(to bottom, gtkalpha(currentColor, 0));
+                      linear-gradient(to bottom, transparent);
   }
   to {
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.4,
-                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
+                                    to($semi_fill_color),
                                     to(transparent)),
-                      linear-gradient(to bottom, gtkalpha(currentColor, $lower_opacity / 2));
+                      linear-gradient(to bottom, $semi_fill_color);
   }
 }
 
@@ -27,17 +27,17 @@
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.001,
-                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
+                                    to($semi_fill_color),
                                     to(transparent)),
-                      linear-gradient(to bottom, gtkalpha(currentColor, $lower_opacity / 2));
+                      linear-gradient(to bottom, $semi_fill_color);
   }
   to {
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.4,
-                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
+                                    to($semi_fill_color),
                                     to(transparent)),
-                      linear-gradient(to bottom, gtkalpha(currentColor, $lower_opacity / 2));
+                      linear-gradient(to bottom, $semi_fill_color);
   }
 }
 
@@ -46,17 +46,17 @@
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.001,
-                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
+                                    to($semi_fill_color),
                                     to(transparent)),
-                      linear-gradient(to bottom, gtkalpha(currentColor, 0));
+                      linear-gradient(to bottom, transparent);
   }
   to {
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.4,
-                                    to(gtkalpha(currentColor, $lower_opacity / 2)),
+                                    to($semi_fill_color),
                                     to(transparent)),
-                      linear-gradient(to bottom, gtkalpha(currentColor, 0));
+                      linear-gradient(to bottom, transparent);
   }
 }
 
@@ -133,9 +133,9 @@
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.5,
-                                    to(gtkalpha(currentColor, 0)),
+                                    to(transparent),
                                     to(transparent)),
-                      linear-gradient(to bottom, gtkalpha(currentColor, 0));
+                      linear-gradient(to bottom, transparent);
     color: $button_fg_color;
   }
 
@@ -144,9 +144,9 @@
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.5,
-                                    to(gtkalpha(currentColor, 0)),
+                                    to(transparent),
                                     to(transparent)),
-                      linear-gradient(to bottom, gtkalpha(currentColor, 0));
+                      linear-gradient(to bottom, transparent);
     color: $fg_color;
   }
 
@@ -171,8 +171,8 @@
   }
 
   @if $t == checked-insensitive {
-    background-color: $fill_color;
-    color: rgba($primary_color, $disabled_opacity);
+    background-color: rgba($primary_color, 0.3);
+    color: rgba($primary_color, 0.5);
     > .label { color: inherit; }
   }
 
@@ -183,10 +183,10 @@
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.5,
-                                    to(gtkalpha(currentColor, 0)),
+                                    to(transparent),
                                     to(transparent)),
-                      linear-gradient(to bottom, gtkalpha(currentColor, 0));
-    color: gtkalpha(currentColor, $secondary_opacity);
+                      linear-gradient(to bottom, transparent);
+    color: gtkalpha(currentColor, 0.7);
   }
 
   @if $t == flat-hover {
@@ -194,9 +194,9 @@
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.5,
-                                    to(gtkalpha(currentColor, 0)),
+                                    to(transparent),
                                     to(transparent)),
-                      linear-gradient(to bottom, gtkalpha(currentColor, $lower_opacity / 2));
+                      linear-gradient(to bottom, $semi_fill_color);
     color: currentColor;
   }
 
@@ -211,8 +211,8 @@
     box-shadow: none;
     background-color: transparent;
     color: if($c == $lighter_bg_color,
-              gtkalpha(currentColor, $secondary_opacity * $disabled_opacity),
-              gtkalpha(currentColor, $disabled_opacity));
+              gtkalpha(currentColor, 0.3),
+              gtkalpha(currentColor, 0.5));
 
     > .label { color: inherit; }
   }
@@ -224,7 +224,7 @@
 
   @if $t == flat-checked-insensitive {
     background-color: $fill_color;
-    color: gtkalpha(currentColor, $disabled_opacity);
+    color: gtkalpha(currentColor, 0.5);
 
     > .label { color: inherit; }
   }
@@ -250,7 +250,7 @@
   background-image: -gtk-gradient(radial,
                                   $_position, 0,
                                   $_position, 0.75,
-                                  to(rgba($alt_primary_color, $lower_opacity)),
+                                  to(rgba($alt_primary_color, 0.3)),
                                   to(transparent));
 
   background-repeat: no-repeat;
@@ -273,7 +273,7 @@
 //
 
   $_undershoot_color_dark: $track_color;
-  $_undershoot_color_light: rgba($base_color, $lower_opacity);
+  $_undershoot_color_light: rgba($base_color, 0.3);
 
   $_gradient_dir: left;
   $_dash_bg_size: 12px 1px;

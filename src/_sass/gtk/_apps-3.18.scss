@@ -42,7 +42,7 @@ EelEditableLabel.entry { transition: none; }
 }
 
 .nautilus-desktop.nautilus-canvas-item {
-  // background-color: rgba(#000000, $lower_opacity);
+  // background-color: $panel_bg_color;
   color: $inverse_fg_color;
   text-shadow: $shadow_1;
 }
@@ -210,14 +210,14 @@ UnityDecoration.bottom {
 
 UnityDecoration.menuitem,
 UnityDecoration .menuitem {
-  color: gtkalpha(currentColor, $secondary_opacity);
+  color: $titlebar_secondary_fg_color;
 }
 
 UnityDecoration.menubar.menuitem:hover,
 UnityDecoration.menubar .menuitem *:hover {
-  box-shadow: inset 0 -2px currentColor;
+  box-shadow: inset 0 -2px $titlebar_indicator_color;
   background-color: transparent;
-  color: currentColor;
+  color: $titlebar_fg_color;
 }
 
 .background:not(.csd) :not(.titlebar) .header-bar {
@@ -250,14 +250,14 @@ UnityPanelWidget:backdrop,
 
 .unity-panel.menuitem,
 .unity-panel .menuitem {
-  color: gtkalpha(currentColor, $secondary_opacity);
+  color: $titlebar_secondary_fg_color;
 }
 
 .unity-panel.menubar.menuitem:hover,
 .unity-panel.menubar .menuitem *:hover {
-  box-shadow: inset 0 -2px currentColor;
+  box-shadow: inset 0 -2px $titlebar_indicator_color;
   background-color: transparent;
-  color: currentColor;
+  color: $titlebar_fg_color;
 }
 
 @keyframes playbackmenuitem_spinner {
