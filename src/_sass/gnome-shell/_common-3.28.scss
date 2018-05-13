@@ -188,10 +188,10 @@ StScrollBar {
     background-image: url("assets/checkbox.svg");
   }
   &:hover:checked StBin {
-    background-color: rgba($accent_color, $lower_opacity / 2);
+    background-color: rgba($accent_color, 0.12);
   }
   &:active:checked StBin {
-    background-color: rgba($accent_color, $lower_opacity);
+    background-color: rgba($accent_color, 0.24);
   }
 }
 
@@ -215,11 +215,11 @@ StScrollBar {
   color: $link_color;
   &:hover {
     color: $link_color;
-    background-color: rgba($link_color, $lower_opacity / 2);
+    background-color: rgba($link_color, 0.12);
   }
   &:active {
     color: $link_color;
-    background-color: rgba($link_color, $lower_opacity);
+    background-color: rgba($link_color, 0.24);
   }
 }
 
@@ -575,11 +575,11 @@ StScrollBar {
       box-shadow: $shadow_0;
       font-weight: normal;
       &.selected {
-        background-color: mix($inverse_fg_color, $primary_color, percentage($lower_opacity / 2));
+        background-color: mix($inverse_fg_color, $primary_color, percentage(0.12));
         color: $inverse_fg_color;
       }
       &:active {
-        background-color: mix($inverse_fg_color, $primary_color, percentage($lower_opacity));
+        background-color: mix($inverse_fg_color, $primary_color, percentage(0.24));
         color: $inverse_fg_color !important;
       }
       &:insensitive { color: $inverse_disabled_fg_color; }
@@ -790,7 +790,7 @@ StScrollBar {
 
 /* Tiled window previews */
 .tile-preview {
-  background-color: rgba($alt_primary_color, $lower_opacity);
+  background-color: rgba($alt_primary_color, 0.3);
   border: 1px solid $alt_primary_color;
 }
 
@@ -1875,13 +1875,13 @@ StScrollBar {
       border-color: transparent;
       background-color: $lighter_bg_color;
       background-size: 24px;
-      &:active { background-color: mix($fg_color, $lighter_bg_color, percentage($lower_opacity)); }
+      &:active { background-color: mix($fg_color, $lighter_bg_color, percentage(0.24)); }
     }
     &.enter-key {
       border-color: transparent;
       background-color: $suggested_color;
       background-image: url("assets/key-enter.svg");
-      &:active { background-color: mix($inverse_fg_color, $suggested_color, percentage($lower_opacity)); }
+      &:active { background-color: mix($inverse_fg_color, $suggested_color, percentage(0.24)); }
     }
     &.shift-key-lowercase {
       background-image: url("assets/key-shift.svg");
