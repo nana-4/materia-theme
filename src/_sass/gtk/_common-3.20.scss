@@ -316,6 +316,7 @@ entry {
   .linked.vertical > &.flat { border-radius: 0; }
 }
 
+%treeview_entry,
 treeview entry {
   &.flat, & {
     min-height: 0;
@@ -1890,6 +1891,9 @@ notebook {
     spinbutton:not(.vertical) { @extend %entry.flat; }
 
     spinbutton:not(.vertical) entry { &, &:focus, &:disabled { @extend %spinbutton_entry; }}
+
+    treeview entry:not(.search),
+    treeview spinbutton:not(.vertical) { @extend %treeview_entry; }
 
     button.combo { @extend %combo_flat; }
   }
