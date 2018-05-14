@@ -331,31 +331,28 @@ treeview entry {
 }
 
 .entry-tag {
-  $tag_height: 24px;
-  $tag_margin: ($medium_size - $tag_height) / 2;
-
-  margin: $tag_margin; // instead of min-height: $tag_height;
+  margin: 2px;
   border-radius: $circular_radius;
   box-shadow: none;
-  background-color: $primary_color;
-  color: $inverse_fg_color;
+  background-color: $divider_color;
+  color: $fg_color;
 
-  &:hover { box-shadow: $shadow_1; }
+  &:hover { background-image: image($divider_color); }
 
   // side margins: compensate the entry padding with a negative margin
   // then the negative margin itself
   :dir(ltr) & {
-    margin-left: 8px;
-    margin-right: $tag_margin - 8px;
-    padding-left: 8px;
-    padding-right: ($tag_height - 16px) / 2;
+    margin-left: 4px;
+    margin-right: 0;
+    padding-left: 12px;
+    padding-right: 8px;
   }
 
   :dir(rtl) & {
-    margin-left: $tag_margin - 8px;
-    margin-right: 8px;
-    padding-left: ($tag_height - 16px) / 2;
-    padding-right: 8px;
+    margin-left: 0;
+    margin-right: 4px;
+    padding-left: 8px;
+    padding-right: 12px;
   }
 
   // seems any sizing doesn't work
@@ -363,7 +360,7 @@ treeview entry {
     box-shadow: none;
     background-color: transparent;
 
-    &:not(:hover):not(:active) { color: $inverse_secondary_fg_color; }
+    &:not(:hover):not(:active) { color: $secondary_fg_color; }
   }
 }
 
