@@ -813,19 +813,43 @@ box.vertical > revealer > toolbar.search-bar {
 /*********
  * To Do *
  *********/
-taskrow {
-  transition: $shorter_transition;
-  margin: 0 -8px;
+// less than 3.28
+task-list-view {
+  taskrow {
+    transition: $shorter_transition;
+    margin: 0 -8px;
 
-  &:hover { transition: none; }
+    &:hover { transition: none; }
 
-  label { margin: 0 8px; }
+    label { margin: 0 8px; }
 
-  image { min-width: 16px; }
+    image.dim-label { min-width: 16px; }
+  }
+
+  > box > revealer > box > button {
+    margin: (12px * 2 - $medium_size) / 2;
+
+    .dim-label { opacity: 1; }
+  }
 }
 
-task-list-view > box > revealer > box > button {
-  margin: (12px * 2 - $medium_size) / 2;
+// 3.28 or later
+tasklistview {
+  taskrow {
+    outline: none;
+
+    entry {
+      &, &:focus { box-shadow: none; }
+    }
+
+    image.dim-label { min-width: 16px; }
+  }
+
+  > box > revealer > box > button {
+    margin: (12px * 2 - $medium_size) / 2;
+
+    .dim-label { opacity: 1; }
+  }
 }
 
 
