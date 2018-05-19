@@ -54,10 +54,12 @@ stage {
 }
 
 .modal-dialog-linked-button {
-  min-height: 40px;
-  padding: 0 16px;
-  border-top: 1px solid $border_color !important;
+  min-height: $medium_size;
+  margin: $container_padding;
+  padding: 0 8px;
+  margin-right: 0;
   border-right-width: 0;
+  border-radius: 2px;
   @include font(button);
   @include button(flat-normal);
   &:hover { @include button(flat-hover); }
@@ -66,15 +68,17 @@ stage {
   &:focus { @include button(flat-focus); }
 
   &:first-child {
-    border-radius: 0px 0px 0px 2px;
+    border-radius: 2px;
   }
   &:last-child {
+    margin-right: $container_padding;
     border-right-width: 0px;
-    border-radius: 0px 0px 2px 0px;
+    border-radius: 2px;
   }
   &:first-child:last-child {
+    margin-right: $container_padding;
     border-right-width: 0px;
-    border-radius: 0px 0px 2px 2px;
+    border-radius: 2px;
   }
 }
 
@@ -238,7 +242,7 @@ StScrollBar {
   .modal-dialog-content-box {
     padding: 24px;
   }
-  .run-dialog-entry { width: 20em; margin-bottom: 6px; }
+  .run-dialog-entry { width: 20em; margin-bottom: 0; }
   .run-dialog-error-box {
     padding-top: 16px;
     spacing: 6px;
@@ -1715,17 +1719,17 @@ StScrollBar {
     .notification-actions {
       background-color: transparent;
       padding-top: 0;
-      border-top: 1px solid $border_color;
-      spacing: 1px;
+      padding: $container_padding;
+      spacing: $container_padding;
     }
     .notification-button {
-      min-height: 40px;
-      padding: 0 16px;
+      min-height: $medium_size;
+      padding: 0 8px;
       background-color: transparent;
       color: $secondary_fg_color;
       font-weight: 500;
-      &:first-child { border-radius: 0 0 0 2px; }
-      &:last-child { border-radius: 0 0 2px 0; }
+      &:first-child { border-radius: 2px; }
+      &:last-child { border-radius: 2px; }
       &:hover, &focus { background-color: $divider_color; color: $fg_color; }
       &:active { background-color: $track_color; color: $fg_color; }
     }

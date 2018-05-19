@@ -36,8 +36,6 @@
 
 - Change gtk2 spinbutton to flat button style
 
-- Make card/dialog button style closer to the Material Design guidelines (WIP)
-
 - Rework the focus state styles (WIP)
 
 ## Others
