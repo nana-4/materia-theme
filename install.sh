@@ -153,7 +153,7 @@ while [[ "$#" -gt 0 ]]; do
       shift 2
       ;;
     -n|--name)
-      name="$2"
+      _name="$2"
       shift 2
       ;;
     -g|--gdm)
@@ -229,11 +229,11 @@ fi
 
 for color in "${colors[@]:-${COLOR_VARIANTS[@]}}"; do
   for size in "${sizes[@]:-${SIZE_VARIANTS[@]}}"; do
-    install "${dest:-$DEST_DIR}" "${name:-$THEME_NAME}" "$color" "$size"
+    install "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$color" "$size"
   done
 done
 if [[ "${gdm:-}" == true ]]; then
-    install_gdm "${dest:-$DEST_DIR}" "${name:-$THEME_NAME}" "$color" "$size"
+    install_gdm "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$color" "$size"
 fi
 
 echo
