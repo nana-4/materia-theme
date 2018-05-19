@@ -1,5 +1,7 @@
 # Materia
 
+![widget-factory](../images/widget-factory.png?raw=true)
+
 Materia (formerly Flat-Plat) is a [Material Design](https://material.io) theme for GNOME/GTK+ based desktop environments.  
 It supports GTK+ 3, GTK+ 2, GNOME Shell, Budgie, MATE, Unity, LightDM, GDM, Chrome theme, etc.
 
@@ -32,51 +34,29 @@ Various **desktop environments** are supported:
 - Budgie `>=10.2.5`
 - MATE `>=1.14`
 - Unity `>=7.4`
-- ... and more DEs are [planned](TODO.md#supports).
 
 ## Installation
 
-#### Ubuntu 18.04 / Debian sid
+### Packages
 
-[Official package](https://packages.debian.org/unstable/materia-gtk-theme) (maintained by @isaagar) is available:
+| Distro | Maintainer | Install Command |
+|:-|:-|:-|
+| Arch Linux <sup>[[Official][Arch]]</sup> | @ArchangeGabriel | `sudo pacman -S materia-gtk-theme` |
+| Debian 10 / sid <sup>[[Official][Debian]]</sup> <br> Ubuntu 18.04+ | @isaagar | `sudo apt install materia-gtk-theme` |
+| Ubuntu 16.04 / 17.10 <sup>[[PPA][PPA]]</sup> | @igor-dyatlov | `sudo add-apt-repository ppa:dyatlov-igor/materia-theme` <br> `sudo apt update` <br> `sudo apt install materia-gtk-theme` |
+| Fedora <sup>[[Copr][Copr]]</sup> | @LaurentTreguier | `sudo dnf copr enable tcg/themes` <br> `sudo dnf install materia-theme` |
 
-```
-sudo apt install materia-gtk-theme
-```
-
-#### Ubuntu 16.04 / 17.10
-
-Package is available via [PPA](https://launchpad.net/~dyatlov-igor/+archive/ubuntu/materia-theme) (maintained by @igor-dyatlov):
-
-```
-sudo add-apt-repository ppa:dyatlov-igor/materia-theme
-sudo apt update
-sudo apt install materia-gtk-theme
-```
-
-#### Arch Linux
-
-[Official package](https://www.archlinux.org/packages/community/any/materia-gtk-theme/) (maintained by @ArchangeGabriel):
-
-```
-sudo pacman -S materia-gtk-theme
-```
-
-#### Fedora / EPEL
-
-Package is available via [Copr](https://copr.fedorainfracloud.org/coprs/tcg/themes/) (maintained by @LaurentTreguier):
-
-```
-sudo dnf copr enable tcg/themes
-sudo dnf install materia-theme
-```
+[Arch]: https://www.archlinux.org/packages/community/any/materia-gtk-theme
+[Debian]: https://packages.debian.org/unstable/materia-gtk-theme
+[PPA]: https://launchpad.net/~dyatlov-igor/+archive/ubuntu/materia-theme
+[Copr]: https://copr.fedorainfracloud.org/coprs/tcg/themes
 
 #### Flatpak
 
 3 variants (Materia, Materia-dark, Materia-light) are available via Flathub:
 
 ```
-flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub org.gtk.Gtk3theme.Materia
 flatpak install flathub org.gtk.Gtk3theme.Materia-dark
 flatpak install flathub org.gtk.Gtk3theme.Materia-light
@@ -89,14 +69,15 @@ flatpak install flathub org.gtk.Gtk3theme.Materia-light
 You need to have the following dependencies:
 
 - GTK+ `>=3.18`
-- `gnome-themes-standard` or `gnome-themes-extra` — The package name depends on the distro.
+- `gnome-themes-extra` (or `gnome-themes-standard`)
 - Murrine engine — The package name depends on the distro.
   - `gtk-engine-murrine` on Arch Linux
   - `gtk-murrine-engine` on Fedora
   - `gtk2-engine-murrine` on openSUSE
   - `gtk2-engines-murrine` on Debian, Ubuntu, etc.
+- `bc` — build dependency
 
-#### Installation
+#### Install It
 
 Run the following commands in the terminal:
 
@@ -106,7 +87,7 @@ cd materia-theme-master
 sudo ./install.sh
 ```
 
-**Note:** `./install.sh` allows the following options:
+Note: `./install.sh` allows the following options:
 
 ```
 -d, --dest DIR           Specify destination directory
@@ -115,10 +96,10 @@ sudo ./install.sh
 -s, --size VARIANT       Specify size variant [standard|compact]
 ```
 
-Without any options, **Materia** will be installed with **all variants** into `/usr/share/themes`.  
+Without any options, Materia will be installed with all variants into `/usr/share/themes`.  
 Try `./install.sh --help` for more information.
 
-#### Uninstallation
+### Manual Uninstallation
 
 Delete the installed directories:
 
@@ -145,22 +126,9 @@ To use the Chrome theme;
 You can change the GDM (lock/login screen) theme by replacing the default GNOME Shell theme.  
 See the wiki for details: https://github.com/nana-4/materia-theme/wiki/GDM-Theme
 
-## Previews
-
-##### GNOME Shell
-![GNOME Shell](../images/gnome.png?raw=true)
-
-##### Budgie Desktop
-![Budgie Desktop](../images/budgie.png?raw=true)
-
-##### GDM
-![GDM](../images/gdm-unlock.png?raw=true)
-
-<sub>**Previews Info:** Icon Theme: [Paper](https://github.com/snwh/paper-icon-theme) | Font: [M+ 1C](https://mplus-fonts.osdn.jp) 9.75pt | Dock's icon size: 48px + fixed | [Wallpapers](https://imgur.com/a/v2Ovx)</sub>
-
 ## Customization
 
-Materia allows you to change the color scheme relatively easily. See [`HACKING.md`](HACKING.md#changing-the-color-scheme-with-script) for details.
+Materia allows you to change the color scheme relatively easily. See [`HACKING.md`](HACKING.md#how-to-change-the-color-scheme) for details.
 
 ## Contributing
 
