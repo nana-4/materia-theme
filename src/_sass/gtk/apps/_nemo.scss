@@ -1,22 +1,42 @@
 /********
  * Nemo *
- *******/
-.nemo-window .nemo-inactive-pane .view {
-        background-color: $alt_base_color;
-        color: $fg_color;
+ ********/
+.nemo-window {
+  .primary-toolbar {
+    border-bottom: 1px solid $border_color;
+
+    // FIXME: workaround for wrong size allocation of Nemo
+    entry {
+      min-height: 0;
+      margin: 0;
+    }
+
+    // instead of .path-bar button
+    button.text-button {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    // instead of .path-bar button.slider-button
+    button:not(.text-button):not(.image-button) {
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+  }
+
+  scrolledwindow.frame {
+    border-style: none;
+
+    .view:not(:selected) { background-color: transparent; }
+  }
+
+  infobar { margin-top: -6px; }
+
+  .nemo-inactive-pane .view:not(:selected) { background-color: $alt_base_color; }
+
+  .toolbar button { @extend %button_basic.flat; }
 }
-.nemo-window .sidebar .cell {
-		background-color: $bg_color;
-		color: $fg_color;
-		&:selected {
-		    color: $inverse_fg_color;
-		    background-color: $primary_color;
-		}
-}
+
 .nemo-desktop.nemo-canvas-item {
-  color: $inverse_fg_color;
-  text-shadow: $shadow_1;
-  &:selected {
-      text-shadow: none;
-  }   
+  @extend .nautilus-desktop.nautilus-canvas-item;
 }
