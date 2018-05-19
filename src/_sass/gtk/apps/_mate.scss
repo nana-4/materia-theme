@@ -370,3 +370,24 @@ na-tray-applet widget box widget {
 
   frame > border { border-style: none; }
 }
+
+/* multimedia OSD */
+MsdOsdWindow.background.osd {
+  border-radius: 2px;
+  background-color: $tooltip_bg_color;
+  color: $tooltip_fg_color;
+
+  .trough {
+    border-radius: 0;
+    background-color: $inverse_divider_color;
+  }
+
+  .progressbar {
+    border-radius: 0;
+    background-color: $primary_color;
+  }
+
+  // For mate-settings-daemon noncomposited osd windows
+  &.msd-osd-window-solid {
+  }
+}
