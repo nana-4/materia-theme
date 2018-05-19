@@ -266,9 +266,9 @@ frame.gedit-map-frame > border {
 }
 
 
-/**************
- * Tweak Tool *
- **************/
+/**********
+ * Tweaks *
+ **********/
 // hard-coded css:
 // https://gitlab.gnome.org/GNOME/gnome-tweaks/blob/master/data/shell.css
 
@@ -312,6 +312,7 @@ frame.gedit-map-frame > border {
 //
 
 row#Focus,
+row#ClickMethod,
 row#StaticWorkspaceTweak, // for 3.26.0
 row#dynamic-workspaces,
 row#PrimaryWorkspaceTweak, // for 3.26.0
@@ -326,6 +327,7 @@ row#workspaces-only-on-primary {
 
 // Add more spaces between title and list
 row#Focus,
+row#ClickMethod,
 row#PrimaryWorkspaceTweak, // for 3.26.0
 row#workspaces-only-on-primary {
   margin-top: 4px;
@@ -839,7 +841,7 @@ tasklistview {
     outline: none;
 
     entry {
-      &, &:focus { box-shadow: none; }
+      &, &:focus, &:disabled { box-shadow: none; }
     }
 
     image.dim-label { min-width: 16px; }
