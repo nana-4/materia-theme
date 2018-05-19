@@ -165,6 +165,9 @@ if [[ -z "$MATERIA_COLOR_VARIANT" ]] ; then
         if is_dark "$BG" ; then
             echo "== Dark background color detected. Setting color variant to dark."
             MATERIA_COLOR_VARIANT="dark"
+        elif is_dark "$MENU_BG" ; then
+            echo "== Dark headerbar background color detected. Setting color variant to standard."
+            MATERIA_COLOR_VARIANT="standard"
         else
             echo "== Light background color detected. Setting color variant to light."
             MATERIA_COLOR_VARIANT="light"
@@ -181,13 +184,13 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		-e 's/#212121/%FG%/g' \
 		-e 's/#757575/%INACTIVE_FG%/g' \
 		-e 's/#BDBDBD/%INACTIVE_FG%/g' \
-		-e 's/#F5F5F5/%INACTIVE_TXT_BG%/g' \
-		-e 's/#EEEEEE/%BG%/g' \
+		-e 's/#FAFAFA/%INACTIVE_TXT_BG%/g' \
+		-e 's/#F2F2F2/%BG%/g' \
 		-e 's/#FAFAFA/%BTN_BG%/g' \
-		-e 's/#009688/%ACCENT_BG%/g' \
-		-e 's/#338DD6/%SEL_BG%/g' \
+		-e 's/#01A299/%ACCENT_BG%/g' \
+		-e 's/#4285F4/%SEL_BG%/g' \
 		-e 's/#FFFFFF/%TXT_BG%/g' \
-		-e 's/#303030/%MENU_BG%/g' \
+		-e 's/#383838/%MENU_BG%/g' \
 		-e 's/#E0E0E0/%MENU_BG%/g' \
 		-e 's/#212121/%MENU_BG2%/g' \
 		-e 's/Materia/%OUTPUT_THEME_NAME%/g' \
@@ -195,18 +198,18 @@ for FILEPATH in "${PATHLIST[@]}"; do
     else
 	find "$FILEPATH" -type f -not -name '_color-palette.scss' -exec sed -i'' \
 		-e 's/#000000/%BG%/g' \
-		-e 's/#212121/%BG%/g' \
+		-e 's/#282828/%BG%/g' \
 		-e 's/#757575/%INACTIVE_FG%/g' \
 		-e 's/#BDBDBD/%INACTIVE_FG%/g' \
-		-e 's/#292929/%INACTIVE_TXT_BG%/g' \
-		-e 's/#EEEEEE/%FG%/g' \
+		-e 's/#2C2C2C/%INACTIVE_TXT_BG%/g' \
+		-e 's/#FFFFFF/%FG%/g' \
 		-e 's/#FAFAFA/%BTN_FG%/g' \
 		-e 's/#424242/%BTN_BG%/g' \
-		-e 's/#009688/%ACCENT_BG%/g' \
-		-e 's/#338DD6/%SEL_BG%/g' \
+		-e 's/#01A299/%ACCENT_BG%/g' \
+		-e 's/#4285F4/%SEL_BG%/g' \
 		-e 's/#FFFFFF/%TXT_FG%/g' \
 		-e 's/#303030/%TXT_BG%/g' \
-		-e 's/#E0E0E0/%MENU_BG%/g' \
+		-e 's/#383838/%MENU_BG%/g' \
 		-e 's/#212121/%MENU_BG2%/g' \
 		-e 's/Materia/%OUTPUT_THEME_NAME%/g' \
 		{} \; ;
@@ -271,22 +274,15 @@ for FILEPATH in "${PATHLIST[@]}"; do
 		{} \; ;
 done
 
-rm ./src/gtk/3.{18,20,22}/*.css
 if [[ "$MATERIA_COLOR_VARIANT" == "standard" ]] ; then
-	rm ./src/gtk/3.{18,20,22}/gtk-light*.scss
-	rm ./src/gtk/3.{18,20,22}/gtk-dark*.scss
 	COLOR_VARIANTS=","
 	COLOR_VARIANT="standard"
 fi
 if [[ "$MATERIA_COLOR_VARIANT" == "light" ]] ; then
-	rm ./src/gtk/3.{18,20,22}/gtk-dark*.scss 
-	rm ./src/gtk/3.{18,20,22}/gtk{,-compact}.scss || true
 	COLOR_VARIANTS="-light"
 	COLOR_VARIANT="light"
 fi
 if [[ "$MATERIA_COLOR_VARIANT" == "dark" ]] ; then
-	rm ./src/gtk/3.{18,20,22}/gtk-light*.scss
-	rm ./src/gtk/3.{18,20,22}/gtk{,-compact}.scss || true
 	COLOR_VARIANTS="-dark"
 	COLOR_VARIANT="dark"
 fi
