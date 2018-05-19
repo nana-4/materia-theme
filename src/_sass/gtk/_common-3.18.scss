@@ -269,14 +269,14 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.001,
-                                    to($accent_color),
+                                    to($secondary_color),
                                     to(transparent));
   }
   to {
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.5,
-                                    to($accent_color),
+                                    to($secondary_color),
                                     to(transparent));
   }
 }
@@ -1383,9 +1383,9 @@ GtkSwitch {
       color: $divider_color;
     }
     &:active {
-      background-color: rgba($accent_color, 0.5);
+      background-color: rgba($secondary_color, 0.5);
       &:insensitive {
-        background-color: rgba($accent_color, 0.3);
+        background-color: rgba($secondary_color, 0.3);
       }
     }
   }
@@ -1394,7 +1394,7 @@ GtkSwitch {
     border-radius: 100px;
     @include entry(normal);
     &:hover { @include entry(focus); }
-    &:active { background-color: $accent_color; }
+    &:active { background-color: $secondary_color; }
     &:insensitive { @include entry(insensitive); }
   }
   .list-row:selected & {
@@ -1500,7 +1500,7 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
   &.slider {
     // @include entry(normal);
     // border-radius: 50%;
-    // background-color: $accent_color;
+    // background-color: $secondary_color;
     @each $s,$as in ('', ''),
                     (':insensitive', '-disabled') {
       &.slider#{$s} {
@@ -1534,7 +1534,7 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
     margin: 11px 12px;
     background-color: $fill_color;
     &.highlight {
-      background-color: $accent_color;
+      background-color: $secondary_color;
       &:insensitive { background-color: $fill_color; }
     }
     &:insensitive { color: $disabled_fg_color; }
@@ -1937,7 +1937,7 @@ GtkPlacesSidebar.sidebar {
   }
 
   .sidebar-new-bookmark-row {
-    color: $accent_color;
+    color: $secondary_color;
   }
 
   @at-root .sidebar-button.button { // @at-root needded to not change the specificity making button styling inheritance broken
@@ -2285,7 +2285,7 @@ GtkVolumeButton.button {
 //touch selection handlebars for the Popover.osd above
 .entry.cursor-handle,
 .cursor-handle {
-  background-color: $accent_color;
+  background-color: $secondary_color;
   background-image: none;
   box-shadow: none;
   border-style: none;
