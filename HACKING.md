@@ -63,13 +63,13 @@ but you can also run it on the command line without the app as follows:
 For `bash`:
 
 ```bash
-./change_color.sh -o my-test-theme <(echo -e "BG=F5F5F5\nFG=000000\nMENU_BG=FFFFFF\nMENU_FG=000000\nSEL_BG=42A5F5\nSEL_FG=FFFFFF\nTXT_BG=FFFFFF\nTXT_FG=000000\nBTN_BG=FAFAFA\nBTN_FG=000000\nACCENT_BG=FF4081\n")
+./change_color.sh -o Flat-Plat <(echo -e "BG=F5F5F5\nFG=212121\nTXT_BG=FFFFFF\nTXT_FG=212121\nBTN_BG=FAFAFA\nBTN_FG=616161\nMENU_BG=455A64\nMENU_FG=FFFFFF\nSEL_BG=42A5F5\nSEL_FG=FFFFFF\nACCENT_BG=FF4081\nMATERIA_STYLE_COMPACT=False\n")
 ```
 
 For `fish`:
 
 ```fish
-./change_color.sh -o my-test-theme (echo -e "BG=F5F5F5\nFG=000000\nMENU_BG=FFFFFF\nMENU_FG=000000\nSEL_BG=42A5F5\nSEL_FG=FFFFFF\nTXT_BG=FFFFFF\nTXT_FG=000000\nBTN_BG=FAFAFA\nBTN_FG=000000\nACCENT_BG=FF4081\n" | psub)
+./change_color.sh -o Flat-Plat (echo -e "BG=F5F5F5\nFG=212121\nTXT_BG=FFFFFF\nTXT_FG=212121\nBTN_BG=FAFAFA\nBTN_FG=616161\nMENU_BG=455A64\nMENU_FG=FFFFFF\nSEL_BG=42A5F5\nSEL_FG=FFFFFF\nACCENT_BG=FF4081\nMATERIA_STYLE_COMPACT=False\n" | psub)
 ```
 
 ### Manually
