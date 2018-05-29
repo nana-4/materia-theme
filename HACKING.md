@@ -97,7 +97,6 @@ files.
 
 - `src/gtk-2.0/gtkrc{,-dark,-light}`
 - `src/metacity-1/metacity-theme-2{,-light}.xml`
-- `src/metacity-1/metacity-theme-3{,-light}.xml`
 - `src/xfwm4/assets{,-light}/themerc`
 - `src/chrome/chrome-theme{,-dark,-light}/manifest.json`
 

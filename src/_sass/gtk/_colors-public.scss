@@ -85,6 +85,14 @@ these are pretty self explicative */
 // @define-color destructive_color #{"" + $destructive_color};
 
 /*
+these colors are exported for the window manager and shouldn't be used in applications,
+read if you used those and something break with a version upgrade you're on your own... */
+@define-color wm_title #{"" + $titlebar_fg_color};
+@define-color wm_unfocused_title #{"" + $titlebar_secondary_fg_color};
+@define-color wm_highlight #{"" + $titlebar_highlight_color};
+@define-color wm_bg #{"" + $titlebar_bg_color};
+
+/*
 FIXME this is really an API */
 @define-color content_view_bg #{"" + $base_color};
 @define-color placeholder_text_color #{"" + $placeholder_text_color};

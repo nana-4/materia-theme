@@ -27,4 +27,3 @@
 ## Others
 
 - Polish Inkscape (using gtk3) styling
-- Use gtk3 color vars for `metacity-theme-3.xml`

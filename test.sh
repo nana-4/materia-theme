@@ -87,9 +87,8 @@ test() {
   done
 
   mkdir -p                                                                      "$THEME_DIR/metacity-1"
-  ln -s  "$SRC_DIR/metacity-1/assets"                                           "$THEME_DIR/metacity-1"
+  ln -s  "$SRC_DIR/metacity-1/"{assets,metacity-theme-3.xml}                    "$THEME_DIR/metacity-1"
   ln -sT "$SRC_DIR/metacity-1/metacity-theme-2${ELSE_LIGHT:-}.xml"              "$THEME_DIR/metacity-1/metacity-theme-2.xml"
-  ln -sT "$SRC_DIR/metacity-1/metacity-theme-3${ELSE_LIGHT:-}.xml"              "$THEME_DIR/metacity-1/metacity-theme-3.xml"
 
   mkdir -p                                                                      "$THEME_DIR/unity"
   ln -s  "$SRC_DIR/unity/"{*.svg,*.png,dash-widgets.json}                       "$THEME_DIR/unity"
