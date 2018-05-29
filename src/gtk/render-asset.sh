@@ -18,6 +18,7 @@ else
               --export-png="$ASSETS_DIR/$i.png" "$SRC_FILE" >/dev/null \
   && "$OPTIPNG" -o7 --quiet "$ASSETS_DIR/$i.png"
 fi
+
 if [[ -f "$ASSETS_DIR/$i@2.png" ]]; then
   echo "'$ASSETS_DIR/$i@2.png' exists."
 else

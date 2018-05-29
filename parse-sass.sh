@@ -30,11 +30,11 @@ for color in "${_COLOR_VARIANTS[@]}"; do
 
   for size in "${_SIZE_VARIANTS[@]}"; do
     sassc "${SASSC_OPT[@]}" "src/cinnamon/cinnamon$color$size."{scss,css}
+
     for version in "${GTK_VERSIONS[@]:1}"; do
       sassc "${SASSC_OPT[@]}" "src/gtk/$version/gtk$color$size."{scss,css}
     done
 
-    # This gnome-shell theme can skip versions '3.20' & '2.22'
     for version in "${GS_VERSIONS[@]}"; do
       sassc "${SASSC_OPT[@]}" "src/gnome-shell/$version/gnome-shell$color$size."{scss,css}
     done

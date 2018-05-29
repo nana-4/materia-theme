@@ -73,11 +73,11 @@ install() {
   mkdir -p                                                                      "$THEME_DIR/chrome"
   cp -r "$SRC_DIR/chrome/chrome-theme$color.crx"                                "$THEME_DIR/chrome/chrome-theme.crx"
   cp -r "$SRC_DIR/chrome/chrome-scrollbar${ELSE_DARK:-}.crx"                    "$THEME_DIR/chrome/chrome-scrollbar.crx"
-  
+
   mkdir -p                                                                      "$THEME_DIR/cinnamon"
+  cp -r "$SRC_DIR/cinnamon/assets"                                              "$THEME_DIR/cinnamon"
+  cp -r "$SRC_DIR/cinnamon/thumbnail.png"                                       "$THEME_DIR/cinnamon"
   cp -r "$SRC_DIR/cinnamon/cinnamon$color$size.css"                             "$THEME_DIR/cinnamon/cinnamon.css"
-  cp -r "$SRC_DIR/cinnamon/thumbnail.png"                                       "$THEME_DIR/cinnamon/thumbnail.png"
-  cp -r "$SRC_DIR/cinnamon/assets"                                              "$THEME_DIR/cinnamon/assets"
 
   mkdir -p                                                                      "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/"{*.svg,extensions,noise-texture.png,pad-osd.css} "$THEME_DIR/gnome-shell"
@@ -126,22 +126,19 @@ install_gdm() {
   local THEME_DIR=$1/$2$3$4
   # bakup and install files related to gdm theme
   if [[ ! -f /usr/share/gnome-shell/gnome-shell-theme.gresource.bak ]]; then
-    mv -f /usr/share/gnome-shell/gnome-shell-theme.gresource \
-      /usr/share/gnome-shell/gnome-shell-theme.gresource.bak
+    cp -af /usr/share/gnome-shell/gnome-shell-theme.gresource{,.bak}
   fi
   if [[ -f /usr/share/gnome-shell/theme/ubuntu.css ]]; then
     if [[ ! -f /usr/share/gnome-shell/theme/ubuntu.css.bak ]]; then
-      mv -f /usr/share/gnome-shell/theme/ubuntu.css \
-        /usr/share/gnome-shell/theme/ubuntu.css.bak
+      cp -af /usr/share/gnome-shell/theme/ubuntu.css{,.bak}
     fi
-    cp -af "$THEME_DIR/gnome-shell/gnome-shell.css" \
-      /usr/share/gnome-shell/theme/ubuntu.css
+    cp -af "$THEME_DIR/gnome-shell/gnome-shell.css" /usr/share/gnome-shell/theme/ubuntu.css
   fi
+  echo "Installing 'gnome-shell-theme.gresource'..."
   glib-compile-resources \
     --sourcedir="$THEME_DIR/gnome-shell" \
     --target=/usr/share/gnome-shell/gnome-shell-theme.gresource \
     "$THEME_DIR/gnome-shell/gnome-shell-theme.gresource.xml"
-  echo "Installing 'gnome-shell-theme.gresource'..."
 }
 
 while [[ "$#" -gt 0 ]]; do

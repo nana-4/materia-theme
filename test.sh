@@ -55,8 +55,13 @@ test() {
   mkdir -p                                                                      "$THEME_DIR"
   ln -sT "$SRC_DIR/index$color$size.theme"                                      "$THEME_DIR/index.theme"
 
+  mkdir -p                                                                      "$THEME_DIR/cinnamon"
+  ln -s  "$SRC_DIR/cinnamon/assets"                                             "$THEME_DIR/cinnamon"
+  ln -s  "$SRC_DIR/cinnamon/thumbnail.png"                                      "$THEME_DIR/cinnamon"
+  ln -sT "$SRC_DIR/cinnamon/cinnamon$color$size.css"                            "$THEME_DIR/cinnamon/cinnamon.css"
+
   mkdir -p                                                                      "$THEME_DIR/gnome-shell"
-  ln -s  "$SRC_DIR/gnome-shell/"{extensions,pad-osd.css}                        "$THEME_DIR/gnome-shell"
+  ln -s  "$SRC_DIR/gnome-shell/"{extensions,pad-osd.css,process-working.svg}    "$THEME_DIR/gnome-shell"
   ln -sT "$SRC_DIR/gnome-shell/assets${ELSE_DARK:-}"                            "$THEME_DIR/gnome-shell/assets"
   ln -sT "$SRC_DIR/gnome-shell/$GS_VERSION/gnome-shell$color$size.css"          "$THEME_DIR/gnome-shell/gnome-shell.css"
 
