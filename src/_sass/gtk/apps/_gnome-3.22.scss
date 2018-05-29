@@ -164,9 +164,9 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
  * gedit *
  *********/
 // based css:
-// https://git.gnome.org/browse/gedit/tree/gedit/resources/css/gedit.adwaita.css
+// https://gitlab.gnome.org/GNOME/gedit/blob/master/gedit/resources/css/gedit.adwaita.css
 // hard-coded css:
-// https://git.gnome.org/browse/gedit/tree/gedit/resources/css/gedit-style.css
+// https://gitlab.gnome.org/GNOME/gedit/blob/master/gedit/resources/css/gedit-style.css
 
 // Only normal state is handle
 .open-document-selector-name-label {
@@ -204,15 +204,12 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 .gedit-search-slider {
   margin: 4px 4px 8px;
 
-  entry {
-    &:dir(ltr),
-    &:dir(rtl) { // specificity bump
-      border-radius: 2px;
+  .linked > entry {
+    border-radius: 2px;
 
-      .gedit-search-entry-occurrences-tag {
-        all: unset;
-        color: $hint_fg_color;
-      }
+    .gedit-search-entry-occurrences-tag {
+      all: unset;
+      color: $hint_fg_color;
     }
 
     $buttons_width: $small_size * 2 + $container_padding * 3;
@@ -235,6 +232,8 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
       image.left { margin-left: 0; }
     }
 
+    &:not(.error) { background-color: $popup_bg_color; }
+
     &.error ~ button {
       color: $inverse_secondary_fg_color;
 
@@ -244,13 +243,12 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
     }
   }
 
-  button {
+  .linked > button {
     border: solid $container_padding transparent;
+    border-radius: $circular_radius;
 
     @extend %simple_flat_button;
-
-    &:dir(ltr),
-    &:dir(rtl) { @extend %small_button; } // specificity bump
+    @extend %small_button;
 
     &:last-child:dir(ltr),
     &:not(:first-child):dir(rtl) { margin-left: -$container_padding / 2; }

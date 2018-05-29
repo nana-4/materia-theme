@@ -105,9 +105,9 @@
  * gedit *
  *********/
 // based css:
-// https://git.gnome.org/browse/gedit/tree/gedit/resources/css/gedit.adwaita.css?h=gnome-3-20
+// https://gitlab.gnome.org/GNOME/gedit/blob/gnome-3-20/gedit/resources/css/gedit.adwaita.css
 // hard-coded css:
-// https://git.gnome.org/browse/gedit/tree/gedit/resources/css/gedit-style.css?h=gnome-3-20
+// https://gitlab.gnome.org/GNOME/gedit/blob/gnome-3-20/gedit/resources/css/gedit-style.css
 
 // Only normal state is handle
 .open-document-selector-name-label {
@@ -145,15 +145,12 @@
 .gedit-search-slider {
   margin: 4px 4px 8px;
 
-  entry {
-    &:dir(ltr),
-    &:dir(rtl) { // specificity bump
-      border-radius: 2px;
+  .linked > entry {
+    border-radius: 2px;
 
-      .gedit-search-entry-occurrences-tag {
-        all: unset;
-        color: $hint_fg_color;
-      }
+    .gedit-search-entry-occurrences-tag {
+      all: unset;
+      color: $hint_fg_color;
     }
 
     $buttons_width: $small_size * 2 + $container_padding * 3;
@@ -176,6 +173,8 @@
       image.left { margin-left: 0; }
     }
 
+    &:not(.error) { background-color: $popup_bg_color; }
+
     &.error ~ button {
       color: $inverse_secondary_fg_color;
 
@@ -185,13 +184,12 @@
     }
   }
 
-  button {
+  .linked > button {
     border: solid $container_padding transparent;
+    border-radius: $circular_radius;
 
     @extend %simple_flat_button;
-
-    &:dir(ltr),
-    &:dir(rtl) { @extend %small_button; } // specificity bump
+    @extend %small_button;
 
     &:last-child:dir(ltr),
     &:not(:first-child):dir(rtl) { margin-left: -$container_padding / 2; }
