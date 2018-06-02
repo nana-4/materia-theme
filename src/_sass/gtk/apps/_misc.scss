@@ -37,6 +37,34 @@ window.background > box.vertical > scrolledwindow > widget toolbar {
 /************
  * Chromium *
  ************/
+window.background.chromium {
+  background-color: if($variant == 'light', $bg_color, $popup_bg_color);
+
+  // FIXME: no way to change the toolbar button colors only
+  // toolbar button { color: $secondary_fg_color; }
+
+  // toolbar's border-bottom refers to button's border
+  entry,
+  > button:not(.suggested-action):not(.destructive-action) { border: 1px solid $alt_border_color; }
+
+  > button {
+    box-shadow: none;
+    background-size: auto;
+
+    &:hover { background-image: image($row_fill_color); }
+
+    &:active { background-image: image($semi_fill_color); }
+  }
+
+  // workaround for headerbar's non-animatable buttons
+  headerbar button:active { background-size: 1000% 1000%; }
+
+  spinner { color: $primary_color; }
+
+  // entry uses this as well
+  textview { background-color: $popup_bg_color; }
+}
+
 tooltip.background.chromium { background-color: rgba($tooltip_bg_color, 1); }
 
 
@@ -73,9 +101,9 @@ window.background:not(.csd) {
       background-size: auto;
       // color: $fg_color;
 
-      &:hover { background-image: image(gtkalpha(currentColor, 0.1 / 2)); }
+      &:hover { background-image: image($row_fill_color); }
 
-      &:active { background-image: image(gtkalpha(currentColor, 0.1)); }
+      &:active { background-image: image($semi_fill_color); }
     }
 
     // use 16px assets for hard-coded sizing
