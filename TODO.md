@@ -4,6 +4,7 @@
 
 ## Supports
 
+- GTK+ 4
 - Firefox theme ([#78](../../issues/78))
   - waiting for [the upstream to provide next-gen themes](https://blog.mozilla.org/addons/2017/02/24/improving-themes-in-firefox/)
   - Or, is it unnecessary because the new interface is well integrated with this theme?
