@@ -148,11 +148,8 @@ PanelApplet.wnck-applet .wnck-pager {
 
   button { padding: 4px 16px; }
 
-  // FIXME, does not work
-  ClockMap { border: 1px solid $border_color; }
-
-  // Instead, this works
-  widget { color: $border_color; }
+  // Weird, this sets the border color of the clockmap
+  > frame > box > box > box > widget { color: $border_color; }
 }
 
 na-tray-applet {
