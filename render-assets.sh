@@ -11,6 +11,11 @@ if [[ ! "$(which optipng 2> /dev/null)" ]]; then
   exit 1
 fi
 
+chrome() (
+  cd src/chrome
+  ./render-assets.sh
+)
+
 gtk() (
   cd src/gtk
   ./render-assets.sh
@@ -28,9 +33,13 @@ gtk2_dark() (
 
 case "${1:-}" in
   "")
+    chrome
     gtk
     gtk2_light
     gtk2_dark
+    ;;
+  chrome)
+    chrome
     ;;
   gtk)
     gtk
@@ -47,7 +56,7 @@ case "${1:-}" in
     ;;
   *)
     echo "Unknown argument: '$1'"
-    echo "Use 'gtk', 'gtk2', 'gtk2-light' or 'gtk2-dark' as an argument."
+    echo "Use 'chrome', 'gtk', 'gtk2', 'gtk2-light' or 'gtk2-dark' as an argument."
     exit 1
     ;;
 esac
