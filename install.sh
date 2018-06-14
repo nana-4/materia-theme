@@ -31,23 +31,27 @@ else
 fi
 
 usage() {
-  printf "%s\\n" "Usage: $0 [OPTIONS...]"
-  printf "\\n%s\\n" "OPTIONS:"
-  printf "  %-25s%s\\n" "-d, --dest DIR" "Specify theme destination directory (Default: $DEST_DIR)"
-  printf "  %-25s%s\\n" "-n, --name NAME" "Specify theme name (Default: $THEME_NAME)"
-  printf "  %-25s%s\\n" "-c, --color VARIANTS..." "Specify theme color variant(s) [standard|dark|light] (Default: All variants)"
-  printf "  %-25s%s\\n" "-s, --size VARIANT" "Specify theme size variant [standard|compact] (Default: All variants)"
-  printf "  %-25s%s\\n" "-g, --gdm" "Install GDM theme"
-  printf "  %-25s%s\\n" "-h, --help" "Show this help"
-  printf "\\n%s\\n" "INSTALLATION EXAMPLES:"
-  printf "%s\\n" "Install all theme variants into ~/.themes"
-  printf "  %s\\n" "$0 --dest ~/.themes"
-  printf "%s\\n" "Install all theme variants into ~/.themes including GDM theme"
-  printf "  %s\\n" "$0 --dest ~/.themes --gdm"
-  printf "%s\\n" "Install standard theme variant only"
-  printf "  %s\\n" "$0 --color standard --size standard"
-  printf "%s\\n" "Install specific theme variants with different name into ~/.themes"
-  printf "  %s\\n" "$0 --dest ~/.themes --name MyTheme --color light dark --size compact"
+  cat << EOF
+Usage: $0 [OPTION]...
+
+OPTIONS:
+  -d, --dest DIR          Specify theme destination directory (Default: $DEST_DIR)
+  -n, --name NAME         Specify theme name (Default: $THEME_NAME)
+  -c, --color VARIANT...  Specify theme color variant(s) [standard|dark|light] (Default: All variants)
+  -s, --size VARIANT      Specify theme size variant [standard|compact] (Default: All variants)
+  -g, --gdm               Install GDM theme
+  -h, --help              Show this help
+
+INSTALLATION EXAMPLES:
+Install all theme variants into ~/.themes
+  $0 --dest ~/.themes
+Install all theme variants including GDM theme
+  $0 --gdm
+Install standard theme variant only
+  $0 --color standard --size standard
+Install specific theme variants with different name into ~/.themes
+  $0 --dest ~/.themes --name MyTheme --color light dark --size compact
+EOF
 }
 
 install() {
@@ -123,20 +127,23 @@ install() {
 
 install_gdm() {
   local THEME_DIR=$1/$2$3$4
+  local GS_THEME_FILE=/usr/share/gnome-shell/gnome-shell-theme.gresource
+  local UBUNTU_THEME_FILE=/usr/share/gnome-shell/theme/ubuntu.css
+
   # bakup and install files related to gdm theme
-  if [[ ! -f /usr/share/gnome-shell/gnome-shell-theme.gresource.bak ]]; then
-    cp -af /usr/share/gnome-shell/gnome-shell-theme.gresource{,.bak}
+  if [[ ! -f "$GS_THEME_FILE.bak" ]]; then
+    cp -af "$GS_THEME_FILE" "$GS_THEME_FILE.bak"
   fi
-  if [[ -f /usr/share/gnome-shell/theme/ubuntu.css ]]; then
-    if [[ ! -f /usr/share/gnome-shell/theme/ubuntu.css.bak ]]; then
-      cp -af /usr/share/gnome-shell/theme/ubuntu.css{,.bak}
+  if [[ -f "$UBUNTU_THEME_FILE" ]]; then
+    if [[ ! -f "$UBUNTU_THEME_FILE.bak" ]]; then
+      cp -af "$UBUNTU_THEME_FILE" "$UBUNTU_THEME_FILE.bak"
     fi
-    cp -af "$THEME_DIR/gnome-shell/gnome-shell.css" /usr/share/gnome-shell/theme/ubuntu.css
+    cp -af "$THEME_DIR/gnome-shell/gnome-shell.css" "$UBUNTU_THEME_FILE"
   fi
-  echo "Installing 'gnome-shell-theme.gresource'..."
+  echo "Installing '$GS_THEME_FILE'..."
   glib-compile-resources \
     --sourcedir="$THEME_DIR/gnome-shell" \
-    --target=/usr/share/gnome-shell/gnome-shell-theme.gresource \
+    --target="$GS_THEME_FILE" \
     "$THEME_DIR/gnome-shell/gnome-shell-theme.gresource.xml"
 }
 
