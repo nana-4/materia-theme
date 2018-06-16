@@ -10,11 +10,11 @@
 # FIXME: Multiple arguments should be allowed.
 set -ueo pipefail
 
-REPO_DIR=$(cd "$(dirname "$0")" && pwd)
-SRC_DIR=$REPO_DIR/src
+REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+SRC_DIR="$REPO_DIR/src"
 
-DEST_DIR=$HOME/.themes
-THEME_NAME=Materia.dev
+DEST_DIR="$HOME/.themes"
+THEME_NAME="Materia.dev"
 # shellcheck disable=SC2034 # will this be used later?
 COLOR_VARIANTS=('' '-dark' '-light')
 # shellcheck disable=SC2034 # will this be used later?
@@ -22,30 +22,30 @@ SIZE_VARIANTS=('' '-compact')
 
 GTK_VERSIONS=('3.18' '3.20' '3.22')
 GS_VERSIONS=('3.18' '3.24' '3.26' '3.28')
-LATEST_GS_VERSION=${GS_VERSIONS[-1]}
+LATEST_GS_VERSION="${GS_VERSIONS[-1]}"
 
 # Set a proper gnome-shell theme version
-if [[ $(which gnome-shell 2> /dev/null) ]]; then
-  CURRENT_GS_VERSION=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -2)
+if [[ "$(which gnome-shell 2> /dev/null)" ]]; then
+  CURRENT_GS_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -2)"
   for version in "${GS_VERSIONS[@]}"; do
-    if (( $(bc <<< "$CURRENT_GS_VERSION <= $version") )); then
-      GS_VERSION=$version
+    if (( "$(bc <<< "$CURRENT_GS_VERSION <= $version")" )); then
+      GS_VERSION="$version"
       break
-    elif (( $(bc <<< "$CURRENT_GS_VERSION > $LATEST_GS_VERSION") )); then
-      GS_VERSION=$LATEST_GS_VERSION
+    elif (( "$(bc <<< "$CURRENT_GS_VERSION > $LATEST_GS_VERSION")" )); then
+      GS_VERSION="$LATEST_GS_VERSION"
       break
     fi
   done
 else
-  GS_VERSION=$LATEST_GS_VERSION
+  GS_VERSION="$LATEST_GS_VERSION"
 fi
 
 test() {
-  local color=$1
-  local size=$2
+  local color="$1"
+  local size="$2"
 
-  [[ "$color" == '-dark' ]] && local ELSE_DARK=$color
-  [[ "$color" == '-light' ]] && local ELSE_LIGHT=$color
+  [[ "$color" == '-dark' ]] && local ELSE_DARK="$color"
+  [[ "$color" == '-light' ]] && local ELSE_LIGHT="$color"
 
   local THEME_DIR="${DEST_DIR:?}/$THEME_NAME$color$size"
 
@@ -98,7 +98,7 @@ test() {
   ln -s  "$SRC_DIR/xfwm4/"{*.svg,themerc}                                       "$THEME_DIR/xfwm4"
   ln -sT "$SRC_DIR/xfwm4/assets${ELSE_LIGHT:-}"                                 "$THEME_DIR/xfwm4/assets"
 
-  echo Installed to "$THEME_DIR"
+  echo "Installed to '$THEME_DIR'"
 }
 
 case "${1:-}" in
@@ -133,7 +133,7 @@ case "${1:-}" in
     rm -rf "${DEST_DIR:?}/$THEME_NAME"{,-compact,-dark,-dark-compact,-light,-light-compact}
     ;;
   *)
-    echo "Invalid argument: ${1:-}"
-    echo "Valid arguments are: compact dark dark-compact light light-compact all uninstall"
+    echo "Invalid argument: '${1:-}'"
+    echo "Valid arguments are: 'compact' 'dark' 'dark-compact' 'light' 'light-compact' 'all' 'uninstall'"
     ;;
 esac

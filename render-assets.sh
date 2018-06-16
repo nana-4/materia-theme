@@ -55,7 +55,7 @@ case "${1:-}" in
     gtk2_dark
     ;;
   *)
-    echo "Unknown argument: '$1'"
+    echo "Unknown argument '$1'"
     echo "Use 'chrome', 'gtk', 'gtk2', 'gtk2-light' or 'gtk2-dark' as an argument."
     exit 1
     ;;

@@ -2,32 +2,32 @@
 set -ueo pipefail
 #set -x
 
-REPO_DIR=$(cd "$(dirname "$0")" && pwd)
-SRC_DIR=$REPO_DIR/src
+REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+SRC_DIR="$REPO_DIR/src"
 
-DEST_DIR=/usr/share/themes
-THEME_NAME=Materia
+DEST_DIR="/usr/share/themes"
+THEME_NAME="Materia"
 COLOR_VARIANTS=('' '-dark' '-light')
 SIZE_VARIANTS=('' '-compact')
 
 GTK_VERSIONS=('3.18' '3.20' '3.22')
 GS_VERSIONS=('3.18' '3.24' '3.26' '3.28')
-LATEST_GS_VERSION=${GS_VERSIONS[-1]}
+LATEST_GS_VERSION="${GS_VERSIONS[-1]}"
 
 # Set a proper gnome-shell theme version
-if [[ $(which gnome-shell 2> /dev/null) ]]; then
-  CURRENT_GS_VERSION=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -2)
+if [[ "$(which gnome-shell 2> /dev/null)" ]]; then
+  CURRENT_GS_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -2)"
   for version in "${GS_VERSIONS[@]}"; do
-    if (( $(bc <<< "$CURRENT_GS_VERSION <= $version") )); then
-      GS_VERSION=$version
+    if (( "$(bc <<< "$CURRENT_GS_VERSION <= $version")" )); then
+      GS_VERSION="$version"
       break
-    elif (( $(bc <<< "$CURRENT_GS_VERSION > $LATEST_GS_VERSION") )); then
-      GS_VERSION=$LATEST_GS_VERSION
+    elif (( "$(bc <<< "$CURRENT_GS_VERSION > $LATEST_GS_VERSION")" )); then
+      GS_VERSION="$LATEST_GS_VERSION"
       break
     fi
   done
 else
-  GS_VERSION=$LATEST_GS_VERSION
+  GS_VERSION="$LATEST_GS_VERSION"
 fi
 
 usage() {
@@ -55,15 +55,15 @@ EOF
 }
 
 install() {
-  local dest=$1
-  local name=$2
-  local color=$3
-  local size=$4
+  local dest="$1"
+  local name="$2"
+  local color="$3"
+  local size="$4"
 
-  [[ "$color" == '-dark' ]] && local ELSE_DARK=$color
-  [[ "$color" == '-light' ]] && local ELSE_LIGHT=$color
+  [[ "$color" == '-dark' ]] && local ELSE_DARK="$color"
+  [[ "$color" == '-light' ]] && local ELSE_LIGHT="$color"
 
-  local THEME_DIR=$dest/$name$color$size
+  local THEME_DIR="$dest/$name$color$size"
 
   # SC2115: Protect /.
   [[ -d "$THEME_DIR" ]] && rm -rf "${THEME_DIR:?}"
@@ -127,9 +127,9 @@ install() {
 
 # Bakup and install files related to GDM theme
 install_gdm() {
-  local THEME_DIR=$1/$2$3$4
-  local GS_THEME_FILE=/usr/share/gnome-shell/gnome-shell-theme.gresource
-  local UBUNTU_THEME_FILE=/usr/share/gnome-shell/theme/ubuntu.css
+  local THEME_DIR="$1/$2$3$4"
+  local GS_THEME_FILE="/usr/share/gnome-shell/gnome-shell-theme.gresource"
+  local UBUNTU_THEME_FILE="/usr/share/gnome-shell/theme/ubuntu.css"
 
   if [[ -f "$GS_THEME_FILE" ]] && [[ "$(which glib-compile-resources 2> /dev/null)" ]]; then
     echo "Installing '$GS_THEME_FILE'..."
@@ -166,7 +166,7 @@ while [[ "$#" -gt 0 ]]; do
       shift 2
       ;;
     -g|--gdm)
-      gdm=true
+      gdm='true'
       shift 1 
       ;;
     -c|--color)
@@ -242,7 +242,7 @@ for color in "${colors[@]:-${COLOR_VARIANTS[@]}}"; do
   done
 done
 
-if [[ "${gdm:-}" == true ]]; then
+if [[ "${gdm:-}" == 'true' ]]; then
   install_gdm "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$color" "$size"
 fi
 

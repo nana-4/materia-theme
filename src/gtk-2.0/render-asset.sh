@@ -14,7 +14,7 @@ fi
 
 i="$2"
 
-GTK2_HIDPI=$(echo "${GTK2_HIDPI-False}" | tr '[:upper:]' '[:lower:]')
+GTK2_HIDPI="$(echo "${GTK2_HIDPI-False}" | tr '[:upper:]' '[:lower:]')"
 if [[ "${GTK2_HIDPI}" == "true" ]] ; then
   EXTRA_OPTIONS=("--export-dpi=192")
 else
@@ -24,6 +24,6 @@ fi
 echo "Rendering '$ASSETS_DIR/$i.png'"
 "$INKSCAPE" --export-id="$i" \
             --export-id-only \
-            ${EXTRA_OPTIONS+"${EXTRA_OPTIONS[@]}"} \
+            "${EXTRA_OPTIONS+"${EXTRA_OPTIONS[@]}"}" \
             --export-png="$ASSETS_DIR/$i.png" "$SRC_FILE" >/dev/null \
 && "$OPTIPNG" -o7 --quiet "$ASSETS_DIR/$i.png"
