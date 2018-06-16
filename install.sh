@@ -125,26 +125,30 @@ install() {
   cp -r "$SRC_DIR/xfwm4/assets${ELSE_LIGHT:-}"                                  "$THEME_DIR/xfwm4/assets"
 }
 
+# Bakup and install files related to GDM theme
 install_gdm() {
   local THEME_DIR=$1/$2$3$4
   local GS_THEME_FILE=/usr/share/gnome-shell/gnome-shell-theme.gresource
   local UBUNTU_THEME_FILE=/usr/share/gnome-shell/theme/ubuntu.css
 
-  # bakup and install files related to gdm theme
-  if [[ ! -f "$GS_THEME_FILE.bak" ]]; then
-    cp -af "$GS_THEME_FILE" "$GS_THEME_FILE.bak"
+  if [[ -f "$GS_THEME_FILE" ]] && [[ "$(which glib-compile-resources 2> /dev/null)" ]]; then
+    echo "Installing '$GS_THEME_FILE'..."
+    cp -an "$GS_THEME_FILE" "$GS_THEME_FILE.bak"
+    glib-compile-resources \
+      --sourcedir="$THEME_DIR/gnome-shell" \
+      --target="$GS_THEME_FILE" \
+      "$THEME_DIR/gnome-shell/gnome-shell-theme.gresource.xml"
+  else
+    echo
+    echo "ERROR: Failed to install '$GS_THEME_FILE'"
+    exit 1
   fi
+
   if [[ -f "$UBUNTU_THEME_FILE" ]]; then
-    if [[ ! -f "$UBUNTU_THEME_FILE.bak" ]]; then
-      cp -af "$UBUNTU_THEME_FILE" "$UBUNTU_THEME_FILE.bak"
-    fi
+    echo "Installing '$UBUNTU_THEME_FILE'..."
+    cp -an "$UBUNTU_THEME_FILE" "$UBUNTU_THEME_FILE.bak"
     cp -af "$THEME_DIR/gnome-shell/gnome-shell.css" "$UBUNTU_THEME_FILE"
   fi
-  echo "Installing '$GS_THEME_FILE'..."
-  glib-compile-resources \
-    --sourcedir="$THEME_DIR/gnome-shell" \
-    --target="$GS_THEME_FILE" \
-    "$THEME_DIR/gnome-shell/gnome-shell-theme.gresource.xml"
 }
 
 while [[ "$#" -gt 0 ]]; do
