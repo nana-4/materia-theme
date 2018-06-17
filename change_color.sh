@@ -2,6 +2,7 @@
 # shellcheck disable=SC1090
 #set -x
 set -ueo pipefail
+
 SRC_PATH="$(readlink -f "$(dirname "$0")")"
 
 darker() {
@@ -28,8 +29,7 @@ print_usage() {
 }
 
 
-while [[ "$#" -gt 0 ]]
-do
+while [[ "$#" -gt 0 ]]; do
   case "$1" in
     -p|--path-list)
       CUSTOM_PATHLIST="$2"
@@ -216,7 +216,6 @@ for FILEPATH in "${PATHLIST[@]}"; do
       -e 's/#212121/%MENU_BG2%/g' \
       -e 's/Materia/%OUTPUT_THEME_NAME%/g' \
       {} \; ;
-
   fi
 done
 
