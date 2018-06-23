@@ -49,7 +49,7 @@
   border-style: solid solid none;
   border-width: 1px;
   border-color: $border_color;
-  border-radius: (2px + 1px) (2px + 1px) 0 0;
+  border-radius: ($material_radius + 1px) ($material_radius + 1px) 0 0;
   background-color: rgba($base_color, 0.9);
   background-clip: $extra_background_clip;
   transition: $longer_transition, border-width 0;
@@ -205,7 +205,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
   margin: 4px 4px 8px;
 
   .linked > entry {
-    border-radius: 2px;
+    border-radius: $material_radius;
 
     .gedit-search-entry-occurrences-tag {
       all: unset;
@@ -399,7 +399,7 @@ popover.popover-selector list {
   padding: 8px - 2px;
 
   row {
-    border-radius: 2px;
+    border-radius: $material_radius;
 
     image {
       &:dir(ltr) { margin-right: 6px; }
@@ -414,7 +414,7 @@ popover.popover-selector list {
 }
 
 omnibar {
-  &.linked:not(.vertical) entry { border-radius: 2px; }
+  &.linked:not(.vertical) entry { border-radius: $material_radius; }
 
   &:not(:hover):not(:active) entry { color: $secondary_fg_color; }
 }
@@ -458,9 +458,9 @@ popover.messagepopover {
     border-top: 1px solid $border_color;
     border-radius: 0;
 
-    &:first-child { border-bottom-left-radius: 2px; }
+    &:first-child { border-bottom-left-radius: $material_radius; }
 
-    &:last-child { border-bottom-right-radius: 2px; }
+    &:last-child { border-bottom-right-radius: $material_radius; }
   }
 
   .popover-content-area { margin: 16px; }
@@ -558,7 +558,7 @@ dockoverlayedge {
 
 pillbox {
   background-color: $bg_color;
-  border-radius: 2px;
+  border-radius: $material_radius;
 }
 
 buildperspective row {
@@ -859,7 +859,7 @@ tasklistview {
 #eog-thumb-nav {
   scrolledwindow { border-top: none; }
 
-  button { -gtk-outline-radius: 2px; }
+  button { -gtk-outline-radius: $material_radius; }
 }
 
 

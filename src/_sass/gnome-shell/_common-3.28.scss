@@ -43,7 +43,7 @@ stage {
   min-height: $medium_size;
   padding: 0 16px;
   border-width: 0;
-  border-radius: 2px;
+  border-radius: $material_radius;
   @include font(button);
   @include button(flat-normal);
   &:hover { @include button(flat-hover); }
@@ -59,7 +59,7 @@ stage {
   padding: 0 8px;
   margin-right: 0;
   border-right-width: 0;
-  border-radius: 2px;
+  border-radius: $material_radius;
   @include font(button);
   @include button(flat-normal);
   &:hover { @include button(flat-hover); }
@@ -68,17 +68,17 @@ stage {
   &:focus { @include button(flat-focus); }
 
   &:first-child {
-    border-radius: 2px;
+    border-radius: $material_radius;
   }
   &:last-child {
     margin-right: $container_padding;
     border-right-width: 0px;
-    border-radius: 2px;
+    border-radius: $material_radius;
   }
   &:first-child:last-child {
     margin-right: $container_padding;
     border-right-width: 0px;
-    border-radius: 2px;
+    border-radius: $material_radius;
   }
 }
 
@@ -215,7 +215,7 @@ StScrollBar {
 
 /* links */
 .shell-link {
-  border-radius: 2px;
+  border-radius: $material_radius;
   color: $link_color;
   &:hover {
     color: $link_color;
@@ -234,7 +234,7 @@ StScrollBar {
 .flashspot { background-color: white; }
 
 .modal-dialog {
-  border-radius: 2px;
+  border-radius: $material_radius;
   color: $fg_color;
   background-color: $popup_bg_color;
   border: none;
@@ -508,7 +508,7 @@ StScrollBar {
 
   .audio-selection-device {
     border: 1px solid $border_color;
-    border-radius: 2px;
+    border-radius: $material_radius;
     &:active,&:hover,&:focus { background-color: $primary_color; }
   }
 
@@ -632,7 +632,7 @@ StScrollBar {
     -arrow-box-shadow: none; //dreaming. bug #689995
     margin: 5px 8px 8px;
     background-color: $popup_bg_color;
-    border-radius: 2px;
+    border-radius: $material_radius;
     box-shadow: $shadow_2;
   }
 
@@ -707,7 +707,7 @@ StScrollBar {
 
   .switcher-list .item-box {
     padding: 8px;
-    border-radius: 2px;
+    border-radius: $material_radius;
   }
 
   .switcher-list .item-box:outlined {
@@ -773,14 +773,14 @@ StScrollBar {
     background-color: $primary_color;
     color: $inverse_fg_color;
     background-size: 32px;
-    border-radius: 2px;
+    border-radius: $material_radius;
   }
 
   .ws-switcher-box {
     height: 48px;
     border: none;
     background: $divider_color;
-    border-radius: 2px;
+    border-radius: $material_radius;
   }
 
 %osd-panel {
@@ -788,7 +788,7 @@ StScrollBar {
   background-color: $popup_bg_color;
   border: none;
   box-shadow: $shadow_4;
-  border-radius: 2px;
+  border-radius: $material_radius;
   padding: 12px;
 }
 
@@ -972,7 +972,7 @@ StScrollBar {
     .events-section-title {
       min-height: $menuitem_size - 4px * 2;
       padding: 4px 8px;
-      border-radius: 2px;
+      border-radius: $material_radius;
     }
 
     .datemenu-today-button {
@@ -1024,7 +1024,7 @@ StScrollBar {
       height: $menuitem_size - 6px * 2;
       margin: 2px;
       padding: 6px 16px;
-      border-radius: 2px;
+      border-radius: $material_radius;
       color: $fg_color;
       font-weight: bold;
       text-align: center;
@@ -1146,7 +1146,7 @@ StScrollBar {
           background-color: transparent;
           &:hover,&:focus { background-color: $divider_color; }
           &:active { background-color: $track_color; }
-          border-radius: 2px;
+          border-radius: $material_radius;
         }
 
           .message-icon-bin {
@@ -1235,7 +1235,7 @@ StScrollBar {
               icon-size: 16px !important;
               padding: 8px;
               border: none;
-              border-radius: 2px;
+              border-radius: $material_radius;
               background-color: $divider_color;
               color: $hint_fg_color;
             }
@@ -1357,7 +1357,7 @@ StScrollBar {
   .nm-dialog-item {
     font-size: 1em;
     border-bottom: none;
-    border-radius: 2px;
+    border-radius: $material_radius;
     padding: 12px;
     spacing: 20px;
     &:hover, &:focus { background-color: $divider_color; }
@@ -1395,7 +1395,7 @@ StScrollBar {
 
   .window-clone-border {
     border: 4px solid $inverse_track_color;
-    border-radius: 2px;
+    border-radius: $material_radius;
     // For window decorations with round corners we can't match
     // the exact shape when the window is scaled. So apply a shadow
     // to fix that case
@@ -1405,7 +1405,7 @@ StScrollBar {
     spacing: 25px;
     color: $inverse_fg_color;
     background-color: $panel_bg_color;
-    border-radius: 2px;
+    border-radius: $material_radius;
     padding: 4px 8px;
   }
 
@@ -1470,10 +1470,10 @@ StScrollBar {
     padding: 3px 0;
     border: none;
     border-left: 0px;
-    border-radius: 0px 2px 2px 0px;
+    border-radius: 0px $material_radius $material_radius 0px;
 
     &:rtl {
-      border-radius: 2px 0 0 2px;
+      border-radius: $material_radius 0 0 $material_radius;
     }
 
     .placeholder {
@@ -1495,7 +1495,7 @@ StScrollBar {
 
   .dash-label { //osd tooltip
     // min-height: 32px - 6px * 2;
-    border-radius: 2px;
+    border-radius: $material_radius;
     padding: 7px 8px;
     color: $fg_color;
     background-color: $popup_bg_color;
@@ -1545,11 +1545,11 @@ StScrollBar {
     }
     &:first-child {
       border-right-width: 0;
-      border-radius: 2px;
+      border-radius: $material_radius;
       &:checked { border-radius: 0; }
     }
     &:last-child {
-      border-radius: 2px;
+      border-radius: $material_radius;
       &:checked { border-radius: 0; }
     }
   }
@@ -1599,7 +1599,7 @@ StScrollBar {
 
   %icon_tile {
     color: $inverse_fg_color;
-    border-radius: 2px;
+    border-radius: $material_radius;
     padding: 6px;
     border: none;
     transition-duration: $longer_duration;
@@ -1625,7 +1625,7 @@ StScrollBar {
 
   // Collections
   .app-folder-popup { //expanded collection
-    -arrow-border-radius: 2px;
+    -arrow-border-radius: $material_radius;
     -arrow-background-color: $inverse_panel_bg_color;
     -arrow-base: 24px;
     -arrow-rise: 12px;
@@ -1677,9 +1677,9 @@ StScrollBar {
     visible-width: 32px; //amount visible before hover
     spacing: 12px;
     padding: 12px;
-    border-radius: 2px 0 0 2px;
+    border-radius: $material_radius 0 0 $material_radius;
     //border-width: 0; //fixme: can't have non unoform borders :(
-    &:rtl { border-radius: 0 2px 2px 0;}
+    &:rtl { border-radius: 0 $material_radius $material_radius 0;}
 
     .placeholder {
       background-image: url("assets/dash-placeholder.svg");
@@ -1723,7 +1723,7 @@ StScrollBar {
     width: 34em;
     min-height: $menuitem_size * 2;
     margin: 5px;
-    border-radius: 2px;
+    border-radius: $material_radius;
     color: $fg_color;
     background-color: $popup_bg_color;
     border: none;
@@ -1743,12 +1743,12 @@ StScrollBar {
     .notification-button {
       min-height: $medium_size;
       padding: 0 8px;
-      border-radius: 2px;
+      border-radius: $material_radius;
       background-color: transparent;
       color: $secondary_fg_color;
       font-weight: 500;
-      &:first-child { border-radius: 2px; }
-      &:last-child { border-radius: 2px; }
+      &:first-child { border-radius: $material_radius; }
+      &:last-child { border-radius: $material_radius; }
       &:hover, &focus { background-color: $divider_color; color: $fg_color; }
       &:active { background-color: $track_color; color: $fg_color; }
     }
@@ -1808,7 +1808,7 @@ StScrollBar {
 
     .hotplug-resident-mount {
       spacing: 8px;
-      border-radius: 2px;
+      border-radius: $material_radius;
       &:hover { background-color: $divider_color; }
       &:active { background-color: $track_color; }
     }
@@ -1829,7 +1829,7 @@ StScrollBar {
 
     .hotplug-resident-eject-button {
       padding: 7px;
-      border-radius: 2px;
+      border-radius: $material_radius;
       color: $fg_color;
     }
 
@@ -1864,7 +1864,7 @@ StScrollBar {
     min-width: $medium_size * 2;
     font-size: 2em;
     font-weight: 500;
-    border-radius: 2px;
+    border-radius: $material_radius;
     border: none;
     color: inherit;
     @include button(normal);
@@ -1916,7 +1916,7 @@ StScrollBar {
     -arrow-rise: 0;
     -boxpointer-gap: 5px;
     background-color: $popup_bg_color;
-    border-radius: 2px;
+    border-radius: $material_radius;
     box-shadow: $shadow_2;
   }
 
@@ -1937,7 +1937,7 @@ StScrollBar {
     transition-duration: 0ms; // FIXME: needs more natural transitions
     min-height: $menuitem_size;
     padding: 0 8px;
-    border-radius: 2px;
+    border-radius: $material_radius;
     &:hover { background-color: $divider_color; color: $fg_color; }
     &:active { background-color: $track_color; color: $fg_color; }
     &:selected { background-color: $primary_color; color: $inverse_fg_color; }
@@ -1955,8 +1955,8 @@ StScrollBar {
     padding: 0;
   }
 
-  .candidate-page-button-previous { border-radius: 2px; border-right-width: 0; }
-  .candidate-page-button-next { border-radius: 2px;  }
+  .candidate-page-button-previous { border-radius: $material_radius; border-right-width: 0; }
+  .candidate-page-button-next { border-radius: $material_radius;  }
   .candidate-page-button-icon { icon-size: em(16px); }
 
 /* Auth Dialogs & Screen Shield */
@@ -1965,7 +1965,7 @@ StScrollBar {
   background-size: contain;
   border: none;
   color: $inverse_fg_color;
-  border-radius: 2px;
+  border-radius: $material_radius;
   &:hover {
     border-color: $inverse_fg_color;
     color: $inverse_fg_color;
@@ -2046,7 +2046,7 @@ StScrollBar {
     &:expanded .login-dialog-user-list-item:logged-in { border-right: 2px solid $inverse_fg_color; }
   }
   .login-dialog-user-list-item {
-    border-radius: 2px;
+    border-radius: $material_radius;
     padding: 4px 4px 0;
     color: $inverse_secondary_fg_color;
     &:ltr { padding-right: 1em; }
@@ -2141,7 +2141,7 @@ StScrollBar {
     border: none;
     background-color: $alt_panel_bg_color;
     color: $inverse_fg_color;
-    border-radius: 2px;
+    border-radius: $material_radius;
   }
   .notification { margin-right: 16px; } //compensate for space allocated to the scrollbar
 }
@@ -2182,7 +2182,7 @@ StScrollBar {
   spacing: 4px;
   padding: 0;
   border: none;
-  border-radius: 2px;
+  border-radius: $material_radius;
   box-shadow: $shadow_4;
   & > #Toolbar {
     padding: 0 8px;
@@ -2244,7 +2244,7 @@ StScrollBar {
       min-height: $medium_size;
       padding: 0 16px;
       border: none;
-      border-radius: 2px;
+      border-radius: $material_radius;
       @include font(button);
       @include button(flat-normal);
       &:hover { @include button(flat-hover); }
@@ -2263,7 +2263,7 @@ StScrollBar {
 
   .lg-extension {
       border: none;
-      border-radius: 2px;
+      border-radius: $material_radius;
       padding: 4px;
   }
 
@@ -2278,7 +2278,7 @@ StScrollBar {
   #LookingGlassPropertyInspector {
     background: $popup_bg_color;
     border: none;
-    border-radius: 2px;
+    border-radius: $material_radius;
     padding: 6px;
     box-shadow: $shadow_4;
   }

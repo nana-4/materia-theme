@@ -47,7 +47,7 @@
   outline-width: 2px;
   outline-color: $fill_color;
   outline-offset: -4px;
-  outline-radius: 2px;
+  outline-radius: $material_radius;
 }
 
 
@@ -97,7 +97,7 @@
   background-color: $base_color;
   color: $fg_color;
 
-  &:hover, &:active, &:selected { border-radius: 2px; }
+  &:hover, &:active, &:selected { border-radius: $material_radius; }
 
   &:insensitive {
     // background-color: $alt_base_color;
@@ -154,7 +154,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
 .grid-child {
   // outline-offset: -2px;
   padding: 4px;
-  border-radius: 2px;
+  border-radius: $material_radius;
   &:selected { @extend %selected_items; }
 }
 
@@ -188,7 +188,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
 
 .entry {
   padding: 7px 8px 8px;
-  border-radius: 2px;
+  border-radius: $material_radius;
   @include entry(normal);
   &:focus { @include entry(focus); }
   &:insensitive { @include entry(insensitive); }
@@ -285,7 +285,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
 %button,
 .button {
   padding: 7px 10px 8px;
-  border-radius: 2px;
+  border-radius: $material_radius;
   background-repeat: no-repeat;
   background-position: center, center;
   background-size: ($medium_size * 2 / 0.8) ($medium_size * 2 / 0.8), auto;
@@ -348,8 +348,8 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
     // one, so we're adding the missing padding to the label depending on
     // its position inside the button
     padding: 7px 10px 8px; // same as .button
-    outline-radius: 2px;
-    border-radius: 2px;
+    outline-radius: $material_radius;
+    border-radius: $material_radius;
     background-size: ($medium_size * 2 / 0.8) ($medium_size * 2 / 0.8), auto;
     .label:first-child { padding-left: 6px; }
     .label:last-child { padding-right: 6px; }
@@ -403,7 +403,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
 
   .linked > &.flat,
   .linked.vertical > &.flat {
-    border-radius: 2px;
+    border-radius: $material_radius;
 
     &.image-button {
       outline-radius: $circular_radius;
@@ -411,8 +411,8 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
     }
 
     &.text-button.image-button {
-      outline-radius: 2px;
-      border-radius: 2px;
+      outline-radius: $material_radius;
+      border-radius: $material_radius;
     }
   }
 }
@@ -448,42 +448,42 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
 }
 
 %linked_middle {
-  outline-radius: 2px;
+  outline-radius: $material_radius;
   border-radius: 0;
 }
 
 %linked {
   @extend %linked_middle;
   &:first-child {
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
+    border-top-left-radius: $material_radius;
+    border-bottom-left-radius: $material_radius;
   }
   &:last-child {
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
+    border-top-right-radius: $material_radius;
+    border-bottom-right-radius: $material_radius;
   }
   &:only-child {
-    border-radius: 2px;
+    border-radius: $material_radius;
   }
 }
 
 %linked_vertical_middle {
-  outline-radius: 2px;
+  outline-radius: $material_radius;
   border-radius: 0;
 }
 
 %linked_vertical{
   @extend %linked_vertical_middle;
   &:first-child {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
+    border-top-left-radius: $material_radius;
+    border-top-right-radius: $material_radius;
   }
   &:last-child {
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: $material_radius;
+    border-bottom-right-radius: $material_radius;
   }
   &:only-child {
-    border-radius: 2px;
+    border-radius: $material_radius;
   }
 }
 
@@ -498,7 +498,7 @@ GtkColorButton.button {
 
   GtkColorSwatch:first-child:last-child { // :first-child:last-child for a specificity bump, it gets overridden by the
                                           // colorpicker style, otherwise
-    border-radius: 2px;
+    border-radius: $material_radius;
     box-shadow: $shadow_1;
   }
 }
@@ -554,10 +554,10 @@ GtkColorButton.button {
       padding-bottom: 10px; //
       border: none;
       &:first-child {
-        border-radius: 2px 2px 0 0;
+        border-radius: $material_radius $material_radius 0 0;
       }
       &:last-child {
-        border-radius: 0 0 2px 2px;
+        border-radius: 0 0 $material_radius $material_radius;
       }
     }
     &.entry {
@@ -659,7 +659,7 @@ GtkComboBox {
     border-image: -gtk-scaled(url("assets/box-shadow#{$asset_suffix}.png"),
                               url("assets/box-shadow#{$asset_suffix}@2.png"))
                   10 / 10px stretch;
-    border-radius: 2px;
+    border-radius: $material_radius;
     // box-shadow: $shadow_2, inset 0 1px $highlight_color;
     background-color: $popup_bg_color;
     &:backdrop {
@@ -697,7 +697,7 @@ GtkComboBox {
 .header-bar {
   transition: background-color $shorter_duration $deceleration_curve;
   padding: $container_padding;
-  border-radius: 2px 2px 0 0;
+  border-radius: $material_radius $material_radius 0 0;
   box-shadow: $shadow_1, inset 0 1px $titlebar_highlight_color;
   background-color: $titlebar_bg_color;
   color: $titlebar_fg_color;
@@ -966,7 +966,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   border: 1px solid $border_color; // adds borders in a non composited env
   .csd & {
     border: none; // axes borders in a composited env
-    border-radius: 2px;
+    border-radius: $material_radius;
   }
   .menuitem {
     transition: $shorter_transition;
@@ -1000,7 +1000,7 @@ column-header.button.dnd { // for treeview-like derive widgets
 
 .menuitem .accelerator { color: $secondary_fg_color; }
 
-.csd.popup { border-radius: 2px; }
+.csd.popup { border-radius: $material_radius; }
 
 
 /***************
@@ -1012,7 +1012,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   padding: 2px;
   border: 1px solid;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.3);
-  border-radius: 2px + 1px;
+  border-radius: $material_radius + 1px;
   background-color: $popup_bg_color;
   box-shadow:  $shadow_2; // TODO: this should really have a highlight
   &:backdrop { box-shadow: $shadow_1; }
@@ -1035,7 +1035,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   }
 
   .linked > .button {
-    border-radius: 2px;
+    border-radius: $material_radius;
     @extend %simple_flat_button;
     &:checked {
       background-color: $primary_color;
@@ -1670,7 +1670,7 @@ GtkProgressBar {
   }
   &.trough {
     padding: 2px;
-    border-radius: 2px;
+    border-radius: $material_radius;
     @include entry(normal);
     &:insensitive { @include entry(insensitive); }
     &.indicator-discrete {
@@ -1830,7 +1830,7 @@ GtkCalendar {
   &:selected {
     @extend .view:selected;
 
-    border-radius: 2px + 1px;
+    border-radius: $material_radius + 1px;
   }
 
   &.header {
@@ -1867,8 +1867,8 @@ GtkCalendar {
   &.csd { // rounded bottom border styling for csd version
     &.background {
       // bigger radius for better antialiasing
-      border-bottom-left-radius: 2px;
-      border-bottom-right-radius: 2px;
+      border-bottom-left-radius: $material_radius;
+      border-bottom-right-radius: $material_radius;
     }
     .dialog-action-area .button {
       @extend %simple_flat_button;
@@ -1876,10 +1876,10 @@ GtkCalendar {
       border-top: 1px solid $border_color;
       border-radius: 0;
       background-size: (192px / 0.8) (192px / 0.8), auto;
-      // &:first-child{ border-bottom-left-radius: 2px; }
-      // &:last-child { border-bottom-right-radius: 2px; }
-      &:first-child{ border-radius: 0 0 0 2px; }
-      &:last-child { border-radius: 0 0 2px 0; }
+      // &:first-child{ border-bottom-left-radius: $material_radius; }
+      // &:last-child { border-bottom-right-radius: $material_radius; }
+      &:first-child{ border-radius: 0 0 0 $material_radius; }
+      &:last-child { border-radius: 0 0 $material_radius 0; }
     }
   }
 }
@@ -2058,7 +2058,7 @@ GtkInfoBar {
 
   color: $tooltip_fg_color;
   padding: 4px; /* not working */
-  border-radius: 2px;
+  border-radius: $material_radius;
   box-shadow: none; // otherwise it gets inherited by windowframe.csd
   // FIXME: we need a border or tooltips vanish on black background.
   &.window-frame.csd {
@@ -2098,48 +2098,48 @@ GtkColorSwatch {
   // The :not() madness is needed since actually the overlay is selectable by GtkColorSwatch > .overlay
   // and GtkColorSwatch.overlay, I know it's weird, but this is gtk+, not a browser.
   &.top {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
+    border-top-left-radius: $material_radius;
+    border-top-right-radius: $material_radius;
   }
   &.bottom {
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: $material_radius;
+    border-bottom-right-radius: $material_radius;
   }
   &.left, &:first-child:not(.overlay):not(.top) {
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
+    border-top-left-radius: $material_radius;
+    border-bottom-left-radius: $material_radius;
   }
   &.right, &:last-child:not(.overlay):not(.bottom) {
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
+    border-top-right-radius: $material_radius;
+    border-bottom-right-radius: $material_radius;
   }
-  &:only-child:not(.overlay) { border-radius: 2px; }
+  &:only-child:not(.overlay) { border-radius: $material_radius; }
 
   // overlay corner rounding
   &.top > .overlay {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
+    border-top-left-radius: $material_radius;
+    border-top-right-radius: $material_radius;
   }
   &.bottom > .overlay {
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: $material_radius;
+    border-bottom-right-radius: $material_radius;
   }
   &:first-child:not(.top) > .overlay {
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
+    border-top-left-radius: $material_radius;
+    border-bottom-left-radius: $material_radius;
   }
   &:last-child:not(.bottom) > .overlay {
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
+    border-top-right-radius: $material_radius;
+    border-bottom-right-radius: $material_radius;
   }
-  &:only-child > .overlay { border-radius: 2px; }
+  &:only-child > .overlay { border-radius: $material_radius; }
 
   // hover effect
   &:hover { box-shadow: $shadow_2; }
 
   // no hover effect for the colorswatch in the color editor
   GtkColorEditor & {
-    border-radius: 2px; // same radius as the entry
+    border-radius: $material_radius; // same radius as the entry
     &:hover { box-shadow: $shadow_1; }
   }
 
@@ -2206,7 +2206,7 @@ GtkVolumeButton.button {
 
 .window-frame {
   transition: $shadow_transition;
-  border-radius: 2px 2px 0 0;
+  border-radius: $material_radius $material_radius 0 0;
   box-shadow: $shadow_4;
 
   // FIXME rationalize window-frame shadows
@@ -2229,15 +2229,15 @@ GtkVolumeButton.button {
   }
   &.csd {
     &.popup {
-      border-radius: 2px;
+      border-radius: $material_radius;
       box-shadow: $shadow_2;
     }
     &.tooltip {
-      border-radius: 2px;
+      border-radius: $material_radius;
       box-shadow: none;
     }
     &.message-dialog {
-      border-radius: 2px;
+      border-radius: $material_radius;
       box-shadow: $shadow_4;
       &:backdrop { box-shadow: $shadow_2; }
     }

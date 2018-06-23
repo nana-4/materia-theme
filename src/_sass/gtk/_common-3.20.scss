@@ -28,7 +28,7 @@
   outline-width: 2px;
   outline-color: transparent;
   outline-offset: -4px;
-  -gtk-outline-radius: 2px;
+  -gtk-outline-radius: $material_radius;
 
   -gtk-secondary-caret-color: $primary_color;
 }
@@ -87,7 +87,7 @@ notebook:focus tab,
 
   &:disabled { color: $disabled_fg_color; }
 
-  &:hover, &:active, &:selected { border-radius: 2px; }
+  &:hover, &:active, &:selected { border-radius: $material_radius; }
 
   selection,
   &:selected { @extend %selected_items; }
@@ -116,7 +116,7 @@ flowbox {
 
   flowboxchild {
     padding: 4px;
-    border-radius: 2px;
+    border-radius: $material_radius;
 
     &:selected { @extend %selected_items; }
   }
@@ -214,7 +214,7 @@ entry {
   %entry_basic, & {
     min-height: $medium_size;
     padding: 0 8px;
-    border-radius: 2px;
+    border-radius: $material_radius;
 
     @include entry(normal);
 
@@ -394,7 +394,7 @@ button {
     min-height: 24px;
     min-width: 16px;
     padding: ($medium_size - 24px) / 2 ($medium_size - 16px) / 2;
-    border-radius: 2px;
+    border-radius: $material_radius;
     font-weight: 500;
 
     @include button(normal);
@@ -438,8 +438,8 @@ button {
     }
 
     &.text-button.image-button {
-      border-radius: 2px;
-      -gtk-outline-radius: 2px;
+      border-radius: $material_radius;
+      -gtk-outline-radius: $material_radius;
 
       label {
         &:first-child { margin-left: 16px - ($medium_size - 24px) / 2; }
@@ -456,13 +456,13 @@ button {
 
     .linked > &.flat,
     .linked.vertical > &.flat {
-      border-radius: 2px;
+      border-radius: $material_radius;
 
       &.image-button { @extend %circular_button; }
 
       &.text-button.image-button {
-        border-radius: 2px;
-        -gtk-outline-radius: 2px;
+        border-radius: $material_radius;
+        -gtk-outline-radius: $material_radius;
       }
     }
 
@@ -642,47 +642,47 @@ toolbar.inline-toolbar toolbutton {
 
 %linked_middle {
   border-radius: 0;
-  -gtk-outline-radius: 2px;
+  -gtk-outline-radius: $material_radius;
 }
 
 %linked {
   @extend %linked_middle;
 
   &:first-child {
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
+    border-top-left-radius: $material_radius;
+    border-bottom-left-radius: $material_radius;
   }
 
   &:last-child {
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
+    border-top-right-radius: $material_radius;
+    border-bottom-right-radius: $material_radius;
   }
 
   &:only-child {
-    border-radius: 2px;
+    border-radius: $material_radius;
   }
 }
 
 %linked_vertical_middle {
   border-radius: 0;
-  -gtk-outline-radius: 2px;
+  -gtk-outline-radius: $material_radius;
 }
 
 %linked_vertical {
   @extend %linked_vertical_middle;
 
   &:first-child {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
+    border-top-left-radius: $material_radius;
+    border-top-right-radius: $material_radius;
   }
 
   &:last-child {
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: $material_radius;
+    border-bottom-right-radius: $material_radius;
   }
 
   &:only-child {
-    border-radius: 2px;
+    border-radius: $material_radius;
   }
 }
 
@@ -691,7 +691,7 @@ modelbutton.flat,
 .menuitem.button.flat {
   min-height: $menuitem_size;
   padding: 0 8px;
-  border-radius: 2px;
+  border-radius: $material_radius;
   color: inherit;
 
   @extend %simple_flat_button;
@@ -831,9 +831,9 @@ spinbutton {
 
       @extend %simple_flat_button;
 
-      &.up { border-radius: 2px 2px 0 0; }
+      &.up { border-radius: $material_radius $material_radius 0 0; }
 
-      &.down { border-radius: 0 0 2px 2px; }
+      &.down { border-radius: 0 0 $material_radius $material_radius; }
     }
   }
 
@@ -970,7 +970,7 @@ toolbar {
   &.osd {
     transition: $shadow_transition;
     padding: $container_padding;
-    border-radius: 2px;
+    border-radius: $material_radius;
     box-shadow: $shadow_2, inset 0 1px $highlight_color;
     background-color: $popup_bg_color;
 
@@ -1066,7 +1066,7 @@ headerbar {
     @extend .dim-label;
   }
 
-  .linked:not(.vertical) > entry:not(.flat) { border-radius: 2px; }
+  .linked:not(.vertical) > entry:not(.flat) { border-radius: $material_radius; }
 
   button:not(.suggested-action):not(.destructive-action) {
     @extend %button_basic.flat;
@@ -1238,8 +1238,8 @@ headerbar {
 }
 
 .background .titlebar {
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
+  border-top-left-radius: $material_radius;
+  border-top-right-radius: $material_radius;
 }
 
 .background.tiled .titlebar,
@@ -1255,14 +1255,14 @@ headerbar {
 
 headerbar { // headerbar border rounding
   window separator:first-child + &, // tackles the paned container case
-  window &:first-child { border-top-left-radius: 2px; }
+  window &:first-child { border-top-left-radius: $material_radius; }
 
-  window &:last-child { border-top-right-radius: 2px; }
+  window &:last-child { border-top-right-radius: $material_radius; }
 
   window stack & { // tackles the stacked headerbars case
     &:first-child, &:last-child {
-      border-top-left-radius: 2px;
-      border-top-right-radius: 2px;
+      border-top-left-radius: $material_radius;
+      border-top-right-radius: $material_radius;
     }
   }
 
@@ -1329,7 +1329,7 @@ headerbar { // headerbar border rounding
                                   $primary_color 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
-    border-radius: 2px;
+    border-radius: $material_radius;
 
     &:checked {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
@@ -1496,7 +1496,7 @@ menu,
 
   .csd & {
     border: none; // axes borders in a composited env
-    border-radius: 2px;
+    border-radius: $material_radius;
   }
 
   menuitem {
@@ -1546,7 +1546,7 @@ menu,
     &.top {
       margin-top: -4px;
       border-bottom: 1px solid $border_color;
-      border-radius: 2px 2px 0 0;
+      border-radius: $material_radius $material_radius 0 0;
       -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
     }
 
@@ -1554,7 +1554,7 @@ menu,
       margin-top: 4px * 2;
       margin-bottom: -4px * 3;
       border-top: 1px solid $border_color;
-      border-radius: 0 0 2px 2px;
+      border-radius: 0 0 $material_radius $material_radius;
       -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
     }
 
@@ -1610,7 +1610,7 @@ popover.background {
     border-style: solid;
     border-width: 1px;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.3);
-    border-radius: 2px + 1px;
+    border-radius: $material_radius + 1px;
   }
 
   > stack { margin: -4px; } // remove extra padding from menu style popovers
@@ -1641,7 +1641,7 @@ popover.background {
 
     min-height: 32px;
     padding: 0 8px;
-    border-radius: 2px;
+    border-radius: $material_radius;
 
     &:checked { @extend %selected_items; }
   }
@@ -2235,8 +2235,8 @@ menu menuitem check {
   & {
     min-height: 16px;
     min-width: 16px;
-    border-radius: 2px;
-    -gtk-outline-radius: 2px;
+    border-radius: $material_radius;
+    -gtk-outline-radius: $material_radius;
     -gtk-icon-source: -gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.svg"));
   }
 
@@ -2614,7 +2614,7 @@ levelbar {
   // imitate the entry style
   trough {
     // padding: 2px;
-    // border-radius: 2px;
+    // border-radius: $material_radius;
     // box-shadow: $shadow_1;
     // background-color: $base_color;
 
@@ -2838,7 +2838,7 @@ calendar {
   &:selected {
     @extend %selected_items;
 
-    border-radius: 2px + 1px;
+    border-radius: $material_radius + 1px;
   }
 
   &.header {
@@ -2876,8 +2876,8 @@ messagedialog { // Message Dialog styling
   &.csd { // rounded bottom border styling for csd version
     &.background {
       // bigger radius for better antialiasing
-      border-bottom-left-radius: 2px;
-      border-bottom-right-radius: 2px;
+      border-bottom-left-radius: $material_radius;
+      border-bottom-right-radius: $material_radius;
     }
 
     .dialog-action-area {
@@ -2886,7 +2886,7 @@ messagedialog { // Message Dialog styling
 
       button {
         @extend %simple_flat_button;
-        border-radius: 2px;
+        border-radius: $material_radius;
 
         &:not(:last-child) { margin-right: $container_padding; }
 
@@ -3149,12 +3149,12 @@ tooltip {
   }
 
   // padding: 4px; /* not working */
-  border-radius: 2px;
+  border-radius: $material_radius;
   box-shadow: none; // otherwise it gets inherited by windowframe.csd
 
   &:not(.csd):not(.unity-csd) {
     // border: 1px solid $border_color;
-    // border-radius: 2px + 1px;
+    // border-radius: $material_radius + 1px;
     // background-clip: $extra_background_clip;
   }
 
@@ -3287,7 +3287,7 @@ colorswatch {
 // colorscale popup
 colorchooser .popover.osd {
   transition: $shadow_transition;
-  border-radius: 2px;
+  border-radius: $material_radius;
   box-shadow: $shadow_2, inset 0 1px $highlight_color;
   background-color: $popup_bg_color;
 
@@ -3325,7 +3325,7 @@ colorchooser .popover.osd {
  **********************/
 decoration {
   transition: $shadow_transition;
-  border-radius: 2px 2px 0 0;
+  border-radius: $material_radius $material_radius 0 0;
   box-shadow: $shadow_4, 0 16px 16px transparent;
 
   // FIXME rationalize shadows
@@ -3355,17 +3355,17 @@ decoration {
   .ssd & { box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16); } // just doing borders, wm draws actual shadows
 
   .csd.popup & {
-    border-radius: 2px;
+    border-radius: $material_radius;
     box-shadow: $shadow_2;
   }
 
   tooltip.csd & {
-    border-radius: 2px;
+    border-radius: $material_radius;
     box-shadow: none;
   }
 
   messagedialog.csd & {
-    border-radius: 2px;
+    border-radius: $material_radius;
     // box-shadow: $shadow_4, 0 16px 16px transparent;
 
     // &:backdrop { box-shadow: $shadow_2, 0 16px 16px transparent; }
@@ -3448,7 +3448,7 @@ cursor-handle {
   padding-right: 8px;
 
   border: solid 1px $border_color;
-  border-radius: 2px + 1px;
+  border-radius: $material_radius + 1px;
   box-shadow: inset 0 -2px $border_color;
   background-color: $popup_bg_color;
   color: $fg_color;

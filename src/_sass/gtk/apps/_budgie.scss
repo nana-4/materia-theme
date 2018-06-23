@@ -12,8 +12,8 @@
   border-style: none none solid;
 
   button {
-    border-radius: 2px;
-    -gtk-outline-radius: 2px;
+    border-radius: $material_radius;
+    -gtk-outline-radius: $material_radius;
 
     @extend %simple_flat_button;
   }
@@ -141,7 +141,7 @@
       min-height: 24px;
       min-width: 24px;
       padding: 0;
-      border-radius: 2px;
+      border-radius: $material_radius;
     }
   }
 }
@@ -505,7 +505,7 @@ calendar.raven-calendar {
   background-color: transparent;
 
   &:selected {
-    border-radius: 2px;
+    border-radius: $material_radius;
     background-color: $primary_color;
   }
 }
@@ -556,20 +556,20 @@ calendar.raven-calendar {
 .drop-shadow {
   margin: 5px 9px;
   padding: 3px;
-  border-radius: 2px;
+  border-radius: $material_radius;
   box-shadow: $shadow_2, inset 0 1px $highlight_color;
   background-color: $popup_bg_color;
 
   button { @extend %simple_flat_button; }
 
-  .linked > button { border-radius: 2px; }
+  .linked > button { border-radius: $material_radius; }
 }
 
 %budgie_dialog {
-  border-radius: 2px;
+  border-radius: $material_radius;
   background-color: $popup_bg_color;
 
-  decoration { border-radius: 2px; }
+  decoration { border-radius: $material_radius; }
 }
 
 // Session Dialog
@@ -586,9 +586,9 @@ calendar.raven-calendar {
 
     @extend %simple_flat_button;
 
-    &:first-child { border-bottom-left-radius: 2px; }
+    &:first-child { border-bottom-left-radius: $material_radius; }
 
-    &:last-child { border-bottom-right-radius: 2px; }
+    &:last-child { border-bottom-right-radius: $material_radius; }
   }
 }
 
