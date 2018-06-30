@@ -224,11 +224,12 @@ done
       #-e 's/%HDR_BTN_FG%/'"$HDR_BTN_FG"'/g' \
       #-e 's/%WM_BORDER_FOCUS%/'"$WM_BORDER_FOCUS"'/g' \
       #-e 's/%WM_BORDER_UNFOCUS%/'"$WM_BORDER_UNFOCUS"'/g' \
-      #-e 's/%ROUNDNESS%/'"$ROUNDNESS"'/g' \
       #-e 's/%SPACING%/'"$SPACING"'/g' \
       #-e 's/%INACTIVE_FG%/'"$INACTIVE_FG"'/g' \
       #-e 's/%INACTIVE_TXT_FG%/'"$INACTIVE_TXT_FG"'/g' \
       #-e 's/%INACTIVE_MENU_FG%/'"$INACTIVE_MENU_FG"'/g' \
+
+sed -i -e 's/^$material_radius: .px/$material_radius: '"$ROUNDNESS"'px/g' ./src/_sass/gtk/_variables.scss
 
 if [[ "${DEBUG:-}" ]]; then
   echo "You can debug TEMP DIR: $tempdir, press [Enter] when finished"; read -r
@@ -258,7 +259,6 @@ for FILEPATH in "${PATHLIST[@]}"; do
     -e 's/%HDR_BTN_FG%/#'"$HDR_BTN_FG"'/g' \
     -e 's/%WM_BORDER_FOCUS%/#'"$WM_BORDER_FOCUS"'/g' \
     -e 's/%WM_BORDER_UNFOCUS%/#'"$WM_BORDER_UNFOCUS"'/g' \
-    -e 's/%ROUNDNESS%/'"$ROUNDNESS"'/g' \
     -e 's/%SPACING%/'"$SPACING"'/g' \
     -e 's/%INACTIVE_FG%/#'"$INACTIVE_FG"'/g' \
     -e 's/%INACTIVE_TXT_FG%/#'"$INACTIVE_TXT_FG"'/g' \
