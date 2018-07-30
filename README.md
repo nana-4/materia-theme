@@ -5,7 +5,7 @@
 Materia (formerly Flat-Plat) is a [Material Design](https://material.io) theme for GNOME/GTK+ based desktop environments.  
 It supports GTK+ 3, GTK+ 2, GNOME Shell, Budgie, Cinnamon, MATE, Unity, LightDM, GDM, Chrome theme, etc.
 
-Also Materia has compatibility with [oomox theme designer](https://github.com/actionless/oomox).
+Also Materia has compatibility with [oomox theme designer](https://github.com/themix-project/oomox).
 
 ## Features
 
@@ -147,7 +147,7 @@ Materia is distributed under the terms of the GNU General Public License, versio
 - Design and specifications are based on Google's [Material Design](https://material.io).
 - The included symbolic icons are based on [Material Design icons](https://github.com/google/material-design-icons) by Google.
 - Chrome/Chromium scrollbars extension was forked from [Adwaita-chrome-scrollbar](https://github.com/gnome-integration-team/chrome-gnome-scrollbar) by GNOME Integration Team.
-- Yauhen Kirylau (@actionless) who is oomox author polished scripts and supported Materia with [oomox](https://github.com/actionless/oomox).
+- Yauhen Kirylau (@actionless) who is oomox author polished scripts and supported Materia with [oomox](https://github.com/themix-project/oomox).
 - @n3oxmind who helped improve the installation script.
 - @smurphos who made and provided the Cinnamon theme for Materia.
 
