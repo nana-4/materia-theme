@@ -42,6 +42,18 @@
   animation: needs_attention_keyframes $longer_duration $standard_curve 4 alternate;
 }
 
+.disclosure-button { @extend %circular_button; }
+
+.path-bar-box {
+  // transition: background-color $shorter_duration $deceleration_curve;
+  // margin: $container_padding 0;
+  // border-radius: $material_radius;
+
+  // button { margin: 0; } // reset the margin
+
+  // &.width-maximized { background-color: rgba($titlebar_fg_color, 0.06); }
+}
+
 // Floating status bar
 .nautilus-window .floating-bar {
   min-height: 32px;
@@ -77,17 +89,32 @@
   // border-style: solid;
   // border-width: 2px;
 
-  &.unknown { background-color: $warning_color; }
+  &.unknown {
+    background-color: $warning_color;
+    color: $warning_color;
+  }
 
-  &.used { background-color: $primary_color; }
+  &.used {
+    background-color: $primary_color;
+    color: $primary_color;
+  }
 
-  &.free { background-color: $divider_color; }
+  &.free {
+    background-color: $divider_color;
+    color: $divider_color;
+  }
 }
 
 // View
 // Hide superfluous treeview drop target indication
 .nautilus-list-view .view:not(.dnd) {
   // border-bottom: 1px solid $border_color;
+}
+
+.search-information {
+  padding: 2px;
+  background-color: $primary_color;
+  color: $inverse_fg_color;
 }
 
 .documents-entry-tag {
@@ -98,9 +125,9 @@
 
 // Icon view
 .nautilus-window flowboxchild {
-  // > widget > box > .icon-background { background-color: black; }
+  // .icon-background { background-color: black; }
 
-  > widget > .icon-item-background {
+  .icon-item-background {
     padding: 4px;
     border-radius: $material_radius;
   }
@@ -108,7 +135,7 @@
   &:selected {
     background-color: transparent;
 
-    > widget > .icon-item-background { background-color: $primary_color; }
+    .icon-item-background { background-color: $primary_color; }
   }
 }
 

@@ -881,7 +881,7 @@ headerbar
 .linked.vertical > button.image-button, .nemo-window .toolbar
 .linked.vertical > button.image-button, .linked > button.flat.image-button,
 .linked.vertical > button.flat.image-button, .inline-toolbar button:not(.text-button), check,
-radio, button.titlebutton, .nautilus-window headerbar > revealer > button, .raven .raven-header:not(.top) button.image-button, .raven .expander-button,
+radio, button.titlebutton, .disclosure-button, .nautilus-window headerbar > revealer > button, .raven .raven-header:not(.top) button.image-button, .raven .expander-button,
 button.close,
 button.circular {
   border-radius: 9999px;
@@ -1496,6 +1496,11 @@ headerbar switch {
 headerbar spinbutton button {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+headerbar .entry-tag, headerbar .documents-entry-tag, headerbar .photos-entry-tag {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .background .titlebar {
@@ -3959,21 +3964,30 @@ headerbar .nautilus-canvas-item.subtitle:selected, .budgie-notification .nautilu
 
 .disk-space-display.unknown {
   background-color: #FBBC05;
+  color: #FBBC05;
 }
 
 .disk-space-display.used {
   background-color: #4285F4;
+  color: #4285F4;
 }
 
 .disk-space-display.free {
   background-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.12);
+}
+
+.search-information {
+  padding: 2px;
+  background-color: #4285F4;
+  color: white;
 }
 
 .conflict-row:not(:selected) {
   background-color: #feebb4;
 }
 
-.nautilus-window flowboxchild > widget > .icon-item-background {
+.nautilus-window flowboxchild .icon-item-background {
   padding: 4px;
   border-radius: 2px;
 }
@@ -3982,7 +3996,7 @@ headerbar .nautilus-canvas-item.subtitle:selected, .budgie-notification .nautilu
   background-color: transparent;
 }
 
-.nautilus-window flowboxchild:selected > widget > .icon-item-background {
+.nautilus-window flowboxchild:selected .icon-item-background {
   background-color: #4285F4;
 }
 
