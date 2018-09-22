@@ -1116,8 +1116,8 @@ headerbar {
   }
 
   &.selection-mode {
-    // FIXME: 0.00001s is workaround for transition bug of gtk+ 3.22
-    // see https://bugzilla.gnome.org/show_bug.cgi?id=774064
+    // 0.00001s was a workaround for https://gitlab.gnome.org/GNOME/gtk/issues/698
+    // but let's keep it for backwards compatibility.
     transition: background-color 0.00001s $longer_duration, color $longer_duration $deceleration_curve;
     animation: header_ripple_effect $longer_duration $deceleration_curve;
     box-shadow: $shadow_1, inset 0 1px $alt_highlight_color;
