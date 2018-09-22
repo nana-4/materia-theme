@@ -44,7 +44,7 @@ to the SVG files, run the `./render-assets.sh` script to render the PNG assets.
 ### Script
 
 To easily change the color scheme, you can use the `change_color.sh` script (or
-just use the [oomox](https://github.com/actionless/oomox) app).
+just use the [oomox](https://github.com/themix-project/oomox) app).
 
 > Originally, `change_color.sh` and `scripts/*.sh` were implemented for oomox,
 but you can also run it on the command line without the app.
