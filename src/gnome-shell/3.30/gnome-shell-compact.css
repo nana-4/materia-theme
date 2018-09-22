@@ -46,6 +46,13 @@ stage {
   icon-shadow: none;
 }
 
+.button:focus {
+  color: rgba(0, 0, 0, 0.87);
+  text-shadow: none;
+  icon-shadow: none;
+  box-shadow: 0 0 transparent;
+}
+
 .button:hover {
   color: rgba(0, 0, 0, 0.87);
   background-color: rgba(0, 0, 0, 0.12);
@@ -73,13 +80,6 @@ stage {
   icon-shadow: none;
 }
 
-.button:focus {
-  color: rgba(0, 0, 0, 0.87);
-  text-shadow: none;
-  icon-shadow: none;
-  box-shadow: 0 0 transparent;
-}
-
 .modal-dialog-linked-button {
   min-height: 32px;
   margin: 4px;
@@ -95,6 +95,13 @@ stage {
   box-shadow: 0 0 transparent;
   text-shadow: none;
   icon-shadow: none;
+}
+
+.modal-dialog-linked-button:focus {
+  color: rgba(0, 0, 0, 0.87);
+  text-shadow: none;
+  icon-shadow: none;
+  box-shadow: 0 0 transparent;
 }
 
 .modal-dialog-linked-button:hover {
@@ -122,13 +129,6 @@ stage {
   box-shadow: 0 0 transparent;
   text-shadow: none;
   icon-shadow: none;
-}
-
-.modal-dialog-linked-button:focus {
-  color: rgba(0, 0, 0, 0.87);
-  text-shadow: none;
-  icon-shadow: none;
-  box-shadow: 0 0 transparent;
 }
 
 .modal-dialog-linked-button:first-child {
@@ -238,12 +238,15 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 .slider {
   height: 20px;
   color: #01A299;
-  -slider-height: 2px;
-  -slider-background-color: rgba(0, 0, 0, 0.26);
-  -slider-border-color: transparent;
-  -slider-active-background-color: #01A299;
-  -slider-active-border-color: transparent;
-  -slider-border-width: 0;
+  -barlevel-height: 2px;
+  -barlevel-background-color: rgba(0, 0, 0, 0.26);
+  -barlevel-border-color: transparent;
+  -barlevel-active-background-color: #01A299;
+  -barlevel-active-border-color: transparent;
+  -barlevel-overdrive-color: #EA4335;
+  -barlevel-overdrive-border-color: transparent;
+  -barlevel-overdrive-separator-width: 2px;
+  -barlevel-border-width: 0;
   -slider-handle-radius: 6px;
 }
 
@@ -848,14 +851,11 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .osd-window .level {
   height: 8px;
-  border-radius: 0;
-  background-color: rgba(0, 0, 0, 0.12);
-  color: rgba(0, 0, 0, 0.87);
-}
-
-.osd-window .level-bar {
-  background-color: #4285F4;
-  border-radius: 0;
+  -barlevel-height: 8px;
+  -barlevel-background-color: rgba(0, 0, 0, 0.12);
+  -barlevel-active-background-color: #4285F4;
+  -barlevel-overdrive-color: #EA4335;
+  -barlevel-overdrive-separator-width: 2px;
 }
 
 /* Pad OSD */
@@ -1002,6 +1002,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   transition-duration: 250ms;
   font-weight: bold;
   height: 28px;
+  font-feature-settings: "tnum";
 }
 
 #panel:overview, #panel.unlock-screen, #panel.login-screen, #panel.lock-screen {
@@ -1102,6 +1103,10 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #panel .screencast-indicator {
+  color: #FBBC05;
+}
+
+#panel .remote-access-indicator {
   color: #FBBC05;
 }
 
@@ -1291,6 +1296,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   padding: 0;
   margin: 2px;
   border-radius: 100px;
+  font-feature-settings: "tnum";
 }
 
 .calendar-day-base:hover, .calendar-day-base:focus {
@@ -1570,6 +1576,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .system-menu-action {
+  -st-icon-style: symbolic;
   color: rgba(0, 0, 0, 0.54);
   border-radius: 100px;
   /* wish we could do 50% */
@@ -2686,7 +2693,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .login-dialog-user-list {
   spacing: 12px;
-  padding: .2em;
   width: 23em;
 }
 
@@ -2711,15 +2717,15 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .login-dialog-user-list-item {
   border-radius: 2px;
-  padding: 4px 4px 0;
+  padding: 6px;
   color: rgba(255, 255, 255, 0.7);
 }
 
-.login-dialog-user-list-item:ltr {
+.login-dialog-user-list-item:ltr .user-widget {
   padding-right: 1em;
 }
 
-.login-dialog-user-list-item:rtl {
+.login-dialog-user-list-item:rtl .user-widget {
   padding-left: 1em;
 }
 
@@ -2735,7 +2741,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .login-dialog-user-list-item .login-dialog-timed-login-indicator {
   height: 2px;
-  margin: 2px 0 0 0;
+  margin-top: 6px;
   background-color: white;
 }
 
@@ -2753,11 +2759,11 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .user-widget-label:ltr {
-  padding-left: 18px;
+  padding-left: 14px;
 }
 
 .user-widget-label:rtl {
-  padding-right: 18px;
+  padding-right: 14px;
 }
 
 .login-dialog-prompt-layout {
@@ -2813,6 +2819,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   font-size: 112px;
   font-weight: 300;
   text-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+  font-feature-settings: "tnum";
 }
 
 .screen-shield-clock-date {
