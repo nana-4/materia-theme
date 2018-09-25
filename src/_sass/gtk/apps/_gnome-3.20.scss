@@ -367,6 +367,7 @@ docktab {
   border-width: 1px;         // for reorderable tabs
   border-color: transparent; //
 
+  box-shadow: inset 0 -2px transparent;
   background-image: radial-gradient(circle farthest-corner at center,
                                     $primary_color 10%,
                                     transparent 0%);
@@ -378,7 +379,7 @@ docktab {
   font-weight: 500;
 
   &:hover {
-    box-shadow: inset 0 -2px $track_color;
+    background-color: $row_fill_color;
     color: $fg_color;
   }
 
@@ -387,6 +388,7 @@ docktab {
                 background-size $longer_duration $deceleration_curve,
                 background-image $longer_duration + $ripple_duration $deceleration_curve;
     box-shadow: inset 0 -2px $primary_color;
+    background-color: transparent;
     background-image: radial-gradient(circle farthest-corner at center,
                                       transparent 10%,
                                       transparent 0%);

@@ -2005,8 +2005,8 @@ notebook > header.top > tabs {
   margin-bottom: -1px;
 }
 
-notebook > header.top > tabs > tab:hover {
-  box-shadow: inset 0 -2px rgba(0, 0, 0, 0.26);
+notebook > header.top > tabs > tab {
+  box-shadow: inset 0 -2px transparent;
 }
 
 notebook > header.top > tabs > tab:checked {
@@ -2021,8 +2021,8 @@ notebook > header.bottom > tabs {
   margin-top: -1px;
 }
 
-notebook > header.bottom > tabs > tab:hover {
-  box-shadow: inset 0 2px rgba(0, 0, 0, 0.26);
+notebook > header.bottom > tabs > tab {
+  box-shadow: inset 0 2px transparent;
 }
 
 notebook > header.bottom > tabs > tab:checked {
@@ -2037,8 +2037,8 @@ notebook > header.left > tabs {
   margin-right: -1px;
 }
 
-notebook > header.left > tabs > tab:hover {
-  box-shadow: inset -2px 0 rgba(0, 0, 0, 0.26);
+notebook > header.left > tabs > tab {
+  box-shadow: inset -2px 0 transparent;
 }
 
 notebook > header.left > tabs > tab:checked {
@@ -2053,8 +2053,8 @@ notebook > header.right > tabs {
   margin-left: -1px;
 }
 
-notebook > header.right > tabs > tab:hover {
-  box-shadow: inset 2px 0 rgba(0, 0, 0, 0.26);
+notebook > header.right > tabs > tab {
+  box-shadow: inset 2px 0 transparent;
 }
 
 notebook > header.right > tabs > tab:checked {
@@ -2130,12 +2130,8 @@ notebook > header tab {
 }
 
 notebook > header tab:hover {
+  background-color: alpha(currentColor, 0.06);
   color: rgba(0, 0, 0, 0.87);
-}
-
-notebook > header tab:hover.reorderable-page {
-  border-color: rgba(0, 0, 0, 0.12);
-  background-color: #FAFAFA;
 }
 
 notebook > header tab:disabled {
@@ -2143,7 +2139,8 @@ notebook > header tab:disabled {
 }
 
 notebook > header tab:checked {
-  transition: all 150ms cubic-bezier(0, 0, 0.2, 1), background-size 225ms cubic-bezier(0, 0, 0.2, 1), background-image 450ms cubic-bezier(0, 0, 0.2, 1);
+  transition: all 150ms cubic-bezier(0, 0, 0.2, 1), background-size 225ms cubic-bezier(0, 0, 0.2, 1), background-image 525ms cubic-bezier(0, 0, 0.2, 1);
+  background-color: transparent;
   background-image: radial-gradient(circle farthest-corner at center, transparent 10%, transparent 0%);
   background-size: 1000% 1000%;
   color: rgba(0, 0, 0, 0.87);
@@ -3854,21 +3851,19 @@ button.emoji-section {
   min-height: 32px;
   border-radius: 0;
   outline-offset: -6px;
-  box-shadow: none;
 }
 
-button.emoji-section:hover {
-  box-shadow: inset 0 2px rgba(0, 0, 0, 0.26);
-}
-
-button.emoji-section:active {
-  box-shadow: inset 0 2px #4285F4;
-  background-image: radial-gradient(circle farthest-corner at center, rgba(66, 133, 244, 0.7) 10%, transparent 0%);
+button.emoji-section, button.emoji-section:hover, button.emoji-section:active {
+  box-shadow: inset 0 2px transparent;
 }
 
 button.emoji-section:checked {
   box-shadow: inset 0 2px #4285F4;
   background-color: transparent;
+}
+
+button.emoji-section:hover, button.emoji-section:active {
+  background-color: alpha(currentColor, 0.12);
 }
 
 button.emoji-section:first-child {
@@ -4208,6 +4203,7 @@ docktab {
   outline-offset: -6px;
   border-width: 1px;
   border-color: transparent;
+  box-shadow: inset 0 -2px transparent;
   background-image: radial-gradient(circle farthest-corner at center, #4285F4 10%, transparent 0%);
   background-repeat: no-repeat;
   background-position: center;
@@ -4217,13 +4213,14 @@ docktab {
 }
 
 docktab:hover {
-  box-shadow: inset 0 -2px rgba(0, 0, 0, 0.26);
+  background-color: alpha(currentColor, 0.06);
   color: rgba(0, 0, 0, 0.87);
 }
 
 docktab:checked {
   transition: all 150ms cubic-bezier(0, 0, 0.2, 1), background-size 225ms cubic-bezier(0, 0, 0.2, 1), background-image 525ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: inset 0 -2px #4285F4;
+  background-color: transparent;
   background-image: radial-gradient(circle farthest-corner at center, transparent 10%, transparent 0%);
   background-size: 1000% 1000%;
   color: rgba(0, 0, 0, 0.87);

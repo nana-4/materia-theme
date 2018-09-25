@@ -1672,8 +1672,7 @@ notebook {
       > tabs {
         margin-bottom: -1px;
         > tab {
-
-          &:hover { box-shadow: inset 0 -2px $track_color; }
+          box-shadow: inset 0 -2px transparent;
 
           &:checked { box-shadow: inset 0 -2px $primary_color; }
         }
@@ -1685,8 +1684,7 @@ notebook {
       > tabs {
         margin-top: -1px;
         > tab {
-
-          &:hover { box-shadow: inset 0 2px $track_color; }
+          box-shadow: inset 0 2px transparent;
 
           &:checked { box-shadow: inset 0 2px $primary_color; }
         }
@@ -1698,8 +1696,7 @@ notebook {
       > tabs {
         margin-right: -1px;
         > tab {
-
-          &:hover { box-shadow: inset -2px 0 $track_color; }
+          box-shadow: inset -2px 0 transparent;
 
           &:checked { box-shadow: inset -2px 0 $primary_color; }
         }
@@ -1711,8 +1708,7 @@ notebook {
       > tabs {
         margin-left: -1px;
         > tab {
-
-          &:hover { box-shadow: inset 2px 0 $track_color; }
+          box-shadow: inset 2px 0 transparent;
 
           &:checked { box-shadow: inset 2px 0 $primary_color; }
         }
@@ -1805,12 +1801,8 @@ notebook {
       font-weight: 500;
 
       &:hover {
+        background-color: $row_fill_color;
         color: $fg_color;
-
-        &.reorderable-page {
-          border-color: $border_color;
-          background-color: $alt_base_color;
-        }
       }
 
       &:disabled { color: $disabled_secondary_fg_color; }
@@ -1818,7 +1810,8 @@ notebook {
       &:checked {
         transition: $shorter_transition,
                     background-size $longer_duration $deceleration_curve,
-                    background-image $longer_duration * 2 $deceleration_curve;
+                    background-image $longer_duration + $ripple_duration $deceleration_curve;
+        background-color: transparent;
         background-image: radial-gradient(circle farthest-corner at center,
                                           transparent 10%,
                                           transparent 0%);
@@ -3501,21 +3494,15 @@ button.emoji-section {
   min-height: $medium_size;
   border-radius: 0;
   outline-offset: -6px;
-  box-shadow: none;
 
-  &:hover { box-shadow: inset 0 2px $track_color; }
-
-  &:active {
-    box-shadow: inset 0 2px $primary_color;
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      rgba($primary_color, 0.7) 10%,
-                                      transparent 0%);
-  }
+  &, &:hover, &:active { box-shadow: inset 0 2px transparent; }
 
   &:checked {
     box-shadow: inset 0 2px $primary_color;
     background-color: transparent;
   }
+
+  &:hover, &:active { background-color: $semi_fill_color; }
 
   &:first-child { margin-left: 4px; }
 
