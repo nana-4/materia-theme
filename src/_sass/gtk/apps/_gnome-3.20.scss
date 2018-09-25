@@ -52,7 +52,7 @@
   border-radius: ($material_radius + 1px) ($material_radius + 1px) 0 0;
   background-color: rgba($base_color, 0.9);
   background-clip: $extra_background_clip;
-  transition: $longer_transition, border-width 0;
+  transition: $shorter_transition, border-width 0;
 
   &.bottom.left { // axes left border and border radius
     margin-right: 8px - 1px;
@@ -354,7 +354,7 @@ docktabstrip {
 }
 
 docktab {
-  transition: $longer_transition,
+  transition: $shorter_transition,
               background-size 0,
               background-image 0;
   min-height: $small_size;
@@ -383,7 +383,7 @@ docktab {
   }
 
   &:checked {
-    transition: $longer_transition,
+    transition: $shorter_transition,
                 background-size $longer_duration $deceleration_curve,
                 background-image $longer_duration + $ripple_duration $deceleration_curve;
     box-shadow: inset 0 -2px $primary_color;

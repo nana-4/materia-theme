@@ -70,7 +70,7 @@
 //
 
   @if $t == normal {
-    transition: $longer_transition, $shadow_transition;
+    transition: $shorter_transition;
     box-shadow: $shadow_1;
     background-color: if($fc == $primary_color, $base_color, $fc);
     color: if($fc == $primary_color, $fg_color, $inverse_fg_color);
@@ -86,7 +86,7 @@
   }
 
   @if $t == flat-normal {
-    transition: $longer_transition;
+    transition: $shorter_transition, border-image $longer_duration $deceleration_curve;
     border-image: -gtk-gradient(radial,
                                 center bottom, 0,
                                 center bottom, 0.001,
@@ -107,7 +107,7 @@
                                 to(transparent))
                                 0 0 2 / 0 0 2px;
     box-shadow: inset 0 -2px $fc;
-    transition: $longer_transition, box-shadow 0 $longer_duration;
+    transition: $shorter_transition, border-image $longer_duration $deceleration_curve, box-shadow 0 $longer_duration;
   }
 
   @if $t == flat-insensitive {
@@ -127,7 +127,7 @@
 //
 
   @if $t == normal {
-    transition: $longer_transition, $shadow_transition;
+    transition: $shorter_transition;
     box-shadow: $shadow_1;
     background-color: $c;
     background-image: -gtk-gradient(radial,
@@ -151,7 +151,7 @@
   }
 
   @if $t == active {
-    transition: $longer_transition, $shadow_transition, background-image 0;
+    transition: $shorter_transition, background-image 0;
     animation: ripple_effect $longer_duration $deceleration_curve forwards;
     box-shadow: $shadow_2;
     color: $fg_color;
@@ -177,7 +177,7 @@
   }
 
   @if $t == flat-normal {
-    transition: $longer_transition;
+    transition: $shorter_transition, border-image $longer_duration $deceleration_curve;
     box-shadow: none;
     background-color: transparent;
     background-image: -gtk-gradient(radial,
@@ -201,7 +201,7 @@
   }
 
   @if $t == flat-active {
-    transition: $longer_transition, background-image 0;
+    transition: $shorter_transition, border-image $longer_duration $deceleration_curve, background-image 0;
     animation: flat_ripple_effect $longer_duration $deceleration_curve forwards;
     box-shadow: none;
     color: currentColor;
