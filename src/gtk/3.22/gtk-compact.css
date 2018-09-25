@@ -5813,7 +5813,7 @@ popover.background.places-menu row {
   color: #EA4335;
 }
 
-.budgie-panel .titlebar {
+.budgie-panel .titlebar:not(headerbar) {
   min-height: 0;
   padding: 0;
   box-shadow: none;
@@ -5821,11 +5821,11 @@ popover.background.places-menu row {
   color: white;
 }
 
-.budgie-panel .titlebar button {
+.budgie-panel .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action) {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.budgie-panel .titlebar button:hover, .budgie-panel .titlebar button:active {
+.budgie-panel .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):hover, .budgie-panel .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):active {
   color: white;
 }
 

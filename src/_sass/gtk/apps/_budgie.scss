@@ -306,14 +306,14 @@ popover.background.places-menu {
   }
 
   // budgie-pixel-saver-applet
-  .titlebar {
+  .titlebar:not(headerbar) {
     min-height: 0;
     padding: 0;
     box-shadow: none;
     background-color: transparent;
     color: $inverse_fg_color;
 
-    button {
+    button:not(.suggested-action):not(.destructive-action) {
       color: $inverse_secondary_fg_color;
 
       &:hover,
