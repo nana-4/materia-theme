@@ -1485,58 +1485,43 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
 .scale.scale-has-marks-above.scale-has-marks-below,
 .scale.vertical.scale-has-marks-above.scale-has-marks-below {
   // FIXME: rationalize
-  -GtkScale-slider-length: 20;
-  -GtkRange-slider-width: 20;
+  -GtkScale-slider-length: 24;
+  -GtkRange-slider-width: 24;
   -GtkRange-trough-border: 2;
   outline-offset: -8px;
   outline-radius: 100px;
 
   &.fine-tune {
-    &.slider { background-size: 60%; }
+    &.slider { background-size: 50%; }
   }
 
   &.slider {
-    // @include entry(normal);
-    // border-radius: 50%;
-    // background-color: $secondary_color;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
     @each $s,$as in ('', ''),
                     (':insensitive', '-disabled') {
       &.slider#{$s} {
         $_url: 'assets/scale-slider#{$as}#{$asset_suffix}';
-        border-style: none;
-        border-radius: 0;
-        background-color: transparent;
         background-image: -gtk-scaled(url('#{$_url}.png'),
                                       url('#{$_url}@2.png'));
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 70%;
-        box-shadow: none;
       }
     }
-    &:hover { background-size: 80%; }
-    &:active { background-size: 90%; }
-    &:hover {
-      // @include entry(focus);
-      // border-radius: 50%; // needed for double marks scales
-    }
-    &:insensitive {
-      // @include entry(insensitive);
-      // border-radius: 50%;  // overridden
-    }
+    &:hover { background-color: rgba($secondary_color, 0.08); }
+    &:active { background-color: rgba($secondary_color, 0.16); }
     //OSD sliders
     .osd & {
     }
   }
   &.trough {
-    margin: 11px 12px;
+    margin: 13px 14px;
     background-color: $fill_color;
     &.highlight {
       background-color: $secondary_color;
       &:insensitive { background-color: $fill_color; }
     }
     &:insensitive { color: $disabled_fg_color; }
-    &.vertical { margin: 12px 11px; }
+    &.vertical { margin: 14px 13px; }
     //OSD troughs
     .osd & {
     }
@@ -1555,41 +1540,16 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
   @each $w,$we in  ('scale-has-marks-below', 'marks-after'),
                    ('scale-has-marks-above', 'marks-before') {
     .scale#{$d}.#{$w} {
-      -GtkScale-slider-length: 20;
-      -GtkRange-slider-width: 25;
-      -GtkRange-trough-border: 2;
-
-      @extend %#{$we}-#{$dn};
-
       @each $s,$as in ('', ''),
                       (':insensitive', '-disabled') {
         &.slider#{$s} {
           $_url: 'assets/scale-#{$dn}-#{$we}-slider#{$as}#{$asset_suffix}';
-          border-style: none;
-          border-radius: 0;
-          background-color: transparent;
           background-image: -gtk-scaled(url('#{$_url}.png'),
                                         url('#{$_url}@2.png'));
-          background-repeat: no-repeat;
-          background-position: center;
-          box-shadow: none;
         }
       }
     }
   }
-}
-
-%marks-before-horz {
-  .trough { margin: 16px 12px 11px; }
-}
-%marks-after-horz {
- .trough { margin: 11px 12px 16px; }
-}
-%marks-before-vert {
-  .trough { margin: 12px 11px 12px 16px; }
-}
-%marks-after-vert {
-  .trough { margin: 12px 16px 12px 11px; }
 }
 
 /*****************
