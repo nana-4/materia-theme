@@ -1780,44 +1780,34 @@ GtkSwitch {
   font-size: 0;
 }
 
+GtkSwitch:insensitive {
+  opacity: 0.5;
+}
+
 GtkSwitch.trough {
   border: 8px solid transparent;
   border-radius: 100px;
   background-color: rgba(0, 0, 0, 0.26);
 }
 
-GtkSwitch.trough:insensitive {
-  color: rgba(0, 0, 0, 0.12);
-}
-
 GtkSwitch.trough:active {
   background-color: rgba(1, 162, 153, 0.5);
-}
-
-GtkSwitch.trough:active:insensitive {
-  background-color: rgba(1, 162, 153, 0.3);
 }
 
 GtkSwitch.slider {
   padding: 5px 4px;
   border-radius: 100px;
-  transition: all 100ms cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 0 0 10px transparent, 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   background-color: #FFFFFF;
-  color: rgba(0, 0, 0, 0.87);
 }
 
 GtkSwitch.slider:hover {
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 0 0 10px alpha(currentColor, 0.08), 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 GtkSwitch.slider:active {
   background-color: #01A299;
-}
-
-GtkSwitch.slider:insensitive {
-  color: rgba(0, 0, 0, 0.38);
-  background-color: #FAFAFA;
+  color: #01A299;
 }
 
 /*************************
@@ -1998,8 +1988,8 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
 .scale,
 .scale.scale-has-marks-above.scale-has-marks-below,
 .scale.vertical.scale-has-marks-above.scale-has-marks-below {
-  -GtkScale-slider-length: 20;
-  -GtkRange-slider-width: 20;
+  -GtkScale-slider-length: 24;
+  -GtkRange-slider-width: 24;
   -GtkRange-trough-border: 2;
   outline-offset: -8px;
   outline-radius: 100px;
@@ -2008,51 +1998,45 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
 .scale.fine-tune.slider,
 .scale.scale-has-marks-above.scale-has-marks-below.fine-tune.slider,
 .scale.vertical.scale-has-marks-above.scale-has-marks-below.fine-tune.slider {
-  background-size: 60%;
+  background-size: 50%;
+}
+
+.scale.slider,
+.scale.scale-has-marks-above.scale-has-marks-below.slider,
+.scale.vertical.scale-has-marks-above.scale-has-marks-below.slider {
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .scale.slider.slider,
 .scale.scale-has-marks-above.scale-has-marks-below.slider.slider,
 .scale.vertical.scale-has-marks-above.scale-has-marks-below.slider.slider {
-  border-style: none;
-  border-radius: 0;
-  background-color: transparent;
   background-image: -gtk-scaled(url("assets/scale-slider.png"), url("assets/scale-slider@2.png"));
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 70%;
-  box-shadow: none;
 }
 
 .scale.slider.slider:insensitive,
 .scale.scale-has-marks-above.scale-has-marks-below.slider.slider:insensitive,
 .scale.vertical.scale-has-marks-above.scale-has-marks-below.slider.slider:insensitive {
-  border-style: none;
-  border-radius: 0;
-  background-color: transparent;
   background-image: -gtk-scaled(url("assets/scale-slider-disabled.png"), url("assets/scale-slider-disabled@2.png"));
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 70%;
-  box-shadow: none;
 }
 
 .scale.slider:hover,
 .scale.scale-has-marks-above.scale-has-marks-below.slider:hover,
 .scale.vertical.scale-has-marks-above.scale-has-marks-below.slider:hover {
-  background-size: 80%;
+  background-color: rgba(1, 162, 153, 0.08);
 }
 
 .scale.slider:active,
 .scale.scale-has-marks-above.scale-has-marks-below.slider:active,
 .scale.vertical.scale-has-marks-above.scale-has-marks-below.slider:active {
-  background-size: 90%;
+  background-color: rgba(1, 162, 153, 0.16);
 }
 
 .scale.trough,
 .scale.scale-has-marks-above.scale-has-marks-below.trough,
 .scale.vertical.scale-has-marks-above.scale-has-marks-below.trough {
-  margin: 11px 12px;
+  margin: 13px 14px;
   background-color: alpha(currentColor, 0.24);
 }
 
@@ -2077,7 +2061,7 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
 .scale.trough.vertical,
 .scale.scale-has-marks-above.scale-has-marks-below.trough.vertical,
 .scale.vertical.scale-has-marks-above.scale-has-marks-below.trough.vertical {
-  margin: 12px 11px;
+  margin: 14px 13px;
 }
 
 .scale.separator,
@@ -2086,124 +2070,36 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
   color: alpha(currentColor, 0.24);
 }
 
-.scale.scale-has-marks-below {
-  -GtkScale-slider-length: 20;
-  -GtkRange-slider-width: 25;
-  -GtkRange-trough-border: 2;
-}
-
 .scale.scale-has-marks-below.slider {
-  border-style: none;
-  border-radius: 0;
-  background-color: transparent;
   background-image: -gtk-scaled(url("assets/scale-horz-marks-after-slider.png"), url("assets/scale-horz-marks-after-slider@2.png"));
-  background-repeat: no-repeat;
-  background-position: center;
-  box-shadow: none;
 }
 
 .scale.scale-has-marks-below.slider:insensitive {
-  border-style: none;
-  border-radius: 0;
-  background-color: transparent;
   background-image: -gtk-scaled(url("assets/scale-horz-marks-after-slider-disabled.png"), url("assets/scale-horz-marks-after-slider-disabled@2.png"));
-  background-repeat: no-repeat;
-  background-position: center;
-  box-shadow: none;
-}
-
-.scale.scale-has-marks-above {
-  -GtkScale-slider-length: 20;
-  -GtkRange-slider-width: 25;
-  -GtkRange-trough-border: 2;
 }
 
 .scale.scale-has-marks-above.slider {
-  border-style: none;
-  border-radius: 0;
-  background-color: transparent;
   background-image: -gtk-scaled(url("assets/scale-horz-marks-before-slider.png"), url("assets/scale-horz-marks-before-slider@2.png"));
-  background-repeat: no-repeat;
-  background-position: center;
-  box-shadow: none;
 }
 
 .scale.scale-has-marks-above.slider:insensitive {
-  border-style: none;
-  border-radius: 0;
-  background-color: transparent;
   background-image: -gtk-scaled(url("assets/scale-horz-marks-before-slider-disabled.png"), url("assets/scale-horz-marks-before-slider-disabled@2.png"));
-  background-repeat: no-repeat;
-  background-position: center;
-  box-shadow: none;
-}
-
-.scale.vertical.scale-has-marks-below {
-  -GtkScale-slider-length: 20;
-  -GtkRange-slider-width: 25;
-  -GtkRange-trough-border: 2;
 }
 
 .scale.vertical.scale-has-marks-below.slider {
-  border-style: none;
-  border-radius: 0;
-  background-color: transparent;
   background-image: -gtk-scaled(url("assets/scale-vert-marks-after-slider.png"), url("assets/scale-vert-marks-after-slider@2.png"));
-  background-repeat: no-repeat;
-  background-position: center;
-  box-shadow: none;
 }
 
 .scale.vertical.scale-has-marks-below.slider:insensitive {
-  border-style: none;
-  border-radius: 0;
-  background-color: transparent;
   background-image: -gtk-scaled(url("assets/scale-vert-marks-after-slider-disabled.png"), url("assets/scale-vert-marks-after-slider-disabled@2.png"));
-  background-repeat: no-repeat;
-  background-position: center;
-  box-shadow: none;
-}
-
-.scale.vertical.scale-has-marks-above {
-  -GtkScale-slider-length: 20;
-  -GtkRange-slider-width: 25;
-  -GtkRange-trough-border: 2;
 }
 
 .scale.vertical.scale-has-marks-above.slider {
-  border-style: none;
-  border-radius: 0;
-  background-color: transparent;
   background-image: -gtk-scaled(url("assets/scale-vert-marks-before-slider.png"), url("assets/scale-vert-marks-before-slider@2.png"));
-  background-repeat: no-repeat;
-  background-position: center;
-  box-shadow: none;
 }
 
 .scale.vertical.scale-has-marks-above.slider:insensitive {
-  border-style: none;
-  border-radius: 0;
-  background-color: transparent;
   background-image: -gtk-scaled(url("assets/scale-vert-marks-before-slider-disabled.png"), url("assets/scale-vert-marks-before-slider-disabled@2.png"));
-  background-repeat: no-repeat;
-  background-position: center;
-  box-shadow: none;
-}
-
-.scale.scale-has-marks-above .trough {
-  margin: 16px 12px 11px;
-}
-
-.scale.scale-has-marks-below .trough {
-  margin: 11px 12px 16px;
-}
-
-.scale.vertical.scale-has-marks-above .trough {
-  margin: 12px 11px 12px 16px;
-}
-
-.scale.vertical.scale-has-marks-below .trough {
-  margin: 12px 16px 12px 11px;
 }
 
 /*****************
@@ -2274,8 +2170,6 @@ GtkProgressBar.trough.osd {
  * Level Bar *
  *************/
 .level-bar {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  color: rgba(0, 0, 0, 0.38);
   -GtkLevelBar-min-block-width: 36;
   -GtkLevelBar-min-block-height: 4;
 }
@@ -2285,32 +2179,8 @@ GtkProgressBar.trough.osd {
   -GtkLevelBar-min-block-height: 36;
 }
 
-.level-bar.trough {
-  padding: 2px;
-  border-radius: 4px;
-  transition: all 100ms cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  background-color: #FFFFFF;
-  color: rgba(0, 0, 0, 0.87);
-}
-
-.level-bar.trough:insensitive {
-  color: rgba(0, 0, 0, 0.38);
-  background-color: #FAFAFA;
-}
-
-.level-bar.trough.indicator-discrete.horizontal {
-  padding: 2px 1px;
-}
-
-.level-bar.trough.indicator-discrete.vertical {
-  padding: 1px 2px;
-}
-
 .level-bar.fill-block {
   background-color: #4285F4;
-  border-radius: 0;
-  box-shadow: none;
 }
 
 .level-bar.fill-block.indicator-discrete.horizontal {
@@ -2330,7 +2200,7 @@ GtkProgressBar.trough.osd {
 }
 
 .level-bar.fill-block.empty-fill-block {
-  background-color: alpha(currentColor, 0.24);
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
 /**********
