@@ -1373,29 +1373,27 @@ GtkSwitch {
   outline-offset: -4px;
   outline-radius: 100px;
   font-size: 0;
+  &:insensitive { opacity: 0.5; }
   &.trough {
     // similar to the .scale
     border: 8px solid transparent;
     border-radius: 100px;
     background-color: $track_color;
     // background-clip: padding-box;
-    &:insensitive {
-      color: $divider_color;
-    }
     &:active {
       background-color: rgba($secondary_color, 0.5);
-      &:insensitive {
-        background-color: rgba($secondary_color, 0.3);
-      }
     }
   }
   &.slider {
     padding: 5px 4px;
     border-radius: 100px;
-    @include entry(normal);
-    &:hover { @include entry(focus); }
-    &:active { background-color: $secondary_color; }
-    &:insensitive { @include entry(insensitive); }
+    box-shadow: 0 0 0 10px transparent, $shadow_1;
+    background-color: $popup_bg_color;
+    &:hover { box-shadow: 0 0 0 10px $semi_fill_color, $shadow_1; }
+    &:active {
+      background-color: $secondary_color;
+      color: $secondary_color;
+    }
   }
   .list-row:selected & {
   }
