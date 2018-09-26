@@ -3481,9 +3481,9 @@ popover.emoji-picker {
 
   entry {
     border-bottom: 1px solid $border_color;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: 0;
     box-shadow: none;
+    background-color: transparent;
   }
 
   scrolledwindow { border-bottom: 1px solid $border_color; }
@@ -3515,12 +3515,13 @@ button.emoji-section {
 .emoji {
   min-width: 3em;
   min-height: 3em;
-  padding: 0;
-  // font-size: large;
+  padding: 0 8px;
+  // font-size: larger;
 
   widget {
     transition: $shorter_transition;
+    border-radius: $material_radius;
 
-    &:hover { font-size: larger; }
+    &:hover { background-color: $semi_fill_color; }
   }
 }
