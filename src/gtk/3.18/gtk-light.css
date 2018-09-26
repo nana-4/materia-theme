@@ -816,7 +816,7 @@ GtkColorButton.button GtkColorSwatch:first-child:last-child {
 }
 
 .spinbutton .button:active {
-  background-color: alpha(currentColor, 0.24);
+  background-color: alpha(currentColor, 0.08);
 }
 
 .spinbutton.vertical .button {
@@ -1103,6 +1103,11 @@ GtkComboBox.combobox-entry .button:dir(rtl) {
 .titlebar.default-decoration .button,
 .header-bar.default-decoration .button {
   padding: 4px;
+}
+
+.background:not(.csd) .titlebar .button.titlebutton:active, .background:not(.csd)
+.header-bar .button.titlebutton:active {
+  background-image: -gtk-gradient(radial, center center, 0, center center, 0.4, to(alpha(currentColor, 0.08)), to(transparent));
 }
 
 /************
@@ -1496,6 +1501,10 @@ column-header.button.dnd, column-header .button.dnd {
 
 .notebook tab:hover, .notebook tab.prelight-page {
   background-color: alpha(currentColor, 0.08);
+}
+
+.notebook tab:active, .notebook tab.active-page {
+  background-color: transparent;
 }
 
 .notebook tab.top:active, .notebook tab.top.active-page {
@@ -2590,11 +2599,6 @@ GtkColorSwatch#add-color-button {
   margin: 0;
   background-color: #E0E0E0;
   box-shadow: none;
-}
-
-.header-bar .button.titlebutton:active,
-.titlebar .button.titlebutton:active {
-  background-image: -gtk-gradient(radial, center center, 0, center center, 0.4, to(alpha(currentColor, 0.08)), to(transparent));
 }
 
 .view:selected, GtkCalendar:selected, .label:selected, .grid-child:selected, .entry:selected, .menuitem.button.flat:selected, .list-row:selected, .sidebar:selected {

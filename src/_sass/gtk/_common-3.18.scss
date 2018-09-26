@@ -539,7 +539,7 @@ GtkColorButton.button {
     &:hover, &:active { color: $fg_color; }
     &:insensitive { color: $disabled_secondary_fg_color; }
     &:active { // add fallback
-      background-color: $fill_color;
+      background-color: $semi_fill_color;
     }
     @extend %image_button;
     @extend %simple_flat_button;
@@ -828,6 +828,15 @@ GtkComboBox {
     padding: $container_padding;
     border-width: 0;
     .button { padding: 4px; }
+  }
+
+  // workaround for non-animatable buttons
+  .background:not(.csd) & .button.titlebutton:active {
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.4,
+                                    to($semi_fill_color),
+                                    to(transparent));
   }
 }
 
@@ -1170,6 +1179,7 @@ column-header.button.dnd { // for treeview-like derive widgets
       }
     }
     &:hover, &.prelight-page { background-color: $semi_fill_color; }
+    &:active, &.active-page { background-color: transparent; }
     &.top {
       &:active, &.active-page { box-shadow: inset 0 -2px $primary_color; }
     }
@@ -2184,14 +2194,6 @@ GtkVolumeButton.button {
 .titlebar .button.titlebutton {
   // @extend %simple_flat_button;
   @extend %image_button;
-
-  &:active { // add fallback
-    background-image: -gtk-gradient(radial,
-                                    center center, 0,
-                                    center center, 0.4,
-                                    to($semi_fill_color),
-                                    to(transparent));
-  }
 }
 
 // catch all extend :)
