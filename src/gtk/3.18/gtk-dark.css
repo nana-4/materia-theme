@@ -1391,7 +1391,7 @@ column-header.button.dnd, column-header .button.dnd {
   -GtkNotebook-initial-gap: 8;
   -GtkNotebook-arrow-spacing: 5;
   -GtkNotebook-tab-curvature: 0;
-  -GtkNotebook-tab-overlap: 1;
+  -GtkNotebook-tab-overlap: 0;
   -GtkNotebook-has-tab-gap: false;
   -GtkWidget-focus-padding: 0;
   -GtkWidget-focus-line-width: 0;
@@ -1462,6 +1462,7 @@ column-header.button.dnd, column-header .button.dnd {
   border-style: solid;
   border-color: transparent;
   background-color: transparent;
+  background-clip: border-box;
   outline-offset: 0;
   /* works for testnotebookdnd, but there's a superfluous border
        in gedit or web, commented out for now, needs gtk fixes
@@ -1502,10 +1503,6 @@ column-header.button.dnd, column-header .button.dnd {
   padding: 8px 12px;
 }
 
-.notebook tab.reorderable-page {
-  -GtkNotebook-tab-overlap: 1;
-}
-
 .notebook tab.reorderable-page.top, .notebook tab.reorderable-page.bottom {
   padding-left: 12px;
   padding-right: 12px;
@@ -1518,108 +1515,30 @@ column-header.button.dnd, column-header .button.dnd {
   border-top-width: 1px;
 }
 
-.notebook tab.top:hover, .notebook tab.top.prelight-page {
-  box-shadow: inset 0 -2px alpha(currentColor, 0.24);
+.notebook tab:hover, .notebook tab.prelight-page {
+  background-color: alpha(currentColor, 0.08);
 }
 
 .notebook tab.top:active, .notebook tab.top.active-page {
   box-shadow: inset 0 -2px #4285F4;
 }
 
-.notebook tab.bottom:hover, .notebook tab.bottom.prelight-page {
-  box-shadow: inset 0 2px alpha(currentColor, 0.24);
-}
-
 .notebook tab.bottom:active, .notebook tab.bottom.active-page {
   box-shadow: inset 0 2px #4285F4;
-}
-
-.notebook tab.left:hover, .notebook tab.left.prelight-page {
-  box-shadow: inset -2px 0 alpha(currentColor, 0.24);
 }
 
 .notebook tab.left:active, .notebook tab.left.active-page {
   box-shadow: inset -2px 0 #4285F4;
 }
 
-.notebook tab.right:hover, .notebook tab.right.prelight-page {
-  box-shadow: inset 2px 0 alpha(currentColor, 0.24);
-}
-
 .notebook tab.right:active, .notebook tab.right.active-page {
   box-shadow: inset 2px 0 #4285F4;
 }
 
-.notebook tab.reorderable-page.top {
-  border-color: transparent;
-}
-
-.notebook tab.reorderable-page.top:hover, .notebook tab.reorderable-page.top.prelight-page {
+.notebook tab.reorderable-page:active, .notebook tab.reorderable-page.active-page {
   border-color: rgba(0, 0, 0, 0.26);
-  border-bottom-width: 0;
-  border-bottom-color: transparent;
-  background-color: #2C2C2C;
-}
-
-.notebook tab.reorderable-page.top:active, .notebook tab.reorderable-page.top.active-page {
-  border-color: rgba(0, 0, 0, 0.26);
-  border-bottom-width: 0;
-  border-bottom-color: transparent;
   background-color: #303030;
-}
-
-.notebook tab.reorderable-page.bottom {
-  border-color: transparent;
-}
-
-.notebook tab.reorderable-page.bottom:hover, .notebook tab.reorderable-page.bottom.prelight-page {
-  border-color: rgba(0, 0, 0, 0.26);
-  border-top-width: 0;
-  border-top-color: transparent;
-  background-color: #2C2C2C;
-}
-
-.notebook tab.reorderable-page.bottom:active, .notebook tab.reorderable-page.bottom.active-page {
-  border-color: rgba(0, 0, 0, 0.26);
-  border-top-width: 0;
-  border-top-color: transparent;
-  background-color: #303030;
-}
-
-.notebook tab.reorderable-page.left {
-  border-color: transparent;
-}
-
-.notebook tab.reorderable-page.left:hover, .notebook tab.reorderable-page.left.prelight-page {
-  border-color: rgba(0, 0, 0, 0.26);
-  border-right-width: 0;
-  border-right-color: transparent;
-  background-color: #2C2C2C;
-}
-
-.notebook tab.reorderable-page.left:active, .notebook tab.reorderable-page.left.active-page {
-  border-color: rgba(0, 0, 0, 0.26);
-  border-right-width: 0;
-  border-right-color: transparent;
-  background-color: #303030;
-}
-
-.notebook tab.reorderable-page.right {
-  border-color: transparent;
-}
-
-.notebook tab.reorderable-page.right:hover, .notebook tab.reorderable-page.right.prelight-page {
-  border-color: rgba(0, 0, 0, 0.26);
-  border-left-width: 0;
-  border-left-color: transparent;
-  background-color: #2C2C2C;
-}
-
-.notebook tab.reorderable-page.right:active, .notebook tab.reorderable-page.right.active-page {
-  border-color: rgba(0, 0, 0, 0.26);
-  border-left-width: 0;
-  border-left-color: transparent;
-  background-color: #303030;
+  background-clip: padding-box;
 }
 
 .notebook tab .label {

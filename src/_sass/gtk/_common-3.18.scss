@@ -1066,7 +1066,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   -GtkNotebook-initial-gap: 8;
   -GtkNotebook-arrow-spacing: 5;
   -GtkNotebook-tab-curvature: 0;
-  -GtkNotebook-tab-overlap: 1;
+  -GtkNotebook-tab-overlap: 0;
   -GtkNotebook-has-tab-gap: false;
   -GtkWidget-focus-padding: 0;
   -GtkWidget-focus-line-width: 0;
@@ -1110,6 +1110,7 @@ column-header.button.dnd { // for treeview-like derive widgets
     border-style: solid;
     border-color: transparent;
     background-color: transparent;
+    background-clip: border-box;
 
     outline-offset: 0;
 
@@ -1157,7 +1158,6 @@ column-header.button.dnd { // for treeview-like derive widgets
     }
     */
     &.reorderable-page {
-      -GtkNotebook-tab-overlap: 1;
       &.top, &.bottom {
         padding-left: 12px;  // for a nicer close button
         padding-right: 12px; // placement
@@ -1169,40 +1169,24 @@ column-header.button.dnd { // for treeview-like derive widgets
         border-top-width: 1px;
       }
     }
+    &:hover, &.prelight-page { background-color: $semi_fill_color; }
     &.top {
-      &:hover, &.prelight-page { box-shadow: inset 0 -2px $fill_color; }
       &:active, &.active-page { box-shadow: inset 0 -2px $primary_color; }
     }
     &.bottom {
-      &:hover, &.prelight-page { box-shadow: inset 0 2px $fill_color; }
       &:active, &.active-page { box-shadow: inset 0 2px $primary_color; }
     }
     &.left {
-      &:hover, &.prelight-page { box-shadow: inset -2px 0 $fill_color; }
       &:active, &.active-page { box-shadow: inset -2px 0 $primary_color; }
     }
     &.right {
-      &:hover, &.prelight-page { box-shadow: inset 2px 0 $fill_color; }
       &:active, &.active-page { box-shadow: inset 2px 0 $primary_color; }
     }
-    @each $_tab, $_border in (top, bottom),
-                             (bottom, top),
-                             (left, right),
-                             (right, left) {
-      &.reorderable-page.#{$_tab} {
-        border-color: transparent;
-        &:hover, &.prelight-page {
-          border-color: $border_color;
-          border-#{$_border}-width: 0;
-          border-#{$_border}-color: transparent;
-          background-color: $alt_base_color;
-        }
-        &:active, &.active-page {
-          border-color: $border_color;
-          border-#{$_border}-width: 0;
-          border-#{$_border}-color: transparent;
-          background-color: $base_color;
-        }
+    &.reorderable-page {
+      &:active, &.active-page {
+        border-color: $border_color;
+        background-color: $base_color;
+        background-clip: padding-box;
       }
     }
     .label { //tab text
