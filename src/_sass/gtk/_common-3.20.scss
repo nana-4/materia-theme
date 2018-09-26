@@ -1801,7 +1801,7 @@ notebook {
       font-weight: 500;
 
       &:hover {
-        background-color: $row_fill_color;
+        background-color: $semi_fill_color;
         color: $fg_color;
       }
 
@@ -2050,12 +2050,11 @@ switch {
     border-radius: $circular_radius;
     box-shadow: 0 0 0 10px transparent, $shadow_1;
     background-color: $popup_bg_color;
-    color: $secondary_fg_color;
   }
 
-  &:hover slider { box-shadow: 0 0 0 10px gtkalpha(currentColor, 0.16), $shadow_1; }
+  &:hover slider { box-shadow: 0 0 0 10px $semi_fill_color, $shadow_1; }
 
-  &:focus slider { box-shadow: 0 0 0 10px gtkalpha(currentColor, 0.2), $shadow_1; }
+  &:focus slider { box-shadow: 0 0 0 10px gtkalpha(currentColor, 0.16), $shadow_1; }
 
   &:focus:hover slider { box-shadow: 0 0 0 10px gtkalpha(currentColor, 0.24), $shadow_1; }
 
@@ -2124,7 +2123,7 @@ radio {
 
   @extend %circular_button;
 
-  &:focus { box-shadow: inset 0 0 0 9999px gtkalpha(currentColor, 0.2); }
+  &:focus { box-shadow: inset 0 0 0 9999px gtkalpha(currentColor, 0.16); }
 
   &:hover { box-shadow: inset 0 0 0 9999px $semi_fill_color; }
 
@@ -2292,11 +2291,11 @@ treeview.view radio {
   padding: 0;
 
   &:hover {
-    box-shadow: inset 0 0 0 9999px gtkalpha($fg_color, 0.05);
+    box-shadow: inset 0 0 0 9999px gtkalpha($fg_color, 0.08);
 
     &:disabled { box-shadow: none; }
 
-    &:selected { box-shadow: inset 0 0 0 9999px gtkalpha($inverse_fg_color, 0.05); }
+    &:selected { box-shadow: inset 0 0 0 9999px gtkalpha($inverse_fg_color, 0.08); }
   }
 
   & {
@@ -2431,7 +2430,7 @@ scale {
 
     &:focus { background-color: rgba($secondary_color, 0.16); }
 
-    &:hover { background-color: rgba($secondary_color, 0.12); }
+    &:hover { background-color: rgba($secondary_color, 0.08); }
 
     &:active {
       transition: background-color $shorter_duration $deceleration_curve,
