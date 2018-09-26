@@ -287,8 +287,8 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
   padding: 7px 10px 8px;
   border-radius: $material_radius;
   background-repeat: no-repeat;
-  background-position: center, center;
-  background-size: ($medium_size * 2 / 0.8) ($medium_size * 2 / 0.8), auto;
+  background-position: center;
+  background-size: ($medium_size * 2 / 0.8) ($medium_size * 2 / 0.8);
   font-weight: 500;
   @include button(normal);
   &:hover { @include button(hover); }
@@ -310,7 +310,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
   &.osd {
     &.image-button {
       padding: 16px;
-      background-size: ($large_size / 0.8) ($large_size / 0.8), auto;
+      background-size: ($large_size / 0.8) ($large_size / 0.8);
     }
     &:insensitive { opacity: 0; }
   }
@@ -350,7 +350,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
     padding: 7px 10px 8px; // same as .button
     outline-radius: $material_radius;
     border-radius: $material_radius;
-    background-size: ($medium_size * 2 / 0.8) ($medium_size * 2 / 0.8), auto;
+    background-size: ($medium_size * 2 / 0.8) ($medium_size * 2 / 0.8);
     .label:first-child { padding-left: 6px; }
     .label:last-child { padding-right: 6px; }
   }
@@ -421,7 +421,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
   padding: 10px;
   outline-radius: 100px;
   border-radius: 100px;
-  background-size: ($medium_size / 0.8) ($medium_size / 0.8), auto;
+  background-size: ($medium_size / 0.8) ($medium_size / 0.8);
 }
 
 %needs_attention {
@@ -1029,7 +1029,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   .button.flat {
     padding: 5px 8px 6px;
     background-color: transparent;
-    background-size: (128px / 0.8) (128px / 0.8), auto;
+    background-size: (128px / 0.8) (128px / 0.8);
     color: $fg_color;
     font: initial;
   }
@@ -1043,7 +1043,7 @@ column-header.button.dnd { // for treeview-like derive widgets
     }
     &.image-button {
       padding: 8px;
-      background-size: ($medium_size * 2 / 0.8) ($medium_size * 2 / 0.8), auto;
+      background-size: ($medium_size * 2 / 0.8) ($medium_size * 2 / 0.8);
     }
   }
 
@@ -1205,7 +1205,7 @@ column-header.button.dnd { // for treeview-like derive widgets
     .button { //tab close button
       padding: 0;
       @extend %image_button;
-      background-size: ($small_size / 0.8) ($small_size / 0.8), auto;
+      background-size: ($small_size / 0.8) ($small_size / 0.8);
       @extend %simple_flat_button;
       & > GtkImage { // this is a hack which makes tabs grow
         padding: 4px;
@@ -1684,24 +1684,23 @@ GtkScrolledWindow {
 $row_transition: $shorter_transition, background-color 0, color 0;
 
 .list-row.activatable {
-  transition: $row_transition;
+  transition: $row_transition, background-image $longer_duration * 4 $deceleration_curve;
   box-shadow: inset 0 0 0 10000px transparent;
   background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.5,
                                     to(transparent),
-                                    to(transparent)),
-                      linear-gradient(to bottom, transparent);
+                                    to(transparent));
   background-repeat: no-repeat;
-  background-position: center, center;
-  background-size: (192px / 0.8) (192px / 0.8), auto;
+  background-position: center;
+  background-size: (192px / 0.8) (192px / 0.8);
   &:hover {
-    transition: $row_transition, box-shadow 0;
+    transition: $row_transition, background-image $longer_duration * 4 $deceleration_curve, box-shadow 0;
     box-shadow: inset 0 0 0 10000px $row_fill_color;
   }
   &:active {
     transition: $row_transition, background-image 0;
-    animation: list_ripple_effect $longer_duration $deceleration_curve forwards;
+    animation: ripple_effect $longer_duration $deceleration_curve forwards;
     box-shadow: inset 0 0 0 10000px $semi_fill_color;
   }
 }
@@ -1805,7 +1804,7 @@ GtkCalendar {
       padding: 9px 16px 10px;
       border-top: 1px solid $border_color;
       border-radius: 0;
-      background-size: (192px / 0.8) (192px / 0.8), auto;
+      background-size: (192px / 0.8) (192px / 0.8);
       // &:first-child{ border-bottom-left-radius: $material_radius; }
       // &:last-child { border-bottom-right-radius: $material_radius; }
       &:first-child{ border-radius: 0 0 0 $material_radius; }
@@ -2191,8 +2190,7 @@ GtkVolumeButton.button {
                                     center center, 0,
                                     center center, 0.4,
                                     to($semi_fill_color),
-                                    to(transparent)),
-                      linear-gradient(to bottom, $semi_fill_color);
+                                    to(transparent));
   }
 }
 
