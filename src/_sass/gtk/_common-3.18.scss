@@ -1618,8 +1618,6 @@ GtkProgressBar {
  *************/
 
 .level-bar {
-  box-shadow: $shadow_1; // needs to be set here to avoid clipping
-  color: $disabled_fg_color;
   -GtkLevelBar-min-block-width: 36;
   -GtkLevelBar-min-block-height: 4;
   &.vertical {
@@ -1627,21 +1625,11 @@ GtkProgressBar {
     -GtkLevelBar-min-block-height: 36;
   }
   &.trough {
-    padding: 2px;
-    border-radius: $material_radius;
-    @include entry(normal);
-    &:insensitive { @include entry(insensitive); }
-    &.indicator-discrete {
-      &.horizontal { padding: 2px 1px; }
-      &.vertical { padding: 1px 2px; }
-    }
   }
   &.fill-block {
     // FIXME: it would be nice to set make fill blocks bigger, but we'd need
     // :nth-child working on discrete indicators
     background-color: $primary_color;
-    border-radius: 0;
-    box-shadow: none;
     &.indicator-discrete {
       &.horizontal { margin: 0 1px; }
       &.vertical { margin: 1px 0; }
@@ -1653,7 +1641,7 @@ GtkProgressBar {
       background-color: $warning_color;
     }
     &.empty-fill-block {
-      background-color: $fill_color;
+      background-color: $divider_color;
     }
   }
 }
