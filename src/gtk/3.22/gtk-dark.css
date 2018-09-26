@@ -547,8 +547,8 @@ button:hover {
 button:active {
   transition: 100ms, background-size 0, background-image 0;
   animation: ripple_effect 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23), inset 0 0 0 9999px alpha(currentColor, 0.12);
-  background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.12) 10%, transparent 0%);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23), inset 0 0 0 9999px alpha(currentColor, 0.08);
+  background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.08) 10%, transparent 0%);
   background-size: 0% 0%;
   color: white;
 }
@@ -596,7 +596,7 @@ radio:hover, calendar.button:hover, messagedialog.csd .dialog-action-area button
 .path-bar button:hover, layouttabbar button:hover, .mate-panel-menu-bar button:hover, .budgie-panel button:hover, .raven stackswitcher.linked > button:hover, toolbar button:hover, .titlebar:not(headerbar) button:hover:not(.suggested-action):not(.destructive-action),
 headerbar button:hover:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:hover:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button:hover, .nemo-window .toolbar button:hover,
 button.flat:hover {
-  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.12);
+  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
   color: white;
 }
 
@@ -609,8 +609,8 @@ headerbar button:active:not(.suggested-action):not(.destructive-action), actionb
 button.flat:active {
   transition: 100ms, border-image 225ms cubic-bezier(0, 0, 0.2, 1), background-size 0, background-image 0;
   animation: ripple_effect 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
-  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.12);
-  background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.12) 10%, transparent 0%);
+  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
+  background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.08) 10%, transparent 0%);
   background-size: 0% 0%;
   color: white;
 }
@@ -1973,6 +1973,12 @@ popover.background > toolbar {
   background-color: transparent;
 }
 
+popover.background list,
+popover.background .view,
+popover.background toolbar {
+  background-color: transparent;
+}
+
 popover.background.menu button,
 popover.background button.model {
   min-height: 32px;
@@ -1991,6 +1997,10 @@ popover.background list separator {
 /*************
  * Notebooks *
  *************/
+notebook.frame > header {
+  background-color: #2C2C2C;
+}
+
 notebook > header {
   border-width: 1px;
   border-color: rgba(0, 0, 0, 0.26);
@@ -2126,12 +2136,13 @@ notebook > header tab {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 0% 0%;
+  background-clip: border-box;
   color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
 }
 
 notebook > header tab:hover {
-  background-color: alpha(currentColor, 0.06);
+  background-color: alpha(currentColor, 0.08);
   color: white;
 }
 
@@ -2144,6 +2155,7 @@ notebook > header tab:checked {
   background-color: transparent;
   background-image: radial-gradient(circle farthest-corner at center, transparent 10%, transparent 0%);
   background-size: 1000% 1000%;
+  background-clip: padding-box;
   color: white;
 }
 
@@ -2180,7 +2192,6 @@ notebook > header.top tabs:not(:only-child):last-child, notebook > header.bottom
 }
 
 notebook > header.top tabs tab.reorderable-page, notebook > header.bottom tabs tab.reorderable-page {
-  margin: 0 -1px;
   border-style: none solid;
 }
 
@@ -2198,7 +2209,6 @@ notebook > header.left tabs:not(:only-child):last-child, notebook > header.right
 }
 
 notebook > header.left tabs tab.reorderable-page, notebook > header.right tabs tab.reorderable-page {
-  margin: -1px 0;
   border-style: solid none;
 }
 
@@ -2354,7 +2364,7 @@ scrollbar.horizontal button.up {
  * Switch *
  **********/
 switch {
-  transition: background-color 100ms cubic-bezier(0, 0, 0.2, 1), opacity 100ms cubic-bezier(0, 0, 0.2, 1);
+  transition: all 100ms cubic-bezier(0, 0, 0.2, 1);
   margin: 6px 0;
   padding: 0 2px;
   border: 5px solid transparent;
@@ -2373,22 +2383,21 @@ switch:disabled {
 }
 
 switch slider {
-  transition: all 100ms cubic-bezier(0, 0, 0.2, 1), box-shadow 100ms cubic-bezier(0, 0, 0.2, 1);
+  transition: all 100ms cubic-bezier(0, 0, 0.2, 1);
   min-width: 20px;
   min-height: 20px;
   margin: -3px -2px;
   border-radius: 9999px;
   box-shadow: 0 0 0 10px transparent, 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   background-color: #424242;
-  color: rgba(255, 255, 255, 0.7);
 }
 
 switch:hover slider {
-  box-shadow: 0 0 0 10px alpha(currentColor, 0.16), 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 0 0 10px alpha(currentColor, 0.08), 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 switch:focus slider {
-  box-shadow: 0 0 0 10px alpha(currentColor, 0.2), 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 0 0 10px alpha(currentColor, 0.16), 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 switch:focus:hover slider {
@@ -2456,12 +2465,12 @@ radio {
 
 check:focus,
 radio:focus {
-  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.2);
+  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.16);
 }
 
 check:hover,
 radio:hover {
-  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.12);
+  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
 }
 
 check:checked, check:indeterminate,
@@ -2659,7 +2668,7 @@ treeview.view radio {
 
 treeview.view check:hover,
 treeview.view radio:hover {
-  box-shadow: inset 0 0 0 9999px alpha(white, 0.05);
+  box-shadow: inset 0 0 0 9999px alpha(white, 0.08);
 }
 
 treeview.view check:hover:disabled,
@@ -2669,7 +2678,7 @@ treeview.view radio:hover:disabled {
 
 treeview.view check:hover:selected,
 treeview.view radio:hover:selected {
-  box-shadow: inset 0 0 0 9999px alpha(white, 0.05);
+  box-shadow: inset 0 0 0 9999px alpha(white, 0.08);
 }
 
 treeview.view check,
@@ -2821,7 +2830,7 @@ scale slider:focus {
 }
 
 scale slider:hover {
-  background-color: rgba(1, 162, 153, 0.12);
+  background-color: rgba(1, 162, 153, 0.08);
 }
 
 scale slider:active {
@@ -3193,14 +3202,14 @@ row.activatable, .view, treeview.view header button, .budgie-menu button {
 
 row.activatable:hover, .view:hover, treeview.view header button:hover, .budgie-menu button:hover {
   transition: all 100ms cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, box-shadow 0, background-size 300ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.06);
+  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
 }
 
 row.activatable.has-open-popup, .has-open-popup.view, treeview.view header button.has-open-popup, .budgie-menu button.has-open-popup, row.activatable:active, .view:active, treeview.view header button:active, .budgie-menu button:active {
   transition: all 100ms cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, background-size 0, background-image 0;
   animation: ripple_effect 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
-  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.12);
-  background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.12) 10%, transparent 0%);
+  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
+  background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.08) 10%, transparent 0%);
   background-size: 0% 0%;
 }
 
@@ -3836,9 +3845,9 @@ popover.emoji-picker {
 
 popover.emoji-picker entry {
   border-bottom: 1px solid rgba(0, 0, 0, 0.26);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-radius: 0;
   box-shadow: none;
+  background-color: transparent;
 }
 
 popover.emoji-picker scrolledwindow {
@@ -3864,7 +3873,7 @@ button.emoji-section:checked {
 }
 
 button.emoji-section:hover, button.emoji-section:active {
-  background-color: alpha(currentColor, 0.12);
+  background-color: alpha(currentColor, 0.08);
 }
 
 button.emoji-section:first-child {
@@ -3878,15 +3887,16 @@ button.emoji-section:last-child {
 .emoji {
   min-width: 3em;
   min-height: 3em;
-  padding: 0;
+  padding: 0 8px;
 }
 
 .emoji widget {
   transition: all 100ms cubic-bezier(0, 0, 0.2, 1);
+  border-radius: 4px;
 }
 
 .emoji widget:hover {
-  font-size: larger;
+  background-color: alpha(currentColor, 0.08);
 }
 
 /************
@@ -4396,7 +4406,7 @@ docktab {
 }
 
 docktab:hover {
-  background-color: alpha(currentColor, 0.06);
+  background-color: alpha(currentColor, 0.08);
   color: white;
 }
 
@@ -4630,7 +4640,7 @@ overlay grid.horizontal > revealer > scrolledwindow.frame:dir(rtl) {
 }
 
 .songs-list:hover {
-  background-image: image(alpha(currentColor, 0.06));
+  background-image: image(alpha(currentColor, 0.08));
 }
 
 frame.documents-dropdown {
@@ -4864,11 +4874,11 @@ window.background.chromium > button {
 }
 
 window.background.chromium > button:hover {
-  background-image: image(alpha(currentColor, 0.06));
+  background-image: image(alpha(currentColor, 0.08));
 }
 
 window.background.chromium > button:active {
-  background-image: image(alpha(currentColor, 0.12));
+  background-image: image(alpha(currentColor, 0.08));
 }
 
 window.background.chromium headerbar button:active {
@@ -4924,11 +4934,11 @@ window.background:not(.csd) > widget > button > button {
 }
 
 window.background:not(.csd) > widget > button > button:hover {
-  background-image: image(alpha(currentColor, 0.06));
+  background-image: image(alpha(currentColor, 0.08));
 }
 
 window.background:not(.csd) > widget > button > button:active {
-  background-image: image(alpha(currentColor, 0.12));
+  background-image: image(alpha(currentColor, 0.08));
 }
 
 window.background:not(.csd) > widget > checkbutton > check:not(:checked),
