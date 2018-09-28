@@ -547,7 +547,7 @@ button:active {
   transition: 100ms, background-size 0, background-image 0;
   animation: ripple_effect 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23), inset 0 0 0 9999px alpha(currentColor, 0.08);
-  background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.08) 10%, transparent 0%);
+  background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.12) 10%, transparent 0%);
   background-size: 0% 0%;
   color: rgba(0, 0, 0, 0.87);
 }
@@ -609,7 +609,7 @@ button.flat:active {
   transition: 100ms, border-image 225ms cubic-bezier(0, 0, 0.2, 1), background-size 0, background-image 0;
   animation: ripple_effect 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
   box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
-  background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.08) 10%, transparent 0%);
+  background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.12) 10%, transparent 0%);
   background-size: 0% 0%;
   color: rgba(0, 0, 0, 0.87);
 }
@@ -2396,11 +2396,11 @@ switch:hover slider {
 }
 
 switch:focus slider {
-  box-shadow: 0 0 0 10px alpha(currentColor, 0.16), 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 0 0 10px alpha(currentColor, 0.12), 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 switch:focus:hover slider {
-  box-shadow: 0 0 0 10px alpha(currentColor, 0.24), 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 0 0 10px alpha(currentColor, 0.16), 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 switch:checked slider {
@@ -2462,14 +2462,19 @@ radio {
   padding: 8px;
 }
 
-check:focus,
-radio:focus {
-  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.16);
-}
-
 check:hover,
 radio:hover {
   box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
+}
+
+check:focus,
+radio:focus {
+  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.12);
+}
+
+check:focus:hover,
+radio:focus:hover {
+  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.16);
 }
 
 check:checked, check:indeterminate,
@@ -2500,10 +2505,11 @@ radio:not(:checked):not(:indeterminate):disabled {
   color: rgba(255, 255, 255, 0.3);
 }
 
-popover check, popover check:focus, popover check:hover, popover check:active, popover check:disabled, popover
+popover check, popover check:hover, popover check:focus, popover check:focus:hover, popover check:active, popover check:disabled, popover
 radio, popover
-radio:focus, popover
 radio:hover, popover
+radio:focus, popover
+radio:focus:hover, popover
 radio:active, popover
 radio:disabled {
   transition: none;
@@ -2824,19 +2830,23 @@ scale slider:disabled {
   background-image: -gtk-scaled(url("assets/scale-slider-disabled.png"), url("assets/scale-slider-disabled@2.png")), radial-gradient(circle farthest-corner at center, currentColor 10%, transparent 0%);
 }
 
-scale slider:focus {
-  background-color: rgba(1, 162, 153, 0.16);
-}
-
 scale slider:hover {
   background-color: rgba(1, 162, 153, 0.08);
+}
+
+scale slider:focus {
+  background-color: rgba(1, 162, 153, 0.12);
+}
+
+scale slider:focus:hover {
+  background-color: rgba(1, 162, 153, 0.16);
 }
 
 scale slider:active {
   transition: background-color 100ms cubic-bezier(0, 0, 0.2, 1), background-size 0, background-image 0;
   animation: scale_ripple_effect 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
   background-size: auto, 0% 0%;
-  background-color: rgba(1, 162, 153, 0.12);
+  background-color: rgba(1, 162, 153, 0.08);
   color: rgba(1, 162, 153, 0.12);
 }
 
@@ -3208,7 +3218,7 @@ row.activatable.has-open-popup, .has-open-popup.view, treeview.view header butto
   transition: all 100ms cubic-bezier(0, 0, 0.2, 1), background-color 0, color 0, background-size 0, background-image 0;
   animation: ripple_effect 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
   box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
-  background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.08) 10%, transparent 0%);
+  background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.12) 10%, transparent 0%);
   background-size: 0% 0%;
 }
 
@@ -3926,7 +3936,7 @@ headerbar .nautilus-canvas-item.subtitle:selected, .budgie-notification .nautilu
 
 @keyframes needs_attention_keyframes {
   to {
-    background-color: alpha(currentColor, 0.24);
+    background-color: alpha(currentColor, 0.12);
   }
 }
 
@@ -4581,7 +4591,7 @@ window.background.chromium > button:hover {
 }
 
 window.background.chromium > button:active {
-  background-image: image(alpha(currentColor, 0.08));
+  background-image: image(alpha(currentColor, 0.24));
 }
 
 window.background.chromium headerbar button:active {
@@ -4641,7 +4651,7 @@ window.background:not(.csd) > widget > button > button:hover {
 }
 
 window.background:not(.csd) > widget > button > button:active {
-  background-image: image(alpha(currentColor, 0.08));
+  background-image: image(alpha(currentColor, 0.24));
 }
 
 window.background:not(.csd) > widget > checkbutton > check:not(:checked),

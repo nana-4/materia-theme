@@ -45,7 +45,7 @@
 
   outline-style: solid;
   outline-width: 2px;
-  outline-color: $fill_color;
+  outline-color: $checked_bg_color;
   outline-offset: -4px;
   outline-radius: $material_radius;
 }
@@ -330,7 +330,7 @@ GtkTextView { // This will get overridden by .view, needed by gedit line numbers
         background-color: transparent;
         color: $b_color;
         &:insensitive { @include button(flat-insensitive, $b_color); }
-        &:checked { background-color: $fill_color; }
+        &:checked { background-color: $checked_bg_color; }
       }
     }
   }
@@ -539,7 +539,7 @@ GtkColorButton.button {
     &:hover, &:active { color: $fg_color; }
     &:insensitive { color: $disabled_secondary_fg_color; }
     &:active { // add fallback
-      background-color: $semi_fill_color;
+      background-color: $active_bg_color;
     }
     @extend %image_button;
     @extend %simple_flat_button;
@@ -835,7 +835,7 @@ GtkComboBox {
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.4,
-                                    to($semi_fill_color),
+                                    to($active_bg_color),
                                     to(transparent));
   }
 }
@@ -866,7 +866,7 @@ GtkTreeView.view {
   -GtkTreeView-tree-line-pattern: '';
   -GtkTreeView-expander-size: 16;
 
-  border-left-color: $fill_color;  // this is actually the tree lines color,
+  border-left-color: $checked_bg_color;  // this is actually the tree lines color,
   border-top-color: $border_color; // while this is the grid lines color, better then nothing
 
   &.rubberband { @extend .rubberband; } // to avoid borders being overridden by the previously set props
@@ -904,7 +904,7 @@ GtkTreeView.view {
     border-width: 4px;
     border-color: rgba($primary_color, 0.3);
     &:selected {
-      border-color: $fill_color;
+      border-color: $checked_bg_color;
     }
   }
 }
@@ -1178,7 +1178,7 @@ column-header.button.dnd { // for treeview-like derive widgets
         border-top-width: 1px;
       }
     }
-    &:hover, &.prelight-page { background-color: $semi_fill_color; }
+    &:hover, &.prelight-page { background-color: $hover_bg_color; }
     &:active, &.active-page { background-color: transparent; }
     &.top {
       &:active, &.active-page { box-shadow: inset 0 -2px $primary_color; }
@@ -1383,7 +1383,7 @@ GtkSwitch {
     border-radius: 100px;
     box-shadow: 0 0 0 10px transparent, $shadow_1;
     background-color: $popup_bg_color;
-    &:hover { box-shadow: 0 0 0 10px $semi_fill_color, $shadow_1; }
+    &:hover { box-shadow: 0 0 0 10px $hover_bg_color, $shadow_1; }
     &:active {
       background-color: $secondary_color;
       color: $secondary_color;
@@ -1509,10 +1509,10 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
   }
   &.trough {
     margin: 13px 14px;
-    background-color: $fill_color;
+    background-color: $checked_bg_color;
     &.highlight {
       background-color: $secondary_color;
-      &:insensitive { background-color: $fill_color; }
+      &:insensitive { background-color: $checked_bg_color; }
     }
     &:insensitive { color: $disabled_fg_color; }
     &.vertical { margin: 14px 13px; }
@@ -1522,7 +1522,7 @@ GtkCheckButton.text-button, GtkRadioButton.text-button {
   }
   // marks color
   &.separator {
-    color: $fill_color;
+    color: $checked_bg_color;
   }
   // scales on selected list rows
   .list-row:selected & {
@@ -1706,12 +1706,12 @@ $row_transition: $shorter_transition, background-color 0, color 0;
   background-size: (192px / 0.8) (192px / 0.8);
   &:hover {
     transition: $row_transition, background-image $longer_duration * 4 $deceleration_curve, box-shadow 0;
-    box-shadow: inset 0 0 0 10000px $row_fill_color;
+    box-shadow: inset 0 0 0 10000px $hover_bg_color;
   }
   &:active {
     transition: $row_transition, background-image 0;
     animation: ripple_effect $longer_duration $deceleration_curve forwards;
-    box-shadow: inset 0 0 0 10000px $semi_fill_color;
+    box-shadow: inset 0 0 0 10000px $hover_bg_color;
   }
 }
 

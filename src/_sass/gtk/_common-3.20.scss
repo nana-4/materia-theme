@@ -34,7 +34,7 @@
 }
 
 notebook:focus tab,
-*:focus { outline-color: $fill_color; }
+*:focus { outline-color: $checked_bg_color; }
 
 
 /***************
@@ -1816,7 +1816,7 @@ notebook {
       font-weight: 500;
 
       &:hover {
-        background-color: $semi_fill_color;
+        background-color: $hover_bg_color;
         color: $fg_color;
       }
 
@@ -2060,11 +2060,11 @@ switch {
     background-color: $popup_bg_color;
   }
 
-  &:hover slider { box-shadow: 0 0 0 10px $semi_fill_color, $shadow_1; }
+  &:hover slider { box-shadow: 0 0 0 10px $hover_bg_color, $shadow_1; }
 
-  &:focus slider { box-shadow: 0 0 0 10px gtkalpha(currentColor, 0.16), $shadow_1; }
+  &:focus slider { box-shadow: 0 0 0 10px $focus_bg_color, $shadow_1; }
 
-  &:focus:hover slider { box-shadow: 0 0 0 10px gtkalpha(currentColor, 0.24), $shadow_1; }
+  &:focus:hover slider { box-shadow: 0 0 0 10px $hover_focus_bg_color, $shadow_1; }
 
   &:checked slider {
     background-color: $secondary_color;
@@ -2131,9 +2131,11 @@ radio {
 
   @extend %circular_button;
 
-  &:focus { box-shadow: inset 0 0 0 9999px gtkalpha(currentColor, 0.16); }
+  &:hover { box-shadow: inset 0 0 0 9999px $hover_bg_color; }
 
-  &:hover { box-shadow: inset 0 0 0 9999px $semi_fill_color; }
+  &:focus { box-shadow: inset 0 0 0 9999px $focus_bg_color; }
+
+  &:focus:hover { box-shadow: inset 0 0 0 9999px $hover_focus_bg_color; }
 
   &:checked, &:indeterminate {
     color: $secondary_color;
@@ -2152,7 +2154,7 @@ radio {
   }
 
   popover & {
-    &, &:focus, &:hover, &:active, &:disabled {
+    &, &:hover, &:focus, &:focus:hover, &:active, &:disabled {
       transition: none; // FIXME: this is a workaround for a popover check/radio long transition issue
       box-shadow: none;
       background-image: none;
@@ -2436,9 +2438,11 @@ scale {
       }
     }
 
-    &:focus { background-color: rgba($secondary_color, 0.16); }
-
     &:hover { background-color: rgba($secondary_color, 0.08); }
+
+    &:focus { background-color: rgba($secondary_color, 0.12); }
+
+    &:focus:hover { background-color: rgba($secondary_color, 0.16); }
 
     &:active {
       transition: background-color $shorter_duration $deceleration_curve,
@@ -2446,7 +2450,7 @@ scale {
                   background-image 0;
       animation: scale_ripple_effect $longer_duration $deceleration_curve forwards;
       background-size: auto, 0% 0%;
-      background-color: rgba($secondary_color, 0.12);
+      background-color: rgba($secondary_color, 0.08);
       color: rgba($secondary_color, 0.12);
     }
   }
@@ -2761,7 +2765,7 @@ row {
                   box-shadow 0,
                   background-size $ripple_duration $deceleration_curve,
                   background-image $ripple_opacity_duration $deceleration_curve;
-      box-shadow: inset 0 0 0 9999px $row_fill_color;
+      box-shadow: inset 0 0 0 9999px $hover_bg_color;
     }
 
     &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
@@ -2770,9 +2774,9 @@ row {
                   background-size 0,
                   background-image 0;
       animation: ripple_effect $longer_duration $deceleration_curve forwards;
-      box-shadow: inset 0 0 0 9999px $semi_fill_color;
+      box-shadow: inset 0 0 0 9999px $hover_bg_color;
       background-image: radial-gradient(circle farthest-corner at center,
-                                        $semi_fill_color 10%,
+                                        $active_bg_color 10%,
                                         transparent 0%);
       background-size: 0% 0%;
     }
@@ -3509,7 +3513,7 @@ button.emoji-section {
     background-color: transparent;
   }
 
-  &:hover, &:active { background-color: $semi_fill_color; }
+  &:hover, &:active { background-color: $hover_bg_color; }
 
   &:first-child { margin-left: 4px; }
 
@@ -3526,6 +3530,6 @@ button.emoji-section {
     transition: $shorter_transition;
     border-radius: $material_radius;
 
-    &:hover { background-color: $semi_fill_color; }
+    &:hover { background-color: $hover_bg_color; }
   }
 }

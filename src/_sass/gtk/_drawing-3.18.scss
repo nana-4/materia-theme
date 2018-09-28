@@ -8,14 +8,14 @@
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.001,
-                                    to($semi_fill_color),
+                                    to($active_bg_color),
                                     to(transparent));
   }
   to {
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.4,
-                                    to($semi_fill_color),
+                                    to($active_bg_color),
                                     to(transparent));
   }
 }
@@ -54,7 +54,7 @@
                                 to(transparent))
                                 0 0 0 / 0 0 0px;
     border-radius: 0;
-    box-shadow: inset 0 -1px if($fc == $primary_color, $fill_color, $fc);
+    box-shadow: inset 0 -1px if($fc == $primary_color, $checked_bg_color, $fc);
     background-color: transparent;
     color: $fg_color;
   }
@@ -71,7 +71,7 @@
   }
 
   @if $t == flat-insensitive {
-    box-shadow: inset 0 -1px $fill_color;
+    box-shadow: inset 0 -1px $checked_bg_color;
     background-color: transparent;
     color: $disabled_fg_color;
   }
@@ -106,13 +106,13 @@
   @if $t == active {
     transition: $shorter_transition, background-image 0;
     animation: ripple_effect $longer_duration $deceleration_curve forwards;
-    box-shadow: $shadow_2, inset 0 0 0 9999px $semi_fill_color;
+    box-shadow: $shadow_2, inset 0 0 0 9999px $hover_bg_color;
     color: $fg_color;
   }
 
   @if $t == insensitive {
     box-shadow: none;
-    background-color: $fill_color;
+    background-color: $checked_bg_color;
     color: if($c == $button_bg_color, $disabled_secondary_fg_color, $disabled_fg_color);
 
     > .label { color: inherit; }
@@ -142,14 +142,14 @@
   }
 
   @if $t == flat-hover {
-    box-shadow: inset 0 0 0 9999px $semi_fill_color;
+    box-shadow: inset 0 0 0 9999px $hover_bg_color;
     color: currentColor;
   }
 
   @if $t == flat-active {
     transition: $shorter_transition, border-image $longer_duration $deceleration_curve, background-image 0;
     animation: ripple_effect $longer_duration $deceleration_curve forwards;
-    box-shadow: inset 0 0 0 9999px $semi_fill_color;
+    box-shadow: inset 0 0 0 9999px $hover_bg_color;
     color: currentColor;
   }
 
@@ -164,12 +164,12 @@
   }
 
   @if $t == flat-checked {
-    background-color: $fill_color;
+    background-color: $checked_bg_color;
     color: currentColor;
   }
 
   @if $t == flat-checked-insensitive {
-    background-color: $fill_color;
+    background-color: $checked_bg_color;
     color: gtkalpha(currentColor, 0.5);
 
     > .label { color: inherit; }
