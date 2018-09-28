@@ -16,7 +16,7 @@ Also Materia has compatibility with [oomox theme designer](https://github.com/th
 **3 color variants** and **2 size variants** are available:
 
 | **Materia** | **standard** | **compact** |
-|:-:|:-:|:-:|
+| :-: | :-: | :-: |
 | **standard** | ![Materia][1] | ![Materia-compact][2] |
 | **dark** | ![Materia-dark][3] | ![Materia-dark-compact][4] |
 | **light** | ![Materia-light][5] | ![Materia-light-compact][6] |
@@ -36,12 +36,23 @@ Various **desktop environments** are supported:
 - MATE `>=1.14`
 - Unity `>=7.4`
 
+## Requirements
+
+- GTK+ `>=3.18`
+- `gnome-themes-extra` (or `gnome-themes-standard`)
+- Murrine engine — The package name depends on the distro.
+  - `gtk-engine-murrine` on Arch Linux
+  - `gtk-murrine-engine` on Fedora
+  - `gtk2-engine-murrine` on openSUSE
+  - `gtk2-engines-murrine` on Debian, Ubuntu, etc.
+- `bc` — build dependency
+
 ## Installation
 
 ### Packages
 
 | Distro | Maintainer | Install Command |
-|:-|:-|:-|
+| :-- | :-- | :-- |
 | Arch Linux <sup>[[Official][Arch]]</sup> | @ArchangeGabriel | `sudo pacman -S materia-gtk-theme` |
 | Debian 10 / sid <sup>[[Official][Debian]]</sup> <br> Ubuntu 18.04+ | @isaagar | `sudo apt install materia-gtk-theme` |
 | Ubuntu 16.04 / 17.10 <sup>[[PPA][PPA]]</sup> | @igor-dyatlov | `sudo add-apt-repository ppa:dyatlov-igor/materia-theme` <br> `sudo apt update` <br> `sudo apt install materia-gtk-theme` |
@@ -64,21 +75,6 @@ flatpak install flathub org.gtk.Gtk3theme.Materia-light
 ```
 
 ### Manual Installation
-
-#### Requirements
-
-You need to have the following dependencies:
-
-- GTK+ `>=3.18`
-- `gnome-themes-extra` (or `gnome-themes-standard`)
-- Murrine engine — The package name depends on the distro.
-  - `gtk-engine-murrine` on Arch Linux
-  - `gtk-murrine-engine` on Fedora
-  - `gtk2-engine-murrine` on openSUSE
-  - `gtk2-engines-murrine` on Debian, Ubuntu, etc.
-- `bc` — build dependency
-
-#### Install It
 
 Run the following commands in the terminal:
 
