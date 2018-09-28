@@ -133,6 +133,12 @@ If you find bugs or have suggestions, please report it to the [issue tracker](ht
 
 ToDo list can be found here: [`TODO.md`](TODO.md)
 
+## Related Projects
+
+- [**Materia KDE**](https://github.com/PapirusDevelopmentTeam/materia-kde) by @PapirusDevelopmentTeam
+- [**Materia VSCode Theme**](https://marketplace.visualstudio.com/items?itemName=m-thorsen.vscode-material-mt) by @m-thorsen
+- [**Materia Kolorizer**](https://github.com/DarthWound/materia-kolorizer) by @DarthWound
+
 ## License
 
 Materia is distributed under the terms of the GNU General Public License, version 2 or later. See the [`COPYING`](COPYING) file for details.
