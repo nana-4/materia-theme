@@ -1633,9 +1633,10 @@ popover.background {
     background-color: transparent;
   }
 
+  // FIXME: Use the popover color instead of transparent as a workaround for .view
   list,
-  .view,
-  toolbar { background-color: transparent; }
+  .view:not(:selected),
+  toolbar { background-color: $popup_bg_color; }
 
   // &.touch-selection,
   // &.magnifier,
