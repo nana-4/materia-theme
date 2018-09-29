@@ -26,8 +26,6 @@ echo "== Generating the CSS..."
 
 for color in "${_COLOR_VARIANTS[@]}"; do
   for size in "${_SIZE_VARIANTS[@]}"; do
-    sassc "${SASSC_OPT[@]}" "src/cinnamon/cinnamon$color$size."{scss,css}
-
     for version in "${GTK_VERSIONS[@]}"; do
       sassc "${SASSC_OPT[@]}" "src/gtk/$version/gtk$color$size."{scss,css}
     done
@@ -35,6 +33,8 @@ for color in "${_COLOR_VARIANTS[@]}"; do
     for version in "${GS_VERSIONS[@]}"; do
       sassc "${SASSC_OPT[@]}" "src/gnome-shell/$version/gnome-shell$color$size."{scss,css}
     done
+
+    sassc "${SASSC_OPT[@]}" "src/cinnamon/cinnamon$color$size."{scss,css}
   done
 done
 
