@@ -7,31 +7,8 @@
   <rect sodipodi:insensitive="true" width="200" height="400" fill="url(#color-bg-dark)" x="200"/>
 
   <defs>
-    <!-- <solidColor id="color-fg" solid-color="#000000" solid-opacity="0.87"/> -->
-    <!-- <solidColor id="color-fg-dark" solid-color="#FFFFFF"/> -->
-
-    <linearGradient id="color-fg">
-      <stop stop-color="#000000" stop-opacity="0.87"/>
-    </linearGradient>
-
     <linearGradient id="color-fg-dark">
       <stop stop-color="#FFFFFF"/>
-    </linearGradient>
-
-    <linearGradient id="color-fg-secondary">
-      <stop stop-color="#000000" stop-opacity="0.54"/>
-    </linearGradient>
-
-    <linearGradient id="color-fg-secondary-dark">
-      <stop stop-color="#FFFFFF" stop-opacity="0.7"/>
-    </linearGradient>
-
-    <linearGradient id="color-fg-secondary-disabled">
-      <stop stop-color="#000000" stop-opacity="0.26"/>
-    </linearGradient>
-
-    <linearGradient id="color-fg-secondary-disabled-dark">
-      <stop stop-color="#FFFFFF" stop-opacity="0.3"/>
     </linearGradient>
 
     <linearGradient id="color-divider">
@@ -44,10 +21,6 @@
 
     <linearGradient id="color-secondary">
       <stop stop-color="#01A299"/>
-    </linearGradient>
-
-    <linearGradient id="color-secondary-disabled">
-      <stop stop-color="#01A299" stop-opacity="0.5"/>
     </linearGradient>
 
     <linearGradient id="color-bg">
@@ -66,62 +39,6 @@
       <stop stop-color="#424242"/>
     </linearGradient>
 
-    <linearGradient id="color-bg-popup">
-      <stop stop-color="#FFFFFF"/>
-    </linearGradient>
-
-    <linearGradient id="color-bg-popup-dark">
-      <stop stop-color="#424242"/>
-    </linearGradient>
-
-    <filter id="1" color-interpolation-filters="sRGB" x="0" y="0" width="1" height="1">
-      <!-- <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.12"/> -->
-      <!-- <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.24"/> -->
-
-      <feFlood flood-color="#000000" flood-opacity="0.12" result="flood"/>
-      <feComposite operator="in" in="flood" in2="SourceGraphic" result="composite1"/>
-      <feGaussianBlur stdDeviation="1.5" in="composite1" result="blur"/>
-      <feOffset dx="0" dy="1" result="offset"/>
-      <feComposite in="SourceGraphic" in2="offset" result="fbSourceGraphic"/>
-
-      <feFlood flood-color="#000000" flood-opacity="0.24" result="flood"/>
-      <feComposite operator="in" in="flood" in2="fbSourceGraphic" result="composite1"/>
-      <feGaussianBlur stdDeviation="1" in="composite1" result="blur"/>
-      <feOffset dx="0" dy="1" result="offset"/>
-      <feComposite in="fbSourceGraphic" in2="offset" result="composite2"/>
-    </filter>
-
-    <filter id="2" color-interpolation-filters="sRGB" x="0" y="0" width="1" height="1">
-      <!-- <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.16"/> -->
-      <!-- <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.23"/> -->
-
-      <feFlood flood-color="#000000" flood-opacity="0.16" result="flood"/>
-      <feComposite operator="in" in="flood" in2="SourceGraphic" result="composite1"/>
-      <feGaussianBlur stdDeviation="3" in="composite1" result="blur"/>
-      <feOffset dx="0" dy="3" result="offset"/>
-      <feComposite in="SourceGraphic" in2="offset" result="fbSourceGraphic"/>
-
-      <feFlood flood-color="#000000" flood-opacity="0.23" result="flood"/>
-      <feComposite operator="in" in="flood" in2="fbSourceGraphic" result="composite1"/>
-      <feGaussianBlur stdDeviation="3" in="composite1" result="blur"/>
-      <feOffset dx="0" dy="3" result="offset"/>
-      <feComposite in="fbSourceGraphic" in2="offset" result="composite2"/>
-    </filter>
-
-    <path id="checkbox-unchecked-path" d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
-    <path id="checkbox-checked-path" d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-    <path id="checkbox-mixed-path" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"/>
-    <path id="radio-unchecked-path" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-    <path id="radio-checked-path" d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-    <path id="radio-mixed-path" d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-
-    <path id="menu-checkbox-unchecked-path" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm0 2h12v12H2V2z"/>
-    <path id="menu-checkbox-checked-path" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.6 3.59L14.01 5l-8 8-4-4 1.41-1.41 2.59 2.59 6.59-6.59z"/>
-    <path id="menu-checkbox-mixed-path" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm2 7h8v2H4V7z"/>
-    <path id="menu-radio-unchecked-path" d="M8 0a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8zm0 2a6 6 0 0 1 6 6 6 6 0 0 1-6 6 6 6 0 0 1-6-6 6 6 0 0 1 6-6z"/>
-    <path id="menu-radio-checked-path" d="M8 0a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8zm0 2a6 6 0 0 1 6 6 6 6 0 0 1-6 6 6 6 0 0 1-6-6 6 6 0 0 1 6-6zm0 2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4z"/>
-    <path id="menu-radio-mixed-path" d="M8 0a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8zm0 2a6 6 0 0 1 6 6 6 6 0 0 1-6 6 6 6 0 0 1-6-6 6 6 0 0 1 6-6zM4 7v2h8V7H4z"/>
-
     <rect id="button-fill" width="24" height="24" rx="2" ry="2"/>
     <path id="check-path" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
 
@@ -130,72 +47,8 @@
     <path id="marks-slider-fill" d="M12 6a6 6 0 0 0-6 6 6 6 0 0 0 6 6h6v-6a6 6 0 0 0-6-6z"/>
     <path id="marks-slider-stroke" d="M12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h5v-5a5 5 0 0 0-5-5z"/>
 
-    <rect id="box-fill" width="32" height="32" rx="2" ry="2"/>
-
-    <rect id="16x16" width="16" height="16" opacity="0"/>
     <rect id="24x24" width="24" height="24" opacity="0"/>
     <rect id="40x40" width="40" height="40" opacity="0"/>
-    <rect id="48x48" width="48" height="48" opacity="0"/>
-
-    <g id="base-checkbox-unchecked">
-      <use xlink:href="#button-fill"/>
-      <use xlink:href="#checkbox-unchecked-path" fill-opacity="1"/>
-    </g>
-
-    <g id="base-checkbox-checked">
-      <use xlink:href="#button-fill"/>
-      <use xlink:href="#checkbox-checked-path" fill-opacity="1"/>
-    </g>
-
-    <g id="base-checkbox-mixed">
-      <use xlink:href="#button-fill"/>
-      <use xlink:href="#checkbox-mixed-path" fill-opacity="1"/>
-    </g>
-
-    <g id="base-radio-unchecked">
-      <use xlink:href="#button-fill"/>
-      <use xlink:href="#radio-unchecked-path" fill-opacity="1"/>
-    </g>
-
-    <g id="base-radio-checked">
-      <use xlink:href="#button-fill"/>
-      <use xlink:href="#radio-checked-path" fill-opacity="1"/>
-    </g>
-
-    <g id="base-radio-mixed">
-      <use xlink:href="#button-fill"/>
-      <use xlink:href="#radio-mixed-path" fill-opacity="1"/>
-    </g>
-
-    <g id="base-menu-checkbox-unchecked">
-      <use xlink:href="#16x16"/>
-      <use xlink:href="#menu-checkbox-unchecked-path"/>
-    </g>
-
-    <g id="base-menu-checkbox-checked">
-      <use xlink:href="#16x16"/>
-      <use xlink:href="#menu-checkbox-checked-path"/>
-    </g>
-
-    <g id="base-menu-checkbox-mixed">
-      <use xlink:href="#16x16"/>
-      <use xlink:href="#menu-checkbox-mixed-path"/>
-    </g>
-
-    <g id="base-menu-radio-unchecked">
-      <use xlink:href="#16x16"/>
-      <use xlink:href="#menu-radio-unchecked-path"/>
-    </g>
-
-    <g id="base-menu-radio-checked">
-      <use xlink:href="#16x16"/>
-      <use xlink:href="#menu-radio-checked-path"/>
-    </g>
-
-    <g id="base-menu-radio-mixed">
-      <use xlink:href="#16x16"/>
-      <use xlink:href="#menu-radio-mixed-path"/>
-    </g>
 
     <g id="base-selectionmode-checkbox-unchecked">
       <use xlink:href="#40x40"/>
@@ -250,60 +103,7 @@
     <use xlink:href="#base-scale-horz-marks-after-slider-disabled-dark" id="base-scale-vert-marks-before-slider-disabled-dark" transform="rotate(90 12 12)"/>
     <use xlink:href="#base-scale-horz-marks-after-slider-disabled-dark" id="base-scale-horz-marks-before-slider-disabled-dark" transform="rotate(180 12 12)"/>
     <use xlink:href="#base-scale-horz-marks-after-slider-disabled-dark" id="base-scale-vert-marks-after-slider-disabled-dark" transform="rotate(270 12 12)"/>
-
-    <g id="base-box">
-      <use xlink:href="#48x48"/>
-      <use xlink:href="#box-fill" x="8" y="8"/>
-    </g>
   </defs>
-
-  <use x="8"   y="8"   xlink:href="#base-checkbox-unchecked" fill="url(#color-fg-secondary)" fill-opacity="0" id="checkbox-unchecked"/>
-  <use x="8"   y="40"  xlink:href="#base-checkbox-unchecked" fill="url(#color-fg)" fill-opacity="0.08" id="checkbox-unchecked-hover"/>
-  <use x="8"   y="72"  xlink:href="#base-checkbox-unchecked" fill="url(#color-fg)" fill-opacity="0.2" id="checkbox-unchecked-active"/>
-  <use x="8"   y="104" xlink:href="#base-checkbox-unchecked" fill="url(#color-fg-secondary-disabled)" fill-opacity="0" id="checkbox-unchecked-disabled"/>
-
-  <use x="40"  y="8"   xlink:href="#base-checkbox-checked" fill="url(#color-secondary)" fill-opacity="0" id="checkbox-checked"/>
-  <use x="40"  y="40"  xlink:href="#base-checkbox-checked" fill="url(#color-secondary)" fill-opacity="0.08" id="checkbox-checked-hover"/>
-  <use x="40"  y="72"  xlink:href="#base-checkbox-checked" fill="url(#color-secondary)" fill-opacity="0.2" id="checkbox-checked-active"/>
-  <use x="40"  y="104" xlink:href="#base-checkbox-checked" fill="url(#color-secondary-disabled)" fill-opacity="0" id="checkbox-checked-disabled"/>
-
-  <use x="72"  y="8"   xlink:href="#base-checkbox-mixed" fill="url(#color-secondary)" fill-opacity="0" id="checkbox-mixed"/>
-  <use x="72"  y="40"  xlink:href="#base-checkbox-mixed" fill="url(#color-secondary)" fill-opacity="0.08" id="checkbox-mixed-hover"/>
-  <use x="72"  y="72"  xlink:href="#base-checkbox-mixed" fill="url(#color-secondary)" fill-opacity="0.2" id="checkbox-mixed-active"/>
-  <use x="72"  y="104" xlink:href="#base-checkbox-mixed" fill="url(#color-secondary-disabled)" fill-opacity="0" id="checkbox-mixed-disabled"/>
-
-  <use x="104" y="8"   xlink:href="#base-radio-unchecked" fill="url(#color-fg-secondary)" fill-opacity="0" id="radio-unchecked"/>
-  <use x="104" y="40"  xlink:href="#base-radio-unchecked" fill="url(#color-fg)" fill-opacity="0.08" id="radio-unchecked-hover"/>
-  <use x="104" y="72"  xlink:href="#base-radio-unchecked" fill="url(#color-fg)" fill-opacity="0.2" id="radio-unchecked-active"/>
-  <use x="104" y="104" xlink:href="#base-radio-unchecked" fill="url(#color-fg-secondary-disabled)" fill-opacity="0" id="radio-unchecked-disabled"/>
-
-  <use x="136" y="8"   xlink:href="#base-radio-checked" fill="url(#color-secondary)" fill-opacity="0" id="radio-checked"/>
-  <use x="136" y="40"  xlink:href="#base-radio-checked" fill="url(#color-secondary)" fill-opacity="0.08" id="radio-checked-hover"/>
-  <use x="136" y="72"  xlink:href="#base-radio-checked" fill="url(#color-secondary)" fill-opacity="0.2" id="radio-checked-active"/>
-  <use x="136" y="104" xlink:href="#base-radio-checked" fill="url(#color-secondary-disabled)" fill-opacity="0" id="radio-checked-disabled"/>
-
-  <use x="168" y="8"   xlink:href="#base-radio-mixed" fill="url(#color-secondary)" fill-opacity="0" id="radio-mixed"/>
-  <use x="168" y="40"  xlink:href="#base-radio-mixed" fill="url(#color-secondary)" fill-opacity="0.08" id="radio-mixed-hover"/>
-  <use x="168" y="72"  xlink:href="#base-radio-mixed" fill="url(#color-secondary)" fill-opacity="0.2" id="radio-mixed-active"/>
-  <use x="168" y="104" xlink:href="#base-radio-mixed" fill="url(#color-secondary-disabled)" fill-opacity="0" id="radio-mixed-disabled"/>
-
-  <use x="12"  y="136" xlink:href="#base-menu-checkbox-unchecked" fill="url(#color-fg-secondary)" id="menu-checkbox-unchecked"/>
-  <use x="12"  y="160" xlink:href="#base-menu-checkbox-unchecked" fill="url(#color-fg-secondary-disabled)" id="menu-checkbox-unchecked-disabled"/>
-
-  <use x="44"  y="136" xlink:href="#base-menu-checkbox-checked" fill="url(#color-secondary)" id="menu-checkbox-checked"/>
-  <use x="44"  y="160" xlink:href="#base-menu-checkbox-checked" fill="url(#color-secondary-disabled)" id="menu-checkbox-checked-disabled"/>
-
-  <use x="76"  y="136" xlink:href="#base-menu-checkbox-mixed" fill="url(#color-secondary)" id="menu-checkbox-mixed"/>
-  <use x="76"  y="160" xlink:href="#base-menu-checkbox-mixed" fill="url(#color-secondary-disabled)" id="menu-checkbox-mixed-disabled"/>
-
-  <use x="108" y="136" xlink:href="#base-menu-radio-unchecked" fill="url(#color-fg-secondary)" id="menu-radio-unchecked"/>
-  <use x="108" y="160" xlink:href="#base-menu-radio-unchecked" fill="url(#color-fg-secondary-disabled)" id="menu-radio-unchecked-disabled"/>
-
-  <use x="140" y="136" xlink:href="#base-menu-radio-checked" fill="url(#color-secondary)" id="menu-radio-checked"/>
-  <use x="140" y="160" xlink:href="#base-menu-radio-checked" fill="url(#color-secondary-disabled)" id="menu-radio-checked-disabled"/>
-
-  <use x="172" y="136" xlink:href="#base-menu-radio-mixed" fill="url(#color-secondary)" id="menu-radio-mixed"/>
-  <use x="172" y="160" xlink:href="#base-menu-radio-mixed" fill="url(#color-secondary-disabled)" id="menu-radio-mixed-disabled"/>
 
   <use x="8"   y="184" xlink:href="#base-selectionmode-checkbox-unchecked" fill="url(#color-bg-button)" id="selectionmode-checkbox-unchecked"/>
   <use x="56"  y="184" xlink:href="#base-selectionmode-checkbox-checked" id="selectionmode-checkbox-checked"/>
@@ -323,57 +123,6 @@
   <use x="160" y="240" xlink:href="#base-scale-vert-marks-after-slider" id="scale-vert-marks-after-slider"/>
   <use x="160" y="280" xlink:href="#base-scale-vert-marks-after-slider-disabled" id="scale-vert-marks-after-slider-disabled"/>
 
-  <use x="8"   y="320" xlink:href="#base-box" fill="url(#color-bg-popup)" filter="url(#2)" id="box-shadow"/>
-  <use x="64"  y="320" xlink:href="#base-box" fill="url(#color-bg-popup)" filter="url(#1)" id="box-shadow-backdrop"/>
-
-
-  <use x="208" y="8"   xlink:href="#base-checkbox-unchecked" fill="url(#color-fg-secondary-dark)" fill-opacity="0" id="checkbox-unchecked-dark"/>
-  <use x="208" y="40"  xlink:href="#base-checkbox-unchecked" fill="url(#color-fg-dark)" fill-opacity="0.08" id="checkbox-unchecked-hover-dark"/>
-  <use x="208" y="72"  xlink:href="#base-checkbox-unchecked" fill="url(#color-fg-dark)" fill-opacity="0.2" id="checkbox-unchecked-active-dark"/>
-  <use x="208" y="104" xlink:href="#base-checkbox-unchecked" fill="url(#color-fg-secondary-disabled-dark)" fill-opacity="0" id="checkbox-unchecked-disabled-dark"/>
-
-  <use x="240" y="8"   xlink:href="#base-checkbox-checked" fill="url(#color-secondary)" fill-opacity="0" id="checkbox-checked-dark"/>
-  <use x="240" y="40"  xlink:href="#base-checkbox-checked" fill="url(#color-secondary)" fill-opacity="0.08" id="checkbox-checked-hover-dark"/>
-  <use x="240" y="72"  xlink:href="#base-checkbox-checked" fill="url(#color-secondary)" fill-opacity="0.2" id="checkbox-checked-active-dark"/>
-  <use x="240" y="104" xlink:href="#base-checkbox-checked" fill="url(#color-secondary-disabled)" fill-opacity="0" id="checkbox-checked-disabled-dark"/>
-
-  <use x="272" y="8"   xlink:href="#base-checkbox-mixed" fill="url(#color-secondary)" fill-opacity="0" id="checkbox-mixed-dark"/>
-  <use x="272" y="40"  xlink:href="#base-checkbox-mixed" fill="url(#color-secondary)" fill-opacity="0.08" id="checkbox-mixed-hover-dark"/>
-  <use x="272" y="72"  xlink:href="#base-checkbox-mixed" fill="url(#color-secondary)" fill-opacity="0.2" id="checkbox-mixed-active-dark"/>
-  <use x="272" y="104" xlink:href="#base-checkbox-mixed" fill="url(#color-secondary-disabled)" fill-opacity="0" id="checkbox-mixed-disabled-dark"/>
-
-  <use x="304" y="8"   xlink:href="#base-radio-unchecked" fill="url(#color-fg-secondary-dark)" fill-opacity="0" id="radio-unchecked-dark"/>
-  <use x="304" y="40"  xlink:href="#base-radio-unchecked" fill="url(#color-fg-dark)" fill-opacity="0.08" id="radio-unchecked-hover-dark"/>
-  <use x="304" y="72"  xlink:href="#base-radio-unchecked" fill="url(#color-fg-dark)" fill-opacity="0.2" id="radio-unchecked-active-dark"/>
-  <use x="304" y="104" xlink:href="#base-radio-unchecked" fill="url(#color-fg-secondary-disabled-dark)" fill-opacity="0" id="radio-unchecked-disabled-dark"/>
-
-  <use x="336" y="8"   xlink:href="#base-radio-checked" fill="url(#color-secondary)" fill-opacity="0" id="radio-checked-dark"/>
-  <use x="336" y="40"  xlink:href="#base-radio-checked" fill="url(#color-secondary)" fill-opacity="0.08" id="radio-checked-hover-dark"/>
-  <use x="336" y="72"  xlink:href="#base-radio-checked" fill="url(#color-secondary)" fill-opacity="0.2" id="radio-checked-active-dark"/>
-  <use x="336" y="104" xlink:href="#base-radio-checked" fill="url(#color-secondary-disabled)" fill-opacity="0" id="radio-checked-disabled-dark"/>
-
-  <use x="368" y="8"   xlink:href="#base-radio-mixed" fill="url(#color-secondary)" fill-opacity="0" id="radio-mixed-dark"/>
-  <use x="368" y="40"  xlink:href="#base-radio-mixed" fill="url(#color-secondary)" fill-opacity="0.08" id="radio-mixed-hover-dark"/>
-  <use x="368" y="72"  xlink:href="#base-radio-mixed" fill="url(#color-secondary)" fill-opacity="0.2" id="radio-mixed-active-dark"/>
-  <use x="368" y="104" xlink:href="#base-radio-mixed" fill="url(#color-secondary-disabled)" fill-opacity="0" id="radio-mixed-disabled-dark"/>
-
-  <use x="212" y="136" xlink:href="#base-menu-checkbox-unchecked" fill="url(#color-fg-secondary-dark)" id="menu-checkbox-unchecked-dark"/>
-  <use x="212" y="160" xlink:href="#base-menu-checkbox-unchecked" fill="url(#color-fg-secondary-disabled-dark)" id="menu-checkbox-unchecked-disabled-dark"/>
-
-  <use x="244" y="136" xlink:href="#base-menu-checkbox-checked" fill="url(#color-secondary)" id="menu-checkbox-checked-dark"/>
-  <use x="244" y="160" xlink:href="#base-menu-checkbox-checked" fill="url(#color-secondary-disabled)" id="menu-checkbox-checked-disabled-dark"/>
-
-  <use x="276" y="136" xlink:href="#base-menu-checkbox-mixed" fill="url(#color-secondary)" id="menu-checkbox-mixed-dark"/>
-  <use x="276" y="160" xlink:href="#base-menu-checkbox-mixed" fill="url(#color-secondary-disabled)" id="menu-checkbox-mixed-disabled-dark"/>
-
-  <use x="308" y="136" xlink:href="#base-menu-radio-unchecked" fill="url(#color-fg-secondary-dark)" id="menu-radio-unchecked-dark"/>
-  <use x="308" y="160" xlink:href="#base-menu-radio-unchecked" fill="url(#color-fg-secondary-disabled-dark)" id="menu-radio-unchecked-disabled-dark"/>
-
-  <use x="340" y="136" xlink:href="#base-menu-radio-checked" fill="url(#color-secondary)" id="menu-radio-checked-dark"/>
-  <use x="340" y="160" xlink:href="#base-menu-radio-checked" fill="url(#color-secondary-disabled)" id="menu-radio-checked-disabled-dark"/>
-
-  <use x="372" y="136" xlink:href="#base-menu-radio-mixed" fill="url(#color-secondary)" id="menu-radio-mixed-dark"/>
-  <use x="372" y="160" xlink:href="#base-menu-radio-mixed" fill="url(#color-secondary-disabled)" id="menu-radio-mixed-disabled-dark"/>
 
   <use x="208" y="184" xlink:href="#base-selectionmode-checkbox-unchecked" fill="url(#color-bg-button-dark)" id="selectionmode-checkbox-unchecked-dark"/>
   <use x="256" y="184" xlink:href="#base-selectionmode-checkbox-checked" id="selectionmode-checkbox-checked-dark"/>
@@ -392,7 +141,4 @@
 
   <use x="360" y="240" xlink:href="#base-scale-vert-marks-after-slider" id="scale-vert-marks-after-slider-dark"/>
   <use x="360" y="280" xlink:href="#base-scale-vert-marks-after-slider-disabled-dark" id="scale-vert-marks-after-slider-disabled-dark"/>
-
-  <use x="208" y="320" xlink:href="#base-box" fill="url(#color-bg-popup-dark)" filter="url(#2)" id="box-shadow-dark"/>
-  <use x="264" y="320" xlink:href="#base-box" fill="url(#color-bg-popup-dark)" filter="url(#1)" id="box-shadow-backdrop-dark"/>
 </svg>
