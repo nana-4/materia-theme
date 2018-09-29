@@ -20,7 +20,7 @@ COLOR_VARIANTS=('' '-dark' '-light')
 # shellcheck disable=SC2034 # will this be used later?
 SIZE_VARIANTS=('' '-compact')
 
-GTK_VERSIONS=('3.18' '3.20' '3.22')
+GTK_VERSIONS=('3.0')
 GS_VERSIONS=('3.18' '3.24' '3.26' '3.28' '3.30')
 LATEST_GS_VERSION="${GS_VERSIONS[-1]}"
 
@@ -71,19 +71,11 @@ test() {
   ln -sT "$SRC_DIR/gtk-2.0/gtkrc$color"                                         "$THEME_DIR/gtk-2.0/gtkrc"
 
   for version in "${GTK_VERSIONS[@]}"; do
-    if [[ "$version" == '3.18' ]]; then
-      mkdir -p                                                                  "$THEME_DIR/gtk-3.0"
-      ln -s  "$SRC_DIR/gtk/assets"                                              "$THEME_DIR/gtk-3.0"
-      ln -sT "$SRC_DIR/gtk/$version/gtk$color.css"                              "$THEME_DIR/gtk-3.0/gtk.css"
-      [[ "$color" != '-dark' ]] && \
-      ln -sT "$SRC_DIR/gtk/$version/gtk-dark.css"                               "$THEME_DIR/gtk-3.0/gtk-dark.css"
-    else
-      mkdir -p                                                                  "$THEME_DIR/gtk-$version"
-      ln -s  "$SRC_DIR/gtk/assets"                                              "$THEME_DIR/gtk-$version"
-      ln -sT "$SRC_DIR/gtk/$version/gtk$color$size.css"                         "$THEME_DIR/gtk-$version/gtk.css"
-      [[ "$color" != '-dark' ]] && \
-      ln -sT "$SRC_DIR/gtk/$version/gtk-dark$size.css"                          "$THEME_DIR/gtk-$version/gtk-dark.css"
-    fi
+    mkdir -p                                                                    "$THEME_DIR/gtk-$version"
+    ln -s  "$SRC_DIR/gtk/assets"                                                "$THEME_DIR/gtk-$version"
+    ln -sT "$SRC_DIR/gtk/$version/gtk$color$size.css"                           "$THEME_DIR/gtk-$version/gtk.css"
+    [[ "$color" != '-dark' ]] && \
+    ln -sT "$SRC_DIR/gtk/$version/gtk-dark$size.css"                            "$THEME_DIR/gtk-$version/gtk-dark.css"
   done
 
   mkdir -p                                                                      "$THEME_DIR/metacity-1"

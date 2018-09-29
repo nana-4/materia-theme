@@ -38,7 +38,7 @@ Various **desktop environments** are supported:
 
 ## Requirements
 
-- GTK+ `>=3.18`
+- GTK+ `>=3.20`
 - `gnome-themes-extra` (or `gnome-themes-standard`)
 - Murrine engine — The package name depends on the distro.
   - `gtk-engine-murrine` on Arch Linux

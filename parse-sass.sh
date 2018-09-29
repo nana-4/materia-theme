@@ -11,7 +11,7 @@ SASSC_OPT=('-M' '-t' 'expanded')
 _COLOR_VARIANTS=('' '-dark' '-light')
 _SIZE_VARIANTS=('' '-compact')
 
-GTK_VERSIONS=('3.18' '3.20' '3.22')
+GTK_VERSIONS=('3.0')
 GS_VERSIONS=('3.18' '3.24' '3.26' '3.28' '3.30')
 
 if [[ ! -z "${COLOR_VARIANTS:-}" ]]; then
@@ -25,13 +25,10 @@ fi
 echo "== Generating the CSS..."
 
 for color in "${_COLOR_VARIANTS[@]}"; do
-  # The '-compact' variant is not supported for gtk '3.18'
-  sassc "${SASSC_OPT[@]}" "src/gtk/$GTK_VERSIONS/gtk$color."{scss,css}
-
   for size in "${_SIZE_VARIANTS[@]}"; do
     sassc "${SASSC_OPT[@]}" "src/cinnamon/cinnamon$color$size."{scss,css}
 
-    for version in "${GTK_VERSIONS[@]:1}"; do
+    for version in "${GTK_VERSIONS[@]}"; do
       sassc "${SASSC_OPT[@]}" "src/gtk/$version/gtk$color$size."{scss,css}
     done
 

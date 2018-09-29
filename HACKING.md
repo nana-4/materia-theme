@@ -110,9 +110,7 @@ After all the steps, run `./install.sh` to rebuild the themes.
 ### Upstream theme sources
 
 - [GTK+ 4.0](https://gitlab.gnome.org/GNOME/gtk/tree/master/gtk/theme/Adwaita) (master)
-  - [3.22](https://gitlab.gnome.org/GNOME/gtk/tree/gtk-3-22/gtk/theme/Adwaita)
-  - [3.20](https://gitlab.gnome.org/GNOME/gtk/tree/gtk-3-20/gtk/theme/Adwaita)
-  - [3.18](https://gitlab.gnome.org/GNOME/gtk/tree/gtk-3-18/gtk/theme/Adwaita)
+- [GTK+ 3](https://gitlab.gnome.org/GNOME/gtk/tree/gtk-3-24/gtk/theme/Adwaita) (3.24)
 - [GTK+ 2](https://gitlab.gnome.org/GNOME/gnome-themes-extra/tree/master/themes/Adwaita/gtk-2.0)
 - [GNOME Shell](https://gitlab.gnome.org/GNOME/gnome-shell/tree/master/data/theme)
   - [Sass sources](https://gitlab.gnome.org/GNOME/gnome-shell-sass) (legacy)
