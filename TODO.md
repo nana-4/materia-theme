@@ -11,7 +11,6 @@
 - Xfce theme ([#60](../../issues/60))
   - waiting for the upstream to complete `gtk3` port
 - Pantheon theme ([#69](../../issues/69))
-- KDE theme ([#143](../../issues/143), `low priority`)
 - GtkSourceView theme ([#150](../../issues/150))
 - Color scheme for GNOME Terminal ([#157](../../issues/157))
 - Overlay scrollbars extension for Chrome/Chromium (`low priority`)
