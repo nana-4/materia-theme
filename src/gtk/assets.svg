@@ -58,18 +58,18 @@
     <use xlink:href="#base-scale-horz-marks-after-slider" id="base-scale-vert-marks-after-slider" transform="rotate(270 12 12)"/>
 
     <rect width="40" height="40" fill="none" id="40x40"/>
-    <rect width="24" height="24" rx="2" id="button-fill"/>
-    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" id="check-path"/>
+    <rect x="2" y="2" width="36" height="36" rx="4" id="check-button"/>
+    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" transform="matrix(1.5 0 0 1.5 2 2)" id="check-mark"/>
 
     <g id="base-selectionmode-checkbox-unchecked">
       <use xlink:href="#40x40"/>
-      <use xlink:href="#button-fill" transform="matrix(1.5 0 0 1.5 2 2)"/>
+      <use xlink:href="#check-button"/>
     </g>
 
     <g id="base-selectionmode-checkbox-checked">
       <use xlink:href="#40x40"/>
-      <use xlink:href="#button-fill" transform="matrix(1.5 0 0 1.5 2 2)" fill="url(#color-secondary)"/>
-      <use xlink:href="#check-path" transform="matrix(1.5 0 0 1.5 2 2)" fill="url(#color-fg-inverse)"/>
+      <use xlink:href="#check-button" fill="url(#color-secondary)"/>
+      <use xlink:href="#check-mark" fill="url(#color-fg-inverse)"/>
     </g>
   </defs>
 
