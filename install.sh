@@ -146,10 +146,7 @@ while [[ "$#" -gt 0 ]]; do
   case "${1:-}" in
     -d|--dest)
       dest="$2"
-      if [[ ! -d "$dest" ]]; then
-        echo "ERROR: Destination directory does not exist."
-        exit 1
-      fi
+      mkdir -p "$dest"
       shift 2
       ;;
     -n|--name)
