@@ -21,9 +21,8 @@ if [[ "$(which gnome-shell 2> /dev/null)" ]]; then
     if (( "$(bc <<< "$CURRENT_GS_VERSION <= $version")" )); then
       GS_VERSION="$version"
       break
-    elif (( "$(bc <<< "$CURRENT_GS_VERSION > $LATEST_GS_VERSION")" )); then
+    else
       GS_VERSION="$LATEST_GS_VERSION"
-      break
     fi
   done
 else
