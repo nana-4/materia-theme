@@ -15,11 +15,11 @@ Also Materia has compatibility with [oomox theme designer](https://github.com/th
 
 **3 color variants** and **2 size variants** are available:
 
-| **Materia** | **standard** | **compact** |
-| :-: | :-: | :-: |
-| **standard** | ![Materia][1] | ![Materia-compact][2] |
-| **dark** | ![Materia-dark][3] | ![Materia-dark-compact][4] |
-| **light** | ![Materia-light][5] | ![Materia-light-compact][6] |
+**Materia** | **standard** | **compact**
+:-: | :-: | :-:
+**standard** | ![Materia][1] | ![Materia-compact][2]
+**dark** | ![Materia-dark][3] | ![Materia-dark-compact][4]
+**light** | ![Materia-light][5] | ![Materia-light-compact][6]
 
 [1]: ../images/Materia.png?raw=true
 [2]: ../images/Materia-compact.png?raw=true
@@ -49,21 +49,16 @@ Various **desktop environments** are supported:
 
 ## Installation
 
-### Packages
+### Distro Packages
 
-| Distro | Maintainer | Install Command |
-| :-- | :-- | :-- |
-| Arch Linux <sup>[[Official][Arch]]</sup> | @ArchangeGabriel | `sudo pacman -S materia-gtk-theme` |
-| Debian 10 / sid <sup>[[Official][Debian]]</sup> <br> Ubuntu 18.04+ | @isaagar | `sudo apt install materia-gtk-theme` |
-| Ubuntu 16.04 / 17.10 <sup>[[PPA][PPA]]</sup> | @igor-dyatlov | `sudo add-apt-repository ppa:dyatlov-igor/materia-theme` <br> `sudo apt update` <br> `sudo apt install materia-gtk-theme` |
-| Fedora <sup>[[Copr][Copr]]</sup> | @LaurentTreguier | `sudo dnf copr enable tcg/themes` <br> `sudo dnf install materia-theme` |
+Distro | Package Name / Link
+--- | ---
+Arch Linux | [`materia-gtk-theme`](https://www.archlinux.org/packages/community/any/materia-gtk-theme)
+Debian testing / unstable <br> Ubuntu 18.04+ | [`materia-gtk-theme`](https://packages.debian.org/unstable/materia-gtk-theme)
+Ubuntu 16.04 / 17.10 | `materia-gtk-theme` from [@igor-dyatlov's PPA](https://launchpad.net/~dyatlov-igor/+archive/ubuntu/materia-theme)
+Fedora | `materia-theme` from [@LaurentTreguier's Copr](https://copr.fedorainfracloud.org/coprs/tcg/themes)
 
-[Arch]: https://www.archlinux.org/packages/community/any/materia-gtk-theme
-[Debian]: https://packages.debian.org/unstable/materia-gtk-theme
-[PPA]: https://launchpad.net/~dyatlov-igor/+archive/ubuntu/materia-theme
-[Copr]: https://copr.fedorainfracloud.org/coprs/tcg/themes
-
-#### Flatpak
+### Flatpak
 
 3 variants (Materia, Materia-dark, Materia-light) are available via Flathub:
 
@@ -84,17 +79,16 @@ cd materia-theme-master
 sudo ./install.sh
 ```
 
-Note: `./install.sh` allows the following options:
+Tip: `./install.sh` allows the following options:
 
-```
--d, --dest DIR           Specify destination directory
--n, --name NAME          Specify theme name
--c, --color VARIANTS...  Specify color variant(s) [standard|dark|light]
--s, --size VARIANT       Specify size variant [standard|compact]
-```
-
-Without any options, Materia will be installed with all variants into `/usr/share/themes`.  
-Try `./install.sh --help` for more information.
+Option | Description
+--- | ---
+`-d`, `--dest` _DIR_ | Specify theme destination directory. (Default: `/usr/share/themes`)
+`-n`, `--name` _NAME_ | Specify theme name. (Default: `Materia`)
+`-c`, `--color` _VARIANT..._ | Specify theme color variant(s). (Default: All [`standard`\|`dark`\|`light`] variants)
+`-s`, `--size` _VARIANT_ | Specify theme size variant. (Default: All [`standard`\|`compact`] variants)
+`-g`, `--gdm` | Install and apply GDM theme.
+`-h`, `--help` | Show help.
 
 ### Manual Uninstallation
 
@@ -106,19 +100,19 @@ sudo rm -rf /usr/share/themes/Materia{,-compact,-dark,-dark-compact,-light,-ligh
 
 ## Recommendations
 
-#### Font
+### Font
 
 - To properly display the theme, use a font family including **Medium** weight (e.g. [Roboto](https://github.com/google/roboto) or [M+](https://mplus-fonts.osdn.jp)).
 - Set the font size to `9.75` or `10.5` (i.e. 13px or 14px at 96dpi).
 
-#### Chrome Theme
+### Chrome Theme
 
 To use the Chrome theme;
 
 1. Open the `chrome` folder on `/usr/share/themes/Materia<-variant>`.
 2. Drag and drop the `.crx` files into the Chrome/Chromium Extensions page (`chrome://extensions`).
 
-#### GDM Theme
+### GDM Theme
 
 You can change the GDM (lock/login screen) theme by replacing the default GNOME Shell theme.  
 See the wiki for details: https://github.com/nana-4/materia-theme/wiki/GDM-Theme
@@ -131,7 +125,7 @@ Materia allows you to change the color scheme relatively easily. See [`HACKING.m
 
 If you find bugs or have suggestions, please report it to the [issue tracker](https://github.com/nana-4/materia-theme/issues). Any contribution would be much appreciated.
 
-ToDo list can be found here: [`TODO.md`](TODO.md)
+Todo list can be found at [`TODO.md`](TODO.md).
 
 ## Related Projects
 
