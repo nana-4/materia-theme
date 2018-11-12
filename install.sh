@@ -85,6 +85,7 @@ install() {
   mkdir -p                                                                      "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/"{*.svg,extensions,noise-texture.png,pad-osd.css} "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/gnome-shell-theme.gresource.xml"                  "$THEME_DIR/gnome-shell"
+  cp -r "$SRC_DIR/gnome-shell/README.md"                                        "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/assets${ELSE_DARK:-}"                             "$THEME_DIR/gnome-shell/assets"
   cp -r "$SRC_DIR/gnome-shell/$GS_VERSION/gnome-shell$color$size.css"           "$THEME_DIR/gnome-shell/gnome-shell.css"
 

@@ -115,7 +115,7 @@ To use the Chrome theme;
 ### GDM Theme
 
 You can change the GDM (lock/login screen) theme by replacing the default GNOME Shell theme.  
-See the wiki for details: https://github.com/nana-4/materia-theme/wiki/GDM-Theme
+See [`gnome-shell/README.md`](src/gnome-shell/README.md) for details.
 
 ## Customization
 
