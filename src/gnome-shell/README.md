@@ -22,8 +22,10 @@ To change the GDM (lock/login screen) theme, you need to replace the system's _d
 
   ```sh
   sudo cp -av /usr/share/gnome-shell/gnome-shell-theme.gresource{,~}
+
   # For Ubuntu 17.10 or 18.04, you also need the following:
   sudo cp -av /usr/share/gnome-shell/theme/ubuntu.css{,~}
+
   # For Ubuntu 18.10, you also need the following:
   sudo cp -av /usr/share/gnome-shell/theme/Yaru/gnome-shell.css{,~}
   ```
@@ -35,8 +37,10 @@ To change the GDM (lock/login screen) theme, you need to replace the system's _d
   GTK_THEME=$(gsettings get org.gnome.desktop.interface gtk-theme | sed "s/'//g")
   cd /usr/share/themes/${GTK_THEME}/gnome-shell
   sudo glib-compile-resources --target=/usr/share/gnome-shell/gnome-shell-theme.gresource gnome-shell-theme.gresource.xml
+
   # For Ubuntu 17.10 or 18.04, you also need the following:
   sudo cp -av gnome-shell.css /usr/share/gnome-shell/theme/ubuntu.css
+
   # For Ubuntu 18.10, you also need the following:
   sudo cp -av gnome-shell.css /usr/share/gnome-shell/theme/Yaru/gnome-shell.css
   ```
@@ -49,8 +53,10 @@ To change the GDM (lock/login screen) theme, you need to replace the system's _d
 
   ```sh
   sudo mv -av /usr/share/gnome-shell/gnome-shell-theme.gresource{~,}
+
   # For Ubuntu 17.10 or 18.04, you also need the following:
   sudo mv -av /usr/share/gnome-shell/theme/ubuntu.css{~,}
+
   # For Ubuntu 18.10, you also need the following:
   sudo mv -av /usr/share/gnome-shell/theme/Yaru/gnome-shell.css{~,}
   ```
