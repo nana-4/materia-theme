@@ -1,14 +1,14 @@
-## How to change the GDM theme
+# How to change the GDM theme
 
 To change the GDM (lock/login screen) theme, you need to replace the system's _default_ GNOME Shell theme.
 
-### :warning: Cautions
+## :warning: Cautions :warning:
 
 - If the replacement fails, your desktop environment will not work properly. So please **be careful** if doing this.
 - When applying this, other third-party GNOME Shell themes would look broken until you restore to the original theme.
 - If GNOME Shell has been updated and restored to the original theme, you will need to install this again.
 
-### Requirements
+## Requirements
 
 - `glib-compile-resources` — The package name depends on the distro.
   - `glib2` (Arch Linux)
@@ -16,7 +16,7 @@ To change the GDM (lock/login screen) theme, you need to replace the system's _d
   - `libglib2.0-dev` (Debian, Ubuntu, etc.)
 - `libxml2-utils` — Ubuntu users only.
 
-### Installation
+## Installation
 
 1. **Back up** the original theme file(s) first. If you are already using a custom GDM theme, skip this:
 
@@ -43,7 +43,7 @@ To change the GDM (lock/login screen) theme, you need to replace the system's _d
 
 4. Reload the theme. If you are running GNOME Shell, press <kbd>Alt</kbd> + <kbd>F2</kbd> then type `rt`.
 
-### Uninstallation
+## Uninstallation
 
 1. Restore to the original theme file(s) from the backup:
 
