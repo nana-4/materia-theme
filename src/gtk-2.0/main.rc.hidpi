@@ -21,7 +21,7 @@ style "default" {
   GtkToolbar::internal-padding = 4
   GtkToolButton::icon-spacing  = 8
 
-  GtkWidget::tooltip-radius    = 4
+  GtkWidget::tooltip-radius    = 8
   GtkWidget::tooltip-alpha     = 230
   GtkWidget::new-tooltip-style = 1 #for compatibility
 
@@ -681,7 +681,7 @@ style "default" {
     image {
       function = FOCUS
       file     = "assets/focus.png"
-      border   = {4, 4, 4, 4}
+      border   = {10, 10, 10, 10} # Super strange, {8, 8, 8, 8} does not work properly...
       stretch  = TRUE
     }
 
