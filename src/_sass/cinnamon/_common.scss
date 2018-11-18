@@ -98,7 +98,7 @@ StScrollView {
 	spacing: 0.4em;
 	transition-duration: $shorter_duration;
   &:active {
-    background-color: $track_color;
+    background-color: $titlebar_track_color;
     color: $fg_color;
     transition-duration: $longer_duration;
   }
@@ -235,6 +235,24 @@ StScrollView {
       }
     }
   }
+  .grouped-window-list-item-box {
+    &:hover {
+      box-shadow: 0 3px 0 0 $secondary_color inset;
+    }
+    &:active, &:checked {
+      background-color: $titlebar_divider_color;
+      &:hover {
+        box-shadow: 0 3px 0 0 $secondary_color inset;
+      }
+    }
+    &:focus {
+      background-color: $titlebar_track_color;
+      color: $titlebar_fg_color;
+      &:hover {
+        box-shadow: 0 3px 0 0 $secondary_color inset;
+      }
+    }
+  }
   .workspace-switcher, .workspace-graph, .workspace-button {
     padding: 1px 4px;
   }
@@ -244,8 +262,7 @@ StScrollView {
     }
   }
   .applet-box {
-    padding: 1px 4px;
-    margin: 1px 0;
+    padding: 0 4px;
     &:hover {
       box-shadow: 0 3px 0 0 $secondary_color inset;
     }
@@ -275,6 +292,24 @@ StScrollView {
       }
     }
   }
+  .grouped-window-list-item-box {
+    &:hover {
+      box-shadow: 0 -3px 0 0 $secondary_color inset;
+    }
+    &:active, &:checked {
+      background-color: $titlebar_divider_color;
+      &:hover {
+        box-shadow: 0 -3px 0 0 $secondary_color inset;
+      }
+    }
+    &:focus {
+      background-color: $titlebar_track_color;
+      color: $titlebar_fg_color;
+      &:hover {
+        box-shadow: 0 -3px 0 0 $secondary_color inset;
+      }
+    }
+  }
   .workspace-switcher, .workspace-graph, .workspace-button {
     padding: 1px 4px;
   }
@@ -284,8 +319,7 @@ StScrollView {
     }
   }
   .applet-box {
-    padding: 1px 4px;
-    margin: 1px 0;
+    padding: 0 4px;
     &:hover {
       box-shadow: 0 -3px 0 0 $secondary_color inset;
     }
@@ -315,6 +349,24 @@ StScrollView {
       }
     }
   }
+  .grouped-window-list-item-box {
+    &:hover {
+      box-shadow: 3px 0 0 0 $secondary_color inset;
+    }
+    &:active, &:checked {
+      background-color: $titlebar_divider_color;
+      &:hover {
+        box-shadow: 3px 0 0 0 $secondary_color inset;
+      }
+    }
+    &:focus {
+      background-color: $titlebar_track_color;
+      color: $titlebar_fg_color;
+      &:hover {
+        box-shadow: 3px 0 0 0 $secondary_color inset;
+      }
+    }
+  }
   .workspace-switcher, .workspace-graph, .workspace-button {
     padding: 4px 1px;
     min-height: 1.2em;
@@ -325,8 +377,7 @@ StScrollView {
     }
   }
   .applet-box {
-    padding: 4px 1px;
-    margin: 0 1px;
+    padding: 4px 0;
     &:hover {
       box-shadow: 3px 0 0 0 $secondary_color inset;
     }
@@ -356,6 +407,24 @@ StScrollView {
       }
     }
   }
+  .grouped-window-list-item-box {
+    &:hover {
+      box-shadow: -3px 0 0 0 $secondary_color inset;
+    }
+    &:active, &:checked {
+      background-color: $titlebar_divider_color;
+      &:hover {
+        box-shadow: -3px 0 0 0 $secondary_color inset;
+      }
+    }
+    &:focus {
+      background-color: $titlebar_track_color;
+      color: $titlebar_fg_color;
+      &:hover {
+        box-shadow: -3px 0 0 0 $secondary_color inset;
+      }
+    }
+  }
   .workspace-switcher, .workspace-graph, .workspace-button {
     padding: 4px 1px;
     min-height: 1.2em;
@@ -366,8 +435,7 @@ StScrollView {
     }
   }
   .applet-box {
-    padding: 4px 1px;
-    margin: 0 1px;
+    padding: 4px 0;
     &:hover {
       box-shadow: -3px 0 0 0 $secondary_color inset;
     }
@@ -560,7 +628,7 @@ StScrollView {
   padding: 0;
   margin: 2px;
   border-radius: 100px;
-  &:hover,&:focus { background-color: $track_color; }
+  &:hover,&:focus { background-color: $titlebar_track_color; }
   &:active {
     color: $inverse_fg_color;
     background-color: $secondary_color;
@@ -1045,6 +1113,77 @@ StScrollView {
   padding: 10px 15px;
   spacing: 1em;
   color: $fg_color;
+}
+// Cinnamon 4.0 has a new grouped window list applet with it's own selectors.
+// Initial theme support is defined here.
+.grouped-window-list-thumbnail-label {
+  padding-left: 3px;
+  padding-bottom: 6px;
+}
+.grouped-window-list-number-label {
+  @include font(caption);
+  z-index: 99;
+}
+.grouped-window-list-button-label {
+  padding-left: 3px;
+}
+.grouped-window-list-badge {
+  border-radius: $circular_radius;
+  background-color: $solid_panel_bg_color; 
+}
+.panel-top .grouped-window-list-badge {
+  margin-top: 2px;
+}
+.panel-left .grouped-window-list-badge {
+  margin-left: 2px;
+}
+.grouped-window-list-thumbnail-alert {
+  background: $warning_color;
+}
+.grouped-window-list-item-box {
+  background-color: rgba(0, 0, 0, 0.01);
+  transition-duration: $shorter_duration;
+  &:hover {
+    color: $titlebar_fg_color;
+  }
+  &:highlight {
+  }
+  .progress {
+    background-color: $success_color;
+  }
+}
+.grouped-window-list-item-box StIcon {
+}
+.grouped-window-list-item-box StBin {
+}
+.grouped-window-list-item-demands-attention {
+  background-color: $info_bg_color;
+  color: $titlebar_secondary_fg_color;
+}
+.grouped-window-list-thumbnail-menu {
+  border-radius: $material_radius;
+  padding: 10px 15px;
+  spacing: 1em;
+  color: $fg_color;
+}
+.grouped-window-list-thumbnail-menu .item-box {
+    padding: 4px 8px;
+}
+.grouped-window-list-thumbnail-menu .item-box:outlined {
+  background: $titlebar_divider_color;
+}
+.grouped-window-list-thumbnail-menu .item-box:selected {
+  background: $titlebar_track_color;
+}
+.grouped-window-list-thumbnail-menu .thumbnail-box {
+  spacing: 4px;
+}
+.grouped-window-list-thumbnail-menu .thumbnail {
+  width: 256px;
+}
+.grouped-window-list-thumbnail-menu .separator {
+  width: 1px;
+  background: $border_color;
 }
 // the sound player applet
 .sound-player {
