@@ -410,6 +410,10 @@ StScrollView {
 #overview {
   spacing: 12px;
 }
+.overview-empty-placeholder {
+    @extend %osd-info-workspace-shared;
+    
+}
 .window-caption {
   @include font(caption);
 
@@ -419,7 +423,7 @@ StScrollView {
   text-align: center;
   height: 1.5em;
   -cinnamon-caption-spacing: 12px;
-  &#selected {
+  &#selected, &:focus {
     color: $titlebar_fg_color;
     box-shadow: 0 -3px 0 0 $secondary_color inset;
   }
@@ -458,6 +462,9 @@ StScrollView {
   &:rtl {
     -st-background-image-shadow: 2px 2px 6px rgba(0,0,0,0.5);
   }
+}
+.window-border {
+    border: 1px solid $border_color;
 }
 .window-close-area {
   background-image: url(assets/trash-icon.png);
