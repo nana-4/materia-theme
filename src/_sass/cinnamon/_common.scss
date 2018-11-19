@@ -228,8 +228,6 @@ StScrollView {
       box-shadow: 0 3px 0 0 $secondary_color inset;
     }
     &:active, &:checked, &:focus {
-      background-color: $titlebar_track_color;
-      color: $titlebar_fg_color;
       &:hover {
         box-shadow: 0 3px 0 0 $secondary_color inset;
       }
@@ -240,18 +238,18 @@ StScrollView {
       box-shadow: 0 3px 0 0 $secondary_color inset;
     }
     &:active, &:checked {
-      background-color: $titlebar_divider_color;
       &:hover {
         box-shadow: 0 3px 0 0 $secondary_color inset;
       }
     }
     &:focus {
-      background-color: $titlebar_track_color;
-      color: $titlebar_fg_color;
       &:hover {
         box-shadow: 0 3px 0 0 $secondary_color inset;
       }
     }
+  }
+  .grouped-window-list-badge {
+    margin-top: 2px;
   }
   .workspace-switcher, .workspace-graph, .workspace-button {
     padding: 1px 4px;
@@ -285,8 +283,6 @@ StScrollView {
       box-shadow: 0 -3px 0 0 $secondary_color inset;
     }
     &:active, &:checked, &:focus {
-      background-color: $titlebar_track_color;
-      color: $titlebar_fg_color;
       &:hover {
         box-shadow: 0 -3px 0 0 $secondary_color inset;
       }
@@ -297,14 +293,11 @@ StScrollView {
       box-shadow: 0 -3px 0 0 $secondary_color inset;
     }
     &:active, &:checked {
-      background-color: $titlebar_divider_color;
       &:hover {
         box-shadow: 0 -3px 0 0 $secondary_color inset;
       }
     }
     &:focus {
-      background-color: $titlebar_track_color;
-      color: $titlebar_fg_color;
       &:hover {
         box-shadow: 0 -3px 0 0 $secondary_color inset;
       }
@@ -342,8 +335,6 @@ StScrollView {
       box-shadow: 3px 0 0 0 $secondary_color inset;
     }
     &:active, &:checked, &:focus {
-      background-color: $titlebar_track_color;
-      color: $titlebar_fg_color;
       &:hover {
         box-shadow: 3px 0 0 0 $secondary_color inset;
       }
@@ -354,18 +345,18 @@ StScrollView {
       box-shadow: 3px 0 0 0 $secondary_color inset;
     }
     &:active, &:checked {
-      background-color: $titlebar_divider_color;
       &:hover {
         box-shadow: 3px 0 0 0 $secondary_color inset;
       }
     }
     &:focus {
-      background-color: $titlebar_track_color;
-      color: $titlebar_fg_color;
       &:hover {
         box-shadow: 3px 0 0 0 $secondary_color inset;
       }
     }
+  }
+  .grouped-window-list-badge {
+    margin-left: 2px;
   }
   .workspace-switcher, .workspace-graph, .workspace-button {
     padding: 4px 1px;
@@ -400,8 +391,6 @@ StScrollView {
       box-shadow: -3px 0 0 0 $secondary_color inset;
     }
     &:active, &:checked, &:focus {
-      background-color: $titlebar_track_color;
-      color: $titlebar_fg_color;
       &:hover {
         box-shadow: -3px 0 0 0 $secondary_color inset;
       }
@@ -412,14 +401,11 @@ StScrollView {
       box-shadow: -3px 0 0 0 $secondary_color inset;
     }
     &:active, &:checked {
-      background-color: $titlebar_divider_color;
       &:hover {
         box-shadow: -3px 0 0 0 $secondary_color inset;
       }
     }
     &:focus {
-      background-color: $titlebar_track_color;
-      color: $titlebar_fg_color;
       &:hover {
         box-shadow: -3px 0 0 0 $secondary_color inset;
       }
@@ -1096,7 +1082,12 @@ StScrollView {
   &:hover {
     color: $titlebar_fg_color;
   }
-  &:highlight {
+  &:active, &:checked, &:focus {
+    background-color: $titlebar_track_color;
+    color: $titlebar_fg_color;
+    &:hover {
+      color: $titlebar_fg_color;
+    }
   }
   .progress {
     background-color: $success_color;
@@ -1116,77 +1107,98 @@ StScrollView {
   padding: 10px 15px;
   spacing: 1em;
   color: $fg_color;
+  box-shadow: $shadow_6;
 }
 // Cinnamon 4.0 has a new grouped window list applet with it's own selectors.
-// Initial theme support is defined here.
-.grouped-window-list-thumbnail-label {
-  padding-left: 3px;
-  padding-bottom: 6px;
-}
-.grouped-window-list-number-label {
-  @include font(caption);
-  z-index: 99;
-}
-.grouped-window-list-button-label {
-  padding-left: 3px;
-}
-.grouped-window-list-badge {
-  border-radius: $circular_radius;
-  background-color: $solid_panel_bg_color; 
-}
-.panel-top .grouped-window-list-badge {
-  margin-top: 2px;
-}
-.panel-left .grouped-window-list-badge {
-  margin-left: 2px;
-}
-.grouped-window-list-thumbnail-alert {
-  background: $warning_color;
-}
-.grouped-window-list-item-box {
-  background-color: rgba(0, 0, 0, 0.01);
-  transition-duration: $shorter_duration;
-  &:hover {
-    color: $titlebar_fg_color;
+// Initial theme support is defined here. Some theming is defined in the panel orientation specific section above.
+.grouped-window-list {
+  &-thumbnail-label {
+    padding-left: 3px;
+    padding-bottom: 6px;
   }
-  &:highlight {
+  &-number-label {
+    @include font(caption);
+    
+    z-index: 99;
   }
-  .progress {
-    background-color: $success_color;
+  &-list-button-label {
+    padding-left: 3px;
   }
-}
-.grouped-window-list-item-box StIcon {
-}
-.grouped-window-list-item-box StBin {
-}
-.grouped-window-list-item-demands-attention {
-  background-color: $info_bg_color;
-  color: $titlebar_secondary_fg_color;
-}
-.grouped-window-list-thumbnail-menu {
-  border-radius: $material_radius;
-  padding: 10px 15px;
-  spacing: 1em;
-  color: $fg_color;
-}
-.grouped-window-list-thumbnail-menu .item-box {
-    padding: 4px 8px;
-}
-.grouped-window-list-thumbnail-menu .item-box:outlined {
-  background: $titlebar_divider_color;
-}
-.grouped-window-list-thumbnail-menu .item-box:selected {
-  background: $titlebar_track_color;
-}
-.grouped-window-list-thumbnail-menu .thumbnail-box {
-  spacing: 4px;
-}
-.grouped-window-list-thumbnail-menu .thumbnail {
-  width: 256px;
-}
-.grouped-window-list-thumbnail-menu .separator {
-  width: 1px;
-  background: $border_color;
+  &-badge {
+    border-radius: $circular_radius;
+    background-color: $solid_panel_bg_color; 
+  }
+  &-thumbnail-alert {
+    background: $warning_color;
+  }
+  &-item-box {
+    background-color: rgba(0, 0, 0, 0.01);
+    transition-duration: $shorter_duration;
+    &:hover {
+      color: $titlebar_fg_color;
+    }
+    &:active, &:checked {
+      background-color: $titlebar_divider_color;
+      &:hover {
+        color: $titlebar_fg_color;
+      }
+    }
+    &:focus {
+      background-color: $titlebar_track_color;
+      color: $titlebar_fg_color;
+      &:hover {
+        color: $titlebar_fg_color;
+      }
+    }
+    .progress {
+      background-color: $success_color;
+    }
+  }
+  &-item-demands-attention {
+    background-color: $info_bg_color;
+    color: $titlebar_secondary_fg_color;
+  }
+  &-thumbnail-menu {
+    padding: 20px;
+    border: none;
+    border-radius: $material_radius;
+    color: $titlebar_secondary_fg_color;
+    background: none;
+    .item-box {
+      padding: 8px;
+      spacing: 2px;
+      border-radius: $material_radius;
+       &:outlined {
+         border: 2px solid $border_color;
+         color: $titlebar_fg_color;
+       }
+       &:selected {
+         background: $titlebar_divider_color;
+         color: $titlebar_fg_color;
+       }
+       > StBoxLayout { // icon and title
+        &:ltr { margin: 1px 0 0 6px; }
+        &:rtl { margin: 1px 6px 0 0; }
+
+        StLabel { padding-bottom: 2px; }
+      }
+
+      > StButton { // close button
+        &:ltr { margin: 1px 6px 0 0; }
+        &:rtl { margin: 1px 0 0 6px; }
+      }
+    }
+    .thumbnail-box {
+      padding: 2px;
+    }
+    .thumbnail {
+      width: 256px;
+    }
+    .separator {
+      width: 1px;
+      background: $border_color;
+    }
+  }
 }
 // the sound player applet
 .sound-player {
