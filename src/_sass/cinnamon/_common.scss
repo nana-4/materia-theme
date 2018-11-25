@@ -70,6 +70,13 @@ StScrollView {
   min-width: 100px;
   margin: 4px;
 }
+// new style-classes for alternative stock menu
+.menu-top-box {
+  spacing: 5px;
+}
+.menu-systembuttons-box {
+  padding: 10px;
+}
 .popup-sub-menu {
   background-color: $alt_lighter_bg_color;
 }
@@ -88,9 +95,10 @@ StScrollView {
 // individual menu entries are themed here
 .popup-menu-item {
 	padding: 0.4em 4px;
+	spacing: 0.4em;
 	transition-duration: $shorter_duration;
   &:active {
-    background-color: $track_color;
+    background-color: $titlebar_track_color;
     color: $fg_color;
     transition-duration: $longer_duration;
   }
@@ -121,7 +129,6 @@ StScrollView {
 }
 .popup-menu-icon {
   icon-size: 1.14em;
-  padding: 0px 4px;
 }
 .popup-menu-item-dot {
 }
@@ -221,12 +228,28 @@ StScrollView {
       box-shadow: 0 3px 0 0 $secondary_color inset;
     }
     &:active, &:checked, &:focus {
-      background-color: $titlebar_track_color;
-      color: $titlebar_fg_color;
       &:hover {
         box-shadow: 0 3px 0 0 $secondary_color inset;
       }
     }
+  }
+  .grouped-window-list-item-box {
+    &:hover {
+      box-shadow: 0 3px 0 0 $secondary_color inset;
+    }
+    &:active, &:checked {
+      &:hover {
+        box-shadow: 0 3px 0 0 $secondary_color inset;
+      }
+    }
+    &:focus {
+      &:hover {
+        box-shadow: 0 3px 0 0 $secondary_color inset;
+      }
+    }
+  }
+  .grouped-window-list-badge {
+    margin-top: 2px;
   }
   .workspace-switcher, .workspace-graph, .workspace-button {
     padding: 1px 4px;
@@ -237,8 +260,7 @@ StScrollView {
     }
   }
   .applet-box {
-    padding: 1px 4px;
-    margin: 1px 0;
+    padding: 0 4px;
     &:hover {
       box-shadow: 0 3px 0 0 $secondary_color inset;
     }
@@ -261,8 +283,21 @@ StScrollView {
       box-shadow: 0 -3px 0 0 $secondary_color inset;
     }
     &:active, &:checked, &:focus {
-      background-color: $titlebar_track_color;
-      color: $titlebar_fg_color;
+      &:hover {
+        box-shadow: 0 -3px 0 0 $secondary_color inset;
+      }
+    }
+  }
+  .grouped-window-list-item-box {
+    &:hover {
+      box-shadow: 0 -3px 0 0 $secondary_color inset;
+    }
+    &:active, &:checked {
+      &:hover {
+        box-shadow: 0 -3px 0 0 $secondary_color inset;
+      }
+    }
+    &:focus {
       &:hover {
         box-shadow: 0 -3px 0 0 $secondary_color inset;
       }
@@ -277,8 +312,7 @@ StScrollView {
     }
   }
   .applet-box {
-    padding: 1px 4px;
-    margin: 1px 0;
+    padding: 0 4px;
     &:hover {
       box-shadow: 0 -3px 0 0 $secondary_color inset;
     }
@@ -301,15 +335,32 @@ StScrollView {
       box-shadow: 3px 0 0 0 $secondary_color inset;
     }
     &:active, &:checked, &:focus {
-      background-color: $titlebar_track_color;
-      color: $titlebar_fg_color;
       &:hover {
         box-shadow: 3px 0 0 0 $secondary_color inset;
       }
     }
   }
+  .grouped-window-list-item-box {
+    &:hover {
+      box-shadow: 3px 0 0 0 $secondary_color inset;
+    }
+    &:active, &:checked {
+      &:hover {
+        box-shadow: 3px 0 0 0 $secondary_color inset;
+      }
+    }
+    &:focus {
+      &:hover {
+        box-shadow: 3px 0 0 0 $secondary_color inset;
+      }
+    }
+  }
+  .grouped-window-list-badge {
+    margin-left: 2px;
+  }
   .workspace-switcher, .workspace-graph, .workspace-button {
-    padding: 1px 4px;
+    padding: 4px 1px;
+    min-height: 1.2em;
   }
   .workspace-graph, .workspace-button {;
     &:hover {
@@ -317,8 +368,7 @@ StScrollView {
     }
   }
   .applet-box {
-    padding: 4px 1px;
-    margin: 0 1px;
+    padding: 4px 0;
     &:hover {
       box-shadow: 3px 0 0 0 $secondary_color inset;
     }
@@ -341,15 +391,29 @@ StScrollView {
       box-shadow: -3px 0 0 0 $secondary_color inset;
     }
     &:active, &:checked, &:focus {
-      background-color: $titlebar_track_color;
-      color: $titlebar_fg_color;
+      &:hover {
+        box-shadow: -3px 0 0 0 $secondary_color inset;
+      }
+    }
+  }
+  .grouped-window-list-item-box {
+    &:hover {
+      box-shadow: -3px 0 0 0 $secondary_color inset;
+    }
+    &:active, &:checked {
+      &:hover {
+        box-shadow: -3px 0 0 0 $secondary_color inset;
+      }
+    }
+    &:focus {
       &:hover {
         box-shadow: -3px 0 0 0 $secondary_color inset;
       }
     }
   }
   .workspace-switcher, .workspace-graph, .workspace-button {
-    padding: 1px 4px;
+    padding: 4px 1px;
+    min-height: 1.2em;
   }
   .workspace-graph, .workspace-button {;
     &:hover {
@@ -357,8 +421,7 @@ StScrollView {
     }
   }
   .applet-box {
-    padding: 4px 1px;
-    margin: 0 1px;
+    padding: 4px 0;
     &:hover {
       box-shadow: -3px 0 0 0 $secondary_color inset;
     }
@@ -410,6 +473,10 @@ StScrollView {
 #overview {
   spacing: 12px;
 }
+.overview-empty-placeholder {
+    @extend %osd-info-workspace-shared;
+    
+}
 .window-caption {
   @include font(caption);
 
@@ -419,7 +486,7 @@ StScrollView {
   text-align: center;
   height: 1.5em;
   -cinnamon-caption-spacing: 12px;
-  &#selected {
+  &#selected, &:focus {
     color: $titlebar_fg_color;
     box-shadow: 0 -3px 0 0 $secondary_color inset;
   }
@@ -458,6 +525,9 @@ StScrollView {
   &:rtl {
     -st-background-image-shadow: 2px 2px 6px rgba(0,0,0,0.5);
   }
+}
+.window-border {
+    border: 1px solid $border_color;
 }
 .window-close-area {
   background-image: url(assets/trash-icon.png);
@@ -544,7 +614,7 @@ StScrollView {
   padding: 0;
   margin: 2px;
   border-radius: 100px;
-  &:hover,&:focus { background-color: $track_color; }
+  &:hover,&:focus { background-color: $titlebar_track_color; }
   &:active {
     color: $inverse_fg_color;
     background-color: $secondary_color;
@@ -1012,11 +1082,19 @@ StScrollView {
   &:hover {
     color: $titlebar_fg_color;
   }
-  &:highlight {
+  &:active, &:checked, &:focus {
+    background-color: $titlebar_track_color;
+    color: $titlebar_fg_color;
+    &:hover {
+      color: $titlebar_fg_color;
+    }
   }
   .progress {
     background-color: $success_color;
   }
+}
+.window-list-item-box.top StLabel, .window-list-item-box.bottom StLabel {
+  padding-left: 3px;
 }
 .window-list-item-demands-attention {
   background-color: $info_bg_color;
@@ -1029,6 +1107,98 @@ StScrollView {
   padding: 10px 15px;
   spacing: 1em;
   color: $fg_color;
+  box-shadow: $shadow_6;
+}
+// Cinnamon 4.0 has a new grouped window list applet with it's own selectors.
+// Initial theme support is defined here. Some theming is defined in the panel orientation specific section above.
+.grouped-window-list {
+  &-thumbnail-label {
+    padding-left: 3px;
+    padding-bottom: 6px;
+  }
+  &-number-label {
+    @include font(caption);
+    
+    z-index: 99;
+  }
+  &-list-button-label {
+    padding-left: 3px;
+  }
+  &-badge {
+    border-radius: $circular_radius;
+    background-color: $solid_panel_bg_color; 
+  }
+  &-thumbnail-alert {
+    background: $warning_color;
+  }
+  &-item-box {
+    background-color: rgba(0, 0, 0, 0.01);
+    transition-duration: $shorter_duration;
+    &:hover {
+      color: $titlebar_fg_color;
+    }
+    &:active, &:checked {
+      background-color: $titlebar_divider_color;
+      &:hover {
+        color: $titlebar_fg_color;
+      }
+    }
+    &:focus {
+      background-color: $titlebar_track_color;
+      color: $titlebar_fg_color;
+      &:hover {
+        color: $titlebar_fg_color;
+      }
+    }
+    .progress {
+      background-color: $success_color;
+    }
+  }
+  &-item-demands-attention {
+    background-color: $info_bg_color;
+    color: $titlebar_secondary_fg_color;
+  }
+  &-thumbnail-menu {
+    padding: 20px;
+    border: none;
+    border-radius: $material_radius;
+    color: $titlebar_secondary_fg_color;
+    background: none;
+    .item-box {
+      padding: 8px;
+      spacing: 2px;
+      border-radius: $material_radius;
+       &:outlined {
+         border: 2px solid $border_color;
+         color: $titlebar_fg_color;
+       }
+       &:selected {
+         background: $titlebar_divider_color;
+         color: $titlebar_fg_color;
+       }
+       > StBoxLayout { // icon and title
+        &:ltr { margin: 1px 0 0 6px; }
+        &:rtl { margin: 1px 6px 0 0; }
+
+        StLabel { padding-bottom: 2px; }
+      }
+
+      > StButton { // close button
+        &:ltr { margin: 1px 6px 0 0; }
+        &:rtl { margin: 1px 0 0 6px; }
+      }
+    }
+    .thumbnail-box {
+      padding: 2px;
+    }
+    .thumbnail {
+      width: 256px;
+    }
+    .separator {
+      width: 1px;
+      background: $border_color;
+    }
+  }
 }
 // the sound player applet
 .sound-player {
