@@ -274,7 +274,7 @@ entry {
     }
 
     &:drop(active) {
-      // box-shadow: inset 0 0 0 2px $secondary_color;
+      // box-shadow: inset 0 0 0 2px $primary_color;
     }
 
     .osd & {
@@ -379,7 +379,7 @@ treeview entry {
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.001,
-                                    to($secondary_color),
+                                    to($primary_color),
                                     to(transparent));
   }
 
@@ -387,7 +387,7 @@ treeview entry {
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.5,
-                                    to($secondary_color),
+                                    to($primary_color),
                                     to(transparent));
   }
 }
@@ -471,7 +471,7 @@ button {
     }
 
     &:drop(active) {
-      // box-shadow: inset 0 0 0 2px $secondary_color;
+      // box-shadow: inset 0 0 0 2px $primary_color;
     }
   }
 
@@ -1418,7 +1418,7 @@ treeview.view {
   &:drop(active) {
     border-style: solid none;
     border-width: 1px;
-    border-color: $secondary_color;
+    border-color: $primary_color;
 
     &.after { border-top-style: none; }
 
@@ -2075,7 +2075,7 @@ switch {
   background-clip: padding-box;
   font-size: 0;
 
-  &:checked { background-color: rgba($secondary_color, 0.5); }
+  &:checked { background-color: rgba($primary_color, 0.5); }
 
   &:disabled { opacity: 0.5; }
 
@@ -2096,8 +2096,8 @@ switch {
   &:focus:hover slider { box-shadow: 0 0 0 10px $hover_focus_bg_color, $shadow_1; }
 
   &:checked slider {
-    background-color: $secondary_color;
-    color: $secondary_color;
+    background-color: $primary_color;
+    color: $primary_color;
   }
 
   row:selected & {
@@ -2167,9 +2167,9 @@ radio {
   &:focus:hover { box-shadow: inset 0 0 0 9999px $hover_focus_bg_color; }
 
   &:checked, &:indeterminate {
-    color: $secondary_color;
+    color: $primary_color;
 
-    &:disabled { color: $disabled_secondary_color; }
+    &:disabled { color: $disabled_primary_color; }
   }
 
   // &:only-child { margin: -12px; }
@@ -2246,7 +2246,7 @@ radio {
     border-image-source: -gtk-gradient(radial,
                                        center center, 0,
                                        center center, 0.001,
-                                       to($secondary_color),
+                                       to($primary_color),
                                        to(transparent));
   }
 
@@ -2254,7 +2254,7 @@ radio {
     border-image-source: -gtk-gradient(radial,
                                        center center, 0,
                                        center center, $radio_indicator,
-                                       to($secondary_color),
+                                       to($primary_color),
                                        to(transparent));
   }
 
@@ -2262,7 +2262,7 @@ radio {
     border-image-source: -gtk-gradient(radial,
                                        center center, 0,
                                        center center, $radio_indicator,
-                                       to($disabled_secondary_color),
+                                       to($disabled_primary_color),
                                        to(transparent));
   }
 }
@@ -2344,9 +2344,9 @@ treeview.view radio {
 
     &:disabled { color: $disabled_secondary_fg_color; }
 
-    &:checked, &:indeterminate { color: $secondary_color; }
+    &:checked, &:indeterminate { color: $primary_color; }
 
-    &:checked:disabled, &:indeterminate:disabled { color: $disabled_secondary_color; }
+    &:checked:disabled, &:indeterminate:disabled { color: $disabled_primary_color; }
   }
 
   &:selected {
@@ -2356,9 +2356,9 @@ treeview.view radio {
 
     &:disabled { color: $inverse_disabled_secondary_fg_color; }
 
-    &:checked, &:indeterminate { color: $secondary_color; }
+    &:checked, &:indeterminate { color: $primary_color; }
 
-    &:checked:disabled, &:indeterminate:disabled { color: $disabled_secondary_color; }
+    &:checked:disabled, &:indeterminate:disabled { color: $disabled_primary_color; }
   }
 }
 
@@ -2431,7 +2431,7 @@ scale {
   // the colored part of the backing bit
   highlight {
     transition: background-color $shorter_duration $deceleration_curve;
-    background-color: $secondary_color;
+    background-color: $primary_color;
 
     &:disabled { background-color: transparent; }
   }
@@ -2467,11 +2467,11 @@ scale {
       }
     }
 
-    &:hover { background-color: rgba($secondary_color, 0.08); }
+    &:hover { background-color: rgba($primary_color, 0.08); }
 
-    &:focus { background-color: rgba($secondary_color, 0.12); }
+    &:focus { background-color: rgba($primary_color, 0.12); }
 
-    &:focus:hover { background-color: rgba($secondary_color, 0.16); }
+    &:focus:hover { background-color: rgba($primary_color, 0.16); }
 
     &:active {
       transition: background-color $shorter_duration $deceleration_curve,
@@ -2479,8 +2479,8 @@ scale {
                   background-image 0;
       animation: scale_ripple_effect $longer_duration $deceleration_curve forwards;
       background-size: auto, 0% 0%;
-      background-color: rgba($secondary_color, 0.08);
-      color: rgba($secondary_color, 0.12);
+      background-color: rgba($primary_color, 0.08);
+      color: rgba($primary_color, 0.12);
     }
   }
 
@@ -3051,17 +3051,17 @@ placessidebar {
     &.sidebar-placeholder-row {
       min-height: 2px;
       padding: 0 8px;
-      background-image: image($secondary_color);
+      background-image: image($primary_color);
       background-clip: content-box;
     }
 
-    &.sidebar-new-bookmark-row { color: $secondary_color; }
+    &.sidebar-new-bookmark-row { color: $primary_color; }
 
     &:drop(active):not(:disabled) {
-      box-shadow: inset 0 0 0 2px $secondary_color;
+      box-shadow: inset 0 0 0 2px $primary_color;
 
       &:selected {
-        // background-color: $secondary_color;
+        // background-color: $primary_color;
         // color: $inverse_fg_color;
       }
     }
@@ -3276,9 +3276,9 @@ colorswatch {
   &:drop(active) {
     box-shadow: none;
 
-    &.light overlay { box-shadow: $shadow_1, 0 0 0 2px $secondary_color; }
+    &.light overlay { box-shadow: $shadow_1, 0 0 0 2px $primary_color; }
 
-    &.dark overlay { box-shadow: $shadow_1, 0 0 0 2px $secondary_color; }
+    &.dark overlay { box-shadow: $shadow_1, 0 0 0 2px $primary_color; }
   }
 
   overlay {
@@ -3448,7 +3448,7 @@ button.titlebutton {
 // touch selection handlebars for the Popover.osd above
 cursor-handle {
   border-radius: $circular_radius;
-  background-color: $secondary_color;
+  background-color: $primary_color;
   background-image: none;
 
   &.top:dir(ltr), &.bottom:dir(rtl) {
@@ -3492,8 +3492,8 @@ cursor-handle {
 
 :not(decoration):not(window):drop(active) { // FIXME needs to be done widget by widget, this wildcard should really die
   transition: $shorter_transition;
-  box-shadow: $shadow_1, inset 0 0 0 2px $secondary_color;
-  caret-color: $secondary_color;
+  box-shadow: $shadow_1, inset 0 0 0 2px $primary_color;
+  caret-color: $primary_color;
 }
 
 stackswitcher button.text-button { min-width: 100px; } // FIXME aggregate with buttons
