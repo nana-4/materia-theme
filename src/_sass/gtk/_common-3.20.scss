@@ -1457,11 +1457,11 @@ treeview.view {
   }
 
   &.trough { // progress bar trough in treeviews
-    border-bottom: $bar_size solid rgba($primary_color, 0.3);
+    border-bottom: $bar_size solid $divider_color;
     box-shadow: none;
     background-color: transparent;
 
-    &:selected { border-bottom-color: $inverse_track_color; }
+    &:selected { border-bottom-color: $inverse_divider_color; }
   }
 
   header {
@@ -2608,7 +2608,7 @@ progressbar {
   color: $hint_fg_color;
   font-size: smaller;
 
-  trough { background-color: rgba($primary_color, 0.3); }
+  trough { background-color: $divider_color; }
 
   progress { background-color: $primary_color; }
 
