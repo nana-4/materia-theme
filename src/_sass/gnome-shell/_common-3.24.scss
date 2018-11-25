@@ -86,14 +86,14 @@ stage {
 StEntry {
   min-height: $medium_size;
   padding: 0 8px;
-  border-radius: 0;
+  border-radius: $material_radius $material_radius 0 0;
   border-width: 0;
   color: $fg_color;
   selection-background-color: $primary_color;
   selected-color: $inverse_fg_color;
   @include font(subheading);
   @include entry(normal);
-  //&:hover { @include entry(hover);}
+  &:hover { @include entry(hover);}
   &:focus { @include entry(focus);}
   &:insensitive { @include entry(insensitive);}
   StIcon.capslock-warning {
@@ -1394,11 +1394,12 @@ StScrollBar {
   .search-entry {
     width: 320px - 8px * 2;
     padding: 0 8px;
-    border-radius: 0;
+    border-radius: $material_radius $material_radius 0 0;
     color: $inverse_hint_fg_color;
     selection-background-color: $inverse_track_color;
     selected-color: $inverse_fg_color;
     @include entry(normal,$fc:$inverse_track_color);
+    &:hover { @include entry(hover,$fc:$inverse_track_color); }
     &:focus {
       @include entry(focus,$fc:$inverse_fg_color);
       padding: 0 8px;
