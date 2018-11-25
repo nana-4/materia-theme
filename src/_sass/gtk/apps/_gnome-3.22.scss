@@ -237,8 +237,9 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 .gedit-search-slider {
   margin: 4px 4px 8px;
 
-  .linked > entry {
+  .linked:not(.vertical) > entry {
     border-radius: $material_radius;
+    @extend %entry_raised;
 
     .gedit-search-entry-occurrences-tag {
       all: unset;

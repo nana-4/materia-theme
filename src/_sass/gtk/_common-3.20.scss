@@ -214,7 +214,7 @@ entry {
   %entry_basic, & {
     min-height: $medium_size;
     padding: 0 8px;
-    border-radius: $material_radius;
+    border-radius: $material_radius $material_radius 0 0;
 
     @include entry(normal);
 
@@ -223,13 +223,10 @@ entry {
     &:disabled { @include entry(disabled); }
 
     &.flat {
+      min-height: 0;
+      padding: 2px;
       border-radius: 0;
-
-      @include entry(flat-normal);
-
-      &:focus { @include entry(flat-focus); }
-
-      &:disabled { @include entry(flat-disabled); }
+      background-color: transparent;
     }
 
     image { // icons inside the entry
@@ -273,22 +270,6 @@ entry {
         &:focus { @include entry(focus, $e_color); }
 
         &:disabled { @include entry(disabled, $e_color); }
-
-        &.flat {
-          @include entry(flat-normal, $e_color);
-
-          &:focus { @include entry(flat-focus, $e_color); }
-
-          &:disabled { @include entry(flat-disabled, $e_color); }
-        }
-
-        image {
-          color: $inverse_secondary_fg_color;
-
-          &:hover, &:active { color: $inverse_fg_color; }
-
-          &:disabled { color: $inverse_hint_fg_color; }
-        }
       }
     }
 
@@ -307,21 +288,44 @@ entry {
   }
 
    // linked entries
-  .linked:not(.vertical) > & { @extend %linked; }
+  .linked:not(.vertical) > & { @extend %linked_entry; }
 
   // Vertically linked entries
-  .linked.vertical > & { @extend %linked_vertical; }
-
-  .linked:not(.vertical) > &.flat,
-  .linked.vertical > &.flat { border-radius: 0; }
+  .linked.vertical > & { @extend %linked_vertical_entry; }
 }
 
-%treeview_entry,
+%entry_raised {
+  border-radius: $material_radius;
+
+  @include entry(raised-normal);
+
+  &:focus { @include entry(raised-focus); }
+
+  &:disabled { @include entry(raised-disabled); }
+
+  // entry error and warning style
+  @each $e_type, $e_color in (error, $error_color),
+                             (warning, $warning_color) {
+    &.#{$e_type} {
+      @include entry(raised-normal, $e_color);
+
+      &:focus { @include entry(raised-focus, $e_color); }
+
+      &:disabled { @include entry(raised-disabled, $e_color); }
+
+      image {
+        color: $inverse_secondary_fg_color;
+
+        &:hover, &:active { color: $inverse_fg_color; }
+
+        &:disabled { color: $inverse_hint_fg_color; }
+      }
+    }
+  }
+}
+
 treeview entry {
   &.flat, & {
-    min-height: 0;
-    padding: 2px;
-    border-radius: 0;
     background-color: $base_color;
 
     &, &:focus {
@@ -686,6 +690,38 @@ toolbar.inline-toolbar toolbutton {
   }
 }
 
+%linked_entry {
+  @extend %linked_middle;
+
+  &:first-child {
+    border-radius: $material_radius 0 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 $material_radius 0 0;
+  }
+
+  &:only-child {
+    border-radius: $material_radius $material_radius 0 0;
+  }
+}
+
+%linked_vertical_entry {
+  @extend %linked_vertical_middle;
+
+  &:first-child {
+    border-radius: $material_radius $material_radius 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0;
+  }
+
+  &:only-child {
+    border-radius: $material_radius $material_radius 0 0;
+  }
+}
+
 /* menu buttons */
 modelbutton.flat,
 .menuitem.button.flat {
@@ -754,7 +790,6 @@ spinbutton {
 
     padding: 0;
 
-    %spinbutton_entry,
     entry {
       min-width: $large_size - 8px * 2;
       // reset all the other props since the spinbutton node is styled here
@@ -819,6 +854,8 @@ spinbutton {
     }
 
     entry {
+      @extend %entry_raised;
+
       min-height: $medium_size;
       min-width: $large_size;
       padding: 0;
@@ -894,9 +931,19 @@ combobox {
 
   &.linked {
     button:nth-child(2) {
-      &:dir(ltr) { @extend %linked:last-child; }
-      &:dir(rtl) { @extend %linked:first-child; }
+      &:dir(ltr) { @extend %linked_entry:last-child; }
+      &:dir(rtl) { @extend %linked_entry:first-child; }
     }
+  }
+
+  > .linked > button {
+    @extend %linked_middle;
+
+    &:first-child { @extend %linked_entry:first-child; }
+
+    &:last-child { @extend %linked_entry:last-child; }
+
+    &:only-child { @extend %linked_entry:only-child; }
   }
 
   &:drop(active) { // FIXME: untested
@@ -913,43 +960,35 @@ combobox {
 .linked:not(.vertical) > combobox {
   > box > button.combo { @extend %linked_middle; }
 
-  &:first-child > box > button.combo { @extend %linked:first-child; }
+  &:first-child > box > button.combo { @extend %linked_entry:first-child; }
 
-  &:last-child > box > button.combo { @extend %linked:last-child; }
+  &:last-child > box > button.combo { @extend %linked_entry:last-child; }
 
-  &:only-child > box > button.combo { @extend %linked:only-child; }
+  &:only-child > box > button.combo { @extend %linked_entry:only-child; }
 }
 
 .linked.vertical > combobox {
   > box > button.combo { @extend %linked_vertical_middle; }
 
-  &:first-child > box > button.combo { @extend %linked_vertical:first-child; }
+  &:first-child > box > button.combo { @extend %linked_vertical_entry:first-child; }
 
-  &:last-child > box > button.combo { @extend %linked_vertical:last-child; }
+  &:last-child > box > button.combo { @extend %linked_vertical_entry:last-child; }
 
-  &:only-child > box > button.combo { @extend %linked_vertical:only-child; }
+  &:only-child > box > button.combo { @extend %linked_vertical_entry:only-child; }
 }
 
-%combo_flat {
-  border-radius: 0;
+button.combo {
+  border-radius: $material_radius $material_radius 0 0;
   background-image: none;
   font-weight: inherit;
 
-  @include entry(flat-normal);
+  @include entry(normal);
 
-  &:hover { box-shadow: inset 0 -2px $hint_fg_color; }
+  &:hover { box-shadow: inset 0 -1px $fg_color; }
 
-  &:checked {
-    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  $primary_color 100%,
-                                  transparent 0%)
-                                  0 0 2 / 0 0 2px;
-  }
+  &:checked { @include entry(focus); }
 
-  &:disabled {
-    box-shadow: inset 0 -1px $divider_color;
-    color: $disabled_fg_color;
-  }
+  &:disabled { @include entry(disabled); }
 }
 
 
@@ -1642,10 +1681,6 @@ popover.background {
   // &.magnifier,
   // &.osd { @extend %osd; }
 
-  // entry { @extend %entry.flat; }
-
-  // button.combo { @extend %combo_flat; }
-
   // button:not(.suggested-action):not(.destructive-action) { @extend %button_basic.flat; }
 
   &.menu button,
@@ -1897,16 +1932,6 @@ notebook {
 
   > stack:not(:only-child) { // the :not(:only-child) is for "hidden" notebooks
     background-color: $base_color;
-
-    entry:not(.search),
-    spinbutton:not(.vertical) { @extend %entry.flat; }
-
-    spinbutton:not(.vertical) entry { &, &:focus, &:disabled { @extend %spinbutton_entry; }}
-
-    treeview entry:not(.search),
-    treeview spinbutton:not(.vertical) { @extend %treeview_entry; }
-
-    button.combo { @extend %combo_flat; }
   }
 }
 
@@ -2910,8 +2935,6 @@ messagedialog { // Message Dialog styling
       }
     }
   }
-
-  entry { @extend %entry.flat; }
 }
 
 filechooser {
@@ -3306,8 +3329,6 @@ colorchooser .popover.osd {
   background-color: $popup_bg_color;
 
   &:backdrop { box-shadow: $shadow_1, inset 0 1px $highlight_color; }
-
-  spinbutton:not(.vertical) { @extend %entry.flat; }
 }
 
 

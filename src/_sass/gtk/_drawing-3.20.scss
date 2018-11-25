@@ -34,7 +34,7 @@
 // $fc: focus color
 //
 
-  @if $t == normal {
+  @if $t == raised-normal {
     transition: $shorter_transition;
     border-image: none;
     box-shadow: $shadow_1;
@@ -42,29 +42,29 @@
     color: if($fc == $primary_color, $fg_color, $inverse_fg_color);
   }
 
-  @if $t == focus {
+  @if $t == raised-focus {
     border-image: none;
     box-shadow: $shadow_2;
   }
 
-  @if $t == disabled {
+  @if $t == raised-disabled {
     box-shadow: $shadow_1;
     background-color: $alt_base_color;
     color: $disabled_fg_color;
   }
 
-  @if $t == flat-normal {
+  @if $t == normal {
     transition: $shorter_transition, border-image $longer_duration $deceleration_curve;
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                   $fc 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
     box-shadow: inset 0 -1px if($fc == $primary_color, $track_color, $fc);
-    background-color: transparent;
+    background-color: $fill_color;
     color: $fg_color;
   }
 
-  @if $t == flat-focus {
+  @if $t == focus {
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                   $fc 100%,
                                   transparent 0%)
@@ -72,9 +72,9 @@
     box-shadow: inset 0 -1px if($fc == $primary_color, $track_color, $fc);
   }
 
-  @if $t == flat-disabled {
+  @if $t == disabled {
     box-shadow: inset 0 -1px $divider_color;
-    background-color: transparent;
+    background-color: $fill_color;
     color: $disabled_fg_color;
   }
 }
