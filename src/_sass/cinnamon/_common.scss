@@ -21,7 +21,7 @@ StScrollBar {
   padding: 0px;
   StButton {
     &#vhandle, &#hhandle {
-      background-color: $hint_fg_color;
+      background-color: $disabled_fg_color;
       border-radius: 100px;
       margin: 4px;
       &:hover {
@@ -122,7 +122,7 @@ StScrollView {
 }
 .popup-inactive-menu-item {
   color: $fg_color;
-  &:insensitive { color: $hint_fg_color; }
+  &:insensitive { color: $disabled_fg_color; }
 }
 .popup-subtitle-menu-item {
   @include font(body-2);
@@ -629,7 +629,7 @@ StScrollView {
   padding: 0;
   border-radius: 100px;
   background-color: transparent;
-  color: $hint_fg_color;
+  color: $disabled_fg_color;
   text-align: center;
 }
 .calendar-day-heading  {
@@ -640,7 +640,7 @@ StScrollView {
   padding: 0;
   border-radius: 100px;
   background-color: transparent;
-  color: $hint_fg_color;
+  color: $disabled_fg_color;
   text-align: center;
 }
 .calendar-day {
@@ -677,7 +677,7 @@ StScrollView {
   padding: 7px 0 0;
   border-radius: 100px;
   background-color: transparent;
-  color: $hint_fg_color;
+  color: $disabled_fg_color;
   font-size: inherit;
   font-weight: bold;
   text-align: center;
@@ -793,7 +793,7 @@ StScrollView {
 }
 .switcher-arrow {
   border-color: rgba(0,0,0,0);
-  color: $hint_fg_color;
+  color: $secondary_fg_color;
   &:highlighted {
     color: $fg_color;
   }
@@ -826,7 +826,7 @@ StScrollView {
 }
 // run dialog (ALT-F2)
 .run-dialog-label {
-  color: $hint_fg_color;
+  color: $secondary_fg_color;
   padding-bottom: .4em;
 }
 .run-dialog-error-label {
@@ -1054,7 +1054,7 @@ StScrollView {
 .menu-search-entry-icon {
   icon-size: 1em;
   padding: 0 0;
-  color: $hint_fg_color;
+  color: $disabled_fg_color;
 }
 // the window list applet. Some third party applets inherit some of this theming.
 .window-list-box {
@@ -1442,7 +1442,7 @@ StScrollView {
   padding: 4px 6px;
   selection-background-color: $titlebar_track_color;
   selected-color: $titlebar_fg_color;
-  caret-color: $titlebar_hint_fg_color;
+  caret-color: $titlebar_secondary_fg_color;
   text-align: center;
   height: 1.5em;
   border-radius: $material_radius;

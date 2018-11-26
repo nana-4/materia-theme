@@ -127,7 +127,7 @@ StScrollBar {
 
   StButton#vhandle, StButton#hhandle {
     border-radius: 100px;
-    background-color: $hint_fg_color;
+    background-color: $disabled_fg_color;
     //border: 4px solid transparent; //would be nice to margin or at least to transparent
     margin: 4px;
     &:hover { background-color: $secondary_fg_color; }
@@ -141,7 +141,7 @@ StScrollBar {
   }
 
   StButton#vhandle, StButton#hhandle {
-    background-color: $inverse_hint_fg_color;
+    background-color: $inverse_disabled_fg_color;
     &:hover { background-color: $inverse_secondary_fg_color; }
     &:active { background-color: $inverse_fg_color; }
   }
@@ -251,7 +251,7 @@ StScrollBar {
   .run-dialog-label {
     font-size: 1em;
     font-weight: normal;
-    color: $hint_fg_color;
+    color: $secondary_fg_color;
     padding-bottom: .4em;
   }
 
@@ -304,7 +304,7 @@ StScrollBar {
   }
 
   .end-session-dialog-shutdown-icon {
-    color: $hint_fg_color;
+    color: $disabled_fg_color;
     width: 48px;
     height: 48px;
   }
@@ -337,7 +337,7 @@ StScrollBar {
   }
 
   .end-session-dialog-app-list-item-description {
-    color: $hint_fg_color;
+    color: $secondary_fg_color;
     font-size: 1em;
   }
 
@@ -539,7 +539,7 @@ StScrollBar {
   }
 
   .access-dialog-subtitle {
-    color: $hint_fg_color;
+    color: $secondary_fg_color;
     font-weight: bold;
   }
 
@@ -565,7 +565,7 @@ StScrollBar {
   }
 
   .geolocation-dialog-reason {
-    color: $hint_fg_color;
+    color: $secondary_fg_color;
     font-weight: bold;
   }
 
@@ -632,7 +632,7 @@ StScrollBar {
   .popup-inactive-menu-item { //all icons and other graphical elements
     color: $fg_color;
 
-    &:insensitive { color: $hint_fg_color; }
+    &:insensitive { color: $disabled_fg_color; }
   }
   //.popup-status-menu-item { font-weight: normal;  color: pink; } //dunno what that is
   &.panel-menu {
@@ -761,7 +761,7 @@ StScrollBar {
 
   .switcher-arrow {
     border-color: rgba(0,0,0,0);
-    color: $hint_fg_color;
+    color: $secondary_fg_color;
     &:highlighted {
       color: $fg_color;
     }
@@ -1035,7 +1035,7 @@ StScrollBar {
         padding: 7px 0 0;
         border-radius: 100px;
         background-color: transparent;
-        color: $hint_fg_color;
+        color: $disabled_fg_color;
         @include font(caption);
         font-weight: bold;
         text-align: center;
@@ -1074,7 +1074,7 @@ StScrollBar {
         padding: 7px 0 0;
         border-radius: 100px;
         background-color: transparent;
-        color: $hint_fg_color;
+        color: $disabled_fg_color;
         font-size: inherit;
         font-weight: bold;
         text-align: center;
@@ -1203,7 +1203,7 @@ StScrollBar {
               border: none;
               border-radius: $material_radius;
               background-color: $divider_color;
-              color: $hint_fg_color;
+              color: $disabled_fg_color;
             }
           }
 
@@ -1333,7 +1333,7 @@ StScrollBar {
 
   .nm-dialog-icons { spacing: .5em; }
   .nm-dialog-icon { icon-size: 16px; }
-  .no-networks-label { color: $hint_fg_color; }
+  .no-networks-label { color: $disabled_fg_color; }
   .no-networks-box { spacing: 12px; }
 
 /* OVERVIEW */
@@ -1380,7 +1380,7 @@ StScrollBar {
     width: 320px - 8px * 2;
     padding: 0 8px;
     border-radius: $material_radius $material_radius 0 0;
-    color: $inverse_hint_fg_color;
+    color: $inverse_disabled_fg_color;
     selection-background-color: $inverse_track_color;
     selected-color: $inverse_fg_color;
     @include entry(normal,$fc:$inverse_track_color);
@@ -1392,7 +1392,7 @@ StScrollBar {
       color: $inverse_fg_color;
     }
 
-    .search-entry-icon { icon-size: 16px; padding: 0 0; color: $inverse_hint_fg_color; }
+    .search-entry-icon { icon-size: 16px; padding: 0 0; color: $inverse_secondary_fg_color; }
 
     &:hover, &:focus {
       .search-entry-icon { color: $inverse_fg_color; }
@@ -1678,7 +1678,7 @@ StScrollBar {
 
 %status_text {
   @include font(display-2);
-  color: $inverse_hint_fg_color;
+  color: $inverse_disabled_fg_color;
 }
 
 /* NOTIFICATIONS & MESSAGE TRAY */
@@ -1753,7 +1753,7 @@ StScrollBar {
   .chat-meta-message {
     padding-left: 4px;
     @include font(caption);
-    color: $hint_fg_color;
+    color: $secondary_fg_color;
     &:rtl { padding-left: 0; padding-right: 4px; }
   }
 
@@ -1892,8 +1892,8 @@ $legacy_icon_size: 24px;
 
   .candidate-index {
     padding: 0 4px 0 0;
-    color: $hint_fg_color;
-    .candidate-box:selected & { color: $inverse_hint_fg_color; }
+    color: $secondary_fg_color;
+    .candidate-box:selected & { color: $inverse_secondary_fg_color; }
   }
 
   .candidate-box {
@@ -2046,7 +2046,7 @@ $legacy_icon_size: 24px;
   }
 
   .login-dialog-prompt-label {
-      color: $inverse_hint_fg_color;
+      color: $inverse_secondary_fg_color;
       font-size: 1em;
       padding-top: 1em;
   }
@@ -2161,7 +2161,7 @@ $legacy_icon_size: 24px;
     -natural-hpadding: 12px;
     -minimum-hpadding: 6px;
     font-weight: bold;
-    color: $hint_fg_color;
+    color: $secondary_fg_color;
     transition-duration: $longer_duration;
     padding-left: 16px;
     padding-right: 16px;

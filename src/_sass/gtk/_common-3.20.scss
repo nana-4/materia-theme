@@ -99,7 +99,7 @@ textview {
 
   border {
     background-color: $alt_base_color;
-    color: $hint_fg_color; // FIXME: not working
+    color: $secondary_fg_color; // FIXME: not working
   }
 }
 
@@ -175,7 +175,7 @@ assistant {
   .sidebar label {
     min-height: $medium_size;
     padding: 0 12px;
-    color: $hint_fg_color;
+    color: $disabled_fg_color;
     font-weight: 500;
 
     &.highlight { color: $fg_color; }
@@ -240,7 +240,7 @@ entry {
 
       &:hover, &:active { color: $fg_color; }
 
-      &:disabled { color: $hint_fg_color; }
+      &:disabled { color: $disabled_fg_color; }
 
       &.left {
         margin-left: ($medium_size - 16px) / 2 - 8px;
@@ -318,7 +318,7 @@ entry {
 
         &:hover, &:active { color: $inverse_fg_color; }
 
-        &:disabled { color: $inverse_hint_fg_color; }
+        &:disabled { color: $inverse_disabled_fg_color; }
       }
     }
   }
@@ -1133,7 +1133,7 @@ headerbar {
     }
 
     &:backdrop {
-      color: $titlebar_hint_fg_color;
+      color: $titlebar_disabled_fg_color;
 
       &:hover, &:active { color: $titlebar_secondary_fg_color; }
 
@@ -1966,7 +1966,7 @@ scrollbar {
     border: 4px solid transparent;
     border-radius: $circular_radius;
     background-clip: padding-box;
-    background-color: $hint_fg_color;
+    background-color: $disabled_fg_color;
 
     &:hover { background-color: $secondary_fg_color; }
 
@@ -2005,7 +2005,7 @@ scrollbar {
         margin: 4px - 1px;
         border: 1px solid rgba($base_color, 0.3);
         border-radius: $circular_radius;
-        background-color: $hint_fg_color;
+        background-color: $disabled_fg_color;
         background-clip: padding-box;
         -gtk-icon-source: none;
 
@@ -2485,7 +2485,7 @@ scale {
   }
 
   marks label,
-  value { color: $hint_fg_color; }
+  value { color: $secondary_fg_color; }
 
   marks {
     color: $track_color;
@@ -2605,7 +2605,7 @@ progressbar {
   }
 
   // FIXME: insensitive state missing and some other state should be set probably
-  color: $hint_fg_color;
+  color: $secondary_fg_color;
   font-size: smaller;
 
   trough { background-color: $divider_color; }
