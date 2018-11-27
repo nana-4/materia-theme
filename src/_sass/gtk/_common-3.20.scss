@@ -156,6 +156,7 @@ label {
 
     selection { @extend %selected_items:disabled; }
 
+    headerbar &,
     tab &,
     button & { color: inherit; }
   }
@@ -1085,12 +1086,12 @@ headerbar {
   background-color: $titlebar_bg_color;
   color: $titlebar_fg_color;
 
-  &:disabled :not(button) > label { color: $titlebar_disabled_fg_color; }
+  &:disabled { color: $titlebar_disabled_fg_color; }
 
   &:backdrop {
     color: $titlebar_secondary_fg_color;
 
-    &:disabled :not(button) > label { color: $titlebar_disabled_secondary_fg_color; }
+    &:disabled { color: $titlebar_disabled_secondary_fg_color; }
   }
 
   .title {
