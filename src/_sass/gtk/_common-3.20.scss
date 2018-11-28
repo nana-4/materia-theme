@@ -2300,31 +2300,7 @@ menu menuitem radio {
 // ANIMATION:
 // this is made with those pretty convoluted transitions, since checks and radios have to animate only on state changes,
 // the transformation is set on the active state and it get reset on the checked state.
-check:not(:checked):active { -gtk-icon-transform: rotate(90deg); }
-
 // radio:not(:checked):active { -gtk-icon-transform: scale(0); }
-
-check:not(:checked):indeterminate:active,
-radio:not(:checked):indeterminate:active { -gtk-icon-transform: scaleX(-1); } // instead of rotateY(180deg)
-
-check:not(:checked),
-radio:not(:checked) {
-  & {
-    transition: $shorter_transition,
-                background-size $ripple_duration $deceleration_curve,
-                background-image $ripple_opacity_duration $deceleration_curve,
-                -gtk-icon-transform 0;
-  }
-
-  &:active {
-    transition: $shorter_transition,
-                background-size 0,
-                background-image 0,
-                -gtk-icon-transform 0;
-  }
-
-  menu menuitem & { transition: none; }
-}
 
 treeview.view check,
 treeview.view radio {

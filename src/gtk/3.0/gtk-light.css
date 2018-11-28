@@ -2605,30 +2605,6 @@ menu menuitem radio:indeterminate {
   -gtk-icon-source: -gtk-recolor(url("assets/scalable/small-radio-mixed-symbolic.svg"));
 }
 
-check:not(:checked):active {
-  -gtk-icon-transform: rotate(90deg);
-}
-
-check:not(:checked):indeterminate:active,
-radio:not(:checked):indeterminate:active {
-  -gtk-icon-transform: scaleX(-1);
-}
-
-check:not(:checked),
-radio:not(:checked) {
-  transition: all 100ms cubic-bezier(0, 0, 0.2, 1), background-size 300ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1), -gtk-icon-transform 0;
-}
-
-check:not(:checked):active,
-radio:not(:checked):active {
-  transition: all 100ms cubic-bezier(0, 0, 0.2, 1), background-size 0, background-image 0, -gtk-icon-transform 0;
-}
-
-menu menuitem check:not(:checked), menu menuitem
-radio:not(:checked) {
-  transition: none;
-}
-
 treeview.view check,
 treeview.view radio {
   padding: 0;
