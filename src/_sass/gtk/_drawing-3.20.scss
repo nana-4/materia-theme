@@ -89,7 +89,7 @@
 //
 
   @if $t == normal {
-    transition: $shorter_duration,
+    transition: $shorter_transition,
                 background-size $ripple_duration $deceleration_curve,
                 background-image $ripple_opacity_duration $deceleration_curve;
     box-shadow: $shadow_1, inset 0 0 0 9999px transparent;
@@ -109,7 +109,7 @@
   }
 
   @if $t == active {
-    transition: $shorter_duration,
+    transition: $shorter_transition,
                 background-size 0,
                 background-image 0;
     animation: ripple_effect $longer_duration $deceleration_curve forwards;
@@ -138,7 +138,7 @@
   }
 
   @if $t == flat-normal {
-    transition: $shorter_duration,
+    transition: $shorter_transition,
                 border-image $longer_duration $deceleration_curve,
                 background-size $ripple_duration $deceleration_curve,
                 background-image $ripple_opacity_duration $deceleration_curve;
@@ -159,7 +159,7 @@
   }
 
   @if $t == flat-active {
-    transition: $shorter_duration,
+    transition: $shorter_transition,
                 border-image $longer_duration $deceleration_curve,
                 background-size 0,
                 background-image 0;
