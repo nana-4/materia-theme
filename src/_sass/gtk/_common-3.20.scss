@@ -1012,7 +1012,7 @@ toolbar {
     padding: $container_padding;
     border-radius: $material_radius;
     box-shadow: $shadow_2, inset 0 1px $highlight_color;
-    background-color: $popup_bg_color;
+    background-color: $surface_color;
 
     &:backdrop { box-shadow: $shadow_1, inset 0 1px $highlight_color; }
 
@@ -1539,7 +1539,7 @@ menu,
   margin: 4px 0; // See https://bugzilla.gnome.org/show_bug.cgi?id=591258
   padding: 4px 0;
   box-shadow: inset 0 1px $highlight_color;
-  background-color: $popup_bg_color;
+  background-color: $surface_color;
   border: 1px solid $border_color; // adds borders in a non composited env
 
   .csd & {
@@ -1588,7 +1588,7 @@ menu,
     min-height: 16px;
     min-width: 16px;
     padding: 4px;
-    background-color: $popup_bg_color;
+    background-color: $surface_color;
     color: $secondary_fg_color;
 
     &.top {
@@ -1652,7 +1652,7 @@ popover.background {
   transition: $shadow_transition;
   padding: 2px;
   box-shadow: $shadow_2; // TODO: this should really have a highlight
-  background-color: $popup_bg_color;
+  background-color: $surface_color;
 
   &:backdrop { box-shadow: $shadow_1; }
 
@@ -1678,7 +1678,7 @@ popover.background {
   // FIXME: Use the popover color instead of transparent as a workaround for .view
   list,
   .view:not(:selected),
-  toolbar { background-color: $popup_bg_color; }
+  toolbar { background-color: $surface_color; }
 
   // &.touch-selection,
   // &.magnifier,
@@ -2089,7 +2089,7 @@ switch {
     margin: -3px -2px;
     border-radius: $circular_radius;
     box-shadow: 0 0 0 10px transparent, $shadow_1;
-    background-color: $popup_bg_color;
+    background-color: $surface_color;
   }
 
   &:hover slider { box-shadow: 0 0 0 10px $hover_bg_color, $shadow_1; }
@@ -2879,13 +2879,13 @@ calendar {
  * Dialogs *
  ***********/
 messagedialog { // Message Dialog styling
-  &.background { background-color: $popup_bg_color; }
+  &.background { background-color: $surface_color; }
 
   .titlebar {
     min-height: $small_size;
     border-style: none;
     box-shadow: inset 0 1px $highlight_color;
-    background-color: $popup_bg_color;
+    background-color: $surface_color;
     color: $fg_color;
 
     &:backdrop { color: $secondary_fg_color; }
@@ -3305,7 +3305,7 @@ colorchooser .popover.osd {
   transition: $shadow_transition;
   border-radius: $material_radius;
   box-shadow: $shadow_2, inset 0 1px $highlight_color;
-  background-color: $popup_bg_color;
+  background-color: $surface_color;
 
   &:backdrop { box-shadow: $shadow_1, inset 0 1px $highlight_color; }
 }
@@ -3464,7 +3464,7 @@ cursor-handle {
   border: solid 1px $border_color;
   border-radius: $material_radius + 1px;
   box-shadow: inset 0 -2px $border_color;
-  background-color: $popup_bg_color;
+  background-color: $surface_color;
   color: $fg_color;
   font-size: smaller;
 }

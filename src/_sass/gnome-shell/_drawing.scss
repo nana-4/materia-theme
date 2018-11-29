@@ -118,7 +118,7 @@
 }
 
 
-@mixin button($t, $c: $popup_bg_color, $tc: $fg_color) {
+@mixin button($t, $c: $surface_color, $tc: $fg_color) {
 //
 // button
 //
@@ -163,7 +163,7 @@
 
   @if $t == insensitive {
     color: if($tc == $fg_color, $disabled_fg_color, $tc);
-    background-color: if($c == $popup_bg_color, $fill_color, $c);
+    background-color: if($c == $surface_color, $fill_color, $c);
     border-color: transparent;
     box-shadow: $shadow_0;
     text-shadow: none;

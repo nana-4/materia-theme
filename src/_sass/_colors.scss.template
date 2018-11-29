@@ -39,7 +39,7 @@ $inverse_fill_color:                  rgba(%SEL_FG%, 0.04);
 $bg_color:             %BG%;
 $base_color:           %TXT_BG%;
 $alt_base_color:       %INACTIVE_TXT_BG%;
-$popup_bg_color:       %TXT_BG%;
+$surface_color:        %TXT_BG%;
 $alt_lighter_bg_color: if($variant == 'light', %BG2%, %MENU_BG%); // for gnome-shell sub menu
 
 $titlebar_bg_color: %MENU_BG%;
@@ -89,9 +89,9 @@ $titlebar_indicator_color: if($titlebar == 'dark', currentColor, $primary_color)
 
 // FIXME: Electron/Atom menu does not allow translucent colors
 $opaque_fg_color:           %FG%;
-$opaque_secondary_fg_color: mix(%FG%, $popup_bg_color, percentage(0.7));
-$opaque_disabled_fg_color:  mix(%FG%, $popup_bg_color, percentage(0.5));
-$opaque_divider_color:      mix(%FG%, $popup_bg_color, percentage(0.12));
+$opaque_secondary_fg_color: mix(%FG%, $surface_color, percentage(0.7));
+$opaque_disabled_fg_color:  mix(%FG%, $surface_color, percentage(0.5));
+$opaque_divider_color:      mix(%FG%, $surface_color, percentage(0.12));
 
 // FIXME: gtk @placeholder_text_color does not allow translucent colors
 $placeholder_text_color: mix(%FG%, $base_color, percentage(0.7));
