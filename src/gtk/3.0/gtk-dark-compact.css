@@ -483,7 +483,7 @@ button {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 1000% 1000%;
-  color: rgba(255, 255, 255, 0.8);
+  color: white;
 }
 
 
@@ -505,8 +505,8 @@ button:active {
 
 button:disabled {
   box-shadow: none;
-  background-color: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 
@@ -517,8 +517,8 @@ button:checked {
 
 
 button:checked:disabled {
-  background-color: rgba(66, 133, 244, 0.3);
-  color: rgba(66, 133, 244, 0.5);
+  background-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 modelbutton.flat,
@@ -706,7 +706,7 @@ button.suggested-action {
 
 button.suggested-action:disabled {
   box-shadow: none;
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.04);
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -725,7 +725,7 @@ button.suggested-action.flat {
 button.suggested-action.flat:disabled {
   box-shadow: none;
   background-color: transparent;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 
@@ -742,7 +742,7 @@ button.destructive-action {
 
 button.destructive-action:disabled {
   box-shadow: none;
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.04);
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -761,7 +761,7 @@ button.destructive-action.flat {
 button.destructive-action.flat:disabled {
   box-shadow: none;
   background-color: transparent;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 
@@ -1307,7 +1307,7 @@ headerbar button:not(.suggested-action):not(.destructive-action):backdrop:checke
 .titlebar:not(headerbar) button.suggested-action:disabled, .titlebar:not(headerbar) button.destructive-action:disabled,
 headerbar button.suggested-action:disabled,
 headerbar button.destructive-action:disabled {
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.04);
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -1683,6 +1683,10 @@ treeview.view header button {
   border-color: rgba(0, 0, 0, 0.26);
   border-radius: 0;
   background-clip: border-box;
+}
+
+treeview.view header button:not(:hover):not(:active) {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 treeview.view header button, treeview.view header button:hover, treeview.view header button:active {

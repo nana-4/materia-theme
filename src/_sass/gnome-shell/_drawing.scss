@@ -118,7 +118,7 @@
 }
 
 
-@mixin button($t, $c: $button_bg_color, $tc: $fg_color) {
+@mixin button($t, $c: $popup_bg_color, $tc: $fg_color) {
 //
 // button
 //
@@ -128,7 +128,7 @@
 //
 
   @if $t == normal {
-    color: if($tc == $fg_color, $button_fg_color, $tc);
+    color: $tc;
     background-color: $c;
     border-color: transparent;
     box-shadow: $shadow_1;
@@ -140,8 +140,7 @@
     color: $tc;
     text-shadow: none;
     icon-shadow: none;
-    box-shadow: $shadow_0;
-    // box-shadow: inset 0px 0px 0px 2px $divider_color;
+    box-shadow: $shadow_2;
   }
 
   @if $t == hover {
@@ -163,8 +162,8 @@
   }
 
   @if $t == insensitive {
-    color: if($tc == $fg_color, $disabled_secondary_fg_color, $tc);
-    background-color: if($c == $button_bg_color, $divider_color, $c);
+    color: if($tc == $fg_color, $disabled_fg_color, $tc);
+    background-color: if($c == $popup_bg_color, $fill_color, $c);
     border-color: transparent;
     box-shadow: $shadow_0;
     text-shadow: none;

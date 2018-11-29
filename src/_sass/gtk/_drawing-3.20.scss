@@ -80,12 +80,11 @@
 }
 
 
-@mixin button($t, $c: $button_bg_color) {
+@mixin button($t) {
 //
 // button
 //
 // $t: button type
-// $c: base color
 //
 
   @if $t == normal {
@@ -93,14 +92,14 @@
                 background-size $ripple_duration $deceleration_curve,
                 background-image $ripple_opacity_duration $deceleration_curve;
     box-shadow: $shadow_1, inset 0 0 0 9999px transparent;
-    background-color: $c;
+    background-color: $popup_bg_color;
     background-image: radial-gradient(circle farthest-corner at center,
                                       transparent 10%,
                                       transparent 0%);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1000% 1000%;
-    color: $button_fg_color;
+    color: $fg_color;
   }
 
   @if $t == hover {
@@ -123,8 +122,8 @@
 
   @if $t == disabled {
     box-shadow: none;
-    background-color: $divider_color;
-    color: if($c == $button_bg_color, $disabled_secondary_fg_color, $disabled_fg_color);
+    background-color: $fill_color;
+    color: $disabled_fg_color;
   }
 
   @if $t == checked {
@@ -133,8 +132,8 @@
   }
 
   @if $t == checked-disabled {
-    background-color: rgba($primary_color, 0.3);
-    color: rgba($primary_color, 0.5);
+    background-color: $divider_color;
+    color: $disabled_fg_color;
   }
 
   @if $t == flat-normal {
@@ -175,7 +174,7 @@
   @if $t == flat-disabled {
     box-shadow: none;
     background-color: transparent;
-    color: if($c == $button_bg_color, $disabled_secondary_fg_color, $disabled_fg_color);
+    color: $disabled_secondary_fg_color;
   }
 
   @if $t == flat-checked {

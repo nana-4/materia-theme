@@ -478,12 +478,12 @@ button {
   font-weight: 500;
   transition: all 100ms cubic-bezier(0, 0, 0.2, 1), background-size 300ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24), inset 0 0 0 9999px transparent;
-  background-color: #FAFAFA;
+  background-color: #FFFFFF;
   background-image: radial-gradient(circle farthest-corner at center, transparent 10%, transparent 0%);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 1000% 1000%;
-  color: rgba(0, 0, 0, 0.62);
+  color: rgba(0, 0, 0, 0.87);
 }
 
 
@@ -505,8 +505,8 @@ button:active {
 
 button:disabled {
   box-shadow: none;
-  background-color: rgba(0, 0, 0, 0.12);
-  color: rgba(0, 0, 0, 0.26);
+  background-color: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.38);
 }
 
 
@@ -517,8 +517,8 @@ button:checked {
 
 
 button:checked:disabled {
-  background-color: rgba(66, 133, 244, 0.3);
-  color: rgba(66, 133, 244, 0.5);
+  background-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.38);
 }
 
 modelbutton.flat,
@@ -706,7 +706,7 @@ button.suggested-action {
 
 button.suggested-action:disabled {
   box-shadow: none;
-  background-color: rgba(0, 0, 0, 0.12);
+  background-color: rgba(0, 0, 0, 0.04);
   color: rgba(0, 0, 0, 0.38);
 }
 
@@ -725,7 +725,7 @@ button.suggested-action.flat {
 button.suggested-action.flat:disabled {
   box-shadow: none;
   background-color: transparent;
-  color: rgba(0, 0, 0, 0.38);
+  color: rgba(0, 0, 0, 0.26);
 }
 
 
@@ -742,7 +742,7 @@ button.destructive-action {
 
 button.destructive-action:disabled {
   box-shadow: none;
-  background-color: rgba(0, 0, 0, 0.12);
+  background-color: rgba(0, 0, 0, 0.04);
   color: rgba(0, 0, 0, 0.38);
 }
 
@@ -761,7 +761,7 @@ button.destructive-action.flat {
 button.destructive-action.flat:disabled {
   box-shadow: none;
   background-color: transparent;
-  color: rgba(0, 0, 0, 0.38);
+  color: rgba(0, 0, 0, 0.26);
 }
 
 
@@ -1307,7 +1307,7 @@ headerbar button:not(.suggested-action):not(.destructive-action):backdrop:checke
 .titlebar:not(headerbar) button.suggested-action:disabled, .titlebar:not(headerbar) button.destructive-action:disabled,
 headerbar button.suggested-action:disabled,
 headerbar button.destructive-action:disabled {
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.04);
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -1683,6 +1683,10 @@ treeview.view header button {
   border-color: rgba(0, 0, 0, 0.12);
   border-radius: 0;
   background-clip: border-box;
+}
+
+treeview.view header button:not(:hover):not(:active) {
+  color: rgba(0, 0, 0, 0.54);
 }
 
 treeview.view header button, treeview.view header button:hover, treeview.view header button:active {

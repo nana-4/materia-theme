@@ -522,7 +522,7 @@ button {
       background-color: $b_color;
       color: $inverse_fg_color;
 
-      &:disabled { @include button(disabled, $b_color); }
+      &:disabled { @include button(disabled); }
 
       &:checked { background-color: mix($inverse_fg_color, $b_color, percentage(0.3)); }
 
@@ -530,7 +530,7 @@ button {
         background-color: transparent;
         color: $b_color;
 
-        &:disabled { @include button(flat-disabled, $b_color); }
+        &:disabled { @include button(flat-disabled); }
 
         &:checked { background-color: rgba($b_color, 0.3); }
       }
@@ -1150,7 +1150,7 @@ headerbar {
 
   button.suggested-action, button.destructive-action {
     &:disabled {
-      background-color: $titlebar_divider_color;
+      background-color: $titlebar_fill_color;
       color: $titlebar_disabled_fg_color;
     }
   }
@@ -1475,6 +1475,8 @@ treeview.view {
       border-color: $border_color;
       border-radius: 0;
       background-clip: border-box;
+
+      &:not(:hover):not(:active) { color: $secondary_fg_color; }
 
       &, &:hover, &:active { box-shadow: none; }
 
