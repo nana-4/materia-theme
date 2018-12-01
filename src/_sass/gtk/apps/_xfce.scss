@@ -1,0 +1,124 @@
+// based css:
+// https://github.com/shimmerproject/Greybird/blob/master/gtk-3.0/_xfce.scss
+
+/**************
+ * Xfce4 Apps *
+ **************/
+.XfceHeading {
+  background-color: $base_color;
+}
+
+
+/***************
+ * xfce4-panel *
+ ***************/
+.xfce4-panel.background {
+  border: none; // Sadly the border is hard-coded
+  background-color: $solid_panel_bg_color;
+  color: $inverse_secondary_fg_color;
+  font-weight: 500;
+
+  button {
+    // @extend %flat_button;
+    @extend %button_selected.flat;
+
+    min-height: 16px;
+    min-width: 16px;
+    padding: 0;
+    border-radius: 0;
+
+    &:checked { background-color: $inverse_divider_color; }
+  }
+
+  .tasklist button {
+    border-image: image(transparent) 0 0 2 / 0 0 2px;
+
+    &:checked { border-image: image(currentColor) 0 0 2 / 0 0 2px; }
+
+    image { padding: 4px; }
+  }
+
+  // &.horizontal .tasklist button { margin: 0 1px; }
+
+  // &.vertical .tasklist button { margin: 1px 0; }
+}
+
+// Workspace switcher provided by libwnck
+wnck-pager {
+  &:hover { background-color: $inverse_divider_color; }
+
+  &:active { background-color: $inverse_track_color; }
+
+  &:selected { background-color: $primary_color; }
+}
+
+XfdesktopIconView.view {
+  border-radius: $material_radius;
+  background-color: transparent;
+  color: $inverse_fg_color;
+  text-shadow: $shadow_1;
+
+  // XfdesktopIconView uses :active instead of :selected for selection
+  &:active {
+    @extend %selected_items;
+
+    box-shadow: none;
+    text-shadow: none;
+  }
+
+  // .label { text-shadow: $shadow_1; }
+
+  .rubberband {
+    @extend rubberband;
+
+    border-radius: 0;
+  }
+}
+
+#XfceNotifyWindow {
+  buttonbox { padding: 0; }
+
+  button {
+  }
+
+  label#summary { font-weight: bold; }
+
+  progressbar {
+    progress {
+    }
+
+    trough {
+    }
+  }
+}
+
+// Xfwm4's alt-tab dialog, aka "tabwin"
+#xfwm-tabwin {
+  padding: 12px;
+  border-radius: $material_radius;
+
+  // Set the application icon- and preview-size to 64px
+  -XfwmTabwinWidget-icon-size: 64px;
+  -XfwmTabwinWidget-preview-size: 64px;
+
+  button {
+  }
+}
+
+
+/**********
+ * Thunar *
+ **********/
+.thunar {
+  #location-toolbar { border-bottom: 1px solid $border_color; }
+
+  .standard-view.frame { border-style: none; }
+
+  .sidebar .view:not(:selected) { background-color: transparent; }
+
+  statusbar {
+    margin: 0 -10px;
+    padding: 0 4px;
+    border-top: 1px solid $border_color;
+  }
+}
