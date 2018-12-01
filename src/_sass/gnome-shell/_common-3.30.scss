@@ -179,11 +179,11 @@ StScrollBar {
     background-image: url("assets/checkbox-off.svg");
   }
   &:hover StBin {
-    background-color: $divider_color;
+    background-color: $hover_overlay_color;
   }
   &:active StBin {
     transition-duration: $longer_duration;
-    background-color: $track_color;
+    background-color: $active_overlay_color;
   }
   &:checked StBin {
     background-image: url("assets/checkbox.svg");
@@ -192,10 +192,10 @@ StScrollBar {
     background-image: url("assets/checkbox.svg");
   }
   &:hover:checked StBin {
-    background-color: rgba($primary_color, 0.12);
+    background-color: rgba($primary_color, 0.08);
   }
   &:active:checked StBin {
-    background-color: rgba($primary_color, 0.24);
+    background-color: rgba($primary_color, 0.2);
   }
 }
 
@@ -220,12 +220,12 @@ StScrollBar {
   color: $link_color;
   &:hover {
     color: $link_color;
-    background-color: rgba($link_color, 0.12);
+    background-color: rgba($link_color, 0.08);
   }
   &:active {
     transition-duration: $longer_duration;
     color: $link_color;
-    background-color: rgba($link_color, 0.24);
+    background-color: rgba($link_color, 0.2);
   }
 }
 
@@ -581,22 +581,22 @@ StScrollBar {
       box-shadow: $shadow_0;
       font-weight: normal;
       &.selected {
-        background-color: mix($inverse_fg_color, $primary_color, percentage(0.12));
+        background-color: mix($inverse_fg_color, $primary_color, percentage(0.08));
         color: $inverse_fg_color;
       }
       &:active {
-        background-color: mix($inverse_fg_color, $primary_color, percentage(0.24));
+        background-color: mix($inverse_fg_color, $primary_color, percentage(0.2));
         color: $inverse_fg_color !important;
       }
       &:insensitive { color: $inverse_disabled_fg_color; }
     }
     &.selected {
-      background-color: $divider_color;
+      background-color: $hover_overlay_color;
       color: $fg_color;
       transition-duration: 0ms;
     }
     &:active {
-      background-color: $track_color;
+      background-color: $active_overlay_color;
       color: $fg_color;
       transition-duration: $longer_duration;
     }
@@ -997,11 +997,11 @@ StScrollBar {
     .weather-button,
     .events-section-title {
       transition-duration: $shorter_duration;
-      &:hover,&:focus { color: $fg_color; background-color: $divider_color; }
+      &:hover,&:focus { color: $fg_color; background-color: $hover_overlay_color; }
       &:active {
         transition-duration: $longer_duration;
         color: $fg_color;
-        background-color: $track_color;
+        background-color: $active_overlay_color;
       }
     }
 
@@ -1036,7 +1036,7 @@ StScrollBar {
       color: $fg_color;
       font-weight: bold;
       text-align: center;
-      &:focus { background-color: $divider_color; }
+      &:focus { background-color: $focus_overlay_color; }
     }
 
     .pager-button {
@@ -1047,8 +1047,8 @@ StScrollBar {
       border-radius: 100px;
       background-color: transparent;
       color: $fg_color;
-      &:hover, &:focus { background-color: $divider_color; }
-      &:active { background-color: $track_color; transition-duration: $longer_duration; }
+      &:hover, &:focus { background-color: $hover_overlay_color; }
+      &:active { background-color: $active_overlay_color; transition-duration: $longer_duration; }
     }
 
       .calendar-change-month-back { //arrow back
@@ -1069,11 +1069,11 @@ StScrollBar {
       margin: 2px;
       border-radius: 100px;
       font-feature-settings: "tnum";
-      &:hover,&:focus { background-color: $divider_color; }
+      &:hover,&:focus { background-color: $hover_overlay_color; }
       &:active {
         transition-duration: $longer_duration;
         color: inherit;
-        background-color: $track_color;
+        background-color: $active_overlay_color;
         border-color: transparent; //avoid jumparound due to today
       }
       &:selected {
@@ -1139,8 +1139,8 @@ StScrollBar {
 
         .message-list-clear-button.button {
           background-color: transparent;
-          &:hover,&:focus { background-color: $divider_color; }
-          &:active { background-color: $track_color; }
+          &:hover,&:focus { background-color: $hover_overlay_color; }
+          &:active { background-color: $active_overlay_color; }
           margin: 8px 8px 0;
         }
 
@@ -1157,10 +1157,10 @@ StScrollBar {
           transition-duration: $shorter_duration;
           min-height: $menuitem_size * 2;
           background-color: transparent;
-          &:hover,&:focus { background-color: $divider_color; }
+          &:hover,&:focus { background-color: $hover_overlay_color; }
           &:active {
             transition-duration: $longer_duration;
-            background-color: $track_color;
+            background-color: $active_overlay_color;
           }
           border-radius: $material_radius;
         }
@@ -1223,13 +1223,13 @@ StScrollBar {
           .message-content *:hover > StIcon,
           .message-content *:focus > StIcon {
             color: $fg_color;
-            background-color: $divider_color;
+            background-color: $hover_overlay_color;
           }
 
           .message-content *:active > StIcon {
             transition-duration: $longer_duration;
             color: $fg_color;
-            background-color: $track_color;
+            background-color: $active_overlay_color;
           }
 
           .message-media-control {
@@ -1238,8 +1238,8 @@ StScrollBar {
             padding: 8px;
             border-radius: 100px;
             color: $secondary_fg_color;
-            &:hover,&:focus { color: $fg_color; background-color: $divider_color; }
-            &:active { color: $fg_color; background-color: $track_color; transition-duration: $longer_duration; }
+            &:hover,&:focus { color: $fg_color; background-color: $hover_overlay_color; }
+            &:active { color: $fg_color; background-color: $active_overlay_color; transition-duration: $longer_duration; }
             &:insensitive { color: $disabled_secondary_fg_color; }
 
             &:last-child:ltr { margin-right: 16px; padding-right: 8px; }
@@ -1299,12 +1299,12 @@ StScrollBar {
     transition-duration: $shorter_duration;
 
     &:hover, &:focus {
-      background-color: $divider_color;
+      background-color: $hover_overlay_color;
       color: $fg_color;
       border: none;
       padding: ($large_size - 16px) / 2;
     }
-    &:active { background-color: $track_color; color: $fg_color; transition-duration: $longer_duration; }
+    &:active { background-color: $active_overlay_color; color: $fg_color; transition-duration: $longer_duration; }
 
     & > StIcon { icon-size: 16px; }
   }
@@ -1386,10 +1386,10 @@ StScrollBar {
     border-radius: $material_radius;
     padding: 12px;
     spacing: 20px;
-    &:hover, &:focus { background-color: $divider_color; }
+    &:hover, &:focus { background-color: $hover_overlay_color; }
     &:active {
       transition-duration: $longer_duration;
-      background-color: $track_color;
+      background-color: $active_overlay_color;
     }
   }
 
@@ -1563,11 +1563,11 @@ StScrollBar {
     color: $inverse_secondary_fg_color;
     &:hover {
       color: $inverse_fg_color;
-      background-color: $inverse_divider_color !important;
+      background-color: $inverse_hover_overlay_color !important;
     }
     &:active {
       color: $inverse_fg_color;
-      background-color: $inverse_track_color !important;
+      background-color: $inverse_active_overlay_color !important;
     }
     &:checked {
       color: $inverse_fg_color;
@@ -1590,11 +1590,11 @@ StScrollBar {
   .list-search-result {
     @extend %icon_tile;
     &:focus, &:selected, &:hover {
-      background-color: $inverse_divider_color;
+      background-color: $inverse_hover_overlay_color;
       transition-duration: 0ms;
     }
     &:active, &:checked {
-      background-color: $inverse_track_color;
+      background-color: $inverse_active_overlay_color;
       transition-duration: $longer_duration;
     }
   }
@@ -1608,14 +1608,14 @@ StScrollBar {
     &:hover .overview-icon,
     &:focus .overview-icon,
     &:selected .overview-icon {
-      background-color: $inverse_divider_color;
+      background-color: $inverse_hover_overlay_color;
       transition-duration: 0ms;
       border-image: none;
       background-image: none;
     }
     &:active .overview-icon,
     &:checked .overview-icon {
-      background-color: $inverse_track_color;
+      background-color: $inverse_active_overlay_color;
       box-shadow: $shadow_0;
       transition-duration: $longer_duration;
     }
@@ -1783,10 +1783,10 @@ StScrollBar {
       font-weight: 500;
       &:first-child { border-radius: $material_radius; }
       &:last-child { border-radius: $material_radius; }
-      &:hover, &focus { background-color: $divider_color; color: $fg_color; }
+      &:hover, &focus { background-color: $hover_overlay_color; color: $fg_color; }
       &:active {
         transition-duration: $longer_duration;
-        background-color: $track_color;
+        background-color: $active_overlay_color;
         color: $fg_color;
       }
     }
@@ -1848,10 +1848,10 @@ StScrollBar {
       transition-duration: $shorter_duration;
       spacing: 8px;
       border-radius: $material_radius;
-      &:hover { background-color: $divider_color; }
+      &:hover { background-color: $hover_overlay_color; }
       &:active {
         transition-duration: $longer_duration;
-        background-color: $track_color;
+        background-color: $active_overlay_color;
       }
     }
 
@@ -1921,13 +1921,13 @@ StScrollBar {
       border-color: transparent;
       background-color: $surface_color;
       background-size: 24px;
-      &:active { background-color: mix($fg_color, $surface_color, percentage(0.24)); }
+      &:active { background-color: mix($fg_color, $surface_color, percentage(0.2)); }
     }
     &.enter-key {
       border-color: transparent;
       background-color: $suggested_color;
       background-image: url("assets/key-enter.svg");
-      &:active { background-color: mix($inverse_fg_color, $suggested_color, percentage(0.24)); }
+      &:active { background-color: mix($inverse_fg_color, $suggested_color, percentage(0.2)); }
     }
     &.shift-key-lowercase {
       background-image: url("assets/key-shift.svg");
@@ -1979,8 +1979,8 @@ StScrollBar {
     min-height: $menuitem_size;
     padding: 0 8px;
     border-radius: $material_radius;
-    &:hover { background-color: $divider_color; color: $fg_color; transition-duration: 0ms; }
-    &:active { background-color: $track_color; color: $fg_color; transition-duration: $longer_duration; }
+    &:hover { background-color: $hover_overlay_color; color: $fg_color; transition-duration: 0ms; }
+    &:active { background-color: $active_overlay_color; color: $fg_color; transition-duration: $longer_duration; }
     &:selected { background-color: $primary_color; color: $inverse_fg_color; transition-duration: 0ms; }
   }
 
@@ -2075,13 +2075,13 @@ StScrollBar {
     padding-top: 1em;
     border-radius: $material_radius;
     &:hover {
-      background-color: $inverse_divider_color;
+      background-color: $inverse_hover_overlay_color;
       color: $inverse_fg_color;
     }
-    &:focus { background-color: $inverse_divider_color; }
+    &:focus { background-color: $inverse_focus_overlay_color; }
     &:active {
       transition-duration: $longer_duration;
-      background-color: $inverse_track_color;
+      background-color: $inverse_active_overlay_color;
       color: $inverse_fg_color;
     }
   }
@@ -2090,9 +2090,9 @@ StScrollBar {
   .login-dialog-user-list {
     spacing: 12px;
     width: 23em;
-    &:expanded .login-dialog-user-list-item:selected { background-color: $inverse_divider_color; color: $inverse_fg_color; }
-    &:expanded .login-dialog-user-list-item:hover { background-color: $inverse_divider_color; color: $inverse_fg_color; }
-    &:expanded .login-dialog-user-list-item:active { background-color: $inverse_track_color; color: $inverse_fg_color; }
+    &:expanded .login-dialog-user-list-item:selected { background-color: $inverse_focus_overlay_color; color: $inverse_fg_color; }
+    &:expanded .login-dialog-user-list-item:hover { background-color: $inverse_hover_overlay_color; color: $inverse_fg_color; }
+    &:expanded .login-dialog-user-list-item:active { background-color: $inverse_active_overlay_color; color: $inverse_fg_color; }
     &:expanded .login-dialog-user-list-item:logged-in { border-right: 2px solid $inverse_fg_color; }
   }
   .login-dialog-user-list-item {
@@ -2103,12 +2103,12 @@ StScrollBar {
     &:ltr .user-widget { padding-right: 1em; }
     &:rtl .user-widget { padding-left: 1em; }
     &:hover {
-      background-color: $inverse_divider_color;
+      background-color: $inverse_hover_overlay_color;
       color: $inverse_fg_color;
     }
     &:active {
       transition-duration: $longer_duration;
-      background-color: $inverse_track_color;
+      background-color: $inverse_active_overlay_color;
       color: $inverse_fg_color;
     }
     .login-dialog-timed-login-indicator {
@@ -2262,12 +2262,12 @@ StScrollBar {
     min-height: $medium_size;
     padding: 0 16px * 2;
     &:hover {
-      background-color: $divider_color;
+      background-color: $hover_overlay_color;
       color: $fg_color;
       text-shadow: none;
     }
     &:active {
-      background-color: $track_color;
+      background-color: $active_overlay_color;
       color: $fg_color;
       transition-duration: $longer_duration;
     }

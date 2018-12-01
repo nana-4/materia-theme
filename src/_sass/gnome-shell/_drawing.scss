@@ -188,12 +188,11 @@
     text-shadow: none;
     icon-shadow: none;
     box-shadow: $shadow_0;
-    // box-shadow: inset 0px 0px 0px 2px $divider_color;
   }
 
   @if $t == flat-hover {
     color: if($tc != $inverse_fg_color, $fg_color, $inverse_fg_color);
-    background-color: if($tc != $inverse_fg_color, $divider_color, $inverse_divider_color);
+    background-color: if($tc != $inverse_fg_color, $hover_overlay_color, $inverse_hover_overlay_color);
     border-color: transparent;
     box-shadow: $shadow_0;
     text-shadow: none;
@@ -202,7 +201,7 @@
 
   @if $t == flat-active {
     color: if($tc != $inverse_fg_color, $fg_color, $inverse_fg_color);
-    background-color: if($tc != $inverse_fg_color, $track_color, $inverse_track_color);
+    background-color: if($tc != $inverse_fg_color, $active_overlay_color, $inverse_active_overlay_color);
     border-color: transparent;
     box-shadow: $shadow_0;
     text-shadow: none;
