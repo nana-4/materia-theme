@@ -6,15 +6,16 @@
 
 - GTK+ 4
 - [Firefox theme](../../issues/78)
-  - waiting for [the upstream to provide next-gen themes](https://blog.mozilla.org/addons/2017/02/24/improving-themes-in-firefox/)
-  - Or, is it unnecessary because the new interface is well integrated with this theme?
+  - ~waiting for the upstream to provide [next-gen themes](https://blog.mozilla.org/addons/2017/02/24/improving-themes-in-firefox/)~
+  - Or, is it unnecessary because the new Quantum UI looks well-integrated with Materia?
 - [Xfce theme](../../issues/60)
-  - waiting for the upstream to complete `gtk3` port
 - [Pantheon theme](../../issues/69)
+- [Openbox theme](../../issues/254)
+- [Plank theme](../../issues/206)
 - [GtkSourceView theme](../../issues/150)
 - [Color scheme for GNOME Terminal](../../issues/157)
-- Overlay scrollbars extension for Chrome/Chromium (`low priority`)
 - [Cursor theme](../../issues/156) (`low priority`)
+- Overlay scrollbar extension for Chrome/Chromium (`low priority`)
 
 ## UI changes
 
@@ -22,6 +23,7 @@
 - [Use `#757575` as check/radio buttons color for some web interfaces](../../issues/123) (if possible)
 - [Make compact variant more compact](../../issues/79) (WIP)
 - Change gtk2 spinbutton to flat button style
+- Update gtk2 entry and combo button style
 - Rework the focus state styles (WIP)
 
 ## Others
