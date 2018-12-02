@@ -2922,6 +2922,11 @@ filechooser {
   #pathbarbox {
     border-bottom: 1px solid $border_color;
     background-color: $bg_color;
+
+    > stack > box > button { // The new folder button
+      @extend %button_basic.flat;
+      @extend %circular_button;
+    }
   }
 }
 
