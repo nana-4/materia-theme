@@ -61,14 +61,26 @@
   padding: 6px 6px 6px 3px;
 }
 
+// Running and focused application style
+
+#dashtodockContainer .focused .overview-icon {
+  background-color: $checked_overlay_color;
+}
+
+// Remove background-color if the indicator style is default
+#dashtodockContainer .default.focused .overview-icon {
+  background-color: transparent;
+}
+
 #dashtodockContainer .app-well-app-running-dot {
   background-color: transparent;
 }
 
-#dashtodockContainer .dash-item-container > StWidget {
+#dashtodockContainer .default {
   background-size: cover;
 }
 
+// Default running and focused application style
 @each $p, $pt in ('.left', 'left'),
                  ('.right', 'right'),
                  ('.top', 'top'),
@@ -79,7 +91,7 @@
                    ('.running4', 'running4') {
     @each $f, $fc in ('', ''),
                      ('.focused', '-focused') {
-      #dashtodockContainer#{$p} .dash-item-container > StWidget#{$n}#{$f} {
+      #dashtodockContainer#{$p} .default#{$n}#{$f} {
         background-image: url("assets/dash/#{$pt}-#{$nb}#{$fc}.svg");
       }
     }
