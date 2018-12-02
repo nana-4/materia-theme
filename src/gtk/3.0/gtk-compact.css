@@ -1970,6 +1970,11 @@ notebook.frame > header {
   background-color: #FAFAFA;
 }
 
+notebook:focus tab:checked {
+  box-shadow: inset 0 0 0 9999px rgba(66, 133, 244, 0.12);
+  outline: none;
+}
+
 notebook > header {
   border-width: 1px;
   border-color: rgba(0, 0, 0, 0.12);
@@ -1986,11 +1991,15 @@ notebook > header.top > tabs {
 }
 
 notebook > header.top > tabs > tab {
-  box-shadow: inset 0 -2px transparent;
+  border-image: linear-gradient(to top, transparent 2px, transparent 2px) 2/0 0 2px;
 }
 
 notebook > header.top > tabs > tab:checked {
-  box-shadow: inset 0 -2px #4285F4;
+  border-image-source: linear-gradient(to top, #4285F4 2px, rgba(0, 0, 0, 0.12) 2px);
+}
+
+notebook > header.top > tabs > tab.reorderable-page {
+  border-image-width: 0 1px 2px;
 }
 
 notebook > header.bottom {
@@ -2002,11 +2011,15 @@ notebook > header.bottom > tabs {
 }
 
 notebook > header.bottom > tabs > tab {
-  box-shadow: inset 0 2px transparent;
+  border-image: linear-gradient(to bottom, transparent 2px, transparent 2px) 2/2px 0 0;
 }
 
 notebook > header.bottom > tabs > tab:checked {
-  box-shadow: inset 0 2px #4285F4;
+  border-image-source: linear-gradient(to bottom, #4285F4 2px, rgba(0, 0, 0, 0.12) 2px);
+}
+
+notebook > header.bottom > tabs > tab.reorderable-page {
+  border-image-width: 2px 1px 0;
 }
 
 notebook > header.left {
@@ -2018,11 +2031,15 @@ notebook > header.left > tabs {
 }
 
 notebook > header.left > tabs > tab {
-  box-shadow: inset -2px 0 transparent;
+  border-image: linear-gradient(to left, transparent 2px, transparent 2px) 2/0 2px 0 0;
 }
 
 notebook > header.left > tabs > tab:checked {
-  box-shadow: inset -2px 0 #4285F4;
+  border-image-source: linear-gradient(to left, #4285F4 2px, rgba(0, 0, 0, 0.12) 2px);
+}
+
+notebook > header.left > tabs > tab.reorderable-page {
+  border-image-width: 1px 2px 1px 0;
 }
 
 notebook > header.right {
@@ -2034,11 +2051,15 @@ notebook > header.right > tabs {
 }
 
 notebook > header.right > tabs > tab {
-  box-shadow: inset 2px 0 transparent;
+  border-image: linear-gradient(to right, transparent 2px, transparent 2px) 2/0 0 0 2px;
 }
 
 notebook > header.right > tabs > tab:checked {
-  box-shadow: inset 2px 0 #4285F4;
+  border-image-source: linear-gradient(to right, #4285F4 2px, rgba(0, 0, 0, 0.12) 2px);
+}
+
+notebook > header.right > tabs > tab.reorderable-page {
+  border-image-width: 1px 0 1px 2px;
 }
 
 notebook > header.top > tabs > arrow {

@@ -1709,6 +1709,11 @@ notebook {
   frame > paned > & > header,
   &.frame > header { background-color: $alt_base_color; }
 
+  &:focus tab:checked {
+    box-shadow: inset 0 0 0 9999px rgba($primary_color, 0.12);
+    outline: none;
+  }
+
   > header {
     border-width: 1px;
     border-color: $border_color;
@@ -1722,9 +1727,11 @@ notebook {
         margin-bottom: -1px;
 
         > tab {
-          box-shadow: inset 0 -2px transparent;
+          border-image: linear-gradient(to top, transparent 2px, transparent 2px) 2 / 0 0 2px;
 
-          &:checked { box-shadow: inset 0 -2px $primary_color; }
+          &:checked { border-image-source: linear-gradient(to top, $primary_color 2px, $border_color 2px); }
+
+          &.reorderable-page { border-image-width: 0 1px 2px; }
         }
       }
     }
@@ -1736,9 +1743,11 @@ notebook {
         margin-top: -1px;
 
         > tab {
-          box-shadow: inset 0 2px transparent;
+          border-image: linear-gradient(to bottom, transparent 2px, transparent 2px) 2 / 2px 0 0;
 
-          &:checked { box-shadow: inset 0 2px $primary_color; }
+          &:checked { border-image-source: linear-gradient(to bottom, $primary_color 2px, $border_color 2px); }
+
+          &.reorderable-page { border-image-width: 2px 1px 0; }
         }
       }
     }
@@ -1750,9 +1759,11 @@ notebook {
         margin-right: -1px;
 
         > tab {
-          box-shadow: inset -2px 0 transparent;
+          border-image: linear-gradient(to left, transparent 2px, transparent 2px) 2 / 0 2px 0 0;
 
-          &:checked { box-shadow: inset -2px 0 $primary_color; }
+          &:checked { border-image-source: linear-gradient(to left, $primary_color 2px, $border_color 2px); }
+
+          &.reorderable-page { border-image-width: 1px 2px 1px 0; }
         }
       }
     }
@@ -1764,9 +1775,11 @@ notebook {
         margin-left: -1px;
 
         > tab {
-          box-shadow: inset 2px 0 transparent;
+          border-image: linear-gradient(to right, transparent 2px, transparent 2px) 2 / 0 0 0 2px;
 
-          &:checked { box-shadow: inset 2px 0 $primary_color; }
+          &:checked { border-image-source: linear-gradient(to right, $primary_color 2px, $border_color 2px); }
+
+          &.reorderable-page { border-image-width: 1px 0 1px 2px; }
         }
       }
     }
