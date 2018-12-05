@@ -19,11 +19,9 @@
 .nautilus-canvas-item.dim-label,
 .nautilus-list-dim-label {
   color: $secondary_fg_color;
-
-  &:selected { color: $inverse_secondary_fg_color; }
 }
 
-.nautilus-desktop.nautilus-canvas-item:not(:selected) {
+.nautilus-desktop.nautilus-canvas-item {
   // background-color: $panel_bg_color;
   color: $inverse_fg_color;
   text-shadow: $shadow_1;
@@ -141,7 +139,7 @@
   &:selected {
     background-color: transparent;
 
-    .icon-item-background { background-color: $primary_color; }
+    .icon-item-background { @extend %selected_items; }
   }
 }
 
@@ -210,8 +208,6 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 .open-document-selector-path-label {
   color: $secondary_fg_color;
   font-size: smaller;
-
-  &:selected { color: $inverse_secondary_fg_color; }
 }
 
 .gedit-document-panel {
@@ -425,8 +421,6 @@ entry.search-missing {
 // tweak icons for treeviews
 window.workbench treeview.image {
   color: $secondary_fg_color;
-
-  &:selected { color: $inverse_secondary_fg_color; }
 }
 
 popover.popover-selector list {
