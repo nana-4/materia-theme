@@ -108,27 +108,27 @@ style "default" {
 
   bg[NORMAL]      = @bg_color
   bg[PRELIGHT]    = @bg_color
-  bg[SELECTED]    = @selected_bg_color
+  bg[SELECTED]    = mix (0.32, @selected_bg_color, @bg_color)
   bg[INSENSITIVE] = @bg_color
   bg[ACTIVE]      = @bg_color
 
   fg[NORMAL]      = @fg_color
   fg[PRELIGHT]    = @fg_color
-  fg[SELECTED]    = @selected_fg_color
+  fg[SELECTED]    = @fg_color
   fg[INSENSITIVE] = mix (0.4, @fg_color, @bg_color)
   fg[ACTIVE]      = @fg_color
 
   text[NORMAL]      = @text_color
   text[PRELIGHT]    = @text_color
-  text[SELECTED]    = @selected_fg_color
+  text[SELECTED]    = @text_color
   text[INSENSITIVE] = mix (0.4, @text_color, @base_color)
-  text[ACTIVE]      = @selected_fg_color
+  text[ACTIVE]      = @text_color
 
   base[NORMAL]      = @base_color
   base[PRELIGHT]    = mix (0.05, @text_color, @base_color)
-  base[SELECTED]    = @selected_bg_color
+  base[SELECTED]    = mix (0.32, @selected_bg_color, @base_color)
   base[INSENSITIVE] = mix (0.5, @base_color, @bg_color)
-  base[ACTIVE]      = @selected_bg_color
+  base[ACTIVE]      = mix (0.32, @selected_bg_color, @base_color)
 
   # For succinctness, all reasonable pixmap options remain here
 
