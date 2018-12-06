@@ -2723,12 +2723,9 @@ list {
   row { padding: 2px; }
 }
 
-// FIXME
-$row_transition: $shorter_transition, background-color 0, color 0;
-
 row {
   &.activatable {
-    transition: $row_transition,
+    transition: $shorter_transition,
                 background-size $ripple_duration $deceleration_curve,
                 background-image $ripple_opacity_duration $deceleration_curve;
     box-shadow: inset 0 0 0 9999px transparent;
@@ -2740,7 +2737,7 @@ row {
     background-size: 1000% 1000%;
 
     &:hover {
-      transition: $row_transition,
+      transition: $shorter_transition,
                   box-shadow 0,
                   background-size $ripple_duration $deceleration_curve,
                   background-image $ripple_opacity_duration $deceleration_curve;
@@ -2749,7 +2746,7 @@ row {
 
     &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
     &:active {
-      transition: $row_transition,
+      transition: $shorter_transition,
                   background-size 0,
                   background-image 0;
       animation: ripple_effect $longer_duration $deceleration_curve forwards;
@@ -2761,7 +2758,16 @@ row {
     }
   }
 
-  &:selected { @extend %selected_items; }
+  &:selected {
+    @extend %selected_items;
+    color: $primary_color; // for overlays
+
+    image,
+    label { color: $fg_color; }
+
+    button image,
+    button label { color: inherit; }
+  }
 }
 
 
