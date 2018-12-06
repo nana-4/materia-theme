@@ -2970,14 +2970,15 @@ placessidebar {
   row {
     // Needs overriding of the GtkListBoxRow padding
     min-height: 32px;
-    margin: -1px 0; // Remove unknown margins
+    margin: -1px 4px; // Remove unwanted hard-coded vertical margins with -1px
     padding: 0;
+    border-radius: $material_radius;
 
     // Using margins/padding directly in the SidebarRow
     // will make the animation of the new bookmark row jump
-    > revealer { padding: 0 12px; }
+    > revealer { padding: 0 8px; }
 
-    &:selected { color: $primary_color; }
+    &:selected { font-weight: 500; }
 
     &:disabled { color: $disabled_fg_color; }
 
@@ -2991,7 +2992,8 @@ placessidebar {
       &:dir(rtl) { padding-left: 2px; }
     }
 
-    &:selected image.sidebar-icon { color: inherit; }
+    &:selected image.sidebar-icon,
+    &:selected label.sidebar-label { color: inherit; }
 
     @at-root button.sidebar-button {
       @extend %simple_flat_button;
