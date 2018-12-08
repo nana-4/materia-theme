@@ -229,7 +229,7 @@ done
       #-e 's/%INACTIVE_TXT_FG%/'"$INACTIVE_TXT_FG"'/g' \
       #-e 's/%INACTIVE_MENU_FG%/'"$INACTIVE_MENU_FG"'/g' \
 
-sed -i -e 's/^$material_radius: .px/$material_radius: '"$ROUNDNESS"'px/g' ./src/_sass/gtk/_variables.scss
+sed -i -e 's/^$material_radius: .px/$material_radius: '"$ROUNDNESS"'px/g' ./src/_sass/_variables.scss
 
 if [[ "${DEBUG:-}" ]]; then
   echo "You can debug TEMP DIR: $tempdir, press [Enter] when finished"; read -r
