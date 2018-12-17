@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ueo pipefail
 
-RENDER_SVG="$(command -v rendersvg)"
+RENDER_SVG="$(command -v rendersvg)" || true
 INKSCAPE="$(command -v inkscape)"
 OPTIPNG="$(command -v optipng)"
 

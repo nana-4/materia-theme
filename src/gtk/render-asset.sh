@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ueo pipefail
 
-RENDER_SVG="$(command -v rendersvg)"
+RENDER_SVG="$(command -v rendersvg)" || true
 INKSCAPE="$(command -v inkscape)"
 OPTIPNG="$(command -v optipng)"
 
@@ -25,7 +25,7 @@ echo "Rendering '$ASSETS_DIR/$i@2.png'"
 if [[ -n "${RENDER_SVG}" ]] ; then
   "$RENDER_SVG" --export-id "$i" \
         --dpi 192 \
-         "$SRC_FILE" "$ASSETS_DIR/$i.png"
+         "$SRC_FILE" "$ASSETS_DIR/$i@2.png"
 else
   "$INKSCAPE" --export-id="$i" \
         --export-id-only \
