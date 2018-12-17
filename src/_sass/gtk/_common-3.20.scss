@@ -2222,19 +2222,9 @@ radio {
 check {
   -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-unchecked-symbolic.svg"));
 
-  &:checked {
-    -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-checked-symbolic.svg"));
-    color: $selected_checkradio_color;
-  }
+  &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-checked-symbolic.svg")); }
 
-  &:checked:disabled {
-    color: $disabled_secondary_fg_color;
-  }
-
-  &:indeterminate {
-    -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-mixed-symbolic.svg"));
-    color: $selected_checkradio_color;
-  }
+  &:indeterminate { -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-mixed-symbolic.svg")); }
 }
 
 %radio,
@@ -2243,10 +2233,7 @@ radio {
 
   // &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/radio-checked-symbolic.svg")); }
 
-  &:indeterminate {
-    -gtk-icon-source: -gtk-recolor(url("assets/scalable/radio-mixed-symbolic.svg"));
-    color: $selected_checkradio_color;
-  }
+  &:indeterminate { -gtk-icon-source: -gtk-recolor(url("assets/scalable/radio-mixed-symbolic.svg")); }
 
   border-image-slice: $check_radio_size / 2px;
   border-image-width: $check_radio_size / 2;
@@ -2257,21 +2244,19 @@ radio {
     border-image-source: -gtk-gradient(radial,
                                        center center, 0,
                                        center center, 0.001,
-                                       to($selected_checkradio_color),
+                                       to($primary_color),
                                        to(transparent));
   }
 
   &:checked:not(:indeterminate) {
-    color: $selected_checkradio_color;
     border-image-source: -gtk-gradient(radial,
                                        center center, 0,
                                        center center, $radio_indicator,
-                                       to($selected_checkradio_color),
+                                       to($primary_color),
                                        to(transparent));
   }
 
   &:checked:not(:indeterminate):disabled {
-    color: $selected_checkradio_color;
     border-image-source: -gtk-gradient(radial,
                                        center center, 0,
                                        center center, $radio_indicator,
