@@ -15,17 +15,22 @@ fi
 
 i="$2"
 
+# @TODO: remove $ZOOM when it will be fixed/implemented in resvg
 GTK2_HIDPI="$(echo "${GTK2_HIDPI-False}" | tr '[:upper:]' '[:lower:]')"
 if [[ "${GTK2_HIDPI}" == "true" ]] ; then
   DPI=192
+  ZOOM=2
 else
   DPI=96
+  ZOOM=1
 fi
 
 echo "Rendering '$ASSETS_DIR/$i.png'"
 if [[ -n "${RENDER_SVG}" ]] ; then
+	# @TODO: remove --zoom when it will be fixed/implemented in resvg
   "$RENDER_SVG" --export-id "$i" \
         --dpi ${DPI} \
+        --zoom ${ZOOM} \
          "$SRC_FILE" "$ASSETS_DIR/$i.png"
 else
   "$INKSCAPE" --export-id="$i" \

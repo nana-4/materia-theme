@@ -23,8 +23,10 @@ fi
 
 echo "Rendering '$ASSETS_DIR/$i@2.png'"
 if [[ -n "${RENDER_SVG}" ]] ; then
+	# @TODO: remove --zoom when it will be fixed/implemented in resvg
   "$RENDER_SVG" --export-id "$i" \
         --dpi 192 \
+        --zoom 2 \
          "$SRC_FILE" "$ASSETS_DIR/$i@2.png"
 else
   "$INKSCAPE" --export-id="$i" \
