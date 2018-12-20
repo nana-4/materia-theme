@@ -61,13 +61,11 @@ Solus | [`materia-gtk-theme`](https://dev.getsol.us/source/materia-gtk-theme/)
 
 ### Flatpak
 
-3 variants (Materia, Materia-dark, Materia-light) are available via Flathub:
+All 6 variants are available via Flathub:
 
 ```
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub org.gtk.Gtk3theme.Materia
-flatpak install flathub org.gtk.Gtk3theme.Materia-dark
-flatpak install flathub org.gtk.Gtk3theme.Materia-light
+flatpak install flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact}
 ```
 
 ### Manual Installation
@@ -96,7 +94,7 @@ Option | Description
 Delete the installed directories:
 
 ```sh
-sudo rm -rf /usr/share/themes/Materia{,-compact,-dark,-dark-compact,-light,-light-compact}
+sudo rm -rf /usr/share/themes/Materia{,-dark,-light}{,-compact}
 ```
 
 ## Recommendations
