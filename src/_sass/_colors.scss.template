@@ -19,13 +19,13 @@ $track_color:                 rgba(%FG%, 0.3);
 $divider_color:               rgba(%FG%, 0.12);
 $fill_color:                  rgba(%FG%, 0.04);
 
-$titlebar_fg_color:                    %MENU_FG%;
-$titlebar_secondary_fg_color:          rgba(%MENU_FG%, 0.7);
-$titlebar_disabled_fg_color:           rgba(%MENU_FG%, 0.5);
-$titlebar_disabled_secondary_fg_color: rgba(%MENU_FG%, 0.3);
-$titlebar_track_color:                 rgba(%MENU_FG%, 0.3);
-$titlebar_divider_color:               rgba(%MENU_FG%, 0.12);
-$titlebar_fill_color:                  rgba(%MENU_FG%, 0.04);
+$titlebar_fg_color:                    %HDR_FG%;
+$titlebar_secondary_fg_color:          rgba(%HDR_FG%, 0.7);
+$titlebar_disabled_fg_color:           rgba(%HDR_FG%, 0.5);
+$titlebar_disabled_secondary_fg_color: rgba(%HDR_FG%, 0.3);
+$titlebar_track_color:                 rgba(%HDR_FG%, 0.3);
+$titlebar_divider_color:               rgba(%HDR_FG%, 0.12);
+$titlebar_fill_color:                  rgba(%HDR_FG%, 0.04);
 
 $inverse_fg_color:                    %SEL_FG%;
 $inverse_secondary_fg_color:          rgba(%SEL_FG%, 0.7);
@@ -40,17 +40,17 @@ $bg_color:             %BG%;
 $base_color:           %TXT_BG%;
 $alt_base_color:       %INACTIVE_TXT_BG%;
 $surface_color:        %BTN_BG%;
-$alt_lighter_bg_color: if($variant == 'light', %BG2%, %MENU_BG%); // for gnome-shell sub menu
+$alt_lighter_bg_color: if($variant == 'light', %BG2%, %HDR_BG%); // for gnome-shell sub menu
 
-$titlebar_bg_color: %MENU_BG%;
+$titlebar_bg_color: %HDR_BG%;
 
 $panel_bg_color:         rgba(black, %GNOME_SHELL_PANEL_OPACITY%);
 $alt_panel_bg_color:     rgba(black, 0.3);
 $inverse_panel_bg_color: rgba(white, 0.1);
-$solid_panel_bg_color:   if($titlebar == 'dark', %MENU_BG3%, $panel_bg_color);
-$opaque_panel_bg_color:  %MENU_BG3%; // for Unity panel which cannot use translucent colors
+$solid_panel_bg_color:   if($titlebar == 'dark', %HDR_BG3%, $panel_bg_color);
+$opaque_panel_bg_color:  %HDR_BG3%; // for Unity panel which cannot use translucent colors
 
-$gdm_bg_color: %MENU_BG3%;
+$gdm_bg_color: %HDR_BG3%;
 
 $hover_overlay_color:       gtkalpha(currentColor, 0.08);
 $focus_overlay_color:       gtkalpha(currentColor, 0.12);
@@ -78,8 +78,8 @@ $question_bg_color: $info_bg_color;
 $warning_bg_color:  $warning_color;
 $error_bg_color:    $error_color;
 
-$tooltip_bg_color: rgba(%MENU_BG%, 0.9);
-$tooltip_fg_color: %MENU_FG%;
+$tooltip_bg_color: rgba(%HDR_BG%, 0.9);
+$tooltip_fg_color: %HDR_FG%;
 
 $border_color:             if($variant == 'light', rgba(black, 0.12), rgba(black, 0.26));
 $alt_border_color:         rgba(black, 0.26); // for non-native GTK+ apps (e.g. Firefox and Chrome)
