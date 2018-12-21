@@ -7,50 +7,50 @@
 
   <defs>
     <linearGradient id="color-fg">
-      <stop stop-color="#000000" stop-opacity="0.87"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.87"/>
     </linearGradient>
 
     <linearGradient id="color-fg-disabled">
-      <stop stop-color="#000000" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.38"/>
     </linearGradient>
 
     <linearGradient id="color-fg-secondary">
-      <stop stop-color="#000000" stop-opacity="0.54"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.54"/>
     </linearGradient>
 
     <linearGradient id="color-fg-secondary-disabled">
-      <stop stop-color="#000000" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.26"/>
     </linearGradient>
 
     <linearGradient id="color-divider">
-      <stop stop-color="#000000" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.12"/>
     </linearGradient>
 
     <linearGradient id="color-primary">
-      <stop stop-color="#4285F4"/>
+      <stop offset="1" stop-color="#4285F4"/>
     </linearGradient>
 
     <linearGradient id="color-bg">
-      <stop stop-color="#F2F2F2"/>
+      <stop offset="1" stop-color="#F2F2F2"/>
     </linearGradient>
 
     <linearGradient id="color-surface">
-      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
     </linearGradient>
 
     <linearGradient id="color-base">
-      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
     </linearGradient>
 
     <linearGradient id="color-base-alt">
-      <stop stop-color="#FAFAFA"/>
+      <stop offset="1" stop-color="#FAFAFA"/>
     </linearGradient>
 
     <linearGradient id="color-border">
-      <stop stop-color="#000000" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.12"/>
     </linearGradient>
 
-    <filter id="1" color-interpolation-filters="sRGB" x="0" y="0" width="1" height="1">
+    <filter id="z1" color-interpolation-filters="sRGB" x="0" y="0" width="1" height="1">
       <!-- <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.12"/> -->
       <!-- <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.24"/> -->
 
@@ -67,13 +67,13 @@
       <feComposite in="fbSourceGraphic" in2="offset" result="composite2"/>
     </filter>
 
-    <rect id="1x1" width="1" height="1"/>
-    <rect id="2x2" width="2" height="2"/>
-    <rect id="4x4" width="4" height="4"/>
+    <rect id="w1h1" width="1" height="1"/>
+    <rect id="w2h2" width="2" height="2"/>
+    <rect id="w4h4" width="4" height="4"/>
 
-    <rect id="16x16" width="16" height="16" opacity="0"/>
-    <rect id="17x17" width="17" height="17" opacity="0"/>
-    <rect id="24x24" width="24" height="24" opacity="0"/>
+    <rect id="w16h16" width="16" height="16" opacity="0"/>
+    <rect id="w17h17" width="17" height="17" opacity="0"/>
+    <rect id="w24h24" width="24" height="24" opacity="0"/>
 
     <clipPath id="left">
       <rect width="10" height="20"/>
@@ -104,20 +104,20 @@
     <use xlink:href="#base-box" id="base-flat-button-active" fill="url(#color-fg)" opacity="0.2"/>
     <use xlink:href="#base-box" id="base-flat-button-disabled" fill="url(#color-fg)" opacity="0"/>
 
-    <use xlink:href="#base-box" id="base-button" fill="url(#color-surface)" filter="url(#1)"/>
-    <use xlink:href="#base-button" id="base-button-hover" filter="url(#1)"/>
+    <use xlink:href="#base-box" id="base-button" fill="url(#color-surface)" filter="url(#z1)"/>
+    <use xlink:href="#base-button" id="base-button-hover" filter="url(#z1)"/>
     <g id="base-button-active">
       <use xlink:href="#base-button-hover"/>
       <use xlink:href="#base-flat-button-active"/>
     </g>
     <use xlink:href="#base-box" id="base-button-disabled" fill="url(#color-divider)"/>
 
-    <use xlink:href="#1x1" id="base-entry-background" fill="url(#color-base)"/>
-    <use xlink:href="#1x1" id="base-entry-background-disabled" fill="url(#color-base-alt)"/>
+    <use xlink:href="#w1h1" id="base-entry-background" fill="url(#color-base)"/>
+    <use xlink:href="#w1h1" id="base-entry-background-disabled" fill="url(#color-base-alt)"/>
 
-    <use xlink:href="#base-box" id="base-entry-box" fill="url(#color-base)" filter="url(#1)"/>
-    <use xlink:href="#base-entry-box" id="base-entry-box-active" filter="url(#1)"/>
-    <use xlink:href="#base-box" id="base-entry-box-disabled" fill="url(#color-base-alt)" filter="url(#1)"/>
+    <use xlink:href="#base-box" id="base-entry-box" fill="url(#color-base)" filter="url(#z1)"/>
+    <use xlink:href="#base-entry-box" id="base-entry-box-active" filter="url(#z1)"/>
+    <use xlink:href="#base-box" id="base-entry-box-disabled" fill="url(#color-base-alt)" filter="url(#z1)"/>
 
     <rect id="background-fill" width="20" height="20"/>
 
@@ -221,32 +221,32 @@
     </g>
 
     <g id="base-menu-checkbox-unchecked">
-      <use xlink:href="#16x16"/>
+      <use xlink:href="#w16h16"/>
       <use xlink:href="#menu-checkbox-unchecked-path"/>
     </g>
 
     <g id="base-menu-checkbox-checked">
-      <use xlink:href="#16x16"/>
+      <use xlink:href="#w16h16"/>
       <use xlink:href="#menu-checkbox-checked-path"/>
     </g>
 
     <g id="base-menu-checkbox-mixed">
-      <use xlink:href="#16x16"/>
+      <use xlink:href="#w16h16"/>
       <use xlink:href="#menu-checkbox-mixed-path"/>
     </g>
 
     <g id="base-menu-radio-unchecked">
-      <use xlink:href="#16x16"/>
+      <use xlink:href="#w16h16"/>
       <use xlink:href="#menu-radio-unchecked-path"/>
     </g>
 
     <g id="base-menu-radio-checked">
-      <use xlink:href="#16x16"/>
+      <use xlink:href="#w16h16"/>
       <use xlink:href="#menu-radio-checked-path"/>
     </g>
 
     <g id="base-menu-radio-mixed">
-      <use xlink:href="#16x16"/>
+      <use xlink:href="#w16h16"/>
       <use xlink:href="#menu-radio-mixed-path"/>
     </g>
 
@@ -272,17 +272,17 @@
     </g>
 
     <g id="base-scale-horz-trough">
-      <use xlink:href="#24x24"/>
+      <use xlink:href="#w24h24"/>
       <rect width="12" height="2" x="6" y="11"/>
     </g>
 
     <g id="base-scale-vert-trough">
-      <use xlink:href="#24x24"/>
+      <use xlink:href="#w24h24"/>
       <rect width="2" height="12" x="11" y="6"/>
     </g>
 
     <g id="base-scrollbar-horz-slider">
-      <use xlink:href="#17x17" y="-1"/>
+      <use xlink:href="#w17h17" y="-1"/>
       <rect width="9" height="8" x="4" y="4" rx="4"/>
     </g>
 
@@ -310,74 +310,74 @@
     <path id="pan-path" d="M13 6l-5 5-5-5z"/>
 
     <g id="base-pan-down">
-      <use xlink:href="#16x16"/>
+      <use xlink:href="#w16h16"/>
       <use xlink:href="#pan-path"/>
     </g>
 
     <g id="base-pan-up">
-      <use xlink:href="#16x16"/>
+      <use xlink:href="#w16h16"/>
       <use xlink:href="#pan-path" transform="rotate(180 8 8)"/>
     </g>
 
     <g id="base-pan-left">
-      <use xlink:href="#16x16"/>
+      <use xlink:href="#w16h16"/>
       <use xlink:href="#pan-path" transform="rotate(90 8 8)"/>
     </g>
 
     <g id="base-pan-right">
-      <use xlink:href="#16x16"/>
+      <use xlink:href="#w16h16"/>
       <use xlink:href="#pan-path" transform="rotate(-90 8 8)"/>
     </g>
 
     <g id="base-pan-left-semi">
-      <use xlink:href="#16x16"/>
+      <use xlink:href="#w16h16"/>
       <use xlink:href="#pan-path" transform="rotate(45 8 8)"/>
     </g>
 
     <g id="base-pan-right-semi">
-      <use xlink:href="#16x16"/>
+      <use xlink:href="#w16h16"/>
       <use xlink:href="#pan-path" transform="rotate(-45 8 8)"/>
     </g>
 
-    <use xlink:href="#1x1" id="base-border" fill="url(#color-border)"/>
+    <use xlink:href="#w1h1" id="base-border" fill="url(#color-border)"/>
 
-    <use xlink:href="#1x1" id="base-tab" fill="url(#color-primary)"/>
+    <use xlink:href="#w1h1" id="base-tab" fill="url(#color-primary)"/>
 
-    <use xlink:href="#4x4" id="base-progressbar-progress" fill="url(#color-primary)"/>
+    <use xlink:href="#w4h4" id="base-progressbar-progress" fill="url(#color-primary)"/>
 
     <g id="base-progressbar-trough">
-      <use xlink:href="#4x4" fill="url(#color-bg)"/>
-      <use xlink:href="#4x4" fill="url(#color-divider)"/>
+      <use xlink:href="#w4h4" fill="url(#color-bg)"/>
+      <use xlink:href="#w4h4" fill="url(#color-divider)"/>
     </g>
 
     <rect id="base-frame" x="0.5" y="0.5" width="2" height="2" fill="none" stroke="url(#color-border)" stroke-width="1"/>
 
     <g id="base-frame-notebook">
       <rect width="3" height="3" fill="url(#color-border)"/>
-      <use xlink:href="#1x1" x="1" y="1" fill="url(#color-base)"/>
+      <use xlink:href="#w1h1" x="1" y="1" fill="url(#color-base)"/>
     </g>
 
     <g id="base-frame-inline">
       <rect width="3" height="2" fill="url(#color-border)"/>
-      <use xlink:href="#1x1" x="1" fill="url(#color-base-alt)"/>
+      <use xlink:href="#w1h1" x="1" fill="url(#color-base-alt)"/>
     </g>
 
     <rect id="base-focus" x="1" y="1" width="8" height="8" rx="3" fill="none" stroke="url(#color-fg)" stroke-width="2" opacity="0.24"/>
 
     <g id="base-treeview-ltr-button">
-      <use xlink:href="#2x2" fill="url(#color-base)"/>
-      <use xlink:href="#2x2" fill="url(#color-border)"/>
-      <use xlink:href="#1x1" fill="url(#color-base)"/>
+      <use xlink:href="#w2h2" fill="url(#color-base)"/>
+      <use xlink:href="#w2h2" fill="url(#color-border)"/>
+      <use xlink:href="#w1h1" fill="url(#color-base)"/>
     </g>
 
     <g id="base-treeview-ltr-button-hover">
       <use xlink:href="#base-treeview-ltr-button"/>
-      <use xlink:href="#1x1" fill="url(#color-fg)" opacity="0.08"/>
+      <use xlink:href="#w1h1" fill="url(#color-fg)" opacity="0.08"/>
     </g>
 
     <g id="base-treeview-ltr-button-active">
       <use xlink:href="#base-treeview-ltr-button"/>
-      <use xlink:href="#1x1" fill="url(#color-fg)" opacity="0.2"/>
+      <use xlink:href="#w1h1" fill="url(#color-fg)" opacity="0.2"/>
     </g>
 
     <use xlink:href="#base-treeview-ltr-button" id="base-treeview-rtl-button" transform="scale(-1 1)"/>
