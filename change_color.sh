@@ -22,7 +22,7 @@ print_usage() {
   echo "usage: $0 [-o OUTPUT_THEME_NAME] [-p PATH_LIST] PATH_TO_PRESET"
   echo "examples:"
   # shellcheck disable=SC2028 # This is meant to be usage text.
-  echo "       $0 -o my-theme-name <(echo -e \"ROUNDNESS=0\\nBG=d8d8d8\\nFG=101010\\nMENU_BG=3c3c3c\\nMENU_FG=e6e6e6\\nSEL_BG=ad7fa8\\nSEL_FG=ffffff\\nTXT_BG=ffffff\\nTXT_FG=1a1a1a\\nBTN_BG=f5f5f5\\nBTN_FG=111111\\n\")"
+  echo "       $0 -o my-theme-name <(echo -e \"ROUNDNESS=0\\nBG=d8d8d8\\nFG=101010\\nHDR_BG=3c3c3c\\nHDR_FG=e6e6e6\\nSEL_BG=ad7fa8\\nSEL_FG=ffffff\\nTXT_BG=ffffff\\nTXT_FG=1a1a1a\\nBTN_BG=f5f5f5\\nBTN_FG=111111\\n\")"
   echo "       $0 ../colors/retro/twg"
   echo "       $0 --hidpi True ../colors/retro/clearlooks"
   exit 1
@@ -103,15 +103,19 @@ fi
 if [[ $(date +"%m%d") = "0401" ]] && grep -q "no-jokes" <<< "$*"; then
   echo -e "\\n\\nError patching uxtheme.dll\\n\\n"
   ACCENT_BG=000000 BG=C0C0C0 BTN_BG=C0C0C0 BTN_FG=000000 FG=000000
-  GNOME_SHELL_PANEL_OPACITY=1 HDR_BTN_BG=C0C0C0 HDR_BTN_FG=000000 MENU_BG=C0C0C0
-  MENU_FG=000000 SEL_BG=000080 SEL_FG=FFFFFF TXT_BG=FFFFFF TXT_FG=000000
+  GNOME_SHELL_PANEL_OPACITY=1 HDR_BTN_BG=C0C0C0 HDR_BTN_FG=000000 HDR_BG=C0C0C0
+  HDR_FG=000000 SEL_BG=000080 SEL_FG=FFFFFF TXT_BG=FFFFFF TXT_FG=000000
 fi
+
+# Migration:
+HDR_BG=${HDR_BG-$MENU_BG}
+HDR_FG=${HDR_FG-$MENU_FG}
 
 ACCENT_BG=${ACCENT_BG-$SEL_BG}
 HDR_BTN_BG=${HDR_BTN_BG-$BTN_BG}
 HDR_BTN_FG=${HDR_BTN_FG-$BTN_FG}
 WM_BORDER_FOCUS=${WM_BORDER_FOCUS-$SEL_BG}
-WM_BORDER_UNFOCUS=${WM_BORDER_UNFOCUS-$MENU_BG}
+WM_BORDER_UNFOCUS=${WM_BORDER_UNFOCUS-$HDR_BG}
 
 MATERIA_STYLE_COMPACT=$(tr '[:upper:]' '[:lower:]' <<< "${MATERIA_STYLE_COMPACT-True}")
 MATERIA_COLOR_VARIANT=$(tr '[:upper:]' '[:lower:]' <<< "${MATERIA_COLOR_VARIANT:-}")
@@ -125,8 +129,8 @@ ROUNDNESS_GTK2_HIDPI=$(( ROUNDNESS * 2 ))
 GNOME_SHELL_PANEL_OPACITY=${GNOME_SHELL_PANEL_OPACITY-0.6}
 
 INACTIVE_FG=$(mix "$FG" "$BG" 0.75)
-INACTIVE_MENU_FG=$(mix "$MENU_FG" "$MENU_BG" 0.75)
-INACTIVE_MENU_BG=$(mix "$MENU_BG" "$MENU_FG" 0.75)
+INACTIVE_HDR_FG=$(mix "$HDR_FG" "$HDR_BG" 0.75)
+INACTIVE_HDR_BG=$(mix "$HDR_BG" "$HDR_FG" 0.75)
 INACTIVE_TXT_FG=$(mix "$TXT_FG" "$TXT_BG" 0.75)
 INACTIVE_TXT_BG=$(mix "$TXT_BG" "$BG" 0.60)
 
@@ -168,7 +172,7 @@ if [[ -z "$MATERIA_COLOR_VARIANT" ]]; then
   if is_dark "$BG"; then
     echo "== Dark background color detected. Setting color variant to dark."
     MATERIA_COLOR_VARIANT="dark"
-  elif is_dark "$MENU_BG"; then
+  elif is_dark "$HDR_BG"; then
     echo "== Dark headerbar background color detected. Setting color variant to standard."
     MATERIA_COLOR_VARIANT="standard"
   else
@@ -193,9 +197,9 @@ for FILEPATH in "${PATHLIST[@]}"; do
       -e 's/#01A299/%ACCENT_BG%/g' \
       -e 's/#4285F4/%SEL_BG%/g' \
       -e 's/#FFFFFF/%TXT_BG%/g' \
-      -e 's/#383838/%MENU_BG%/g' \
-      -e 's/#E0E0E0/%MENU_BG%/g' \
-      -e 's/#212121/%MENU_BG2%/g' \
+      -e 's/#383838/%HDR_BG%/g' \
+      -e 's/#E0E0E0/%HDR_BG%/g' \
+      -e 's/#212121/%HDR_BG2%/g' \
       -e 's/Materia/%OUTPUT_THEME_NAME%/g' \
       {} \; ;
   else
@@ -212,8 +216,8 @@ for FILEPATH in "${PATHLIST[@]}"; do
       -e 's/#4285F4/%SEL_BG%/g' \
       -e 's/#FFFFFF/%TXT_FG%/g' \
       -e 's/#303030/%TXT_BG%/g' \
-      -e 's/#383838/%MENU_BG%/g' \
-      -e 's/#212121/%MENU_BG2%/g' \
+      -e 's/#383838/%HDR_BG%/g' \
+      -e 's/#212121/%HDR_BG2%/g' \
       -e 's/Materia/%OUTPUT_THEME_NAME%/g' \
       {} \; ;
   fi
@@ -227,7 +231,7 @@ done
       #-e 's/%SPACING%/'"$SPACING"'/g' \
       #-e 's/%INACTIVE_FG%/'"$INACTIVE_FG"'/g' \
       #-e 's/%INACTIVE_TXT_FG%/'"$INACTIVE_TXT_FG"'/g' \
-      #-e 's/%INACTIVE_MENU_FG%/'"$INACTIVE_MENU_FG"'/g' \
+      #-e 's/%INACTIVE_HDR_FG%/'"$INACTIVE_HDR_FG"'/g' \
 
 sed -i -e 's/^$material_radius: .px/$material_radius: '"$ROUNDNESS"'px/g' ./src/_sass/_variables.scss
 
@@ -249,10 +253,10 @@ for FILEPATH in "${PATHLIST[@]}"; do
     -e 's/%SEL_FG%/#'"$SEL_FG"'/g' \
     -e 's/%TXT_BG%/#'"$TXT_BG"'/g' \
     -e 's/%TXT_FG%/#'"$TXT_FG"'/g' \
-    -e 's/%MENU_BG%/#'"$MENU_BG"'/g' \
-    -e 's/%MENU_BG2%/#'"$(darker $MENU_BG 10)"'/g' \
-    -e 's/%MENU_BG3%/#'"$(darker $MENU_BG 20)"'/g' \
-    -e 's/%MENU_FG%/#'"$MENU_FG"'/g' \
+    -e 's/%HDR_BG%/#'"$HDR_BG"'/g' \
+    -e 's/%HDR_BG2%/#'"$(darker $HDR_BG 10)"'/g' \
+    -e 's/%HDR_BG3%/#'"$(darker $HDR_BG 20)"'/g' \
+    -e 's/%HDR_FG%/#'"$HDR_FG"'/g' \
     -e 's/%BTN_BG%/#'"$BTN_BG"'/g' \
     -e 's/%BTN_FG%/#'"$BTN_FG"'/g' \
     -e 's/%HDR_BTN_BG%/#'"$HDR_BTN_BG"'/g' \
@@ -263,8 +267,8 @@ for FILEPATH in "${PATHLIST[@]}"; do
     -e 's/%INACTIVE_FG%/#'"$INACTIVE_FG"'/g' \
     -e 's/%INACTIVE_TXT_FG%/#'"$INACTIVE_TXT_FG"'/g' \
     -e 's/%INACTIVE_TXT_BG%/#'"$INACTIVE_TXT_BG"'/g' \
-    -e 's/%INACTIVE_MENU_FG%/#'"$INACTIVE_MENU_FG"'/g' \
-    -e 's/%INACTIVE_MENU_BG%/#'"$INACTIVE_MENU_BG"'/g' \
+    -e 's/%INACTIVE_HDR_FG%/#'"$INACTIVE_HDR_FG"'/g' \
+    -e 's/%INACTIVE_HDR_BG%/#'"$INACTIVE_HDR_BG"'/g' \
     -e 's/%TERMINAL_COLOR4%/#'"$TERMINAL_COLOR4"'/g' \
     -e 's/%TERMINAL_COLOR5%/#'"$TERMINAL_COLOR5"'/g' \
     -e 's/%TERMINAL_COLOR9%/#'"$TERMINAL_COLOR9"'/g' \
