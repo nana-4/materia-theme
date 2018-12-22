@@ -22,7 +22,7 @@ print_usage() {
   echo "usage: $0 [-o OUTPUT_THEME_NAME] [-p PATH_LIST] PATH_TO_PRESET"
   echo "examples:"
   # shellcheck disable=SC2028 # This is meant to be usage text.
-  echo "       $0 -o my-theme-name <(echo -e \"ROUNDNESS=0\\nBG=d8d8d8\\nFG=101010\\nHDR_BG=3c3c3c\\nHDR_FG=e6e6e6\\nSEL_BG=ad7fa8\\nSEL_FG=ffffff\\nTXT_BG=ffffff\\nTXT_FG=1a1a1a\\nBTN_BG=f5f5f5\\nBTN_FG=111111\\n\")"
+  echo "       $0 -o my-theme-name <(echo -e \"ROUNDNESS=0\\nBG=d8d8d8\\nFG=101010\\nHDR_BG=3c3c3c\\nHDR_FG=e6e6e6\\nSEL_BG=ad7fa8\\nMATERIA_VIEW=ffffff\\nMATERIA_SURFACE=f5f5f5\\n\")"
   echo "       $0 ../colors/retro/twg"
   echo "       $0 --hidpi True ../colors/retro/clearlooks"
   exit 1
@@ -75,7 +75,7 @@ PATHLIST=(
   './src/unity'
   './src/xfwm4'
 )
-if [[ ! -z "${CUSTOM_PATHLIST:-}" ]]; then
+if [[ -n "${CUSTOM_PATHLIST:-}" ]]; then
   IFS=', ' read -r -a PATHLIST <<< "${CUSTOM_PATHLIST:-}"
 fi
 
@@ -102,37 +102,28 @@ else
 fi
 if [[ $(date +"%m%d") = "0401" ]] && grep -q "no-jokes" <<< "$*"; then
   echo -e "\\n\\nError patching uxtheme.dll\\n\\n"
-  ACCENT_BG=000000 BG=C0C0C0 BTN_BG=C0C0C0 BTN_FG=000000 FG=000000
-  GNOME_SHELL_PANEL_OPACITY=1 HDR_BTN_BG=C0C0C0 HDR_BTN_FG=000000 HDR_BG=C0C0C0
-  HDR_FG=000000 SEL_BG=000080 SEL_FG=FFFFFF TXT_BG=FFFFFF TXT_FG=000000
+  BG=C0C0C0 MATERIA_SURFACE=C0C0C0 FG=000000 MATERIA_PANEL_OPACITY=1
+  HDR_BG=C0C0C0 HDR_FG=000000 SEL_BG=000080 MATERIA_VIEW=FFFFFF
 fi
 
 # Migration:
 HDR_BG=${HDR_BG-$MENU_BG}
 HDR_FG=${HDR_FG-$MENU_FG}
-
-ACCENT_BG=${ACCENT_BG-$SEL_BG}
-HDR_BTN_BG=${HDR_BTN_BG-$BTN_BG}
-HDR_BTN_FG=${HDR_BTN_FG-$BTN_FG}
-WM_BORDER_FOCUS=${WM_BORDER_FOCUS-$SEL_BG}
-WM_BORDER_UNFOCUS=${WM_BORDER_UNFOCUS-$HDR_BG}
+MATERIA_VIEW=${MATERIA_VIEW-$TXT_BG}
+MATERIA_SURFACE=${MATERIA_SURFACE-$BTN_BG}
+MATERIA_PANEL_OPACITY=${MATERIA_PANEL_OPACITY-$GNOME_SHELL_PANEL_OPACITY}
 
 MATERIA_STYLE_COMPACT=$(tr '[:upper:]' '[:lower:]' <<< "${MATERIA_STYLE_COMPACT-True}")
 MATERIA_COLOR_VARIANT=$(tr '[:upper:]' '[:lower:]' <<< "${MATERIA_COLOR_VARIANT:-}")
-UNITY_DEFAULT_LAUNCHER_STYLE=$(tr '[:upper:]' '[:lower:]' <<< "${UNITY_DEFAULT_LAUNCHER_STYLE-False}")
 
 SPACING=${SPACING-3}
-GRADIENT=${GRADIENT-0}
 ROUNDNESS=${ROUNDNESS-2}
 # shellcheck disable=SC2034 # will this be used in the future?
 ROUNDNESS_GTK2_HIDPI=$(( ROUNDNESS * 2 ))
-GNOME_SHELL_PANEL_OPACITY=${GNOME_SHELL_PANEL_OPACITY-0.6}
+MATERIA_PANEL_OPACITY=${MATERIA_PANEL_OPACITY-0.6}
 
 INACTIVE_FG=$(mix "$FG" "$BG" 0.75)
-INACTIVE_HDR_FG=$(mix "$HDR_FG" "$HDR_BG" 0.75)
-INACTIVE_HDR_BG=$(mix "$HDR_BG" "$HDR_FG" 0.75)
-INACTIVE_TXT_FG=$(mix "$TXT_FG" "$TXT_BG" 0.75)
-INACTIVE_TXT_BG=$(mix "$TXT_BG" "$BG" 0.60)
+INACTIVE_MATERIA_VIEW=$(mix "$MATERIA_VIEW" "$BG" 0.60)
 
 TERMINAL_COLOR4=${TERMINAL_COLOR4:-1E88E5}
 TERMINAL_COLOR5=${TERMINAL_COLOR5:-E040FB}
@@ -141,13 +132,6 @@ TERMINAL_COLOR10=${TERMINAL_COLOR10:-00C853}
 TERMINAL_COLOR11=${TERMINAL_COLOR11:-FF6D00}
 TERMINAL_COLOR12=${TERMINAL_COLOR12:-66BB6A}
 
-# Are these intended to be used in the future?
-# shellcheck disable=SC2034
-light_folder_base_fallback=$(darker "$SEL_BG" -10)
-# shellcheck disable=SC2034
-medium_base_fallback=$(darker "$SEL_BG" 37)
-# shellcheck disable=SC2034
-dark_stroke_fallback=$(darker "$SEL_BG" 50)
 
 OUTPUT_THEME_NAME=${OUTPUT_THEME_NAME-oomox-$THEME}
 DEST_PATH="$HOME/.themes/${OUTPUT_THEME_NAME/\//-}"
@@ -184,6 +168,7 @@ fi
 
 echo "== Converting theme into template..."
 
+      #-e 's/#FAFAFA/%MATERIA_SURFACE%/g' \
 for FILEPATH in "${PATHLIST[@]}"; do
   if [[ "$MATERIA_COLOR_VARIANT"  != "dark" ]]; then
     find "$FILEPATH" -type f -not -name '_color-palette.scss' -exec sed -i'' \
@@ -191,16 +176,17 @@ for FILEPATH in "${PATHLIST[@]}"; do
       -e 's/#212121/%FG%/g' \
       -e 's/#757575/%INACTIVE_FG%/g' \
       -e 's/#BDBDBD/%INACTIVE_FG%/g' \
-      -e 's/#FAFAFA/%INACTIVE_TXT_BG%/g' \
+      -e 's/#FAFAFA/%INACTIVE_MATERIA_VIEW%/g' \
       -e 's/#F2F2F2/%BG%/g' \
-      -e 's/#FAFAFA/%BTN_BG%/g' \
-      -e 's/#01A299/%ACCENT_BG%/g' \
       -e 's/#4285F4/%SEL_BG%/g' \
-      -e 's/#FFFFFF/%TXT_BG%/g' \
+      -e 's/#FFFFFF/%MATERIA_VIEW%/g' \
       -e 's/#383838/%HDR_BG%/g' \
       -e 's/#E0E0E0/%HDR_BG%/g' \
-      -e 's/#212121/%HDR_BG2%/g' \
       -e 's/Materia/%OUTPUT_THEME_NAME%/g' \
+      -e 's/#282828/%HDR_BG%/g' \
+      -e 's/#303030/%MATERIA_VIEW%/g' \
+      -e 's/#2C2C2C/%INACTIVE_MATERIA_VIEW%/g' \
+      -e 's/#424242/%MATERIA_SURFACE%/g' \
       {} \; ;
   else
     find "$FILEPATH" -type f -not -name '_color-palette.scss' -exec sed -i'' \
@@ -208,31 +194,25 @@ for FILEPATH in "${PATHLIST[@]}"; do
       -e 's/#282828/%BG%/g' \
       -e 's/#757575/%INACTIVE_FG%/g' \
       -e 's/#BDBDBD/%INACTIVE_FG%/g' \
-      -e 's/#2C2C2C/%INACTIVE_TXT_BG%/g' \
+      -e 's/#2C2C2C/%INACTIVE_MATERIA_VIEW%/g' \
       -e 's/#FFFFFF/%FG%/g' \
-      -e 's/#FAFAFA/%BTN_FG%/g' \
-      -e 's/#424242/%BTN_BG%/g' \
-      -e 's/#01A299/%ACCENT_BG%/g' \
+      -e 's/#FAFAFA/%FG%/g' \
+      -e 's/#424242/%MATERIA_SURFACE%/g' \
       -e 's/#4285F4/%SEL_BG%/g' \
-      -e 's/#FFFFFF/%TXT_FG%/g' \
-      -e 's/#303030/%TXT_BG%/g' \
+      -e 's/#303030/%MATERIA_VIEW%/g' \
       -e 's/#383838/%HDR_BG%/g' \
       -e 's/#212121/%HDR_BG2%/g' \
       -e 's/Materia/%OUTPUT_THEME_NAME%/g' \
+      -e 's/#F2F2F2/%FG%/g' \
+      -e 's/#E0E0E0/%HDR_FG%/g' \
       {} \; ;
   fi
 done
 
 #Not implemented yet:
-      #-e 's/%HDR_BTN_BG%/'"$HDR_BTN_BG"'/g' \
-      #-e 's/%HDR_BTN_FG%/'"$HDR_BTN_FG"'/g' \
-      #-e 's/%WM_BORDER_FOCUS%/'"$WM_BORDER_FOCUS"'/g' \
-      #-e 's/%WM_BORDER_UNFOCUS%/'"$WM_BORDER_UNFOCUS"'/g' \
       #-e 's/%SPACING%/'"$SPACING"'/g' \
-      #-e 's/%INACTIVE_FG%/'"$INACTIVE_FG"'/g' \
-      #-e 's/%INACTIVE_TXT_FG%/'"$INACTIVE_TXT_FG"'/g' \
-      #-e 's/%INACTIVE_HDR_FG%/'"$INACTIVE_HDR_FG"'/g' \
 
+# shellcheck disable=SC2016
 sed -i -e 's/^$material_radius: .px/$material_radius: '"$ROUNDNESS"'px/g' ./src/_sass/_variables.scss
 
 if [[ "${DEBUG:-}" ]]; then
@@ -247,28 +227,17 @@ for FILEPATH in "${PATHLIST[@]}"; do
     -e 's/%BG%/#'"$BG"'/g' \
     -e 's/%BG2%/#'"$(darker $BG)"'/g' \
     -e 's/%FG%/#'"$FG"'/g' \
-    -e 's/%ACCENT_BG%/#'"$ACCENT_BG"'/g' \
     -e 's/%SEL_BG%/#'"$SEL_BG"'/g' \
     -e 's/%SEL_BG2%/#'"$(darker $SEL_BG -20)"'/g' \
-    -e 's/%SEL_FG%/#'"$SEL_FG"'/g' \
-    -e 's/%TXT_BG%/#'"$TXT_BG"'/g' \
-    -e 's/%TXT_FG%/#'"$TXT_FG"'/g' \
+    -e 's/%MATERIA_VIEW%/#'"$MATERIA_VIEW"'/g' \
     -e 's/%HDR_BG%/#'"$HDR_BG"'/g' \
     -e 's/%HDR_BG2%/#'"$(darker $HDR_BG 10)"'/g' \
     -e 's/%HDR_BG3%/#'"$(darker $HDR_BG 20)"'/g' \
     -e 's/%HDR_FG%/#'"$HDR_FG"'/g' \
-    -e 's/%BTN_BG%/#'"$BTN_BG"'/g' \
-    -e 's/%BTN_FG%/#'"$BTN_FG"'/g' \
-    -e 's/%HDR_BTN_BG%/#'"$HDR_BTN_BG"'/g' \
-    -e 's/%HDR_BTN_FG%/#'"$HDR_BTN_FG"'/g' \
-    -e 's/%WM_BORDER_FOCUS%/#'"$WM_BORDER_FOCUS"'/g' \
-    -e 's/%WM_BORDER_UNFOCUS%/#'"$WM_BORDER_UNFOCUS"'/g' \
+    -e 's/%MATERIA_SURFACE%/#'"$MATERIA_SURFACE"'/g' \
     -e 's/%SPACING%/'"$SPACING"'/g' \
     -e 's/%INACTIVE_FG%/#'"$INACTIVE_FG"'/g' \
-    -e 's/%INACTIVE_TXT_FG%/#'"$INACTIVE_TXT_FG"'/g' \
-    -e 's/%INACTIVE_TXT_BG%/#'"$INACTIVE_TXT_BG"'/g' \
-    -e 's/%INACTIVE_HDR_FG%/#'"$INACTIVE_HDR_FG"'/g' \
-    -e 's/%INACTIVE_HDR_BG%/#'"$INACTIVE_HDR_BG"'/g' \
+    -e 's/%INACTIVE_MATERIA_VIEW%/#'"$INACTIVE_MATERIA_VIEW"'/g' \
     -e 's/%TERMINAL_COLOR4%/#'"$TERMINAL_COLOR4"'/g' \
     -e 's/%TERMINAL_COLOR5%/#'"$TERMINAL_COLOR5"'/g' \
     -e 's/%TERMINAL_COLOR9%/#'"$TERMINAL_COLOR9"'/g' \
@@ -276,7 +245,7 @@ for FILEPATH in "${PATHLIST[@]}"; do
     -e 's/%TERMINAL_COLOR11%/#'"$TERMINAL_COLOR11"'/g' \
     -e 's/%TERMINAL_COLOR12%/#'"$TERMINAL_COLOR12"'/g' \
     -e 's/%MATERIA_SELECTION_OPACITY%/'"$MATERIA_SELECTION_OPACITY"'/g' \
-    -e 's/%GNOME_SHELL_PANEL_OPACITY%/'"$GNOME_SHELL_PANEL_OPACITY"'/g' \
+    -e 's/%MATERIA_PANEL_OPACITY%/'"$MATERIA_PANEL_OPACITY"'/g' \
     -e 's/%OUTPUT_THEME_NAME%/'"$OUTPUT_THEME_NAME"'/g' \
     {} \; ;
 done
@@ -301,9 +270,6 @@ if [[ "$EXPORT_QT5CT" = 1 ]]; then
   qt5ct_colors_dir="$config_home/qt5ct/colors/"
   test -d "$qt5ct_colors_dir" || mkdir -p "$qt5ct_colors_dir"
   mv ./src/qt5ct_palette.conf "$qt5ct_colors_dir/$OUTPUT_THEME_NAME.conf"
-fi
-if [[ "$UNITY_DEFAULT_LAUNCHER_STYLE" == "true" ]]; then
-  rm ./src/unity/launcher*.svg
 fi
 
 if [[ "$MATERIA_STYLE_COMPACT" == "true" ]]; then
