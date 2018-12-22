@@ -22,7 +22,7 @@ print_usage() {
   echo "usage: $0 [-o OUTPUT_THEME_NAME] [-p PATH_LIST] PATH_TO_PRESET"
   echo "examples:"
   # shellcheck disable=SC2028 # This is meant to be usage text.
-  echo "       $0 -o my-theme-name <(echo -e \"ROUNDNESS=0\\nBG=d8d8d8\\nFG=101010\\nHDR_BG=3c3c3c\\nHDR_FG=e6e6e6\\nSEL_BG=ad7fa8\\nSEL_FG=ffffff\\nTXT_BG=ffffff\\nTXT_FG=1a1a1a\\nBTN_BG=f5f5f5\\nBTN_FG=111111\\n\")"
+  echo "       $0 -o my-theme-name <(echo -e \"ROUNDNESS=0\\nBG=d8d8d8\\nFG=101010\\nHDR_BG=3c3c3c\\nHDR_FG=e6e6e6\\nSEL_BG=ad7fa8\\nMATERIA_VIEW=ffffff\\nMATERIA_SURFACE=f5f5f5\\n\")"
   echo "       $0 ../colors/retro/twg"
   echo "       $0 --hidpi True ../colors/retro/clearlooks"
   exit 1
@@ -75,7 +75,7 @@ PATHLIST=(
   './src/unity'
   './src/xfwm4'
 )
-if [[ ! -z "${CUSTOM_PATHLIST:-}" ]]; then
+if [[ -n "${CUSTOM_PATHLIST:-}" ]]; then
   IFS=', ' read -r -a PATHLIST <<< "${CUSTOM_PATHLIST:-}"
 fi
 
@@ -102,18 +102,17 @@ else
 fi
 if [[ $(date +"%m%d") = "0401" ]] && grep -q "no-jokes" <<< "$*"; then
   echo -e "\\n\\nError patching uxtheme.dll\\n\\n"
-  ACCENT_BG=000000 BG=C0C0C0 BTN_BG=C0C0C0 BTN_FG=000000 FG=000000
-  GNOME_SHELL_PANEL_OPACITY=1 HDR_BTN_BG=C0C0C0 HDR_BTN_FG=000000 HDR_BG=C0C0C0
-  HDR_FG=000000 SEL_BG=000080 SEL_FG=FFFFFF TXT_BG=FFFFFF TXT_FG=000000
+  ACCENT_BG=000000 BG=C0C0C0 MATERIA_SURFACE=C0C0C0 FG=000000 GNOME_SHELL_PANEL_OPACITY=1
+  HDR_BG=C0C0C0 HDR_FG=000000 SEL_BG=000080 MATERIA_VIEW=FFFFFF
 fi
 
 # Migration:
 HDR_BG=${HDR_BG-$MENU_BG}
 HDR_FG=${HDR_FG-$MENU_FG}
+MATERIA_VIEW=${MATERIA_VIEW-$TXT_BG}
+MATERIA_SURFACE=${MATERIA_SURFACE-$BTN_BG}
 
 ACCENT_BG=${ACCENT_BG-$SEL_BG}
-HDR_BTN_BG=${HDR_BTN_BG-$BTN_BG}
-HDR_BTN_FG=${HDR_BTN_FG-$BTN_FG}
 WM_BORDER_FOCUS=${WM_BORDER_FOCUS-$SEL_BG}
 WM_BORDER_UNFOCUS=${WM_BORDER_UNFOCUS-$HDR_BG}
 
@@ -131,8 +130,8 @@ GNOME_SHELL_PANEL_OPACITY=${GNOME_SHELL_PANEL_OPACITY-0.6}
 INACTIVE_FG=$(mix "$FG" "$BG" 0.75)
 INACTIVE_HDR_FG=$(mix "$HDR_FG" "$HDR_BG" 0.75)
 INACTIVE_HDR_BG=$(mix "$HDR_BG" "$HDR_FG" 0.75)
-INACTIVE_TXT_FG=$(mix "$TXT_FG" "$TXT_BG" 0.75)
-INACTIVE_TXT_BG=$(mix "$TXT_BG" "$BG" 0.60)
+INACTIVE_TXT_FG=$(mix "$FG" "$MATERIA_VIEW" 0.75)
+INACTIVE_MATERIA_VIEW=$(mix "$MATERIA_VIEW" "$BG" 0.60)
 
 TERMINAL_COLOR4=${TERMINAL_COLOR4:-1E88E5}
 TERMINAL_COLOR5=${TERMINAL_COLOR5:-E040FB}
@@ -191,12 +190,12 @@ for FILEPATH in "${PATHLIST[@]}"; do
       -e 's/#212121/%FG%/g' \
       -e 's/#757575/%INACTIVE_FG%/g' \
       -e 's/#BDBDBD/%INACTIVE_FG%/g' \
-      -e 's/#FAFAFA/%INACTIVE_TXT_BG%/g' \
+      -e 's/#FAFAFA/%INACTIVE_MATERIA_VIEW%/g' \
       -e 's/#F2F2F2/%BG%/g' \
-      -e 's/#FAFAFA/%BTN_BG%/g' \
+      -e 's/#FAFAFA/%MATERIA_SURFACE%/g' \
       -e 's/#01A299/%ACCENT_BG%/g' \
       -e 's/#4285F4/%SEL_BG%/g' \
-      -e 's/#FFFFFF/%TXT_BG%/g' \
+      -e 's/#FFFFFF/%MATERIA_VIEW%/g' \
       -e 's/#383838/%HDR_BG%/g' \
       -e 's/#E0E0E0/%HDR_BG%/g' \
       -e 's/#212121/%HDR_BG2%/g' \
@@ -208,14 +207,14 @@ for FILEPATH in "${PATHLIST[@]}"; do
       -e 's/#282828/%BG%/g' \
       -e 's/#757575/%INACTIVE_FG%/g' \
       -e 's/#BDBDBD/%INACTIVE_FG%/g' \
-      -e 's/#2C2C2C/%INACTIVE_TXT_BG%/g' \
+      -e 's/#2C2C2C/%INACTIVE_MATERIA_VIEW%/g' \
       -e 's/#FFFFFF/%FG%/g' \
-      -e 's/#FAFAFA/%BTN_FG%/g' \
-      -e 's/#424242/%BTN_BG%/g' \
+      -e 's/#FAFAFA/%FG%/g' \
+      -e 's/#424242/%MATERIA_SURFACE%/g' \
       -e 's/#01A299/%ACCENT_BG%/g' \
       -e 's/#4285F4/%SEL_BG%/g' \
-      -e 's/#FFFFFF/%TXT_FG%/g' \
-      -e 's/#303030/%TXT_BG%/g' \
+      -e 's/#FFFFFF/%FG%/g' \
+      -e 's/#303030/%MATERIA_VIEW%/g' \
       -e 's/#383838/%HDR_BG%/g' \
       -e 's/#212121/%HDR_BG2%/g' \
       -e 's/Materia/%OUTPUT_THEME_NAME%/g' \
@@ -224,15 +223,11 @@ for FILEPATH in "${PATHLIST[@]}"; do
 done
 
 #Not implemented yet:
-      #-e 's/%HDR_BTN_BG%/'"$HDR_BTN_BG"'/g' \
-      #-e 's/%HDR_BTN_FG%/'"$HDR_BTN_FG"'/g' \
       #-e 's/%WM_BORDER_FOCUS%/'"$WM_BORDER_FOCUS"'/g' \
       #-e 's/%WM_BORDER_UNFOCUS%/'"$WM_BORDER_UNFOCUS"'/g' \
       #-e 's/%SPACING%/'"$SPACING"'/g' \
-      #-e 's/%INACTIVE_FG%/'"$INACTIVE_FG"'/g' \
-      #-e 's/%INACTIVE_TXT_FG%/'"$INACTIVE_TXT_FG"'/g' \
-      #-e 's/%INACTIVE_HDR_FG%/'"$INACTIVE_HDR_FG"'/g' \
 
+# shellcheck disable=SC2016
 sed -i -e 's/^$material_radius: .px/$material_radius: '"$ROUNDNESS"'px/g' ./src/_sass/_variables.scss
 
 if [[ "${DEBUG:-}" ]]; then
@@ -250,23 +245,18 @@ for FILEPATH in "${PATHLIST[@]}"; do
     -e 's/%ACCENT_BG%/#'"$ACCENT_BG"'/g' \
     -e 's/%SEL_BG%/#'"$SEL_BG"'/g' \
     -e 's/%SEL_BG2%/#'"$(darker $SEL_BG -20)"'/g' \
-    -e 's/%SEL_FG%/#'"$SEL_FG"'/g' \
-    -e 's/%TXT_BG%/#'"$TXT_BG"'/g' \
-    -e 's/%TXT_FG%/#'"$TXT_FG"'/g' \
+    -e 's/%MATERIA_VIEW%/#'"$MATERIA_VIEW"'/g' \
     -e 's/%HDR_BG%/#'"$HDR_BG"'/g' \
     -e 's/%HDR_BG2%/#'"$(darker $HDR_BG 10)"'/g' \
     -e 's/%HDR_BG3%/#'"$(darker $HDR_BG 20)"'/g' \
     -e 's/%HDR_FG%/#'"$HDR_FG"'/g' \
-    -e 's/%BTN_BG%/#'"$BTN_BG"'/g' \
-    -e 's/%BTN_FG%/#'"$BTN_FG"'/g' \
-    -e 's/%HDR_BTN_BG%/#'"$HDR_BTN_BG"'/g' \
-    -e 's/%HDR_BTN_FG%/#'"$HDR_BTN_FG"'/g' \
+    -e 's/%MATERIA_SURFACE%/#'"$MATERIA_SURFACE"'/g' \
     -e 's/%WM_BORDER_FOCUS%/#'"$WM_BORDER_FOCUS"'/g' \
     -e 's/%WM_BORDER_UNFOCUS%/#'"$WM_BORDER_UNFOCUS"'/g' \
     -e 's/%SPACING%/'"$SPACING"'/g' \
     -e 's/%INACTIVE_FG%/#'"$INACTIVE_FG"'/g' \
     -e 's/%INACTIVE_TXT_FG%/#'"$INACTIVE_TXT_FG"'/g' \
-    -e 's/%INACTIVE_TXT_BG%/#'"$INACTIVE_TXT_BG"'/g' \
+    -e 's/%INACTIVE_MATERIA_VIEW%/#'"$INACTIVE_MATERIA_VIEW"'/g' \
     -e 's/%INACTIVE_HDR_FG%/#'"$INACTIVE_HDR_FG"'/g' \
     -e 's/%INACTIVE_HDR_BG%/#'"$INACTIVE_HDR_BG"'/g' \
     -e 's/%TERMINAL_COLOR4%/#'"$TERMINAL_COLOR4"'/g' \
