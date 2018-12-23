@@ -7,8 +7,7 @@ if [[ ! "$(which inkscape 2> /dev/null || which rendersvg 2> /dev/null)" ]]; the
 fi
 
 if [[ ! "$(which optipng 2> /dev/null)" ]]; then
-  echo "'optipng' needs to be installed to generate the PNG."
-  exit 1
+  echo "'optipng' needs to be installed to optimize the resulting PNG!"
 fi
 
 chrome() (

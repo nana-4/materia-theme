@@ -2,8 +2,8 @@
 set -ueo pipefail
 
 RENDER_SVG="$(command -v rendersvg)" || true
-INKSCAPE="$(command -v inkscape)"
-OPTIPNG="$(command -v optipng)"
+INKSCAPE="$(command -v inkscape)" || true
+OPTIPNG="$(command -v optipng)" || true
 
 i="$1"
 
@@ -14,4 +14,6 @@ else
   "$INKSCAPE" --export-dpi=96 --export-png="$i.png" "$i.svg" >/dev/null
 fi
 
-"$OPTIPNG" -o7 --quiet "$i.png"
+if [[ -n "${OPTIPNG}" ]] ; then
+	"$OPTIPNG" -o7 --quiet "$i.png"
+fi
