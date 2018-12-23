@@ -2,8 +2,8 @@
 set -ueo pipefail
 
 RENDER_SVG="$(command -v rendersvg)" || true
-INKSCAPE="$(command -v inkscape)"
-OPTIPNG="$(command -v optipng)"
+INKSCAPE="$(command -v inkscape)" || true
+OPTIPNG="$(command -v optipng)" || true
 
 SRC_FILE="assets.svg"
 ASSETS_DIR="assets"
@@ -19,7 +19,9 @@ else
         --export-id-only \
         --export-png="$ASSETS_DIR/$i.png" "$SRC_FILE" >/dev/null
 fi
-"$OPTIPNG" -o7 --quiet "$ASSETS_DIR/$i.png"
+if [[ -n "${OPTIPNG}" ]] ; then
+	"$OPTIPNG" -o7 --quiet "$ASSETS_DIR/$i.png"
+fi
 
 echo "Rendering '$ASSETS_DIR/$i@2.png'"
 if [[ -n "${RENDER_SVG}" ]] ; then
@@ -34,4 +36,6 @@ else
         --export-dpi=192 \
         --export-png="$ASSETS_DIR/$i@2.png" "$SRC_FILE" >/dev/null
 fi
-"$OPTIPNG" -o7 --quiet "$ASSETS_DIR/$i@2.png"
+if [[ -n "${OPTIPNG}" ]] ; then
+	"$OPTIPNG" -o7 --quiet "$ASSETS_DIR/$i@2.png"
+fi

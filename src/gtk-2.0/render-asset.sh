@@ -2,8 +2,8 @@
 set -ueo pipefail
 
 RENDER_SVG="$(command -v rendersvg)" || true
-INKSCAPE="$(command -v inkscape)"
-OPTIPNG="$(command -v optipng)"
+INKSCAPE="$(command -v inkscape)" || true
+OPTIPNG="$(command -v optipng)" || true
 
 if [[ "$1" == "dark" ]]; then
   SRC_FILE="assets-dark.svg"
@@ -39,4 +39,6 @@ else
         --export-png="$ASSETS_DIR/$i.png" "$SRC_FILE" >/dev/null
 fi
 
-"$OPTIPNG" -o7 --quiet "$ASSETS_DIR/$i.png"
+if [[ -n "${OPTIPNG}" ]] ; then
+	"$OPTIPNG" -o7 --quiet "$ASSETS_DIR/$i.png"
+fi
