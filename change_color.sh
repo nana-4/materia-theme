@@ -170,10 +170,11 @@ fi
 
 echo "== Converting theme into template..."
 
-      #-e 's/#FAFAFA/%MATERIA_SURFACE%/g' \
 for FILEPATH in "${PATHLIST[@]}"; do
   if [[ "$MATERIA_COLOR_VARIANT"  != "dark" ]]; then
     find "$FILEPATH" -type f -not -name '_color-palette.scss' -exec sed -i'' \
+      -e '/color-surface/{n;s/#FFFFFF/%MATERIA_SURFACE%/g}' \
+      -e '/color-base/{n;s/#FFFFFF/%MATERIA_VIEW%/g}' \
       -e 's/#000000/%FG%/g' \
       -e 's/#212121/%FG%/g' \
       -e 's/#757575/%INACTIVE_FG%/g' \
