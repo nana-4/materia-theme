@@ -57,13 +57,13 @@ script as follows:
 For `bash`:
 
 ```bash
-./change_color.sh -o Flat-Plat <(echo -e "BG=F5F5F5\nFG=212121\nMATERIA_VIEW=FFFFFF\nMATERIA_SURFACE=FAFAFA\nHDR_BG=455A64\nHDR_FG=FFFFFF\nSEL_BG=42A5F5\nMATERIA_STYLE_COMPACT=False\n")
+./change_color.sh -o Flat-Plat <(echo -e "BG=F5F5F5\nFG=212121\nMATERIA_VIEW=FFFFFF\nMATERIA_SURFACE=FAFAFA\nHDR_BG=455A64\nHDR_FG=FFFFFF\nSEL_BG=42A5F5\n")
 ```
 
 For `fish`:
 
 ```fish
-./change_color.sh -o Flat-Plat (echo -e "BG=F5F5F5\nFG=212121\nMATERIA_VIEW=FFFFFF\nMATERIA_SURFACE=FAFAFA\nHDR_BG=455A64\nHDR_FG=FFFFFF\nSEL_BG=42A5F5\nMATERIA_STYLE_COMPACT=False\n" | psub)
+./change_color.sh -o Flat-Plat (echo -e "BG=F5F5F5\nFG=212121\nMATERIA_VIEW=FFFFFF\nMATERIA_SURFACE=FAFAFA\nHDR_BG=455A64\nHDR_FG=FFFFFF\nSEL_BG=42A5F5\n" | psub)
 ```
 
 ### Manual

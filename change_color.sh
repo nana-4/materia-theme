@@ -22,7 +22,7 @@ print_usage() {
   echo "usage: $0 [-o OUTPUT_THEME_NAME] [-p PATH_LIST] PATH_TO_PRESET"
   echo "examples:"
   # shellcheck disable=SC2028 # This is meant to be usage text.
-  echo "       $0 -o my-theme-name <(echo -e \"ROUNDNESS=0\\nBG=d8d8d8\\nFG=101010\\nHDR_BG=3c3c3c\\nHDR_FG=e6e6e6\\nSEL_BG=ad7fa8\\nMATERIA_VIEW=ffffff\\nMATERIA_SURFACE=f5f5f5\\n\")"
+  echo "       $0 -o my-theme-name <(echo -e \"ROUNDNESS=0\\nBG=d8d8d8\\nFG=101010\\nHDR_BG=3c3c3c\\nHDR_FG=e6e6e6\\nSEL_BG=ad7fa8\\nMATERIA_VIEW=ffffff\\nMATERIA_SURFACE=f5f5f5\\nMATERIA_STYLE_COMPACT=True\\n\")"
   echo "       $0 ../colors/retro/twg"
   echo "       $0 --hidpi True ../colors/retro/clearlooks"
   exit 1
@@ -114,11 +114,11 @@ MATERIA_SURFACE=${MATERIA_SURFACE-$BTN_BG}
 GNOME_SHELL_PANEL_OPACITY=${GNOME_SHELL_PANEL_OPACITY-0.6}
 MATERIA_PANEL_OPACITY=${MATERIA_PANEL_OPACITY-$GNOME_SHELL_PANEL_OPACITY}
 
-MATERIA_STYLE_COMPACT=$(tr '[:upper:]' '[:lower:]' <<< "${MATERIA_STYLE_COMPACT-True}")
+MATERIA_STYLE_COMPACT=$(tr '[:upper:]' '[:lower:]' <<< "${MATERIA_STYLE_COMPACT-False}")
 MATERIA_COLOR_VARIANT=$(tr '[:upper:]' '[:lower:]' <<< "${MATERIA_COLOR_VARIANT:-}")
 
 SPACING=${SPACING-3}
-ROUNDNESS=${ROUNDNESS-2}
+ROUNDNESS=${ROUNDNESS-4}
 # shellcheck disable=SC2034 # will this be used in the future?
 ROUNDNESS_GTK2_HIDPI=$(( ROUNDNESS * 2 ))
 MATERIA_PANEL_OPACITY=${MATERIA_PANEL_OPACITY-0.6}
