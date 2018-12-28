@@ -3,7 +3,7 @@ set -ueo pipefail
 
 # Make sure that parallel is GNU parallel and not moreutils.
 # Otherwise, it fails silently. There's no smooth way to detect this.
-if [[ "$(which parallel 2> /dev/null)" ]]; then
+if command -v parallel >/dev/null ; then
   cmd=(parallel)
 else
   cmd=(xargs -n1)

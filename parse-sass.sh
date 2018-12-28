@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ueo pipefail
 
-if [[ ! "$(which sassc 2> /dev/null)" ]]; then
+if [[ ! "$(command -v sassc)" ]]; then
   echo "'sassc' needs to be installed to generate the CSS."
   exit 1
 fi
@@ -14,11 +14,11 @@ _SIZE_VARIANTS=('' '-compact')
 GTK_VERSIONS=('3.0')
 GS_VERSIONS=('3.18' '3.24' '3.26' '3.28' '3.30')
 
-if [[ ! -z "${COLOR_VARIANTS:-}" ]]; then
+if [[ -n "${COLOR_VARIANTS:-}" ]]; then
   IFS=', ' read -r -a _COLOR_VARIANTS <<< "${COLOR_VARIANTS:-}"
 fi
 
-if [[ ! -z "${SIZE_VARIANTS:-}" ]]; then
+if [[ -n "${SIZE_VARIANTS:-}" ]]; then
   IFS=', ' read -r -a _SIZE_VARIANTS <<< "${SIZE_VARIANTS:-}"
 fi
 

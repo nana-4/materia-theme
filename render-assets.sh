@@ -1,17 +1,17 @@
 #!/bin/bash
 set -ueo pipefail
 
-if [[ ! "$(which inkscape 2> /dev/null || which rendersvg 2> /dev/null)" ]]; then
+if [[ ! "$(command -v inkscape || command -v rendersvg)" ]]; then
   echo "'inkscape' or 'resvg' needs to be installed to generate the PNG."
   exit 1
 fi
 
-if [[ ! "$(which optipng 2> /dev/null)" ]]; then
+if [[ ! "$(command -v optipng)" ]]; then
   echo "'optipng' needs to be installed to optimize the resulting PNG!"
 fi
 
 chrome() (
-  cd src/chrome
+  cd ./src/chrome
   ./render-assets.sh
 )
 
