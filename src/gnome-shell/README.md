@@ -7,6 +7,7 @@ To change the GDM (lock/login screen) theme, you need to replace the system's _d
 - If the replacement fails, your desktop environment will not work properly. So please **be careful** if doing this.
 - When applying this, other third-party GNOME Shell themes would look broken until you restore to the original theme.
 - If GNOME Shell has been updated and restored to the original theme, you will need to install this again.
+  > Note: On Arch Linux, you can automatically reinstall the GDM theme by creating a [hook](https://wiki.archlinux.org/index.php/Pacman#Hooks) file. For example, if you use Materia-compact as your GDM theme, put [this file](https://gist.github.com/looselyrigorous/a1aa931ce48627cc39daccc9253b30c7) in the `/usr/share/libalpm/hooks/` directory.
 
 ## Requirements
 
