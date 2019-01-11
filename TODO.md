@@ -11,7 +11,6 @@
 - [Xfce theme](../../issues/60)
 - [Pantheon theme](../../issues/69)
 - [Openbox theme](../../issues/254)
-- [Plank theme](../../issues/206)
 - [GtkSourceView theme](../../issues/150)
 - [Color scheme for GNOME Terminal](../../issues/157)
 - [Cursor theme](../../issues/156) (`low priority`)
