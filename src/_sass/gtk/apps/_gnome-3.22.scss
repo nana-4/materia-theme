@@ -28,6 +28,7 @@
 }
 
 // Toolbar
+
 @keyframes needs_attention_keyframes {
   to { background-color: $focus_overlay_color; }
 }
@@ -41,6 +42,16 @@
 }
 
 .disclosure-button { @extend %circular_button; }
+
+// Path bar
+
+.nautilus-window .path-bar button {
+  label:not(:only-child) {
+    &:first-child { margin-left: 0; }
+
+    &:last-child { margin-right: 0; }
+  }
+}
 
 .path-bar-box {
   // transition: background-color $shorter_duration $deceleration_curve;
