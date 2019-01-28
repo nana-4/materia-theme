@@ -206,6 +206,7 @@ entry {
   min-height: 32px;
   padding: 0 8px;
   border-radius: 4px 4px 0 0;
+  caret-color: currentColor;
   transition: all 100ms cubic-bezier(0, 0, 0.2, 1), border-image 225ms cubic-bezier(0, 0, 0.2, 1);
   border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #4285F4 0%, transparent 0%) 0 0 0/0 0 0px;
   box-shadow: inset 0 -1px rgba(255, 255, 255, 0.3);
@@ -216,7 +217,6 @@ entry {
 spinbutton:focus:not(.vertical),
 entry:focus {
   border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #4285F4 100%, transparent 0%) 0 0 2/0 0 2px;
-  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.3);
 }
 
 spinbutton:disabled:not(.vertical),
@@ -296,7 +296,6 @@ entry.error {
 spinbutton.error:focus:not(.vertical),
 entry.error:focus {
   border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #EA4335 100%, transparent 0%) 0 0 2/0 0 2px;
-  box-shadow: inset 0 -1px #EA4335;
 }
 
 spinbutton.error:disabled:not(.vertical),
@@ -318,7 +317,6 @@ entry.warning {
 spinbutton.warning:focus:not(.vertical),
 entry.warning:focus {
   border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #FBBC05 100%, transparent 0%) 0 0 2/0 0 2px;
-  box-shadow: inset 0 -1px #FBBC05;
 }
 
 spinbutton.warning:disabled:not(.vertical),
@@ -911,14 +909,6 @@ modelbutton.flat,
   color: inherit;
 }
 
-modelbutton.flat arrow {
-  background: none;
-}
-
-modelbutton.flat arrow:hover {
-  background: none;
-}
-
 modelbutton.flat arrow.left {
   -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
 }
@@ -1096,7 +1086,6 @@ button.combo:hover {
 
 button.combo:checked {
   border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #4285F4 100%, transparent 0%) 0 0 2/0 0 2px;
-  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.3);
 }
 
 button.combo:disabled {
@@ -1233,9 +1222,39 @@ headerbar .subtitle {
   font-size: smaller;
 }
 
+.titlebar:not(headerbar) entry,
+headerbar entry {
+  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.04);
+  color: white;
+}
+
+.titlebar:not(headerbar) entry:disabled,
+headerbar entry:disabled {
+  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.titlebar:not(headerbar) entry image,
+headerbar entry image {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.titlebar:not(headerbar) entry image:hover, .titlebar:not(headerbar) entry image:active,
+headerbar entry image:hover,
+headerbar entry image:active {
+  color: white;
+}
+
+.titlebar:not(headerbar) entry image:disabled,
+headerbar entry image:disabled {
+  color: rgba(255, 255, 255, 0.5);
+}
+
 .titlebar:not(headerbar) .linked:not(.vertical) > entry:not(.flat),
 headerbar .linked:not(.vertical) > entry:not(.flat) {
-  border-radius: 4px;
+  border-radius: 4px 4px 0 0;
 }
 
 .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
@@ -2464,30 +2483,30 @@ radio:indeterminate:disabled {
   color: rgba(255, 255, 255, 0.3);
 }
 
-popover check, popover check:hover, popover check:focus, popover check:focus:hover, popover check:active, popover check:disabled, popover
-radio, popover
-radio:hover, popover
-radio:focus, popover
-radio:focus:hover, popover
-radio:active, popover
+popover modelbutton.flat check, popover modelbutton.flat check:hover, popover modelbutton.flat check:focus, popover modelbutton.flat check:focus:hover, popover modelbutton.flat check:active, popover modelbutton.flat check:disabled, popover modelbutton.flat
+radio, popover modelbutton.flat
+radio:hover, popover modelbutton.flat
+radio:focus, popover modelbutton.flat
+radio:focus:hover, popover modelbutton.flat
+radio:active, popover modelbutton.flat
 radio:disabled {
   transition: none;
   box-shadow: none;
   background-image: none;
 }
 
-popover check:not(:checked):not(:indeterminate):not(:disabled), popover
+popover modelbutton.flat check:not(:checked):not(:indeterminate):not(:disabled), popover modelbutton.flat
 radio:not(:checked):not(:indeterminate):not(:disabled) {
   color: rgba(255, 255, 255, 0.7);
 }
 
-popover check.left:dir(rtl), popover
+popover modelbutton.flat check.left:dir(rtl), popover modelbutton.flat
 radio.left:dir(rtl) {
   margin-left: -12px;
   margin-right: -4px;
 }
 
-popover check.right:dir(ltr), popover
+popover modelbutton.flat check.right:dir(ltr), popover modelbutton.flat
 radio.right:dir(ltr) {
   margin-left: -4px;
   margin-right: -12px;
@@ -3665,7 +3684,7 @@ messagedialog.csd decoration {
 .view selection, .view:selected, flowbox flowboxchild:selected, label selection, spinbutton:not(.vertical) selection,
 entry selection, modelbutton.flat:selected,
 .menuitem.button.flat:selected, popover.background.menu button:checked,
-popover.background button.model:checked, row:selected, calendar:selected, .nautilus-window flowboxchild:selected .icon-item-background, text:selected, box.vertical > widget > widget:selected, .budgie-menu button:checked, XfdesktopIconView.view:active {
+popover.background button.model:checked, row:selected, calendar:selected, .nautilus-window flowboxchild:selected .icon-item-background, box.vertical > widget > widget:selected, .budgie-menu button:checked, XfdesktopIconView.view:active, .nemo-window .nemo-window-pane widget.entry:selected {
   background-color: rgba(66, 133, 244, 0.32);
 }
 
@@ -3677,25 +3696,21 @@ popover.background button.model:checked, row:selected, calendar:selected, .nauti
  * Touch Copy & Paste *
  **********************/
 cursor-handle {
-  border-radius: 9999px;
-  background-color: #4285F4;
-  background-image: none;
+  color: #4285F4;
+  -gtk-icon-source: -gtk-recolor(url("assets/scalable/cursor-handle-symbolic.svg"));
 }
 
 cursor-handle.top:dir(ltr), cursor-handle.bottom:dir(rtl) {
-  padding-left: 6px;
-  border-top-right-radius: 0;
+  -gtk-icon-transform: rotate(90deg);
 }
 
 cursor-handle.bottom:dir(ltr), cursor-handle.top:dir(rtl) {
-  padding-right: 6px;
-  border-top-left-radius: 0;
+  -gtk-icon-transform: unset;
 }
 
 cursor-handle.insertion-cursor:dir(ltr), cursor-handle.insertion-cursor:dir(rtl) {
-  -GtkWidget-text-handle-width: 24;
-  -GtkWidget-text-handle-height: 30;
-  -gtk-icon-source: -gtk-scaled(url("assets/scale-horz-marks-before-slider-dark.png"), url("assets/scale-horz-marks-before-slider-dark@2.png"));
+  padding-top: 6px;
+  -gtk-icon-transform: rotate(45deg);
 }
 
 .context-menu {
@@ -3829,6 +3844,14 @@ headerbar .nautilus-canvas-item.subtitle, .budgie-notification .nautilus-canvas-
 
 .nautilus-operations-button-needs-attention-multiple {
   animation: needs_attention_keyframes 225ms cubic-bezier(0.4, 0, 0.2, 1) 4 alternate;
+}
+
+.nautilus-window .path-bar button label:not(:only-child):first-child {
+  margin-left: 0;
+}
+
+.nautilus-window .path-bar button label:not(:only-child):last-child {
+  margin-right: 0;
 }
 
 .path-bar-box.background.frame {
@@ -4841,6 +4864,11 @@ window.background:not(.csd) > widget > radiobutton > radio:not(:checked):disable
 window.background:not(.csd) > window > menu,
 window.background:not(.csd) > menu > menu {
   border: none;
+}
+
+text:selected {
+  background-color: #4285F4;
+  color: white;
 }
 
 window.background:not(.csd) > widget > menubar {
@@ -6197,6 +6225,20 @@ XfdesktopIconView.view .rubberband {
 
 .nemo-window .nemo-inactive-pane .view:not(:selected) {
   background-color: #2C2C2C;
+}
+
+.nemo-window .nemo-window-pane widget.entry {
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.places-treeview {
+  -NemoPlacesTreeView-disk-full-bg-color: dimgray;
+  -NemoPlacesTreeView-disk-full-fg-color: #4285F4;
+  -NemoPlacesTreeView-disk-full-bar-width: 2px;
+  -NemoPlacesTreeView-disk-full-bar-radius: 0;
+  -NemoPlacesTreeView-disk-full-bottom-padding: 1px;
+  -NemoPlacesTreeView-disk-full-max-length: 80px;
 }
 
 /* GTK NAMED COLORS
