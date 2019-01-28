@@ -139,7 +139,11 @@ window.background:not(.csd) {
 }
 
 // Firefox now uses this for selected items
-text:selected { @extend %selected_items; }
+text:selected {
+  // use traditional selection style as workaround for Firefox
+  background-color: $primary_color;
+  color: $inverse_fg_color;
+}
 
 // for backward compatibility
 window.background:not(.csd) {
