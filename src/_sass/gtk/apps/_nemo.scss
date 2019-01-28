@@ -1,6 +1,12 @@
 /********
  * Nemo *
  ********/
+// based css:
+// https://github.com/linuxmint/nemo/blob/master/gresources/nemo-style-fallback-mandatory.css
+// https://github.com/linuxmint/nemo/blob/master/gresources/nemo-style-fallback.css
+// hard-coded css:
+// https://github.com/linuxmint/nemo/blob/master/gresources/nemo-style-application.css
+
 .nemo-window {
   .primary-toolbar {
     border-bottom: 1px solid $border_color;
@@ -32,9 +38,28 @@
 
   infobar { margin-top: -6px; }
 
+  // Inactive F3 pane shading
   .nemo-inactive-pane .view:not(:selected) { background-color: $alt_base_color; }
 
+  // Rename box styling in the icon view.
+  .nemo-window-pane widget.entry {
+    border-radius: $material_radius;
+    background-color: $fill_color;
+
+    &:selected { @extend %selected_items; }
+  }
+
   .toolbar button { @extend %button_basic.flat; }
+}
+
+// For Places Sidebar diskfull indicators
+.places-treeview {
+  -NemoPlacesTreeView-disk-full-bg-color: mix($fg_color, $bg_color, percentage(0.3)); // Can't use translucent colors
+  -NemoPlacesTreeView-disk-full-fg-color: $primary_color;
+  -NemoPlacesTreeView-disk-full-bar-width: 2px;
+  -NemoPlacesTreeView-disk-full-bar-radius: 0;
+  -NemoPlacesTreeView-disk-full-bottom-padding: 1px; // There is already hard-coded 1px bottom-padding
+  -NemoPlacesTreeView-disk-full-max-length: 80px;
 }
 
 .nemo-desktop.nemo-canvas-item {
