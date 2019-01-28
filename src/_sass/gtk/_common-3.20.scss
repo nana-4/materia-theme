@@ -3397,27 +3397,19 @@ button.titlebutton {
  **********************/
 // touch selection handlebars for the Popover.osd above
 cursor-handle {
-  border-radius: $circular_radius;
-  background-color: $primary_color;
-  background-image: none;
+  color: $primary_color;
+  -gtk-icon-source: -gtk-recolor(url("assets/scalable/cursor-handle-symbolic.svg"));
 
   &.top:dir(ltr), &.bottom:dir(rtl) {
-    padding-left: 6px;
-    border-top-right-radius: 0;
+    -gtk-icon-transform: rotate(90deg);
   }
 
   &.bottom:dir(ltr), &.top:dir(rtl) {
-    padding-right: 6px;
-    border-top-left-radius: 0;
+    -gtk-icon-transform: unset;
   }
 
   &.insertion-cursor:dir(ltr), &.insertion-cursor:dir(rtl) {
-    -GtkWidget-text-handle-width: 24;
-    -GtkWidget-text-handle-height: 30;
-
-    $_url: 'assets/scale-horz-marks-before-slider#{$asset_suffix}';
-    -gtk-icon-source: -gtk-scaled(url('#{$_url}.png'),
-                                  url('#{$_url}@2.png'));
+    -gtk-icon-transform: translateY(6px) rotate(45deg);
   }
 }
 
