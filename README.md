@@ -31,7 +31,7 @@ Also Materia can be customized with [oomox theme designer](https://github.com/th
 Various **desktop environments** are supported:
 
 - GNOME Shell `>=3.18`
-- Budgie `>=10.2.5`
+- Budgie `>=10.4`
 - Cinnamon `>=3.x`
 - MATE `>=1.14`
 - Unity `>=7.4`
