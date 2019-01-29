@@ -50,6 +50,34 @@
 
   &.budgie-menu {
     .container { padding: 0; }
+
+    .sidebar,
+    scrollbar,
+    entry.search { background-color: transparent; }
+
+    entry.search {
+      border-bottom: 1px solid $border_color;
+      border-image: none;
+      border-radius: 0;
+      box-shadow: none;
+      font-size: 120%;
+    }
+
+    button {
+      @extend row.activatable;
+
+      min-height: 32px;
+      padding: 0 8px;
+      border-radius: 0;
+      color: $fg_color;
+      font-weight: normal;
+
+      &:disabled { color: $disabled_fg_color; }
+
+      &:checked { @extend %selected_items; }
+
+      &:checked:disabled { background-color: transparent; } // overriding
+    }
   }
 
   &.user-menu {
@@ -143,45 +171,6 @@
       padding: 0;
       border-radius: $material_radius;
     }
-  }
-}
-
-// Budgie Menu
-.budgie-menu {
-  .container { padding: 0; }
-
-  .sidebar,
-  scrollbar,
-  entry.search { background-color: transparent; }
-
-  entry.search {
-    border-bottom: 1px solid $border_color;
-    border-image: none;
-    border-radius: 0;
-    box-shadow: none;
-    font-size: 120%;
-  }
-
-  button {
-    @extend row.activatable;
-
-    min-height: 32px;
-    padding: 0 8px;
-    border-radius: 0;
-    color: $fg_color;
-    font-weight: normal;
-
-    &:disabled { color: $disabled_fg_color; }
-
-    &:checked { @extend %selected_items; }
-
-    &:checked:disabled { background-color: transparent; } // overriding
-  }
-
-  row {
-    padding: 0;
-
-    &:hover { box-shadow: none; }
   }
 }
 
