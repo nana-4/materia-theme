@@ -97,10 +97,39 @@
   &.places-menu {
     .container { padding: 8px; }
 
+    // FIXME: untested
+    .message-bar {
+      // margin-bottom: 4px;
+    }
+
+    .name-button {
+      image {
+        &:dir(ltr) { margin-right: 8px - 5px; }
+        &:dir(rtl) { margin-left: 8px - 5px; }
+      }
+    }
+
+    .unmount-button {
+      margin: ($menuitem_size - $small_size) / 2;
+      padding: 0;
+    }
+
+    .places-section-header {
+    }
+
     .places-list:not(.always-expand) {
       margin-top: 4px;
       padding-top: 4px;
       border-top: 1px solid $border_color;
+    }
+
+    // FIXME: untested
+    .unlock-area {
+      entry {
+      }
+
+      button {
+      }
     }
 
     // I guess this really should be hard-coded as well as other dim-labels.
@@ -182,53 +211,6 @@ button.budgie-menu-launcher {
 // Raven Trigger
 button.raven-trigger {
   // padding: 0 4px;
-}
-
-// Places Menu
-.places-menu {
-  .container { padding: 8px; }
-
-  // FIXME: untested
-  .message-bar {
-    // margin-bottom: 4px;
-  }
-
-  .name-button {
-    image {
-      &:dir(ltr) { margin-right: 8px - 5px; }
-      &:dir(rtl) { margin-left: 8px - 5px; }
-    }
-  }
-
-  .unmount-button {
-    margin: ($menuitem_size - $small_size) / 2;
-    padding: 0;
-  }
-
-  .places-section-header {
-  }
-
-  .places-list {
-    margin-top: 4px;
-    padding-top: 4px;
-    border-top: 1px solid $border_color;
-    background-color: transparent;
-  }
-
-  row {
-    padding: 0;
-    box-shadow: none;
-    background-image: none;
-  }
-
-  // FIXME: untested
-  .unlock-area {
-    entry {
-    }
-
-    button {
-    }
-  }
 }
 
 // Panel
