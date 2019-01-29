@@ -83,7 +83,7 @@
   }
 
   &.workspace-popover {
-    .container { padding: 2px 8px 8px; }
+    .container { padding: 8px; }
 
     separator { margin: 4px 0; }
 
@@ -156,6 +156,7 @@
 
   entry.search {
     border-bottom: 1px solid $border_color;
+    border-image: none;
     border-radius: 0;
     box-shadow: none;
     font-size: 120%;
@@ -174,7 +175,7 @@
 
     &:checked { @extend %selected_items; }
 
-    &:checked:disabled { background-color: $primary_color; } // overriding
+    &:checked:disabled { background-color: transparent; } // overriding
   }
 
   row {
@@ -203,20 +204,16 @@ button.raven-trigger {
     // margin-bottom: 4px;
   }
 
-  .name-button.text-button {
-    // padding: 4px 8px;
-    padding-left: 8px;
-    padding-right: 8px;
-
+  .name-button {
     image {
       &:dir(ltr) { margin-right: 8px - 5px; }
       &:dir(rtl) { margin-left: 8px - 5px; }
     }
   }
 
-  // FIXME: untested
   .unmount-button {
-    // padding: ($medium_size - 24px) / 2;
+    margin: ($menuitem_size - $small_size) / 2;
+    padding: 0;
   }
 
   .places-section-header {
@@ -445,8 +442,9 @@ calendar.raven-calendar {
   background-color: transparent;
 
   &:selected {
+    @extend %selected_items;
+
     border-radius: $material_radius;
-    background-color: $primary_color;
   }
 }
 
@@ -550,6 +548,7 @@ calendar.raven-calendar {
   entry.search {
     font-size: 120%;
     padding: $container_padding 8px + $container_padding;
+    border-image: none;
     box-shadow: inset 0 1px $highlight_color;
     background-color: transparent;
   }
