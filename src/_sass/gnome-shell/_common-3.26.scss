@@ -84,8 +84,8 @@ StEntry {
   border-radius: $material_radius $material_radius 0 0;
   border-width: 0;
   color: $fg_color;
-  selection-background-color: $primary_color;
-  selected-color: $inverse_fg_color;
+  selection-background-color: $selected_overlay_color;
+  selected-color: $fg_color;
   @include font(subheading);
   @include entry(normal);
   &:hover { @include entry(hover);}
@@ -719,8 +719,8 @@ StScrollBar {
   }
 
   .switcher-list .item-box:selected {
-    background-color: $primary_color;
-    color: $inverse_fg_color;
+    background-color: $selected_overlay_color;
+    color: $fg_color;
   }
 
   .switcher-list .thumbnail-box {
@@ -1073,8 +1073,8 @@ StScrollBar {
         border-color: transparent; //avoid jumparound due to today
       }
       &:selected {
-        color: $inverse_fg_color;
-        background-color: $primary_color;
+        color: $fg_color;
+        background-color: $selected_overlay_color;
         border-color: transparent; //avoid jumparound due to today
       }
       &.calendar-day-heading {  //day of week heading
@@ -1389,8 +1389,8 @@ StScrollBar {
   }
 
   .nm-dialog-item:selected {
-    background-color: $primary_color;
-    color: $inverse_fg_color;
+    background-color: $selected_overlay_color;
+    color: $fg_color;
   }
 
   .nm-dialog-icons { spacing: .5em; }
@@ -1936,7 +1936,6 @@ StScrollBar {
   .candidate-index {
     padding: 0 4px 0 0;
     color: $secondary_fg_color;
-    .candidate-box:selected & { color: $inverse_secondary_fg_color; }
   }
 
   .candidate-box {
@@ -1946,7 +1945,7 @@ StScrollBar {
     border-radius: $material_radius;
     &:hover { background-color: $hover_overlay_color; color: $fg_color; transition-duration: 0ms; }
     &:active { background-color: $active_overlay_color; color: $fg_color; transition-duration: $longer_duration; }
-    &:selected { background-color: $primary_color; color: $inverse_fg_color; transition-duration: 0ms; }
+    &:selected { background-color: $selected_overlay_color; color: $fg_color; transition-duration: 0ms; }
   }
 
   .candidate-page-button-box {
@@ -2251,8 +2250,8 @@ StScrollBar {
 
   .lg-dialog {
     StEntry {
-      selection-background-color: $primary_color;
-      selected-color: $inverse_fg_color;
+      selection-background-color: $selected_overlay_color;
+      selected-color: $fg_color;
     }
     .shell-link {
       color: $link_color;
