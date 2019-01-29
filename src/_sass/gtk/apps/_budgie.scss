@@ -39,7 +39,7 @@
     &:hover { box-shadow: none; }
   }
 
-  &:not(.budgie-menu) button.flat:not(.image-button) {
+  button.flat:not(.image-button) {
     min-height: $menuitem_size;
     padding: 0 8px;
     color: $fg_color;
@@ -63,16 +63,12 @@
       font-size: 120%;
     }
 
-    button {
+    button.flat:not(.image-button) {
       @extend row.activatable;
 
       min-height: 32px;
       padding: 0 8px;
       border-radius: 0;
-      color: $fg_color;
-      font-weight: normal;
-
-      &:disabled { color: $disabled_fg_color; }
 
       &:checked { @extend %selected_items; }
 
