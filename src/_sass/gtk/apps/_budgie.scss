@@ -361,8 +361,6 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
     min-height: $medium_size;
     padding: 3px;
 
-    &:not(.top) { margin-top: -6px; } // remove extra spaces
-
     &.top {
       padding: 0;
       border-bottom: 1px solid $border_color;
@@ -377,7 +375,11 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
     &.bottom { border-top: 1px solid $border_color; }
   }
 
-  viewport.frame .raven-header { margin-top: -8px; }
+  stack {
+    .raven-header { margin-top: -6px; } // remove extra space in Notifications stack
+
+    scrolledwindow .raven-header { margin-top: -8px; } // remove extra spaces in Applets stack
+  }
 
   .expander-button { @extend %circular_button; }
 
