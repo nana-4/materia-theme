@@ -377,17 +377,16 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
   stackswitcher.linked > button {
     @extend %flat_button;
-    @extend %button_selected.flat;
 
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  $warning_bg_color 0%,
+                                  $primary_color 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
     border-radius: 0;
 
     &:checked {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                    $warning_bg_color 100%,
+                                    $primary_color 100%,
                                     transparent 0%)
                                     0 0 2 / 0 0 2px;
       background-color: transparent;
@@ -401,13 +400,13 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
     &:not(.top) { margin-top: -6px; } // remove extra spaces
 
     &.top {
-      padding: 2px 0;
-      background-color: $primary_color;
-      color: $inverse_fg_color;
+      padding: 0;
+      border-bottom: 1px solid $border_color;
 
       stackswitcher button {
-        margin: -$container_padding 0;
-        min-height: $medium_size;
+        margin: -4px 0 -5px;
+        padding: 0 16px;
+        min-height: $large_size;
       }
     }
 
