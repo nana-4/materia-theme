@@ -561,7 +561,7 @@ StScrollBar {
 
   .popup-menu-arrow { } //defined globally in the TOP BAR
   .popup-sub-menu {
-    background-color: $alt_lighter_bg_color;
+    background-color: $fill_color;
     box-shadow: $shadow_0;
   }
 
@@ -574,19 +574,15 @@ StScrollBar {
     &:ltr { padding: 0.4em 24px 0.4em 0; }
     &:rtl { padding: 0.4em 0 0.4em 24px; }
     &:checked {
-      background-color: $primary_color;
-      color: $inverse_fg_color;
+      background-color: $selected_overlay_color;
       box-shadow: $shadow_0;
       font-weight: normal;
       &.selected {
-        background-color: mix($inverse_fg_color, $primary_color, percentage(0.08));
-        color: $inverse_fg_color;
+        background-color: rgba($primary_color, 0.4);
       }
       &:active {
-        background-color: mix($inverse_fg_color, $primary_color, percentage(0.2));
-        color: $inverse_fg_color !important;
+        background-color: rgba($primary_color, 0.6);
       }
-      &:insensitive { color: $inverse_disabled_fg_color; }
     }
     &.selected {
       background-color: $hover_overlay_color;
