@@ -1,5 +1,5 @@
 // based css:
-// https://github.com/budgie-desktop/budgie-desktop/tree/master/src/theme
+// https://github.com/solus-project/budgie-desktop/tree/master/src/theme
 
 /******************
  * Budgie Desktop *
@@ -72,7 +72,7 @@
 
       &:checked { @extend %selected_items; }
 
-      &:checked:disabled { background-color: transparent; } // overriding
+      &:checked:disabled { background-color: transparent; } // remove pointless indicator
     }
   }
 
@@ -128,7 +128,7 @@
       }
     }
 
-    // I guess this really should be hard-coded as well as other dim-labels.
+    // use such sizes for consistency with other hard-coded dim-label sizes
     .alternative-label {
       padding: 3px;
       font-size: 15px;
@@ -337,7 +337,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 .raven {
   background-color: $surface_color;
 
-  > box { margin-bottom: -10px; }
+  > box { margin-bottom: -10px; } // remove extra space between box and .raven-header.bottom
 
   stackswitcher.linked > button {
     @extend %flat_button;
@@ -366,7 +366,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
       border-bottom: 1px solid $border_color;
 
       stackswitcher button {
-        margin: -4px 0 -5px;
+        margin: -4px 0 -5px; // remove unwanted vertical margins
         padding: 0 16px;
         min-height: $large_size;
       }
