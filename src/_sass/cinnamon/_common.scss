@@ -1437,26 +1437,26 @@ StScrollView {
 .expo-workspaces-name-entry {
   @include font(body-1);
 
-  background-color: rgba(0, 0, 0, 0.01);
-  color: $titlebar_secondary_fg_color; 
-  padding: 4px 6px;
-  selection-background-color: $titlebar_track_color;
-  selected-color: $titlebar_fg_color;
-  caret-color: $titlebar_secondary_fg_color;
+  background-color: $inverse_fill_color;
+  color: $inverse_fg_color; 
+  padding: 0 8px;
+  selection-background-color: $inverse_track_color;
+  selected-color: $inverse_fg_color;
+  caret-color: $inverse_fg_color;
   text-align: center;
-  height: 1.5em;
-  border-radius: $material_radius;
+  height: $medium_size;
+  border-radius: $material_radius $material_radius 0 0;
   -cinnamon-caption-spacing: 12px;
   &#selected {
-    color: $titlebar_fg_color;
-    background-color: $titlebar_track_color;
+    color: $inverse_fg_color;
+    background-color: $inverse_fill_color;
   }
   &:focus {
-    color: $titlebar_fg_color;
-    box-shadow: 0 -3px 0 0 $primary_color inset;
+    color: $inverse_fg_color;
+    box-shadow: inset 0 -2px $inverse_fg_color;
   }
   &:hover {
-    box-shadow: 0 -3px 0 0 $primary_color inset;
+    background-color: $inverse_divider_color;
   }
 }
 .notification-applet-padding {

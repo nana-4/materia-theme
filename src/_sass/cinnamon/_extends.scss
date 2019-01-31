@@ -41,19 +41,20 @@
   height: 1.5em;
 }
 %dialog-entry-shared {
-  @include entry(normal,$fc:$track_color);
+  @include entry(normal);
 
   width: 250px;
-  padding: 4px 8px;
+  min-height: $medium_size;
+  padding: 0 8px;
   border-radius: $material_radius $material_radius 0 0;
-  color: $secondary_fg_color;
-  caret-color: $secondary_fg_color;
-  selection-background-color: $track_color;
+  color: $fg_color;
+  caret-color: $fg_color;
+  selection-background-color: $selected_overlay_color;
   selected-color: $fg_color;
   &:focus {
-    @include entry(focus,$fc:$fg_color);
-    
-    padding: 4px 8px;
+    @include entry(focus);
+
+    padding: 0 8px;
     border-width: 0;
     color: $fg_color;
   }
