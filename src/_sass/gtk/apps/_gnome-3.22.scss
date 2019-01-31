@@ -41,17 +41,9 @@
   animation: needs_attention_keyframes $longer_duration $standard_curve 4 alternate;
 }
 
-.disclosure-button { @extend %circular_button; }
+.linked > button:not(.suggested-action):not(.destructive-action).disclosure-button { @extend %circular_button; }
 
 // Path bar
-
-.nautilus-window .path-bar button {
-  label:not(:only-child) {
-    &:first-child { margin-left: 0; }
-
-    &:last-child { margin-right: 0; }
-  }
-}
 
 .path-bar-box {
   // transition: background-color $shorter_duration $deceleration_curve;
@@ -60,12 +52,20 @@
 
   // button { margin: 0; } // reset the margin
 
-  // &.width-maximized { background-color: rgba($titlebar_fg_color, 0.06); }
+  // &.width-maximized { background-color: $titlebar_fill_color; }
 
   // workaround for 3.30.1
   &.background.frame {
     border-style: none;
     background-color: transparent;
+  }
+
+  .path-bar button {
+    label:not(:only-child) {
+      &:first-child { margin-left: 0; }
+
+      &:last-child { margin-right: 0; }
+    }
   }
 }
 
@@ -196,7 +196,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 }
 
 // Make operations button circular
-.nautilus-window headerbar > revealer > button { @extend %circular_button; }
+.nautilus-window headerbar revealer > button { @extend %circular_button; }
 
 // Ensure paned separator rendering. See issue #84 for details.
 .nautilus-window paned > separator { background-color: $bg_color; }
