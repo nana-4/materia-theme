@@ -46,18 +46,18 @@
 // Path bar
 
 .path-bar-box {
-  // transition: background-color $shorter_duration $deceleration_curve;
-  // margin: $container_padding 0;
-  // border-radius: $material_radius;
+  transition: background-color $shorter_duration $deceleration_curve;
+  margin: $container_padding 0;
+  border-radius: $material_radius;
 
-  // button { margin: 0; } // reset the margin
+  button { margin: 0; } // reset the margin
 
-  // &.width-maximized { background-color: $titlebar_fill_color; }
+  &.width-maximized { background-color: $titlebar_fill_color; }
 
   // workaround for 3.30.1
   &.background.frame {
     border-style: none;
-    background-color: transparent;
+    background-color: $titlebar_fill_color;
   }
 
   .path-bar button {
