@@ -86,21 +86,21 @@ StScrollView {
 // scale view right click menu
 .popup-combo-menu {
   @extend %menu-shared;
-  padding: 8px;
+  padding: 8px 0;
 }
 .popup-menu-content{
-  padding: 8px;
+  padding: 8px 0;
 }
 
 // individual menu entries are themed here
 .popup-menu-item {
-	padding: 0.4em 4px;
-	spacing: 0.4em;
-	transition-duration: $shorter_duration;
+  padding: 0.4em 16px;
+  spacing: 8px;
+  transition-duration: $shorter_duration;
   &:active {
-    background-color: $titlebar_track_color;
+    background-color: $hover_overlay_color;
     color: $fg_color;
-    transition-duration: $longer_duration;
+    transition-duration: 0ms;
   }
   &:insensitive { color: $disabled_fg_color; }
   }
@@ -108,7 +108,7 @@ StScrollView {
   color: $secondary_fg_color;
 }
 .popup-combobox-item {
-  padding: 0.4em 4px;
+  padding: 0.4em 16px;
 }
 // sliders and separators in menus
 .popup-separator-menu-item {
