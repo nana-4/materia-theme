@@ -7,11 +7,11 @@ if [[ ! "$(command -v inkscape || command -v rendersvg)" ]]; then
 fi
 
 if [[ ! "$(command -v optipng)" ]]; then
-  echo "'optipng' needs to be installed to optimize the resulting PNG!"
+  echo "'optipng' needs to be installed to optimize the resulting PNG."
 fi
 
 chrome() (
-  cd ./src/chrome
+  cd src/chrome
   ./render-assets.sh
 )
 

@@ -25,7 +25,7 @@ GS_VERSIONS=('3.18' '3.24' '3.26' '3.28' '3.30')
 LATEST_GS_VERSION="${GS_VERSIONS[-1]}"
 
 # Set a proper gnome-shell theme version
-if command -v gnome-shell >/dev/null ; then
+if command -v gnome-shell >/dev/null; then
   CURRENT_GS_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -2)"
   for version in "${GS_VERSIONS[@]}"; do
     if (( "$(bc <<< "$CURRENT_GS_VERSION <= $version")" )); then
