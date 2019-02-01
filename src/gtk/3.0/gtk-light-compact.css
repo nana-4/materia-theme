@@ -810,7 +810,7 @@ button.image-button, toolbar .linked > button.image-button, .titlebar:not(header
 headerbar .linked > button.image-button:not(.suggested-action):not(.destructive-action), actionbar > revealer > box .linked > button.image-button:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification .linked > button.image-button, .nemo-window .toolbar .linked > button.image-button, toolbar .linked.vertical > button.image-button,
 headerbar .linked.vertical > button.image-button:not(.suggested-action):not(.destructive-action), .app-notification .linked.vertical > button.image-button, .nemo-window .toolbar .linked.vertical > button.image-button, .linked > button.flat.image-button,
 .linked.vertical > button.flat.image-button, .inline-toolbar button:not(.text-button), check,
-radio, filechooser #pathbarbox > stack > box > button, button.titlebutton, .disclosure-button, .nautilus-window headerbar > revealer > button, .raven .expander-button,
+radio, filechooser #pathbarbox > stack > box > button, button.titlebutton, .linked > button.disclosure-button:not(.suggested-action):not(.destructive-action), .nautilus-window headerbar revealer > button, .raven .expander-button,
 button.close,
 button.circular {
   border-radius: 9999px;
@@ -3844,24 +3844,38 @@ headerbar .nautilus-canvas-item.subtitle, .budgie-notification .nautilus-canvas-
 }
 
 .nautilus-operations-button-needs-attention {
-  animation: needs_attention_keyframes 225ms cubic-bezier(0.4, 0, 0.2, 1) 2 alternate;
+  animation: needs_attention_keyframes 300ms cubic-bezier(0.4, 0, 0.2, 1) 2 alternate;
 }
 
 .nautilus-operations-button-needs-attention-multiple {
-  animation: needs_attention_keyframes 225ms cubic-bezier(0.4, 0, 0.2, 1) 4 alternate;
+  animation: needs_attention_keyframes 300ms cubic-bezier(0.4, 0, 0.2, 1) 6 alternate;
 }
 
-.nautilus-window .path-bar button label:not(:only-child):first-child {
-  margin-left: 0;
+.path-bar-box {
+  transition: background-color 100ms cubic-bezier(0, 0, 0.2, 1);
+  margin: 4px 0;
+  border-radius: 4px;
 }
 
-.nautilus-window .path-bar button label:not(:only-child):last-child {
-  margin-right: 0;
+.path-bar-box button {
+  margin: 0;
+}
+
+.path-bar-box.width-maximized {
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .path-bar-box.background.frame {
   border-style: none;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.path-bar-box .path-bar button label:not(:only-child):first-child {
+  margin-left: 0;
+}
+
+.path-bar-box .path-bar button label:not(:only-child):last-child {
+  margin-right: 0;
 }
 
 .nautilus-window .floating-bar {
