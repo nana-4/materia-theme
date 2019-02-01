@@ -3,7 +3,7 @@
 ![widget-factory](../images/widget-factory.png?raw=true)
 
 Materia (formerly Flat-Plat) is a [Material Design](https://material.io) theme for GNOME/GTK+ based desktop environments.  
-It supports GTK+ 3, GTK+ 2, GNOME Shell, Budgie, Cinnamon, MATE, Unity, LightDM, GDM, Chrome theme, etc.
+It supports GTK+ 3, GTK+ 2, GNOME Shell, Budgie, Cinnamon, MATE, Unity, Xfce, LightDM, GDM, Chrome theme, etc.
 
 Also Materia can be customized with [oomox theme designer](https://github.com/themix-project/oomox).
 
@@ -35,6 +35,7 @@ Various **desktop environments** are supported:
 - Cinnamon `>=3.x`
 - MATE `>=1.14`
 - Unity `>=7.4`
+- Xfce `>=4.13`
 
 ## Requirements
 
