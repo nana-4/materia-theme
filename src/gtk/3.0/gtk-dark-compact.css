@@ -925,31 +925,18 @@ button.color {
 /*********
  * Links *
  *********/
-*:link, button:link,
-button:visited, *:link:hover, button:hover:link,
-button:hover:visited, *:link:active, button:active:link,
-button:active:visited {
+*:link, button:link, button:link:hover, button:link:active,
+button:visited,
+button:visited:hover,
+button:visited:active {
   color: #4285F4;
 }
 
 *:link:visited,
-button:visited, *:link:visited:hover,
-button:visited:hover, *:link:visited:active,
+button:visited,
+button:visited:hover,
 button:visited:active {
   color: #E040FB;
-}
-
-infobar.info *:link, infobar.info button:link,
-infobar.info button:visited, infobar.question *:link, infobar.question button:link,
-infobar.question button:visited, infobar.warning *:link, infobar.warning button:link,
-infobar.warning button:visited, infobar.error *:link, infobar.error button:link,
-infobar.error button:visited, *:link:selected, button:selected:link,
-button:selected:visited, .selection-mode.titlebar:not(headerbar) .subtitle:link,
-headerbar.selection-mode .subtitle:link,
-*:selected *:link,
-*:selected button:link,
-*:selected button:visited {
-  color: white;
 }
 
 button:link > label,
@@ -1335,6 +1322,11 @@ headerbar.selection-mode {
 .selection-mode.titlebar:backdrop:not(headerbar),
 headerbar.selection-mode:backdrop {
   color: rgba(255, 255, 255, 0.7);
+}
+
+.selection-mode.titlebar:not(headerbar) .subtitle:link,
+headerbar.selection-mode .subtitle:link {
+  color: white;
 }
 
 .selection-mode.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
@@ -3488,6 +3480,14 @@ infobar.error {
 }
 
 infobar.info > label, infobar.info, infobar.question > label, infobar.question, infobar.warning > label, infobar.warning, infobar.error > label, infobar.error {
+  color: white;
+}
+
+infobar.info *:link, infobar.info button:link,
+infobar.info button:visited, infobar.question *:link, infobar.question button:link,
+infobar.question button:visited, infobar.warning *:link, infobar.warning button:link,
+infobar.warning button:visited, infobar.error *:link, infobar.error button:link,
+infobar.error button:visited {
   color: white;
 }
 

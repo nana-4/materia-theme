@@ -750,20 +750,14 @@ button.color {
  * Links *
  *********/
 *:link {
-  &, &:hover, &:active { color: $link_color; }
+  color: $link_color;
 
-  &:visited {
-    &, &:hover, &:active { color: $visited_link_color; }
-  }
-
-  @at-root %link_selected,
-  &:selected,
-  *:selected & { color: $inverse_fg_color; }
+  &:visited { color: $visited_link_color; }
 }
 
 button:link,
 button:visited {
-  @extend *:link;
+  &, &:hover, &:active { @extend *:link; }
 
   > label { text-decoration-line: underline; }
 }
@@ -1177,7 +1171,7 @@ headerbar {
       color: $inverse_secondary_fg_color;
     }
 
-    .subtitle:link { @extend *:link:selected; }
+    .subtitle:link { color: $inverse_fg_color; }
 
     button:not(.suggested-action):not(.destructive-action) {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
@@ -3146,7 +3140,7 @@ infobar {
 
     selection {}
 
-    *:link { @extend %link_selected; }
+    *:link { color: $inverse_fg_color; }
   }
 }
 
