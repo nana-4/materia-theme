@@ -23,13 +23,13 @@ $track_color:                 if($variant == 'light', rgba(black, 0.26), rgba(wh
 $divider_color:               if($variant == 'light', rgba(black, 0.12), rgba(white, 0.12));
 $fill_color:                  if($variant == 'light', rgba(black, 0.04), rgba(white, 0.04));
 
-$titlebar_fg_color:                    if($titlebar == 'light', rgba(black, 0.87), white);
-$titlebar_secondary_fg_color:          if($titlebar == 'light', rgba(black, 0.54), rgba(white, 0.7));
-$titlebar_disabled_fg_color:           if($titlebar == 'light', rgba(black, 0.38), rgba(white, 0.5));
-$titlebar_disabled_secondary_fg_color: if($titlebar == 'light', rgba(black, 0.26), rgba(white, 0.3));
-$titlebar_track_color:                 if($titlebar == 'light', rgba(black, 0.26), rgba(white, 0.3));
-$titlebar_divider_color:               if($titlebar == 'light', rgba(black, 0.12), rgba(white, 0.12));
-$titlebar_fill_color:                  if($titlebar == 'light', rgba(black, 0.04), rgba(white, 0.04));
+$titlebar_fg_color:                    if($topbar == 'light', rgba(black, 0.87), white);
+$titlebar_secondary_fg_color:          if($topbar == 'light', rgba(black, 0.54), rgba(white, 0.7));
+$titlebar_disabled_fg_color:           if($topbar == 'light', rgba(black, 0.38), rgba(white, 0.5));
+$titlebar_disabled_secondary_fg_color: if($topbar == 'light', rgba(black, 0.26), rgba(white, 0.3));
+$titlebar_track_color:                 if($topbar == 'light', rgba(black, 0.26), rgba(white, 0.3));
+$titlebar_divider_color:               if($topbar == 'light', rgba(black, 0.12), rgba(white, 0.12));
+$titlebar_fill_color:                  if($topbar == 'light', rgba(black, 0.04), rgba(white, 0.04));
 
 $inverse_fg_color:                    white;
 $inverse_secondary_fg_color:          rgba(white, 0.7);
@@ -45,13 +45,13 @@ $base_color:           if($variant == 'light', #FFFFFF, #303030);
 $alt_base_color:       if($variant == 'light', #FAFAFA, #2C2C2C);
 $surface_color:        if($variant == 'light', #FFFFFF, #424242);
 
-$titlebar_bg_color: if($titlebar == 'dark', #383838, #E0E0E0);
+$titlebar_bg_color: if($topbar == 'dark', #383838, #E0E0E0);
 
 $panel_bg_color:         rgba(black, 0.6);
 $alt_panel_bg_color:     rgba(black, 0.3);
 $inverse_panel_bg_color: rgba(white, 0.1);
-$solid_panel_bg_color:   if($titlebar == 'dark', #212121, $panel_bg_color);
-$opaque_panel_bg_color:  if($titlebar == 'dark', #212121, #CBCBCB); // for Unity panel which cannot use translucent colors
+$solid_panel_bg_color:   if($topbar == 'dark', #212121, $panel_bg_color);
+$opaque_panel_bg_color:  if($topbar == 'dark', #212121, #CBCBCB); // for Unity panel which cannot use translucent colors
 
 $gdm_bg_color: #303030;
 
@@ -87,9 +87,9 @@ $tooltip_fg_color: white;
 $border_color:             if($variant == 'light', rgba(black, 0.12), rgba(black, 0.26));
 $alt_border_color:         rgba(black, 0.26); // for non-native GTK+ apps (e.g. Firefox and Chrome)
 $highlight_color:          if($variant == 'light', rgba(white, 0.4),  rgba(white, 0.1));
-$titlebar_highlight_color: if($titlebar == 'dark', rgba(white, 0.1),  rgba(white, 0.4));
+$titlebar_highlight_color: if($topbar == 'dark', rgba(white, 0.1),  rgba(white, 0.4));
 $alt_highlight_color:      rgba(white, 0.2); // for selection-mode headerbar which colored with $primary_color
-$titlebar_indicator_color: if($titlebar == 'dark', currentColor, $primary_color);
+$titlebar_indicator_color: if($topbar == 'dark', currentColor, $primary_color);
 
 // FIXME: Electron/Atom menu does not allow translucent colors
 $opaque_fg_color:           if($variant == 'light', $grey_900, $white);
