@@ -6,8 +6,8 @@
  ************************/
 // the panel widget at the top
 #panel_window {
-  background-color: $alt_panel_bg_color;
-  color: $inverse_fg_color;
+  background-color: $scrim-alt;
+  color: $inverse-text;
   // font-weight: bold;
 
   // the menubars/menus of the panel, i.e. indicators
@@ -21,11 +21,11 @@
   }
 
   menubar > menuitem {
-    color: $inverse_secondary_fg_color;
+    color: $inverse-text-secondary;
 
-    &:hover { color: $inverse_fg_color; }
+    &:hover { color: $inverse-text; }
 
-    &:disabled label { color: $inverse_disabled_secondary_fg_color; }
+    &:disabled label { color: $inverse-text-secondary-disabled; }
   }
 }
 
@@ -35,14 +35,14 @@
 #restart_dialog {
   margin: 8px;
   border-radius: $material_radius;
-  box-shadow: $shadow_2, inset 0 1px $highlight_color;
-  background-color: $surface_color;
+  box-shadow: $shadow_2, inset 0 1px $highlight;
+  background-color: $surface;
 }
 
 // the top half of the login-window, in GtkDialog terms, the content
 #content_frame {
   padding-bottom: 20px;
-  border-bottom: 1px solid $border_color;
+  border-bottom: 1px solid $border;
 }
 
 #login_window {

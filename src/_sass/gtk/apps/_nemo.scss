@@ -9,7 +9,7 @@
 
 .nemo-window {
   .primary-toolbar {
-    border-bottom: 1px solid $border_color;
+    border-bottom: 1px solid $border;
 
     // FIXME: workaround for wrong size allocation of Nemo
     entry {
@@ -39,12 +39,12 @@
   infobar { margin-top: -6px; }
 
   // Inactive F3 pane shading
-  .nemo-inactive-pane .view:not(:selected) { background-color: $alt_base_color; }
+  .nemo-inactive-pane .view:not(:selected) { background-color: $base-alt; }
 
   // Rename box styling in the icon view.
   .nemo-window-pane widget.entry {
     border-radius: $material_radius;
-    background-color: $fill_color;
+    background-color: $fill;
 
     &:selected { @extend %selected_items; }
   }
@@ -54,8 +54,8 @@
 
 // For Places Sidebar diskfull indicators
 .places-treeview {
-  -NemoPlacesTreeView-disk-full-bg-color: mix($fg_color, $bg_color, percentage(0.3)); // Can't use translucent colors
-  -NemoPlacesTreeView-disk-full-fg-color: $primary_color;
+  -NemoPlacesTreeView-disk-full-bg-color: mix($text, $background, percentage(0.3)); // Can't use translucent colors
+  -NemoPlacesTreeView-disk-full-fg-color: $primary;
   -NemoPlacesTreeView-disk-full-bar-width: 2px;
   -NemoPlacesTreeView-disk-full-bar-radius: 0;
   -NemoPlacesTreeView-disk-full-bottom-padding: 1px; // There is already hard-coded 1px bottom-padding

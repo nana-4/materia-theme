@@ -2,100 +2,100 @@
 // it gets @if ed depending on $variant
 
 @import 'color-palette';
-$google_blue_color:   #4285F4;
-$google_green_color:  #34A853;
-$google_yellow_color: #FBBC05;
-$google_red_color:    #EA4335;
+$blue:                                  #4285F4;
+$green:                                 #34A853;
+$yellow:                                #FBBC05;
+$red:                                   #EA4335;
 
 @function gtkalpha($c, $a) {
   @return unquote("alpha(#{$c}, #{$a})");
 }
 
 // Foreground colors
-$dark_fg_color:  rgba(black, 0.87);
-$light_fg_color: white;
+$text-on-light:                         rgba(black, 0.87);
+$text-on-dark:                          white;
 
-$fg_color:                    if($variant == 'light', rgba(black, 0.87), white);
-$secondary_fg_color:          if($variant == 'light', rgba(black, 0.54), rgba(white, 0.7));
-$disabled_fg_color:           if($variant == 'light', rgba(black, 0.38), rgba(white, 0.5));
-$disabled_secondary_fg_color: if($variant == 'light', rgba(black, 0.26), rgba(white, 0.3));
-$track_color:                 if($variant == 'light', rgba(black, 0.26), rgba(white, 0.3));
-$divider_color:               if($variant == 'light', rgba(black, 0.12), rgba(white, 0.12));
-$fill_color:                  if($variant == 'light', rgba(black, 0.04), rgba(white, 0.04));
+$text:                                  if($variant == 'light', rgba(black, 0.87), white);
+$text-secondary:                        if($variant == 'light', rgba(black, 0.54), rgba(white, 0.7));
+$text-disabled:                         if($variant == 'light', rgba(black, 0.38), rgba(white, 0.5));
+$text-secondary-disabled:               if($variant == 'light', rgba(black, 0.26), rgba(white, 0.3));
+$track:                                 if($variant == 'light', rgba(black, 0.26), rgba(white, 0.3));
+$divider:                               if($variant == 'light', rgba(black, 0.12), rgba(white, 0.12));
+$fill:                                  if($variant == 'light', rgba(black, 0.04), rgba(white, 0.04));
 
-$titlebar_fg_color:                    if($topbar == 'light', rgba(black, 0.87), white);
-$titlebar_secondary_fg_color:          if($topbar == 'light', rgba(black, 0.54), rgba(white, 0.7));
-$titlebar_disabled_fg_color:           if($topbar == 'light', rgba(black, 0.38), rgba(white, 0.5));
-$titlebar_disabled_secondary_fg_color: if($topbar == 'light', rgba(black, 0.26), rgba(white, 0.3));
-$titlebar_track_color:                 if($topbar == 'light', rgba(black, 0.26), rgba(white, 0.3));
-$titlebar_divider_color:               if($topbar == 'light', rgba(black, 0.12), rgba(white, 0.12));
-$titlebar_fill_color:                  if($topbar == 'light', rgba(black, 0.04), rgba(white, 0.04));
+$titlebar-text:                         if($topbar == 'light', rgba(black, 0.87), white);
+$titlebar-text-secondary:               if($topbar == 'light', rgba(black, 0.54), rgba(white, 0.7));
+$titlebar-text-disabled:                if($topbar == 'light', rgba(black, 0.38), rgba(white, 0.5));
+$titlebar-text-secondary-disabled:      if($topbar == 'light', rgba(black, 0.26), rgba(white, 0.3));
+$titlebar-track:                        if($topbar == 'light', rgba(black, 0.26), rgba(white, 0.3));
+$titlebar-divider:                      if($topbar == 'light', rgba(black, 0.12), rgba(white, 0.12));
+$titlebar-fill:                         if($topbar == 'light', rgba(black, 0.04), rgba(white, 0.04));
 
-$inverse_fg_color:                    white;
-$inverse_secondary_fg_color:          rgba(white, 0.7);
-$inverse_disabled_fg_color:           rgba(white, 0.5);
-$inverse_disabled_secondary_fg_color: rgba(white, 0.3);
-$inverse_track_color:                 rgba(white, 0.3);
-$inverse_divider_color:               rgba(white, 0.12);
-$inverse_fill_color:                  rgba(white, 0.04);
+$inverse-text:                          white;
+$inverse-text-secondary:                rgba(white, 0.7);
+$inverse-text-disabled:                 rgba(white, 0.5);
+$inverse-text-secondary-disabled:       rgba(white, 0.3);
+$inverse-track:                         rgba(white, 0.3);
+$inverse-divider:                       rgba(white, 0.12);
+$inverse-fill:                          rgba(white, 0.04);
 
 // Background colors
-$bg_color:             if($variant == 'light', #F2F2F2, #282828);
-$base_color:           if($variant == 'light', #FFFFFF, #303030);
-$alt_base_color:       if($variant == 'light', #FAFAFA, #2C2C2C);
-$surface_color:        if($variant == 'light', #FFFFFF, #424242);
+$background:                            if($variant == 'light', #F2F2F2, #282828);
+$base:                                  if($variant == 'light', #FFFFFF, #303030);
+$base-alt:                              if($variant == 'light', #FAFAFA, #2C2C2C);
+$surface:                               if($variant == 'light', #FFFFFF, #424242);
 
-$titlebar_bg_color: if($topbar == 'dark', #383838, #E0E0E0);
+$titlebar:                              if($topbar == 'dark', #383838, #E0E0E0);
 
-$panel_bg_color:         rgba(black, 0.6);
-$alt_panel_bg_color:     rgba(black, 0.3);
-$inverse_panel_bg_color: rgba(white, 0.1);
-$solid_panel_bg_color:   if($topbar == 'dark', #212121, $panel_bg_color);
-$opaque_panel_bg_color:  if($topbar == 'dark', #212121, #CBCBCB); // for Unity panel which cannot use translucent colors
+$scrim:                                 rgba(black, 0.6);
+$scrim-alt:                             rgba(black, 0.3);
+$scrim-inverse:                         rgba(white, 0.1);
+$panel:                                 if($topbar == 'dark', #212121, $scrim);
+$panel-solid:                           if($topbar == 'dark', #212121, #CBCBCB); // for Unity panel which cannot use translucent colors
 
-$gdm_bg_color: #303030;
+$os-background:                         #303030;
 
-$hover_overlay_color:       gtkalpha(currentColor, 0.08);
-$focus_overlay_color:       gtkalpha(currentColor, 0.12);
-$hover_focus_overlay_color: gtkalpha(currentColor, 0.16);
-$active_overlay_color:      gtkalpha(currentColor, 0.12);
-$checked_overlay_color:     gtkalpha(currentColor, 0.24);
+$overlay-hover:                         gtkalpha(currentColor, 0.08);
+$overlay-focus:                         gtkalpha(currentColor, 0.12);
+$overlay-focus-hover:                   gtkalpha(currentColor, 0.16);
+$overlay-active:                        gtkalpha(currentColor, 0.12);
+$overlay-checked:                       gtkalpha(currentColor, 0.24);
 
 // Misc colors
-$primary_color:            $google_blue_color;
-$alt_primary_color:        #7BAAF7;
-$selected_overlay_color:    rgba($primary_color, 0.32);
+$primary:                               $blue;
+$primary-alt:                           #7BAAF7;
+$overlay-selected:                      rgba($primary, 0.32);
 
-$link_color:         $primary_color;
-$visited_link_color: $purple_A200;
+$link:                                  $primary;
+$link-visited:                          $purple-a200;
 
-$warning_color: $google_yellow_color;
-$error_color:   $google_red_color;
-$success_color: $google_green_color;
+$warning:                               $yellow;
+$error:                                 $red;
+$success:                               $green;
 
-$suggested_color:   $primary_color;
-$destructive_color: $google_red_color;
+$suggested:                             $primary;
+$destructive:                           $red;
 
-$info_bg_color:     $google_green_color;
-$question_bg_color: $google_blue_color;
-$warning_bg_color:  $google_yellow_color;
-$error_bg_color:    $google_red_color;
+$infobar-info:                          $green;
+$infobar-question:                      $blue;
+$infobar-warning:                       $yellow;
+$infobar-error:                         $red;
 
-$tooltip_bg_color: rgba(#616161, 0.9);
-$tooltip_fg_color: white;
+$tooltip:                               rgba(#616161, 0.9);
+$tooltip-text:                          white;
 
-$border_color:             if($variant == 'light', rgba(black, 0.12), rgba(black, 0.26));
-$alt_border_color:         rgba(black, 0.26); // for non-native GTK+ apps (e.g. Firefox and Chrome)
-$highlight_color:          if($variant == 'light', rgba(white, 0.4),  rgba(white, 0.1));
-$titlebar_highlight_color: if($topbar == 'dark', rgba(white, 0.1),  rgba(white, 0.4));
-$alt_highlight_color:      rgba(white, 0.2); // for selection-mode headerbar which colored with $primary_color
-$titlebar_indicator_color: if($topbar == 'dark', currentColor, $primary_color);
+$border:                                if($variant == 'light', rgba(black, 0.12), rgba(black, 0.26));
+$border-alt:                            rgba(black, 0.26); // for non-native GTK+ apps (e.g. Firefox and Chrome)
+$highlight:                             if($variant == 'light', rgba(white, 0.4),  rgba(white, 0.1));
+$highlight-titlebar:                    if($topbar == 'dark', rgba(white, 0.1),  rgba(white, 0.4));
+$highlight-alt:                         rgba(white, 0.2); // for selection-mode headerbar which colored with $primary
+$titlebar-indicator:                    if($topbar == 'dark', currentColor, $primary);
 
 // FIXME: Electron/Atom menu does not allow translucent colors
-$opaque_fg_color:           if($variant == 'light', $grey_900, $white);
-$opaque_secondary_fg_color: if($variant == 'light', $grey_600, mix($white, $surface_color, percentage(0.7)));
-$opaque_disabled_fg_color:  if($variant == 'light', $grey_500, mix($white, $surface_color, percentage(0.5)));
-$opaque_divider_color:      if($variant == 'light', $grey_300, mix($white, $surface_color, percentage(0.12)));
+$solid-text:                            if($variant == 'light', $grey-900, $white);
+$solid-text-secondary:                  if($variant == 'light', $grey-600, mix($white, $surface, percentage(0.7)));
+$solid-text-disabled:                   if($variant == 'light', $grey-500, mix($white, $surface, percentage(0.5)));
+$solid-divider:                         if($variant == 'light', $grey-300, mix($white, $surface, percentage(0.12)));
 
 // FIXME: gtk @placeholder_text_color does not allow translucent colors
-$placeholder_text_color: if($variant == 'light', $grey_600, mix($white, $base_color, percentage(0.7)));
+$placeholder_text_color:                if($variant == 'light', $grey-600, mix($white, $base, percentage(0.7)));

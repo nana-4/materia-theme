@@ -14,7 +14,7 @@ overlay > revealer {
 }
 
 .terminix-session-sidebar, // for backward compatibility
-.tilix-session-sidebar { background-image: image($surface_color); }
+.tilix-session-sidebar { background-image: image($surface); }
 
 .terminal-titlebar button { border-radius: 0; }
 
@@ -25,7 +25,7 @@ button.image-button.session-new-button { min-width: $medium_size - 4px; }
  * Terminator *
  **************/
 .terminator-terminal-window {
-  paned > separator { background-color: $bg_color; }
+  paned > separator { background-color: $background; }
 
   // this should be fixed by the upstream
   notebook.frame { border-style: none; }
@@ -49,34 +49,34 @@ window.background > box.vertical > scrolledwindow > widget toolbar {
  * Chromium *
  ************/
 window.background.chromium {
-  background-color: if($variant == 'light', $bg_color, $surface_color);
+  background-color: if($variant == 'light', $background, $surface);
 
   // FIXME: no way to change the toolbar button colors only
-  // toolbar button { color: $secondary_fg_color; }
+  // toolbar button { color: $text-secondary; }
 
   // toolbar's border-bottom refers to button's border
   entry,
-  > button:not(.suggested-action):not(.destructive-action) { border: 1px solid $alt_border_color; }
+  > button:not(.suggested-action):not(.destructive-action) { border: 1px solid $border-alt; }
 
   > button {
     box-shadow: none;
     background-size: auto;
 
-    &:hover { background-image: image($hover_overlay_color); }
+    &:hover { background-image: image($overlay-hover); }
 
-    &:active { background-image: image($checked_overlay_color); }
+    &:active { background-image: image($overlay-checked); }
   }
 
   // workaround for headerbar's non-animatable buttons
   headerbar button:active { background-size: 1000% 1000%; }
 
-  spinner { color: $primary_color; }
+  spinner { color: $primary; }
 
   // entry uses this as well
-  textview { background-color: $surface_color; }
+  textview { background-color: $surface; }
 }
 
-tooltip.background.chromium { background-color: rgba($tooltip_bg_color, 1); }
+tooltip.background.chromium { background-color: rgba($tooltip, 1); }
 
 
 /***********
@@ -85,18 +85,18 @@ tooltip.background.chromium { background-color: rgba($tooltip_bg_color, 1); }
 window.background:not(.csd) {
   > widget {
     // for the bookmark toolbar's separators
-    > separator { color: $alt_border_color; }
+    > separator { color: $border-alt; }
 
     // avoid black border
     > scrollbar { background-clip: border-box; }
 
     // emphasize borders color
     > scrollbar,
-    > frame > border { border-color: $alt_border_color; }
+    > frame > border { border-color: $border-alt; }
 
     > entry,
     > button > button {
-      border: 1px solid $alt_border_color;
+      border: 1px solid $border-alt;
       border-radius: $material_radius + 1px;
       box-shadow: none;
     }
@@ -104,7 +104,7 @@ window.background:not(.csd) {
     > entry {
       min-height: 32px - 2px;
 
-      &:focus { border-color: $primary_color; }
+      &:focus { border-color: $primary; }
     }
 
     > button > button {
@@ -112,9 +112,9 @@ window.background:not(.csd) {
       background-size: auto;
       // color: $fg_color;
 
-      &:hover { background-image: image($hover_overlay_color); }
+      &:hover { background-image: image($overlay-hover); }
 
-      &:active { background-image: image($checked_overlay_color); }
+      &:active { background-image: image($overlay-checked); }
     }
 
     // use 16px assets for hard-coded sizing
@@ -125,11 +125,11 @@ window.background:not(.csd) {
     // make check/radio visible regardless of whether the background is bright or dark
     > checkbutton > check:not(:checked),
     > radiobutton > radio:not(:checked) {
-      color: $grey_600;
+      color: $grey-600;
 
-      &:hover, &:active { color: $grey_900; }
+      &:hover, &:active { color: $grey-900; }
 
-      &:disabled { color: rgba($grey_600, 0.5); }
+      &:disabled { color: rgba($grey-600, 0.5); }
     }
   }
 
@@ -141,22 +141,22 @@ window.background:not(.csd) {
 // Firefox now uses this for selected items
 text:selected {
   // use traditional selection style as workaround for Firefox
-  background-color: $primary_color;
-  color: $inverse_fg_color;
+  background-color: $primary;
+  color: $inverse-text;
 }
 
 // for backward compatibility
 window.background:not(.csd) {
   > widget {
     > menubar {
-      color: $titlebar_secondary_fg_color;
+      color: $titlebar-text-secondary;
 
-      &:hover { color: $titlebar_fg_color; }
+      &:hover { color: $titlebar-text; }
 
-      &:disabled { color: $titlebar_disabled_secondary_fg_color; }
+      &:disabled { color: $titlebar-text-secondary-disabled; }
     }
 
-    > frame { color: $alt_border_color; }
+    > frame { color: $border-alt; }
 
     > checkbutton > check,
     > radiobutton > radio {
@@ -165,7 +165,7 @@ window.background:not(.csd) {
     }
   }
 
-  > window.background > menu > separator { color: $border_color; }
+  > window.background > menu > separator { color: $border; }
 }
 
 
@@ -212,12 +212,12 @@ window.background:not(.csd) {
     padding: 0;
   }
 
-  #HorizontalScrollbar { border-top: 1px solid $border_color; }
+  #HorizontalScrollbar { border-top: 1px solid $border; }
 
   #VerticalScrollbar {
-    &:dir(ltr) { border-left: 1px solid $border_color; }
+    &:dir(ltr) { border-left: 1px solid $border; }
 
-    &:dir(rtl) { border-right: 1px solid $border_color; }
+    &:dir(rtl) { border-right: 1px solid $border; }
   }
 }
 

@@ -4,13 +4,13 @@ stage {
   @include font(body-1);
 
   font-family: $font-family;
-  color: $fg_color;
+  color: $text;
 }
 .cinnamon-link {
-  color: $link_color;
+  color: $link;
   font-style: italic;
   &:hover {
-    color: $fg_color;
+    color: $text;
   }
 }
 .label-shadow {
@@ -21,18 +21,18 @@ StScrollBar {
   padding: 0px;
   StButton {
     &#vhandle, &#hhandle {
-      background-color: $disabled_fg_color;
+      background-color: $text-disabled;
       border-radius: 100px;
       margin: 4px;
       &:hover {
-        background-color: $secondary_fg_color;
+        background-color: $text-secondary;
       }
     }
   }
   StBin#trough {
     margin: 4px;
     border-radius: 100px;
-    background-color: $divider_color;
+    background-color: $divider;
   }
 }
 StScrollView {
@@ -57,10 +57,10 @@ StScrollView {
   @include font(caption);
   
   padding: 6px 8px;
-  color: $tooltip_fg_color;
+  color: $tooltip-text;
   text-align: center;
   border-radius: $material_radius;
-  background-color: $tooltip_bg_color;
+  background-color: $tooltip;
 }
 // applet menus. Note that cinnamon versions before 3.2 uses deprecated styles
 // .popup-menu and .popup-menu-boxpointer. These are excluded as it is not possible
@@ -78,7 +78,7 @@ StScrollView {
   padding: 10px;
 }
 .popup-sub-menu {
-  background-color: $fill_color;
+  background-color: $fill;
 }
 .popup-menu-arrow {
   icon-size: 1.14em;
@@ -98,14 +98,14 @@ StScrollView {
   spacing: 8px;
   transition-duration: $shorter_duration;
   &:active {
-    background-color: $hover_overlay_color;
-    color: $fg_color;
+    background-color: $overlay-hover;
+    color: $text;
     transition-duration: 0ms;
   }
-  &:insensitive { color: $disabled_fg_color; }
+  &:insensitive { color: $text-disabled; }
   }
 .popup-image-menu-item {
-  color: $secondary_fg_color;
+  color: $text-secondary;
 }
 .popup-combobox-item {
   padding: 0.4em 16px;
@@ -121,8 +121,8 @@ StScrollView {
   spacing: .5em;
 }
 .popup-inactive-menu-item {
-  color: $fg_color;
-  &:insensitive { color: $disabled_fg_color; }
+  color: $text;
+  &:insensitive { color: $text-disabled; }
 }
 .popup-subtitle-menu-item {
   @include font(body-2);
@@ -158,12 +158,12 @@ StScrollView {
 // dnd is for panel edit mode
 // dummy is for adding or moving panels
 #panel {
-  color: $titlebar_secondary_fg_color;
-  background-color: $panel-bg-color;
+  color: $titlebar-text-secondary;
+  background-color: $scrim;
   height: 2.5em;
   width: 3.2em;
   &:highlight {
-    background-color: $titlebar_track_color;
+    background-color: $titlebar-track;
   }
 }
 .panel-dummy {
@@ -225,26 +225,26 @@ StScrollView {
 .panel-top {
   .window-list-item-box {
     &:hover {
-      box-shadow: 0 3px 0 0 $primary_color inset;
+      box-shadow: 0 3px 0 0 $primary inset;
     }
     &:active, &:checked, &:focus {
       &:hover {
-        box-shadow: 0 3px 0 0 $primary_color inset;
+        box-shadow: 0 3px 0 0 $primary inset;
       }
     }
   }
   .grouped-window-list-item-box {
     &:hover {
-      box-shadow: 0 3px 0 0 $primary_color inset;
+      box-shadow: 0 3px 0 0 $primary inset;
     }
     &:active, &:checked {
       &:hover {
-        box-shadow: 0 3px 0 0 $primary_color inset;
+        box-shadow: 0 3px 0 0 $primary inset;
       }
     }
     &:focus {
       &:hover {
-        box-shadow: 0 3px 0 0 $primary_color inset;
+        box-shadow: 0 3px 0 0 $primary inset;
       }
     }
   }
@@ -256,50 +256,50 @@ StScrollView {
   }
   .workspace-graph, .workspace-button {;
     &:hover {
-      box-shadow: 0 3px 0 0 $primary_color inset;
+      box-shadow: 0 3px 0 0 $primary inset;
     }
   }
   .applet-box {
     padding: 0 4px;
     &:hover {
-      box-shadow: 0 3px 0 0 $primary_color inset;
+      box-shadow: 0 3px 0 0 $primary inset;
     }
   }
   .applet-label {
   }
   .panel-launchers .launcher:hover {
-    box-shadow: 0 3px 0 0 $primary_color inset;
+    box-shadow: 0 3px 0 0 $primary inset;
   }
   .applet-separator {
     padding: 3px 4px;
   }
   .systray:hover {
-    box-shadow: 0 4px 0 0 $primary_color inset;
+    box-shadow: 0 4px 0 0 $primary inset;
   }
 }
 .panel-bottom {
   .window-list-item-box {
     &:hover {
-      box-shadow: 0 -3px 0 0 $primary_color inset;
+      box-shadow: 0 -3px 0 0 $primary inset;
     }
     &:active, &:checked, &:focus {
       &:hover {
-        box-shadow: 0 -3px 0 0 $primary_color inset;
+        box-shadow: 0 -3px 0 0 $primary inset;
       }
     }
   }
   .grouped-window-list-item-box {
     &:hover {
-      box-shadow: 0 -3px 0 0 $primary_color inset;
+      box-shadow: 0 -3px 0 0 $primary inset;
     }
     &:active, &:checked {
       &:hover {
-        box-shadow: 0 -3px 0 0 $primary_color inset;
+        box-shadow: 0 -3px 0 0 $primary inset;
       }
     }
     &:focus {
       &:hover {
-        box-shadow: 0 -3px 0 0 $primary_color inset;
+        box-shadow: 0 -3px 0 0 $primary inset;
       }
     }
   }
@@ -308,50 +308,50 @@ StScrollView {
   }
   .workspace-graph, .workspace-button {;
     &:hover {
-      box-shadow: 0 -3px 0 0 $primary_color inset;
+      box-shadow: 0 -3px 0 0 $primary inset;
     }
   }
   .applet-box {
     padding: 0 4px;
     &:hover {
-      box-shadow: 0 -3px 0 0 $primary_color inset;
+      box-shadow: 0 -3px 0 0 $primary inset;
     }
   }
   .applet-label {
   }
   .panel-launchers .launcher:hover {
-    box-shadow: 0 -3px 0 0 $primary_color inset;
+    box-shadow: 0 -3px 0 0 $primary inset;
   }
   .applet-separator {
     padding: 3px 4px;
   }
   .systray:hover {
-    box-shadow: 0 4px 0 0 $primary_color inset;
+    box-shadow: 0 4px 0 0 $primary inset;
   }
 }
 .panel-left {
   .window-list-item-box {
     &:hover {
-      box-shadow: 3px 0 0 0 $primary_color inset;
+      box-shadow: 3px 0 0 0 $primary inset;
     }
     &:active, &:checked, &:focus {
       &:hover {
-        box-shadow: 3px 0 0 0 $primary_color inset;
+        box-shadow: 3px 0 0 0 $primary inset;
       }
     }
   }
   .grouped-window-list-item-box {
     &:hover {
-      box-shadow: 3px 0 0 0 $primary_color inset;
+      box-shadow: 3px 0 0 0 $primary inset;
     }
     &:active, &:checked {
       &:hover {
-        box-shadow: 3px 0 0 0 $primary_color inset;
+        box-shadow: 3px 0 0 0 $primary inset;
       }
     }
     &:focus {
       &:hover {
-        box-shadow: 3px 0 0 0 $primary_color inset;
+        box-shadow: 3px 0 0 0 $primary inset;
       }
     }
   }
@@ -364,50 +364,50 @@ StScrollView {
   }
   .workspace-graph, .workspace-button {;
     &:hover {
-      box-shadow: 3px 0 0 0 $primary_color inset;
+      box-shadow: 3px 0 0 0 $primary inset;
     }
   }
   .applet-box {
     padding: 4px 0;
     &:hover {
-      box-shadow: 3px 0 0 0 $primary_color inset;
+      box-shadow: 3px 0 0 0 $primary inset;
     }
   }
   .applet-label {
   }
   .panel-launchers .launcher:hover {
-    box-shadow: 3px 0 0 0 $primary_color inset;
+    box-shadow: 3px 0 0 0 $primary inset;
   }
   .applet-separator {
     padding: 4px 3px;
   }
   .systray:hover {
-    box-shadow: 4px 0 0 0 $primary_color inset;
+    box-shadow: 4px 0 0 0 $primary inset;
   }
 }
 .panel-right {
     .window-list-item-box {
     &:hover {
-      box-shadow: -3px 0 0 0 $primary_color inset;
+      box-shadow: -3px 0 0 0 $primary inset;
     }
     &:active, &:checked, &:focus {
       &:hover {
-        box-shadow: -3px 0 0 0 $primary_color inset;
+        box-shadow: -3px 0 0 0 $primary inset;
       }
     }
   }
   .grouped-window-list-item-box {
     &:hover {
-      box-shadow: -3px 0 0 0 $primary_color inset;
+      box-shadow: -3px 0 0 0 $primary inset;
     }
     &:active, &:checked {
       &:hover {
-        box-shadow: -3px 0 0 0 $primary_color inset;
+        box-shadow: -3px 0 0 0 $primary inset;
       }
     }
     &:focus {
       &:hover {
-        box-shadow: -3px 0 0 0 $primary_color inset;
+        box-shadow: -3px 0 0 0 $primary inset;
       }
     }
   }
@@ -417,25 +417,25 @@ StScrollView {
   }
   .workspace-graph, .workspace-button {;
     &:hover {
-      box-shadow: -3px 0 0 0 $primary_color inset;
+      box-shadow: -3px 0 0 0 $primary inset;
     }
   }
   .applet-box {
     padding: 4px 0;
     &:hover {
-      box-shadow: -3px 0 0 0 $primary_color inset;
+      box-shadow: -3px 0 0 0 $primary inset;
     }
   }
   .applet-label {
   }
   .panel-launchers .launcher:hover {
-    box-shadow: -3px 0 0 0 $primary_color inset;
+    box-shadow: -3px 0 0 0 $primary inset;
   }
   .applet-separator {
     padding: 4px 3px;
   }
   .systray:hover {
-    box-shadow: -4px 0 0 0 $primary_color inset;
+    box-shadow: -4px 0 0 0 $primary inset;
   }
 }
 // keyboard layout applet
@@ -443,9 +443,9 @@ StScrollView {
   @include font(body-2);
   -natural-hpadding: 4px;
   -minimum-hpadding: 4px;
-  color: $titlebar_secondary_fg_color;
+  color: $titlebar-text-secondary;
   &:hover {
-    color: $titlebar_fg_color;
+    color: $titlebar-text;
   }
 }
 // used by power applet to warn of low battery
@@ -454,10 +454,10 @@ StScrollView {
   padding: 0;
   spacing: 0;
   &.warning {
-    color: $warning_color;
+    color: $warning;
   }
   &.error {
-    color: $error_color;
+    color: $error;
   }
 }
 // a non feature - not worth themeing
@@ -481,22 +481,22 @@ StScrollView {
   @include font(caption);
 
   background-color: rgba(0, 0, 0, 0.01);
-  color: $titlebar_secondary_fg_color;
+  color: $titlebar-text-secondary;
   padding: 4px 6px;
   text-align: center;
   height: 1.5em;
   -cinnamon-caption-spacing: 12px;
   &#selected, &:focus {
-    color: $titlebar_fg_color;
-    box-shadow: 0 -3px 0 0 $primary_color inset;
+    color: $titlebar-text;
+    box-shadow: 0 -3px 0 0 $primary inset;
   }
 }
 .workspace-controls {
   visible-height: 32px;
 }
 .workspace-thumbnails-background {
-  color: $titlebar_secondary_fg_color;
-  background-color: $inverse_panel_bg_color;
+  color: $titlebar-text-secondary;
+  background-color: $scrim-inverse;
   border: none;
   padding: 8px;
   border-radius: $material_radius 0 0 $material_radius;
@@ -527,13 +527,13 @@ StScrollView {
   }
 }
 .window-border {
-    border: 1px solid $border_color;
+    border: 1px solid $border;
 }
 .window-close-area {
   background-image: url(assets/trash-icon.png);
   background-size: 100px;
-  background-color: $alt_panel_bg_color;
-  border: 1px solid $border_color;
+  background-color: $scrim-alt;
+  border: 1px solid $border;
   border-bottom-width: 0;
   border-radius: 20px 20px 0 0;
   height: 120px;
@@ -541,16 +541,16 @@ StScrollView {
 }
 // this is OK with solid or transparent backgrounds
 .expo-background {
-  background-color: $panel_bg_color;
+  background-color: $scrim;
 }
 // this always looks better semi transparent
 .workspace-overview-background-shade {
-  background-color: $panel_bg_color;
+  background-color: $scrim;
 }
 .expo-workspace-thumbnail-frame {
-  border: 1px solid $border_color;
+  border: 1px solid $border;
   &#active {
-    border: 1px solid $primary_color;
+    border: 1px solid $primary;
   }
 }
 // dialog box for the cinnamon debug utility
@@ -575,9 +575,9 @@ StScrollView {
     margin: 2px;
     padding: 6px 16px;
     border-radius: $material_radius;
-    color: $fg_color;
+    color: $text;
     text-align: center;
-    &:focus { background-color: $divider_color }; 
+    &:focus { background-color: $divider }; 
 }
 .calendar-month-label {
     @include font(body-2);
@@ -586,9 +586,9 @@ StScrollView {
     margin: 2px;
     padding: 6px 16px;
     border-radius: $material_radius;
-    color: $fg_color;
+    color: $text;
     text-align: center;
-    &:focus { background-color: $divider_color }; 
+    &:focus { background-color: $divider }; 
 }
 .calendar-change-month-back {
   @extend %calendar-shared;
@@ -614,10 +614,10 @@ StScrollView {
   padding: 0;
   margin: 2px;
   border-radius: 100px;
-  &:hover,&:focus { background-color: $titlebar_track_color; }
+  &:hover,&:focus { background-color: $titlebar-track; }
   &:active {
-    color: $inverse_fg_color;
-    background-color: $primary_color;
+    color: $inverse-text;
+    background-color: $primary;
     border-color: transparent; 
   }
 }
@@ -629,7 +629,7 @@ StScrollView {
   padding: 0;
   border-radius: 100px;
   background-color: transparent;
-  color: $disabled_fg_color;
+  color: $text-disabled;
   text-align: center;
 }
 .calendar-day-heading  {
@@ -640,7 +640,7 @@ StScrollView {
   padding: 0;
   border-radius: 100px;
   background-color: transparent;
-  color: $disabled_fg_color;
+  color: $text-disabled;
   text-align: center;
 }
 .calendar-day {
@@ -655,20 +655,20 @@ StScrollView {
 .calendar-work-day {
 }
 .calendar-nonwork-day {
-  color: $fg_color;
+  color: $text;
 }
 .calendar-today {
   font-weight: bold;
   border: none;
 }
 .calendar-day-with-events {
-  color: $link_color;
+  color: $link;
   font-weight: normal;
   text-decoration: underline;
   background-image: none;
 }
 .calendar-other-month-day {
-  color: $disabled_secondary_fg_color;
+  color: $text-secondary-disabled;
   opacity: 0.5;
 }
 .calendar-week-number {
@@ -677,22 +677,22 @@ StScrollView {
   padding: 7px 0 0;
   border-radius: 100px;
   background-color: transparent;
-  color: $disabled_fg_color;
+  color: $text-disabled;
   font-size: inherit;
   font-weight: bold;
   text-align: center;
 }
 // notification system
 #notification {
-  background-color: $surface_color;
+  background-color: $surface;
   border-radius: $material_radius;
-  border: 1px solid $border_color;
+  border: 1px solid $border;
   padding: 8px;
   spacing-rows: 4px;
   spacing-columns: 8px;
   margin-from-right-edge-of-screen: 20px;
   width: 34em;
-  color: $fg_color;
+  color: $text;
   box-shadow: $shadow_2;
   &.multi-line-notification {
     padding-bottom: 8px;
@@ -701,13 +701,13 @@ StScrollView {
     @extend %dialog-entry-shared;
   }
   .url-highlighter {
-    link-color: $link_color;
+    link-color: $link;
   }
 }
 // min height 159px is required to avoid stretching/distortion of notification image
 .notification-with-image {
   min-height: 159px;
-  color: $fg_color;
+  color: $text;
 }
 #notification-scrollview {
   max-height: 10em;
@@ -755,7 +755,7 @@ StScrollView {
     padding: 8px;
     border-radius: $material_radius;
     &:selected {
-      background-color: $divider_color;
+      background-color: $divider;
     }
   }
   .thumbnail-box {
@@ -767,7 +767,7 @@ StScrollView {
   }
   .separator {
     width: 1px;
-    background: $border_color;
+    background: $border;
   }
 }
 .switcher-list-item-container {
@@ -793,20 +793,20 @@ StScrollView {
 }
 .switcher-arrow {
   border-color: rgba(0,0,0,0);
-  color: $secondary_fg_color;
+  color: $text-secondary;
   &:highlighted {
-    color: $fg_color;
+    color: $text;
   }
 }
 .switcher-preview-backdrop {
-  background-color: $panel_bg_color;
+  background-color: $scrim;
 }
 // hot corners animation
 .ripple-box {
   width: 104px;
   height: 104px;
   background-image: url(assets/corner-ripple.png);
-  background-color: $primary_color;
+  background-color: $primary;
   border-radius: 52px;
 }
 // on screen messages and input boxes
@@ -826,11 +826,11 @@ StScrollView {
 }
 // run dialog (ALT-F2)
 .run-dialog-label {
-  color: $secondary_fg_color;
+  color: $text-secondary;
   padding-bottom: .4em;
 }
 .run-dialog-error-label {
-  color: $error_color;
+  color: $error;
 }
 .run-dialog-error-box {
   padding-top: 16px;
@@ -848,14 +848,14 @@ StScrollView {
 }
 // this is an full screen overlay that is displayed with any cinnamon OSD or modal dialog which needs to always be semi transparent
 .lightbox {
-  background-color: $alt_panel_bg_color;
+  background-color: $scrim-alt;
 }
 // removable media dialogs
 .cinnamon-mount-operation-icon {
   icon-size: 4.8em;
 }
 .mount-password-reask {
-  color: $warning_color;
+  color: $warning;
 }
 .show-processes-dialog {
   spacing: 24px;
@@ -902,9 +902,9 @@ StScrollView {
   }
 }
 .show-processes-dialog-app-list-item {
-  color: $fg_color;
+  color: $text;
   &:hover {
-    color: $fg_color;
+    color: $text;
   }
   &:ltr {
     padding-right: 1em;
@@ -925,14 +925,14 @@ StScrollView {
 }
 // desktop zoom feature
 .magnifier-zoom-region {
-  border: 3px solid $border_color;
+  border: 3px solid $border;
   &.full-screen {
     border-width: 0;
   }
 }
 // on screen keyboard
 #keyboard {
-  background-color: $panel_bg_color;
+  background-color: $scrim;
 }
 .keyboard-key {
   @extend %icon-button-shared;
@@ -955,7 +955,7 @@ StScrollView {
   -arrow-base: 0;
   -arrow-rise: 0;
   -boxpointer-gap: 5px;
-  background-color: $bg_color;
+  background-color: $background;
   border-radius: $material_radius;
   box-shadow: $shadow_2;
 }
@@ -966,9 +966,9 @@ StScrollView {
 .menu-favorites-button {
   padding: 0.4em 4px;
   &:hover {
-     background-color: $divider_color;
+     background-color: $divider;
      border-radius: $material_radius;
-     color: $fg_color;
+     color: $text;
   }
 }
 .menu-categories-box {
@@ -989,9 +989,9 @@ StScrollView {
 }
 .menu-application-button-selected {
   padding: 0.4em 4px;
-  background-color: $divider_color;
+  background-color: $divider;
   border-radius: $material_radius;
-  color: $fg_color;
+  color: $text;
   &:highlighted {
     font-weight: bold;
   }
@@ -1004,14 +1004,14 @@ StScrollView {
 }
 .menu-category-button-greyed {
   padding: 0.4em 4px;
-  color: $secondary_fg_color;
+  color: $text-secondary;
   font-style: italic;
 }
 .menu-category-button-selected {
   padding: 0.4em 4px;
-  background-color: $divider_color;
+  background-color: $divider;
   border-radius: $material_radius;
-  color: $fg_color;
+  color: $text;
   &:hover {
   }
 }
@@ -1054,7 +1054,7 @@ StScrollView {
 .menu-search-entry-icon {
   icon-size: 1em;
   padding: 0 0;
-  color: $disabled_fg_color;
+  color: $text-disabled;
 }
 // the window list applet. Some third party applets inherit some of this theming.
 .window-list-box {
@@ -1069,8 +1069,8 @@ StScrollView {
   #appMenuIcon {
   }
   &:highlight {
-    background: $titlebar_track_color;
-    color: $titlebar_fg_color;
+    background: $titlebar-track;
+    color: $titlebar-text;
     }
 }
 .window-list-item-label {
@@ -1080,33 +1080,33 @@ StScrollView {
   background-color: rgba(0, 0, 0, 0.01);
   transition-duration: $shorter_duration;
   &:hover {
-    color: $titlebar_fg_color;
+    color: $titlebar-text;
   }
   &:active, &:checked, &:focus {
-    background-color: $titlebar_track_color;
-    color: $titlebar_fg_color;
+    background-color: $titlebar-track;
+    color: $titlebar-text;
     &:hover {
-      color: $titlebar_fg_color;
+      color: $titlebar-text;
     }
   }
   .progress {
-    background-color: $success_color;
+    background-color: $success;
   }
 }
 .window-list-item-box.top StLabel, .window-list-item-box.bottom StLabel {
   padding-left: 3px;
 }
 .window-list-item-demands-attention {
-  background-color: $info_bg_color;
-  color: $titlebar_secondary_fg_color;
+  background-color: $infobar-info;
+  color: $titlebar-text-secondary;
 }
 // cinnamon 3.8 will support an improved window-list-thumbnail preview which now has it's own selector
 .window-list-preview {
-  background-color: $surface_color;
+  background-color: $surface;
   border-radius: $material_radius;
   padding: 10px 15px;
   spacing: 1em;
-  color: $fg_color;
+  color: $text;
   box-shadow: $shadow_4;
 }
 // Cinnamon 4.0 has a new grouped window list applet with it's own selectors.
@@ -1126,55 +1126,55 @@ StScrollView {
   }
   &-badge {
     border-radius: $circular_radius;
-    background-color: $solid_panel_bg_color; 
+    background-color: $panel-solid; 
   }
   &-thumbnail-alert {
-    background: $warning_color;
+    background: $warning;
   }
   &-item-box {
     background-color: rgba(0, 0, 0, 0.01);
     transition-duration: $shorter_duration;
     &:hover {
-      color: $titlebar_fg_color;
+      color: $titlebar-text;
     }
     &:active, &:checked {
-      background-color: $titlebar_divider_color;
+      background-color: $titlebar-divider;
       &:hover {
-        color: $titlebar_fg_color;
+        color: $titlebar-text;
       }
     }
     &:focus {
-      background-color: $titlebar_track_color;
-      color: $titlebar_fg_color;
+      background-color: $titlebar-track;
+      color: $titlebar-text;
       &:hover {
-        color: $titlebar_fg_color;
+        color: $titlebar-text;
       }
     }
     .progress {
-      background-color: $success_color;
+      background-color: $success;
     }
   }
   &-item-demands-attention {
-    background-color: $info_bg_color;
-    color: $titlebar_secondary_fg_color;
+    background-color: $infobar-info;
+    color: $titlebar-text-secondary;
   }
   &-thumbnail-menu {
     padding: 20px;
     border: none;
     border-radius: $material_radius;
-    color: $titlebar_secondary_fg_color;
+    color: $titlebar-text-secondary;
     background: none;
     .item-box {
       padding: 8px;
       spacing: 2px;
       border-radius: $material_radius;
        &:outlined {
-         border: 2px solid $border_color;
-         color: $titlebar_fg_color;
+         border: 2px solid $border;
+         color: $titlebar-text;
        }
        &:selected {
-         background: $titlebar_divider_color;
-         color: $titlebar_fg_color;
+         background: $titlebar-divider;
+         color: $titlebar-text;
        }
        > StBoxLayout { // icon and title
         &:ltr { margin: 1px 0 0 6px; }
@@ -1196,7 +1196,7 @@ StScrollView {
     }
     .separator {
       width: 1px;
-      background: $border_color;
+      background: $border;
     }
   }
 }
@@ -1233,34 +1233,34 @@ StScrollView {
   background: rgba(0,0,0,0.2);
 }
 .sound-player-overlay {
-  background-color: $surface_color;
+  background-color: $surface;
   min-width: 300px;
   padding: 12px 16px;
   spacing: 0.5em;
-  color: $secondary_fg_color;
+  color: $text-secondary;
 }
 // workspace switcher applet simple button view
 .workspace-button {
-  background-color: $opaque_panel_bg_color;
+  background-color: $panel-solid;
   width: 2em;
   height: 1em;
-  color: $titlebar_secondary_fg_color;
+  color: $titlebar-text-secondary;
   margin: 2px;
   &:outlined {
-    background-color: $titlebar_track_color;
-    color: $titlebar_fg_color;
+    background-color: $titlebar-track;
+    color: $titlebar-text;
   }
 }
 // workspace switcher applet graph view
 .workspace-graph {
-   background-color: $panel_bg_color;
+   background-color: $scrim;
   .workspace {
-    background-color: $opaque_panel_bg_color;
-    border: 1px solid $border_color;
+    background-color: $panel-solid;
+    border: 1px solid $border;
     &:active {
-      background-color: $titlebar_track_color;
+      background-color: $titlebar-track;
 
-      border: 1px solid $border_color;
+      border: 1px solid $border;
       .windows {
         -active-window-background: rgba(255, 255, 255, 0.8);
         -active-window-border: rgba(0, 0, 0, 0.9);
@@ -1295,43 +1295,43 @@ StScrollView {
 // applets in general
 .applet-separator-line, .applet-separator-line-vertical {
   width: 2px;
-  background: $titlebar_divider_color;
+  background: $titlebar-divider;
 }
 .applet-spacer:highlight {
-  background: $highlight_color;
+  background: $highlight;
 }
 .applet-box {
   background-color: rgba(0, 0, 0, 0.01);
-  color: $titlebar_secondary_fg_color;
+  color: $titlebar-text-secondary;
   transition-duration: $shorter_duration;
   &:checked {
-    color: $titlebar_fg_color;
+    color: $titlebar-text;
     .applet-label {
-      color: $titlebar_fg_color;
+      color: $titlebar-text;
     }
   }
   &:hover {
-    color: $titlebar_fg_color;
+    color: $titlebar-text;
     .applet-label {
-      color: $titlebar_fg_color;
+      color: $titlebar-text;
     }
   }
   &:highlight {
-    background: $titlebar_track_color;
-    color: $titlebar_fg_color;
+    background: $titlebar-track;
+    color: $titlebar-text;
     .applet-label {
-      color: $titlebar_fg_color;
+      color: $titlebar-text;
     }
   }
 }
 .applet-label {
   @include font(body-2);
 
-  color: $titlebar_secondary_fg_color;
+  color: $titlebar-text-secondary;
 }
 // icon-size set to 22 to match hard-coded menu icon size - applet-icon style is used for search provider results in menu
 .applet-icon {
-  color: $titlebar_secondary_fg_color;
+  color: $titlebar-text-secondary;
   padding: 0;
   spacing: 0;
   icon-size: 22px;
@@ -1341,11 +1341,11 @@ StScrollView {
 .desklet {
   @include font(caption);
   
-  color: $titlebar_fg_color;
+  color: $titlebar-text;
   border: none;
   box-shadow: $shadow_4;
   padding: 12px;
-  background-color: $alt_panel_bg_color;
+  background-color: $scrim-alt;
   border-radius: $material_radius
 }
 // these do not inherit from .desklet
@@ -1353,46 +1353,46 @@ StScrollView {
   @extend %desklet-shared;
   @include font(caption);
 
-  background-color: $surface_color;
+  background-color: $surface;
   border-radius: $material_radius;
   &:highlight {
-    background-color: $highlight_color;
+    background-color: $highlight;
   }
 }
 .desklet-with-borders-and-header {
   @extend %desklet-shared;
   @include font(caption);
   
-  background-color: $surface_color;
+  background-color: $surface;
   border-radius-bottomleft: 2px;
   border-radius-bottomright: 2px;
   &:highlight {
-    background-color: $highlight_color;
+    background-color: $highlight;
   }
 }
 .desklet-header {
   @include font(title)
   @extend %desklet-shared;
 
-  background-color: $surface_color;
+  background-color: $surface;
   border-radius-topleft: 2px;
   border-radius-topright: 2px;
   &:highlight {
-    background-color: $highlight_color;
+    background-color: $highlight;
   }
 }
 .photoframe-box {
   @extend %desklet-shared;
   
-  background-color: $surface_color;
+  background-color: $surface;
   border-radius: $material_radius;
   &:highlight {
-    background-color: $highlight_color;
+    background-color: $highlight;
   }
 }
 .desklet-drag-placeholder {
-  border: 2px solid $primary_color;
-  background-color: $alt_panel_bg_color;
+  border: 2px solid $primary;
+  background-color: $scrim-alt;
   border-radius: $material_radius;
 }
 .launcher {
@@ -1418,7 +1418,7 @@ StScrollView {
   padding-right: 20px;
 }
 .about-scrollBox {
-  border: 1px solid $border_color;
+  border: 1px solid $border;
   border-radius: $material_radius;
 }
 .about-scrollBox-innerBox {
@@ -1437,26 +1437,26 @@ StScrollView {
 .expo-workspaces-name-entry {
   @include font(body-1);
 
-  background-color: $inverse_fill_color;
-  color: $inverse_fg_color; 
+  background-color: $inverse-fill;
+  color: $inverse-text; 
   padding: 0 8px;
-  selection-background-color: $inverse_track_color;
-  selected-color: $inverse_fg_color;
-  caret-color: $inverse_fg_color;
+  selection-background-color: $inverse-track;
+  selected-color: $inverse-text;
+  caret-color: $inverse-text;
   text-align: center;
   height: $medium_size;
   border-radius: $material_radius $material_radius 0 0;
   -cinnamon-caption-spacing: 12px;
   &#selected {
-    color: $inverse_fg_color;
-    background-color: $inverse_fill_color;
+    color: $inverse-text;
+    background-color: $inverse-fill;
   }
   &:focus {
-    color: $inverse_fg_color;
-    box-shadow: inset 0 -2px $inverse_fg_color;
+    color: $inverse-text;
+    box-shadow: inset 0 -2px $inverse-text;
   }
   &:hover {
-    background-color: $inverse_divider_color;
+    background-color: $inverse-divider;
   }
 }
 .notification-applet-padding {
@@ -1508,7 +1508,7 @@ StScrollView {
   }
 }
 .flashspot {
-  background-color: $primary_color;
+  background-color: $primary;
 }
 // displayed when media keys are pressed.
 .osd-window {
@@ -1519,11 +1519,11 @@ StScrollView {
   .level {
     height: 0.7em;
     border-radius: 0.3em;
-    background-color: $track_color;
+    background-color: $track;
   }
   .level-bar {
     border-radius: 0.3em;
-    background-color: $primary_color;
+    background-color: $primary;
   }
 }
 // on screen preview of windows tiling placement
@@ -1600,5 +1600,5 @@ StScrollView {
 .user-label {
   @include font(body-2);
   
-  color: $fg_color;
+  color: $text;
 }

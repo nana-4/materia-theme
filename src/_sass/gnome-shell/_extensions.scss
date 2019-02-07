@@ -1,11 +1,11 @@
 /* Dash to Dock */
 
 #dashtodockContainer #dash {
-  background-color: $panel_bg_color;
+  background-color: $scrim;
 }
 
 #dashtodockContainer:overview #dash {
-  background-color: $inverse_panel_bg_color;
+  background-color: $scrim-inverse;
 }
 
 #dashtodockContainer.extended:overview #dash {
@@ -90,7 +90,7 @@
 /* Simple Dock */
 
 #dash:desktop {
-  background-color: $panel_bg_color;
+  background-color: $scrim;
 }
 
 
@@ -98,22 +98,22 @@
 
 .popup-menu {
   .search-entry {
-    color: $fg_color;
-    selection-background-color: $selected_overlay_color;
-    selected-color: $fg_color;
+    color: $text;
+    selection-background-color: $overlay-selected;
+    selected-color: $text;
     @include entry(normal);
 
     &:hover { @include entry(hover); }
 
     &:focus {
       @include entry(focus);
-      color: $fg_color;
+      color: $text;
     }
 
-    .search-entry-icon { color: $secondary_fg_color; }
+    .search-entry-icon { color: $text-secondary; }
 
     &:hover, &:focus {
-      .search-entry-icon { color: $fg_color; }
+      .search-entry-icon { color: $text; }
     }
   }
 }

@@ -3,7 +3,7 @@
   background-clip: padding-box;
 
   -GtkToolButton-icon-spacing: 0;
-  -GtkTextView-error-underline-color: $error_color;
+  -GtkTextView-error-underline-color: $error;
 
   // The size for scrollbars. The slider is 2px smaller, but we keep it
   // up so that the whole area is sensitive to button presses for the
@@ -30,9 +30,9 @@
   outline-offset: -4px;
   -gtk-outline-radius: $material_radius;
 
-  -gtk-secondary-caret-color: $primary_color;
+  -gtk-secondary-caret-color: $primary;
 
-  &:focus { outline-color: $checked_overlay_color; }
+  &:focus { outline-color: $overlay-checked; }
 }
 
 
@@ -40,8 +40,8 @@
  * Base States *
  ***************/
 .background {
-  background-color: $bg_color;
-  color: $fg_color;
+  background-color: $background;
+  color: $text;
 }
 
 /*
@@ -54,41 +54,41 @@
 *:disabled { -gtk-icon-effect: dim; }
 
 .gtkstyle-fallback {
-  background-color: $bg_color;
-  color: $fg_color;
+  background-color: $background;
+  color: $text;
 
   &:hover {
-    background-color: darken($bg_color, 5%);
-    color: $fg_color;
+    background-color: darken($background, 5%);
+    color: $text;
   }
 
   &:active {
-    background-color: darken($bg_color, 10%);
-    color: $fg_color;
+    background-color: darken($background, 10%);
+    color: $text;
   }
 
   &:disabled {
-    background-color: $bg_color;
-    color: $disabled_fg_color;
+    background-color: $background;
+    color: $text-disabled;
   }
 
   &:selected {
-    background-color: $primary_color;
-    color: $inverse_fg_color;
+    background-color: $primary;
+    color: $inverse-text;
   }
 }
 
 .view {
   // @extend row.activatable;
 
-  background-color: $base_color;
-  color: $fg_color;
+  background-color: $base;
+  color: $text;
 
-  &:hover { box-shadow: inset 0 0 0 9999px $hover_overlay_color; }
+  &:hover { box-shadow: inset 0 0 0 9999px $overlay-hover; }
 
-  &:selected:hover { box-shadow: inset 0 0 0 9999px rgba($primary_color, 0.08); }
+  &:selected:hover { box-shadow: inset 0 0 0 9999px rgba($primary, 0.08); }
 
-  &:disabled { color: $disabled_fg_color; }
+  &:disabled { color: $text-disabled; }
 
   &:hover, &:selected { border-radius: $material_radius; }
 
@@ -98,11 +98,11 @@
 
 textview {
   // FIXME: we need to override background-color to ensure text rendering
-  text { background-color: $base_color; }
+  text { background-color: $base; }
 
   border {
-    background-color: $alt_base_color;
-    color: $secondary_fg_color; // FIXME: not working
+    background-color: $base-alt;
+    color: $text-secondary; // FIXME: not working
   }
 }
 
@@ -110,8 +110,8 @@ textview {
 
 .rubberband,
 rubberband {
-  border: 1px solid $alt_primary_color;
-  background-color: rgba($alt_primary_color, 0.3);
+  border: 1px solid $primary-alt;
+  background-color: rgba($primary-alt, 0.3);
 }
 
 flowbox {
@@ -143,13 +143,13 @@ label {
   &.separator {
     @extend .dim-label;
 
-    color: $fg_color;
+    color: $text;
   }
 
   selection { @extend %selected_items; }
 
   &:disabled {
-    color: $disabled_fg_color;
+    color: $text-disabled;
 
     // selection { @extend %selected_items:disabled; }
 
@@ -164,8 +164,8 @@ label {
 assistant {
   .sidebar {
     padding: 4px 0;
-    // background-color: $base_color;
-    // border-top: 1px solid $border_color;
+    // background-color: $base;
+    // border-top: 1px solid $border;
   }
 
   // &.csd .sidebar { border-top-style: none; }
@@ -173,10 +173,10 @@ assistant {
   .sidebar label {
     min-height: $medium_size;
     padding: 0 12px;
-    color: $disabled_fg_color;
+    color: $text-disabled;
     font-weight: 500;
 
-    &.highlight { color: $fg_color; }
+    &.highlight { color: $text; }
   }
 }
 
@@ -235,11 +235,11 @@ entry {
       // min-width: $small_size;
       // border-radius: $circular_radius;
       // -gtk-outline-radius: $circular_radius;
-      color: $secondary_fg_color;
+      color: $text-secondary;
 
-      &:hover, &:active { color: $fg_color; }
+      &:hover, &:active { color: $text; }
 
-      &:disabled { color: $disabled_fg_color; }
+      &:disabled { color: $text-disabled; }
 
       &.left {
         margin-left: ($medium_size - 16px) / 2 - 8px;
@@ -261,8 +261,8 @@ entry {
     selection { @extend %selected_items; }
 
     // entry error and warning style
-    @each $e_type, $e_color in (error, $error_color),
-                               (warning, $warning_color) {
+    @each $e_type, $e_color in (error, $error),
+                               (warning, $warning) {
       &.#{$e_type} {
         @include entry(normal, $e_color);
 
@@ -273,7 +273,7 @@ entry {
     }
 
     &:drop(active) {
-      // box-shadow: inset 0 0 0 2px $primary_color;
+      // box-shadow: inset 0 0 0 2px $primary;
     }
 
     .osd & {
@@ -282,7 +282,7 @@ entry {
 
   progress {
     margin: 2px (2px - 8px);
-    border-bottom: 2px solid $primary_color;
+    border-bottom: 2px solid $primary;
     background-color: transparent;
   }
 
@@ -303,8 +303,8 @@ entry {
   &:disabled { @include entry(raised-disabled); }
 
   // entry error and warning style
-  @each $e_type, $e_color in (error, $error_color),
-                             (warning, $warning_color) {
+  @each $e_type, $e_color in (error, $error),
+                             (warning, $warning) {
     &.#{$e_type} {
       @include entry(raised-normal, $e_color);
 
@@ -313,11 +313,11 @@ entry {
       &:disabled { @include entry(raised-disabled, $e_color); }
 
       image {
-        color: $inverse_secondary_fg_color;
+        color: $inverse-text-secondary;
 
-        &:hover, &:active { color: $inverse_fg_color; }
+        &:hover, &:active { color: $inverse-text; }
 
-        &:disabled { color: $inverse_disabled_fg_color; }
+        &:disabled { color: $inverse-text-disabled; }
       }
     }
   }
@@ -325,7 +325,7 @@ entry {
 
 treeview entry {
   &.flat, & {
-    background-color: $base_color;
+    background-color: $base;
 
     &, &:focus {
       border-image: none;
@@ -338,10 +338,10 @@ treeview entry {
   margin: 2px;
   border-radius: $circular_radius;
   box-shadow: none;
-  background-color: $divider_color;
-  color: $fg_color;
+  background-color: $divider;
+  color: $text;
 
-  &:hover { background-image: image($divider_color); }
+  &:hover { background-image: image($divider); }
 
   // side margins: compensate the entry padding with a negative margin
   // then the negative margin itself
@@ -364,7 +364,7 @@ treeview entry {
     box-shadow: none;
     background-color: transparent;
 
-    &:not(:hover):not(:active) { color: $secondary_fg_color; }
+    &:not(:hover):not(:active) { color: $text-secondary; }
   }
 }
 
@@ -378,7 +378,7 @@ treeview entry {
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.001,
-                                    to($primary_color),
+                                    to($primary),
                                     to(transparent));
   }
 
@@ -386,7 +386,7 @@ treeview entry {
     background-image: -gtk-gradient(radial,
                                     center center, 0,
                                     center center, 0.5,
-                                    to($primary_color),
+                                    to($primary),
                                     to(transparent));
   }
 }
@@ -470,26 +470,26 @@ button {
     }
 
     &:drop(active) {
-      // box-shadow: inset 0 0 0 2px $primary_color;
+      // box-shadow: inset 0 0 0 2px $primary;
     }
   }
 
   @at-root %button_selected {
     &.flat {
-      color: $inverse_secondary_fg_color;
+      color: $inverse-text-secondary;
 
-      &:hover, &:active { color: $inverse_fg_color; }
+      &:hover, &:active { color: $inverse-text; }
 
-      &:disabled { color: $inverse_disabled_secondary_fg_color; }
+      &:disabled { color: $inverse-text-secondary-disabled; }
 
       &:checked {
-        background-color: $inverse_track_color;
-        color: $inverse_fg_color;
+        background-color: $inverse-track;
+        color: $inverse-text;
       }
 
       &:checked:disabled {
-        background-color: $inverse_divider_color;
-        color: $inverse_disabled_fg_color;
+        background-color: $inverse-divider;
+        color: $inverse-text-disabled;
       }
     }
   }
@@ -509,15 +509,15 @@ button {
   }
 
   // Suggested and Destructive Action buttons
-  @each $b_type, $b_color in (suggested-action, $suggested_color),
-                             (destructive-action, $destructive_color) {
+  @each $b_type, $b_color in (suggested-action, $suggested),
+                             (destructive-action, $destructive) {
     &.#{$b_type} {
       background-color: $b_color;
-      color: $inverse_fg_color;
+      color: $inverse-text;
 
       &:disabled { @include button(disabled); }
 
-      &:checked { background-color: mix($inverse_fg_color, $b_color, percentage(0.3)); }
+      &:checked { background-color: mix($inverse-text, $b_color, percentage(0.3)); }
 
       &.flat {
         background-color: transparent;
@@ -750,9 +750,9 @@ button.color {
  * Links *
  *********/
 *:link {
-  color: $link_color;
+  color: $link;
 
-  &:visited { color: $visited_link_color; }
+  &:visited { color: $link-visited; }
 }
 
 button:link,
@@ -831,7 +831,7 @@ spinbutton {
 
     // FIXME: this should not be set at all, but otherwise it gets the wrong
     // color
-    &:disabled { color: $disabled_fg_color; }
+    &:disabled { color: $text-disabled; }
 
     &:drop(active) {
       box-shadow: none;
@@ -968,7 +968,7 @@ button.combo {
 
   @include entry(normal);
 
-  &:hover { box-shadow: inset 0 -1px $fg_color; }
+  &:hover { box-shadow: inset 0 -1px $text; }
 
   &:checked { @include entry(focus); }
 
@@ -982,7 +982,7 @@ button.combo {
 toolbar {
   -GtkWidget-window-dragging: true;
   padding: 2px;
-  background-color: $bg_color;
+  background-color: $background;
 
   button { @extend %button_basic.flat; }
 
@@ -994,10 +994,10 @@ toolbar {
     transition: $shadow_transition;
     padding: $container_padding;
     border-radius: $material_radius;
-    box-shadow: $shadow_2, inset 0 1px $highlight_color;
-    background-color: $surface_color;
+    box-shadow: $shadow_2, inset 0 1px $highlight;
+    background-color: $surface;
 
-    &:backdrop { box-shadow: $shadow_1, inset 0 1px $highlight_color; }
+    &:backdrop { box-shadow: $shadow_1, inset 0 1px $highlight; }
 
     &.left,
     &.right,
@@ -1036,8 +1036,8 @@ toolbar {
   padding: $container_padding;
   border-style: solid;
   border-width: 0 1px 1px;
-  border-color: $border_color;
-  background-color: $alt_base_color;
+  border-color: $border;
+  background-color: $base-alt;
 }
 
 searchbar > revealer > box,
@@ -1045,8 +1045,8 @@ searchbar > revealer > box,
   padding: $container_padding;
   border-style: solid;
   border-width: 0 0 1px;
-  border-color: $border_color;
-  background-color: $bg_color;
+  border-color: $border;
+  background-color: $background;
   background-clip: border-box;
 }
 
@@ -1065,16 +1065,16 @@ headerbar {
   transition: background-color $shorter_duration $deceleration_curve, color $shorter_duration $deceleration_curve;
   min-height: $large_size;
   padding: 0 $container_padding;
-  box-shadow: $shadow_1, inset 0 1px $titlebar_highlight_color;
-  background-color: $titlebar_bg_color;
-  color: $titlebar_fg_color;
+  box-shadow: $shadow_1, inset 0 1px $highlight-titlebar;
+  background-color: $titlebar;
+  color: $titlebar-text;
 
-  &:disabled { color: $titlebar_disabled_fg_color; }
+  &:disabled { color: $titlebar-text-disabled; }
 
   &:backdrop {
-    color: $titlebar_secondary_fg_color;
+    color: $titlebar-text-secondary;
 
-    &:disabled { color: $titlebar_disabled_secondary_fg_color; }
+    &:disabled { color: $titlebar-text-secondary-disabled; }
   }
 
   .title {
@@ -1090,22 +1090,22 @@ headerbar {
   }
 
   entry {
-    box-shadow: inset 0 -1px $titlebar_track_color;
-    background-color: $titlebar_fill_color;
-    color: $titlebar_fg_color;
+    box-shadow: inset 0 -1px $titlebar-track;
+    background-color: $titlebar-fill;
+    color: $titlebar-text;
 
     &:disabled {
-      box-shadow: inset 0 -1px $titlebar_divider_color;
-      background-color: $titlebar_fill_color;
-      color: $titlebar_disabled_fg_color;
+      box-shadow: inset 0 -1px $titlebar-divider;
+      background-color: $titlebar-fill;
+      color: $titlebar-text-disabled;
     }
 
     image {
-      color: $titlebar_secondary_fg_color;
+      color: $titlebar-text-secondary;
 
-      &:hover, &:active { color: $titlebar_fg_color; }
+      &:hover, &:active { color: $titlebar-text; }
 
-      &:disabled { color: $titlebar_disabled_fg_color; }
+      &:disabled { color: $titlebar-text-disabled; }
     }
   }
 
@@ -1115,46 +1115,46 @@ headerbar {
     @extend %button_basic.flat;
 
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  $titlebar_indicator_color 0%,
+                                  $titlebar-indicator 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
-    color: $titlebar_secondary_fg_color;
+    color: $titlebar-text-secondary;
 
-    &:hover, &:active { color: $titlebar_fg_color; }
+    &:hover, &:active { color: $titlebar-text; }
 
-    &:disabled { color: $titlebar_disabled_secondary_fg_color; }
+    &:disabled { color: $titlebar-text-secondary-disabled; }
 
     &:checked {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                    $titlebar_indicator_color 100%,
+                                    $titlebar-indicator 100%,
                                     transparent 0%)
                                     0 0 2 / 0 0 2px;
-      color: $titlebar_fg_color;
+      color: $titlebar-text;
 
-      &:disabled { color: $titlebar_disabled_fg_color; }
+      &:disabled { color: $titlebar-text-disabled; }
 
       &, &:disabled { background-color: transparent; }
     }
 
     &:backdrop {
-      color: $titlebar_disabled_fg_color;
+      color: $titlebar-text-disabled;
 
-      &:hover, &:active { color: $titlebar_secondary_fg_color; }
+      &:hover, &:active { color: $titlebar-text-secondary; }
 
-      &:disabled { color: $titlebar_disabled_secondary_fg_color; }
+      &:disabled { color: $titlebar-text-secondary-disabled; }
 
       &:checked {
-        color: $titlebar_secondary_fg_color;
+        color: $titlebar-text-secondary;
 
-        &:disabled { color: $titlebar_disabled_secondary_fg_color; }
+        &:disabled { color: $titlebar-text-secondary-disabled; }
       }
     }
   }
 
   button.suggested-action, button.destructive-action {
     &:disabled {
-      background-color: $titlebar_fill_color;
-      color: $titlebar_disabled_fg_color;
+      background-color: $titlebar-fill;
+      color: $titlebar-text-disabled;
     }
   }
 
@@ -1163,44 +1163,44 @@ headerbar {
     // but let's keep it for backwards compatibility.
     transition: background-color 0.00001s $longer_duration, color $longer_duration $deceleration_curve;
     animation: header_ripple_effect $longer_duration $deceleration_curve;
-    box-shadow: $shadow_1, inset 0 1px $alt_highlight_color;
-    background-color: $primary_color;
-    color: $inverse_fg_color;
+    box-shadow: $shadow_1, inset 0 1px $highlight-alt;
+    background-color: $primary;
+    color: $inverse-text;
 
     &:backdrop {
-      color: $inverse_secondary_fg_color;
+      color: $inverse-text-secondary;
     }
 
-    .subtitle:link { color: $inverse_fg_color; }
+    .subtitle:link { color: $inverse-text; }
 
     button:not(.suggested-action):not(.destructive-action) {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                     currentColor 0%,
                                     transparent 0%)
                                     0 0 0 / 0 0 0px;
-      color: $inverse_fg_color;
+      color: $inverse-text;
 
-      &:disabled { color: $inverse_disabled_fg_color; }
+      &:disabled { color: $inverse-text-disabled; }
 
       &:checked {
         border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                       currentColor 100%,
                                       transparent 0%)
                                       0 0 2 / 0 0 2px;
-        color: $inverse_fg_color;
+        color: $inverse-text;
 
-        &:disabled { color: $inverse_disabled_fg_color; }
+        &:disabled { color: $inverse-text-disabled; }
       }
 
       &:backdrop {
-        color: $inverse_secondary_fg_color;
+        color: $inverse-text-secondary;
 
-        &:disabled { color: $inverse_disabled_secondary_fg_color; }
+        &:disabled { color: $inverse-text-secondary-disabled; }
 
         &:checked {
-          color: $inverse_secondary_fg_color;
+          color: $inverse-text-secondary;
 
-          &:disabled { color: $inverse_disabled_secondary_fg_color; }
+          &:disabled { color: $inverse-text-secondary-disabled; }
         }
       }
     }
@@ -1230,7 +1230,7 @@ headerbar {
   &.default-decoration {
     min-height: $small_size;
     padding: $container_padding;
-    box-shadow: inset 0 1px $titlebar_highlight_color;
+    box-shadow: inset 0 1px $highlight-titlebar;
 
     .tiled &,
     .maximized &,
@@ -1270,7 +1270,7 @@ headerbar {
   separator {
     margin-top: $large_size / 4;
     margin-bottom: $large_size / 4;
-    background-color: $titlebar_divider_color;
+    background-color: $titlebar-divider;
   }
 
   switch {
@@ -1349,8 +1349,8 @@ headerbar { // headerbar border rounding
   }
 
   > separator {
-    background-color: $titlebar_bg_color;
-    background-image: image($border_color);
+    background-color: $titlebar;
+    background-image: image($border);
   }
 
   @extend %titlebar;
@@ -1380,14 +1380,14 @@ headerbar { // headerbar border rounding
     @extend %flat_button;
 
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  $primary_color 0%,
+                                  $primary 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
     border-radius: $material_radius;
 
     &:checked {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                    $primary_color 100%,
+                                    $primary 100%,
                                     transparent 0%)
                                     0 0 2 / 0 0 2px;
 
@@ -1410,13 +1410,13 @@ treeview.view {
     -GtkTreeView-expander-size: 16;
   }
 
-  border-left-color: $track_color; // this is actually the tree lines color,
-  border-top-color: $border_color; // while this is the grid lines color, better then nothing
+  border-left-color: $track; // this is actually the tree lines color,
+  border-top-color: $border; // while this is the grid lines color, better then nothing
 
   // FIXME: Avoid transparency background-color being slightly darker
   &:selected {
-    background-color: $base_color;
-    background-image: image($selected_overlay_color);
+    background-color: $base;
+    background-image: image($overlay-selected);
   }
 
   rubberband { @extend rubberband; } // to avoid borders being overridden by the previously set props
@@ -1425,13 +1425,13 @@ treeview.view {
 
   &.separator {
     min-height: 1px + 2px * 2;
-    color: $border_color;
+    color: $border;
   }
 
   &:drop(active) {
     border-style: solid none;
     border-width: 1px;
-    border-color: $primary_color;
+    border-color: $primary;
 
     &.after { border-top-style: none; }
 
@@ -1446,21 +1446,21 @@ treeview.view {
 
     &:checked { -gtk-icon-transform: unset; }
 
-    color: $secondary_fg_color;
+    color: $text-secondary;
 
-    &:hover, &:active { color: $fg_color; }
+    &:hover, &:active { color: $text; }
 
-    &:disabled { color: $disabled_secondary_fg_color; }
+    &:disabled { color: $text-secondary-disabled; }
   }
 
   &.progressbar { // progress bar in treeviews
-    border-bottom: $bar_size solid $primary_color;
+    border-bottom: $bar_size solid $primary;
     box-shadow: none;
     background-color: transparent;
   }
 
   &.trough { // progress bar trough in treeviews
-    border-bottom: $bar_size solid $divider_color;
+    border-bottom: $bar_size solid $divider;
     box-shadow: none;
     background-color: transparent;
   }
@@ -1472,15 +1472,15 @@ treeview.view {
       padding: 2px 6px;
       border-style: none solid solid none;
       border-width: 1px;
-      border-color: $border_color;
+      border-color: $border;
       border-radius: 0;
       background-clip: border-box;
 
-      &:not(:hover):not(:active) { color: $secondary_fg_color; }
+      &:not(:hover):not(:active) { color: $text-secondary; }
 
       &, &:hover, &:active { box-shadow: none; }
 
-      &, &:disabled { background-color: $base_color; }
+      &, &:disabled { background-color: $base; }
 
       &:last-child { border-right-style: none; }
     }
@@ -1491,15 +1491,15 @@ treeview.view {
     padding: 2px 6px;
     border-style: none solid solid;
     border-width: 1px;
-    border-color: $border_color;
+    border-color: $border;
     border-radius: 0;
     box-shadow: none;
-    background-color: $base_color;
+    background-color: $base;
     background-clip: border-box;
-    color: $primary_color;
+    color: $primary;
   }
 
-  acceleditor > label { background-color: $primary_color; } // see tests/testaccel to test
+  acceleditor > label { background-color: $primary; } // see tests/testaccel to test
 }
 
 
@@ -1510,22 +1510,22 @@ menubar,
 .menubar {
   -GtkWidget-window-dragging: true;
   padding: 0;
-  // box-shadow: inset 0 -1px $border_color;
-  background-color: $titlebar_bg_color;
+  // box-shadow: inset 0 -1px $border;
+  background-color: $titlebar;
 
   > menuitem {
     transition: $shorter_transition;
     min-height: 20px;
     padding: 4px 8px;
-    color: $titlebar_secondary_fg_color;
+    color: $titlebar-text-secondary;
 
     &:hover { // Seems like it :hover even with keyboard focus
       transition: none;
-      background-color: $titlebar_divider_color;
-      color: $titlebar_fg_color;
+      background-color: $titlebar-divider;
+      color: $titlebar-text;
     }
 
-    &:disabled { color: $titlebar_disabled_secondary_fg_color; }
+    &:disabled { color: $titlebar-text-secondary-disabled; }
 
     label:disabled { color: inherit; } // to inherit the above color
   }
@@ -1538,9 +1538,9 @@ menu,
 .context-menu {
   margin: 4px 0; // See https://bugzilla.gnome.org/show_bug.cgi?id=591258
   padding: 4px 0;
-  box-shadow: inset 0 1px $highlight_color;
-  background-color: $surface_color;
-  border: 1px solid $border_color; // adds borders in a non composited env
+  box-shadow: inset 0 1px $highlight;
+  background-color: $surface;
+  border: 1px solid $border; // adds borders in a non composited env
 
   .csd & {
     border: none; // axes borders in a composited env
@@ -1557,10 +1557,10 @@ menu,
 
     &:hover {
       transition: none;
-      background-color: $divider_color;
+      background-color: $divider;
     }
 
-    &:disabled { color: $disabled_fg_color; }
+    &:disabled { color: $text-disabled; }
 
     // submenu indicators
     arrow {
@@ -1588,12 +1588,12 @@ menu,
     min-height: 16px;
     min-width: 16px;
     padding: 4px;
-    background-color: $surface_color;
-    color: $secondary_fg_color;
+    background-color: $surface;
+    color: $text-secondary;
 
     &.top {
       margin-top: -4px;
-      border-bottom: 1px solid $border_color;
+      border-bottom: 1px solid $border;
       border-radius: $material_radius $material_radius 0 0;
       -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
     }
@@ -1601,21 +1601,21 @@ menu,
     &.bottom {
       margin-top: 4px * 2;
       margin-bottom: -4px * 3;
-      border-top: 1px solid $border_color;
+      border-top: 1px solid $border;
       border-radius: 0 0 $material_radius $material_radius;
       -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
     }
 
     &:hover {
-      background-image: image($divider_color);
-      color: $fg_color;
+      background-image: image($divider);
+      color: $text;
     }
 
     &:disabled {
       border-color: transparent;
       background-color: transparent;
       color: transparent;
-      // color: $disabled_secondary_fg_color;
+      // color: $text-secondary-disabled;
     }
   }
 
@@ -1623,9 +1623,9 @@ menu,
 }
 
 menuitem {
-  accelerator { color: $secondary_fg_color; }
+  accelerator { color: $text-secondary; }
 
-  &:disabled accelerator { color: $disabled_secondary_fg_color; }
+  &:disabled accelerator { color: $text-secondary-disabled; }
 }
 
 // FIXME: THIS IS A REALLY UGLY WORKAROUND!
@@ -1633,15 +1633,15 @@ menuitem {
 // It's a very critical issue for this theme and should be fixed by upstream...
 .popup:not(.csd) menu {
   menuitem {
-    color: $opaque_fg_color;
+    color: $solid-text;
 
-    &:hover { background-color: $opaque_divider_color; }
+    &:hover { background-color: $solid-divider; }
 
-    &:disabled { color: $opaque_disabled_fg_color; } // separator/border also use this color.
+    &:disabled { color: $solid-text-disabled; } // separator/border also use this color.
   }
 
   // FIXME: not working this
-  accelerator { color: $opaque_secondary_fg_color; }
+  accelerator { color: $solid-text-secondary; }
 }
 
 
@@ -1652,7 +1652,7 @@ popover.background {
   transition: $shadow_transition;
   padding: 2px;
   box-shadow: $shadow_2; // TODO: this should really have a highlight
-  background-color: $surface_color;
+  background-color: $surface;
 
   &:backdrop { box-shadow: $shadow_1; }
 
@@ -1678,7 +1678,7 @@ popover.background {
   // FIXME: Use the popover color instead of transparent as a workaround for .view
   list,
   .view:not(:selected),
-  toolbar { background-color: $surface_color; }
+  toolbar { background-color: $surface; }
 
   // &.touch-selection,
   // &.magnifier,
@@ -1707,17 +1707,17 @@ popover.background {
  *************/
 notebook {
   frame > paned > & > header,
-  &.frame > header { background-color: $alt_base_color; }
+  &.frame > header { background-color: $base-alt; }
 
   &:focus tab:checked {
-    box-shadow: inset 0 0 0 9999px rgba($primary_color, 0.12);
+    box-shadow: inset 0 0 0 9999px rgba($primary, 0.12);
     outline: none;
   }
 
   > header {
     border-width: 1px;
-    border-color: $border_color;
-    background-color: $bg_color;
+    border-color: $border;
+    background-color: $background;
     background-clip: border-box;
 
     &.top {
@@ -1729,7 +1729,7 @@ notebook {
         > tab {
           border-image: linear-gradient(to top, transparent 2px, transparent 2px) 2 / 0 0 2px;
 
-          &:checked { border-image-source: linear-gradient(to top, $primary_color 2px, $border_color 2px); }
+          &:checked { border-image-source: linear-gradient(to top, $primary 2px, $border 2px); }
 
           &.reorderable-page { border-image-width: 0 1px 2px; }
         }
@@ -1745,7 +1745,7 @@ notebook {
         > tab {
           border-image: linear-gradient(to bottom, transparent 2px, transparent 2px) 2 / 2px 0 0;
 
-          &:checked { border-image-source: linear-gradient(to bottom, $primary_color 2px, $border_color 2px); }
+          &:checked { border-image-source: linear-gradient(to bottom, $primary 2px, $border 2px); }
 
           &.reorderable-page { border-image-width: 2px 1px 0; }
         }
@@ -1761,7 +1761,7 @@ notebook {
         > tab {
           border-image: linear-gradient(to left, transparent 2px, transparent 2px) 2 / 0 2px 0 0;
 
-          &:checked { border-image-source: linear-gradient(to left, $primary_color 2px, $border_color 2px); }
+          &:checked { border-image-source: linear-gradient(to left, $primary 2px, $border 2px); }
 
           &.reorderable-page { border-image-width: 1px 2px 1px 0; }
         }
@@ -1777,7 +1777,7 @@ notebook {
         > tab {
           border-image: linear-gradient(to right, transparent 2px, transparent 2px) 2 / 0 0 0 2px;
 
-          &:checked { border-image-source: linear-gradient(to right, $primary_color 2px, $border_color 2px); }
+          &:checked { border-image-source: linear-gradient(to right, $primary 2px, $border 2px); }
 
           &.reorderable-page { border-image-width: 1px 0 1px 2px; }
         }
@@ -1860,22 +1860,22 @@ notebook {
       border-color: transparent; //
 
       background-image: radial-gradient(circle farthest-corner at center,
-                                        $primary_color 10%,
+                                        $primary 10%,
                                         transparent 0%);
       background-repeat: no-repeat;
       background-position: center;
       background-size: 0% 0%;
       background-clip: border-box;
 
-      color: $secondary_fg_color;
+      color: $text-secondary;
       font-weight: 500;
 
       &:hover {
-        background-color: $hover_overlay_color;
-        color: $fg_color;
+        background-color: $overlay-hover;
+        color: $text;
       }
 
-      &:disabled { color: $disabled_secondary_fg_color; }
+      &:disabled { color: $text-secondary-disabled; }
 
       &:checked {
         transition: $shorter_transition,
@@ -1887,13 +1887,13 @@ notebook {
                                           transparent 0%);
         background-size: 1000% 1000%;
         background-clip: padding-box;
-        color: $fg_color;
+        color: $text;
 
-        &:disabled { color: $disabled_fg_color; }
+        &:disabled { color: $text-disabled; }
 
         &.reorderable-page {
-          border-color: $border_color;
-          background-color: $base_color;
+          border-color: $border;
+          background-color: $base;
         }
       }
 
@@ -1947,7 +1947,7 @@ notebook {
   }
 
   > stack:not(:only-child) { // the :not(:only-child) is for "hidden" notebooks
-    background-color: $base_color;
+    background-color: $base;
   }
 }
 
@@ -1965,14 +1965,14 @@ scrollbar {
   }
 
   transition: $shorter_transition;
-  background-color: $base_color;
+  background-color: $base;
   background-clip: $extra_background_clip;
 
   // scrollbar border
-  &.top { border-bottom: 1px solid $border_color; }
-  &.bottom { border-top: 1px solid $border_color; }
-  &.left { border-right: 1px solid $border_color; }
-  &.right { border-left: 1px solid $border_color; }
+  &.top { border-bottom: 1px solid $border; }
+  &.bottom { border-top: 1px solid $border; }
+  &.left { border-right: 1px solid $border; }
+  &.right { border-left: 1px solid $border; }
 
   // slider
   slider {
@@ -1982,13 +1982,13 @@ scrollbar {
     border: 4px solid transparent;
     border-radius: $circular_radius;
     background-clip: padding-box;
-    background-color: $disabled_fg_color;
+    background-color: $text-disabled;
 
-    &:hover { background-color: $secondary_fg_color; }
+    &:hover { background-color: $text-secondary; }
 
-    &:active { background-color: $fg_color; }
+    &:active { background-color: $text; }
 
-    &:disabled { background-color: $disabled_secondary_fg_color; }
+    &:disabled { background-color: $text-secondary-disabled; }
   }
 
   &.fine-tune {
@@ -2012,20 +2012,20 @@ scrollbar {
         min-width: 4px;
         min-height: 4px;
         margin: 4px - 1px;
-        border: 1px solid rgba($base_color, 0.3);
+        border: 1px solid rgba($base, 0.3);
       }
 
       button {
         min-width: 4px;
         min-height: 4px;
         margin: 4px - 1px;
-        border: 1px solid rgba($base_color, 0.3);
+        border: 1px solid rgba($base, 0.3);
         border-radius: $circular_radius;
-        background-color: $disabled_fg_color;
+        background-color: $text-disabled;
         background-clip: padding-box;
         -gtk-icon-source: none;
 
-        &:disabled { background-color: $disabled_secondary_fg_color; }
+        &:disabled { background-color: $text-secondary-disabled; }
       }
 
       &.horizontal {
@@ -2042,7 +2042,7 @@ scrollbar {
     }
 
     &.dragging,
-    &.hovering { background-color: rgba($base_color, 0.9); }
+    &.hovering { background-color: rgba($base, 0.9); }
   }
 
   &.horizontal slider { min-width: $_slider_min_length; }
@@ -2087,11 +2087,11 @@ switch {
   padding: 0 2px;
   border: 5px solid transparent;
   border-radius: $circular_radius;
-  background-color: $track_color;
+  background-color: $track;
   background-clip: padding-box;
   font-size: 0;
 
-  &:checked { background-color: rgba($primary_color, 0.5); }
+  &:checked { background-color: rgba($primary, 0.5); }
 
   &:disabled { opacity: 0.5; }
 
@@ -2108,18 +2108,18 @@ switch {
     margin: -3px -2px;
     border-radius: $circular_radius;
     box-shadow: 0 0 0 10px transparent, $shadow_1;
-    background-color: $surface_color;
+    background-color: $surface;
   }
 
-  &:hover slider { box-shadow: 0 0 0 10px $hover_overlay_color, $shadow_1; }
+  &:hover slider { box-shadow: 0 0 0 10px $overlay-hover, $shadow_1; }
 
-  &:focus slider { box-shadow: 0 0 0 10px $focus_overlay_color, $shadow_1; }
+  &:focus slider { box-shadow: 0 0 0 10px $overlay-focus, $shadow_1; }
 
-  &:focus:hover slider { box-shadow: 0 0 0 10px $hover_focus_overlay_color, $shadow_1; }
+  &:focus:hover slider { box-shadow: 0 0 0 10px $overlay-focus-hover, $shadow_1; }
 
   &:checked slider {
-    background-color: $primary_color;
-    color: $primary_color;
+    background-color: $primary;
+    color: $primary;
   }
 
   row:selected & {
@@ -2182,16 +2182,16 @@ radio {
 
   @extend %circular_button;
 
-  &:hover { box-shadow: inset 0 0 0 9999px $hover_overlay_color; }
+  &:hover { box-shadow: inset 0 0 0 9999px $overlay-hover; }
 
-  &:focus { box-shadow: inset 0 0 0 9999px $focus_overlay_color; }
+  &:focus { box-shadow: inset 0 0 0 9999px $overlay-focus; }
 
-  &:focus:hover { box-shadow: inset 0 0 0 9999px $hover_focus_overlay_color; }
+  &:focus:hover { box-shadow: inset 0 0 0 9999px $overlay-focus-hover; }
 
   &:checked, &:indeterminate {
-    color: $primary_color;
+    color: $primary;
 
-    &:disabled { color: $disabled_secondary_fg_color; }
+    &:disabled { color: $text-secondary-disabled; }
   }
 
   // &:only-child { margin: -12px; }
@@ -2203,7 +2203,7 @@ radio {
       background-image: none;
     }
 
-    &:not(:checked):not(:indeterminate):not(:disabled) { color: $secondary_fg_color; }
+    &:not(:checked):not(:indeterminate):not(:disabled) { color: $text-secondary; }
 
     &.left:dir(rtl) {
       margin-left: -12px;
@@ -2225,7 +2225,7 @@ radio {
 
     &:dir(rtl) { margin-left: 8px; }
 
-    &:not(:checked):not(:indeterminate):not(:disabled) { color: $secondary_fg_color; }
+    &:not(:checked):not(:indeterminate):not(:disabled) { color: $text-secondary; }
 
     &, &:hover, &:disabled {
       box-shadow: none;
@@ -2260,7 +2260,7 @@ radio {
     border-image-source: -gtk-gradient(radial,
                                        center center, 0,
                                        center center, 0.001,
-                                       to($primary_color),
+                                       to($primary),
                                        to(transparent));
   }
 
@@ -2268,7 +2268,7 @@ radio {
     border-image-source: -gtk-gradient(radial,
                                        center center, 0,
                                        center center, $radio_indicator,
-                                       to($primary_color),
+                                       to($primary),
                                        to(transparent));
   }
 
@@ -2276,7 +2276,7 @@ radio {
     border-image-source: -gtk-gradient(radial,
                                        center center, 0,
                                        center center, $radio_indicator,
-                                       to($disabled_secondary_fg_color),
+                                       to($text-secondary-disabled),
                                        to(transparent));
   }
 }
@@ -2325,15 +2325,15 @@ treeview.view radio {
   }
 
   & {
-    color: $secondary_fg_color;
+    color: $text-secondary;
 
-    &:hover, &:active { color: $fg_color; }
+    &:hover, &:active { color: $text; }
 
-    &:disabled { color: $disabled_secondary_fg_color; }
+    &:disabled { color: $text-secondary-disabled; }
 
-    &:checked, &:indeterminate { color: $primary_color; }
+    &:checked, &:indeterminate { color: $primary; }
 
-    &:checked:disabled, &:indeterminate:disabled { color: $disabled_secondary_fg_color; }
+    &:checked:disabled, &:indeterminate:disabled { color: $text-secondary-disabled; }
   }
 }
 
@@ -2398,15 +2398,15 @@ scale {
   trough {
     transition: background-color $shorter_duration $deceleration_curve;
     outline: none;
-    background-color: $track_color;
+    background-color: $track;
 
-    &:disabled { background-color: $divider_color; }
+    &:disabled { background-color: $divider; }
   }
 
   // the colored part of the backing bit
   highlight {
     transition: background-color $shorter_duration $deceleration_curve;
-    background-color: $primary_color;
+    background-color: $primary;
 
     &:disabled { background-color: transparent; }
   }
@@ -2415,7 +2415,7 @@ scale {
   // in media player to indicate how much video stream as been cached
   fill {
     transition: background-color $shorter_duration $deceleration_curve;
-    background-color: $track_color;
+    background-color: $track;
 
     &:disabled { background-color: transparent; }
   }
@@ -2442,11 +2442,11 @@ scale {
       }
     }
 
-    &:hover { background-color: rgba($primary_color, 0.08); }
+    &:hover { background-color: rgba($primary, 0.08); }
 
-    &:focus { background-color: rgba($primary_color, 0.12); }
+    &:focus { background-color: rgba($primary, 0.12); }
 
-    &:focus:hover { background-color: rgba($primary_color, 0.16); }
+    &:focus:hover { background-color: rgba($primary, 0.16); }
 
     &:active {
       transition: background-color $shorter_duration $deceleration_curve,
@@ -2454,16 +2454,16 @@ scale {
                   background-image 0;
       animation: scale_ripple_effect $longer_duration $deceleration_curve forwards;
       background-size: auto, 0% 0%;
-      background-color: rgba($primary_color, 0.08);
-      color: rgba($primary_color, 0.12);
+      background-color: rgba($primary, 0.08);
+      color: rgba($primary, 0.12);
     }
   }
 
   marks label,
-  value { color: $secondary_fg_color; }
+  value { color: $text-secondary; }
 
   marks {
-    color: $track_color;
+    color: $track;
 
     @each $marks_class, $marks_pos, $marks_margin in (top, top, bottom),
                                                      (bottom, bottom, top),
@@ -2580,12 +2580,12 @@ progressbar {
   }
 
   // FIXME: insensitive state missing and some other state should be set probably
-  color: $secondary_fg_color;
+  color: $text-secondary;
   font-size: smaller;
 
-  trough { background-color: $divider_color; }
+  trough { background-color: $divider; }
 
-  progress { background-color: $primary_color; }
+  progress { background-color: $primary; }
 
   &.osd { // progressbar.osd used for epiphany page loading progress
     // min-width: $bar_size;
@@ -2594,7 +2594,7 @@ progressbar {
 
     // trough { background-color: transparent; }
 
-    // progress { background-color: $primary_color; }
+    // progress { background-color: $primary; }
   }
 
   trough.empty progress { all: unset; } // makes the progress indicator disappear, when the fraction is 0
@@ -2630,20 +2630,20 @@ levelbar {
     // padding: 2px;
     // border-radius: $material_radius;
     // box-shadow: $shadow_1;
-    // background-color: $base_color;
+    // background-color: $base;
 
-    // &:disabled { background-color: $alt_base_color; }
+    // &:disabled { background-color: $base-alt; }
   }
 
   block {
-    &.low { background-color: $warning_color; }
+    &.low { background-color: $warning; }
 
     &.high,
-    &:not(.empty) { background-color: $primary_color; }
+    &:not(.empty) { background-color: $primary; }
 
-    &.full { background-color: $success_color; }
+    &.full { background-color: $success; }
 
-    &.empty { background-color: $divider_color; }
+    &.empty { background-color: $divider; }
   }
 }
 
@@ -2654,9 +2654,9 @@ levelbar {
 printdialog {
   paper {
     padding: 0;
-    border: 1px solid $border_color;
-    background-color: $base_color;
-    color: $fg_color;
+    border: 1px solid $border;
+    background-color: $base;
+    color: $text;
   }
 
   .dialog-action-box { margin: 12px; }
@@ -2670,7 +2670,7 @@ frame > border,
 .frame {
   margin: 0;
   padding: 0;
-  border: 1px solid $border_color;
+  border: 1px solid $border;
   border-radius: 0;
   box-shadow: none;
 
@@ -2681,7 +2681,7 @@ frame.flat > border { @extend .frame.flat; } // for backward compatibility
 
 actionbar > revealer > box {
   padding: $container_padding;
-  border-top: 1px solid $border_color;
+  border-top: 1px solid $border;
 
   button:not(.suggested-action):not(.destructive-action):not(.server-list-button) { @extend %button_basic.flat; }
 }
@@ -2717,8 +2717,8 @@ scrolledwindow {
   @at-root junction { // the small square between two scrollbars
     border-style: solid none none solid;
     border-width: 1px;
-    border-color: $border_color;
-    background-color: $base_color;
+    border-color: $border;
+    background-color: $base;
 
     &:dir(rtl) { border-style: solid solid none none; }
   }
@@ -2728,7 +2728,7 @@ scrolledwindow {
 separator {
   min-width: 1px;
   min-height: 1px;
-  background-color: $border_color;
+  background-color: $border;
 }
 
 %hide_separators {
@@ -2742,8 +2742,8 @@ separator {
  * Lists *
  *********/
 list {
-  border-color: $border_color;
-  background-color: $base_color;
+  border-color: $border;
+  background-color: $base;
 
   row { padding: 2px; }
 }
@@ -2766,7 +2766,7 @@ row {
                   box-shadow 0,
                   background-size $ripple_duration $deceleration_curve,
                   background-image $ripple_opacity_duration $deceleration_curve;
-      box-shadow: inset 0 0 0 9999px $hover_overlay_color;
+      box-shadow: inset 0 0 0 9999px $overlay-hover;
     }
 
     &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
@@ -2775,9 +2775,9 @@ row {
                   background-size 0,
                   background-image 0;
       animation: ripple_effect $longer_duration $deceleration_curve forwards;
-      box-shadow: inset 0 0 0 9999px $hover_overlay_color;
+      box-shadow: inset 0 0 0 9999px $overlay-hover;
       background-image: radial-gradient(circle farthest-corner at center,
-                                        $active_overlay_color 10%,
+                                        $overlay-active 10%,
                                         transparent 0%);
       background-size: 0% 0%;
     }
@@ -2785,10 +2785,10 @@ row {
 
   &:selected {
     @extend %selected_items;
-    color: $primary_color; // for overlays
+    color: $primary; // for overlays
 
     image,
-    label { color: $fg_color; }
+    label { color: $text; }
 
     button image,
     button label { color: inherit; }
@@ -2828,11 +2828,11 @@ expander {
 
     &:checked { -gtk-icon-transform: unset; }
 
-    color: $secondary_fg_color;
+    color: $text-secondary;
 
-    &:hover, &:active { color: $fg_color; }
+    &:hover, &:active { color: $text; }
 
-    &:disabled { color: $disabled_secondary_fg_color; }
+    &:disabled { color: $text-secondary-disabled; }
   }
 }
 
@@ -2842,10 +2842,10 @@ expander {
  ************/
 calendar {
   padding: 1px;
-  border: 1px solid $border_color;
-  color: $fg_color;
+  border: 1px solid $border;
+  color: $text;
 
-  &:disabled { color: $disabled_fg_color; }
+  &:disabled { color: $text-disabled; }
 
   &:selected {
     @extend %selected_items;
@@ -2861,11 +2861,11 @@ calendar {
   &.button { @extend %simple_flat_button; }
 
   &.highlight {
-    color: $secondary_fg_color;
+    color: $text-secondary;
     font-weight: 500;
   }
 
-  &:indeterminate { color: $disabled_secondary_fg_color; }
+  &:indeterminate { color: $text-secondary-disabled; }
 }
 
 
@@ -2873,16 +2873,16 @@ calendar {
  * Dialogs *
  ***********/
 messagedialog { // Message Dialog styling
-  &.background { background-color: $surface_color; }
+  &.background { background-color: $surface; }
 
   .titlebar {
     min-height: $small_size;
     border-style: none;
-    box-shadow: inset 0 1px $highlight_color;
-    background-color: $surface_color;
-    color: $fg_color;
+    box-shadow: inset 0 1px $highlight;
+    background-color: $surface;
+    color: $text;
 
-    &:backdrop { color: $secondary_fg_color; }
+    &:backdrop { color: $text-secondary; }
   }
 
   &.csd { // rounded bottom border styling for csd version
@@ -2902,20 +2902,20 @@ messagedialog { // Message Dialog styling
 
         &:not(:last-child) { margin-right: $container_padding; }
 
-        &.suggested-action:not(:disabled) { color: $suggested_color; }
+        &.suggested-action:not(:disabled) { color: $suggested; }
 
-        &.destructive-action:not(:disabled) { color: $destructive_color; }
+        &.destructive-action:not(:disabled) { color: $destructive; }
       }
     }
   }
 }
 
 filechooser {
-  .dialog-action-box { border-top: 1px solid $border_color; }
+  .dialog-action-box { border-top: 1px solid $border; }
 
   #pathbarbox {
-    border-bottom: 1px solid $border_color;
-    background-color: $bg_color;
+    border-bottom: 1px solid $border;
+    background-color: $background;
 
     > stack > box > button { // The new folder button
       @extend %button_basic.flat;
@@ -2934,20 +2934,20 @@ filechooserbutton:drop(active) {
  ***********/
 .sidebar {
   border-style: none;
-  background-color: $alt_base_color;
+  background-color: $base-alt;
 
   @at-root %sidebar_left,
   &:dir(ltr),
   &.left,
   &.left:dir(rtl) {
-    border-right: 1px solid $border_color;
+    border-right: 1px solid $border;
     border-left-style: none;
   }
 
   @at-root %sidebar_right,
   &:dir(rtl),
   &.right {
-    border-left: 1px solid $border_color;
+    border-left: 1px solid $border;
     border-right-style: none;
   }
 
@@ -2984,7 +2984,7 @@ stacksidebar {
  ****************/
 // dim the sidebar icons, see bug #786613 for details on this oddity
 row {
-  image.sidebar-icon { color: $secondary_fg_color; }
+  image.sidebar-icon { color: $text-secondary; }
 }
 
 placessidebar {
@@ -3005,7 +3005,7 @@ placessidebar {
 
     &:selected { font-weight: 500; }
 
-    &:disabled { color: $disabled_fg_color; }
+    &:disabled { color: $text-disabled; }
 
     image.sidebar-icon {
       &:dir(ltr) { padding-right: 8px; }
@@ -3028,14 +3028,14 @@ placessidebar {
     &.sidebar-placeholder-row {
       min-height: 2px;
       padding: 0 8px;
-      background-image: image($primary_color);
+      background-image: image($primary);
       background-clip: content-box;
     }
 
-    &.sidebar-new-bookmark-row { color: $primary_color; }
+    &.sidebar-new-bookmark-row { color: $primary; }
 
     &:drop(active):not(:disabled) {
-      box-shadow: inset 0 0 0 2px $primary_color;
+      box-shadow: inset 0 0 0 2px $primary;
     }
   }
 }
@@ -3064,15 +3064,15 @@ paned {
     border-style: none; // just to be sure
     background-color: transparent;
     // workaround, using background istead of a border since the border will get rendered twice (?)
-    background-image: image($border_color);
+    background-image: image($border);
     background-size: 1px 1px;
     background-clip: content-box; // avoids borders image being rendered twice (?)
 
     &.wide {
       min-width: 6px;
       min-height: 6px;
-      background-color: $bg_color;
-      background-image: image($border_color), image($border_color);
+      background-color: $background;
+      background-image: image($border), image($border);
       background-size: 1px 1px, 1px 1px;
     }
   }
@@ -3122,25 +3122,25 @@ paned {
 infobar {
   border-style: none;
 
-  &.info { background-color: $info_bg_color; }
+  &.info { background-color: $infobar-info; }
 
-  &.question { background-color: $question_bg_color; }
+  &.question { background-color: $infobar-question; }
 
-  &.warning { background-color: $warning_bg_color; }
+  &.warning { background-color: $infobar-warning; }
 
-  &.error { background-color: $error_bg_color; }
+  &.error { background-color: $infobar-error; }
 
   &.info,
   &.question,
   &.warning,
   &.error {
-    > label, & { color: $inverse_fg_color; }
+    > label, & { color: $inverse-text; }
 
     button { @extend %button_selected; }
 
     selection {}
 
-    *:link { color: $inverse_fg_color; }
+    *:link { color: $inverse-text; }
   }
 }
 
@@ -3152,9 +3152,9 @@ tooltip {
   &.background {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
-    // box-shadow: inset 0 1px $highlight_color;
-    background-color: $tooltip_bg_color;
-    color: $tooltip_fg_color;
+    // box-shadow: inset 0 1px $highlight;
+    background-color: $tooltip;
+    color: $tooltip-text;
   }
 
   // padding: 4px; /* not working */
@@ -3162,7 +3162,7 @@ tooltip {
   box-shadow: none; // otherwise it gets inherited by windowframe.csd
 
   &:not(.csd):not(.unity-csd) {
-    // border: 1px solid $border_color;
+    // border: 1px solid $border;
     // border-radius: $material_radius + 1px;
     // background-clip: $extra_background_clip;
   }
@@ -3241,16 +3241,16 @@ colorswatch {
     }
   }
 
-  &.dark { color: $light_fg_color; }
+  &.dark { color: $text-on-dark; }
 
-  &.light { color: $dark_fg_color; }
+  &.light { color: $text-on-light; }
 
   &:drop(active) {
     box-shadow: none;
 
-    &.light overlay { box-shadow: $shadow_1, 0 0 0 2px $primary_color; }
+    &.light overlay { box-shadow: $shadow_1, 0 0 0 2px $primary; }
 
-    &.dark overlay { box-shadow: $shadow_1, 0 0 0 2px $primary_color; }
+    &.dark overlay { box-shadow: $shadow_1, 0 0 0 2px $primary; }
   }
 
   overlay {
@@ -3262,16 +3262,16 @@ colorswatch {
 
   &#add-color-button {
     border-radius: $material_radius $material_radius 0 0;
-    color: $light_fg_color;
+    color: $text-on-dark;
 
     &:only-child { border-radius: $material_radius; }
 
     overlay {
       background-image: linear-gradient(to right,
-                                        $error_bg_color 25%,
-                                        $warning_bg_color 25%, $warning_bg_color 50%,
-                                        $info_bg_color 50%, $info_bg_color 75%,
-                                        $question_bg_color 75%);
+                                        $red 25%,
+                                        $yellow 25%, $yellow 50%,
+                                        $green 50%, $green 75%,
+                                        $blue 75%);
     }
   }
 
@@ -3297,10 +3297,10 @@ colorswatch {
 colorchooser .popover.osd {
   transition: $shadow_transition;
   border-radius: $material_radius;
-  box-shadow: $shadow_2, inset 0 1px $highlight_color;
-  background-color: $surface_color;
+  box-shadow: $shadow_2, inset 0 1px $highlight;
+  background-color: $surface;
 
-  &:backdrop { box-shadow: $shadow_1, inset 0 1px $highlight_color; }
+  &:backdrop { box-shadow: $shadow_1, inset 0 1px $highlight; }
 }
 
 
@@ -3309,7 +3309,7 @@ colorchooser .popover.osd {
  ********/
 // content view (grid/list)
 .content-view {
-  background-color: $bg_color;
+  background-color: $background;
 
   // &:hover { -gtk-icon-effect: highlight; }
 
@@ -3383,8 +3383,8 @@ decoration {
     // padding: 4px;
     border-radius: 0;
     box-shadow: none;
-    // box-shadow: inset 0 0 0 4px $titlebar_bg_color;
-    background-color: $titlebar_bg_color;
+    // box-shadow: inset 0 0 0 4px $titlebar;
+    background-color: $titlebar;
   }
 }
 
@@ -3402,7 +3402,7 @@ button.titlebutton {
 // catch all extend :)
 
 %selected_items {
-  background-color: $selected_overlay_color;
+  background-color: $overlay-selected;
 }
 
 .monospace { font-family: monospace; }
@@ -3413,7 +3413,7 @@ button.titlebutton {
  **********************/
 // touch selection handlebars for the Popover.osd above
 cursor-handle {
-  color: $primary_color;
+  color: $primary;
   -gtk-icon-source: -gtk-recolor(url("assets/scalable/cursor-handle-symbolic.svg"));
 
   &.top:dir(ltr), &.bottom:dir(rtl) {
@@ -3441,18 +3441,18 @@ cursor-handle {
   padding-left: 8px;
   padding-right: 8px;
 
-  border: solid 1px $border_color;
+  border: solid 1px $border;
   border-radius: $material_radius + 1px;
-  box-shadow: inset 0 -2px $border_color;
-  background-color: $surface_color;
-  color: $fg_color;
+  box-shadow: inset 0 -2px $border;
+  background-color: $surface;
+  color: $text;
   font-size: smaller;
 }
 
 :not(decoration):not(window):drop(active) { // FIXME needs to be done widget by widget, this wildcard should really die
   transition: $shorter_transition;
-  box-shadow: $shadow_1, inset 0 0 0 2px $primary_color;
-  caret-color: $primary_color;
+  box-shadow: $shadow_1, inset 0 0 0 2px $primary;
+  caret-color: $primary;
 }
 
 stackswitcher button.text-button { min-width: 100px; } // FIXME aggregate with buttons
@@ -3472,13 +3472,13 @@ popover.emoji-picker {
   padding: 0;
 
   entry {
-    border-bottom: 1px solid $border_color;
+    border-bottom: 1px solid $border;
     border-radius: 0;
     box-shadow: none;
     background-color: transparent;
   }
 
-  scrolledwindow { border-bottom: 1px solid $border_color; }
+  scrolledwindow { border-bottom: 1px solid $border; }
 }
 
 // mimic tab style
@@ -3493,11 +3493,11 @@ button.emoji-section {
   &, &:hover, &:active { box-shadow: inset 0 2px transparent; }
 
   &:checked {
-    box-shadow: inset 0 2px $primary_color;
+    box-shadow: inset 0 2px $primary;
     background-color: transparent;
   }
 
-  &:hover, &:active { background-color: $hover_overlay_color; }
+  &:hover, &:active { background-color: $overlay-hover; }
 
   &:first-child { margin-left: 4px; }
 
@@ -3514,6 +3514,6 @@ button.emoji-section {
     transition: $shorter_transition;
     border-radius: $material_radius;
 
-    &:hover { background-color: $hover_overlay_color; }
+    &:hover { background-color: $overlay-hover; }
   }
 }

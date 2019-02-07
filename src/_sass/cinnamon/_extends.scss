@@ -24,19 +24,19 @@
 }
 %slider-shared {
    height: 20px;
-   color: $primary_color;
+   color: $primary;
   -slider-height: 2px;
-  -slider-background-color: $track_color; //background of the trough
+  -slider-background-color: $track; //background of the trough
   -slider-border-color: transparent; //trough border color
-  -slider-active-background-color: $primary_color; //active trough fill
+  -slider-active-background-color: $primary; //active trough fill
   -slider-active-border-color: transparent; //active trough border
   -slider-border-width: 0;
   -slider-handle-radius: 6px;
 }
 %separator-shared {
   -gradient-height: 1px;
-  -gradient-start: $border_color;
-  -gradient-end: $border_color;
+  -gradient-start: $border;
+  -gradient-end: $border;
   -margin-horizontal: 4px;
   height: 1.5em;
 }
@@ -47,20 +47,20 @@
   min-height: $medium_size;
   padding: 0 8px;
   border-radius: $material_radius $material_radius 0 0;
-  color: $fg_color;
-  caret-color: $fg_color;
-  selection-background-color: $selected_overlay_color;
-  selected-color: $fg_color;
+  color: $text;
+  caret-color: $text;
+  selection-background-color: $overlay-selected;
+  selected-color: $text;
   &:focus {
     @include entry(focus);
 
     padding: 0 8px;
     border-width: 0;
-    color: $fg_color;
+    color: $text;
   }
 }
 %desklet-shared {
-  color: $fg_color;
+  color: $text;
   border: none;
   padding: 12px;
   box-shadow: $shadow_4;
@@ -70,12 +70,12 @@
   height: 16px;
   border-radius: 999px;
   transition-duration: $shorter_duration;
-  &:active { background-color: $track_color;}
+  &:active { background-color: $track;}
 }
 %menu-shared {
-  background-color: $surface_color;
+  background-color: $surface;
   border-radius: $material_radius;
-  color: $fg_color;
+  color: $text;
   box-shadow: $shadow_2;
 }
 %menu-button-label-shared {
@@ -88,7 +88,7 @@
 }
 %dialogs-subject-shared {
   font-weight: bold;
-  color: $fg_color;
+  color: $text;
   padding-top: 10px;
   padding-left: 17px;
   padding-bottom: 6px;
@@ -98,7 +98,7 @@
   padding-right: 17px;
 }
 %dialogs-description-shared {
-  color: $fg_color;
+  color: $text;
   padding-left: 17px;
   width: 28em;
 }
@@ -117,16 +117,16 @@
   background-image: url(assets/radiobutton-off.svg);
 }
 %tile-shared {
-  background-color: $alt_panel_bg_color;
-  border: 2px solid $border_color;
+  background-color: $scrim-alt;
+  border: 2px solid $border;
 }
 %tile-shared-snap {
-  background-color: $alt_panel_bg_color;
-  border: 2px solid $primary_color;
+  background-color: $scrim-alt;
+  border: 2px solid $primary;
 }
 %osd-panel-shared {
-  color: $fg_color;
-  background-color: $surface_color;
+  color: $text;
+  background-color: $surface;
   border: none;
   border-radius: $material_radius;
   padding: 12px;

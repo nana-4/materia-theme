@@ -12,11 +12,11 @@
 
 // let's start it
 .mate-panel-menu-bar {
-  background-color: $solid_panel_bg_color;
+  background-color: $panel;
   font-weight: 500;
 
   // Avoid changing the menu text color
-  &:not(.popup) { color: $inverse_secondary_fg_color; }
+  &:not(.popup) { color: $inverse-text-secondary; }
 
   button {
     @extend %flat_button;
@@ -27,7 +27,7 @@
     padding: 0; // NOTE: Most buttons padding are hard-coded to 0 (except hide buttons)
     border-radius: 0;
 
-    &:checked { background-color: $inverse_divider_color; }
+    &:checked { background-color: $inverse-divider; }
   }
 }
 
@@ -45,13 +45,13 @@ PanelToplevel.vertical > grid > button {
 }
 
 PanelSeparator {
-  color: $inverse_divider_color;
+  color: $inverse-divider;
 }
 
 // the grid left from na-tray and wncktasklist
 MatePanelAppletFrameDBus {
   border-style: solid;
-  border-color: $inverse_divider_color;
+  border-color: $inverse-divider;
 
   .mate-panel-menu-bar.horizontal & { border-width: 0 1px; }
   .mate-panel-menu-bar.vertical & { border-width: 1px 0; }
@@ -61,14 +61,14 @@ MatePanelAppletFrameDBus {
 .mate-panel-menu-bar {
   // set normal menubar button
   menubar > menuitem {
-    color: $inverse_secondary_fg_color;
+    color: $inverse-text-secondary;
 
     &:hover {
-      background-color: $inverse_divider_color;
-      color: $inverse_fg_color;
+      background-color: $inverse-divider;
+      color: $inverse-text;
     }
 
-    &:disabled { color: $inverse_disabled_secondary_fg_color; }
+    &:disabled { color: $inverse-text-secondary-disabled; }
   }
 
   &.horizontal menubar > menuitem { padding: 0 8px; }
@@ -125,13 +125,13 @@ MatePanelAppletFrameDBus {
 // WnckPager
 PanelApplet.wnck-applet .wnck-pager {
   background-color: transparent;
-  color: $alt_primary_color;
+  color: $primary-alt;
 
-  &:hover { background-color: $inverse_divider_color; }
+  &:hover { background-color: $inverse-divider; }
 
-  &:active { background-color: $inverse_track_color; }
+  &:active { background-color: $inverse-track; }
 
-  &:selected { background-color: $primary_color; }
+  &:selected { background-color: $primary; }
 }
 
 #clock-applet-button {
@@ -140,16 +140,16 @@ PanelApplet.wnck-applet .wnck-pager {
 }
 
 #MatePanelPopupWindow {
-  border: 1px solid $border_color;
+  border: 1px solid $border;
   border-radius: $material_radius + 1px;
-  box-shadow: inset 0 1px $highlight_color;
+  box-shadow: inset 0 1px $highlight;
 
   frame > border { border-style: none; }
 
   button { padding: 4px 16px; }
 
   // Weird, this sets the border color of the clockmap
-  > frame > box > box > box > widget { color: $border_color; }
+  > frame > box > box > box > widget { color: $border; }
 }
 
 na-tray-applet {
@@ -174,10 +174,10 @@ na-tray-applet widget box widget {
 
 // volume applet, brightness applet
 .mate-panel-applet-slider {
-  border: 1px solid $border_color;
+  border: 1px solid $border;
   border-radius: $material_radius + 1px;
-  box-shadow: inset 0 1px $highlight_color;
-  background-color: $bg_color;
+  box-shadow: inset 0 1px $highlight;
+  background-color: $background;
 
   frame > border { border-style: none; }
 }
@@ -189,14 +189,14 @@ na-tray-applet widget box widget {
   &:not(:selected) > box { transition: $shorter_transition; }
 
   &:selected > box {
-    background-color: $inverse_divider_color;
-    color: $inverse_fg_color;
+    background-color: $inverse-divider;
+    color: $inverse-text;
   }
 }
 
 #mate-menu {
   // FIXME, does not work
-  border: 1px solid $border_color;
+  border: 1px solid $border;
 
   button {
     @extend %simple_flat_button;
@@ -204,10 +204,10 @@ na-tray-applet widget box widget {
     min-height: 24px;
     min-width: 24px;
     padding: 4px 0;
-    color: $fg_color;
+    color: $text;
     font-weight: normal;
 
-    label:not(:first-child) { color: $secondary_fg_color; }
+    label:not(:first-child) { color: $text-secondary; }
   }
 
   entry {
@@ -251,7 +251,7 @@ na-tray-applet widget box widget {
 // .caja-side-pane notebook textview.view text,
 .caja-side-pane notebook viewport.frame,
 .caja-side-pane notebook widget .vertical {
-  background-color: $base_color;
+  background-color: $base;
 }
 
 // treeview rows
@@ -261,7 +261,7 @@ na-tray-applet widget box widget {
 
 .caja-side-pane notebook,
 .caja-notebook {
-  border-top: 1px solid $border_color;
+  border-top: 1px solid $border;
 
   .frame { border-style: none; }
 }
@@ -283,7 +283,7 @@ na-tray-applet widget box widget {
 .caja-navigation-window statusbar {
   margin: 0 -10px;
   padding: 0 4px;
-  border-top: 1px solid $border_color;
+  border-top: 1px solid $border;
 }
 
 // infobar
@@ -292,8 +292,8 @@ na-tray-applet widget box widget {
 }
 
 #caja-extra-view-widget {
-  border-bottom: 1px solid $border_color;
-  background-color: $bg_color; // needs overriding
+  border-bottom: 1px solid $border;
+  background-color: $background; // needs overriding
 
   > box > box > label { font-weight: bold; }
 }
@@ -306,7 +306,7 @@ na-tray-applet widget box widget {
 .pluma-window statusbar {
   margin: 0 -10px;
   padding: 0 4px;
-  border-top: 1px solid $border_color;
+  border-top: 1px solid $border;
 
   frame {
     > border { border-style: none; }
@@ -325,9 +325,9 @@ na-tray-applet widget box widget {
 
 // Printpreview
 .pluma-print-preview {
-  toolbar { border-bottom: 1px solid $border_color; }
+  toolbar { border-bottom: 1px solid $border; }
 
-  // scrolledwindow { background-color: $base_color; }
+  // scrolledwindow { background-color: $base; }
 }
 
 // sidebar file-browser
@@ -342,9 +342,9 @@ na-tray-applet widget box widget {
 
   notebook.frame {
     margin-top: -1px;
-    border-top: 1px solid $border_color;
+    border-top: 1px solid $border;
 
-    box.vertical toolbar.horizontal { border-bottom: 1px solid $border_color; }
+    box.vertical toolbar.horizontal { border-bottom: 1px solid $border; }
   }
 }
 
@@ -355,7 +355,7 @@ na-tray-applet widget box widget {
 .atril-window paned.horizontal box.vertical {
   .frame { border-style: none; }
 
-  notebook .frame { border-top: 1px solid $border_color; }
+  notebook .frame { border-top: 1px solid $border; }
 }
 
 
@@ -363,7 +363,7 @@ na-tray-applet widget box widget {
 .lock-dialog {
   border-radius: $material_radius;
   // not sure if box-shadow works here
-  box-shadow: $shadow_4, inset 0 1px $highlight_color;
+  box-shadow: $shadow_4, inset 0 1px $highlight;
 
   frame > border { border-style: none; }
 }
@@ -371,17 +371,17 @@ na-tray-applet widget box widget {
 /* multimedia OSD */
 MsdOsdWindow.background.osd {
   border-radius: $material_radius;
-  background-color: $tooltip_bg_color;
-  color: $tooltip_fg_color;
+  background-color: $tooltip;
+  color: $tooltip-text;
 
   .trough {
     border-radius: 0;
-    background-color: $inverse_divider_color;
+    background-color: $inverse-divider;
   }
 
   .progressbar {
     border-radius: 0;
-    background-color: $primary_color;
+    background-color: $primary;
   }
 
   // For mate-settings-daemon noncomposited osd windows

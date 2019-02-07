@@ -5,7 +5,7 @@
  * Xfce4 Apps *
  **************/
 .XfceHeading {
-  background-color: $base_color;
+  background-color: $base;
 }
 
 
@@ -14,8 +14,8 @@
  ***************/
 .xfce4-panel.background {
   border: none; // Sadly the border is hard-coded
-  background-color: $solid_panel_bg_color;
-  color: $inverse_secondary_fg_color;
+  background-color: $panel;
+  color: $inverse-text-secondary;
   font-weight: 500;
 
   button {
@@ -27,7 +27,7 @@
     padding: 0;
     border-radius: 0;
 
-    &:checked { background-color: $inverse_divider_color; }
+    &:checked { background-color: $inverse-divider; }
   }
 
   .tasklist button {
@@ -45,17 +45,17 @@
 
 // Workspace switcher provided by libwnck
 wnck-pager {
-  &:hover { background-color: $inverse_divider_color; }
+  &:hover { background-color: $inverse-divider; }
 
-  &:active { background-color: $inverse_track_color; }
+  &:active { background-color: $inverse_track; }
 
-  &:selected { background-color: $primary_color; }
+  &:selected { background-color: $primary; }
 }
 
 XfdesktopIconView.view {
   border-radius: $material_radius;
   background-color: transparent;
-  color: $inverse_fg_color;
+  color: $inverse-text;
   text-shadow: $shadow_1;
 
   // XfdesktopIconView uses :active instead of :selected for selection
@@ -110,7 +110,7 @@ XfdesktopIconView.view {
  * Thunar *
  **********/
 .thunar {
-  #location-toolbar { border-bottom: 1px solid $border_color; }
+  #location-toolbar { border-bottom: 1px solid $border; }
 
   .standard-view.frame { border-style: none; }
 
@@ -119,6 +119,6 @@ XfdesktopIconView.view {
   statusbar {
     margin: 0 -10px;
     padding: 0 4px;
-    border-top: 1px solid $border_color;
+    border-top: 1px solid $border;
   }
 }

@@ -17,7 +17,7 @@ UnityDecoration {
   -UnityDecoration-inactive-shadow-radius: 6px;
 
   -UnityDecoration-glow-size: 8px;
-  -UnityDecoration-glow-color: $primary_color;
+  -UnityDecoration-glow-color: $primary;
 
   -UnityDecoration-title-indent: 4px;
   -UnityDecoration-title-fade: 32px;
@@ -27,11 +27,11 @@ UnityDecoration {
     padding: 0 2px;
     border-style: none;
     border-radius: $material_radius $material_radius 0 0;
-    box-shadow: inset 0 1px $titlebar_highlight_color;
-    background-color: $titlebar_bg_color;
-    color: $titlebar_fg_color;
+    box-shadow: inset 0 1px $highlight-titlebar;
+    background-color: $titlebar;
+    color: $titlebar-text;
 
-    &:backdrop { color: $titlebar_secondary_fg_color; }
+    &:backdrop { color: $titlebar-text-secondary; }
   }
 
   .left,
@@ -40,12 +40,12 @@ UnityDecoration {
   .bottom {}
 
   .menuitem {
-    color: $titlebar_secondary_fg_color;
+    color: $titlebar-text-secondary;
 
     &:hover {
-      box-shadow: inset 0 -2px $titlebar_indicator_color;
+      box-shadow: inset 0 -2px $titlebar-indicator;
       background-color: transparent;
-      color: $titlebar_fg_color;
+      color: $titlebar-text;
     }
   }
 }
@@ -58,16 +58,16 @@ UnityDecoration {
 }
 
 sheet-style-dialog.unity-force-quit {
-  // background-color: $bg_color;
+  // background-color: $background;
 }
 
 // Panel Style
 UnityPanelWidget,
 .unity-panel {
-  background-color: $opaque_panel_bg_color;
-  color: $titlebar_fg_color;
+  background-color: $panel-solid;
+  color: $titlebar-text;
 
-  &:backdrop { color: $titlebar_secondary_fg_color; }
+  &:backdrop { color: $titlebar-text-secondary; }
 }
 
 .unity-panel.menubar,
@@ -76,18 +76,18 @@ UnityPanelWidget,
 
 .unity-panel.menuitem,
 .unity-panel .menuitem {
-  color: $titlebar_secondary_fg_color;
+  color: $titlebar-text-secondary;
 }
 
 .unity-panel.menubar.menuitem:hover,
 .unity-panel.menubar .menuitem *:hover {
-  box-shadow: inset 0 -2px $titlebar_indicator_color;
+  box-shadow: inset 0 -2px $titlebar-indicator;
   background-color: transparent;
-  color: $titlebar_fg_color;
+  color: $titlebar-text;
 }
 
 .menu IdoPlaybackMenuItem.menuitem:active {
   -gtk-icon-source: -gtk-icontheme('process-working-symbolic');
   animation: spin 1s linear infinite;
-  color: $primary_color;
+  color: $primary;
 }
