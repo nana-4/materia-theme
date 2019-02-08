@@ -23,7 +23,7 @@
 
 .nautilus-desktop.nautilus-canvas-item {
   // background-color: $scrim;
-  color: $inverse-text;
+  color: on($scrim);
   text-shadow: $shadow_1;
 }
 
@@ -129,7 +129,7 @@
 .search-information {
   padding: 2px;
   background-color: $primary;
-  color: $inverse-text;
+  color: on($primary);
 }
 
 .documents-entry-tag {
@@ -276,11 +276,11 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
     &:not(.error) { background-color: $surface; }
 
     &.error ~ button {
-      color: $inverse-text-secondary;
+      color: on($error, secondary);
 
-      &:hover, &:active { color: $inverse-text; }
+      &:hover, &:active { color: on($error); }
 
-      &:disabled { color: $inverse-text-secondary-disabled; }
+      &:disabled { color: on($error, secondary-disabled); }
     }
   }
 
@@ -426,7 +426,7 @@ layout {
 
 entry.search-missing {
   background-color: $error;
-  color: $inverse-text;
+  color: on($error);
 }
 
 // tweak icons for treeviews
@@ -757,7 +757,7 @@ GdMainIconView.content-view {
   border-radius: $circular_radius;
   box-shadow: $shadow_2;
   background-color: $primary;
-  color: $inverse-text;
+  color: on($primary);
   font-weight: bold;
 }
 
@@ -822,7 +822,7 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
   // background-color: mix(@theme_fg_color, @theme_bg_color, 0.5);
   background-image: image($primary);
 
-  &:hover { background-image: image(mix($inverse-text, $primary, percentage(0.05))); }
+  &:hover { background-image: image(mix(on($primary), $primary, percentage(0.05))); }
 }
 
 .songs-list {
@@ -934,7 +934,7 @@ list.categories { background-image: image($base-alt); }
   padding: 0 4px;
   border-radius: $material_radius;
   background-color: $scrim;
-  color: $inverse-text;
+  color: on($scrim);
 }
 
 

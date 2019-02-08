@@ -97,7 +97,7 @@
 
   @if $t == normal {
     transition-duration: $shorter_duration;
-    background-color: if($fc == $primary, $fill, $inverse-fill);
+    background-color: if($fc == $primary, $fill, on(black, fill));
     border-color: transparent;
     box-shadow: inset 0 -1px if($fc == $primary, $track, $fc);
   }
@@ -174,7 +174,7 @@
   }
 
   @if $t == flat-normal {
-    color: if($tc != $inverse-text, $text-secondary, $inverse-text-secondary);
+    color: if($tc != on(black), $text-secondary, on(black, secondary));
     background-color: transparent;
     border-color: transparent;
     box-shadow: $shadow_0;
@@ -184,15 +184,15 @@
   }
 
   @if $t == flat-focus {
-    color: if($tc != $inverse-text, $text, $inverse-text);
+    color: if($tc != on(black), $text, on(black));
     text-shadow: none;
     icon-shadow: none;
     box-shadow: $shadow_0;
   }
 
   @if $t == flat-hover {
-    color: if($tc != $inverse-text, $text, $inverse-text);
-    background-color: if($tc != $inverse-text, $overlay-hover, $inverse-overlay-hover);
+    color: if($tc != on(black), $text, on(black));
+    background-color: if($tc != on(black), $overlay-hover, $inverse-overlay-hover);
     border-color: transparent;
     box-shadow: $shadow_0;
     text-shadow: none;
@@ -200,8 +200,8 @@
   }
 
   @if $t == flat-active {
-    color: if($tc != $inverse-text, $text, $inverse-text);
-    background-color: if($tc != $inverse-text, $overlay-active, $inverse-overlay-active);
+    color: if($tc != on(black), $text, on(black));
+    background-color: if($tc != on(black), $overlay-active, $inverse-overlay-active);
     border-color: transparent;
     box-shadow: $shadow_0;
     text-shadow: none;
@@ -210,7 +210,7 @@
   }
 
   @if $t == flat-insensitive {
-    color: if($tc != $inverse-text, $text-secondary-disabled, $inverse-text-secondary-disabled);
+    color: if($tc != on(black), $text-secondary-disabled, on(black, secondary-disabled));
     background-color: transparent;
     border-color: transparent;
     box-shadow: $shadow_0;

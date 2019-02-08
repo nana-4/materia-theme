@@ -57,7 +57,7 @@ StScrollView {
   @include font(caption);
   
   padding: 6px 8px;
-  color: $tooltip-text;
+  color: on($tooltip);
   text-align: center;
   border-radius: $material_radius;
   background-color: $tooltip;
@@ -616,7 +616,7 @@ StScrollView {
   border-radius: 100px;
   &:hover,&:focus { background-color: $titlebar-track; }
   &:active {
-    color: $inverse-text;
+    color: on($primary);
     background-color: $primary;
     border-color: transparent; 
   }
@@ -1437,26 +1437,26 @@ StScrollView {
 .expo-workspaces-name-entry {
   @include font(body-1);
 
-  background-color: $inverse-fill;
-  color: $inverse-text; 
+  background-color: on(black, fill);
+  color: on(black); 
   padding: 0 8px;
-  selection-background-color: $inverse-track;
-  selected-color: $inverse-text;
-  caret-color: $inverse-text;
+  selection-background-color: on(black, track);
+  selected-color: on(black);
+  caret-color: on(black);
   text-align: center;
   height: $medium_size;
   border-radius: $material_radius $material_radius 0 0;
   -cinnamon-caption-spacing: 12px;
   &#selected {
-    color: $inverse-text;
-    background-color: $inverse-fill;
+    color: on(black);
+    background-color: on(black, fill);
   }
   &:focus {
-    color: $inverse-text;
-    box-shadow: inset 0 -2px $inverse-text;
+    color: on(black);
+    box-shadow: inset 0 -2px on(black);
   }
   &:hover {
-    background-color: $inverse-divider;
+    background-color: on(black, divider);
   }
 }
 .notification-applet-padding {

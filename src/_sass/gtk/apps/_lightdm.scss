@@ -7,7 +7,7 @@
 // the panel widget at the top
 #panel_window {
   background-color: $scrim-alt;
-  color: $inverse-text;
+  color: on($scrim-alt);
   // font-weight: bold;
 
   // the menubars/menus of the panel, i.e. indicators
@@ -21,11 +21,11 @@
   }
 
   menubar > menuitem {
-    color: $inverse-text-secondary;
+    color: on($scrim-alt, secondary);
 
-    &:hover { color: $inverse-text; }
+    &:hover { color: on($scrim-alt); }
 
-    &:disabled label { color: $inverse-text-secondary-disabled; }
+    &:disabled label { color: on($scrim-alt, secondary-disabled); }
   }
 }
 

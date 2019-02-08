@@ -7,6 +7,28 @@
   @return unquote("alpha(#{$c}, #{$a})");
 }
 
+@function on($color, $state: 'primary') {
+  // Calculate color brightness according to https://www.w3.org/TR/AERT/#color-contrast
+  $brightness: (red($color) * 299 + green($color) * 587 + blue($color) * 114) / 1000;
+  @if ($brightness >= 128) {
+    @if ($state == 'primary') { @return rgba(black, 0.87); }
+    @if ($state == 'secondary') { @return rgba(black, 0.54); }
+    @if ($state == 'disabled') { @return rgba(black, 0.38); }
+    @if ($state == 'secondary-disabled') { @return rgba(black, 0.26); }
+    @if ($state == 'track') { @return rgba(black, 0.26); }
+    @if ($state == 'divider') { @return rgba(black, 0.12); }
+    @if ($state == 'fill') { @return rgba(black, 0.04); }
+  } @else {
+    @if ($state == 'primary') { @return white; }
+    @if ($state == 'secondary') { @return rgba(white, 0.7); }
+    @if ($state == 'disabled') { @return rgba(white, 0.5); }
+    @if ($state == 'secondary-disabled') { @return rgba(white, 0.3); }
+    @if ($state == 'track') { @return rgba(white, 0.3); }
+    @if ($state == 'divider') { @return rgba(white, 0.12); }
+    @if ($state == 'fill') { @return rgba(white, 0.04); }
+  }
+}
+
 @function highlight($color) {
   @if (lightness($color) > 80%) { @return rgba(white, 0.4); }
   @else if (lightness($color) > 40%) { @return rgba(white, 0.2); }
@@ -77,10 +99,6 @@ $overlay-selected:                      rgba($primary, 0.32);
 // Text and derivative colors
 //
 
-$text-on-light:                         rgba(black, 0.87);
-$text-on-dark:                          white;
-$tooltip-text:                          white;
-
 $text:                                  if($variant == 'light', rgba(black, 0.87), white);
 $text-secondary:                        if($variant == 'light', rgba(black, 0.54), rgba(white, 0.7));
 $text-disabled:                         if($variant == 'light', rgba(black, 0.38), rgba(white, 0.5));
@@ -96,14 +114,6 @@ $titlebar-text-secondary-disabled:      if($topbar == 'light', rgba(black, 0.26)
 $titlebar-track:                        if($topbar == 'light', rgba(black, 0.26), rgba(white, 0.3));
 $titlebar-divider:                      if($topbar == 'light', rgba(black, 0.12), rgba(white, 0.12));
 $titlebar-fill:                         if($topbar == 'light', rgba(black, 0.04), rgba(white, 0.04));
-
-$inverse-text:                          white;
-$inverse-text-secondary:                rgba(white, 0.7);
-$inverse-text-disabled:                 rgba(white, 0.5);
-$inverse-text-secondary-disabled:       rgba(white, 0.3);
-$inverse-track:                         rgba(white, 0.3);
-$inverse-divider:                       rgba(white, 0.12);
-$inverse-fill:                          rgba(white, 0.04);
 
 // FIXME: Electron/Atom menu does not allow translucent colors
 $solid-text:                            if($variant == 'light', $grey-900, $white);

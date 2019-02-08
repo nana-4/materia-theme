@@ -16,7 +16,7 @@
   font-weight: 500;
 
   // Avoid changing the menu text color
-  &:not(.popup) { color: $inverse-text-secondary; }
+  &:not(.popup) { color: on($panel, secondary); }
 
   button {
     @extend %flat_button;
@@ -27,7 +27,7 @@
     padding: 0; // NOTE: Most buttons padding are hard-coded to 0 (except hide buttons)
     border-radius: 0;
 
-    &:checked { background-color: $inverse-divider; }
+    &:checked { background-color: on($panel, divider); }
   }
 }
 
@@ -45,13 +45,13 @@ PanelToplevel.vertical > grid > button {
 }
 
 PanelSeparator {
-  color: $inverse-divider;
+  color: on($panel, divider);
 }
 
 // the grid left from na-tray and wncktasklist
 MatePanelAppletFrameDBus {
   border-style: solid;
-  border-color: $inverse-divider;
+  border-color: on($panel, divider);
 
   .mate-panel-menu-bar.horizontal & { border-width: 0 1px; }
   .mate-panel-menu-bar.vertical & { border-width: 1px 0; }
@@ -61,14 +61,14 @@ MatePanelAppletFrameDBus {
 .mate-panel-menu-bar {
   // set normal menubar button
   menubar > menuitem {
-    color: $inverse-text-secondary;
+    color: on($panel, secondary);
 
     &:hover {
-      background-color: $inverse-divider;
-      color: $inverse-text;
+      background-color: on($panel, divider);
+      color: on($panel);
     }
 
-    &:disabled { color: $inverse-text-secondary-disabled; }
+    &:disabled { color: on($panel, secondary-disabled); }
   }
 
   &.horizontal menubar > menuitem { padding: 0 8px; }
@@ -127,9 +127,9 @@ PanelApplet.wnck-applet .wnck-pager {
   background-color: transparent;
   color: $primary-alt;
 
-  &:hover { background-color: $inverse-divider; }
+  &:hover { background-color: on($panel, divider); }
 
-  &:active { background-color: $inverse-track; }
+  &:active { background-color: on($panel, track); }
 
   &:selected { background-color: $primary; }
 }
@@ -189,8 +189,8 @@ na-tray-applet widget box widget {
   &:not(:selected) > box { transition: $shorter_transition; }
 
   &:selected > box {
-    background-color: $inverse-divider;
-    color: $inverse-text;
+    background-color: on($panel, divider);
+    color: on($panel);
   }
 }
 
@@ -372,11 +372,11 @@ na-tray-applet widget box widget {
 MsdOsdWindow.background.osd {
   border-radius: $material_radius;
   background-color: $tooltip;
-  color: $tooltip-text;
+  color: on($tooltip);
 
   .trough {
     border-radius: 0;
-    background-color: $inverse-divider;
+    background-color: on($tooltip, divider);
   }
 
   .progressbar {

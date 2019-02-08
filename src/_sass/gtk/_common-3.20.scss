@@ -74,7 +74,7 @@
 
   &:selected {
     background-color: $primary;
-    color: $inverse-text;
+    color: on($primary);
   }
 }
 
@@ -313,11 +313,11 @@ entry {
       &:disabled { @include entry(raised-disabled, $e_color); }
 
       image {
-        color: $inverse-text-secondary;
+        color: on($e_color, secondary);
 
-        &:hover, &:active { color: $inverse-text; }
+        &:hover, &:active { color: on($e_color); }
 
-        &:disabled { color: $inverse-text-disabled; }
+        &:disabled { color: on($e_color, disabled); }
       }
     }
   }
@@ -476,20 +476,20 @@ button {
 
   @at-root %button_selected {
     &.flat {
-      color: $inverse-text-secondary;
+      color: on(black, secondary);
 
-      &:hover, &:active { color: $inverse-text; }
+      &:hover, &:active { color: on(black); }
 
-      &:disabled { color: $inverse-text-secondary-disabled; }
+      &:disabled { color: on(black, secondary-disabled); }
 
       &:checked {
-        background-color: $inverse-track;
-        color: $inverse-text;
+        background-color: on(black, track);
+        color: on(black);
       }
 
       &:checked:disabled {
-        background-color: $inverse-divider;
-        color: $inverse-text-disabled;
+        background-color: on(black, divider);
+        color: on(black, disabled);
       }
     }
   }
@@ -513,11 +513,11 @@ button {
                              (destructive-action, $destructive) {
     &.#{$b_type} {
       background-color: $b_color;
-      color: $inverse-text;
+      color: on($b_color);
 
       &:disabled { @include button(disabled); }
 
-      &:checked { background-color: mix($inverse-text, $b_color, percentage(0.3)); }
+      &:checked { background-color: mix(on($b_color), $b_color, percentage(0.3)); }
 
       &.flat {
         background-color: transparent;
@@ -1165,42 +1165,42 @@ headerbar {
     animation: header_ripple_effect $longer_duration $deceleration_curve;
     box-shadow: $shadow_1, inset 0 1px highlight($primary);
     background-color: $primary;
-    color: $inverse-text;
+    color: on($primary);
 
     &:backdrop {
-      color: $inverse-text-secondary;
+      color: on($primary, secondary);
     }
 
-    .subtitle:link { color: $inverse-text; }
+    .subtitle:link { color: on($primary); }
 
     button:not(.suggested-action):not(.destructive-action) {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                     currentColor 0%,
                                     transparent 0%)
                                     0 0 0 / 0 0 0px;
-      color: $inverse-text;
+      color: on($primary);
 
-      &:disabled { color: $inverse-text-disabled; }
+      &:disabled { color: on($primary, disabled); }
 
       &:checked {
         border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                       currentColor 100%,
                                       transparent 0%)
                                       0 0 2 / 0 0 2px;
-        color: $inverse-text;
+        color: on($primary);
 
-        &:disabled { color: $inverse-text-disabled; }
+        &:disabled { color: on($primary, disabled); }
       }
 
       &:backdrop {
-        color: $inverse-text-secondary;
+        color: on($primary, secondary);
 
-        &:disabled { color: $inverse-text-secondary-disabled; }
+        &:disabled { color: on($primary, secondary-disabled); }
 
         &:checked {
-          color: $inverse-text-secondary;
+          color: on($primary, secondary);
 
-          &:disabled { color: $inverse-text-secondary-disabled; }
+          &:disabled { color: on($primary, secondary-disabled); }
         }
       }
     }
@@ -3134,13 +3134,13 @@ infobar {
   &.question,
   &.warning,
   &.error {
-    > label, & { color: $inverse-text; }
+    > label, & { color: on(black); }
 
     button { @extend %button_selected; }
 
     selection {}
 
-    *:link { color: $inverse-text; }
+    *:link { color: on(black); }
   }
 }
 
@@ -3154,7 +3154,7 @@ tooltip {
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
     // box-shadow: inset 0 1px highlight($tooltip);
     background-color: $tooltip;
-    color: $tooltip-text;
+    color: on($tooltip);
   }
 
   // padding: 4px; /* not working */
@@ -3241,9 +3241,9 @@ colorswatch {
     }
   }
 
-  &.dark { color: $text-on-dark; }
+  &.dark { color: on(black); }
 
-  &.light { color: $text-on-light; }
+  &.light { color: on(white); }
 
   &:drop(active) {
     box-shadow: none;
@@ -3262,7 +3262,7 @@ colorswatch {
 
   &#add-color-button {
     border-radius: $material_radius $material_radius 0 0;
-    color: $text-on-dark;
+    color: on(black);
 
     &:only-child { border-radius: $material_radius; }
 

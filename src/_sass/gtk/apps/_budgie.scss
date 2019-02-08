@@ -147,7 +147,7 @@
 // FIXME: workspace has unnecessary/unknown margin
 .workspace-switcher {
   .workspace-layout {
-    border: 0 solid $inverse-divider;
+    border: 0 solid on($panel, divider);
 
     .top &,
     .bottom & {
@@ -162,7 +162,7 @@
 
   .workspace-item,
   .workspace-add-button {
-    border: 0 solid $inverse-divider;
+    border: 0 solid on($panel, divider);
 
     .top &,
     .bottom & {
@@ -178,7 +178,7 @@
   .workspace-item {
     transition: $shorter_transition;
 
-    &.current-workspace { background-color: $inverse-divider; }
+    &.current-workspace { background-color: on($panel, divider); }
   }
 
   .workspace-add-button {
@@ -213,7 +213,7 @@ button.raven-trigger {
 .budgie-panel {
   transition: background-color $shorter_duration $deceleration_curve;
   background-color: $panel;
-  color: $inverse-text-secondary;
+  color: on($panel, secondary);
   font-weight: 500;
 
   &.transparent { background-color: $scrim; }
@@ -227,14 +227,14 @@ button.raven-trigger {
     padding: 0;
     border-radius: 0;
 
-    &:checked { background-color: $inverse-divider; }
+    &:checked { background-color: on($panel, divider); }
   }
 
   &.horizontal button { padding: 0 4px; }
 
   &.vertical button { padding: 4px 0; }
 
-  separator { background-color: $inverse-track; }
+  separator { background-color: on($panel, track); }
 
   // used to indicate unread notifications
   .alert { color: $destructive; }
@@ -250,13 +250,13 @@ button.raven-trigger {
     padding: 0;
     box-shadow: none;
     background-color: transparent;
-    color: $inverse-text;
+    color: on($panel);
 
     button:not(.suggested-action):not(.destructive-action) {
-      color: $inverse-text-secondary;
+      color: on($panel, secondary);
 
       &:hover,
-      &:active { color: $inverse-text; }
+      &:active { color: on($panel); }
     }
   }
 
@@ -277,11 +277,11 @@ button.raven-trigger {
 
     // for indicator colors
     &:not(:checked) {
-      color: $inverse-text-disabled;
+      color: on($panel, disabled);
 
-      &:hover, &:active { color: $inverse-text-secondary; }
+      &:hover, &:active { color: on($panel, secondary); }
 
-      &:disabled { color: $inverse-track; }
+      &:disabled { color: on($panel, track); }
     }
   }
 
@@ -420,7 +420,7 @@ calendar.raven-calendar {
 // MPRIS Applet
 .raven-mpris {
   background-color: $scrim;
-  color: $inverse-text;
+  color: on($scrim);
 
   label { min-height: 24px; }
 

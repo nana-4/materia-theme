@@ -133,13 +133,13 @@ StScrollBar {
 
 %overview_scrollbar {
   StBin#trough {
-    background-color: $inverse-divider;
+    background-color: on(black, divider);
   }
 
   StButton#vhandle, StButton#hhandle {
-    background-color: $inverse-text-disabled;
-    &:hover { background-color: $inverse-text-secondary; }
-    &:active { background-color: $inverse-text; }
+    background-color: on(black, disabled);
+    &:hover { background-color: on(black, secondary); }
+    &:active { background-color: on(black); }
   }
 }
 
@@ -795,7 +795,7 @@ StScrollBar {
   .ws-switcher-active-up, .ws-switcher-active-down {
     height: 48px;
     background-color: $primary;
-    color: $inverse-text;
+    color: on($primary);
     background-size: 32px;
     border-radius: $material_radius;
   }
@@ -856,12 +856,12 @@ StScrollBar {
 
   .panel-corner {
     -panel-corner-radius: 0;
-    -panel-corner-background-color: $scrim;
+    -panel-corner-background-color: $panel;
     -panel-corner-border-width: 2px;
     -panel-corner-border-color: transparent;
 
     &:active, &:overview, &:focus {
-      -panel-corner-border-color: $inverse-text;
+      -panel-corner-border-color: on($panel);
     }
 
     &.lock-screen, &.login-screen, &.unlock-screen {
@@ -875,7 +875,7 @@ StScrollBar {
     -natural-hpadding: 12px;
     -minimum-hpadding: 6px;
     font-weight: bold;
-    color: $inverse-text-secondary;
+    color: on($panel, secondary);
     transition-duration: $shorter_duration;
 
     .app-menu-icon {
@@ -886,15 +886,15 @@ StScrollBar {
     }
 
     &:hover {
-      color: $inverse-text;
+      color: on($panel);
     }
 
     &:active, &:overview, &:focus, &:checked {
       // Trick due to St limitations. It needs a background to draw
       // a box-shadow
       background-color: rgba($scrim, 0.01);
-      box-shadow: inset 0 -2px 0px $inverse-text;
-      color: $inverse-text;
+      box-shadow: inset 0 -2px 0px on($panel);
+      color: on($panel);
 
       & > .system-status-icon { icon-shadow: none; }
     }
@@ -903,8 +903,8 @@ StScrollBar {
     .unlock-screen &,
     .login-screen &,
     .lock-screen & {
-      color: $inverse-text-secondary;
-      &:focus, &:hover, &:active { color: $inverse-text; }
+      color: on($panel, secondary);
+      &:focus, &:hover, &:active { color: on($panel); }
     }
   }
 
@@ -1288,7 +1288,7 @@ StScrollBar {
   width: 48px;
   height: 48px;
   border-radius: 0 0 48px 0;
-  background-color: $inverse-track;
+  background-color: on(black, track);
   background-image: none;
   background-size: auto;
 }
@@ -1395,21 +1395,21 @@ StScrollBar {
   }
 
   .window-clone-border {
-    border: 4px solid $inverse-track;
+    border: 4px solid on(black, track);
     border-radius: $material_radius;
     // For window decorations with round corners we can't match
     // the exact shape when the window is scaled. So apply a shadow
     // to fix that case
-    box-shadow: inset 0 0 0 1px $inverse-track;
+    box-shadow: inset 0 0 0 1px on(black, track);
   }
   .window-caption {
     spacing: 25px;
-    color: $inverse-text;
+    color: on(black);
     background-color: transparent;
     border-radius: $material_radius;
     padding: 4px 8px;
     -shell-caption-spacing: 12px;
-    &:hover { background-color: $inverse-track; color: $inverse-text; }
+    &:hover { background-color: on(black, track); color: on(black); }
   }
 
   //search entry
@@ -1417,22 +1417,22 @@ StScrollBar {
     width: 320px - 8px * 2;
     padding: 0 8px;
     border-radius: $material_radius $material_radius 0 0;
-    color: $inverse-text-disabled;
-    selection-background-color: $inverse-track;
-    selected-color: $inverse-text;
-    @include entry(normal,$fc:$inverse-track);
-    &:hover { @include entry(hover,$fc:$inverse-track); }
+    color: on(black, disabled);
+    selection-background-color: on(black, track);
+    selected-color: on(black);
+    @include entry(normal,$fc:on(black, track));
+    &:hover { @include entry(hover,$fc:on(black, track)); }
     &:focus {
-      @include entry(focus,$fc:$inverse-text);
+      @include entry(focus,$fc:on(black));
       padding: 0 8px;
       border-width: 0;
-      color: $inverse-text;
+      color: on(black);
     }
 
-    .search-entry-icon { icon-size: 16px; padding: 0 0; color: $inverse-text-secondary; }
+    .search-entry-icon { icon-size: 16px; padding: 0 0; color: on(black, secondary); }
 
     &:hover, &:focus {
-      .search-entry-icon { color: $inverse-text; }
+      .search-entry-icon { color: on(black); }
     }
   }
 
@@ -1464,8 +1464,8 @@ StScrollBar {
   }
 
   .list-search-result-content { spacing: 12px; padding: 12px; }
-  .list-search-result-title { @include font(headline); color: $inverse-text; }
-  .list-search-result-description { color: $inverse-text-secondary; }
+  .list-search-result-title { @include font(headline); color: on(black); }
+  .list-search-result-description { color: on(black, secondary); }
   .search-provider-icon { padding: 15px; }
   .search-provider-icon-more {
     width: 16px;
@@ -1479,7 +1479,7 @@ StScrollBar {
   #dash {
     transition-duration: $panel_duration;
     font-size: 1em;
-    color: $inverse-text;
+    color: on(black);
     background-color: $scrim-inverse;
     padding: 3px 0;
     border: none;
@@ -1535,19 +1535,19 @@ StScrollBar {
   .app-view-control { //favorties | all toggle button
     padding: 0 16px;
     font-weight: bold;
-    color: $inverse-text-secondary;
+    color: on(black, secondary);
     &:hover {
-      color: $inverse-text;
+      color: on(black);
       background-color: $inverse-overlay-hover !important;
     }
     &:active {
-      color: $inverse-text;
+      color: on(black);
       background-color: $inverse-overlay-active !important;
     }
     &:checked {
-      color: $inverse-text;
+      color: on(black);
       background-color: rgba($scrim, 0.01) !important;
-      box-shadow: inset 0 2px 0 $inverse-text;
+      box-shadow: inset 0 2px 0 on(black);
     }
     &:first-child {
       border-right-width: 0;
@@ -1599,12 +1599,12 @@ StScrollBar {
 
   .app-well-app-running-dot { //running apps indicator
     width: 32px; height: 2px;
-    background-color: $inverse-text;
+    background-color: on(black);
     margin-bottom: 0;
   }
 
   %icon_tile {
-    color: $inverse-text;
+    color: on(black);
     border-radius: $material_radius;
     padding: 6px;
     border: none;
@@ -1617,14 +1617,14 @@ StScrollBar {
   }
 
   .show-apps .show-apps-icon {
-    color: $inverse-text-secondary;
+    color: on(black, secondary);
   }
 
   .show-apps:hover .show-apps-icon,
   .show-apps:active .show-apps-icon,
   .show-apps:checked .show-apps-icon,
   .show-apps:focus .show-apps-icon {
-    color: $inverse-text;
+    color: on(black);
     transition-duration: $shorter_duration;
   }
 
@@ -1651,20 +1651,20 @@ StScrollBar {
       height: 12px;
       border-radius: 12px;
       background-image: none;
-      background-color: $inverse-text-secondary-disabled;
+      background-color: on(black, secondary-disabled);
       transition-duration: $shorter_duration;
     }
     &:hover .page-indicator-icon {
       background-image: none;
-      background-color: $inverse-text-disabled;
+      background-color: on(black, disabled);
     }
     &:active .page-indicator-icon {
       background-image: none;
-      background-color: $inverse-text-secondary;
+      background-color: on(black, secondary);
     }
     &:checked .page-indicator-icon {
       background-image: none;
-      background-color: $inverse-text;
+      background-color: on(black);
       transition-duration: 0ms;
     }
     &:checked:active { background-image: none; }
@@ -1695,7 +1695,7 @@ StScrollBar {
     }
   }
   .workspace-thumbnail-indicator {
-    border: 0 solid $inverse-text;
+    border: 0 solid on(black);
     border-left-width: 2px;
     padding: 6px 10px;
     border-radius: 0;
@@ -1711,14 +1711,14 @@ StScrollBar {
 
 %overview-panel {
   transition-duration: $panel_duration;
-  color: $inverse-text;
+  color: on(black);
   background-color: $scrim-inverse;
   border: none;
 }
 
 %status_text {
   @include font(display-2);
-  color: $inverse-text-disabled;
+  color: on(black, disabled);
 }
 
 /* NOTIFICATIONS & MESSAGE TRAY */
@@ -1773,8 +1773,8 @@ StScrollBar {
     -shell-counter-overlap-x: 3px;
     -shell-counter-overlap-y: 3px;
     background-color: $primary;
-    color: $inverse-text;
-    border: 2px solid $inverse-text;
+    color: on($primary);
+    border: 2px solid on($primary);
     box-shadow: 0 2px 2px rgba(0,0,0,0.5);
     border-radius: 0.9em; // should be 0.8 but whatever; wish I could do 50%;
   }
@@ -1856,7 +1856,7 @@ $legacy_icon_size: 24px;
 
 .legacy-tray {
   background-color: $scrim;
-  color: $inverse-text;
+  color: on($scrim);
   border: none;
   border-bottom-width: 0;
   &:ltr { border-radius: 0 $material_radius 0 0; border-left-width: 0; }
@@ -1912,7 +1912,7 @@ $legacy_icon_size: 24px;
     &:active { @include button(active);}
     &:grayed { //FIXME
       background-color: $scrim-alt;
-      color: $inverse-text;
+      color: on($scrim-alt);
       border-color: $scrim-alt;
     }
   }
@@ -1975,11 +1975,11 @@ $legacy_icon_size: 24px;
 .framed-user-icon {
   background-size: contain;
   border: none;
-  color: $inverse-text;
+  color: on($os-background);
   border-radius: $material_radius;
   &:hover {
-    border-color: $inverse-text;
-    color: $inverse-text;
+    border-color: on($os-background);
+    color: on($os-background);
   }
 }
 
@@ -1996,36 +1996,36 @@ $legacy_icon_size: 24px;
   background-color: transparent;
 
   StEntry {
-    color: $inverse-text;
-    selection-background-color: $inverse-track;
-    selected-color: $inverse-text;
-    @include entry(normal, $fc:$inverse-track);
-    &:focus { @include entry(focus, $fc:$inverse-text); }
+    color: on($os-background);
+    selection-background-color: on($os-background, track);
+    selected-color: on($os-background);
+    @include entry(normal, $fc:on($os-background, track));
+    &:focus { @include entry(focus, $fc:on($os-background)); }
     &:insensitive {
-      @include entry(insensitive, $fc:$inverse-divider);
-      color: $inverse-text-disabled;
+      @include entry(insensitive, $fc:on($os-background, divider));
+      color: on($os-background, disabled);
     }
   }
 
   .modal-dialog-button-box { spacing: 3px; }
   .modal-dialog-button {
     padding: 0 16px;
-    @include button(flat-normal, $tc: $inverse-text);
-    &:hover,&:focus { @include button(flat-hover, $tc: $inverse-text); }
-    &:active { @include button(flat-active, $tc: $inverse-text); }
-    &:insensitive { @include button(flat-insensitive, $tc: $inverse-text); }
+    @include button(flat-normal, $tc: on($os-background));
+    &:hover,&:focus { @include button(flat-hover, $tc: on($os-background)); }
+    &:active { @include button(flat-active, $tc: on($os-background)); }
+    &:insensitive { @include button(flat-insensitive, $tc: on($os-background)); }
 
     &:default {
-      @include button(normal, $c: $suggested, $tc: $inverse-text);
-      &:hover,&:focus { @include button(hover, $c: $suggested, $tc: $inverse-text); }
-      &:active { @include button(active, $c: $suggested, $tc: $inverse-text); }
-      &:insensitive { @include button(insensitive, $c: $inverse-fill, $tc: $inverse-text-disabled); }
+      @include button(normal, $c: $suggested, $tc: on($suggested));
+      &:hover,&:focus { @include button(hover, $c: $suggested, $tc: on($suggested)); }
+      &:active { @include button(active, $c: $suggested, $tc: on($suggested)); }
+      &:insensitive { @include button(insensitive, $c: on($os-background, fill), $tc: on($os-background, disabled)); }
     }
   }
 }
 
   .login-dialog-logo-bin { padding: 24px 0px; }
-  .login-dialog-banner { color: $inverse-text-secondary; }
+  .login-dialog-banner { color: on($os-background, secondary); }
   .login-dialog-button-box { spacing: 5px; }
   .login-dialog-message-warning { color: $warning; }
   .login-dialog-message-hint { padding-top: 0; padding-bottom: 20px; }
@@ -2034,25 +2034,25 @@ $legacy_icon_size: 24px;
     padding-left: 2px;
     .login-dialog-not-listed-button:focus &,
     .login-dialog-not-listed-button:hover & {
-      color: $inverse-text;
+      color: on($os-background);
     }
   }
   .login-dialog-not-listed-label {
     transition-duration: $shorter_duration;
     font-size: 1em;
     font-weight: bold;
-    color: $inverse-text-secondary;
+    color: on($os-background, secondary);
     padding-top: 1em;
     border-radius: $material_radius;
     &:hover {
       background-color: $inverse-overlay-hover;
-      color: $inverse-text;
+      color: on($os-background);
     }
     &:focus { background-color: $inverse-overlay-focus; }
     &:active {
       transition-duration: $longer_duration;
       background-color: $inverse-overlay-active;
-      color: $inverse-text;
+      color: on($os-background);
     }
   }
 
@@ -2061,38 +2061,38 @@ $legacy_icon_size: 24px;
     spacing: 12px;
     padding: .2em;
     width: 23em;
-    &:expanded .login-dialog-user-list-item:focus { background-color: $inverse-overlay-focus; color: $inverse-text; }
-    &:expanded .login-dialog-user-list-item:hover { background-color: $inverse-overlay-hover; color: $inverse-text; }
-    &:expanded .login-dialog-user-list-item:active { background-color: $inverse-overlay-active; color: $inverse-text; }
-    &:expanded .login-dialog-user-list-item:logged-in { border-right: 2px solid $inverse-text; }
+    &:expanded .login-dialog-user-list-item:focus { background-color: $inverse-overlay-focus; color: on($os-background); }
+    &:expanded .login-dialog-user-list-item:hover { background-color: $inverse-overlay-hover; color: on($os-background); }
+    &:expanded .login-dialog-user-list-item:active { background-color: $inverse-overlay-active; color: on($os-background); }
+    &:expanded .login-dialog-user-list-item:logged-in { border-right: 2px solid on($os-background); }
   }
   .login-dialog-user-list-item {
     transition-duration: $shorter_duration;
     border-radius: $material_radius;
     padding: 4px 4px 0;
-    color: $inverse-text-secondary;
+    color: on($os-background, secondary);
     &:ltr { padding-right: 1em; }
     &:rtl { padding-left: 1em; }
     &:hover {
       background-color: $inverse-overlay-hover;
-      color: $inverse-text;
+      color: on($os-background);
     }
     &:active {
       transition-duration: $longer_duration;
       background-color: $inverse-overlay-active;
-      color: $inverse-text;
+      color: on($os-background);
     }
     .login-dialog-timed-login-indicator {
       height: 2px;
       margin: 2px 0 0 0;
-      background-color: $inverse-text;
+      background-color: on($os-background);
     }
-    &:focus .login-dialog-timed-login-indicator { background-color: $inverse-text; }
+    &:focus .login-dialog-timed-login-indicator { background-color: on($os-background); }
   }
 
   .login-dialog-username,
   .user-widget-label {
-    color: $inverse-text;
+    color: on($os-background);
     @include font(title);
     text-align: left;
     padding-left: 15px;
@@ -2110,7 +2110,7 @@ $legacy_icon_size: 24px;
   }
 
   .login-dialog-prompt-label {
-      color: $inverse-text-secondary;
+      color: on($os-background, secondary);
       font-size: 1em;
       padding-top: 1em;
   }
@@ -2120,9 +2120,9 @@ $legacy_icon_size: 24px;
   }
 
   .login-dialog-session-list-button {
-      color: $inverse-text-secondary;
-      &:hover,&:focus { color: $inverse-text; }
-      &:active { color: $inverse-text; }
+      color: on($os-background, secondary);
+      &:hover,&:focus { color: on($os-background); }
+      &:active { color: on($os-background); }
   }
 
 //SCREEN SHIELD
@@ -2169,7 +2169,7 @@ $legacy_icon_size: 24px;
     padding: 8px;
     border: none;
     background-color: $scrim-alt;
-    color: $inverse-text;
+    color: on($scrim-alt);
     border-radius: $material_radius;
   }
   .notification { margin-right: 16px; } //compensate for space allocated to the scrollbar
@@ -2185,7 +2185,7 @@ $legacy_icon_size: 24px;
 .screen-shield-notification-count-text {
   min-height: $small_size - 2px;
   padding: 2px 0px 0px 16px;
-  color: $inverse-text-secondary;
+  color: on($scrim-alt, secondary);
 }
 
 #panel.lock-screen { background-color: $scrim-alt; }

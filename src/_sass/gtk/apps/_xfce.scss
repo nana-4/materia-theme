@@ -15,7 +15,7 @@
 .xfce4-panel.background {
   border: none; // Sadly the border is hard-coded
   background-color: $panel;
-  color: $inverse-text-secondary;
+  color: on($panel, secondary);
   font-weight: 500;
 
   button {
@@ -27,7 +27,7 @@
     padding: 0;
     border-radius: 0;
 
-    &:checked { background-color: $inverse-divider; }
+    &:checked { background-color: on($panel, divider); }
   }
 
   .tasklist button {
@@ -45,9 +45,9 @@
 
 // Workspace switcher provided by libwnck
 wnck-pager {
-  &:hover { background-color: $inverse-divider; }
+  &:hover { background-color: on($panel, divider); }
 
-  &:active { background-color: $inverse_track; }
+  &:active { background-color: on($panel, track); }
 
   &:selected { background-color: $primary; }
 }
@@ -55,7 +55,7 @@ wnck-pager {
 XfdesktopIconView.view {
   border-radius: $material_radius;
   background-color: transparent;
-  color: $inverse-text;
+  color: on($panel);
   text-shadow: $shadow_1;
 
   // XfdesktopIconView uses :active instead of :selected for selection

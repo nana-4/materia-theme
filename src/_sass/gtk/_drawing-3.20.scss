@@ -39,7 +39,7 @@
     border-image: none;
     box-shadow: $shadow_1;
     background-color: if($fc == $primary, $base, $fc);
-    color: if($fc == $primary, $text, $text-on-dark);
+    color: if($fc == $primary, $text, on($fc));
   }
 
   @if $t == raised-focus {
@@ -127,7 +127,7 @@
 
   @if $t == checked {
     background-color: $primary;
-    color: $text-on-dark;
+    color: on($primary);
   }
 
   @if $t == checked-disabled {
