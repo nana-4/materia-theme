@@ -99,21 +99,21 @@ $overlay-selected:                      rgba($primary, 0.32);
 // Text and derivative colors
 //
 
-$text:                                  if($variant == 'light', rgba(black, 0.87), white);
-$text-secondary:                        if($variant == 'light', rgba(black, 0.54), rgba(white, 0.7));
-$text-disabled:                         if($variant == 'light', rgba(black, 0.38), rgba(white, 0.5));
-$text-secondary-disabled:               if($variant == 'light', rgba(black, 0.26), rgba(white, 0.3));
-$track:                                 if($variant == 'light', rgba(black, 0.26), rgba(white, 0.3));
-$divider:                               if($variant == 'light', rgba(black, 0.12), rgba(white, 0.12));
-$fill:                                  if($variant == 'light', rgba(black, 0.04), rgba(white, 0.04));
+$text:                                  on($background);
+$text-secondary:                        on($background, secondary);
+$text-disabled:                         on($background, disabled);
+$text-secondary-disabled:               on($background, secondary-disabled);
+$track:                                 on($background, track);
+$divider:                               on($background, divider);
+$fill:                                  on($background, fill);
 
-$titlebar-text:                         if($topbar == 'light', rgba(black, 0.87), white);
-$titlebar-text-secondary:               if($topbar == 'light', rgba(black, 0.54), rgba(white, 0.7));
-$titlebar-text-disabled:                if($topbar == 'light', rgba(black, 0.38), rgba(white, 0.5));
-$titlebar-text-secondary-disabled:      if($topbar == 'light', rgba(black, 0.26), rgba(white, 0.3));
-$titlebar-track:                        if($topbar == 'light', rgba(black, 0.26), rgba(white, 0.3));
-$titlebar-divider:                      if($topbar == 'light', rgba(black, 0.12), rgba(white, 0.12));
-$titlebar-fill:                         if($topbar == 'light', rgba(black, 0.04), rgba(white, 0.04));
+$titlebar-text:                         on($titlebar);
+$titlebar-text-secondary:               on($titlebar, secondary);
+$titlebar-text-disabled:                on($titlebar, disabled);
+$titlebar-text-secondary-disabled:      on($titlebar, secondary-disabled);
+$titlebar-track:                        on($titlebar, track);
+$titlebar-divider:                      on($titlebar, divider);
+$titlebar-fill:                         on($titlebar, fill);
 
 // FIXME: Electron/Atom menu does not allow translucent colors
 $solid-text:                            if($variant == 'light', $grey-900, $white);
