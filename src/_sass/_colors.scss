@@ -2,10 +2,6 @@
 // it gets @if ed depending on $variant
 
 @import 'color-palette';
-$blue:                                  #4285F4;
-$green:                                 #34A853;
-$yellow:                                #FBBC05;
-$red:                                   #EA4335;
 
 @function gtkalpha($c, $a) {
   @return unquote("alpha(#{$c}, #{$a})");
@@ -17,9 +13,73 @@ $red:                                   #EA4335;
   @else { @return rgba(white, 0.1); }
 }
 
-// Foreground colors
+//
+// Basic colors
+//
+
+$blue:                                  #4285F4;
+$green:                                 #34A853;
+$yellow:                                #FBBC05;
+$red:                                   #EA4335;
+
+$primary:                               $blue;
+$primary-alt:                           #7BAAF7;
+
+$background:                            if($variant == 'light', #F2F2F2, #282828);
+$surface:                               if($variant == 'light', #FFFFFF, #424242);
+$base:                                  if($variant == 'light', #FFFFFF, #303030);
+$base-alt:                              if($variant == 'light', #FAFAFA, #2C2C2C);
+
+$os-background:                         #303030;
+$tooltip:                               rgba(#616161, 0.9);
+$scrim:                                 rgba(black, 0.6);
+$scrim-alt:                             rgba(black, 0.3);
+$scrim-inverse:                         rgba(white, 0.1);
+$titlebar:                              if($topbar == 'dark', #383838, #E0E0E0);
+$panel:                                 if($topbar == 'dark', #212121, $scrim);
+$panel-solid:                           if($topbar == 'dark', #212121, #CBCBCB); // for Unity panel which cannot use translucent colors
+
+//
+// Misc colors
+//
+
+$link:                                  $primary;
+$link-visited:                          $purple-a200;
+
+$warning:                               $yellow;
+$error:                                 $red;
+$success:                               $green;
+
+$suggested:                             $primary;
+$destructive:                           $red;
+
+$infobar-info:                          $green;
+$infobar-question:                      $blue;
+$infobar-warning:                       $yellow;
+$infobar-error:                         $red;
+
+$border:                                if($variant == 'light', rgba(black, 0.12), rgba(black, 0.26));
+$border-alt:                            rgba(black, 0.26); // for non-native GTK+ apps (e.g. Firefox and Chrome)
+$titlebar-indicator:                    if($topbar == 'dark', currentColor, $primary);
+
+//
+// Overlay state colors
+//
+
+$overlay-hover:                         gtkalpha(currentColor, 0.08);
+$overlay-focus:                         gtkalpha(currentColor, 0.12);
+$overlay-focus-hover:                   gtkalpha(currentColor, 0.16);
+$overlay-active:                        gtkalpha(currentColor, 0.12);
+$overlay-checked:                       gtkalpha(currentColor, 0.24);
+$overlay-selected:                      rgba($primary, 0.32);
+
+//
+// Text and derivative colors
+//
+
 $text-on-light:                         rgba(black, 0.87);
 $text-on-dark:                          white;
+$tooltip-text:                          white;
 
 $text:                                  if($variant == 'light', rgba(black, 0.87), white);
 $text-secondary:                        if($variant == 'light', rgba(black, 0.54), rgba(white, 0.7));
@@ -44,55 +104,6 @@ $inverse-text-secondary-disabled:       rgba(white, 0.3);
 $inverse-track:                         rgba(white, 0.3);
 $inverse-divider:                       rgba(white, 0.12);
 $inverse-fill:                          rgba(white, 0.04);
-
-// Background colors
-$background:                            if($variant == 'light', #F2F2F2, #282828);
-$base:                                  if($variant == 'light', #FFFFFF, #303030);
-$base-alt:                              if($variant == 'light', #FAFAFA, #2C2C2C);
-$surface:                               if($variant == 'light', #FFFFFF, #424242);
-
-$titlebar:                              if($topbar == 'dark', #383838, #E0E0E0);
-
-$scrim:                                 rgba(black, 0.6);
-$scrim-alt:                             rgba(black, 0.3);
-$scrim-inverse:                         rgba(white, 0.1);
-$panel:                                 if($topbar == 'dark', #212121, $scrim);
-$panel-solid:                           if($topbar == 'dark', #212121, #CBCBCB); // for Unity panel which cannot use translucent colors
-
-$os-background:                         #303030;
-
-$overlay-hover:                         gtkalpha(currentColor, 0.08);
-$overlay-focus:                         gtkalpha(currentColor, 0.12);
-$overlay-focus-hover:                   gtkalpha(currentColor, 0.16);
-$overlay-active:                        gtkalpha(currentColor, 0.12);
-$overlay-checked:                       gtkalpha(currentColor, 0.24);
-
-// Misc colors
-$primary:                               $blue;
-$primary-alt:                           #7BAAF7;
-$overlay-selected:                      rgba($primary, 0.32);
-
-$link:                                  $primary;
-$link-visited:                          $purple-a200;
-
-$warning:                               $yellow;
-$error:                                 $red;
-$success:                               $green;
-
-$suggested:                             $primary;
-$destructive:                           $red;
-
-$infobar-info:                          $green;
-$infobar-question:                      $blue;
-$infobar-warning:                       $yellow;
-$infobar-error:                         $red;
-
-$tooltip:                               rgba(#616161, 0.9);
-$tooltip-text:                          white;
-
-$border:                                if($variant == 'light', rgba(black, 0.12), rgba(black, 0.26));
-$border-alt:                            rgba(black, 0.26); // for non-native GTK+ apps (e.g. Firefox and Chrome)
-$titlebar-indicator:                    if($topbar == 'dark', currentColor, $primary);
 
 // FIXME: Electron/Atom menu does not allow translucent colors
 $solid-text:                            if($variant == 'light', $grey-900, $white);
