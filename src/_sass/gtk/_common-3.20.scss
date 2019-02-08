@@ -994,10 +994,10 @@ toolbar {
     transition: $shadow_transition;
     padding: $container_padding;
     border-radius: $material_radius;
-    box-shadow: $shadow_2, inset 0 1px $highlight;
+    box-shadow: $shadow_2, inset 0 1px highlight($surface);
     background-color: $surface;
 
-    &:backdrop { box-shadow: $shadow_1, inset 0 1px $highlight; }
+    &:backdrop { box-shadow: $shadow_1, inset 0 1px highlight($surface); }
 
     &.left,
     &.right,
@@ -1065,7 +1065,7 @@ headerbar {
   transition: background-color $shorter_duration $deceleration_curve, color $shorter_duration $deceleration_curve;
   min-height: $large_size;
   padding: 0 $container_padding;
-  box-shadow: $shadow_1, inset 0 1px $highlight-titlebar;
+  box-shadow: $shadow_1, inset 0 1px highlight($titlebar);
   background-color: $titlebar;
   color: $titlebar-text;
 
@@ -1163,7 +1163,7 @@ headerbar {
     // but let's keep it for backwards compatibility.
     transition: background-color 0.00001s $longer_duration, color $longer_duration $deceleration_curve;
     animation: header_ripple_effect $longer_duration $deceleration_curve;
-    box-shadow: $shadow_1, inset 0 1px $highlight-alt;
+    box-shadow: $shadow_1, inset 0 1px highlight($primary);
     background-color: $primary;
     color: $inverse-text;
 
@@ -1230,7 +1230,7 @@ headerbar {
   &.default-decoration {
     min-height: $small_size;
     padding: $container_padding;
-    box-shadow: inset 0 1px $highlight-titlebar;
+    box-shadow: inset 0 1px highlight($titlebar);
 
     .tiled &,
     .maximized &,
@@ -1538,7 +1538,7 @@ menu,
 .context-menu {
   margin: 4px 0; // See https://bugzilla.gnome.org/show_bug.cgi?id=591258
   padding: 4px 0;
-  box-shadow: inset 0 1px $highlight;
+  box-shadow: inset 0 1px highlight($surface);
   background-color: $surface;
   border: 1px solid $border; // adds borders in a non composited env
 
@@ -2878,7 +2878,7 @@ messagedialog { // Message Dialog styling
   .titlebar {
     min-height: $small_size;
     border-style: none;
-    box-shadow: inset 0 1px $highlight;
+    box-shadow: inset 0 1px highlight($surface);
     background-color: $surface;
     color: $text;
 
@@ -3152,7 +3152,7 @@ tooltip {
   &.background {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
-    // box-shadow: inset 0 1px $highlight;
+    // box-shadow: inset 0 1px highlight($tooltip);
     background-color: $tooltip;
     color: $tooltip-text;
   }
@@ -3297,10 +3297,10 @@ colorswatch {
 colorchooser .popover.osd {
   transition: $shadow_transition;
   border-radius: $material_radius;
-  box-shadow: $shadow_2, inset 0 1px $highlight;
+  box-shadow: $shadow_2, inset 0 1px highlight($surface);
   background-color: $surface;
 
-  &:backdrop { box-shadow: $shadow_1, inset 0 1px $highlight; }
+  &:backdrop { box-shadow: $shadow_1, inset 0 1px highlight($surface); }
 }
 
 

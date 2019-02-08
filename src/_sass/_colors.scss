@@ -11,6 +11,12 @@ $red:                                   #EA4335;
   @return unquote("alpha(#{$c}, #{$a})");
 }
 
+@function highlight($color) {
+  @if (lightness($color) > 80%) { @return rgba(white, 0.4); }
+  @else if (lightness($color) > 40%) { @return rgba(white, 0.2); }
+  @else { @return rgba(white, 0.1); }
+}
+
 // Foreground colors
 $text-on-light:                         rgba(black, 0.87);
 $text-on-dark:                          white;
@@ -86,9 +92,6 @@ $tooltip-text:                          white;
 
 $border:                                if($variant == 'light', rgba(black, 0.12), rgba(black, 0.26));
 $border-alt:                            rgba(black, 0.26); // for non-native GTK+ apps (e.g. Firefox and Chrome)
-$highlight:                             if($variant == 'light', rgba(white, 0.4),  rgba(white, 0.1));
-$highlight-titlebar:                    if($topbar == 'dark', rgba(white, 0.1),  rgba(white, 0.4));
-$highlight-alt:                         rgba(white, 0.2); // for selection-mode headerbar which colored with $primary
 $titlebar-indicator:                    if($topbar == 'dark', currentColor, $primary);
 
 // FIXME: Electron/Atom menu does not allow translucent colors
