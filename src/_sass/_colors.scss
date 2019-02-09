@@ -59,7 +59,7 @@ $scrim-alt:                             rgba(black, 0.3);
 $scrim-inverse:                         rgba(white, 0.1);
 $titlebar:                              if($topbar == 'dark', #383838, #E0E0E0);
 $panel:                                 if($topbar == 'dark', #212121, $scrim);
-$panel-solid:                           if($topbar == 'dark', #212121, #CBCBCB); // for Unity panel which cannot use translucent colors
+$panel-solid:                           if($topbar == 'dark', #212121, #CBCBCB); // for Unity panel which doesn't allow translucent colors
 
 //
 // Misc colors
@@ -81,7 +81,7 @@ $infobar-warning:                       $yellow;
 $infobar-error:                         $red;
 
 $border:                                if($variant == 'light', rgba(black, 0.12), rgba(black, 0.26));
-$border-alt:                            rgba(black, 0.26); // for non-native GTK+ apps (e.g. Firefox and Chrome)
+$border-alt:                            rgba(black, 0.26); // darker border color for Chrome and Firefox
 $titlebar-indicator:                    if($topbar == 'dark', currentColor, $primary);
 
 //
@@ -115,11 +115,11 @@ $titlebar-track:                        on($titlebar, track);
 $titlebar-divider:                      on($titlebar, divider);
 $titlebar-fill:                         on($titlebar, fill);
 
-// FIXME: Electron/Atom menu does not allow translucent colors
+// workaround for Electron menu which doesn't allow translucent colors
 $solid-text:                            if($variant == 'light', $grey-900, $white);
 $solid-text-secondary:                  if($variant == 'light', $grey-600, mix($white, $surface, percentage(0.7)));
 $solid-text-disabled:                   if($variant == 'light', $grey-500, mix($white, $surface, percentage(0.5)));
 $solid-divider:                         if($variant == 'light', $grey-300, mix($white, $surface, percentage(0.12)));
 
-// FIXME: gtk @placeholder_text_color does not allow translucent colors
+// workaround for GTK3 @placeholder_text_color which doesn't allow translucent colors
 $placeholder_text_color:                if($variant == 'light', $grey-600, mix($white, $base, percentage(0.7)));
