@@ -84,14 +84,14 @@ sudo ./install.sh
 
 Tip: `./install.sh` allows the following options:
 
-Option | Description
---- | ---
-`-d`, `--dest` _DIR_ | Specify theme destination directory. (Default: `/usr/share/themes`)
-`-n`, `--name` _NAME_ | Specify theme name. (Default: `Materia`)
-`-c`, `--color` _VARIANT..._ | Specify theme color variant(s). (Default: All [`standard`\|`dark`\|`light`] variants)
-`-s`, `--size` _VARIANT_ | Specify theme size variant. (Default: All [`standard`\|`compact`] variants)
-`-g`, `--gdm` | Install and apply GDM theme.
-`-h`, `--help` | Show help.
+```
+-d, --dest DIR          Specify destination directory (Default: /usr/share/themes)
+-n, --name NAME         Specify theme name (Default: Materia)
+-c, --color VARIANT...  Specify color variant(s) [standard|dark|light] (Default: All variants)
+-s, --size VARIANT      Specify size variant [standard|compact] (Default: All variants)
+-g, --gdm               Install and apply GDM theme (for advanced users)
+-h, --help              Show help
+```
 
 ### Manual Uninstallation
 

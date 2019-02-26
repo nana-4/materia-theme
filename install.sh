@@ -34,12 +34,12 @@ usage() {
 Usage: $0 [OPTION]...
 
 OPTIONS:
-  -d, --dest DIR          Specify theme destination directory (Default: $DEST_DIR)
+  -d, --dest DIR          Specify destination directory (Default: $DEST_DIR)
   -n, --name NAME         Specify theme name (Default: $THEME_NAME)
-  -c, --color VARIANT...  Specify theme color variant(s) [standard|dark|light] (Default: All variants)
-  -s, --size VARIANT      Specify theme size variant [standard|compact] (Default: All variants)
-  -g, --gdm               Install GDM theme
-  -h, --help              Show this help
+  -c, --color VARIANT...  Specify color variant(s) [standard|dark|light] (Default: All variants)
+  -s, --size VARIANT      Specify size variant [standard|compact] (Default: All variants)
+  -g, --gdm               Install and apply GDM theme (for advanced users)
+  -h, --help              Show help
 
 INSTALLATION EXAMPLES:
 Install all theme variants into ~/.themes
