@@ -10,21 +10,21 @@
 
 ### SCSS
 
-Like the upstream Adwaita, Materia is a complex theme, so to keep it
-maintainable it's written and processed in Sass.
+Like the upstream Adwaita, to keep it maintainable it's written and processed in
+Sass.
 
 Here's a rundown of the "supporting" stylesheets, that are unlikely to be the
 right place for a drive by stylesheet fix:
 
-| File | Description |
-| :-- | :-- |
-| `_variables.scss` | Variables to allow easier definition of widget sizing/styling. |
-| `_color-palette.scss` | Material Design color palette definitions. We don't recommend editing this unless Google updates the color scheme. |
-| `_colors.scss` | Global color definitions. We keep the number of defined colors to a necessary minimum. It covers both the light variant and the dark variant. |
-| `_colors-public.scss` | SCSS colors exported through GTK to allow for 3rd party apps color mixing. |
-| `_drawing<-version>.scss` | Drawing helper mixings/functions to allow easier definition of widget drawing under specific context. |
-| `_common<-version>.scss` | Actual definitions of style for each widget. This is where you are likely to add/remove your changes. |
-| `_apps<-version>.scss` <br> `_extensions.scss` | App/extension specific stylings. |
+File | Description
+:-- | :--
+`_variables.scss` | Variables to allow easier definition of widget sizing/styling.
+`_color-palette.scss` | Material Design color palette definitions. We don't recommend editing this unless Google updates the color scheme.
+`_colors.scss` | Global color definitions. We keep the number of defined colors to a necessary minimum. It covers both the light variant and the dark variant.
+`_colors-public.scss` | SCSS colors exported through GTK to allow for 3rd party apps color mixing.
+`_drawing*.scss` | Drawing helper mixings/functions to allow easier definition of widget drawing under specific context.
+`_common*.scss` | Actual definitions of style for each widget. This is where you are likely to add/remove your changes.
+`_apps*.scss` <br> `_extensions.scss` | App/extension specific stylings.
 
 You can read about Sass on its [web page](http://sass-lang.com/documentation/).
 Once you make your changes to the SCSS files, run the `./parse-sass.sh` script
