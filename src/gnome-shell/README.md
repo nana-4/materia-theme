@@ -31,7 +31,7 @@ To change the GDM (lock/login screen) theme, you need to replace the system's _d
   sudo cp -av /usr/share/gnome-shell/theme/Yaru/gnome-shell.css{,~}
   ```
 
-2. Select a **GTK+** theme to decide which variant to install.
+2. Select a **GTK** theme to decide which variant to install.
 3. Replace the default theme file(s):
 
   ```sh

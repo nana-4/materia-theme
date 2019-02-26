@@ -286,14 +286,14 @@ fi
 SIZE_VARIANTS="$SIZE_VARIANTS" COLOR_VARIANTS="$COLOR_VARIANTS" THEME_DIR_BASE="$DEST_PATH" ./parse-sass.sh
 
 # NOTE we use the functions we already have in render-assets.sh
-echo "== Rendering GTK+2 assets..."
+echo "== Rendering GTK 2 assets..."
 if [[ "$MATERIA_COLOR_VARIANT" != "dark" ]]; then
   GTK2_HIDPI="$OPTION_GTK2_HIDPI" ./render-assets.sh gtk2-light
 else
   GTK2_HIDPI="$OPTION_GTK2_HIDPI" ./render-assets.sh gtk2-dark
 fi
 
-echo "== Rendering GTK+3 assets..."
+echo "== Rendering GTK 3 assets..."
 ./render-assets.sh gtk
 
 ./install.sh --dest "$HOME/.themes" --name "${OUTPUT_THEME_NAME/\//-}" --color "$COLOR_VARIANT" --size "$SIZE_VARIANT"

@@ -2,9 +2,9 @@
 
 # Materia
 
-Materia is a [Material Design](https://material.io) theme for GNOME/GTK+ based desktop environments.
+Materia is a [Material Design](https://material.io) theme for GNOME/GTK based desktop environments.
 
-It supports GTK+ 3, GTK+ 2, GNOME Shell, Budgie, Cinnamon, MATE, Unity, Xfce, LightDM, GDM, Chrome theme, etc.
+It supports GTK 2, GTK 3, GNOME Shell, Budgie, Cinnamon, MATE, Unity, Xfce, LightDM, GDM, Chrome theme, etc.
 
 ## Preview
 
@@ -12,7 +12,7 @@ It supports GTK+ 3, GTK+ 2, GNOME Shell, Budgie, Cinnamon, MATE, Unity, Xfce, Li
 
 ## Features
 
-**Ripple effect** animations for GTK+ 3 are supported:
+**Ripple effect** animations for GTK 3 are supported:
 
 ![Button](../images/Button.gif?raw=true)
 
@@ -42,7 +42,7 @@ Various **desktop environments** are supported:
 
 ## Requirements
 
-- GTK+ `>=3.20`
+- GTK `>=3.20`
 - `gnome-themes-extra` (or `gnome-themes-standard`)
 - Murrine engine — The package name depends on the distro.
   - `gtk-engine-murrine` on Arch Linux
