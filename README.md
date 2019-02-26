@@ -77,8 +77,8 @@ flatpak install flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact}
 Run the following commands in the terminal:
 
 ```sh
-cd /tmp && wget -qO - https://github.com/nana-4/materia-theme/archive/master.tar.gz | tar xz
-cd materia-theme-master
+git clone --depth 1 https://github.com/nana-4/materia-theme
+cd materia-theme
 sudo ./install.sh
 ```
 
