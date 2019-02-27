@@ -388,7 +388,7 @@ spinbutton.vertical entry.warning, .gedit-search-slider .linked:not(.vertical) >
   border-image: none;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   background-color: #FBBC05;
-  color: white;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 spinbutton.vertical entry.warning:focus, .gedit-search-slider .linked:not(.vertical) > entry.warning:focus {
@@ -403,15 +403,15 @@ spinbutton.vertical entry.warning:disabled, .gedit-search-slider .linked:not(.ve
 }
 
 spinbutton.vertical entry.warning image, .gedit-search-slider .linked:not(.vertical) > entry.warning image {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.54);
 }
 
 spinbutton.vertical entry.warning image:hover, .gedit-search-slider .linked:not(.vertical) > entry.warning image:hover, spinbutton.vertical entry.warning image:active, .gedit-search-slider .linked:not(.vertical) > entry.warning image:active {
-  color: white;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 spinbutton.vertical entry.warning image:disabled, .gedit-search-slider .linked:not(.vertical) > entry.warning image:disabled {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.38);
 }
 
 treeview entry.flat, treeview entry {
@@ -1455,7 +1455,7 @@ headerbar button {
   margin-bottom: 4px;
 }
 
-headerbar separator {
+headerbar separator.titlebutton {
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: rgba(255, 255, 255, 0.12);
@@ -1474,6 +1474,11 @@ headerbar spinbutton button {
 headerbar .entry-tag, headerbar .documents-entry-tag, headerbar .photos-entry-tag {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+headerbar.titlebar headerbar:not(.titlebar) {
+  background-color: transparent;
+  box-shadow: none;
 }
 
 .background .titlebar {
@@ -1665,12 +1670,22 @@ treeview.view.progressbar {
   border-bottom: 4px solid #4285F4;
   box-shadow: none;
   background-color: transparent;
+  background-image: none;
+}
+
+treeview.view.progressbar:selected:hover {
+  box-shadow: none;
 }
 
 treeview.view.trough {
   border-bottom: 4px solid rgba(255, 255, 255, 0.12);
   box-shadow: none;
   background-color: transparent;
+  background-image: none;
+}
+
+treeview.view.trough:selected:hover {
+  box-shadow: none;
 }
 
 treeview.view header button {
@@ -1750,7 +1765,7 @@ menubar > menuitem label:disabled,
   color: inherit;
 }
 
-.csd.popup {
+.background.popup {
   background-color: transparent;
 }
 
@@ -3287,12 +3302,12 @@ filechooserbutton:drop(active) {
   background-color: #2C2C2C;
 }
 
-stacksidebar.sidebar:dir(ltr) list, stacksidebar.sidebar.left list, stacksidebar.sidebar.left:dir(rtl) list, .sidebar:dir(ltr), .sidebar.left, .sidebar.left:dir(rtl) {
+stacksidebar.sidebar:dir(ltr) list, stacksidebar.sidebar.left list, stacksidebar.sidebar.left:dir(rtl) list, .sidebar:not(separator):dir(ltr), .sidebar:not(separator).left, .sidebar:not(separator).left:dir(rtl) {
   border-right: 1px solid rgba(0, 0, 0, 0.26);
   border-left-style: none;
 }
 
-stacksidebar.sidebar:dir(rtl) list, stacksidebar.sidebar.right list, .sidebar:dir(rtl), .sidebar.right {
+stacksidebar.sidebar:dir(rtl) list, stacksidebar.sidebar.right list, .sidebar:not(separator):dir(rtl), .sidebar:not(separator).right {
   border-left: 1px solid rgba(0, 0, 0, 0.26);
   border-right-style: none;
 }
@@ -3753,6 +3768,9 @@ stackswitcher button.text-button.circular {
   padding: 0;
 }
 
+/*************
+ * App Icons *
+ *************/
 /*********
  * Emoji *
  *********/
@@ -3762,6 +3780,7 @@ popover.emoji-picker {
 
 popover.emoji-picker entry {
   border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+  border-image: none;
   border-radius: 0;
   box-shadow: none;
   background-color: transparent;
@@ -3801,18 +3820,36 @@ button.emoji-section:last-child {
   margin-right: 4px;
 }
 
-.emoji {
+popover.emoji-picker .emoji {
   min-width: 3em;
   min-height: 3em;
   padding: 0 8px;
 }
 
-.emoji widget {
+popover.emoji-picker .emoji widget {
   transition: all 100ms cubic-bezier(0, 0, 0.2, 1);
   border-radius: 4px;
 }
 
-.emoji widget:hover {
+popover.emoji-picker .emoji widget:hover {
+  background-color: alpha(currentColor, 0.08);
+}
+
+popover.emoji-completion {
+  padding: 8px 0;
+}
+
+popover.emoji-completion arrow {
+  border: none;
+  background: none;
+}
+
+popover.emoji-completion .emoji-completion-row {
+  min-height: 28px;
+  padding: 0 12px;
+}
+
+popover.emoji-completion .emoji:hover {
   background-color: alpha(currentColor, 0.08);
 }
 
