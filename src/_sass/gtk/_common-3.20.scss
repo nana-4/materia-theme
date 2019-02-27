@@ -3511,7 +3511,7 @@ button.emoji-section {
   &:last-child { margin-right: 4px; }
 }
 
-.emoji {
+popover.emoji-picker .emoji {
   min-width: 3em;
   min-height: 3em;
   padding: 0 8px;
@@ -3522,5 +3522,23 @@ button.emoji-section {
     border-radius: $material_radius;
 
     &:hover { background-color: $overlay-hover; }
+  }
+}
+
+popover.emoji-completion {
+  padding: 8px 0;
+
+  arrow {
+    border: none;
+    background: none;
+  }
+
+  .emoji-completion-row {
+    min-height: $menuitem_size;
+    padding: 0 12px;
+  }
+
+  .emoji:hover {
+    background-color: $overlay-hover;
   }
 }
