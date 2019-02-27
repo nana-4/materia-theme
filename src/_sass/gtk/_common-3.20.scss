@@ -1267,7 +1267,7 @@ headerbar {
     margin-bottom: $container_padding;
   }
 
-  separator {
+  separator.titlebutton {
     margin-top: $large_size / 4;
     margin-bottom: $large_size / 4;
     background-color: $titlebar-divider;
@@ -2942,19 +2942,21 @@ filechooserbutton:drop(active) {
   border-style: none;
   background-color: $base-alt;
 
-  @at-root %sidebar_left,
-  &:dir(ltr),
-  &.left,
-  &.left:dir(rtl) {
-    border-right: 1px solid $border;
-    border-left-style: none;
-  }
+  &:not(separator) {
+    @at-root %sidebar_left,
+    &:dir(ltr),
+    &.left,
+    &.left:dir(rtl) {
+      border-right: 1px solid $border;
+      border-left-style: none;
+    }
 
-  @at-root %sidebar_right,
-  &:dir(rtl),
-  &.right {
-    border-left: 1px solid $border;
-    border-right-style: none;
+    @at-root %sidebar_right,
+    &:dir(rtl),
+    &.right {
+      border-left: 1px solid $border;
+      border-right-style: none;
+    }
   }
 
   list { background-color: transparent; }
@@ -2981,6 +2983,15 @@ stacksidebar {
     }
 
     &.needs-attention > label { @extend %needs_attention; }
+  }
+}
+
+separator.sidebar {
+  // background-color: $border;
+
+  &.selection-mode,
+  .selection-mode & {
+    // background-color: $border;
   }
 }
 
