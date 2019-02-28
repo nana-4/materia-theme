@@ -133,13 +133,13 @@ StScrollBar {
 
 %overview_scrollbar {
   StBin#trough {
-    background-color: on(black, divider);
+    background-color: on(dark, divider);
   }
 
   StButton#vhandle, StButton#hhandle {
-    background-color: on(black, disabled);
-    &:hover { background-color: on(black, secondary); }
-    &:active { background-color: on(black); }
+    background-color: on(dark, disabled);
+    &:hover { background-color: on(dark, secondary); }
+    &:active { background-color: on(dark); }
   }
 }
 
@@ -1273,7 +1273,7 @@ StScrollBar {
   width: 48px;
   height: 48px;
   border-radius: 0 0 48px 0;
-  background-color: on(black, track);
+  background-color: on(dark, track);
   background-image: none;
   background-size: auto;
 }
@@ -1380,21 +1380,21 @@ StScrollBar {
   }
 
   .window-clone-border {
-    border: 4px solid on(black, track);
+    border: 4px solid on(dark, track);
     border-radius: $corner-radius;
     // For window decorations with round corners we can't match
     // the exact shape when the window is scaled. So apply a shadow
     // to fix that case
-    box-shadow: inset 0 0 0 1px on(black, track);
+    box-shadow: inset 0 0 0 1px on(dark, track);
   }
   .window-caption {
     spacing: 25px;
-    color: on(black);
+    color: on(dark);
     background-color: transparent;
     border-radius: $corner-radius;
     padding: 4px 8px;
     -shell-caption-spacing: 12px;
-    &:hover { background-color: on(black, track); color: on(black); }
+    &:hover { background-color: on(dark, track); color: on(dark); }
   }
 
   //search entry
@@ -1402,22 +1402,22 @@ StScrollBar {
     width: 320px - 8px * 2;
     padding: 0 8px;
     border-radius: $corner-radius $corner-radius 0 0;
-    color: on(black, disabled);
-    selection-background-color: on(black, track);
-    selected-color: on(black);
-    @include entry(normal,$fc:on(black, track));
-    &:hover { @include entry(hover,$fc:on(black, track)); }
+    color: on(dark, disabled);
+    selection-background-color: on(dark, track);
+    selected-color: on(dark);
+    @include entry(normal,$fc:on(dark, track));
+    &:hover { @include entry(hover,$fc:on(dark, track)); }
     &:focus {
-      @include entry(focus,$fc:on(black));
+      @include entry(focus,$fc:on(dark));
       padding: 0 8px;
       border-width: 0;
-      color: on(black);
+      color: on(dark);
     }
 
-    .search-entry-icon { icon-size: 16px; padding: 0 0; color: on(black, secondary); }
+    .search-entry-icon { icon-size: 16px; padding: 0 0; color: on(dark, secondary); }
 
     &:hover, &:focus {
-      .search-entry-icon { color: on(black); }
+      .search-entry-icon { color: on(dark); }
     }
   }
 
@@ -1449,8 +1449,8 @@ StScrollBar {
   }
 
   .list-search-result-content { spacing: 12px; padding: 12px; }
-  .list-search-result-title { @include font(headline); color: on(black); }
-  .list-search-result-description { color: on(black, secondary); }
+  .list-search-result-title { @include font(headline); color: on(dark); }
+  .list-search-result-description { color: on(dark, secondary); }
   .search-provider-icon { padding: 15px; }
   .search-provider-icon-more {
     width: 16px;
@@ -1464,7 +1464,7 @@ StScrollBar {
   #dash {
     transition-duration: $duration-panel;
     font-size: 1em;
-    color: on(black);
+    color: on(dark);
     background-color: $scrim-inverse;
     padding: 3px 0;
     border: none;
@@ -1520,19 +1520,19 @@ StScrollBar {
   .app-view-control { //favorties | all toggle button
     padding: 0 16px;
     font-weight: bold;
-    color: on(black, secondary);
+    color: on(dark, secondary);
     &:hover {
-      color: on(black);
+      color: on(dark);
       background-color: $inverse-overlay-hover !important;
     }
     &:active {
-      color: on(black);
+      color: on(dark);
       background-color: $inverse-overlay-active !important;
     }
     &:checked {
-      color: on(black);
+      color: on(dark);
       background-color: rgba($scrim, 0.01) !important;
-      box-shadow: inset 0 2px 0 on(black);
+      box-shadow: inset 0 2px 0 on(dark);
     }
     &:first-child {
       border-right-width: 0;
@@ -1584,12 +1584,12 @@ StScrollBar {
 
   .app-well-app-running-dot { //running apps indicator
     width: 32px; height: 2px;
-    background-color: on(black);
+    background-color: on(dark);
     margin-bottom: 0;
   }
 
   %icon_tile {
-    color: on(black);
+    color: on(dark);
     border-radius: $corner-radius;
     padding: 6px;
     border: none;
@@ -1602,14 +1602,14 @@ StScrollBar {
   }
 
   .show-apps .show-apps-icon {
-    color: on(black, secondary);
+    color: on(dark, secondary);
   }
 
   .show-apps:hover .show-apps-icon,
   .show-apps:active .show-apps-icon,
   .show-apps:checked .show-apps-icon,
   .show-apps:focus .show-apps-icon {
-    color: on(black);
+    color: on(dark);
     transition-duration: $duration;
   }
 
@@ -1636,20 +1636,20 @@ StScrollBar {
       height: 12px;
       border-radius: 12px;
       background-image: none;
-      background-color: on(black, secondary-disabled);
+      background-color: on(dark, secondary-disabled);
       transition-duration: $duration;
     }
     &:hover .page-indicator-icon {
       background-image: none;
-      background-color: on(black, disabled);
+      background-color: on(dark, disabled);
     }
     &:active .page-indicator-icon {
       background-image: none;
-      background-color: on(black, secondary);
+      background-color: on(dark, secondary);
     }
     &:checked .page-indicator-icon {
       background-image: none;
-      background-color: on(black);
+      background-color: on(dark);
       transition-duration: 0ms;
     }
     &:checked:active { background-image: none; }
@@ -1680,7 +1680,7 @@ StScrollBar {
     }
   }
   .workspace-thumbnail-indicator {
-    border: 0 solid on(black);
+    border: 0 solid on(dark);
     border-left-width: 2px;
     padding: 6px 10px;
     border-radius: 0;
@@ -1696,14 +1696,14 @@ StScrollBar {
 
 %overview-panel {
   transition-duration: $duration-panel;
-  color: on(black);
+  color: on(dark);
   background-color: $scrim-inverse;
   border: none;
 }
 
 %status_text {
   @include font(display-2);
-  color: on(black, disabled);
+  color: on(dark, disabled);
 }
 
 /* NOTIFICATIONS & MESSAGE TRAY */

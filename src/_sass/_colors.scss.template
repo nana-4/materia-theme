@@ -8,8 +8,12 @@
 }
 
 @function on($color, $state: 'primary') {
+  @if ($color == 'light') { $color: white; }
+  @if ($color == 'dark') { $color: black; }
+
   // Calculate color brightness according to https://www.w3.org/TR/AERT/#color-contrast
   $brightness: (red($color) * 299 + green($color) * 587 + blue($color) * 114) / 1000;
+
   @if ($brightness >= 128) {
     @if ($state == 'primary') { @return rgba(black, 0.87); }
     @if ($state == 'secondary') { @return rgba(black, 0.54); }

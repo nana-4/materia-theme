@@ -476,20 +476,20 @@ button {
 
   @at-root %button_selected {
     &.flat {
-      color: on(black, secondary);
+      color: on(dark, secondary);
 
-      &:hover, &:active { color: on(black); }
+      &:hover, &:active { color: on(dark); }
 
-      &:disabled { color: on(black, secondary-disabled); }
+      &:disabled { color: on(dark, secondary-disabled); }
 
       &:checked {
-        background-color: on(black, track);
-        color: on(black);
+        background-color: on(dark, track);
+        color: on(dark);
       }
 
       &:checked:disabled {
-        background-color: on(black, divider);
-        color: on(black, disabled);
+        background-color: on(dark, divider);
+        color: on(dark, disabled);
       }
     }
   }
@@ -3167,13 +3167,13 @@ infobar {
   &.question,
   &.warning,
   &.error {
-    > label, & { color: on(black); }
+    > label, & { color: on(dark); }
 
     button { @extend %button_selected; }
 
     selection {}
 
-    *:link { color: on(black); }
+    *:link { color: on(dark); }
   }
 }
 
@@ -3274,9 +3274,9 @@ colorswatch {
     }
   }
 
-  &.dark { color: on(black); }
+  &.dark { color: on(dark); }
 
-  &.light { color: on(white); }
+  &.light { color: on(light); }
 
   &:drop(active) {
     box-shadow: none;
@@ -3295,7 +3295,7 @@ colorswatch {
 
   &#add-color-button {
     border-radius: $corner-radius $corner-radius 0 0;
-    color: on(black);
+    color: on(dark);
 
     &:only-child { border-radius: $corner-radius; }
 
