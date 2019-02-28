@@ -5,7 +5,7 @@ overlay > revealer {
   &.left > scrolledwindow.frame,
   &.right > scrolledwindow.frame {
     border-style: none;
-    box-shadow: $shadow_4;
+    box-shadow: $shadow-4;
   }
 
   &.left > scrolledwindow.frame { margin-right: 32px; }
@@ -18,7 +18,7 @@ overlay > revealer {
 
 .terminal-titlebar button { border-radius: 0; }
 
-button.image-button.session-new-button { min-width: $medium_size - 4px; }
+button.image-button.session-new-button { min-width: $medium-size - 4px; }
 
 
 /**************
@@ -41,7 +41,7 @@ window.background > box.vertical > scrolledwindow > widget toolbar {
   separator,
   button { margin: 2px; }
 
-  button { border-radius: $material_radius; }
+  button { border-radius: $corner-radius; }
 }
 
 
@@ -97,7 +97,7 @@ window.background:not(.csd) {
     > entry,
     > button > button {
       border: 1px solid $border-alt;
-      border-radius: $material_radius + 1px;
+      border-radius: $corner-radius + 1px;
       box-shadow: none;
     }
 
@@ -185,8 +185,8 @@ window.background:not(.csd) {
       min-height: 24px;
       min-width: 16px;
       padding: 4px 8px;
-      border-radius: $material_radius;
-      -gtk-outline-radius: $material_radius;
+      border-radius: $corner-radius;
+      -gtk-outline-radius: $corner-radius;
     }
 
     spinbutton button { border-width: 4px; }
@@ -199,8 +199,8 @@ window.background:not(.csd) {
       min-height: 24px;
       min-width: 24px;
       padding: 4px;
-      border-radius: $material_radius;
-      -gtk-outline-radius: $material_radius;
+      border-radius: $corner-radius;
+      -gtk-outline-radius: $corner-radius;
     }
   }
 }

@@ -13,7 +13,7 @@
 }
 
 .nautilus-canvas-item {
-  // border-radius: $material_radius;
+  // border-radius: $corner-radius;
 }
 
 .nautilus-canvas-item.dim-label,
@@ -24,7 +24,7 @@
 .nautilus-desktop.nautilus-canvas-item {
   // background-color: $scrim;
   color: on($scrim);
-  text-shadow: $shadow_1;
+  text-shadow: $shadow-1;
 }
 
 // Toolbar
@@ -34,11 +34,11 @@
 }
 
 .nautilus-operations-button-needs-attention {
-  animation: needs_attention_keyframes $ripple_duration $standard_curve 2 alternate;
+  animation: needs_attention_keyframes $duration-ripple-aftermath $ease 2 alternate;
 }
 
 .nautilus-operations-button-needs-attention-multiple {
-  animation: needs_attention_keyframes $ripple_duration $standard_curve 6 alternate;
+  animation: needs_attention_keyframes $duration-ripple-aftermath $ease 6 alternate;
 }
 
 .linked > button:not(.suggested-action):not(.destructive-action).disclosure-button { @extend %circular_button; }
@@ -46,9 +46,9 @@
 // Path bar
 
 .path-bar-box {
-  transition: background-color $shorter_duration $deceleration_curve;
-  margin: $container_padding 0;
-  border-radius: $material_radius;
+  transition: background-color $duration $ease-out;
+  margin: $container-padding 0;
+  border-radius: $corner-radius;
 
   button { margin: 0; } // reset the margin
 
@@ -76,10 +76,10 @@
   border-style: solid solid none;
   border-width: 1px;
   border-color: $border;
-  border-radius: ($material_radius + 1px) ($material_radius + 1px) 0 0;
+  border-radius: ($corner-radius + 1px) ($corner-radius + 1px) 0 0;
   background-color: rgba($base, 0.9);
-  background-clip: $extra_background_clip;
-  transition: $shorter_transition, border-width 0;
+  background-clip: $background-clip-extra;
+  transition: $transition, border-width 0;
 
   &.bottom.left { // axes left border and border radius
     margin-right: 8px - 1px;
@@ -94,7 +94,7 @@
   }
 
   button {
-    margin: (32px - $small_size) / 2;
+    margin: (32px - $small-size) / 2;
 
     @extend %small_button;
   }
@@ -144,7 +144,7 @@
 
   .icon-item-background {
     padding: 4px;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
   }
 
   &:selected {
@@ -245,7 +245,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
   margin: 4px 4px 8px;
 
   .linked:not(.vertical) > entry {
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     @extend %entry_raised;
 
     .gedit-search-entry-occurrences-tag {
@@ -253,13 +253,13 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
       color: $text-secondary;
     }
 
-    $buttons_width: $small_size * 2 + $container_padding * 3;
+    $buttons_width: $small-size * 2 + $container-padding * 3;
 
     &:dir(ltr) {
       margin-right: -$buttons_width;
       padding-right: $buttons_width;
 
-      .gedit-search-entry-occurrences-tag { margin-left: $container_padding; }
+      .gedit-search-entry-occurrences-tag { margin-left: $container-padding; }
 
       image.right { margin-right: 0; }
     }
@@ -268,7 +268,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
       margin-left: -$buttons_width;
       padding-left: $buttons_width;
 
-      .gedit-search-entry-occurrences-tag { margin-right: $container_padding; }
+      .gedit-search-entry-occurrences-tag { margin-right: $container-padding; }
 
       image.left { margin-left: 0; }
     }
@@ -285,17 +285,17 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
   }
 
   .linked > button {
-    border: solid $container_padding transparent;
-    border-radius: $circular_radius;
+    border: solid $container-padding transparent;
+    border-radius: $circular-radius;
 
     @extend %simple_flat_button;
     @extend %small_button;
 
     &:last-child:dir(ltr),
-    &:not(:first-child):dir(rtl) { margin-left: -$container_padding / 2; }
+    &:not(:first-child):dir(rtl) { margin-left: -$container-padding / 2; }
 
     &:first-child:dir(rtl),
-    &:not(:last-child):dir(ltr) { margin-right: -$container_padding / 2; }
+    &:not(:last-child):dir(ltr) { margin-right: -$container-padding / 2; }
   }
 }
 
@@ -392,7 +392,7 @@ layouttabbar {
   button { @extend %flat_button; }
 
   > box > button {
-    margin: (40px - $medium_size) / 2 0;
+    margin: (40px - $medium-size) / 2 0;
     // border-radius: 0;
   }
 }
@@ -438,7 +438,7 @@ popover.popover-selector list {
   padding: 8px - 2px;
 
   row {
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
 
     image {
       &:dir(ltr) { margin-right: 6px; }
@@ -453,7 +453,7 @@ popover.popover-selector list {
 }
 
 omnibar {
-  &.linked:not(.vertical) entry { border-radius: $material_radius; }
+  &.linked:not(.vertical) entry { border-radius: $corner-radius; }
 
   &:not(:hover):not(:active) entry { color: $text-secondary; }
 }
@@ -497,9 +497,9 @@ popover.messagepopover {
     border-top: 1px solid $border;
     border-radius: 0;
 
-    &:first-child { border-bottom-left-radius: $material_radius; }
+    &:first-child { border-bottom-left-radius: $corner-radius; }
 
-    &:last-child { border-bottom-right-radius: $material_radius; }
+    &:last-child { border-bottom-right-radius: $corner-radius; }
   }
 
   .popover-content-area { margin: 16px; }
@@ -535,13 +535,13 @@ docktabstrip {
 }
 
 docktab {
-  transition: $shorter_transition,
+  transition: $transition,
               background-size 0,
               background-image 0;
-  min-height: $small_size;
-  min-width: $small_size;
+  min-height: $small-size;
+  min-width: $small-size;
   margin-bottom: -1px;
-  padding: $container_padding 6px;
+  padding: $container-padding 6px;
 
   outline-offset: -6px;
 
@@ -565,9 +565,9 @@ docktab {
   }
 
   &:checked {
-    transition: $shorter_transition,
-                background-size $longer_duration $deceleration_curve,
-                background-image $longer_duration + $ripple_duration $deceleration_curve;
+    transition: $transition,
+                background-size $duration-ripple $ease-out,
+                background-image $duration-ripple + $duration-ripple-aftermath $ease-out;
     box-shadow: inset 0 -2px $primary;
     background-color: transparent;
     background-image: radial-gradient(circle farthest-corner at center,
@@ -599,7 +599,7 @@ dockoverlayedge {
 
 pillbox {
   background-color: $background;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
 }
 
 buildperspective row {
@@ -649,8 +649,8 @@ window.workbench preferences preferencesgroup list entry {
 
 button.run-arrow-button {
   // min-width: 12px;
-  padding-left: ($medium_size - 16px) / 2;
-  padding-right: ($medium_size - 16px) / 2;
+  padding-left: ($medium-size - 16px) / 2;
+  padding-right: ($medium-size - 16px) / 2;
 }
 
 //
@@ -658,9 +658,9 @@ button.run-arrow-button {
 //
 
 button.dzlmenubutton image {
-  min-width: $medium_size - 6px;
+  min-width: $medium-size - 6px;
 
-  &.arrow { min-width: $medium_size - 9px; }
+  &.arrow { min-width: $medium-size - 9px; }
 }
 
 button.dzlmenubuttonitem {
@@ -754,8 +754,8 @@ GdMainIconView.content-view {
 
 .documents-counter {
   margin: 8px;
-  border-radius: $circular_radius;
-  box-shadow: $shadow_2;
+  border-radius: $circular-radius;
+  box-shadow: $shadow-2;
   background-color: $primary;
   color: on($primary);
   font-weight: bold;
@@ -776,12 +776,12 @@ GdMainIconView.content-view {
 
 .photos-fade-in {
   opacity: 1;
-  transition: opacity $shorter_duration $deceleration_curve;
+  transition: opacity $duration $ease-out;
 }
 
 .photos-fade-out {
   opacity: 0;
-  transition: opacity $shorter_duration $deceleration_curve;
+  transition: opacity $duration $ease-out;
 }
 
 .photos-collection-icon {
@@ -857,7 +857,7 @@ box.vertical > revealer > toolbar.search-bar {
 // less than 3.28
 task-list-view {
   taskrow {
-    transition: $shorter_transition;
+    transition: $transition;
     margin: 0 -8px;
 
     &:hover { transition: none; }
@@ -868,7 +868,7 @@ task-list-view {
   }
 
   > box > revealer > box > button {
-    margin: (12px * 2 - $medium_size) / 2;
+    margin: (12px * 2 - $medium-size) / 2;
 
     .dim-label { opacity: 1; }
   }
@@ -887,7 +887,7 @@ tasklistview {
   }
 
   > box > revealer > box > button {
-    margin: (12px * 2 - $medium_size) / 2;
+    margin: (12px * 2 - $medium-size) / 2;
 
     .dim-label { opacity: 1; }
   }
@@ -900,7 +900,7 @@ tasklistview {
 #eog-thumb-nav {
   scrolledwindow { border-top: none; }
 
-  button { -gtk-outline-radius: $material_radius; }
+  button { -gtk-outline-radius: $corner-radius; }
 }
 
 
@@ -932,7 +932,7 @@ list.categories { background-image: image($base-alt); }
 .transparent-bg + stack overlay > label {
   min-height: 24px;
   padding: 0 4px;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   background-color: $scrim;
   color: on($scrim);
 }
@@ -941,7 +941,7 @@ list.categories { background-image: image($base-alt); }
 /**************
  * Calculator *
  **************/
-button.title label { min-height: $medium_size; }
+button.title label { min-height: $medium-size; }
 
 
 /*********

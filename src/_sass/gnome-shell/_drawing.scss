@@ -1,13 +1,13 @@
 // generic drawing of more complex things
 
 // provide font size in pt, with px fallback
-@function pt($size: $root-font-size) {
+@function pt($size: $font-size) {
   @return ($size * 0.75 / 1px) + pt;
 }
 
 // provide icon size in em, with px fallback
 @function em($size: 16px) {
-  @return ($size / $root-font-size) + em;
+  @return ($size / $font-size) + em;
 }
 
 // Typography
@@ -16,28 +16,28 @@
 
 @mixin font($size) {
   @if $size == display-4 {
-    // font-family: $large-font-family;
+    // font-family: $font-family-large;
     font-size: 112px;
     font-weight: 300;
     // line-height: 1;
   }
 
   @if $size == display-3 {
-    // font-family: $large-font-family;
+    // font-family: $font-family-large;
     font-size: 56px;
     font-weight: 400;
     // line-height: 1;
   }
 
   @if $size == display-2 {
-    // font-family: $large-font-family;
+    // font-family: $font-family-large;
     font-size: 45px;
     font-weight: 400;
     // line-height: 48px;
   }
 
   @if $size == display-1 {
-    // font-family: $large-font-family;
+    // font-family: $font-family-large;
     font-size: 34px;
     font-weight: 400;
     // line-height: 40px;
@@ -56,19 +56,19 @@
   }
 
   @if $size == subheading {
-    font-size: pt($subheading-size);
+    font-size: pt($font-size-subheading);
     font-weight: 400;
     // line-height: 24px;
   }
 
   @if $size == body-2 {
-    font-size: pt($root-font-size);
+    font-size: pt($font-size);
     font-weight: 500;
     // line-height: 24px;
   }
 
   @if $size == body-1 {
-    font-size: pt($root-font-size);
+    font-size: pt($font-size);
     font-weight: 400;
     // line-height: 20px;
   }
@@ -80,7 +80,7 @@
   }
 
   @if $size == button {
-    font-size: pt($root-font-size);
+    font-size: pt($font-size);
     font-weight: 500;
     // line-height: 20px;
   }
@@ -96,7 +96,7 @@
 //
 
   @if $t == normal {
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
     background-color: if($fc == $primary, $fill, on(black, fill));
     border-color: transparent;
     box-shadow: inset 0 -1px if($fc == $primary, $track, $fc);
@@ -132,24 +132,24 @@
     color: $tc;
     background-color: $c;
     border-color: transparent;
-    box-shadow: $shadow_1;
+    box-shadow: $shadow-1;
     text-shadow: none;
     icon-shadow: none;
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
   }
 
   @if $t == focus {
     color: $tc;
     text-shadow: none;
     icon-shadow: none;
-    box-shadow: $shadow_2;
+    box-shadow: $shadow-2;
   }
 
   @if $t == hover {
     color: $tc;
     background-color: $c;
     border-color: transparent;
-    box-shadow: $shadow_2;
+    box-shadow: $shadow-2;
     text-shadow: none;
     icon-shadow: none;
   }
@@ -158,17 +158,17 @@
     color: $tc;
     background-color: mix($tc, $c, percentage(0.24));
     border-color: transparent;
-    box-shadow: $shadow_2;
+    box-shadow: $shadow-2;
     text-shadow: none;
     icon-shadow: none;
-    transition-duration: $longer_duration;
+    transition-duration: $duration-ripple;
   }
 
   @if $t == insensitive {
     color: if($tc == $text, $text-disabled, $tc);
     background-color: if($c == $surface, $fill, $c);
     border-color: transparent;
-    box-shadow: $shadow_0;
+    box-shadow: $shadow-0;
     text-shadow: none;
     icon-shadow: none;
   }
@@ -177,24 +177,24 @@
     color: if($tc != on(black), $text-secondary, on(black, secondary));
     background-color: transparent;
     border-color: transparent;
-    box-shadow: $shadow_0;
+    box-shadow: $shadow-0;
     text-shadow: none;
     icon-shadow: none;
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
   }
 
   @if $t == flat-focus {
     color: if($tc != on(black), $text, on(black));
     text-shadow: none;
     icon-shadow: none;
-    box-shadow: $shadow_0;
+    box-shadow: $shadow-0;
   }
 
   @if $t == flat-hover {
     color: if($tc != on(black), $text, on(black));
     background-color: if($tc != on(black), $overlay-hover, $inverse-overlay-hover);
     border-color: transparent;
-    box-shadow: $shadow_0;
+    box-shadow: $shadow-0;
     text-shadow: none;
     icon-shadow: none;
   }
@@ -203,17 +203,17 @@
     color: if($tc != on(black), $text, on(black));
     background-color: if($tc != on(black), $overlay-active, $inverse-overlay-active);
     border-color: transparent;
-    box-shadow: $shadow_0;
+    box-shadow: $shadow-0;
     text-shadow: none;
     icon-shadow: none;
-    transition-duration: $longer_duration;
+    transition-duration: $duration-ripple;
   }
 
   @if $t == flat-insensitive {
     color: if($tc != on(black), $text-secondary-disabled, on(black, secondary-disabled));
     background-color: transparent;
     border-color: transparent;
-    box-shadow: $shadow_0;
+    box-shadow: $shadow-0;
     text-shadow: none;
     icon-shadow: none;
   }

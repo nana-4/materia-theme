@@ -77,7 +77,7 @@ MatePanelAppletFrameDBus {
   // set normal menubar menuitem
   menubar menu > menuitem {
     // adjust sizing since the menuitem has large icons
-    min-height: $menuitem_size;
+    min-height: $menuitem-size;
     padding: 0 6px;
     // font-weight: initial;
   }
@@ -141,7 +141,7 @@ PanelApplet.wnck-applet .wnck-pager {
 
 #MatePanelPopupWindow {
   border: 1px solid $border;
-  border-radius: $material_radius + 1px;
+  border-radius: $corner-radius + 1px;
   box-shadow: inset 0 1px highlight($surface);
 
   frame > border { border-style: none; }
@@ -175,7 +175,7 @@ na-tray-applet widget box widget {
 // volume applet, brightness applet
 .mate-panel-applet-slider {
   border: 1px solid $border;
-  border-radius: $material_radius + 1px;
+  border-radius: $corner-radius + 1px;
   box-shadow: inset 0 1px highlight($surface);
   background-color: $background;
 
@@ -186,7 +186,7 @@ na-tray-applet widget box widget {
 
 // mimic menubar menuitem style
 #PanelApplet {
-  &:not(:selected) > box { transition: $shorter_transition; }
+  &:not(:selected) > box { transition: $transition; }
 
   &:selected > box {
     background-color: on($panel, divider);
@@ -217,7 +217,7 @@ na-tray-applet widget box widget {
 
     + button {
       margin: 0 4px 8px;
-      padding: ($medium_size - 24px) / 2;
+      padding: ($medium-size - 24px) / 2;
     }
   }
 }
@@ -228,7 +228,7 @@ na-tray-applet widget box widget {
  *********************/
 // pathpar toggle button
 .caja-navigation-window button.toggle.image-button {
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
 }
 
 // pathbar
@@ -268,7 +268,7 @@ na-tray-applet widget box widget {
 
 // window and desktop mode
 .caja-canvas-item {
-  // border-radius: $material_radius;
+  // border-radius: $corner-radius;
 }
 
 // desktop mode
@@ -361,16 +361,16 @@ na-tray-applet widget box widget {
 
 /* mate-screensaver lock dialog */
 .lock-dialog {
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   // not sure if box-shadow works here
-  box-shadow: $shadow_4, inset 0 1px highlight($surface);
+  box-shadow: $shadow-4, inset 0 1px highlight($surface);
 
   frame > border { border-style: none; }
 }
 
 /* multimedia OSD */
 MsdOsdWindow.background.osd {
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   background-color: $tooltip;
   color: on($tooltip);
 

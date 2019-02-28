@@ -53,10 +53,10 @@ wnck-pager {
 }
 
 XfdesktopIconView.view {
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   background-color: transparent;
   color: on($panel);
-  text-shadow: $shadow_1;
+  text-shadow: $shadow-1;
 
   // XfdesktopIconView uses :active instead of :selected for selection
   &:active {
@@ -66,7 +66,7 @@ XfdesktopIconView.view {
     text-shadow: none;
   }
 
-  // .label { text-shadow: $shadow_1; }
+  // .label { text-shadow: $shadow-1; }
 
   .rubberband {
     @extend rubberband;
@@ -95,7 +95,7 @@ XfdesktopIconView.view {
 // Xfwm4's alt-tab dialog, aka "tabwin"
 #xfwm-tabwin {
   padding: 12px;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
 
   // Set the application icon- and preview-size to 64px
   -XfwmTabwinWidget-icon-size: 64px;

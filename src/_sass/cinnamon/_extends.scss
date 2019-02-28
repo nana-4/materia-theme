@@ -2,9 +2,9 @@
   @include button(normal);
   @include font(button);
 
-  min-height: $medium_size;
+  min-height: $medium-size;
   padding: 0 16px;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   &:focus { @include button(focus); }
   &:hover, &:checked { @include button(hover); }
   &:active { @include button(active);}
@@ -13,10 +13,10 @@
 %icon-button-shared {
   @include button(normal);
 
-  min-height: $medium_size;
-  min-width: $medium_size;
+  min-height: $medium-size;
+  min-width: $medium-size;
   padding: 6px;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   &:focus { @include button(focus); }
   &:hover, &:checked { @include button(hover); }
   &:active { @include button(active);}
@@ -44,9 +44,9 @@
   @include entry(normal);
 
   width: 250px;
-  min-height: $medium_size;
+  min-height: $medium-size;
   padding: 0 8px;
-  border-radius: $material_radius $material_radius 0 0;
+  border-radius: $corner-radius $corner-radius 0 0;
   color: $text;
   caret-color: $text;
   selection-background-color: $overlay-selected;
@@ -63,20 +63,20 @@
   color: $text;
   border: none;
   padding: 12px;
-  box-shadow: $shadow_4;
+  box-shadow: $shadow-4;
 }
 %calendar-shared {
   width: 16px;
   height: 16px;
   border-radius: 999px;
-  transition-duration: $shorter_duration;
+  transition-duration: $duration;
   &:active { background-color: $track;}
 }
 %menu-shared {
   background-color: $surface;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   color: $text;
-  box-shadow: $shadow_2;
+  box-shadow: $shadow-2;
 }
 %menu-button-label-shared {
   &:ltr {
@@ -105,14 +105,14 @@
 %check-box-shared {
   width: 24px;
   height: 24px;
-  padding: ($medium_size - 24px) / 2;
+  padding: ($medium-size - 24px) / 2;
   border-radius: 100px;
   background-image: url(assets/checkbox-off.svg);
 }
 %radiobutton-shared {
   width: 20px;
   height: 20px;
-  padding: ($medium_size - 20px) / 2;
+  padding: ($medium-size - 20px) / 2;
   border-radius: 100px;
   background-image: url(assets/radiobutton-off.svg);
 }
@@ -128,9 +128,9 @@
   color: $text;
   background-color: $surface;
   border: none;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   padding: 12px;
-  box-shadow: $shadow_4;
+  box-shadow: $shadow-4;
 }
 %osd-info-workspace-shared {
   @include font(title);

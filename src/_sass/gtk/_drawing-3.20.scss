@@ -35,26 +35,26 @@
 //
 
   @if $t == raised-normal {
-    transition: $shorter_transition;
+    transition: $transition;
     border-image: none;
-    box-shadow: $shadow_1;
+    box-shadow: $shadow-1;
     background-color: if($fc == $primary, $base, $fc);
     color: if($fc == $primary, $text, on($fc));
   }
 
   @if $t == raised-focus {
     border-image: none;
-    box-shadow: $shadow_2;
+    box-shadow: $shadow-2;
   }
 
   @if $t == raised-disabled {
-    box-shadow: $shadow_1;
+    box-shadow: $shadow-1;
     background-color: $base-alt;
     color: $text-disabled;
   }
 
   @if $t == normal {
-    transition: $shorter_transition, border-image $longer_duration $deceleration_curve;
+    transition: $transition, border-image $duration-ripple $ease-out;
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                   $fc 0%,
                                   transparent 0%)
@@ -87,10 +87,10 @@
 //
 
   @if $t == normal {
-    transition: $shorter_transition,
-                background-size $ripple_duration $deceleration_curve,
-                background-image $ripple_opacity_duration $deceleration_curve;
-    box-shadow: $shadow_1, inset 0 0 0 9999px transparent;
+    transition: $transition,
+                background-size $duration-ripple-aftermath $ease-out,
+                background-image $duration-ripple-aftermath-opacity $ease-out;
+    box-shadow: $shadow-1, inset 0 0 0 9999px transparent;
     background-color: $surface;
     background-image: radial-gradient(circle farthest-corner at center,
                                       transparent 10%,
@@ -102,16 +102,16 @@
   }
 
   @if $t == hover {
-    box-shadow: $shadow_2, inset 0 0 0 9999px transparent;
+    box-shadow: $shadow-2, inset 0 0 0 9999px transparent;
     color: $text;
   }
 
   @if $t == active {
-    transition: $shorter_transition,
+    transition: $transition,
                 background-size 0,
                 background-image 0;
-    animation: ripple_effect $longer_duration $deceleration_curve forwards;
-    box-shadow: $shadow_2, inset 0 0 0 9999px $overlay-hover;
+    animation: ripple_effect $duration-ripple $ease-out forwards;
+    box-shadow: $shadow-2, inset 0 0 0 9999px $overlay-hover;
     background-image: radial-gradient(circle farthest-corner at center,
                                       $overlay-active 10%,
                                       transparent 0%);
@@ -136,10 +136,10 @@
   }
 
   @if $t == flat-normal {
-    transition: $shorter_transition,
-                border-image $longer_duration $deceleration_curve,
-                background-size $ripple_duration $deceleration_curve,
-                background-image $ripple_opacity_duration $deceleration_curve;
+    transition: $transition,
+                border-image $duration-ripple $ease-out,
+                background-size $duration-ripple-aftermath $ease-out,
+                background-image $duration-ripple-aftermath-opacity $ease-out;
     box-shadow: inset 0 0 0 9999px transparent;
     background-color: transparent;
     background-image: radial-gradient(circle farthest-corner at center,
@@ -157,11 +157,11 @@
   }
 
   @if $t == flat-active {
-    transition: $shorter_transition,
-                border-image $longer_duration $deceleration_curve,
+    transition: $transition,
+                border-image $duration-ripple $ease-out,
                 background-size 0,
                 background-image 0;
-    animation: ripple_effect $longer_duration $deceleration_curve forwards;
+    animation: ripple_effect $duration-ripple $ease-out forwards;
     box-shadow: inset 0 0 0 9999px $overlay-hover;
     background-image: radial-gradient(circle farthest-corner at center,
                                       $overlay-active 10%,

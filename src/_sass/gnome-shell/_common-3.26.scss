@@ -35,10 +35,10 @@ stage {
 
 /* Buttons */
 .button {
-  min-height: $medium_size;
+  min-height: $medium-size;
   padding: 0 16px;
   border-width: 0;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   @include font(button);
   @include button(flat-normal);
   &:hover { @include button(flat-hover); }
@@ -49,12 +49,12 @@ stage {
 }
 
 .modal-dialog-linked-button {
-  min-height: $medium_size;
-  margin: $container_padding;
+  min-height: $medium-size;
+  margin: $container-padding;
   padding: 0 8px;
   margin-right: 0;
   border-right-width: 0;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   @include font(button);
   @include button(flat-normal);
   &:hover { @include button(flat-hover); }
@@ -63,25 +63,25 @@ stage {
   &:focus { @include button(flat-focus); }
 
   &:first-child {
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
   }
   &:last-child {
-    margin-right: $container_padding;
+    margin-right: $container-padding;
     border-right-width: 0px;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
   }
   &:first-child:last-child {
-    margin-right: $container_padding;
+    margin-right: $container-padding;
     border-right-width: 0px;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
   }
 }
 
 /* Entries */
 StEntry {
-  min-height: $medium_size;
+  min-height: $medium-size;
   padding: 0 8px;
-  border-radius: $material_radius $material_radius 0 0;
+  border-radius: $corner-radius $corner-radius 0 0;
   border-width: 0;
   color: $text;
   selection-background-color: $overlay-selected;
@@ -121,7 +121,7 @@ StScrollBar {
   }
 
   StButton#vhandle, StButton#hhandle {
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
     border-radius: 100px;
     background-color: $text-disabled;
     //border: 4px solid transparent; //would be nice to margin or at least to transparent
@@ -161,15 +161,15 @@ StScrollBar {
 
 .check-box {
   * {
-    min-height: $medium_size - 8px * 2;
+    min-height: $medium-size - 8px * 2;
     padding: 8px 0;
   }
   StBoxLayout { spacing: 8px; }
   StBin {
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
     width: 24px;
     height: 24px;
-    padding: ($medium_size - 24px) / 2;
+    padding: ($medium-size - 24px) / 2;
     border-radius: 100px;
     background-image: url("assets/checkbox-off.svg");
   }
@@ -180,7 +180,7 @@ StScrollBar {
     background-color: $overlay-hover;
   }
   &:active StBin {
-    transition-duration: $longer_duration;
+    transition-duration: $duration-ripple;
     background-color: $overlay-active;
   }
   &:checked StBin {
@@ -213,15 +213,15 @@ StScrollBar {
 
 /* links */
 .shell-link {
-  transition-duration: $shorter_duration;
-  border-radius: $material_radius;
+  transition-duration: $duration;
+  border-radius: $corner-radius;
   color: $link;
   &:hover {
     color: $link;
     background-color: rgba($link, 0.08);
   }
   &:active {
-    transition-duration: $longer_duration;
+    transition-duration: $duration-ripple;
     color: $link;
     background-color: rgba($link, 0.2);
   }
@@ -234,11 +234,11 @@ StScrollBar {
 .flashspot { background-color: white; }
 
 .modal-dialog {
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   color: $text;
   background-color: $surface;
   border: none;
-  box-shadow: $shadow_4;
+  box-shadow: $shadow-4;
   .modal-dialog-content-box {
     padding: 24px;
   }
@@ -508,7 +508,7 @@ StScrollBar {
 
   .audio-selection-device {
     border: 1px solid $border;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     &:active,&:hover,&:focus { background-color: $primary; }
   }
 
@@ -562,20 +562,20 @@ StScrollBar {
   .popup-menu-arrow { } //defined globally in the TOP BAR
   .popup-sub-menu {
     background-color: $fill;
-    box-shadow: $shadow_0;
+    box-shadow: $shadow-0;
   }
 
   .popup-menu-content { padding: 8px 0; }
   .popup-menu-item {
-    // min-height: $menuitem_size - 4px * 2;
+    // min-height: $menuitem-size - 4px * 2;
     spacing: 8px;
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
 
     &:ltr { padding: 0.4em 24px 0.4em 0; }
     &:rtl { padding: 0.4em 0 0.4em 24px; }
     &:checked {
       background-color: $overlay-selected;
-      box-shadow: $shadow_0;
+      box-shadow: $shadow-0;
       font-weight: normal;
       &.selected {
         background-color: rgba($primary, 0.4);
@@ -592,7 +592,7 @@ StScrollBar {
     &:active {
       background-color: $overlay-active;
       color: $text;
-      transition-duration: $longer_duration;
+      transition-duration: $duration-ripple;
     }
     &.selected:active { color: $text; }
     &:insensitive { color: $text-disabled; }
@@ -628,8 +628,8 @@ StScrollBar {
     -arrow-box-shadow: none; //dreaming. bug #689995
     margin: 5px 8px 8px;
     background-color: $surface;
-    border-radius: $material_radius;
-    box-shadow: $shadow_2;
+    border-radius: $corner-radius;
+    box-shadow: $shadow-2;
   }
 
   .popup-separator-menu-item {
@@ -702,9 +702,9 @@ StScrollBar {
   .switcher-list-item-container { spacing: 8px; }
 
   .switcher-list .item-box {
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
     padding: 8px;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
   }
 
   .switcher-list .item-box:outlined {
@@ -734,7 +734,7 @@ StScrollBar {
   }
 
   .switcher-arrow {
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
     border-color: rgba(0,0,0,0);
     color: $text-secondary;
     &:highlighted {
@@ -771,22 +771,22 @@ StScrollBar {
     background-color: $primary;
     color: on($primary);
     background-size: 32px;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
   }
 
   .ws-switcher-box {
     height: 48px;
     border: none;
     background: $divider;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
   }
 
 %osd-panel {
   color: $text;
   background-color: $surface;
   border: none;
-  box-shadow: $shadow_4;
-  border-radius: $material_radius;
+  box-shadow: $shadow-4;
+  border-radius: $corner-radius;
   padding: 12px;
 }
 
@@ -813,9 +813,9 @@ StScrollBar {
 #panel {
   background-color: $scrim;
   /* transition from solid to transparent */
-  transition-duration: $panel_duration;
+  transition-duration: $duration-panel;
   font-weight: bold;
-  height: $menuitem_size;
+  height: $menuitem-size;
 
   &:overview,
   &.unlock-screen,
@@ -851,7 +851,7 @@ StScrollBar {
     font-weight: bold;
     color: on($scrim, secondary);
     text-shadow: none;
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
 
     .app-menu-icon {
       -st-icon-style: symbolic;
@@ -911,7 +911,7 @@ StScrollBar {
   &.solid {
     background-color: $panel;
     /* transition from transparent to solid */
-    transition-duration: $panel_duration;
+    transition-duration: $duration-panel;
     background-gradient-direction: none; // for Ubuntu session
     text-shadow: none; // for Ubuntu session
 
@@ -968,13 +968,13 @@ StScrollBar {
     .world-clocks-button,
     .weather-button,
     .events-section-title {
-      min-height: $menuitem_size - 4px * 2;
+      min-height: $menuitem-size - 4px * 2;
       padding: 4px 8px;
-      border-radius: $material_radius;
+      border-radius: $corner-radius;
     }
 
     .datemenu-today-button {
-      min-height: $menuitem_size * 2 - 4px * 2;
+      min-height: $menuitem-size * 2 - 4px * 2;
     }
 
     .message-list-section-list:ltr {
@@ -989,10 +989,10 @@ StScrollBar {
     .world-clocks-button,
     .weather-button,
     .events-section-title {
-      transition-duration: $shorter_duration;
+      transition-duration: $duration;
       &:hover,&:focus { color: $text; background-color: $overlay-hover; }
       &:active {
-        transition-duration: $longer_duration;
+        transition-duration: $duration-ripple;
         color: $text;
         background-color: $overlay-active;
       }
@@ -1021,11 +1021,11 @@ StScrollBar {
     }
 
     .calendar-month-label {
-      transition-duration: $shorter_duration;
-      height: $menuitem_size - 6px * 2;
+      transition-duration: $duration;
+      height: $menuitem-size - 6px * 2;
       margin: 2px;
       padding: 6px 16px;
-      border-radius: $material_radius;
+      border-radius: $corner-radius;
       color: $text;
       font-weight: bold;
       text-align: center;
@@ -1033,15 +1033,15 @@ StScrollBar {
     }
 
     .pager-button {
-      transition-duration: $shorter_duration;
-      width: $menuitem_size;
-      height: $menuitem_size;
+      transition-duration: $duration;
+      width: $menuitem-size;
+      height: $menuitem-size;
       margin: 2px;
       border-radius: 100px;
       background-color: transparent;
       color: $text;
       &:hover, &:focus { background-color: $overlay-hover; }
-      &:active { background-color: $overlay-active; transition-duration: $longer_duration; }
+      &:active { background-color: $overlay-active; transition-duration: $duration-ripple; }
     }
 
       .calendar-change-month-back { //arrow back
@@ -1054,16 +1054,16 @@ StScrollBar {
       }
 
     .calendar-day-base {
-      transition-duration: $shorter_duration;
+      transition-duration: $duration;
       @include font(caption);
       text-align: center;
-      width: $menuitem_size; height: $menuitem_size;
+      width: $menuitem-size; height: $menuitem-size;
       padding: 0;
       margin: 2px;
       border-radius: 100px;
       &:hover,&:focus { background-color: $overlay-hover; }
       &:active {
-        transition-duration: $longer_duration;
+        transition-duration: $duration-ripple;
         color: inherit;
         background-color: $overlay-active;
         border-color: transparent; //avoid jumparound due to today
@@ -1074,7 +1074,7 @@ StScrollBar {
         border-color: transparent; //avoid jumparound due to today
       }
       &.calendar-day-heading {  //day of week heading
-        width: $menuitem_size; height: $menuitem_size - 7px;
+        width: $menuitem-size; height: $menuitem-size - 7px;
         margin-top: 2px;
         padding: 7px 0 0;
         border-radius: 100px;
@@ -1113,7 +1113,7 @@ StScrollBar {
         opacity: 0.5;
       }
       .calendar-week-number {
-        width: $menuitem_size; height: $menuitem_size - 7px;
+        width: $menuitem-size; height: $menuitem-size - 7px;
         margin: 2px;
         padding: 7px 0 0;
         border-radius: 100px;
@@ -1146,15 +1146,15 @@ StScrollBar {
         }
 
         .message {
-          transition-duration: $shorter_duration;
-          min-height: $menuitem_size * 2;
+          transition-duration: $duration;
+          min-height: $menuitem-size * 2;
           background-color: transparent;
           &:hover,&:focus { background-color: $overlay-hover; }
           &:active {
-            transition-duration: $longer_duration;
+            transition-duration: $duration-ripple;
             background-color: $overlay-active;
           }
-          border-radius: $material_radius;
+          border-radius: $corner-radius;
         }
 
           .message-icon-bin {
@@ -1175,7 +1175,7 @@ StScrollBar {
           }
 
           .message-secondary-bin > .event-time {
-            min-height: $small_size - 2px;
+            min-height: $small-size - 2px;
             padding-top: 2px;
             color: $text-secondary;
             font-size: 1em;
@@ -1189,7 +1189,7 @@ StScrollBar {
           }
 
           .message-title {
-            min-height: $small_size - 2px;
+            min-height: $small-size - 2px;
             padding-top: 2px;
             color: $text;
             font-weight: bold;
@@ -1197,17 +1197,17 @@ StScrollBar {
           }
 
           .message-content {
-            min-height: $menuitem_size * 2 - 8px * 2;
+            min-height: $menuitem-size * 2 - 8px * 2;
             padding: 8px;
             color: $text-secondary;
             font-size: 1em;
           }
 
           .message-content * > StIcon {
-            transition-duration: $shorter_duration;
+            transition-duration: $duration;
             icon-size: 16px;
             border-radius: 16px;
-            padding: ($small_size - 16px) / 2;
+            padding: ($small-size - 16px) / 2;
             color: $text-secondary;
           }
 
@@ -1219,19 +1219,19 @@ StScrollBar {
           }
 
           .message-content *:active > StIcon {
-            transition-duration: $longer_duration;
+            transition-duration: $duration-ripple;
             color: $text;
             background-color: $overlay-active;
           }
 
           .message-media-control {
-            transition-duration: $shorter_duration;
+            transition-duration: $duration;
             margin: 16px 0;
             padding: 8px;
             border-radius: 100px;
             color: $text-secondary;
             &:hover,&:focus { color: $text; background-color: $overlay-hover; }
-            &:active { color: $text; background-color: $overlay-active; transition-duration: $longer_duration; }
+            &:active { color: $text; background-color: $overlay-active; transition-duration: $duration-ripple; }
             &:insensitive { color: $text-secondary-disabled; }
 
             &:last-child:ltr { margin-right: 16px; padding-right: 8px; }
@@ -1246,7 +1246,7 @@ StScrollBar {
               icon-size: 16px !important;
               padding: 8px;
               border: none;
-              border-radius: $material_radius;
+              border-radius: $corner-radius;
               background-color: $divider;
               color: $text-disabled;
             }
@@ -1285,17 +1285,17 @@ StScrollBar {
   .system-menu-action {
     color: $text-secondary;
     border-radius: 100px; /* wish we could do 50% */
-    padding: ($large_size - 16px) / 2;
+    padding: ($large-size - 16px) / 2;
     border: none;
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
 
     &:hover, &:focus {
       background-color: $overlay-hover;
       color: $text;
       border: none;
-      padding: ($large_size - 16px) / 2;
+      padding: ($large-size - 16px) / 2;
     }
-    &:active { background-color: $overlay-active; color: $text; transition-duration: $longer_duration; }
+    &:active { background-color: $overlay-active; color: $text; transition-duration: $duration-ripple; }
 
     & > StIcon { icon-size: 16px; }
   }
@@ -1323,26 +1323,26 @@ StScrollBar {
 
 .window-close {
   // FIXME: unless disable the transition, button will distort when hovering
-  // transition-duration: $shorter_duration;
-  height: $medium_size;
-  width: $medium_size;
-  -shell-close-overlap: $medium_size / 2;
-  -st-background-image-shadow: $shadow_1;
+  // transition-duration: $duration;
+  height: $medium-size;
+  width: $medium-size;
+  -shell-close-overlap: $medium-size / 2;
+  -st-background-image-shadow: $shadow-1;
   background-image: url("assets/window-close.svg");
-  background-size: $medium_size;
+  background-size: $medium-size;
 
   &:hover {
-    -st-background-image-shadow: $shadow_2;
+    -st-background-image-shadow: $shadow-2;
     background-image: url("assets/window-close.svg");
   }
   &:active {
-    // transition-duration: $longer_duration;
+    // transition-duration: $duration-ripple;
     background-image: url("assets/window-close-active.svg");
   }
 
   // For backward compatibility of 3.26.0
-  &:rtl { -st-background-image-shadow: $shadow_1; }
-  &:rtl:hover { -st-background-image-shadow: $shadow_2; }
+  &:rtl { -st-background-image-shadow: $shadow-1; }
+  &:rtl:hover { -st-background-image-shadow: $shadow-2; }
 }
 
 /* NETWORK DIALOGS */
@@ -1371,15 +1371,15 @@ StScrollBar {
   .nm-dialog-header { @include font(title); }
 
   .nm-dialog-item {
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
     font-size: 1em;
     border-bottom: none;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     padding: 12px;
     spacing: 20px;
     &:hover, &:focus { background-color: $overlay-hover; }
     &:active {
-      transition-duration: $longer_duration;
+      transition-duration: $duration-ripple;
       background-color: $overlay-active;
     }
   }
@@ -1415,7 +1415,7 @@ StScrollBar {
 
   .window-clone-border {
     border: 4px solid on(black, track);
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     // For window decorations with round corners we can't match
     // the exact shape when the window is scaled. So apply a shadow
     // to fix that case
@@ -1425,7 +1425,7 @@ StScrollBar {
     spacing: 25px;
     color: on($scrim);
     background-color: $scrim;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     padding: 4px 8px;
   }
 
@@ -1433,7 +1433,7 @@ StScrollBar {
   .search-entry {
     width: 320px - 8px * 2;
     padding: 0 8px;
-    border-radius: $material_radius $material_radius 0 0;
+    border-radius: $corner-radius $corner-radius 0 0;
     color: on(black, disabled);
     selection-background-color: on(black, track);
     selected-color: on(black);
@@ -1485,17 +1485,17 @@ StScrollBar {
   /* DASHBOARD */
 
   #dash {
-    transition-duration: $panel_duration;
+    transition-duration: $duration-panel;
     font-size: 1em;
     color: on(black);
     background-color: $scrim-inverse;
     padding: 3px 0;
     border: none;
     border-left: 0px;
-    border-radius: 0px $material_radius $material_radius 0px;
+    border-radius: 0px $corner-radius $corner-radius 0px;
 
     &:rtl {
-      border-radius: $material_radius 0 0 $material_radius;
+      border-radius: $corner-radius 0 0 $corner-radius;
     }
 
     .placeholder {
@@ -1517,11 +1517,11 @@ StScrollBar {
 
   .dash-label { //osd tooltip
     // min-height: 32px - 6px * 2;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     padding: 7px 8px;
     color: $text;
     background-color: $surface;
-    box-shadow: $shadow_2;
+    box-shadow: $shadow-2;
     text-align: center;
     -x-offset: 8px;
   }
@@ -1567,11 +1567,11 @@ StScrollBar {
     }
     &:first-child {
       border-right-width: 0;
-      border-radius: $material_radius;
+      border-radius: $corner-radius;
       &:checked { border-radius: 0; }
     }
     &:last-child {
-      border-radius: $material_radius;
+      border-radius: $corner-radius;
       &:checked { border-radius: 0; }
     }
   }
@@ -1586,7 +1586,7 @@ StScrollBar {
     }
     &:active, &:checked {
       background-color: $inverse-overlay-active;
-      transition-duration: $longer_duration;
+      transition-duration: $duration-ripple;
     }
   }
   .app-well-app,
@@ -1607,8 +1607,8 @@ StScrollBar {
     &:active .overview-icon,
     &:checked .overview-icon {
       background-color: $inverse-overlay-active;
-      box-shadow: $shadow_0;
-      transition-duration: $longer_duration;
+      box-shadow: $shadow-0;
+      transition-duration: $duration-ripple;
     }
 
   }
@@ -1621,10 +1621,10 @@ StScrollBar {
 
   %icon_tile {
     color: on(black);
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     padding: 6px;
     border: none;
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
     text-align: center;
   }
 
@@ -1641,13 +1641,13 @@ StScrollBar {
   .show-apps:checked .show-apps-icon,
   .show-apps:focus .show-apps-icon {
     color: on(black);
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
   }
 
 
   // Collections
   .app-folder-popup { //expanded collection
-    -arrow-border-radius: $material_radius;
+    -arrow-border-radius: $corner-radius;
     -arrow-background-color: $scrim-inverse;
     -arrow-base: 24px;
     -arrow-rise: 12px;
@@ -1668,7 +1668,7 @@ StScrollBar {
       border-radius: 12px;
       background-image: none;
       background-color: on(black, secondary-disabled);
-      transition-duration: $shorter_duration;
+      transition-duration: $duration;
     }
     &:hover .page-indicator-icon {
       background-image: none;
@@ -1700,9 +1700,9 @@ StScrollBar {
     visible-width: 32px; //amount visible before hover
     spacing: 12px;
     padding: 12px;
-    border-radius: $material_radius 0 0 $material_radius;
+    border-radius: $corner-radius 0 0 $corner-radius;
     //border-width: 0; //fixme: can't have non unoform borders :(
-    &:rtl { border-radius: 0 $material_radius $material_radius 0;}
+    &:rtl { border-radius: 0 $corner-radius $corner-radius 0;}
 
     .placeholder {
       background-image: url("assets/dash-placeholder.svg");
@@ -1726,7 +1726,7 @@ StScrollBar {
   }
 
 %overview-panel {
-  transition-duration: $panel_duration;
+  transition-duration: $duration-panel;
   color: on(black);
   background-color: $scrim-inverse;
   border: none;
@@ -1745,13 +1745,13 @@ StScrollBar {
   .notification-banner {
     font-size: 1em;
     width: 34em;
-    min-height: $menuitem_size * 2;
+    min-height: $menuitem-size * 2;
     margin: 5px;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     color: $text;
     background-color: $surface;
     border: none;
-    box-shadow: $shadow_2;
+    box-shadow: $shadow-2;
     &:hover { background-color: $surface; }
     &:focus { background-color: $surface; }
 
@@ -1761,22 +1761,22 @@ StScrollBar {
     .notification-actions {
       background-color: transparent;
       padding-top: 0;
-      padding: $container_padding;
-      spacing: $container_padding;
+      padding: $container-padding;
+      spacing: $container-padding;
     }
     .notification-button {
-      transition-duration: $shorter_duration;
-      min-height: $medium_size;
+      transition-duration: $duration;
+      min-height: $medium-size;
       padding: 0 8px;
-      border-radius: $material_radius;
+      border-radius: $corner-radius;
       background-color: transparent;
       color: $text-secondary;
       font-weight: 500;
-      &:first-child { border-radius: $material_radius; }
-      &:last-child { border-radius: $material_radius; }
+      &:first-child { border-radius: $corner-radius; }
+      &:last-child { border-radius: $corner-radius; }
       &:hover, &focus { background-color: $overlay-hover; color: $text; }
       &:active {
-        transition-duration: $longer_duration;
+        transition-duration: $duration-ripple;
         background-color: $overlay-active;
         color: $text;
       }
@@ -1836,12 +1836,12 @@ StScrollBar {
     .hotplug-resident-box { spacing: 8px; }
 
     .hotplug-resident-mount {
-      transition-duration: $shorter_duration;
+      transition-duration: $duration;
       spacing: 8px;
-      border-radius: $material_radius;
+      border-radius: $corner-radius;
       &:hover { background-color: $overlay-hover; }
       &:active {
-        transition-duration: $longer_duration;
+        transition-duration: $duration-ripple;
         background-color: $overlay-active;
       }
     }
@@ -1862,7 +1862,7 @@ StScrollBar {
 
     .hotplug-resident-eject-button {
       padding: 7px;
-      border-radius: $material_radius;
+      border-radius: $corner-radius;
       color: $text;
     }
 
@@ -1894,7 +1894,7 @@ StScrollBar {
     min-width: 2em;
     font-size: 2em;
     font-weight: 500;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     border: none;
     @include button(normal);
     &:focus { @include button(focus); }
@@ -1918,8 +1918,8 @@ StScrollBar {
     -arrow-rise: 0;
     -boxpointer-gap: 5px;
     background-color: $surface;
-    border-radius: $material_radius;
-    box-shadow: $shadow_2;
+    border-radius: $corner-radius;
+    box-shadow: $shadow-2;
   }
 
 // IBus Candidate Popup
@@ -1935,29 +1935,29 @@ StScrollBar {
   }
 
   .candidate-box {
-    transition-duration: $shorter_duration;
-    min-height: $menuitem_size;
+    transition-duration: $duration;
+    min-height: $menuitem-size;
     padding: 0 8px;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     &:hover { background-color: $overlay-hover; color: $text; transition-duration: 0ms; }
-    &:active { background-color: $overlay-active; color: $text; transition-duration: $longer_duration; }
+    &:active { background-color: $overlay-active; color: $text; transition-duration: $duration-ripple; }
     &:selected { background-color: $overlay-selected; color: $text; transition-duration: 0ms; }
   }
 
   .candidate-page-button-box {
-    height: $menuitem_size;
+    height: $menuitem-size;
     .vertical & { padding-top: 0; }
     .horizontal & { padding-left: 0; }
   }
 
   .candidate-page-button {
-    min-width: $menuitem_size;
-    min-height: $menuitem_size;
+    min-width: $menuitem-size;
+    min-height: $menuitem-size;
     padding: 0;
   }
 
-  .candidate-page-button-previous { border-radius: $material_radius; border-right-width: 0; }
-  .candidate-page-button-next { border-radius: $material_radius;  }
+  .candidate-page-button-previous { border-radius: $corner-radius; border-right-width: 0; }
+  .candidate-page-button-next { border-radius: $corner-radius;  }
   .candidate-page-button-icon { icon-size: em(16px); }
 
 /* Auth Dialogs & Screen Shield */
@@ -1966,7 +1966,7 @@ StScrollBar {
   background-size: contain;
   border: none;
   color: on($os-background);
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   &:hover {
     border-color: on($os-background);
     color: on($os-background);
@@ -2028,19 +2028,19 @@ StScrollBar {
     }
   }
   .login-dialog-not-listed-label {
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
     font-size: 1em;
     font-weight: bold;
     color: on($os-background, secondary);
     padding-top: 1em;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     &:hover {
       background-color: $inverse-overlay-hover;
       color: on($os-background);
     }
     &:focus { background-color: $inverse-overlay-focus; }
     &:active {
-      transition-duration: $longer_duration;
+      transition-duration: $duration-ripple;
       background-color: $inverse-overlay-active;
       color: on($os-background);
     }
@@ -2057,8 +2057,8 @@ StScrollBar {
     &:expanded .login-dialog-user-list-item:logged-in { border-right: 2px solid on($os-background); }
   }
   .login-dialog-user-list-item {
-    transition-duration: $shorter_duration;
-    border-radius: $material_radius;
+    transition-duration: $duration;
+    border-radius: $corner-radius;
     padding: 4px 4px 0;
     color: on($os-background, secondary);
     &:ltr { padding-right: 1em; }
@@ -2068,7 +2068,7 @@ StScrollBar {
       color: on($os-background);
     }
     &:active {
-      transition-duration: $longer_duration;
+      transition-duration: $duration-ripple;
       background-color: $inverse-overlay-active;
       color: on($os-background);
     }
@@ -2126,12 +2126,12 @@ StScrollBar {
     width: 80px;
     height: 48px;
     -arrow-thickness: 12px;
-    -arrow-shadow: $shadow_1;
+    -arrow-shadow: $shadow-1;
 }
 
 .screen-shield-clock {
   color: white;
-  text-shadow: $shadow_1;
+  text-shadow: $shadow-1;
   font-weight: normal;
   text-align: center;
   padding-bottom: 1.5em;
@@ -2139,7 +2139,7 @@ StScrollBar {
 
 .screen-shield-clock-time {
   @include font(display-4);
-  text-shadow: $shadow_1;
+  text-shadow: $shadow-1;
 }
 
 .screen-shield-clock-date { @include font(display-2); }
@@ -2160,20 +2160,20 @@ StScrollBar {
     border: none;
     background-color: $scrim-alt;
     color: on($scrim-alt);
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
   }
   .notification { margin-right: 16px; } //compensate for space allocated to the scrollbar
 }
 
 
 .screen-shield-notification-label {
-  min-height: $small_size - 2px;
+  min-height: $small-size - 2px;
   padding: 2px 0px 0px 16px;
   font-weight: bold;
 }
 
 .screen-shield-notification-count-text {
-  min-height: $small_size - 2px;
+  min-height: $small-size - 2px;
   padding: 2px 0px 0px 16px;
   color: on($scrim-alt, secondary);
 }
@@ -2182,7 +2182,7 @@ StScrollBar {
 
 .screen-shield-background { //just the shadow, really
   background: black;
-  box-shadow: $shadow_5;
+  box-shadow: $shadow-5;
 }
 
 #lockDialogGroup {
@@ -2201,8 +2201,8 @@ StScrollBar {
   spacing: 4px;
   padding: 0;
   border: none;
-  border-radius: $material_radius;
-  box-shadow: $shadow_4;
+  border-radius: $corner-radius;
+  box-shadow: $shadow-4;
   & > #Toolbar {
     padding: 0 8px;
     border: none;
@@ -2216,10 +2216,10 @@ StScrollBar {
     -minimum-hpadding: 6px;
     font-weight: bold;
     color: $text-secondary;
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
     padding-left: 16px;
     padding-right: 16px;
-    min-height: $medium_size;
+    min-height: $medium-size;
     padding: 0 16px * 2;
     &:hover {
       background-color: $overlay-hover;
@@ -2229,7 +2229,7 @@ StScrollBar {
     &:active {
       background-color: $overlay-active;
       color: $text;
-      transition-duration: $longer_duration;
+      transition-duration: $duration-ripple;
     }
     &:selected {
       border-bottom-width: 0;
@@ -2265,10 +2265,10 @@ StScrollBar {
   }
 
   .lg-obj-inspector-button {
-      min-height: $medium_size;
+      min-height: $medium-size;
       padding: 0 16px;
       border: none;
-      border-radius: $material_radius;
+      border-radius: $corner-radius;
       @include font(button);
       @include button(flat-normal);
       &:hover { @include button(flat-hover); }
@@ -2287,7 +2287,7 @@ StScrollBar {
 
   .lg-extension {
       border: none;
-      border-radius: $material_radius;
+      border-radius: $corner-radius;
       padding: 4px;
   }
 
@@ -2302,7 +2302,7 @@ StScrollBar {
   #LookingGlassPropertyInspector {
     background: $surface;
     border: none;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     padding: 6px;
-    box-shadow: $shadow_4;
+    box-shadow: $shadow-4;
   }

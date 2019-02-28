@@ -59,7 +59,7 @@ StScrollView {
   padding: 6px 8px;
   color: on($tooltip);
   text-align: center;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   background-color: $tooltip;
 }
 // applet menus. Note that cinnamon versions before 3.2 uses deprecated styles
@@ -96,7 +96,7 @@ StScrollView {
 .popup-menu-item {
   padding: 0.4em 16px;
   spacing: 8px;
-  transition-duration: $shorter_duration;
+  transition-duration: $duration;
   &:active {
     background-color: $overlay-hover;
     color: $text;
@@ -499,8 +499,8 @@ StScrollView {
   background-color: $scrim-inverse;
   border: none;
   padding: 8px;
-  border-radius: $material_radius 0 0 $material_radius;
-  &:rtl { border-radius: 0 $material_radius $material_radius 0;}
+  border-radius: $corner-radius 0 0 $corner-radius;
+  &:rtl { border-radius: 0 $corner-radius $corner-radius 0;}
 }
 .workspace-thumbnails {
   spacing: 32px;
@@ -571,10 +571,10 @@ StScrollView {
 .datemenu-date-label {
     @include font(title);
 
-    height: $menuitem_size - 2px * 2;
+    height: $menuitem-size - 2px * 2;
     margin: 2px;
     padding: 6px 16px;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     color: $text;
     text-align: center;
     &:focus { background-color: $divider }; 
@@ -582,10 +582,10 @@ StScrollView {
 .calendar-month-label {
     @include font(body-2);
 
-    height: $menuitem_size - 6px * 2;
+    height: $menuitem-size - 6px * 2;
     margin: 2px;
     padding: 6px 16px;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     color: $text;
     text-align: center;
     &:focus { background-color: $divider }; 
@@ -610,7 +610,7 @@ StScrollView {
   @include font(caption);
 
   text-align: center;
-  width: $menuitem_size; height: $menuitem_size;
+  width: $menuitem-size; height: $menuitem-size;
   padding: 0;
   margin: 2px;
   border-radius: 100px;
@@ -624,7 +624,7 @@ StScrollView {
 .calendar-week-number {
   @include font(caption);
 
-  width: $menuitem_size - 7px; height: $menuitem_size;
+  width: $menuitem-size - 7px; height: $menuitem-size;
   margin: 2px;
   padding: 0;
   border-radius: 100px;
@@ -635,7 +635,7 @@ StScrollView {
 .calendar-day-heading  {
   @include font(caption);
 
-  width: $menuitem_size; height: $menuitem_size - 7px;
+  width: $menuitem-size; height: $menuitem-size - 7px;
   margin: 2px;
   padding: 0;
   border-radius: 100px;
@@ -672,7 +672,7 @@ StScrollView {
   opacity: 0.5;
 }
 .calendar-week-number {
-  width: $menuitem_size; height: $menuitem_size - 7px;
+  width: $menuitem-size; height: $menuitem-size - 7px;
   margin: 2px;
   padding: 7px 0 0;
   border-radius: 100px;
@@ -685,7 +685,7 @@ StScrollView {
 // notification system
 #notification {
   background-color: $surface;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   border: 1px solid $border;
   padding: 8px;
   spacing-rows: 4px;
@@ -693,7 +693,7 @@ StScrollView {
   margin-from-right-edge-of-screen: 20px;
   width: 34em;
   color: $text;
-  box-shadow: $shadow_2;
+  box-shadow: $shadow-2;
   &.multi-line-notification {
     padding-bottom: 8px;
   }
@@ -750,10 +750,10 @@ StScrollView {
 .switcher-list {
   @extend %osd-panel-shared;
 
-  transition-duration: $shorter_duration;
+  transition-duration: $duration;
   .item-box {
     padding: 8px;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     &:selected {
       background-color: $divider;
     }
@@ -777,7 +777,7 @@ StScrollView {
   background-gradient-direction: horizontal;
   background-gradient-start: rgba(51, 51, 51, 1.0);
   background-gradient-end: rgba(51, 51, 51, 0);
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   border-radius-topright: 0;
   border-radius-bottomright: 0;
   width: 60px;
@@ -786,7 +786,7 @@ StScrollView {
   background-gradient-direction: horizontal;
   background-gradient-start: rgba(51, 51, 51, 0);
   background-gradient-end: rgba(51, 51, 51, 1.0);
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   border-radius-topleft: 0;
   border-radius-bottomleft: 0;
   width: 60px;
@@ -843,7 +843,7 @@ StScrollView {
     @extend %dialog-entry-shared;
 }
 .run-dialog {
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   padding: 16px 20px;
 }
 // this is an full screen overlay that is displayed with any cinnamon OSD or modal dialog which needs to always be semi transparent
@@ -956,8 +956,8 @@ StScrollView {
   -arrow-rise: 0;
   -boxpointer-gap: 5px;
   background-color: $background;
-  border-radius: $material_radius;
-  box-shadow: $shadow_2;
+  border-radius: $corner-radius;
+  box-shadow: $shadow-2;
 }
 // main menu applet
 .menu-favorites-box {
@@ -967,7 +967,7 @@ StScrollView {
   padding: 0.4em 4px;
   &:hover {
      background-color: $divider;
-     border-radius: $material_radius;
+     border-radius: $corner-radius;
      color: $text;
   }
 }
@@ -979,7 +979,7 @@ StScrollView {
 }
 .menu-applications-outer-box {
   padding: 8px;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
 }
 .menu-application-button {
   padding: 0.4em 4px;
@@ -990,7 +990,7 @@ StScrollView {
 .menu-application-button-selected {
   padding: 0.4em 4px;
   background-color: $divider;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   color: $text;
   &:highlighted {
     font-weight: bold;
@@ -1010,7 +1010,7 @@ StScrollView {
 .menu-category-button-selected {
   padding: 0.4em 4px;
   background-color: $divider;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   color: $text;
   &:hover {
   }
@@ -1078,7 +1078,7 @@ StScrollView {
 // progress was added with cinnamon 3.6 and allows compatible applications to use the window list as a progress bar
 .window-list-item-box {
   background-color: rgba(0, 0, 0, 0.01);
-  transition-duration: $shorter_duration;
+  transition-duration: $duration;
   &:hover {
     color: $titlebar-text;
   }
@@ -1103,11 +1103,11 @@ StScrollView {
 // cinnamon 3.8 will support an improved window-list-thumbnail preview which now has it's own selector
 .window-list-preview {
   background-color: $surface;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   padding: 10px 15px;
   spacing: 1em;
   color: $text;
-  box-shadow: $shadow_4;
+  box-shadow: $shadow-4;
 }
 // Cinnamon 4.0 has a new grouped window list applet with it's own selectors.
 // Initial theme support is defined here. Some theming is defined in the panel orientation specific section above.
@@ -1125,7 +1125,7 @@ StScrollView {
     padding-left: 3px;
   }
   &-badge {
-    border-radius: $circular_radius;
+    border-radius: $circular-radius;
     background-color: $panel-solid; 
   }
   &-thumbnail-alert {
@@ -1133,7 +1133,7 @@ StScrollView {
   }
   &-item-box {
     background-color: rgba(0, 0, 0, 0.01);
-    transition-duration: $shorter_duration;
+    transition-duration: $duration;
     &:hover {
       color: $titlebar-text;
     }
@@ -1161,13 +1161,13 @@ StScrollView {
   &-thumbnail-menu {
     padding: 20px;
     border: none;
-    border-radius: $material_radius;
+    border-radius: $corner-radius;
     color: $titlebar-text-secondary;
     background: none;
     .item-box {
       padding: 8px;
       spacing: 2px;
-      border-radius: $material_radius;
+      border-radius: $corner-radius;
        &:outlined {
          border: 2px solid $border;
          color: $titlebar-text;
@@ -1206,8 +1206,8 @@ StScrollView {
     @extend %icon-button-shared;
 
     &:small {
-      min-width: $small_size;
-      min-height: $small_size;
+      min-width: $small-size;
+      min-height: $small-size;
       padding: 4px;
       StIcon {
         icon-size: 1em;
@@ -1280,7 +1280,7 @@ StScrollView {
 .panel-launchers {
   padding: 0 4px;
   spacing: 4px;
-  transition-duration: $shorter_duration;
+  transition-duration: $duration;
   .launcher {
     background-color:rgba(0, 0, 0, 0.01);
   }
@@ -1303,7 +1303,7 @@ StScrollView {
 .applet-box {
   background-color: rgba(0, 0, 0, 0.01);
   color: $titlebar-text-secondary;
-  transition-duration: $shorter_duration;
+  transition-duration: $duration;
   &:checked {
     color: $titlebar-text;
     .applet-label {
@@ -1343,10 +1343,10 @@ StScrollView {
   
   color: $titlebar-text;
   border: none;
-  box-shadow: $shadow_4;
+  box-shadow: $shadow-4;
   padding: 12px;
   background-color: $scrim-alt;
-  border-radius: $material_radius
+  border-radius: $corner-radius
 }
 // these do not inherit from .desklet
 .desklet-with-borders {
@@ -1354,7 +1354,7 @@ StScrollView {
   @include font(caption);
 
   background-color: $surface;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   &:highlight {
     background-color: highlight($surface);
   }
@@ -1385,7 +1385,7 @@ StScrollView {
   @extend %desklet-shared;
   
   background-color: $surface;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
   &:highlight {
     background-color: highlight($surface);
   }
@@ -1393,7 +1393,7 @@ StScrollView {
 .desklet-drag-placeholder {
   border: 2px solid $primary;
   background-color: $scrim-alt;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
 }
 .launcher {
   padding: 1px;
@@ -1419,7 +1419,7 @@ StScrollView {
 }
 .about-scrollBox {
   border: 1px solid $border;
-  border-radius: $material_radius;
+  border-radius: $corner-radius;
 }
 .about-scrollBox-innerBox {
   padding: 1.2em;
@@ -1444,8 +1444,8 @@ StScrollView {
   selected-color: on(black);
   caret-color: on(black);
   text-align: center;
-  height: $medium_size;
-  border-radius: $material_radius $material_radius 0 0;
+  height: $medium-size;
+  border-radius: $corner-radius $corner-radius 0 0;
   -cinnamon-caption-spacing: 12px;
   &#selected {
     color: on(black);
@@ -1548,7 +1548,7 @@ StScrollView {
   &:bottom {
     border-bottom-width: 0;
 
-    border-radius: $material_radius $material_radius 0 0;
+    border-radius: $corner-radius $corner-radius 0 0;
   }
   &:left {
     border-left-width: 0;
