@@ -2,16 +2,16 @@ $asset-suffix: if($variant == 'dark', '-dark', '');
 $background-clip-extra: if($variant == 'light', padding-box, border-box);
 
 // sizes
+$container-padding: if($compact == 'false', 6px, 4px);
+
 $small-size: if($compact == 'false', 24px, 24px);
 $medium-size: if($compact == 'false', 36px, 32px);
 $large-size: if($compact == 'false', 48px, 40px);
 
-$container-padding: if($compact == 'false', 6px, 4px);
-
 $bar-size: 4px;
 $menuitem-size: 28px;
 
-// radiuses
+// radii
 $corner-radius: 4px;
 $circular-radius: 9999px;
 
@@ -36,10 +36,10 @@ $transition-shadow: box-shadow $duration $ease-out;
 // https://material-design.storage.googleapis.com/images/layout-principles-dimensionality-shadows-08_large_mdpi.png
 
 // box-shadow 1px blur doesn't draw correctly, see
-// https://bugzilla.gnome.org/show_bug.cgi?id=738484
-// $shadow-1: 0 1px 1.5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
-$shadow-1: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-$shadow-2: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
-$shadow-3: 0 10px 10px rgba(0, 0, 0, 0.19), 0 6px 3px rgba(0, 0, 0, 0.23);
-$shadow-4: 0 14px 14px rgba(0, 0, 0, 0.25), 0 10px 5px rgba(0, 0, 0, 0.22);
-$shadow-5: 0 19px 19px rgba(0, 0, 0, 0.30), 0 15px 6px rgba(0, 0, 0, 0.22);
+// https://gitlab.gnome.org/GNOME/gtk/issues/511
+// $shadow-1: 0 1px 1.5px rgba(black, 0.12), 0 1px 1px rgba(black, 0.24);
+$shadow-1: 0 1px 1px rgba(black, 0.12), 0 1px 2px rgba(black, 0.24);
+$shadow-2: 0 3px 3px rgba(black, 0.16), 0 3px 3px rgba(black, 0.23);
+$shadow-3: 0 10px 10px rgba(black, 0.19), 0 6px 3px rgba(black, 0.23);
+$shadow-4: 0 14px 14px rgba(black, 0.25), 0 10px 5px rgba(black, 0.22);
+$shadow-5: 0 19px 19px rgba(black, 0.30), 0 15px 6px rgba(black, 0.22);

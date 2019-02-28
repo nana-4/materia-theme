@@ -12,7 +12,7 @@ $menuitem-size: if($compact == 'false', 32px, 28px);
 // durations
 $duration-panel: 250ms;
 
-// Override durations
+// Override durations; since St does not support transition-timing-function
 $duration: 100ms;
 $duration-ripple: 200ms;
 
@@ -24,13 +24,13 @@ $duration-ripple: 200ms;
 $shadow-0: 0 0 transparent;
 
 // Override shadows
-$shadow-1: 0 1px 1.5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
-$shadow-2: 0 3px 3px rgba(0, 0, 0, 0.16 * 1.5), 0 3px 3px rgba(0, 0, 0, 0.23 * 1.5);
-$shadow-3: 0 10px 10px rgba(0, 0, 0, 0.19 * 1.5), 0 6px 3px rgba(0, 0, 0, 0.23 * 1.5);
-$shadow-4: 0 14px 14px rgba(0, 0, 0, 0.25 * 2), 0 10px 5px rgba(0, 0, 0, 0.22 * 2);
-$shadow-5: 0 19px 19px rgba(0, 0, 0, 0.30 * 2), 0 15px 6px rgba(0, 0, 0, 0.22 * 2);
+$shadow-1: 0 1px 1.5px rgba(black, 0.12), 0 1px 1px rgba(black, 0.24);
+$shadow-2: 0 3px 3px rgba(black, 0.16 * 1.5), 0 3px 3px rgba(black, 0.23 * 1.5);
+$shadow-3: 0 10px 10px rgba(black, 0.19 * 1.5), 0 6px 3px rgba(black, 0.23 * 1.5);
+$shadow-4: 0 14px 14px rgba(black, 0.25 * 2), 0 10px 5px rgba(black, 0.22 * 2);
+$shadow-5: 0 19px 19px rgba(black, 0.30 * 2), 0 15px 6px rgba(black, 0.22 * 2);
 
-// Override overlay colors
+// Override overlay colors; since St does not support alpha() function
 $overlay-hover:       rgba($text, 0.08);
 $overlay-focus:       rgba($text, 0.12);
 $overlay-focus-hover: rgba($text, 0.16);
