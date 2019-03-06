@@ -133,7 +133,6 @@ flowbox {
 
   &:selected {
     background-color: transparent;
-    color: inherit;
   }
 }
 
@@ -782,23 +781,6 @@ spinbutton {
       border-radius: 0;
       box-shadow: none;
       background-color: transparent;
-      //
-      // This will help to simplify spinbutton's code, but unfortunatelly
-      // doesn't work properly in :dir(rtl). It needs z-index property.
-      //
-      // min-width: $large-size - 8px;
-      //
-      // $spinbuttons_width: $small-size * 2 + $container-padding * 3;
-      //
-      // &:dir(ltr) {
-      //   margin-right: -$spinbuttons_width;
-      //   padding-right: $spinbuttons_width;
-      // }
-      //
-      // &:dir(rtl) {
-      //   margin-left: -$spinbuttons_width;
-      //   padding-left: $spinbuttons_width;
-      // }
     }
 
     button {
@@ -819,8 +801,6 @@ spinbutton {
 
   // OSD horizontal
   .osd &:not(.vertical) {
-    button {
-    }
   }
 
   // Vertical
@@ -859,7 +839,7 @@ spinbutton {
   }
 
   // OSD vertical
-  .osd &.vertical button:first-child {
+  .osd &.vertical {
   }
 
   // Misc
@@ -2117,7 +2097,7 @@ switch {
 
   &:disabled { opacity: 0.5; }
 
-  // hide on/off icons for >=3.24.4
+  // hide on/off icons for >=3.24.5
   image {
     margin: -8px;
     -gtk-icon-transform: scale(0);
@@ -3186,7 +3166,6 @@ tooltip {
   &.background {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
-    // box-shadow: inset 0 1px highlight($tooltip);
     background-color: $tooltip;
     color: on($tooltip);
   }
