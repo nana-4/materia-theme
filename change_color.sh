@@ -216,7 +216,7 @@ done
       #-e 's/%SPACING%/'"$SPACING"'/g' \
 
 # shellcheck disable=SC2016
-sed -i -e 's/^$material_radius: .px/$material_radius: '"$ROUNDNESS"'px/g' ./src/_sass/_variables.scss
+sed -i -e 's/^$corner-radius: .px/$corner-radius: '"$ROUNDNESS"'px/g' ./src/_sass/_variables.scss
 
 if [[ "${DEBUG:-}" ]]; then
   echo "You can debug TEMP DIR: $tempdir, press [Enter] when finished"; read -r
