@@ -793,6 +793,21 @@ GdMainIconView.content-view {
 .photos-collection-icon {
 }
 
+button.photos-filter-preview {
+  color: $text;
+  font-weight: normal;
+
+  &:checked {
+    background-color: $overlay-selected;
+    color: $text;
+
+    image {
+      color: on(dark);
+      -gtk-icon-shadow: $shadow-1;
+    }
+  }
+}
+
 overlay grid.horizontal > revealer > scrolledwindow.frame {
   &:dir(ltr) { border-style: none none none solid; }
   &:dir(rtl) { border-style: none solid none none; }
