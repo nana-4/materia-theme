@@ -1162,7 +1162,7 @@ headerbar {
     // 0.00001s was a workaround for https://gitlab.gnome.org/GNOME/gtk/issues/698
     // but let's keep it for backwards compatibility.
     transition: background-color 0.00001s $duration-ripple, color $duration-ripple $ease-out;
-    animation: header_ripple_effect $duration-ripple $ease-out;
+    animation: ripple-headerbar $duration-ripple $ease-out;
     box-shadow: $shadow-1, inset 0 1px highlight($primary);
     background-color: $primary;
     color: on($primary);
@@ -2474,7 +2474,7 @@ scale {
       transition: background-color $duration $ease-out,
                   background-size 0,
                   background-image 0;
-      animation: scale_ripple_effect $duration-ripple $ease-out forwards;
+      animation: ripple-slider $duration-ripple $ease-out forwards;
       background-size: auto, 0% 0%;
       background-color: rgba($primary, 0.08);
       color: rgba($primary, 0.12);
@@ -2796,7 +2796,7 @@ row {
       transition: $transition,
                   background-size 0,
                   background-image 0;
-      animation: ripple_effect $duration-ripple $ease-out forwards;
+      animation: ripple $duration-ripple $ease-out forwards;
       box-shadow: inset 0 0 0 9999px $overlay-hover;
       background-image: radial-gradient(circle farthest-corner at center,
                                         $overlay-active 10%,
