@@ -1091,7 +1091,7 @@ headerbar {
 
   .linked:not(.vertical) > entry:not(.flat) { border-radius: $corner-radius $corner-radius 0 0; }
 
-  button:not(.suggested-action):not(.destructive-action) {
+  @at-root %titlebar-button, & button:not(.suggested-action):not(.destructive-action) {
     @extend %button_basic.flat;
 
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),

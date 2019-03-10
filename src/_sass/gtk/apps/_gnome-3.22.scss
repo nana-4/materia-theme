@@ -60,12 +60,30 @@
     background-color: $titlebar-fill;
   }
 
+  // for 3.30
   .path-bar button {
     label:not(:only-child) {
       &:first-child { margin-left: 0; }
 
       &:last-child { margin-right: 0; }
     }
+  }
+
+  // for 3.32
+  .nautilus-path-bar button {
+    padding-left: ($medium-size - 24px) / 2;
+    padding-right: ($medium-size - 24px) / 2;
+
+    label:not(:only-child) {
+      &:first-child { margin-left: 0; }
+
+      &:last-child { margin-right: 0; }
+    }
+
+    &.text-button.image-button image:not(:only-child) { margin: 0; }
+
+    &:last-child:dir(ltr),
+    &:first-child:dir(rtl) { @extend %titlebar-button:checked; }
   }
 }
 
