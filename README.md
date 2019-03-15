@@ -135,7 +135,7 @@ Todo list can be found at [`TODO.md`](TODO.md).
 ## Related Projects
 
 - [**Materia KDE**](https://github.com/PapirusDevelopmentTeam/materia-kde) by @PapirusDevelopmentTeam
-- [**Materia VSCode Theme**](https://marketplace.visualstudio.com/items?itemName=m-thorsen.vscode-material-mt) by @m-thorsen
+- [**Materia VSCode Theme**](https://marketplace.visualstudio.com/items?itemName=m-thorsen.vscode-materia) by @m-thorsen
 - [**Materia Kolorizer**](https://github.com/DarthWound/materia-kolorizer) by @DarthWound
 
 ## License
