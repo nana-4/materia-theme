@@ -1,16 +1,16 @@
-@keyframes ripple_effect {
+@keyframes ripple {
   to {
     background-size: 1000% 1000%;
   }
 }
 
-@keyframes scale_ripple_effect {
+@keyframes ripple-slider {
   to {
     background-size: auto, 1000% 1000%;
   }
 }
 
-@keyframes header_ripple_effect {
+@keyframes ripple-headerbar {
   from {
     background-image: radial-gradient(circle farthest-corner at center, #4285F4 0%, transparent 0%);
   }
@@ -132,7 +132,6 @@ flowbox flowboxchild {
 
 .content-view .tile:selected {
   background-color: transparent;
-  color: inherit;
 }
 
 label {
@@ -327,7 +326,7 @@ entry.warning:disabled {
 
 spinbutton:not(.vertical) progress,
 entry progress {
-  margin: 2px -6px;
+  margin: 2px -8px;
   border-bottom: 2px solid #4285F4;
   background-color: transparent;
 }
@@ -496,7 +495,7 @@ button:hover {
 
 button:active {
   transition: all 100ms cubic-bezier(0, 0, 0.2, 1), background-size 0, background-image 0;
-  animation: ripple_effect 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
+  animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23), inset 0 0 0 9999px alpha(currentColor, 0.08);
   background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.12) 10%, transparent 0%);
   background-size: 0% 0%;
@@ -555,7 +554,7 @@ radio:active, calendar.button:active, messagedialog.csd .dialog-action-area butt
 headerbar button:active:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:active:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button:active, filechooser #pathbarbox > stack > box > button:active, .nemo-window .toolbar button:active,
 button.flat:active {
   transition: all 100ms cubic-bezier(0, 0, 0.2, 1), border-image 225ms cubic-bezier(0, 0, 0.2, 1), background-size 0, background-image 0;
-  animation: ripple_effect 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
+  animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
   box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
   background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.12) 10%, transparent 0%);
   background-size: 0% 0%;
@@ -573,14 +572,14 @@ button.flat:disabled {
   color: rgba(0, 0, 0, 0.26);
 }
 
-:not(headerbar) .caja-pathbar button:checked, .caja-pathbar :not(headerbar) button:checked, :not(headerbar) .path-bar button:checked, layouttabbar button:checked, .mate-panel-menu-bar button:checked, .budgie-panel button:checked, .raven stackswitcher.linked > button:checked, toolbar button:checked, .titlebar:not(headerbar) button:checked:not(.suggested-action):not(.destructive-action),
+:not(headerbar) .caja-pathbar button:checked, .caja-pathbar :not(headerbar) button:checked, :not(headerbar) .path-bar button:checked, layouttabbar button:checked, .mate-panel-menu-bar button:checked, .budgie-panel button:checked, .raven stackswitcher.linked > button:checked, toolbar button:checked, .path-bar-box .nautilus-path-bar button:last-child:dir(ltr), .path-bar-box .nautilus-path-bar button:first-child:dir(rtl), .titlebar:not(headerbar) button:checked:not(.suggested-action):not(.destructive-action),
 headerbar button:checked:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:checked:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button:checked, filechooser #pathbarbox > stack > box > button:checked, .nemo-window .toolbar button:checked,
 button.flat:checked {
   background-color: alpha(currentColor, 0.24);
   color: rgba(0, 0, 0, 0.87);
 }
 
-:not(headerbar) .caja-pathbar button:checked:disabled, .caja-pathbar :not(headerbar) button:checked:disabled, :not(headerbar) .path-bar button:checked:disabled, layouttabbar button:checked:disabled, .mate-panel-menu-bar button:checked:disabled, .budgie-panel button:checked:disabled, .raven stackswitcher.linked > button:checked:disabled, toolbar button:checked:disabled, .titlebar:not(headerbar) button:checked:disabled:not(.suggested-action):not(.destructive-action),
+:not(headerbar) .caja-pathbar button:checked:disabled, .caja-pathbar :not(headerbar) button:checked:disabled, :not(headerbar) .path-bar button:checked:disabled, layouttabbar button:checked:disabled, .mate-panel-menu-bar button:checked:disabled, .budgie-panel button:checked:disabled, .raven stackswitcher.linked > button:checked:disabled, toolbar button:checked:disabled, .path-bar-box .nautilus-path-bar button:disabled:last-child:dir(ltr), .path-bar-box .nautilus-path-bar button:disabled:first-child:dir(rtl), .titlebar:not(headerbar) button:checked:disabled:not(.suggested-action):not(.destructive-action),
 headerbar button:checked:disabled:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:checked:disabled:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button:checked:disabled, filechooser #pathbarbox > stack > box > button:checked:disabled, .nemo-window .toolbar button:checked:disabled,
 button.flat:checked:disabled {
   background-color: rgba(0, 0, 0, 0.12);
@@ -1260,18 +1259,18 @@ headerbar button:not(.suggested-action):not(.destructive-action):disabled {
   color: rgba(0, 0, 0, 0.26);
 }
 
-.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked,
+.path-bar-box .nautilus-path-bar button:last-child:dir(ltr), .path-bar-box .nautilus-path-bar button:first-child:dir(rtl), .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked,
 headerbar button:not(.suggested-action):not(.destructive-action):checked {
   border-image: radial-gradient(circle closest-corner at center calc(100% - 1px), #4285F4 100%, transparent 0%) 0 0 2/0 0 2px;
   color: rgba(0, 0, 0, 0.87);
 }
 
-.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled,
+.path-bar-box .nautilus-path-bar button:disabled:last-child:dir(ltr), .path-bar-box .nautilus-path-bar button:disabled:first-child:dir(rtl), .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled,
 headerbar button:not(.suggested-action):not(.destructive-action):checked:disabled {
   color: rgba(0, 0, 0, 0.38);
 }
 
-.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled,
+.path-bar-box .nautilus-path-bar button:last-child:dir(ltr), .path-bar-box .nautilus-path-bar button:first-child:dir(rtl), .path-bar-box .nautilus-path-bar button:disabled:last-child:dir(ltr), .path-bar-box .nautilus-path-bar button:disabled:first-child:dir(rtl), .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked:disabled,
 headerbar button:not(.suggested-action):not(.destructive-action):checked,
 headerbar button:not(.suggested-action):not(.destructive-action):checked:disabled {
   background-color: transparent;
@@ -1293,12 +1292,12 @@ headerbar button:not(.suggested-action):not(.destructive-action):backdrop:disabl
   color: rgba(0, 0, 0, 0.26);
 }
 
-.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):backdrop:checked,
+.path-bar-box .nautilus-path-bar button:backdrop:last-child:dir(ltr), .path-bar-box .nautilus-path-bar button:backdrop:first-child:dir(rtl), .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):backdrop:checked,
 headerbar button:not(.suggested-action):not(.destructive-action):backdrop:checked {
   color: rgba(0, 0, 0, 0.54);
 }
 
-.titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):backdrop:checked:disabled,
+.path-bar-box .nautilus-path-bar button:backdrop:disabled:last-child:dir(ltr), .path-bar-box .nautilus-path-bar button:backdrop:disabled:first-child:dir(rtl), .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):backdrop:checked:disabled,
 headerbar button:not(.suggested-action):not(.destructive-action):backdrop:checked:disabled {
   color: rgba(0, 0, 0, 0.26);
 }
@@ -1313,7 +1312,7 @@ headerbar button.destructive-action:disabled {
 .selection-mode.titlebar:not(headerbar),
 headerbar.selection-mode {
   transition: background-color 0.00001s 225ms, color 225ms cubic-bezier(0, 0, 0.2, 1);
-  animation: header_ripple_effect 225ms cubic-bezier(0, 0, 0.2, 1);
+  animation: ripple-headerbar 225ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24), inset 0 1px rgba(255, 255, 255, 0.2);
   background-color: #4285F4;
   color: white;
@@ -2392,6 +2391,7 @@ switch slider {
   min-height: 20px;
   margin: -3px -2px;
   border-radius: 9999px;
+  outline: none;
   box-shadow: 0 0 0 10px transparent, 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   background-color: #FFFFFF;
 }
@@ -2773,7 +2773,7 @@ scale slider:focus:hover {
 
 scale slider:active {
   transition: background-color 100ms cubic-bezier(0, 0, 0.2, 1), background-size 0, background-image 0;
-  animation: scale_ripple_effect 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
+  animation: ripple-slider 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
   background-size: auto, 0% 0%;
   background-color: rgba(66, 133, 244, 0.08);
   color: rgba(66, 133, 244, 0.12);
@@ -3145,7 +3145,7 @@ row.activatable:hover, treeview.view header button:hover, .budgie-popover.budgie
 
 row.activatable.has-open-popup, treeview.view header button.has-open-popup, .budgie-popover.budgie-menu button.has-open-popup.flat:not(.image-button), row.activatable:active, treeview.view header button:active, .budgie-popover.budgie-menu button.flat:active:not(.image-button) {
   transition: all 100ms cubic-bezier(0, 0, 0.2, 1), background-size 0, background-image 0;
-  animation: ripple_effect 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
+  animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
   box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
   background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.12) 10%, transparent 0%);
   background-size: 0% 0%;
@@ -3163,6 +3163,11 @@ row:selected label {
 row:selected button image,
 row:selected button label {
   color: inherit;
+}
+
+row:selected:disabled image,
+row:selected:disabled label {
+  color: rgba(0, 0, 0, 0.38);
 }
 
 /*********************
@@ -3327,6 +3332,10 @@ stacksidebar row {
 stacksidebar row > label {
   padding-left: 6px;
   padding-right: 6px;
+}
+
+separator.sidebar {
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
 /****************
@@ -3914,6 +3923,23 @@ headerbar .nautilus-canvas-item.subtitle, .budgie-notification .nautilus-canvas-
   margin-right: 0;
 }
 
+.path-bar-box .nautilus-path-bar button {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.path-bar-box .nautilus-path-bar button label:not(:only-child):first-child {
+  margin-left: 0;
+}
+
+.path-bar-box .nautilus-path-bar button label:not(:only-child):last-child {
+  margin-right: 0;
+}
+
+.path-bar-box .nautilus-path-bar button.text-button.image-button image:not(:only-child) {
+  margin: 0;
+}
+
 .nautilus-window .floating-bar {
   min-height: 32px;
   padding: 0;
@@ -3923,7 +3949,6 @@ headerbar .nautilus-canvas-item.subtitle, .budgie-notification .nautilus-canvas-
   border-radius: 5px 5px 0 0;
   background-color: rgba(255, 255, 255, 0.9);
   background-clip: padding-box;
-  transition: all 100ms cubic-bezier(0, 0, 0.2, 1), border-width 0;
 }
 
 .nautilus-window .floating-bar.bottom.left {
@@ -3959,8 +3984,9 @@ headerbar .nautilus-canvas-item.subtitle, .budgie-notification .nautilus-canvas-
 
 .search-information {
   padding: 2px;
-  background-color: #4285F4;
-  color: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  background-color: #FFFFFF;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .conflict-row:not(:selected) {
@@ -4032,6 +4058,11 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal > box.horizontal:
 .open-document-selector-path-label {
   color: rgba(0, 0, 0, 0.54);
   font-size: smaller;
+}
+
+.open-document-selector-match {
+  background-color: #FBBC05;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .gedit-document-panel {
@@ -4563,6 +4594,21 @@ GdMainIconView.content-view {
 .photos-fade-out {
   opacity: 0;
   transition: opacity 100ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+button.photos-filter-preview {
+  color: rgba(0, 0, 0, 0.87);
+  font-weight: normal;
+}
+
+button.photos-filter-preview:checked {
+  background-color: rgba(66, 133, 244, 0.32);
+  color: rgba(0, 0, 0, 0.87);
+}
+
+button.photos-filter-preview:checked image {
+  color: white;
+  -gtk-icon-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 overlay grid.horizontal > revealer > scrolledwindow.frame:dir(ltr) {
@@ -6043,7 +6089,6 @@ XfdesktopIconView.view {
 
 XfdesktopIconView.view:active {
   box-shadow: none;
-  text-shadow: none;
 }
 
 XfdesktopIconView.view .rubberband {
