@@ -811,7 +811,7 @@ StScrollBar {
 /* TOP BAR */
 
 #panel {
-  background-color: $scrim;
+  background-color: $panel;
   /* transition from solid to transparent */
   transition-duration: $duration-panel;
   font-weight: bold;
@@ -831,12 +831,12 @@ StScrollBar {
 
   .panel-corner {
     -panel-corner-radius: 0;
-    -panel-corner-background-color: $scrim;
-    -panel-corner-border-width: 2px;
+    -panel-corner-background-color: transparent;
+    -panel-corner-border-width: 0;
     -panel-corner-border-color: transparent;
 
     &:active, &:overview, &:focus {
-      -panel-corner-border-color: on($scrim);
+      -panel-corner-border-color: transparent;
     }
 
     &.lock-screen, &.login-screen, &.unlock-screen {
@@ -850,7 +850,7 @@ StScrollBar {
     -natural-hpadding: 12px;
     -minimum-hpadding: 6px;
     font-weight: bold;
-    color: on($scrim, secondary);
+    color: on($panel, secondary);
     text-shadow: none;
     transition-duration: $duration;
 
@@ -868,7 +868,7 @@ StScrollBar {
     }
 
     &:hover {
-      color: on($scrim);
+      color: on($panel);
       text-shadow: none;
 
       .system-status-icon,
@@ -881,9 +881,9 @@ StScrollBar {
     &:active, &:overview, &:focus, &:checked {
       // Trick due to St limitations. It needs a background to draw
       // a box-shadow
-      background-color: rgba($scrim, 0.01);
-      box-shadow: inset 0 -2px 0px on($scrim);
-      color: on($scrim);
+      background-color: rgba($panel, 0.01);
+      box-shadow: inset 0 -2px 0px on($panel);
+      color: on($panel);
 
       & > .system-status-icon { icon-shadow: none; }
     }
@@ -892,8 +892,8 @@ StScrollBar {
     .unlock-screen &,
     .login-screen &,
     .lock-screen & {
-      color: on($scrim, secondary);
-      &:focus, &:hover, &:active { color: on($scrim); }
+      color: on($panel, secondary);
+      &:focus, &:hover, &:active { color: on($panel); }
     }
   }
 
