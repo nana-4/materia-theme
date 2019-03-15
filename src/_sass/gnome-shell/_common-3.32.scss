@@ -322,8 +322,7 @@ StScrollBar {
   }
 
   .end-session-dialog-logout-icon {
-    //border: 2px solid #8b8b8b;
-    border-radius: 5px;
+    border-radius: $circular-radius;
     width: 48px;
     height: 48px;
     background-size: contain;
@@ -483,7 +482,7 @@ StScrollBar {
   }
 
   .polkit-dialog-user-icon {
-    border-radius: 5px;
+    border-radius: $circular-radius;
     background-size: contain;
     width: 48px;
     height: 48px;
@@ -563,6 +562,7 @@ StScrollBar {
 
   .popup-menu-arrow { } //defined globally in the TOP BAR
   .popup-sub-menu {
+    padding-bottom: 0;
     background-color: $fill;
     box-shadow: $shadow-0;
   }
@@ -1015,12 +1015,45 @@ StScrollBar {
       font-weight: bold;
     }
 
-    .world-clocks-grid {
+    .weather-header.location {
+      font-weight: normal;
+      font-size: 1em;
+    }
+
+    .world-clocks-grid,
+    .weather-grid {
       spacing-rows: 0.4em;
+      spacing-columns: 0.8em;
     }
 
     .weather-box {
       spacing: 0.4em;
+    }
+
+    .world-clocks-city {
+      font-weight: bold;
+      font-size: 1em;
+    }
+
+    .world-clocks-time {
+      color: $text-secondary;
+      font-feature-settings: "tnum";
+      font-size: 1em;
+    }
+
+    .world-clocks-timezone {
+      color: $text-disabled;
+      font-feature-settings: "tnum";
+      font-size: 1em;
+    }
+
+    .weather-forecast-icon {
+      icon-size: em(32px);
+    }
+
+    .weather-forecast-time {
+      color: $text-secondary;
+      @include font(caption);
     }
 
     .calendar-month-label {
@@ -1042,18 +1075,13 @@ StScrollBar {
       margin: 2px;
       border-radius: 100px;
       background-color: transparent;
-      color: $text;
-      &:hover, &:focus { background-color: $overlay-hover; }
-      &:active { background-color: $overlay-active; transition-duration: $duration-ripple; }
+      color: $text-secondary;
+      &:hover, &:focus { background-color: $overlay-hover; color: $text; }
+      &:active { background-color: $overlay-active; color: $text; transition-duration: $duration-ripple; }
     }
 
-      .calendar-change-month-back { //arrow back
-        background-image: url("assets/calendar-arrow-left.svg");
-        &:rtl { background-image: url("assets/calendar-arrow-right.svg"); }
-      }
-      .calendar-change-month-forward { //arrow foreward
-        background-image: url("assets/calendar-arrow-right.svg");
-        &:rtl { background-image: url("assets/calendar-arrow-left.svg"); }
+      .calendar-change-month-back StIcon, .calendar-change-month-forward StIcon { // arrows
+        icon-size: em(16px);
       }
 
     .calendar-day-base {
@@ -1174,6 +1202,11 @@ StScrollBar {
             &:rtl { margin: 4px 4px 4px 0px; }
           }
 
+          .message-icon-bin > .fallback-window-icon {
+            width: em(16px);
+            height: em(16px);
+          }
+
           .message-secondary-bin {
             padding: 0 8px;
           }
@@ -1259,11 +1292,7 @@ StScrollBar {
 
   // a little unstructured mess:
 
-  .system-switch-user-submenu-icon.user-icon {
-    icon-size: 20px;
-    padding: 0 2px;
-  }
-  .system-switch-user-submenu-icon.default-icon {
+  .system-switch-user-submenu-icon {
     icon-size: 16px;
     padding: 0 4px;
   }
@@ -1273,6 +1302,11 @@ StScrollBar {
     spacing: 4px;
 
     .label-shadow { color: transparent; }
+  }
+
+  .app-menu,
+  .app-well-menu {
+    max-width: 27.25em;
   }
 
   .aggregate-menu {
@@ -1305,23 +1339,24 @@ StScrollBar {
     & > StIcon { icon-size: 16px; }
   }
 
-//Activities Ripples
+// Activities Ripples
 .ripple-box {
   width: 48px;
   height: 48px;
-  border-radius: 0 0 48px 0;
+  border-radius: 0 0 48px 0; // radius the size of the box give us the curve
   background-color: on(dark, track);
   background-image: none;
   background-size: auto;
+  box-shadow: none;
 }
 
 .ripple-box:rtl {
-  border-radius: 0 0 0 48px;
+  border-radius: 0 0 0 48px; // just a simple change to the border radius position
   background-image: none;
 }
 
 // not really top bar only
-.popup-menu-arrow { width: 16px; height: 16px; }
+.popup-menu-arrow { width: 16px; height: 16px; icon-size: em(16px); }
 .popup-menu-icon { icon-size: em(16px); }
 
 //close buttons
@@ -1329,6 +1364,11 @@ StScrollBar {
 .window-close {
   // FIXME: unless disable the transition, button will distort when hovering
   // transition-duration: $duration;
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  color: transparent;
   height: $medium-size;
   width: $medium-size;
   -shell-close-overlap: $medium-size / 2;
@@ -1337,10 +1377,17 @@ StScrollBar {
   background-size: $medium-size;
 
   &:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: transparent;
     -st-background-image-shadow: $shadow-2;
     background-image: url("assets/window-close.svg");
   }
+
   &:active {
+    background-color: transparent;
+    border-color: transparent;
+    color: transparent;
     // transition-duration: $duration-ripple;
     background-image: url("assets/window-close-active.svg");
   }
@@ -1478,6 +1525,8 @@ StScrollBar {
   .list-search-results { spacing: 3px; }
 
   .search-section-separator { height: 1px; background-color: on(dark, divider); }
+
+  .search-section:last-child .search-section-separator { background-color: transparent; }
 
   .list-search-result-content { spacing: 30px; }
   .list-search-result-title { @include font(subheading); color: on(dark); spacing: 12px; }
@@ -1670,25 +1719,30 @@ StScrollBar {
     .page-indicator-icon {
       width: 12px;
       height: 12px;
+      border: none;
       border-radius: 12px;
       background-image: none;
       background-color: on(dark, secondary-disabled);
       transition-duration: $duration;
     }
     &:hover .page-indicator-icon {
+      border-color: transparent;
       background-image: none;
       background-color: on(dark, disabled);
     }
     &:active .page-indicator-icon {
+      border: none;
+      margin: 0;
       background-image: none;
       background-color: on(dark, secondary);
     }
-    &:checked .page-indicator-icon {
+    &:checked .page-indicator-icon,
+    &:checked:active .page-indicator-icon {
       background-image: none;
       background-color: on(dark);
       transition-duration: 0ms;
     }
-    &:checked:active { background-image: none; }
+    &:checked:active { background-image: none; background-color: transparent; }
   }
 
   .no-frequent-applications-label { @extend %status_text; }
@@ -1890,6 +1944,15 @@ StScrollBar {
 
 #keyboard {
     background-color: $scrim-alt;
+
+    .page-indicator {
+        padding: 4px 4px;
+
+        .page-indicator-icon {
+            width: 8px;
+            height: 8px
+        }
+    }
 }
 
   .key-container {
@@ -1957,6 +2020,23 @@ StScrollBar {
     box-shadow: $shadow-2;
   }
 
+.emoji-page {
+  .keyboard-key {
+    border: none;
+    @include button(flat-normal, $tc: on($scrim-alt));
+    &:hover, &:focus { @include button(flat-hover, $tc: on($scrim-alt)); }
+    &:active { @include button(flat-active, $tc: on($scrim-alt)); }
+  }
+}
+
+.emoji-panel {
+  .keyboard-key:latched {
+    border-color: transparent;
+    background-color: $suggested;
+    color: on($suggested);
+  }
+}
+
 // IBus Candidate Popup
 
 .candidate-popup-content {
@@ -1997,11 +2077,11 @@ StScrollBar {
 
 /* Auth Dialogs & Screen Shield */
 
-.framed-user-icon {
+.user-icon {
   background-size: contain;
   border: none;
   color: on($os-background);
-  border-radius: $corner-radius;
+  border-radius: $circular-radius;
   &:hover {
     border-color: on($os-background);
     color: on($os-background);
