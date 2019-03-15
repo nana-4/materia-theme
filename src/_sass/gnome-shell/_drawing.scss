@@ -2,12 +2,12 @@
 
 // provide font size in pt, with px fallback
 @function pt($size: $font-size) {
-  @return ($size * 0.75 / 1px) + pt;
+  @return ($size * 0.75 / 1px) * 1pt;
 }
 
 // provide icon size in em, with px fallback
 @function em($size: 16px) {
-  @return ($size / $font-size) + em;
+  @return ($size / $font-size) * 1em;
 }
 
 // Typography
