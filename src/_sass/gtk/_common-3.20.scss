@@ -3188,10 +3188,10 @@ tooltip {
   // FIXME: we need a border or tooltips vanish on black background.
   decoration { background-color: transparent; }
 
-  label {
-    // tooltip label already seems to have 6px margins
-    min-height: 32px - 6px * 2;
-    padding: 0 8px - 6px;
+  > box {
+    margin: -6px; // Remove hard-coded 6px padding
+    min-height: 32px - 4px * 2;
+    padding: 4px 8px;
   }
 
   * {
