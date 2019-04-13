@@ -2773,6 +2773,7 @@ row {
     transition: $transition,
                 background-size $duration-ripple-aftermath $ease-out,
                 background-image $duration-ripple-aftermath-opacity $ease-out;
+    outline: none;
     box-shadow: inset 0 0 0 9999px transparent;
     background-image: radial-gradient(circle farthest-corner at center,
                                       transparent 10%,
@@ -2780,6 +2781,10 @@ row {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1000% 1000%;
+
+    &:focus {
+      box-shadow: inset 0 0 0 9999px $overlay-focus;
+    }
 
     &:hover {
       transition: $transition,
