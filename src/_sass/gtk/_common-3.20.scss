@@ -1716,7 +1716,6 @@ notebook {
 
   &:focus tab:checked {
     box-shadow: inset 0 0 0 9999px rgba($primary, 0.12);
-    outline: none;
   }
 
   > header {
@@ -1859,11 +1858,10 @@ notebook {
       min-width: $small-size;
       padding: $container-padding 12px;
 
-      outline-offset: -6px;
-
       border-width: 1px;         // for reorderable tabs
       border-color: transparent; //
 
+      outline: none;
       background-image: radial-gradient(circle farthest-corner at center,
                                         $primary 10%,
                                         transparent 0%);
@@ -2117,9 +2115,9 @@ switch {
     background-color: $surface;
   }
 
-  &:hover slider { box-shadow: 0 0 0 10px $overlay-hover, $shadow-1; }
-
   &:focus slider { box-shadow: 0 0 0 10px $overlay-focus, $shadow-1; }
+
+  &:hover slider { box-shadow: 0 0 0 10px $overlay-hover, $shadow-1; }
 
   &:focus:hover slider { box-shadow: 0 0 0 10px $overlay-focus-hover, $shadow-1; }
 
@@ -2187,12 +2185,6 @@ radio {
   @extend %simple_flat_button;
 
   @extend %circular_button;
-
-  &:hover { box-shadow: inset 0 0 0 9999px $overlay-hover; }
-
-  &:focus { box-shadow: inset 0 0 0 9999px $overlay-focus; }
-
-  &:focus:hover { box-shadow: inset 0 0 0 9999px $overlay-focus-hover; }
 
   &:checked, &:indeterminate {
     color: $primary;
@@ -2448,9 +2440,9 @@ scale {
       }
     }
 
-    &:hover { background-color: $overlay-hover; }
-
     &:focus { background-color: $overlay-focus; }
+
+    &:hover { background-color: $overlay-hover; }
 
     &:focus:hover { background-color: $overlay-focus-hover; }
 
