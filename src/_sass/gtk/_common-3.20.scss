@@ -2432,7 +2432,7 @@ scale {
     background-position: center;
     background-size: auto, 1000% 1000%;
     border-radius: 50%;
-    color: transparent;
+    color: $primary;
 
     @each $s, $as in ('', ''),
                      (':disabled', '-disabled') {
@@ -2441,25 +2441,30 @@ scale {
 
         background-image: -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png')),
                           radial-gradient(circle farthest-corner at center,
-                                          currentColor 10%,
+                                          transparent 10%,
                                           transparent 0%);
       }
     }
 
-    &:hover { background-color: rgba($primary, 0.08); }
+    &:hover { background-color: $overlay-hover; }
 
-    &:focus { background-color: rgba($primary, 0.12); }
+    &:focus { background-color: $overlay-focus; }
 
-    &:focus:hover { background-color: rgba($primary, 0.16); }
+    &:focus:hover { background-color: $overlay-focus-hover; }
 
     &:active {
+      $_url: 'assets/scale-slider#{$asset-suffix}';
+
       transition: background-color $duration $ease-out,
                   background-size 0,
                   background-image 0;
       animation: ripple-slider $duration-ripple $ease-out forwards;
+      background-color: $overlay-hover;
+      background-image: -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png')),
+                        radial-gradient(circle farthest-corner at center,
+                                        $overlay-active 10%,
+                                        transparent 0%);
       background-size: auto, 0% 0%;
-      background-color: rgba($primary, 0.08);
-      color: rgba($primary, 0.12);
     }
   }
 
@@ -2521,9 +2526,18 @@ scale {
 
               background-image: -gtk-scaled(url('#{$_scale_asset}.png'), url('#{$_scale_asset}@2.png')),
                                 radial-gradient(circle farthest-corner at center,
-                                                currentColor 10%,
+                                                transparent 10%,
                                                 transparent 0%);
             }
+          }
+
+          &:active {
+            $_scale_asset: 'assets/scale-#{$dir_infix}-#{$marks_infix}-slider#{$asset-suffix}';
+
+            background-image: -gtk-scaled(url('#{$_scale_asset}.png'), url('#{$_scale_asset}@2.png')),
+                              radial-gradient(circle farthest-corner at center,
+                                              $overlay-active 10%,
+                                              transparent 0%);
           }
         }
       }
