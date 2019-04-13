@@ -119,11 +119,5 @@ $titlebar-track:                        on($titlebar, track);
 $titlebar-divider:                      on($titlebar, divider);
 $titlebar-fill:                         on($titlebar, fill);
 
-// workaround for Electron menu which doesn't allow translucent colors
-$solid-text:                            if($variant == 'light', $grey-900, $white);
-$solid-text-secondary:                  if($variant == 'light', $grey-600, mix($white, $surface, percentage(0.7)));
-$solid-text-disabled:                   if($variant == 'light', $grey-500, mix($white, $surface, percentage(0.5)));
-$solid-divider:                         if($variant == 'light', $grey-300, mix($white, $surface, percentage(0.12)));
-
 // workaround for GTK3 @placeholder_text_color which doesn't allow translucent colors
 $placeholder_text_color:                if($variant == 'light', $grey-600, mix($white, $base, percentage(0.7)));

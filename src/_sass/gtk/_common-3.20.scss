@@ -1631,22 +1631,6 @@ menuitem {
   &:disabled accelerator { color: $text-secondary-disabled; }
 }
 
-// FIXME: THIS IS A REALLY UGLY WORKAROUND!
-// Electron/Atom render all translucent colors in opaque colors.
-// It's a very critical issue for this theme and should be fixed by upstream...
-.popup:not(.csd) menu {
-  menuitem {
-    color: $solid-text;
-
-    &:hover { background-color: $solid-divider; }
-
-    &:disabled { color: $solid-text-disabled; } // separator/border also use this color.
-  }
-
-  // FIXME: not working this
-  accelerator { color: $solid-text-secondary; }
-}
-
 
 /************
  * Popovers *
