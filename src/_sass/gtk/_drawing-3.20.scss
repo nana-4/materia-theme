@@ -50,6 +50,10 @@
   }
 
   @if $t == focus {
+    box-shadow: inset 0 0 0 9999px $overlay-focus, inset 0 -1px if($fc == $primary, $track, $fc);
+  }
+
+  @if $t == checked {
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                   $fc 100%,
                                   transparent 0%)

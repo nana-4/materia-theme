@@ -216,7 +216,7 @@ entry {
 
     @include entry(normal);
 
-    &:focus { @include entry(focus); }
+    &:focus { @include entry(checked); }
 
     &:disabled { @include entry(disabled); }
 
@@ -265,7 +265,7 @@ entry {
       &.#{$e_type} {
         @include entry(normal, $e_color);
 
-        &:focus { @include entry(focus, $e_color); }
+        &:focus { @include entry(checked, $e_color); }
 
         &:disabled { @include entry(disabled, $e_color); }
       }
@@ -950,7 +950,7 @@ button.combo {
 
   &:hover { @include entry(hover); }
 
-  &:checked { @include entry(focus); }
+  &:checked { @include entry(checked); }
 
   &:disabled { @include entry(disabled); }
 }
