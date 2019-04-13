@@ -102,6 +102,7 @@
     transition: $transition,
                 background-size $duration-ripple-aftermath $ease-out,
                 background-image $duration-ripple-aftermath-opacity $ease-out;
+    outline: none;
     box-shadow: $shadow-1, inset 0 0 0 9999px transparent;
     background-color: $surface;
     background-image: radial-gradient(circle farthest-corner at center,
@@ -114,6 +115,11 @@
   }
 
   @if $t == hover {
+    box-shadow: $shadow-2, inset 0 0 0 9999px transparent;
+    color: $text;
+  }
+
+  @if $t == focus {
     box-shadow: $shadow-2, inset 0 0 0 9999px transparent;
     color: $text;
   }
@@ -152,6 +158,7 @@
                 border-image $duration-ripple $ease-out,
                 background-size $duration-ripple-aftermath $ease-out,
                 background-image $duration-ripple-aftermath-opacity $ease-out;
+    outline: none;
     box-shadow: inset 0 0 0 9999px transparent;
     background-color: transparent;
     background-image: radial-gradient(circle farthest-corner at center,
@@ -165,6 +172,11 @@
 
   @if $t == flat-hover {
     box-shadow: inset 0 0 0 9999px $overlay-hover;
+    color: $text;
+  }
+
+  @if $t == flat-focus {
+    box-shadow: inset 0 0 0 9999px $overlay-focus;
     color: $text;
   }
 

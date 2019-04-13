@@ -401,6 +401,8 @@ button {
 
     @include button(normal);
 
+    &:focus { @include button(focus); }
+
     &:hover { @include button(hover); }
 
     &:active { @include button(active); }
@@ -414,6 +416,8 @@ button {
     @at-root %flat_button, &.flat {
       @at-root %simple_flat_button, & {
         @include button(flat-normal);
+
+        &:focus { @include button(flat-focus); }
 
         &:hover { @include button(flat-hover); }
 
@@ -477,7 +481,7 @@ button {
     &.flat {
       color: on(dark, secondary);
 
-      &:hover, &:active { color: on(dark); }
+      &:focus, &:hover, &:active { color: on(dark); }
 
       &:disabled { color: on(dark, secondary-disabled); }
 
@@ -756,7 +760,7 @@ button.color {
 
 button:link,
 button:visited {
-  &, &:hover, &:active { @extend *:link; }
+  &, &:focus, &:hover, &:active { @extend *:link; }
 
   > label { text-decoration-line: underline; }
 }
@@ -790,6 +794,12 @@ spinbutton {
       @extend %simple_flat_button;
 
       @extend %small_button;
+
+      // Remove unwanted focus indicator
+      &:focus:not(:hover):not(:active) {
+        box-shadow: inset 0 0 0 9999px transparent;
+        color: $text-secondary;
+      }
 
       &.up:dir(ltr),
       &.down:dir(rtl) { margin-left: -$container-padding / 2; }
@@ -831,6 +841,12 @@ spinbutton {
       padding: 0;
 
       @extend %simple_flat_button;
+
+      // Remove unwanted focus indicator
+      &:focus:not(:hover):not(:active) {
+        box-shadow: inset 0 0 0 9999px transparent;
+        color: $text-secondary;
+      }
 
       &.up { border-radius: $corner-radius $corner-radius 0 0; }
 
@@ -947,6 +963,8 @@ button.combo {
   font-weight: inherit;
 
   @include entry(normal);
+
+  &:focus { @include entry(focus); }
 
   &:hover { @include entry(hover); }
 
@@ -1100,7 +1118,7 @@ headerbar {
                                   0 0 0 / 0 0 0px;
     color: $titlebar-text-secondary;
 
-    &:hover, &:active { color: $titlebar-text; }
+    &:focus, &:hover, &:active { color: $titlebar-text; }
 
     &:disabled { color: $titlebar-text-secondary-disabled; }
 
@@ -1119,7 +1137,7 @@ headerbar {
     &:backdrop {
       color: $titlebar-text-disabled;
 
-      &:hover, &:active { color: $titlebar-text-secondary; }
+      &:focus, &:hover, &:active { color: $titlebar-text-secondary; }
 
       &:disabled { color: $titlebar-text-secondary-disabled; }
 
@@ -1476,7 +1494,7 @@ treeview.view {
       border-radius: 0;
       background-clip: border-box;
 
-      &:not(:hover):not(:active) { color: $text-secondary; }
+      &:not(:focus):not(:hover):not(:active) { color: $text-secondary; }
 
       &, &:hover, &:active { box-shadow: none; }
 
@@ -2185,7 +2203,7 @@ radio {
   // &:only-child { margin: -12px; }
 
   popover modelbutton.flat & {
-    &, &:hover, &:focus, &:focus:hover, &:active, &:disabled {
+    &, &:focus, &:hover, &:focus:hover, &:active, &:disabled {
       transition: none; // FIXME: this is a workaround for a popover check/radio long transition issue
       box-shadow: none;
       background-image: none;
