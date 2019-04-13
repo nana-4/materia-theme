@@ -40,9 +40,13 @@
                                   $fc 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
-    box-shadow: inset 0 -1px if($fc == $primary, $track, $fc);
+    box-shadow: inset 0 0 0 9999px transparent, inset 0 -1px if($fc == $primary, $track, $fc);
     background-color: $fill;
     color: $text;
+  }
+
+  @if $t == hover {
+    box-shadow: inset 0 0 0 9999px $overlay-hover, inset 0 -1px if($fc == $primary, $track, $fc);
   }
 
   @if $t == focus {
@@ -53,7 +57,7 @@
   }
 
   @if $t == disabled {
-    box-shadow: inset 0 -1px $divider;
+    box-shadow: inset 0 0 0 9999px transparent, inset 0 -1px $divider;
     background-color: $fill;
     color: $text-disabled;
   }
@@ -64,6 +68,10 @@
     box-shadow: $shadow-1;
     background-color: if($fc == $primary, $base, $fc);
     color: if($fc == $primary, $text, on($fc));
+  }
+
+  @if $t == raised-hover {
+    box-shadow: $shadow-2;
   }
 
   @if $t == raised-focus {
