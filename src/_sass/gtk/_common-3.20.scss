@@ -1157,9 +1157,9 @@ headerbar {
   }
 
   &.selection-mode {
-    // 0.00001s was a workaround for https://gitlab.gnome.org/GNOME/gtk/issues/698
+    // 0.1ms was a workaround for https://gitlab.gnome.org/GNOME/gtk/issues/698
     // but let's keep it for backwards compatibility.
-    transition: background-color 0.00001s $ripple-fade-in-duration, color $ripple-fade-in-duration $ease-out;
+    transition: background-color 0.1ms $ripple-fade-in-duration, color $ripple-fade-in-duration $ease-out;
     animation: ripple-on-headerbar $ripple-fade-in-duration $ease-out;
     box-shadow: $shadow-1, inset 0 1px highlight($primary);
     background-color: $primary;
@@ -1852,8 +1852,8 @@ notebook {
 
     tab {
       transition: $transition,
-                  background-size 0,
-                  background-image 0;
+                  background-size 0ms,
+                  background-image 0ms;
       min-height: $small-size;
       min-width: $small-size;
       padding: $container-padding 12px;
@@ -1975,7 +1975,7 @@ scrollbar {
 
   // slider
   slider {
-    transition: $transition, margin 0, border-width 0;
+    transition: $transition, margin 0ms, border-width 0ms;
     min-width: 8px;
     min-height: 8px;
     border: 4px solid transparent;
@@ -1992,7 +1992,7 @@ scrollbar {
 
   &.fine-tune {
     slider {
-      transition: $transition, margin 0, border-width 0, min-width 0, min-height 0;
+      transition: $transition, margin 0ms, border-width 0ms, min-width 0ms, min-height 0ms;
       min-width: 4px;
       min-height: 4px;
     }
@@ -2444,8 +2444,8 @@ scale {
       $_url: 'assets/scale-slider#{$asset-suffix}';
 
       transition: background-color $duration $ease-out,
-                  background-size 0,
-                  background-image 0;
+                  background-size 0ms,
+                  background-image 0ms;
       animation: ripple-on-slider $ripple-fade-in-duration $ease-out forwards;
       background-color: $overlay-hover;
       background-image: -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png')),
@@ -2766,7 +2766,7 @@ row {
 
     &:hover {
       transition: $transition,
-                  box-shadow 0,
+                  box-shadow 0ms,
                   background-size $ripple-fade-out-duration $ease-out,
                   background-image $ripple-fade-out-opacity-duration $ease-out;
       box-shadow: inset 0 0 0 9999px $overlay-hover;
@@ -2775,8 +2775,8 @@ row {
     &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
     &:active {
       transition: $transition,
-                  background-size 0,
-                  background-image 0;
+                  background-size 0ms,
+                  background-image 0ms;
       animation: ripple $ripple-fade-in-duration $ease-out forwards;
       box-shadow: inset 0 0 0 9999px $overlay-hover;
       background-image: radial-gradient(circle, $overlay-active 10%, transparent 0%);
