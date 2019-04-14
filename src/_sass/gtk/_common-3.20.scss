@@ -616,7 +616,7 @@ button {
 }
 
 %needs_attention {
-  animation: needs_attention $duration-ripple $ease-out forwards;
+  animation: needs_attention $ripple-fade-in-duration $ease-out forwards;
   background-repeat: no-repeat;
   background-position: right 3px;
   background-size: 6px 6px;
@@ -1159,8 +1159,8 @@ headerbar {
   &.selection-mode {
     // 0.00001s was a workaround for https://gitlab.gnome.org/GNOME/gtk/issues/698
     // but let's keep it for backwards compatibility.
-    transition: background-color 0.00001s $duration-ripple, color $duration-ripple $ease-out;
-    animation: ripple-headerbar $duration-ripple $ease-out;
+    transition: background-color 0.00001s $ripple-fade-in-duration, color $ripple-fade-in-duration $ease-out;
+    animation: ripple-headerbar $ripple-fade-in-duration $ease-out;
     box-shadow: $shadow-1, inset 0 1px highlight($primary);
     background-color: $primary;
     color: on($primary);
@@ -1880,8 +1880,8 @@ notebook {
 
       &:checked {
         transition: $transition,
-                    background-size $duration-ripple $ease-out,
-                    background-image $duration-ripple + $duration-ripple-aftermath $ease-out;
+                    background-size $ripple-fade-in-duration $ease-out,
+                    background-image $ripple-fade-in-duration + $ripple-fade-out-duration $ease-out;
         background-color: transparent;
         background-image: radial-gradient(circle, transparent 10%, transparent 0%);
         background-size: 1000% 1000%;
@@ -2416,8 +2416,8 @@ scale {
 
   slider {
     transition: background-color $duration $ease-out,
-                background-size $duration-ripple-aftermath $ease-out,
-                background-image $duration-ripple-aftermath-opacity $ease-out;
+                background-size $ripple-fade-out-duration $ease-out,
+                background-image $ripple-fade-out-opacity-duration $ease-out;
     background-repeat: no-repeat;
     background-position: center;
     background-size: auto, 1000% 1000%;
@@ -2446,7 +2446,7 @@ scale {
       transition: background-color $duration $ease-out,
                   background-size 0,
                   background-image 0;
-      animation: ripple-slider $duration-ripple $ease-out forwards;
+      animation: ripple-slider $ripple-fade-in-duration $ease-out forwards;
       background-color: $overlay-hover;
       background-image: -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png')),
                         radial-gradient(circle, $overlay-active 10%, transparent 0%);
@@ -2751,8 +2751,8 @@ list {
 row {
   &.activatable {
     transition: $transition,
-                background-size $duration-ripple-aftermath $ease-out,
-                background-image $duration-ripple-aftermath-opacity $ease-out;
+                background-size $ripple-fade-out-duration $ease-out,
+                background-image $ripple-fade-out-opacity-duration $ease-out;
     outline: none;
     box-shadow: inset 0 0 0 9999px transparent;
     background-image: radial-gradient(circle, transparent 10%, transparent 0%);
@@ -2767,8 +2767,8 @@ row {
     &:hover {
       transition: $transition,
                   box-shadow 0,
-                  background-size $duration-ripple-aftermath $ease-out,
-                  background-image $duration-ripple-aftermath-opacity $ease-out;
+                  background-size $ripple-fade-out-duration $ease-out,
+                  background-image $ripple-fade-out-opacity-duration $ease-out;
       box-shadow: inset 0 0 0 9999px $overlay-hover;
     }
 
@@ -2777,7 +2777,7 @@ row {
       transition: $transition,
                   background-size 0,
                   background-image 0;
-      animation: ripple $duration-ripple $ease-out forwards;
+      animation: ripple $ripple-fade-in-duration $ease-out forwards;
       box-shadow: inset 0 0 0 9999px $overlay-hover;
       background-image: radial-gradient(circle, $overlay-active 10%, transparent 0%);
       background-size: 0% 0%;

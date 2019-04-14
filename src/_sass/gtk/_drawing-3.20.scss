@@ -31,7 +31,7 @@
 //
 
   @if $t == normal {
-    transition: $transition, border-image $duration-ripple $ease-out;
+    transition: $transition, border-image $ripple-fade-in-duration $ease-out;
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                   $fc 0%,
                                   transparent 0%)
@@ -96,8 +96,8 @@
 
   @if $t == normal {
     transition: $transition,
-                background-size $duration-ripple-aftermath $ease-out,
-                background-image $duration-ripple-aftermath-opacity $ease-out;
+                background-size $ripple-fade-out-duration $ease-out,
+                background-image $ripple-fade-out-opacity-duration $ease-out;
     outline: none;
     box-shadow: $shadow-1, inset 0 0 0 9999px transparent;
     background-color: $surface;
@@ -122,7 +122,7 @@
     transition: $transition,
                 background-size 0,
                 background-image 0;
-    animation: ripple $duration-ripple $ease-out forwards;
+    animation: ripple $ripple-fade-in-duration $ease-out forwards;
     box-shadow: $shadow-2, inset 0 0 0 9999px $overlay-hover;
     background-image: radial-gradient(circle, $overlay-active 10%, transparent 0%);
     background-size: 0% 0%;
@@ -147,9 +147,9 @@
 
   @if $t == flat-normal {
     transition: $transition,
-                border-image $duration-ripple $ease-out,
-                background-size $duration-ripple-aftermath $ease-out,
-                background-image $duration-ripple-aftermath-opacity $ease-out;
+                border-image $ripple-fade-in-duration $ease-out,
+                background-size $ripple-fade-out-duration $ease-out,
+                background-image $ripple-fade-out-opacity-duration $ease-out;
     outline: none;
     box-shadow: inset 0 0 0 9999px transparent;
     background-color: transparent;
@@ -172,10 +172,10 @@
 
   @if $t == flat-active {
     transition: $transition,
-                border-image $duration-ripple $ease-out,
+                border-image $ripple-fade-in-duration $ease-out,
                 background-size 0,
                 background-image 0;
-    animation: ripple $duration-ripple $ease-out forwards;
+    animation: ripple $ripple-fade-in-duration $ease-out forwards;
     box-shadow: inset 0 0 0 9999px $overlay-hover;
     background-image: radial-gradient(circle, $overlay-active 10%, transparent 0%);
     background-size: 0% 0%;
