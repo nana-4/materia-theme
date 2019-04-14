@@ -372,7 +372,7 @@ treeview entry {
  * Buttons *
  ***********/
 // stuff for .needs-attention
-@keyframes needs_attention {
+@keyframes needs-attention {
   from {
     background-image: -gtk-gradient(radial,
                                     center center, 0,
@@ -570,7 +570,7 @@ button {
 
     &.needs-attention {
       > label,
-      > image { @extend %needs_attention; }
+      > image { @extend %needs-attention; }
 
       &:checked {
         > label,
@@ -615,8 +615,8 @@ button {
   }
 }
 
-%needs_attention {
-  animation: needs_attention $ripple-fade-in-duration $ease-out forwards;
+%needs-attention {
+  animation: needs-attention $ripple-fade-in-duration $ease-out forwards;
   background-repeat: no-repeat;
   background-position: right 3px;
   background-size: 6px 6px;
@@ -1160,7 +1160,7 @@ headerbar {
     // 0.00001s was a workaround for https://gitlab.gnome.org/GNOME/gtk/issues/698
     // but let's keep it for backwards compatibility.
     transition: background-color 0.00001s $ripple-fade-in-duration, color $ripple-fade-in-duration $ease-out;
-    animation: ripple-headerbar $ripple-fade-in-duration $ease-out;
+    animation: ripple-on-headerbar $ripple-fade-in-duration $ease-out;
     box-shadow: $shadow-1, inset 0 1px highlight($primary);
     background-color: $primary;
     color: on($primary);
@@ -2446,7 +2446,7 @@ scale {
       transition: background-color $duration $ease-out,
                   background-size 0,
                   background-image 0;
-      animation: ripple-slider $ripple-fade-in-duration $ease-out forwards;
+      animation: ripple-on-slider $ripple-fade-in-duration $ease-out forwards;
       background-color: $overlay-hover;
       background-image: -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png')),
                         radial-gradient(circle, $overlay-active 10%, transparent 0%);
@@ -2982,7 +2982,7 @@ stacksidebar {
       padding-right: 6px;
     }
 
-    &.needs-attention > label { @extend %needs_attention; }
+    &.needs-attention > label { @extend %needs-attention; }
   }
 }
 
