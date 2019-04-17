@@ -507,9 +507,11 @@ StScrollBar {
   }
 
   .audio-selection-device {
-    border: 1px solid $divider;
+    border: none;
     border-radius: $corner-radius;
-    &:active,&:hover,&:focus { background-color: $primary; }
+    &:focus { background-color: $overlay-focus; }
+    &:hover { background-color: $overlay-hover; }
+    &:active { background-color: $overlay-active; }
   }
 
   .audio-selection-device-box {
