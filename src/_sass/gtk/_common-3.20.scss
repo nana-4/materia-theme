@@ -164,7 +164,7 @@ assistant {
   .sidebar {
     padding: 4px 0;
     // background-color: $base;
-    // border-top: 1px solid $border;
+    // border-top: 1px solid $divider;
   }
 
   // &.csd .sidebar { border-top-style: none; }
@@ -1034,7 +1034,7 @@ toolbar {
   padding: $container-padding;
   border-style: solid;
   border-width: 0 1px 1px;
-  border-color: $border;
+  border-color: $frame;
   background-color: $base-alt;
 }
 
@@ -1043,7 +1043,7 @@ searchbar > revealer > box,
   padding: $container-padding;
   border-style: solid;
   border-width: 0 0 1px;
-  border-color: $border;
+  border-color: $divider;
   background-color: $background;
   background-clip: border-box;
 }
@@ -1358,7 +1358,7 @@ headerbar { // headerbar border rounding
 
   > separator {
     background-color: $titlebar;
-    background-image: image($border);
+    background-image: image($divider);
   }
 
   @extend %titlebar;
@@ -1423,7 +1423,7 @@ treeview.view {
   }
 
   border-left-color: $track; // this is actually the tree lines color,
-  border-top-color: $border; // while this is the grid lines color, better then nothing
+  border-top-color: $divider; // while this is the grid lines color, better then nothing
 
   // FIXME: Avoid transparency background-color being slightly darker
   &:selected {
@@ -1437,7 +1437,7 @@ treeview.view {
 
   &.separator {
     min-height: 1px + 2px * 2;
-    color: $border;
+    color: $divider;
   }
 
   &:drop(active) {
@@ -1490,7 +1490,7 @@ treeview.view {
       padding: 2px 6px;
       border-style: none solid solid none;
       border-width: 1px;
-      border-color: $border;
+      border-color: $divider;
       border-radius: 0;
       background-clip: border-box;
 
@@ -1509,7 +1509,7 @@ treeview.view {
     padding: 2px 6px;
     border-style: none solid solid;
     border-width: 1px;
-    border-color: $border;
+    border-color: $divider;
     border-radius: 0;
     box-shadow: none;
     background-color: $base;
@@ -1528,7 +1528,7 @@ menubar,
 .menubar {
   -GtkWidget-window-dragging: true;
   padding: 0;
-  // box-shadow: inset 0 -1px $border;
+  // box-shadow: inset 0 -1px $divider;
   background-color: $titlebar;
   color: $titlebar-text;
 
@@ -1561,7 +1561,7 @@ menu,
   padding: 4px 0;
   box-shadow: inset 0 1px highlight($surface);
   background-color: $surface;
-  border: 1px solid $border; // adds borders in a non composited env
+  border: 1px solid $frame; // adds borders in a non composited env
 
   .csd & {
     border: none; // axes borders in a composited env
@@ -1614,7 +1614,7 @@ menu,
 
     &.top {
       margin-top: -4px;
-      border-bottom: 1px solid $border;
+      border-bottom: 1px solid $divider;
       border-radius: $corner-radius $corner-radius 0 0;
       -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
     }
@@ -1622,7 +1622,7 @@ menu,
     &.bottom {
       margin-top: 4px * 2;
       margin-bottom: -4px * 3;
-      border-top: 1px solid $border;
+      border-top: 1px solid $divider;
       border-radius: 0 0 $corner-radius $corner-radius;
       -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
     }
@@ -1720,7 +1720,7 @@ notebook {
 
   > header {
     border-width: 1px;
-    border-color: $border;
+    border-color: $divider;
     background-color: $background;
     background-clip: border-box;
 
@@ -1733,7 +1733,7 @@ notebook {
         > tab {
           border-image: linear-gradient(to top, transparent 2px, transparent 2px) 2 / 0 0 2px;
 
-          &:checked { border-image-source: linear-gradient(to top, $primary 2px, $border 2px); }
+          &:checked { border-image-source: linear-gradient(to top, $primary 2px, $frame 2px); }
 
           &.reorderable-page { border-image-width: 0 1px 2px; }
         }
@@ -1749,7 +1749,7 @@ notebook {
         > tab {
           border-image: linear-gradient(to bottom, transparent 2px, transparent 2px) 2 / 2px 0 0;
 
-          &:checked { border-image-source: linear-gradient(to bottom, $primary 2px, $border 2px); }
+          &:checked { border-image-source: linear-gradient(to bottom, $primary 2px, $frame 2px); }
 
           &.reorderable-page { border-image-width: 2px 1px 0; }
         }
@@ -1765,7 +1765,7 @@ notebook {
         > tab {
           border-image: linear-gradient(to left, transparent 2px, transparent 2px) 2 / 0 2px 0 0;
 
-          &:checked { border-image-source: linear-gradient(to left, $primary 2px, $border 2px); }
+          &:checked { border-image-source: linear-gradient(to left, $primary 2px, $frame 2px); }
 
           &.reorderable-page { border-image-width: 1px 2px 1px 0; }
         }
@@ -1781,7 +1781,7 @@ notebook {
         > tab {
           border-image: linear-gradient(to right, transparent 2px, transparent 2px) 2 / 0 0 0 2px;
 
-          &:checked { border-image-source: linear-gradient(to right, $primary 2px, $border 2px); }
+          &:checked { border-image-source: linear-gradient(to right, $primary 2px, $frame 2px); }
 
           &.reorderable-page { border-image-width: 1px 0 1px 2px; }
         }
@@ -1891,7 +1891,7 @@ notebook {
         &:disabled { color: $text-disabled; }
 
         &.reorderable-page {
-          border-color: $border;
+          border-color: $frame;
           background-color: $base;
         }
       }
@@ -1968,10 +1968,10 @@ scrollbar {
   background-clip: $background-clip-extra;
 
   // scrollbar border
-  &.top { border-bottom: 1px solid $border; }
-  &.bottom { border-top: 1px solid $border; }
-  &.left { border-right: 1px solid $border; }
-  &.right { border-left: 1px solid $border; }
+  &.top { border-bottom: 1px solid $divider; }
+  &.bottom { border-top: 1px solid $divider; }
+  &.left { border-right: 1px solid $divider; }
+  &.right { border-left: 1px solid $divider; }
 
   // slider
   slider {
@@ -2654,7 +2654,7 @@ levelbar {
 printdialog {
   paper {
     padding: 0;
-    border: 1px solid $border;
+    border: 1px solid $frame;
     background-color: $base;
     color: $text;
   }
@@ -2670,7 +2670,7 @@ frame > border,
 .frame {
   margin: 0;
   padding: 0;
-  border: 1px solid $border;
+  border: 1px solid $frame;
   border-radius: 0;
   box-shadow: none;
 
@@ -2681,7 +2681,7 @@ frame.flat > border { @extend .frame.flat; } // for backward compatibility
 
 actionbar > revealer > box {
   padding: $container-padding;
-  border-top: 1px solid $border;
+  border-top: 1px solid $divider;
 
   button:not(.suggested-action):not(.destructive-action):not(.server-list-button) { @extend %button_basic.flat; }
 }
@@ -2717,7 +2717,7 @@ scrolledwindow {
   @at-root junction { // the small square between two scrollbars
     border-style: solid none none solid;
     border-width: 1px;
-    border-color: $border;
+    border-color: $divider;
     background-color: $base;
 
     &:dir(rtl) { border-style: solid solid none none; }
@@ -2728,7 +2728,7 @@ scrolledwindow {
 separator {
   min-width: 1px;
   min-height: 1px;
-  background-color: $border;
+  background-color: $divider;
 }
 
 %hide_separators {
@@ -2742,7 +2742,7 @@ separator {
  * Lists *
  *********/
 list {
-  border-color: $border;
+  border-color: $frame;
   background-color: $base;
 
   row { padding: 2px; }
@@ -2848,7 +2848,7 @@ expander {
  ************/
 calendar {
   padding: 1px;
-  border: 1px solid $border;
+  border: 1px solid $frame;
   color: $text;
 
   &:disabled { color: $text-disabled; }
@@ -2861,6 +2861,7 @@ calendar {
 
   &.header {
     border-style: none none solid;
+    border-color: $divider;
     border-radius: 0;
   }
 
@@ -2917,10 +2918,10 @@ messagedialog { // Message Dialog styling
 }
 
 filechooser {
-  .dialog-action-box { border-top: 1px solid $border; }
+  .dialog-action-box { border-top: 1px solid $divider; }
 
   #pathbarbox {
-    border-bottom: 1px solid $border;
+    border-bottom: 1px solid $divider;
     background-color: $background;
 
     > stack > box > button { // The new folder button
@@ -2947,14 +2948,14 @@ filechooserbutton:drop(active) {
     &:dir(ltr),
     &.left,
     &.left:dir(rtl) {
-      border-right: 1px solid $border;
+      border-right: 1px solid $divider;
       border-left-style: none;
     }
 
     @at-root %sidebar_right,
     &:dir(rtl),
     &.right {
-      border-left: 1px solid $border;
+      border-left: 1px solid $divider;
       border-right-style: none;
     }
   }
@@ -2987,11 +2988,11 @@ stacksidebar {
 }
 
 separator.sidebar {
-  background-color: $border;
+  background-color: $divider;
 
   &.selection-mode,
   .selection-mode & {
-    // background-color: $border;
+    // background-color: $divider;
   }
 }
 
@@ -3081,7 +3082,7 @@ paned {
     border-style: none; // just to be sure
     background-color: transparent;
     // workaround, using background istead of a border since the border will get rendered twice (?)
-    background-image: image($border);
+    background-image: image($divider);
     background-size: 1px 1px;
     background-clip: content-box; // avoids borders image being rendered twice (?)
 
@@ -3089,7 +3090,7 @@ paned {
       min-width: 6px;
       min-height: 6px;
       background-color: $background;
-      background-image: image($border), image($border);
+      background-image: image($divider), image($divider);
       background-size: 1px 1px, 1px 1px;
     }
   }
@@ -3178,7 +3179,7 @@ tooltip {
   box-shadow: none; // otherwise it gets inherited by windowframe.csd
 
   &:not(.csd):not(.unity-csd) {
-    // border: 1px solid $border;
+    // border: 1px solid $frame;
     // border-radius: $corner-radius + 1px;
     // background-clip: $background-clip-extra;
   }
@@ -3457,9 +3458,9 @@ cursor-handle {
   padding-left: 8px;
   padding-right: 8px;
 
-  border: solid 1px $border;
+  border: solid 1px $frame;
   border-radius: $corner-radius + 1px;
-  box-shadow: inset 0 -2px $border;
+  box-shadow: inset 0 -2px $frame;
   background-color: $surface;
   color: $text;
   font-size: smaller;
@@ -3502,14 +3503,14 @@ popover.emoji-picker {
   padding: 0;
 
   entry {
-    border-bottom: 1px solid $border;
+    border-bottom: 1px solid $divider;
     border-image: none;
     border-radius: 0;
     box-shadow: none;
     background-color: transparent;
   }
 
-  scrolledwindow { border-bottom: 1px solid $border; }
+  scrolledwindow { border-bottom: 1px solid $divider; }
 }
 
 // mimic tab style

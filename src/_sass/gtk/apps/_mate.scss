@@ -140,7 +140,7 @@ PanelApplet.wnck-applet .wnck-pager {
 }
 
 #MatePanelPopupWindow {
-  border: 1px solid $border;
+  border: 1px solid $frame;
   border-radius: $corner-radius + 1px;
   box-shadow: inset 0 1px highlight($surface);
 
@@ -149,7 +149,7 @@ PanelApplet.wnck-applet .wnck-pager {
   button { padding: 4px 16px; }
 
   // Weird, this sets the border color of the clockmap
-  > frame > box > box > box > widget { color: $border; }
+  > frame > box > box > box > widget { color: $divider; }
 }
 
 na-tray-applet {
@@ -174,7 +174,7 @@ na-tray-applet widget box widget {
 
 // volume applet, brightness applet
 .mate-panel-applet-slider {
-  border: 1px solid $border;
+  border: 1px solid $frame;
   border-radius: $corner-radius + 1px;
   box-shadow: inset 0 1px highlight($surface);
   background-color: $background;
@@ -196,7 +196,7 @@ na-tray-applet widget box widget {
 
 #mate-menu {
   // FIXME, does not work
-  border: 1px solid $border;
+  border: 1px solid $frame;
 
   button {
     @extend %simple_flat_button;
@@ -261,7 +261,7 @@ na-tray-applet widget box widget {
 
 .caja-side-pane notebook,
 .caja-notebook {
-  border-top: 1px solid $border;
+  border-top: 1px solid $divider;
 
   .frame { border-style: none; }
 }
@@ -283,7 +283,7 @@ na-tray-applet widget box widget {
 .caja-navigation-window statusbar {
   margin: 0 -10px;
   padding: 0 4px;
-  border-top: 1px solid $border;
+  border-top: 1px solid $divider;
 }
 
 // infobar
@@ -292,7 +292,7 @@ na-tray-applet widget box widget {
 }
 
 #caja-extra-view-widget {
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid $divider;
   background-color: $background; // needs overriding
 
   > box > box > label { font-weight: bold; }
@@ -306,7 +306,7 @@ na-tray-applet widget box widget {
 .pluma-window statusbar {
   margin: 0 -10px;
   padding: 0 4px;
-  border-top: 1px solid $border;
+  border-top: 1px solid $divider;
 
   frame {
     > border { border-style: none; }
@@ -325,7 +325,7 @@ na-tray-applet widget box widget {
 
 // Printpreview
 .pluma-print-preview {
-  toolbar { border-bottom: 1px solid $border; }
+  toolbar { border-bottom: 1px solid $divider; }
 
   // scrolledwindow { background-color: $base; }
 }
@@ -342,9 +342,9 @@ na-tray-applet widget box widget {
 
   notebook.frame {
     margin-top: -1px;
-    border-top: 1px solid $border;
+    border-top: 1px solid $divider;
 
-    box.vertical toolbar.horizontal { border-bottom: 1px solid $border; }
+    box.vertical toolbar.horizontal { border-bottom: 1px solid $divider; }
   }
 }
 
@@ -355,7 +355,7 @@ na-tray-applet widget box widget {
 .atril-window paned.horizontal box.vertical {
   .frame { border-style: none; }
 
-  notebook .frame { border-top: 1px solid $border; }
+  notebook .frame { border-top: 1px solid $divider; }
 }
 
 

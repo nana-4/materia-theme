@@ -93,7 +93,7 @@
   padding: 0;
   border-style: solid solid none;
   border-width: 1px;
-  border-color: $border;
+  border-color: $divider;
   border-radius: ($corner-radius + 1px) ($corner-radius + 1px) 0 0;
   background-color: rgba($base, 0.9);
   background-clip: $background-clip-extra;
@@ -140,12 +140,12 @@
 // View
 // Hide superfluous treeview drop target indication
 .nautilus-list-view .view:not(.dnd) {
-  // border-bottom: 1px solid $border;
+  // border-bottom: 1px solid $divider;
 }
 
 .search-information {
   padding: 2px;
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid $divider;
   background-color: $base;
   color: $text;
 }
@@ -178,7 +178,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 
   > box.horizontal:last-child {
     margin: -6px 0 0 -6px;
-    border-top: 1px solid $border;
+    border-top: 1px solid $divider;
 
     > label { margin: 0 8px; }
 
@@ -258,11 +258,11 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 }
 
 .gedit-document-panel-group-row:not(:first-child) {
-  border-top: 1px solid $border;
+  border-top: 1px solid $divider;
 }
 
 .gedit-side-panel-paned statusbar {
-  border-top: 1px solid $border;
+  border-top: 1px solid $divider;
 }
 
 .gedit-search-slider {
@@ -367,7 +367,7 @@ frame.gedit-map-frame > border {
 .tweak-group-startup {
   // background-color: @view_separators;
   background-image: image($base);
-  border: 1px solid $border;
+  border: 1px solid $frame;
 }
 
 //
@@ -381,9 +381,9 @@ row#dynamic-workspaces,
 row#PrimaryWorkspaceTweak, // for 3.26.0
 row#workspaces-only-on-primary {
   padding: 0;
-  border: 1px solid $border;
+  border: 1px solid $frame;
 
-  row:not(:last-child) { border-bottom: 1px solid $border; }
+  row:not(:last-child) { border-bottom: 1px solid $divider; }
 
   &.tweak > list { margin-top: -3px; }
 }
@@ -410,7 +410,7 @@ row#workspaces-only-on-primary {
 // Layout tab and tab bar tweaks
 // The following makes the layout stack header look similar to a tab bar.
 layouttabbar {
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid $divider;
   background-color: $background;
 
   button { @extend %flat_button; }
@@ -425,7 +425,7 @@ layouttab {
   margin: 0 8px; // not working
   border-style: none solid;
   border-width: 1px;
-  border-color: $border;
+  border-color: $frame;
   box-shadow: inset 0 -2px $primary;
   background-color: $base;
 
@@ -444,7 +444,7 @@ layouttab {
 }
 
 layout {
-  border: 1px solid $border;
+  border: 1px solid $frame;
   -PnlDockBin-handle-size: 1;
 }
 
@@ -483,18 +483,18 @@ omnibar {
 }
 
 popover.omnibar list row:not(:last-child) {
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid $divider;
 }
 
 entry.preferences-search {
   @extend %entry.flat;
 
-  box-shadow: inset 0 -1px $border;
+  box-shadow: inset 0 -1px $divider;
   background-color: $base;
 
   // doesn't work properly
-  // &:dir(ltr) { border-right: 1px solid $border; }
-  // &:dir(rtl) { border-left: 1px solid $border; }
+  // &:dir(ltr) { border-right: 1px solid $divider; }
+  // &:dir(rtl) { border-left: 1px solid $divider; }
 }
 
 preferences stacksidebar.sidebar {
@@ -507,8 +507,8 @@ preferences stacksidebar.sidebar {
 }
 
 preferences > box > box {
-  &:dir(ltr) { border-right: 1px solid $border; }
-  &:dir(rtl) { border-left: 1px solid $border; }
+  &:dir(ltr) { border-right: 1px solid $divider; }
+  &:dir(rtl) { border-left: 1px solid $divider; }
 }
 
 popover.messagepopover {
@@ -518,7 +518,7 @@ popover.messagepopover {
     @extend %simple_flat_button;
 
     padding: 8px 16px;
-    border-top: 1px solid $border;
+    border-top: 1px solid $divider;
     border-radius: 0;
 
     &:first-child { border-bottom-left-radius: $corner-radius; }
@@ -532,29 +532,29 @@ popover.messagepopover {
 popover.transfers list {
   background-color: transparent;
 
-  row:not(:first-child) { border-top: 1px solid $border; }
+  row:not(:first-child) { border-top: 1px solid $divider; }
 
   row > box { padding: 10px; }
 }
 
 dockbin {
-  border: 1px solid $border;
+  border: 1px solid $frame;
   -PnlDockBin-handle-size: 1;
 }
 
 dockpaned {
-  border: 1px solid $border;
+  border: 1px solid $frame;
 }
 
 eggsearchbar box.search-bar {
   padding: 0 8px;
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid $divider;
   background-color: $background;
 }
 
 docktabstrip {
   padding: 0 8px;
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid $divider;
   background-color: $background;
 }
 
@@ -629,7 +629,7 @@ buildperspective row {
 layoutpane entry.search {
   @extend %entry.flat;
 
-  box-shadow: inset 0 -1px $border;
+  box-shadow: inset 0 -1px $divider;
   background-color: $base;
 }
 
@@ -691,7 +691,7 @@ button.dzlmenubuttonitem {
 }
 
 idelayoutstackheader {
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid $divider;
 
   button:checked { color: $text; }
 }
@@ -701,9 +701,9 @@ ideeditorutilities > dzldockpaned > box > stackswitcher {
   padding: 8px 0;
   background-color: $background;
 
-  &:dir(ltr) { border-right: 1px solid $border; }
+  &:dir(ltr) { border-right: 1px solid $divider; }
 
-  &:dir(rtl) { border-left: 1px solid $border; }
+  &:dir(rtl) { border-left: 1px solid $divider; }
 
   button {
     border-radius: 0;
@@ -749,9 +749,9 @@ popover.messagepopover {
   // padding: 0;
 
   list {
-    border: 1px solid $border;
+    border: 1px solid $divider;
 
-    row:not(:last-child) { border-bottom: 1px solid $border; }
+    row:not(:last-child) { border-bottom: 1px solid $divider; }
   }
 }
 
@@ -835,13 +835,13 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
 .side-panel:dir(ltr) {
   // border-width: 0 1px 0 0;
   border-style: solid;
-  border-color: $border;
+  border-color: $divider;
 }
 
 .side-panel:dir(rtl) {
   // border-width: 0 0 0 1px;
   border-style: solid;
-  border-color: $border;
+  border-color: $divider;
 }
 
 .side-panel .view {
@@ -874,7 +874,7 @@ frame.documents-dropdown {
 }
 
 box.vertical > revealer > toolbar.search-bar {
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid $divider;
   background-clip: border-box; // avoid black border
 
   button > widget {
@@ -954,7 +954,7 @@ frame.commit-frame > border { border-style: solid none none; }
 /**************
  * Characters *
  **************/
-box.dialog-vbox scrolledwindow.related { border: 1px solid $border; }
+box.dialog-vbox scrolledwindow.related { border: 1px solid $frame; }
 
 list.categories { background-image: image($base-alt); }
 

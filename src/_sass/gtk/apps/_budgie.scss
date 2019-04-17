@@ -56,7 +56,7 @@
     entry.search { background-color: transparent; }
 
     entry.search {
-      border-bottom: 1px solid $border;
+      border-bottom: 1px solid $divider;
       border-image: none;
       border-radius: 0;
       box-shadow: none;
@@ -116,7 +116,7 @@
     .places-list:not(.always-expand) {
       margin-top: 4px;
       padding-top: 4px;
-      border-top: 1px solid $border;
+      border-top: 1px solid $divider;
     }
 
     // FIXME: untested
@@ -321,16 +321,16 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
 @each $pos, $b_pos in $pos_list {
   // Panel borders
-  // .#{$pos} .budgie-panel { border-#{$b_pos}: 1px solid $border; }
+  // .#{$pos} .budgie-panel { border-#{$b_pos}: 1px solid $frame; }
 
   // Raven borders
   .#{$pos} frame.raven-frame > border {
     margin-#{$b_pos}: 32px;
-    // border-#{$b_pos}: 1px solid $border;
+    // border-#{$b_pos}: 1px solid $frame;
   }
 
   // Shadows
-  // .#{$pos} .shadow-block { background-image: linear-gradient(to $b_pos, $border, transparent); }
+  // .#{$pos} .shadow-block { background-image: linear-gradient(to $b_pos, $frame, transparent); }
 }
 
 // Raven
@@ -363,7 +363,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
     &.top {
       padding: 0;
-      border-bottom: 1px solid $border;
+      border-bottom: 1px solid $divider;
 
       stackswitcher button {
         margin: -4px 0 -5px; // remove unwanted vertical margins
@@ -372,7 +372,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
       }
     }
 
-    &.bottom { border-top: 1px solid $border; }
+    &.bottom { border-top: 1px solid $divider; }
   }
 
   stack {
@@ -386,7 +386,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
   .raven-background {
     border-style: solid none;
     border-width: 1px;
-    border-color: $border;
+    border-color: $divider;
     background-color: $base;
 
     // &.middle { border-bottom-style: none; } // applet background between two headers
@@ -488,7 +488,7 @@ calendar.raven-calendar {
 
   .linked.horizontal > button {
     padding: 8px 16px;
-    border-top: 1px solid $border;
+    border-top: 1px solid $divider;
     border-radius: 0;
 
     @extend %simple_flat_button;
@@ -524,5 +524,5 @@ calendar.raven-calendar {
 
   list .dim-label { opacity: 1; }
 
-  scrolledwindow { border-top: 1px solid $border; }
+  scrolledwindow { border-top: 1px solid $divider; }
 }
