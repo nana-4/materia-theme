@@ -117,7 +117,7 @@ StScrollBar {
   StBin#trough {
     margin: 4px;
     border-radius: 100px;
-    background-color: $divider;
+    background-color: $track-disabled;
   }
 
   StButton#vhandle, StButton#hhandle {
@@ -133,7 +133,7 @@ StScrollBar {
 
 %overview_scrollbar {
   StBin#trough {
-    background-color: on(dark, divider);
+    background-color: on(dark, track-disabled);
   }
 
   StButton#vhandle, StButton#hhandle {
@@ -694,7 +694,7 @@ StScrollBar {
   .level {
     height: 8px;
     border-radius: 0;
-    background-color: $divider;
+    background-color: $track-disabled;
     color: $text;
   }
   .level-bar {
@@ -739,7 +739,7 @@ StScrollBar {
   .switcher-list .item-box:outlined {
     padding: 8px;
     border: none;
-    background-color: $divider;
+    background-color: $track-disabled;
   }
 
   .switcher-list .item-box:selected {
@@ -805,7 +805,7 @@ StScrollBar {
   .ws-switcher-box {
     height: 48px;
     border: none;
-    background: $divider;
+    background: $track-disabled;
     border-radius: $corner-radius;
   }
 
@@ -1232,7 +1232,7 @@ StScrollBar {
               padding: 8px;
               border: none;
               border-radius: $corner-radius;
-              background-color: $divider;
+              background-color: $track-disabled;
               color: $text-disabled;
             }
           }
@@ -2004,7 +2004,7 @@ $legacy_icon_size: 24px;
     @include entry(normal, $fc:on($os-background, track));
     &:focus { @include entry(focus, $fc:on($os-background)); }
     &:insensitive {
-      @include entry(insensitive, $fc:on($os-background, divider));
+      @include entry(insensitive, $fc:on($os-background, track-disabled));
       color: on($os-background, disabled);
     }
   }

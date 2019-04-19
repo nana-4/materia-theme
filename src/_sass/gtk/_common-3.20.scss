@@ -337,7 +337,7 @@ treeview entry {
   margin: 2px;
   border-radius: $circular-radius;
   box-shadow: none;
-  background-color: $divider;
+  background-color: $track-disabled;
   color: $text;
 
   &:hover { background-image: image($overlay-hover); }
@@ -1093,7 +1093,7 @@ headerbar {
     color: $titlebar-text;
 
     &:disabled {
-      box-shadow: inset 0 -1px $titlebar-divider;
+      box-shadow: inset 0 -1px $titlebar-track-disabled;
       background-color: $titlebar-fill;
       color: $titlebar-text-disabled;
     }
@@ -1475,7 +1475,7 @@ treeview.view {
   }
 
   &.trough { // progress bar trough in treeviews
-    border-bottom: $bar-size solid $divider;
+    border-bottom: $bar-size solid $track-disabled;
     box-shadow: none;
     background-color: transparent;
     background-image: none;
@@ -2394,7 +2394,7 @@ scale {
     outline: none;
     background-color: $track;
 
-    &:disabled { background-color: $divider; }
+    &:disabled { background-color: $track-disabled; }
   }
 
   // the colored part of the backing bit
@@ -2583,7 +2583,7 @@ progressbar {
   color: $text-secondary;
   font-size: smaller;
 
-  trough { background-color: $divider; }
+  trough { background-color: $track-disabled; }
 
   progress { background-color: $primary; }
 
@@ -2643,7 +2643,7 @@ levelbar {
 
     &.full { background-color: $success; }
 
-    &.empty { background-color: $divider; }
+    &.empty { background-color: $track-disabled; }
   }
 }
 

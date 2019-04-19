@@ -20,6 +20,7 @@
     @if ($state == 'disabled') { @return rgba(black, 0.38); }
     @if ($state == 'secondary-disabled') { @return rgba(black, 0.26); }
     @if ($state == 'track') { @return rgba(black, 0.26); }
+    @if ($state == 'track-disabled') { @return rgba(black, 0.12); }
     @if ($state == 'divider') { @return rgba(black, 0.12); }
     @if ($state == 'fill') { @return rgba(black, 0.04); }
   } @else {
@@ -28,6 +29,7 @@
     @if ($state == 'disabled') { @return rgba(white, 0.5); }
     @if ($state == 'secondary-disabled') { @return rgba(white, 0.3); }
     @if ($state == 'track') { @return rgba(white, 0.3); }
+    @if ($state == 'track-disabled') { @return rgba(white, 0.12); }
     @if ($state == 'divider') { @return rgba(white, 0.12); }
     @if ($state == 'fill') { @return rgba(white, 0.04); }
   }
@@ -108,6 +110,7 @@ $text-secondary:                        on($background, secondary);
 $text-disabled:                         on($background, disabled);
 $text-secondary-disabled:               on($background, secondary-disabled);
 $track:                                 on($background, track);
+$track-disabled:                        on($background, track-disabled);
 $divider:                               on($background, divider);
 $fill:                                  on($background, fill);
 
@@ -116,6 +119,7 @@ $titlebar-text-secondary:               on($titlebar, secondary);
 $titlebar-text-disabled:                on($titlebar, disabled);
 $titlebar-text-secondary-disabled:      on($titlebar, secondary-disabled);
 $titlebar-track:                        on($titlebar, track);
+$titlebar-track-disabled:               on($titlebar, track-disabled);
 $titlebar-divider:                      on($titlebar, divider);
 $titlebar-fill:                         on($titlebar, fill);
 
