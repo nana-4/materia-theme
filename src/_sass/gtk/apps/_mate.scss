@@ -61,10 +61,7 @@ MatePanelAppletFrameDBus {
   menubar > menuitem {
     color: on($panel, secondary);
 
-    &:hover {
-      background-color: on($panel, divider);
-      color: on($panel);
-    }
+    &:hover { color: on($panel); }
 
     &:disabled { color: on($panel, secondary-disabled); }
   }
@@ -125,9 +122,9 @@ PanelApplet.wnck-applet .wnck-pager {
   background-color: transparent;
   color: $primary-alt;
 
-  &:hover { background-color: on($panel, divider); }
+  &:hover { background-color: $overlay-hover; }
 
-  &:active { background-color: on($panel, track); }
+  &:active { background-color: $overlay-active; }
 
   &:selected { background-color: $primary; }
 }
@@ -141,10 +138,30 @@ PanelApplet.wnck-applet .wnck-pager {
   border: 1px solid $frame;
   border-radius: $corner-radius + 1px;
   box-shadow: inset 0 1px highlight($surface);
+  background-color: $surface;
 
   frame > border { border-style: none; }
 
-  button { padding: 4px 16px; }
+  calendar {
+    border-style: none;
+
+    &:not(:selected) { background-color: transparent; }
+
+    // Add separator between calendar and location
+    + box {
+      margin-top: -5px;
+      padding-top: 5px;
+      border-top: 1px solid $divider;
+    }
+  }
+
+  expander > title { min-height: 32px; }
+
+  button {
+    @extend %simple_flat_button;
+
+    padding: 4px 16px;
+  }
 
   // Weird, this sets the border color of the clockmap
   > frame > box > box > box > widget { color: $divider; }
@@ -175,7 +192,7 @@ na-tray-applet widget box widget {
   border: 1px solid $frame;
   border-radius: $corner-radius + 1px;
   box-shadow: inset 0 1px highlight($surface);
-  background-color: $background;
+  background-color: $surface;
 
   frame > border { border-style: none; }
 }
@@ -187,7 +204,7 @@ na-tray-applet widget box widget {
   &:not(:selected) > box { transition: $transition; }
 
   &:selected > box {
-    background-color: on($panel, divider);
+    background-color: $overlay-checked;
     color: on($panel);
   }
 }
@@ -195,6 +212,7 @@ na-tray-applet widget box widget {
 #mate-menu {
   // FIXME, does not work
   border: 1px solid $frame;
+  background-color: $surface;
 
   button {
     @extend %simple_flat_button;
@@ -205,16 +223,19 @@ na-tray-applet widget box widget {
     color: $text;
     font-weight: normal;
 
-    label:not(:first-child) { color: $text-secondary; }
+    &:not(.flat) { background-color: $overlay-checked; }
+
+    image,
+    label + label { color: $text-secondary; }
   }
 
   entry {
-    margin: 0 0 8px;
+    margin: 0 0 4px;
 
     image { margin: 0; }
 
     + button {
-      margin: 0 4px 8px;
+      margin: 0 4px 4px;
       padding: ($medium-size - 24px) / 2;
     }
   }
@@ -291,7 +312,7 @@ na-tray-applet widget box widget {
 
 #caja-extra-view-widget {
   border-bottom: 1px solid $divider;
-  background-color: $background; // needs overriding
+  background-color: $base; // needs overriding
 
   > box > box > label { font-weight: bold; }
 }
@@ -359,11 +380,16 @@ na-tray-applet widget box widget {
 
 /* mate-screensaver lock dialog */
 .lock-dialog {
-  border-radius: $corner-radius;
-  // not sure if box-shadow works here
-  box-shadow: $shadow-4, inset 0 1px highlight($surface);
+  border: 1px solid $frame;
+  border-radius: $corner-radius + 1px;
+  box-shadow: $shadow-4, inset 0 1px highlight($surface); // not sure if box-shadow works here
+  background-color: $surface;
 
   frame > border { border-style: none; }
+
+  button {
+    @extend %simple_flat_button;
+  }
 }
 
 /* multimedia OSD */
