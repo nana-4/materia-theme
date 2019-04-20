@@ -8,6 +8,7 @@
 }
 
 @function on($color, $state: 'primary') {
+  // Allow 'light' or 'dark' to $color
   @if ($color == 'light') { $color: white; }
   @if ($color == 'dark') { $color: black; }
 
@@ -36,8 +37,8 @@
 }
 
 @function highlight($color) {
-  @if (lightness($color) > 80%) { @return rgba(white, 0.4); }
-  @else if (lightness($color) > 40%) { @return rgba(white, 0.2); }
+  @if (lightness($color) >= 80%) { @return rgba(white, 0.4); }
+  @else if (lightness($color) >= 40%) { @return rgba(white, 0.2); }
   @else { @return rgba(white, 0.1); }
 }
 

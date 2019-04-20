@@ -481,19 +481,11 @@ button {
     &.flat {
       color: on(dark, secondary);
 
-      &:focus, &:hover, &:active { color: on(dark); }
+      &:focus, &:hover, &:active, &:checked { color: on(dark); }
 
       &:disabled { color: on(dark, secondary-disabled); }
 
-      &:checked {
-        background-color: on(dark, track);
-        color: on(dark);
-      }
-
-      &:checked:disabled {
-        background-color: on(dark, divider);
-        color: on(dark, disabled);
-      }
+      &:checked:disabled { color: on(dark, disabled); }
     }
   }
 

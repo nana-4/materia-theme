@@ -178,7 +178,7 @@
   .workspace-item {
     transition: $transition;
 
-    &.current-workspace { background-color: on($panel, divider); }
+    &.current-workspace { background-color: $overlay-checked; }
   }
 
   .workspace-add-button {
@@ -279,7 +279,7 @@ button.raven-trigger {
 
       &:hover, &:active { color: on($panel, secondary); }
 
-      &:disabled { color: on($panel, track); }
+      &:disabled { color: on($panel, secondary-disabled); }
     }
   }
 
@@ -472,6 +472,7 @@ calendar.raven-calendar {
 
 %budgie_dialog {
   border-radius: $corner-radius;
+  box-shadow: inset 0 1px highlight($surface);
   background-color: $surface;
 
   decoration { border-radius: $corner-radius; }
@@ -516,7 +517,7 @@ calendar.raven-calendar {
     font-size: 120%;
     padding: $container-padding 8px + $container-padding;
     border-image: none;
-    box-shadow: inset 0 1px highlight($base);
+    box-shadow: none;
     background-color: transparent;
   }
 
