@@ -487,9 +487,8 @@ popover.omnibar list row:not(:last-child) {
 }
 
 entry.preferences-search {
-  @extend %entry.flat;
-
-  box-shadow: inset 0 -1px $divider;
+  border-bottom: 1px solid $divider;
+  box-shadow: none;
   background-color: $base;
 
   // doesn't work properly
@@ -606,15 +605,9 @@ dockoverlayedge {
     border: none;
   }
 
-  &.left-edge docktab {
-    &:hover { box-shadow: inset -2px 0 $track; }
-    &:checked { box-shadow: inset -2px 0 $primary; }
-  }
+  &.left-edge docktab:checked { box-shadow: inset -2px 0 $primary; }
 
-  &.right-edge docktab {
-    &:hover { box-shadow: inset 2px 0 $track; }
-    &:checked { box-shadow: inset 2px 0 $primary; }
-  }
+  &.right-edge docktab:checked { box-shadow: inset 2px 0 $primary; }
 }
 
 pillbox {
@@ -627,17 +620,15 @@ buildperspective row {
 }
 
 layoutpane entry.search {
-  @extend %entry.flat;
-
-  box-shadow: inset 0 -1px $divider;
+  border-bottom: 1px solid $divider;
+  box-shadow: none;
   background-color: $base;
 }
 
 editortweak entry.search {
-  @extend %entry.flat;
-
   margin-bottom: -1px;
   box-shadow: none;
+  background-color: transparent;
 }
 
 //
@@ -723,18 +714,12 @@ ideeditorutilities > dzldockpaned > box > stackswitcher {
     &:dir(ltr) {
       margin-right: -1px;
 
-      &:hover { box-shadow: inset -2px 0 $track; }
-
-      &:active,
       &:checked { box-shadow: inset -2px 0 $primary; }
     }
 
     &:dir(rtl) {
       margin-left: -1px;
 
-      &:hover { box-shadow: inset 2px 0 $track; }
-
-      &:active,
       &:checked { box-shadow: inset 2px 0 $primary; }
     }
   }
