@@ -981,6 +981,16 @@ toolbar {
     &.right,
     &.top,
     &.bottom { border-radius: 0; } // positional classes for `attached` osd toolbars
+
+    &.bottom {
+      box-shadow: none;
+      background-color: transparent;
+      background-image: linear-gradient(to bottom,
+                                        transparent,
+                                        rgba(black, 0.1) 30%,
+                                        rgba(black, 0.2) 50%,
+                                        rgba(black, 0.4));
+    }
   }
 
   // toolbar separators
