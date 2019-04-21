@@ -2967,8 +2967,8 @@ filechooserbutton:drop(active) {
   paned & { &.left, &.right, &.left:dir(rtl), &:dir(rtl), &:dir(ltr), & { border-style: none; }}
 }
 
-stacksidebar {
-  &.sidebar {
+stacksidebar.sidebar {
+  & {
     &:dir(ltr),
     &.left,
     &.left:dir(rtl) { list { @extend %sidebar_left; }}
@@ -2977,12 +2977,30 @@ stacksidebar {
     &.right { list { @extend %sidebar_right; }}
   }
 
+  + separator.vertical,
+  separator.horizontal { @extend %hide_separators; }
+
+  list {
+    padding: 4px;
+    background-color: $base-alt; // This should not be necessary, but the parent stacksidebar ignores background-color.
+  }
+
   row {
-    padding: 10px 4px;
+    min-height: 32px;
+    padding: 0 8px - 6px;
+    border-radius: $corner-radius;
+
+    &:selected {
+      background-color: $overlay-checked;
+      font-weight: 500;
+    }
+
+    + row { margin-top: 4px; }
 
     > label {
       padding-left: 6px;
       padding-right: 6px;
+      color: inherit;
     }
 
     &.needs-attention > label { @extend %needs-attention; }
@@ -3007,7 +3025,7 @@ row {
   image.sidebar-icon { color: $text-secondary; }
 }
 
-placessidebar {
+placessidebar.sidebar {
   > viewport.frame { border-style: none; }
 
   list { padding: (4px - 3px) 0 4px; }
