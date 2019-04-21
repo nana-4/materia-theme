@@ -3123,25 +3123,43 @@ paned {
 infobar {
   border-style: none;
 
-  &.info { background-color: $infobar-info; }
-
-  &.question { background-color: $infobar-question; }
-
-  &.warning { background-color: $infobar-warning; }
-
-  &.error { background-color: $infobar-error; }
-
   &.info,
-  &.question,
-  &.warning,
+  &.question {
+    border-bottom: 1px solid $divider;
+    background-color: $base;
+
+    button {
+      @extend %simple_flat_button;
+
+      &.text-button {
+        padding-left: 8px;
+        padding-right: 8px;
+
+        &:not(:disabled) { color: $primary; }
+      }
+    }
+  }
+
+  &.warning {
+    background-color: $warning;
+    color: on($warning);
+
+    // button { @extend %button_selected; }
+
+    selection {}
+
+    *:link { color: on($warning); }
+  }
+
   &.error {
-    > label, & { color: on(dark); }
+    background-color: $error;
+    color: on($error);
 
     button { @extend %button_selected; }
 
     selection {}
 
-    *:link { color: on(dark); }
+    *:link { color: on($error); }
   }
 }
 
