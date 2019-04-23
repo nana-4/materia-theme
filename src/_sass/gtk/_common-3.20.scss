@@ -110,8 +110,8 @@ textview {
 
 .rubberband,
 rubberband {
-  border: 1px solid $primary-alt;
-  background-color: rgba($primary-alt, 0.3);
+  border: 1px solid $primary-light;
+  background-color: rgba($primary-light, 0.3);
 }
 
 flowbox {
@@ -1151,44 +1151,44 @@ headerbar {
     // but let's keep it for backwards compatibility.
     transition: background-color 0.1ms $ripple-fade-in-duration, color $duration $ease-out;
     animation: ripple-on-headerbar $ripple-fade-in-duration $ease-out;
-    box-shadow: $shadow-1, inset 0 1px highlight($primary);
-    background-color: $primary;
-    color: on($primary);
+    box-shadow: $shadow-1, inset 0 1px highlight($primary-dark);
+    background-color: $primary-dark;
+    color: on($primary-dark);
 
     &:backdrop {
-      color: on($primary, secondary);
+      color: on($primary-dark, secondary);
     }
 
-    .subtitle:link { color: on($primary); }
+    .subtitle:link { color: on($primary-dark); }
 
     button:not(.suggested-action):not(.destructive-action) {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                     currentColor 0%,
                                     transparent 0%)
                                     0 0 0 / 0 0 0px;
-      color: on($primary);
+      color: on($primary-dark);
 
-      &:disabled { color: on($primary, disabled); }
+      &:disabled { color: on($primary-dark, disabled); }
 
       &:checked {
         border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                       currentColor 100%,
                                       transparent 0%)
                                       0 0 2 / 0 0 2px;
-        color: on($primary);
+        color: on($primary-dark);
 
-        &:disabled { color: on($primary, disabled); }
+        &:disabled { color: on($primary-dark, disabled); }
       }
 
       &:backdrop {
-        color: on($primary, secondary);
+        color: on($primary-dark, secondary);
 
-        &:disabled { color: on($primary, secondary-disabled); }
+        &:disabled { color: on($primary-dark, secondary-disabled); }
 
         &:checked {
-          color: on($primary, secondary);
+          color: on($primary-dark, secondary);
 
-          &:disabled { color: on($primary, secondary-disabled); }
+          &:disabled { color: on($primary-dark, secondary-disabled); }
         }
       }
     }

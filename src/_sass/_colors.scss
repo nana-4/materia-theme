@@ -51,8 +51,9 @@ $green:                                 #34A853;
 $yellow:                                #FBBC05;
 $red:                                   #EA4335;
 
-$primary:                               $blue;
-$primary-alt:                           #7BAAF7;
+$primary-dark:                          $blue;
+$primary-light:                         #7BAAF7;
+$primary:                               if($variant == 'light', $primary-dark, $primary-light);
 
 $background:                            if($variant == 'light', #F2F2F2, #282828);
 $surface:                               if($variant == 'light', #FFFFFF, #424242);
@@ -79,7 +80,7 @@ $warning:                               $yellow;
 $error:                                 $red;
 $success:                               $green;
 
-$suggested:                             $primary;
+$suggested:                             $primary-dark;
 $destructive:                           $error;
 
 $frame:                                 if($variant == 'light', rgba(black, 0.12), rgba(black, 0.26)); // instead of shadows
