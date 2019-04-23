@@ -3468,27 +3468,15 @@ popover.emoji-picker {
   scrolledwindow { border-bottom: 1px solid $divider; }
 }
 
-// mimic tab style
 button.emoji-section {
-  margin-top: -1px;
-  padding: 0 8px;
-  min-width: 24px;
-  min-height: $medium-size;
-  border-radius: 0;
-  outline-offset: -6px;
-
-  &, &:hover, &:active { box-shadow: inset 0 2px transparent; }
+  margin: 4px;
 
   &:checked {
-    box-shadow: inset 0 2px $primary;
-    background-color: transparent;
+    // background-color: transparent;
+    color: $primary;
   }
 
-  &:hover, &:active { background-color: $overlay-hover; }
-
-  &:first-child { margin-left: 4px; }
-
-  &:last-child { margin-right: 4px; }
+  &:not(:last-child) { margin-right: 0; }
 }
 
 popover.emoji-picker .emoji {
