@@ -1039,11 +1039,9 @@ searchbar > revealer > box {
 /***************
  * Header bars *
  ***************/
-%titlebar,
-headerbar {
+.titlebar {
   transition: background-color $duration $ease-out, color $duration $ease-out;
-  min-height: $large-size;
-  padding: 0 $container-padding;
+  border-radius: $corner-radius $corner-radius 0 0;
   box-shadow: $shadow-1, inset 0 1px highlight($titlebar);
   background-color: $titlebar;
   color: $titlebar-text;
@@ -1066,6 +1064,16 @@ headerbar {
     font-size: smaller;
 
     @extend .dim-label;
+  }
+
+  // Don't draw titlebar above titlebar
+  .titlebar {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  &:not(headerbar) > separator {
+    background-color: $divider;
   }
 
   entry {
@@ -1194,6 +1202,11 @@ headerbar {
     }
   }
 
+  .selection-mode {
+    box-shadow: inset 0 1px highlight($primary-dark); // Avoid double shadows
+    background-color: $primary-dark;
+  }
+
   // squared corners when the window is maximized, tiled, or fullscreen
   .tiled &,
   .tiled-top &,
@@ -1231,13 +1244,16 @@ headerbar {
       // margin-left: -2px;
       // margin-right: -2px;
       // margin-top: -2px;
-      // border-radius: 0;
+      border-radius: 0;
       box-shadow: $shadow-1; // Remove highlight as window managers should have it
     }
   }
 }
 
 headerbar {
+  min-height: $large-size;
+  padding: 0 $container-padding;
+
   // add vertical margins to common widget on the headerbar to avoid them spanning the whole height
   entry,
   spinbutton,
@@ -1268,85 +1284,10 @@ headerbar {
     margin-top: 5px;
     margin-bottom: 5px;
   }
-
-  &.titlebar headerbar:not(.titlebar) {
-    // Drop the background of non-titlebar nested headerbars. This is needed to
-    // work around headerbar sliding animation issues without refactoring
-    // Adwaita's support of titlebars and headerbars as it may break
-    // applications.
-    // See https://gitlab.gnome.org/GNOME/gtk/issues/1264 for more information.
-    background-color: transparent;
-    box-shadow: none;
-  }
-}
-
-.background .titlebar {
-  border-top-left-radius: $corner-radius;
-  border-top-right-radius: $corner-radius;
-}
-
-.background.tiled .titlebar,
-.background.tiled-top .titlebar,
-.background.tiled-right .titlebar,
-.background.tiled-bottom .titlebar,
-.background.tiled-left .titlebar,
-.background.maximized .titlebar,
-.background.solid-csd .titlebar {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
-headerbar { // headerbar border rounding
-  window separator:first-child + &, // tackles the paned container case
-  window &:first-child { border-top-left-radius: $corner-radius; }
-
-  window &:last-child { border-top-right-radius: $corner-radius; }
-
-  window stack & { // tackles the stacked headerbars case
-    &:first-child, &:last-child {
-      border-top-left-radius: $corner-radius;
-      border-top-right-radius: $corner-radius;
-    }
-  }
-
-  window.tiled &,
-  window.tiled-top &,
-  window.tiled-right &,
-  window.tiled-bottom &,
-  window.tiled-left &,
-  window.maximized &,
-  window.fullscreen &,
-  window.solid-csd & {
-    &,
-    &:first-child,
-    &:last-child,
-    &:only-child {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-  }
-}
-
-.titlebar:not(headerbar) {
-  window.csd > & {
-    // in csd we assume every titlebar is a headerbar so reset anything, this is needed for split toolbars cases
-    padding: 0;
-    background-color: transparent;
-    background-image: none;
-    border-style: none;
-    box-shadow: none;
-  }
-
-  > separator {
-    background-color: $titlebar;
-    background-image: image($divider);
-  }
-
-  @extend %titlebar;
 }
 
 // Development versions of apps to use a differently styled headerbar
-window.devel headerbar.titlebar:not(.selection-mode) {
+window.devel .titlebar:not(.selection-mode) {
 }
 
 
