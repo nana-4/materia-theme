@@ -235,7 +235,6 @@ entry {
       // min-height: $small-size;
       // min-width: $small-size;
       // border-radius: $circular-radius;
-      // -gtk-outline-radius: $circular-radius;
       color: $text-secondary;
 
       &:hover, &:active { color: $text; }
@@ -447,7 +446,6 @@ button {
 
     &.text-button.image-button {
       border-radius: $corner-radius;
-      -gtk-outline-radius: $corner-radius;
 
       label {
         &:first-child { margin-left: 16px - ($medium-size - 24px) / 2; }
@@ -470,7 +468,6 @@ button {
 
       &.text-button.image-button {
         border-radius: $corner-radius;
-        -gtk-outline-radius: $corner-radius;
       }
     }
   }
@@ -531,8 +528,6 @@ button {
     // child, a label needs just lateral padding while an icon needs vertical
     // padding added too.
 
-    outline-offset: -4px; // needs to be set or it gets overriden by GtkRadioButton outline-offset
-
     > label {
       padding-left: 6px;  // label padding
       padding-right: 6px; //
@@ -591,7 +586,6 @@ button {
   &.close,
   &.circular { // The Bloody Circul Button
     border-radius: $circular-radius;
-    -gtk-outline-radius: $circular-radius;
 
     // label { padding: 0; }
   }
@@ -601,7 +595,6 @@ button {
     min-width: $small-size;
     padding: 0;
     border-radius: $circular-radius;
-    -gtk-outline-radius: $circular-radius;
   }
 }
 
@@ -633,7 +626,6 @@ toolbar.inline-toolbar toolbutton {
 
 %linked_middle {
   border-radius: 0;
-  -gtk-outline-radius: $corner-radius;
 }
 
 %linked {
@@ -656,7 +648,6 @@ toolbar.inline-toolbar toolbutton {
 
 %linked_vertical_middle {
   border-radius: 0;
-  -gtk-outline-radius: $corner-radius;
 }
 
 %linked_vertical {
@@ -2281,7 +2272,6 @@ menu menuitem check {
     min-height: 16px;
     min-width: 16px;
     border-radius: $corner-radius;
-    -gtk-outline-radius: $corner-radius;
     -gtk-icon-source: -gtk-recolor(url("assets/scalable/small-checkbox-unchecked-symbolic.svg"));
   }
 
