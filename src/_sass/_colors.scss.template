@@ -8,6 +8,7 @@
 }
 
 @function on($color, $state: 'primary') {
+  // Allow 'light' or 'dark' to $color
   @if ($color == 'light') { $color: white; }
   @if ($color == 'dark') { $color: black; }
 
@@ -36,8 +37,8 @@
 }
 
 @function highlight($color) {
-  @if (lightness($color) > 80%) { @return rgba(white, 0.4); }
-  @else if (lightness($color) > 40%) { @return rgba(white, 0.2); }
+  @if (lightness($color) >= 80%) { @return rgba(white, 0.4); }
+  @else if (lightness($color) >= 40%) { @return rgba(white, 0.2); }
   @else { @return rgba(white, 0.1); }
 }
 
@@ -65,7 +66,7 @@ $scrim:                                 rgba(black, %MATERIA_PANEL_OPACITY%);
 $scrim-alt:                             rgba(black, 0.3);
 $scrim-inverse:                         rgba(white, 0.1);
 $titlebar:                              %HDR_BG%;
-$titlebar-backdrop:                     %MATERIA_VIEW%;
+$titlebar-backdrop:                     %HDR_BG2%;
 $panel:                                 if($topbar == 'dark', %HDR_BG3%, $scrim);
 $panel-solid:                           %HDR_BG3%; // for Unity panel which doesn't allow translucent colors
 
@@ -83,12 +84,7 @@ $success:                               %TERMINAL_COLOR10%;
 $suggested:                             $primary-dark;
 $destructive:                           $error;
 
-$infobar-info:                          %TERMINAL_COLOR10%;
-$infobar-question:                      %TERMINAL_COLOR12%;
-$infobar-warning:                       $warning;
-$infobar-error:                         $error;
-
-$frame:                                 if($variant == 'light', rgba(black, 0.12), rgba(black, 0.26));
+$frame:                                 if($variant == 'light', rgba(black, 0.12), rgba(black, 0.26)); // instead of shadows
 $border-alt:                            rgba(black, 0.26); // darker border color for Chrome and Firefox
 $titlebar-indicator:                    if($topbar == 'dark', currentColor, $primary);
 
@@ -97,10 +93,10 @@ $titlebar-indicator:                    if($topbar == 'dark', currentColor, $pri
 //
 
 $overlay-hover:                         gtkalpha(currentColor, 0.08);
-$overlay-focus:                         gtkalpha(currentColor, 0.12);
+$overlay-focus:                         gtkalpha(currentColor, 0.08);
 $overlay-focus-hover:                   gtkalpha(currentColor, 0.16);
 $overlay-active:                        gtkalpha(currentColor, 0.12);
-$overlay-checked:                       gtkalpha(currentColor, 0.24);
+$overlay-checked:                       gtkalpha(currentColor, 0.12);
 $overlay-selected:                      rgba($primary, %MATERIA_SELECTION_OPACITY%);
 
 //
@@ -124,12 +120,6 @@ $titlebar-track:                        rgba(%HDR_FG%, 0.3);
 $titlebar-track-disabled:               rgba(%HDR_FG%, 0.12);
 $titlebar-divider:                      rgba(%HDR_FG%, 0.12);
 $titlebar-fill:                         rgba(%HDR_FG%, 0.04);
-
-// workaround for Electron menu which doesn't allow translucent colors
-$solid-text:                            %FG%;
-$solid-text-secondary:                  mix(%FG%, $surface, percentage(0.7));
-$solid-text-disabled:                   mix(%FG%, $surface, percentage(0.5));
-$solid-divider:                         mix(%FG%, $surface, percentage(0.12));
 
 // workaround for GTK3 @placeholder_text_color which doesn't allow translucent colors
 $placeholder_text_color:                mix(%FG%, $base, percentage(0.7));
