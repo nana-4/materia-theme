@@ -20,6 +20,7 @@
     @if ($state == 'disabled') { @return rgba(black, 0.38); }
     @if ($state == 'secondary-disabled') { @return rgba(black, 0.26); }
     @if ($state == 'track') { @return rgba(black, 0.26); }
+    @if ($state == 'track-disabled') { @return rgba(black, 0.12); }
     @if ($state == 'divider') { @return rgba(black, 0.12); }
     @if ($state == 'fill') { @return rgba(black, 0.04); }
   } @else {
@@ -28,6 +29,7 @@
     @if ($state == 'disabled') { @return rgba(white, 0.5); }
     @if ($state == 'secondary-disabled') { @return rgba(white, 0.3); }
     @if ($state == 'track') { @return rgba(white, 0.3); }
+    @if ($state == 'track-disabled') { @return rgba(white, 0.12); }
     @if ($state == 'divider') { @return rgba(white, 0.12); }
     @if ($state == 'fill') { @return rgba(white, 0.04); }
   }
@@ -48,8 +50,9 @@ $green:                                 %TERMINAL_COLOR10%;
 $yellow:                                %TERMINAL_COLOR11%;
 $red:                                   %TERMINAL_COLOR9%;
 
-$primary:                               %SEL_BG%;
-$primary-alt:                           %SEL_BG2%;
+$primary-dark:                          %SEL_BG%;
+$primary-light:                         %SEL_BG%;
+$primary:                               if($variant == 'light', $primary-dark, $primary-light);
 
 $background:                            %BG%;
 $surface:                               %MATERIA_SURFACE%;
@@ -62,6 +65,7 @@ $scrim:                                 rgba(black, %MATERIA_PANEL_OPACITY%);
 $scrim-alt:                             rgba(black, 0.3);
 $scrim-inverse:                         rgba(white, 0.1);
 $titlebar:                              %HDR_BG%;
+$titlebar-backdrop:                     %MATERIA_VIEW%;
 $panel:                                 if($topbar == 'dark', %HDR_BG3%, $scrim);
 $panel-solid:                           %HDR_BG3%; // for Unity panel which doesn't allow translucent colors
 
@@ -76,7 +80,7 @@ $warning:                               %TERMINAL_COLOR11%;
 $error:                                 %TERMINAL_COLOR9%;
 $success:                               %TERMINAL_COLOR10%;
 
-$suggested:                             $primary;
+$suggested:                             $primary-dark;
 $destructive:                           $error;
 
 $infobar-info:                          %TERMINAL_COLOR10%;
@@ -84,7 +88,7 @@ $infobar-question:                      %TERMINAL_COLOR12%;
 $infobar-warning:                       $warning;
 $infobar-error:                         $error;
 
-$border:                                if($variant == 'light', rgba(black, 0.12), rgba(black, 0.26));
+$frame:                                 if($variant == 'light', rgba(black, 0.12), rgba(black, 0.26));
 $border-alt:                            rgba(black, 0.26); // darker border color for Chrome and Firefox
 $titlebar-indicator:                    if($topbar == 'dark', currentColor, $primary);
 
@@ -108,6 +112,7 @@ $text-secondary:                        rgba(%FG%, 0.7);
 $text-disabled:                         rgba(%FG%, 0.5);
 $text-secondary-disabled:               rgba(%FG%, 0.3);
 $track:                                 rgba(%FG%, 0.3);
+$track-disabled:                        rgba(%FG%, 0.12);
 $divider:                               rgba(%FG%, 0.12);
 $fill:                                  rgba(%FG%, 0.04);
 
@@ -116,6 +121,7 @@ $titlebar-text-secondary:               rgba(%HDR_FG%, 0.7);
 $titlebar-text-disabled:                rgba(%HDR_FG%, 0.5);
 $titlebar-text-secondary-disabled:      rgba(%HDR_FG%, 0.3);
 $titlebar-track:                        rgba(%HDR_FG%, 0.3);
+$titlebar-track-disabled:               rgba(%HDR_FG%, 0.12);
 $titlebar-divider:                      rgba(%HDR_FG%, 0.12);
 $titlebar-fill:                         rgba(%HDR_FG%, 0.04);
 
