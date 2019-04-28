@@ -312,7 +312,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
     border: solid $container-padding transparent;
     border-radius: $circular-radius;
 
-    @extend %simple_flat_button;
+    @extend %button-flat-simple;
     @extend %small_button;
 
     &:last-child:dir(ltr),
@@ -413,7 +413,7 @@ layouttabbar {
   border-bottom: 1px solid $divider;
   background-color: $background;
 
-  button { @extend %flat_button; }
+  button { @extend %button-flat; }
 
   > box > button {
     margin: (40px - $medium-size) / 2 0;
@@ -514,7 +514,7 @@ popover.messagepopover {
   &.background { padding: 0; }
 
   .popover-action-area button {
-    @extend %simple_flat_button;
+    @extend %button-flat-simple;
 
     padding: 8px 16px;
     border-top: 1px solid $divider;

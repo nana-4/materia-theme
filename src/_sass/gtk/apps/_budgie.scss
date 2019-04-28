@@ -14,7 +14,7 @@
   button {
     border-radius: $corner-radius;
 
-    @extend %simple_flat_button;
+    @extend %button-flat-simple;
   }
 }
 
@@ -218,7 +218,7 @@ button.raven-trigger {
   &.transparent { background-color: $scrim; }
 
   button {
-    @extend %flat_button;
+    @extend %button-flat;
     @extend %button_selected.flat;
 
     min-height: 16px;
@@ -337,7 +337,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
   > box { margin-bottom: -10px; } // remove extra space between box and .raven-header.bottom
 
   stackswitcher.linked > button {
-    @extend %flat_button;
+    @extend %button-flat;
 
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                   $primary 0%,
@@ -464,7 +464,7 @@ calendar.raven-calendar {
   box-shadow: $shadow-2, inset 0 1px highlight($surface);
   background-color: $surface;
 
-  button { @extend %simple_flat_button; }
+  button { @extend %button-flat-simple; }
 
   .linked > button { border-radius: $corner-radius; }
 }
@@ -489,7 +489,7 @@ calendar.raven-calendar {
     border-top: 1px solid $divider;
     border-radius: 0;
 
-    @extend %simple_flat_button;
+    @extend %button-flat-simple;
 
     &:first-child { border-bottom-left-radius: $corner-radius; }
 

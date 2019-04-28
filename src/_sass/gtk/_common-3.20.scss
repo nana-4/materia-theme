@@ -230,7 +230,7 @@ entry {
     }
 
     image { // icons inside the entry
-      // @extend %simple_flat_button;
+      // @extend %button-flat;
 
       // min-height: $small-size;
       // min-width: $small-size;
@@ -414,8 +414,8 @@ button {
 
     &:drop(active) { @extend button:hover; }
 
-    @at-root %flat_button, &.flat {
-      @at-root %simple_flat_button, & {
+    @at-root %button-flat, &.flat {
+      @at-root %button-flat-simple, & {
         @include button(flat-normal);
 
         &:focus { @include button(flat-focus); }
@@ -708,7 +708,7 @@ modelbutton.flat,
   border-radius: $corner-radius;
   color: inherit;
 
-  @extend %simple_flat_button;
+  @extend %button-flat-simple;
 
   &:selected { @extend %selected_items; }
 }
@@ -772,7 +772,7 @@ spinbutton {
       // margin: $container-padding;
       border: solid $container-padding transparent;
 
-      @extend %simple_flat_button;
+      @extend %button-flat-simple;
 
       @extend %small_button;
 
@@ -817,7 +817,7 @@ spinbutton {
       min-width: $large-size;
       padding: 0;
 
-      @extend %simple_flat_button;
+      @extend %button-flat-simple;
 
       // Remove unwanted focus indicator
       &:focus:not(:hover):not(:active) {
@@ -1312,7 +1312,7 @@ window.devel .titlebar:not(.selection-mode) {
   }
 
   :not(headerbar) & {
-    @extend %flat_button;
+    @extend %button-flat;
 
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                   $primary 0%,
@@ -1625,7 +1625,7 @@ popover.background {
 
   &.menu button,
   button.model {
-    @extend %simple_flat_button;
+    @extend %button-flat;
 
     min-height: 32px;
     padding: 0 8px;
@@ -1775,7 +1775,7 @@ notebook {
     }
 
     > tabs > arrow {
-      @extend %simple_flat_button;
+      @extend %button-flat-simple;
 
       min-height: 16px;
       min-width: 16px;
@@ -1991,7 +1991,7 @@ scrollbar {
 
   // button styling
   button {
-    @extend %simple_flat_button;
+    @extend %button-flat-simple;
 
     min-width: 16px;
     min-height: 16px;
@@ -2119,8 +2119,7 @@ radio {
   margin: -($check_radio_size - 24px) / 2;
   padding: ($check_radio_size - 24px) / 2;
 
-  @extend %simple_flat_button;
-
+  @extend %button-flat-simple;
   @extend %circular_button;
 
   &:checked, &:indeterminate {
@@ -2805,7 +2804,7 @@ calendar {
     border-radius: 0;
   }
 
-  &.button { @extend %simple_flat_button; }
+  &.button { @extend %button-flat-simple; }
 
   &.highlight {
     color: $text-secondary;
@@ -2847,7 +2846,7 @@ messagedialog { // Message Dialog styling
       padding: $container-padding;
 
       button {
-        @extend %simple_flat_button;
+        @extend %button-flat-simple;
         border-radius: $corner-radius;
 
         &:not(:last-child) { margin-right: $container-padding; }
@@ -3002,7 +3001,7 @@ placessidebar.sidebar {
     &:selected label.sidebar-label { color: inherit; }
 
     @at-root button.sidebar-button {
-      @extend %simple_flat_button;
+      @extend %button-flat-simple;
       @extend %small_button;
     }
 
@@ -3102,7 +3101,7 @@ infobar {
     background-color: $base;
 
     button {
-      @extend %simple_flat_button;
+      @extend %button-flat-simple;
 
       &.text-button {
         padding-left: 8px;
@@ -3375,7 +3374,7 @@ decoration {
 
 // Window Close button
 button.titlebutton {
-  // @extend %simple_flat_button;
+  // @extend %button-flat-simple;
 
   @extend %circular_button;
 
