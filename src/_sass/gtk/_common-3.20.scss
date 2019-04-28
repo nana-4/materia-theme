@@ -1073,6 +1073,7 @@ searchbar > revealer > box {
     box-shadow: none;
   }
 
+  // The separator for split headerbars
   headerbar + separator {
     background-color: $divider;
   }
@@ -1252,6 +1253,7 @@ searchbar > revealer > box {
 }
 
 headerbar {
+  // The sizing factor needs to be defined in the headerbar node for the case of split headerbars
   min-height: $large-size;
   padding: 0 $container-padding;
 
@@ -1419,8 +1421,6 @@ treeview.view {
       background-clip: border-box;
 
       &:not(:focus):not(:hover):not(:active) { color: $text-secondary; }
-
-      &, &:hover, &:active { box-shadow: none; }
 
       &, &:disabled { background-color: $base; }
 
