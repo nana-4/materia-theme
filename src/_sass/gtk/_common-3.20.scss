@@ -824,8 +824,7 @@ combobox {
     min-width: 16px;
   }
 
-  decoration,
-  button.combo:checked { transition: none; } // workaround for menuitem selection
+  decoration { transition: none; } // workaround for menuitem selection
 
   button.combo cellview {
     &:dir(ltr) { margin-left: 8px - ($medium-size - 16px) / 2; }
@@ -858,10 +857,29 @@ combobox {
     }
   }
 
-  > .linked > button {
-    &:not(:first-child) { @extend %linked:not(:first-child); }
+  > .linked:not(.vertical) > entry:not(:only-child) {
+    border-radius: $corner-radius $corner-radius 0 0;
 
-    &:not(:last-child) { @extend %linked:not(:last-child); }
+    &:first-child {
+      margin-right: -$medium-size;
+      padding-right: $medium-size;
+    }
+
+    &:last-child {
+      margin-left: -$medium-size;
+      padding-left: $medium-size;
+    }
+  }
+
+  > .linked:not(.vertical) > button:not(:only-child) {
+    @extend %button-flat;
+    // @extend %small_button;
+
+    min-height: 16px;
+    min-width: 16px;
+    margin: ($medium-size - $small-size) / 2;
+    padding: ($small-size - 16px) / 2;
+    border-radius: $circular-radius;
   }
 }
 
@@ -881,10 +899,9 @@ combobox {
   &:not(:last-child) > box > button.combo { @extend %linked_vertical:not(:last-child); }
 }
 
-button.combo {
+button.combo:only-child {
   border-radius: $corner-radius $corner-radius 0 0;
-  background-image: none;
-  font-weight: inherit;
+  font-weight: normal;
 
   @include entry(normal);
 
