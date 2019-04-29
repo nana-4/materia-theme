@@ -283,10 +283,10 @@ entry {
   }
 
    // linked entries
-  .linked:not(.vertical) > & { @extend %linked_entry; }
+  .linked:not(.vertical) > & { @extend %linked; }
 
   // Vertically linked entries
-  .linked.vertical > & { @extend %linked_vertical_entry; }
+  .linked.vertical > & { @extend %linked_vertical; }
 }
 
 %entry_raised {
@@ -456,11 +456,15 @@ button {
       image:not(:only-child) { margin: 0 (24px - 16px) / 2; }
     }
 
-    .linked > & { @extend %linked; }
+    .linked:not(.vertical) > & { @extend %linked; }
+
+    .linked:not(.vertical) > &.image-button { @extend %linked-image-button; }
 
     .linked.vertical > & { @extend %linked_vertical; }
 
-    .linked > &.flat,
+    .linked.vertical > &.image-button { @extend %linked-vertical-image-button; }
+
+    .linked:not(.vertical) > &.flat,
     .linked.vertical > &.flat {
       border-radius: $corner-radius;
 
@@ -600,44 +604,52 @@ button {
 
 // More inline toolbar buttons
 toolbar.inline-toolbar toolbutton {
-  // > button.flat { @extend %linked_middle; }
+  // &:not(:first-child) > button.flat { @extend %linked:not(:first-child); }
 
-  // &:first-child > button.flat { @extend %linked:first-child; }
-
-  // &:last-child > button.flat { @extend %linked:last-child; }
-
-  // &:only-child > button.flat { @extend %linked:only-child; }
-}
-
-%linked_middle {
-  border-radius: 0;
+  // &:not(:last-child) > button.flat { @extend %linked:not(:last-child); }
 }
 
 %linked {
-  @extend %linked_middle;
-
-  &:first-child {
-    border-top-left-radius: $corner-radius;
-    border-bottom-left-radius: $corner-radius;
+  &:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 
-  &:last-child {
-    border-top-right-radius: $corner-radius;
-    border-bottom-right-radius: $corner-radius;
+  &:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
-
-  &:only-child {
-    border-radius: $corner-radius;
-  }
-}
-
-%linked_vertical_middle {
-  border-radius: 0;
 }
 
 %linked_vertical {
-  @extend %linked_vertical_middle;
+  &:not(:first-child) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 
+  &:not(:last-child) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+%linked-image-button {
+  &:first-child {
+    border-top-left-radius: $corner-radius;
+    border-bottom-left-radius: $corner-radius;
+  }
+
+  &:last-child {
+    border-top-right-radius: $corner-radius;
+    border-bottom-right-radius: $corner-radius;
+  }
+
+  &:only-child {
+    border-radius: $circular-radius;
+  }
+}
+
+%linked-vertical-image-button {
   &:first-child {
     border-top-left-radius: $corner-radius;
     border-top-right-radius: $corner-radius;
@@ -649,39 +661,7 @@ toolbar.inline-toolbar toolbutton {
   }
 
   &:only-child {
-    border-radius: $corner-radius;
-  }
-}
-
-%linked_entry {
-  @extend %linked_middle;
-
-  &:first-child {
-    border-radius: $corner-radius 0 0 0;
-  }
-
-  &:last-child {
-    border-radius: 0 $corner-radius 0 0;
-  }
-
-  &:only-child {
-    border-radius: $corner-radius $corner-radius 0 0;
-  }
-}
-
-%linked_vertical_entry {
-  @extend %linked_vertical_middle;
-
-  &:first-child {
-    border-radius: $corner-radius $corner-radius 0 0;
-  }
-
-  &:last-child {
-    border-radius: 0;
-  }
-
-  &:only-child {
-    border-radius: $corner-radius $corner-radius 0 0;
+    border-radius: $circular-radius;
   }
 }
 
@@ -873,19 +853,15 @@ combobox {
 
   &.linked {
     button:nth-child(2) {
-      &:dir(ltr) { @extend %linked_entry:last-child; }
-      &:dir(rtl) { @extend %linked_entry:first-child; }
+      &:dir(ltr) { @extend %linked:not(:first-child); }
+      &:dir(rtl) { @extend %linked:not(:last-child); }
     }
   }
 
   > .linked > button {
-    @extend %linked_middle;
+    &:not(:first-child) { @extend %linked:not(:first-child); }
 
-    &:first-child { @extend %linked_entry:first-child; }
-
-    &:last-child { @extend %linked_entry:last-child; }
-
-    &:only-child { @extend %linked_entry:only-child; }
+    &:not(:last-child) { @extend %linked:not(:last-child); }
   }
 }
 
@@ -894,23 +870,15 @@ combobox {
 // https://bugzilla.gnome.org/show_bug.cgi?id=733979
 
 .linked:not(.vertical) > combobox {
-  > box > button.combo { @extend %linked_middle; }
+  &:not(:first-child) > box > button.combo { @extend %linked:not(:first-child); }
 
-  &:first-child > box > button.combo { @extend %linked_entry:first-child; }
-
-  &:last-child > box > button.combo { @extend %linked_entry:last-child; }
-
-  &:only-child > box > button.combo { @extend %linked_entry:only-child; }
+  &:not(:last-child) > box > button.combo { @extend %linked:not(:last-child); }
 }
 
 .linked.vertical > combobox {
-  > box > button.combo { @extend %linked_vertical_middle; }
+  &:not(:first-child) > box > button.combo { @extend %linked_vertical:not(:first-child); }
 
-  &:first-child > box > button.combo { @extend %linked_vertical_entry:first-child; }
-
-  &:last-child > box > button.combo { @extend %linked_vertical_entry:last-child; }
-
-  &:only-child > box > button.combo { @extend %linked_vertical_entry:only-child; }
+  &:not(:last-child) > box > button.combo { @extend %linked_vertical:not(:last-child); }
 }
 
 button.combo {
