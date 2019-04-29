@@ -687,7 +687,7 @@ modelbutton.flat,
   min-height: $menuitem-size;
   padding: 0 8px;
   border-radius: $corner-radius;
-  color: inherit;
+  color: $text;
 
   @extend %button-flat-simple;
 
@@ -1084,7 +1084,7 @@ searchbar > revealer > box {
     }
   }
 
-  .linked:not(.vertical) > entry:not(.flat) { border-radius: $corner-radius $corner-radius 0 0; }
+  .linked:not(.vertical) > entry { border-radius: $corner-radius $corner-radius 0 0; }
 
   @at-root %titlebar-button, & button:not(.suggested-action):not(.destructive-action) {
     @extend %button_basic.flat;
@@ -1299,9 +1299,9 @@ window.devel .titlebar:not(.selection-mode) {
   padding-right: ($medium-size - 24px) / 2;
 
   label:not(:only-child) {
-    &:first-child { margin-left: 4px; }
+    &:first-child { margin-left: 0; }
 
-    &:last-child { margin-right: 4px; }
+    &:last-child { margin-right: 0; }
   }
 
   &.text-button {
@@ -1313,7 +1313,7 @@ window.devel .titlebar:not(.selection-mode) {
     padding-right: (24px - 16px) / 2;
   }
 
-  :not(headerbar) & {
+  #pathbarbox & {
     @extend %button-flat;
 
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
