@@ -17,7 +17,7 @@ style "default" {
   GtkWidget::focus-line-width   = 4
   GtkWidget::focus-line-pattern = "\2\1"
 
-  GtkToolbar::space-size       = 10 # 2 + 4*4 (separator + margins)
+  GtkToolbar::space-size       = 10 # 2 + 4*2 (separator + margins)
   GtkToolbar::internal-padding = 4
   GtkToolButton::icon-spacing  = 8
 
@@ -60,7 +60,7 @@ style "default" {
   GtkScrollbar::stepper-size                 = 0
   GtkScrollbar::has-backward-stepper         = 0
   GtkScrollbar::has-forward-stepper          = 0
-  GtkScrollbar::min-slider-length            = 64 # 48 + 4*8 (margins)
+  GtkScrollbar::min-slider-length            = 64 # 48 + 2*8 (margins)
   GtkScrolledWindow::scrollbar-spacing       = 0
   GtkScrolledWindow::scrollbars-within-bevel = 1
 
@@ -108,27 +108,27 @@ style "default" {
 
   bg[NORMAL]      = @bg_color
   bg[PRELIGHT]    = @bg_color
-  bg[SELECTED]    = @selected_bg_color
+  bg[SELECTED]    = mix (0.24, @selected_bg_color, @bg_color)
   bg[INSENSITIVE] = @bg_color
   bg[ACTIVE]      = @bg_color
 
   fg[NORMAL]      = @fg_color
   fg[PRELIGHT]    = @fg_color
-  fg[SELECTED]    = @selected_fg_color
-  fg[INSENSITIVE] = mix (0.4, @fg_color, @bg_color)
+  fg[SELECTED]    = @fg_color
+  fg[INSENSITIVE] = mix (0.5, @fg_color, @bg_color)
   fg[ACTIVE]      = @fg_color
 
   text[NORMAL]      = @text_color
   text[PRELIGHT]    = @text_color
-  text[SELECTED]    = @selected_fg_color
-  text[INSENSITIVE] = mix (0.4, @text_color, @base_color)
-  text[ACTIVE]      = @selected_fg_color
+  text[SELECTED]    = @text_color
+  text[INSENSITIVE] = mix (0.5, @text_color, @base_color)
+  text[ACTIVE]      = @text_color
 
   base[NORMAL]      = @base_color
-  base[PRELIGHT]    = mix (0.05, @text_color, @base_color)
-  base[SELECTED]    = @selected_bg_color
+  base[PRELIGHT]    = mix (0.08, @text_color, @base_color)
+  base[SELECTED]    = mix (0.24, @selected_bg_color, @base_color)
   base[INSENSITIVE] = mix (0.5, @base_color, @bg_color)
-  base[ACTIVE]      = @selected_bg_color
+  base[ACTIVE]      = mix (0.24, @selected_bg_color, @base_color)
 
   # For succinctness, all reasonable pixmap options remain here
 
@@ -1657,7 +1657,7 @@ style "menubar" {
   fg[PRELIGHT]    = @titlebar_fg_color
   fg[INSENSITIVE] = mix(0.3, @titlebar_fg_color, @titlebar_bg_color)
   # Needed to fix Firefox's menubar text
-  bg[SELECTED]    = mix(0.15, @titlebar_fg_color, @titlebar_bg_color)
+  bg[SELECTED]    = mix(0.12, @titlebar_fg_color, @titlebar_bg_color)
   fg[SELECTED]    = @titlebar_fg_color
 }
 
@@ -1666,7 +1666,7 @@ style "menubar_item" {
   ythickness = 8
 
   fg[NORMAL]      = mix(0.7, @titlebar_fg_color, @titlebar_bg_color)
-  bg[PRELIGHT]    = mix(0.15, @titlebar_fg_color, @titlebar_bg_color)
+  bg[PRELIGHT]    = mix(0.12, @titlebar_fg_color, @titlebar_bg_color)
   fg[PRELIGHT]    = @titlebar_fg_color
   fg[INSENSITIVE] = mix(0.3, @titlebar_fg_color, @titlebar_bg_color)
 }
@@ -1678,17 +1678,17 @@ style "menu" {
   bg[NORMAL]      = @base_color
   bg[INSENSITIVE] = @base_color
   bg[PRELIGHT]    = @base_color
-  bg[SELECTED]    = mix(0.15, @fg_color, @base_color)
+  bg[SELECTED]    = mix(0.08, @fg_color, @base_color)
 }
 
 style "menu_item" {
   xthickness = 8
   ythickness = 8
 
-  bg[PRELIGHT]   = mix(0.15, @fg_color, @base_color)
+  bg[PRELIGHT]   = mix(0.08, @fg_color, @base_color)
   fg[PRELIGHT]   = @fg_color
   # Chromium uses this setting
-  bg[SELECTED]   = mix(0.15, @fg_color, @base_color)
+  bg[SELECTED]   = mix(0.08, @fg_color, @base_color)
   text[SELECTED] = @fg_color
   # Some widgets use text, we need to handle that
   text[NORMAL]   = @fg_color
@@ -1914,15 +1914,15 @@ style "separator_menu_item" {
 }
 
 style "button_label" {
-  fg[NORMAL] = mix(0.75, @fg_color, @bg_color)
+  # fg[NORMAL] = mix(0.7, @fg_color, @bg_color)
   # fg[INSENSITIVE] = mix(0.3, @fg_color, @bg_color)
 
   font_name = "Medium"
 }
 
 style "checkbutton_label" {
-  fg[NORMAL] = @fg_color
-  # fg[INSENSITIVE] = mix(0.4, @fg_color, @bg_color)
+  # fg[NORMAL] = @fg_color
+  # fg[INSENSITIVE] = mix(0.5, @fg_color, @bg_color)
 
   font_name = "Regular"
 }
@@ -2008,7 +2008,7 @@ style "combobox" {
 }
 
 style "combobox_cellview" {
-  text[NORMAL] = mix(0.75, @fg_color, @bg_color)
+  # text[NORMAL] = mix(0.7, @fg_color, @bg_color)
   # text[INSENSITIVE] = mix(0.3, @fg_color, @bg_color)
 
   font_name = "Medium"
@@ -2192,7 +2192,7 @@ style "notebook" {
 }
 
 style "notebook_tab_label" {
-  fg[ACTIVE] = mix(0.75, @fg_color, @bg_color)
+  fg[ACTIVE] = mix(0.7, @fg_color, @bg_color)
 
   font_name = "Medium"
 }
@@ -2421,7 +2421,7 @@ style "treeview_header" {
   xthickness = 4
   ythickness = 4
 
-  fg[NORMAL]   = mix(0.75, @fg_color, @base_color)
+  fg[NORMAL]   = mix(0.7, @fg_color, @base_color)
   fg[PRELIGHT] = @fg_color
 
   font_name = "Medium"
