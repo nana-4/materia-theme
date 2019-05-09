@@ -11,10 +11,11 @@
 
 <!-- meaningful constants -->
 
-<constant name="C_titlebar" value="#383838"/>
+<constant name="C_titlebar_focused" value="#383838"/>
+<constant name="C_titlebar_unfocused" value="#303030"/>
 <constant name="C_highlight" value="blend/#383838/#FFFFFF/0.1"/>
 <constant name="C_title_focused" value="#FFFFFF"/>
-<constant name="C_title_unfocused" value="blend/#383838/#FFFFFF/0.7"/>
+<constant name="C_title_unfocused" value="blend/#303030/#FFFFFF/0.7"/>
 
 
 <!-- geometries -->
@@ -97,11 +98,11 @@
 
 <!-- window decorations -->
 <draw_ops name="entire_background_focused">
-  <rectangle color="C_titlebar" x="0" y="0" width="width" height="height" filled="true"/>
+  <rectangle color="C_titlebar_focused" x="0" y="0" width="width" height="height" filled="true"/>
 </draw_ops>
 
 <draw_ops name="entire_background_unfocused">
-  <include name="entire_background_focused"/>
+  <rectangle color="C_titlebar_unfocused" x="0" y="0" width="width" height="height" filled="true"/>
 </draw_ops>
 
 <draw_ops name="highlight">

@@ -11,7 +11,8 @@
 
 <!-- meaningful constants -->
 
-<constant name="C_titlebar" value="gtk:custom(wm_bg,gtk:bg[NORMAL])"/>
+<constant name="C_titlebar_focused" value="gtk:custom(wm_bg,gtk:bg[NORMAL])"/>
+<constant name="C_titlebar_unfocused" value="gtk:custom(wm_unfocused_bg,gtk:bg[NORMAL])"/>
 <constant name="C_highlight" value="gtk:custom(wm_highlight,gtk:base[NORMAL])"/>
 <constant name="C_title_focused" value="gtk:custom(wm_title,gtk:fg[NORMAL])"/>
 <constant name="C_title_unfocused" value="gtk:custom(wm_unfocused_title,gtk:fg[INSENSITIVE])"/>
@@ -107,11 +108,11 @@
 
 <!-- window decorations -->
 <draw_ops name="entire_background_focused">
-  <rectangle color="C_titlebar" x="0" y="0" width="width" height="height" filled="true"/>
+  <rectangle color="C_titlebar_focused" x="0" y="0" width="width" height="height" filled="true"/>
 </draw_ops>
 
 <draw_ops name="entire_background_unfocused">
-  <include name="entire_background_focused"/>
+  <rectangle color="C_titlebar_unfocused" x="0" y="0" width="width" height="height" filled="true"/>
 </draw_ops>
 
 <draw_ops name="highlight">
