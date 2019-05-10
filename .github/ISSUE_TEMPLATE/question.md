@@ -8,8 +8,10 @@ assignees: ''
 ---
 
 **Reporter Info**
-<!-- Please provide the following information as much as possible.
-To check your GTK3 version, run: "pkg-config --modversion gtk+-3.0" -->
+<!--
+Please provide the following information as much as possible.
+To check your GTK3 version, run: "pkg-config --modversion gtk+-3.0"
+-->
 
 - Materia version: 
 - GTK3 version: 
