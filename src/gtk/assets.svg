@@ -45,21 +45,21 @@
       <circle cx="12" cy="12" r="6"/>
     </g>
 
-    <g id="base-scale-horz-marks-after-slider">
-      <rect width="24" height="24" fill="none"/>
-      <path d="M12 6a6 6 0 0 0-6 6 6 6 0 0 0 6 6h6v-6a6 6 0 0 0-6-6z" transform="rotate(45 12 12)"/>
-    </g>
-
-    <g id="base-scale-vert-marks-before-slider">
-      <use xlink:href="#base-scale-horz-marks-after-slider" transform="rotate(90 12 12)"/>
-    </g>
-
     <g id="base-scale-horz-marks-before-slider">
-      <use xlink:href="#base-scale-horz-marks-after-slider" transform="rotate(180 12 12)"/>
+      <rect width="24" height="24" fill="none"/>
+      <path d="M6 12a6 6 0 1 0 6-6H6z" transform="rotate(45 12 12)"/>
     </g>
 
     <g id="base-scale-vert-marks-after-slider">
-      <use xlink:href="#base-scale-horz-marks-after-slider" transform="rotate(270 12 12)"/>
+      <use xlink:href="#base-scale-horz-marks-before-slider" transform="rotate(90 12 12)"/>
+    </g>
+
+    <g id="base-scale-horz-marks-after-slider">
+      <use xlink:href="#base-scale-horz-marks-before-slider" transform="rotate(180 12 12)"/>
+    </g>
+
+    <g id="base-scale-vert-marks-before-slider">
+      <use xlink:href="#base-scale-horz-marks-before-slider" transform="rotate(270 12 12)"/>
     </g>
 
     <g id="base-selectionmode-checkbox">
