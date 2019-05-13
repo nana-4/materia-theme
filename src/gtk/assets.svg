@@ -8,12 +8,12 @@
       <stop offset="1" stop-color="#FFFFFF"/>
     </linearGradient>
 
-    <linearGradient id="color-divider">
-      <stop offset="1" stop-color="#000000" stop-opacity="0.12"/>
+    <linearGradient id="color-text-secondary-disabled">
+      <stop offset="1" stop-color="#000000" stop-opacity="0.26"/>
     </linearGradient>
 
-    <linearGradient id="color-divider-dark">
-      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.12"/>
+    <linearGradient id="color-text-secondary-disabled-dark">
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.3"/>
     </linearGradient>
 
     <linearGradient id="color-primary-dark">
@@ -40,84 +40,139 @@
       <stop offset="1" stop-color="#424242"/>
     </linearGradient>
 
-    <rect width="24" height="24" fill="none" stroke="none" id="w24h24"/>
-    <circle cx="12" cy="12" r="6" stroke="none" id="slider-fill"/>
-    <circle cx="12" cy="12" r="5" fill="none" stroke-width="2" id="slider-stroke"/>
-    <path d="M12 6a6 6 0 0 0-6 6 6 6 0 0 0 6 6h6v-6a6 6 0 0 0-6-6z" stroke="none" id="marks-slider-fill"/>
-    <path d="M12 7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h5v-5a5 5 0 0 0-5-5z" fill="none" stroke-width="2" id="marks-slider-stroke"/>
-
     <g id="base-scale-slider">
-      <use xlink:href="#w24h24"/>
-      <use xlink:href="#slider-fill"/>
-      <use xlink:href="#slider-stroke"/>
+      <rect width="24" height="24" fill="none"/>
+      <circle cx="12" cy="12" r="6"/>
     </g>
 
     <g id="base-scale-horz-marks-after-slider">
-      <use xlink:href="#w24h24"/>
-      <use xlink:href="#marks-slider-fill" transform="rotate(45 12 12)"/>
-      <use xlink:href="#marks-slider-stroke" transform="rotate(45 12 12)"/>
-    </g>
-    <use xlink:href="#base-scale-horz-marks-after-slider" id="base-scale-vert-marks-before-slider" transform="rotate(90 12 12)"/>
-    <use xlink:href="#base-scale-horz-marks-after-slider" id="base-scale-horz-marks-before-slider" transform="rotate(180 12 12)"/>
-    <use xlink:href="#base-scale-horz-marks-after-slider" id="base-scale-vert-marks-after-slider" transform="rotate(270 12 12)"/>
-
-    <rect width="40" height="40" fill="none" id="w40h40"/>
-    <rect x="2" y="2" width="36" height="36" rx="4" id="check-button"/>
-    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" transform="matrix(1.5 0 0 1.5 2 2)" id="check-mark"/>
-
-    <g id="base-selectionmode-checkbox-unchecked">
-      <use xlink:href="#w40h40"/>
-      <use xlink:href="#check-button"/>
+      <rect width="24" height="24" fill="none"/>
+      <path d="M12 6a6 6 0 0 0-6 6 6 6 0 0 0 6 6h6v-6a6 6 0 0 0-6-6z" transform="rotate(45 12 12)"/>
     </g>
 
-    <g id="base-selectionmode-checkbox-checked">
-      <use xlink:href="#w40h40"/>
-      <use xlink:href="#check-button" fill="url(#color-primary-dark)"/>
-      <use xlink:href="#check-mark" fill="url(#color-on-primary-dark)"/>
+    <g id="base-scale-vert-marks-before-slider">
+      <use xlink:href="#base-scale-horz-marks-after-slider" transform="rotate(90 12 12)"/>
+    </g>
+
+    <g id="base-scale-horz-marks-before-slider">
+      <use xlink:href="#base-scale-horz-marks-after-slider" transform="rotate(180 12 12)"/>
+    </g>
+
+    <g id="base-scale-vert-marks-after-slider">
+      <use xlink:href="#base-scale-horz-marks-after-slider" transform="rotate(270 12 12)"/>
+    </g>
+
+    <g id="base-selectionmode-checkbox">
+      <rect width="40" height="40" fill="none"/>
+      <rect x="2" y="2" width="36" height="36" rx="4"/>
+    </g>
+
+    <g id="base-selectionmode-checkmark">
+      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" transform="matrix(1.5 0 0 1.5 2 2)"/>
     </g>
   </defs>
 
   <g id="light">
     <rect width="200" height="200" fill="url(#color-background)" sodipodi:insensitive="true"/>
 
-    <use xlink:href="#base-scale-slider" transform="translate(8 8)" fill="url(#color-primary-dark)" stroke="none" id="scale-slider"/>
-    <use xlink:href="#base-scale-slider" transform="translate(8 40)" fill="url(#color-background)" stroke="url(#color-divider)" id="scale-slider-disabled"/>
+    <g id="scale-slider" transform="translate(8 8)">
+      <use xlink:href="#base-scale-slider" fill="url(#color-primary-dark)"/>
+    </g>
+    <g id="scale-slider-disabled" transform="translate(8 40)">
+      <use xlink:href="#base-scale-slider" fill="url(#color-background)"/>
+      <use xlink:href="#base-scale-slider" fill="url(#color-text-secondary-disabled)"/>
+    </g>
 
-    <use xlink:href="#base-scale-horz-marks-before-slider" transform="translate(40 8)" fill="url(#color-primary-dark)" stroke="none" id="scale-horz-marks-before-slider"/>
-    <use xlink:href="#base-scale-horz-marks-before-slider" transform="translate(40 40)" fill="url(#color-background)" stroke="url(#color-divider)" id="scale-horz-marks-before-slider-disabled"/>
+    <g id="scale-horz-marks-before-slider" transform="translate(40 8)">
+      <use xlink:href="#base-scale-horz-marks-before-slider" fill="url(#color-primary-dark)"/>
+    </g>
+    <g id="scale-horz-marks-before-slider-disabled" transform="translate(40 40)">
+      <use xlink:href="#base-scale-horz-marks-before-slider" fill="url(#color-background)"/>
+      <use xlink:href="#base-scale-horz-marks-before-slider" fill="url(#color-text-secondary-disabled)"/>
+    </g>
 
-    <use xlink:href="#base-scale-horz-marks-after-slider" transform="translate(72 8)" fill="url(#color-primary-dark)" stroke="none" id="scale-horz-marks-after-slider"/>
-    <use xlink:href="#base-scale-horz-marks-after-slider" transform="translate(72 40)" fill="url(#color-background)" stroke="url(#color-divider)" id="scale-horz-marks-after-slider-disabled"/>
+    <g id="scale-horz-marks-after-slider" transform="translate(72 8)">
+      <use xlink:href="#base-scale-horz-marks-after-slider" fill="url(#color-primary-dark)"/>
+    </g>
+    <g id="scale-horz-marks-after-slider-disabled" transform="translate(72 40)">
+      <use xlink:href="#base-scale-horz-marks-after-slider" fill="url(#color-background)"/>
+      <use xlink:href="#base-scale-horz-marks-after-slider" fill="url(#color-text-secondary-disabled)"/>
+    </g>
 
-    <use xlink:href="#base-scale-vert-marks-before-slider" transform="translate(104 8)" fill="url(#color-primary-dark)" stroke="none" id="scale-vert-marks-before-slider"/>
-    <use xlink:href="#base-scale-vert-marks-before-slider" transform="translate(104 40)" fill="url(#color-background)" stroke="url(#color-divider)" id="scale-vert-marks-before-slider-disabled"/>
+    <g id="scale-vert-marks-before-slider" transform="translate(104 8)">
+      <use xlink:href="#base-scale-vert-marks-before-slider" fill="url(#color-primary-dark)"/>
+    </g>
+    <g id="scale-vert-marks-before-slider-disabled" transform="translate(104 40)">
+      <use xlink:href="#base-scale-vert-marks-before-slider" fill="url(#color-background)"/>
+      <use xlink:href="#base-scale-vert-marks-before-slider" fill="url(#color-text-secondary-disabled)"/>
+    </g>
 
-    <use xlink:href="#base-scale-vert-marks-after-slider" transform="translate(136 8)" fill="url(#color-primary-dark)" stroke="none" id="scale-vert-marks-after-slider"/>
-    <use xlink:href="#base-scale-vert-marks-after-slider" transform="translate(136 40)" fill="url(#color-background)" stroke="url(#color-divider)" id="scale-vert-marks-after-slider-disabled"/>
+    <g id="scale-vert-marks-after-slider" transform="translate(136 8)">
+      <use xlink:href="#base-scale-vert-marks-after-slider" fill="url(#color-primary-dark)"/>
+    </g>
+    <g id="scale-vert-marks-after-slider-disabled" transform="translate(136 40)">
+      <use xlink:href="#base-scale-vert-marks-after-slider" fill="url(#color-background)"/>
+      <use xlink:href="#base-scale-vert-marks-after-slider" fill="url(#color-text-secondary-disabled)"/>
+    </g>
 
-    <use xlink:href="#base-selectionmode-checkbox-unchecked" transform="translate(8 72)" fill="url(#color-surface)" id="selectionmode-checkbox-unchecked"/>
-    <use xlink:href="#base-selectionmode-checkbox-checked" transform="translate(56 72)" id="selectionmode-checkbox-checked"/>
+    <g id="selectionmode-checkbox-unchecked" transform="translate(8 72)">
+      <use xlink:href="#base-selectionmode-checkbox" fill="url(#color-surface)"/>
+    </g>
+    <g id="selectionmode-checkbox-checked" transform="translate(56 72)">
+      <use xlink:href="#base-selectionmode-checkbox" fill="url(#color-primary-dark)"/>
+      <use xlink:href="#base-selectionmode-checkmark" fill="url(#color-on-primary-dark)"/>
+    </g>
   </g>
 
   <g id="dark" transform="translate(200)">
     <rect width="200" height="200" fill="url(#color-background-dark)" sodipodi:insensitive="true"/>
 
-    <use xlink:href="#base-scale-slider" transform="translate(8 8)" fill="url(#color-primary-light)" stroke="none" id="scale-slider-dark"/>
-    <use xlink:href="#base-scale-slider" transform="translate(8 40)" fill="url(#color-background-dark)" stroke="url(#color-divider-dark)" id="scale-slider-disabled-dark"/>
+    <g id="scale-slider-dark" transform="translate(8 8)">
+      <use xlink:href="#base-scale-slider" fill="url(#color-primary-light)"/>
+    </g>
+    <g id="scale-slider-disabled-dark" transform="translate(8 40)">
+      <use xlink:href="#base-scale-slider" fill="url(#color-background-dark)"/>
+      <use xlink:href="#base-scale-slider" fill="url(#color-text-secondary-disabled-dark)"/>
+    </g>
 
-    <use xlink:href="#base-scale-horz-marks-before-slider" transform="translate(40 8)" fill="url(#color-primary-light)" stroke="none" id="scale-horz-marks-before-slider-dark"/>
-    <use xlink:href="#base-scale-horz-marks-before-slider" transform="translate(40 40)" fill="url(#color-background-dark)" stroke="url(#color-divider-dark)" id="scale-horz-marks-before-slider-disabled-dark"/>
+    <g id="scale-horz-marks-before-slider-dark" transform="translate(40 8)">
+      <use xlink:href="#base-scale-horz-marks-before-slider" fill="url(#color-primary-light)"/>
+    </g>
+    <g id="scale-horz-marks-before-slider-disabled-dark" transform="translate(40 40)">
+      <use xlink:href="#base-scale-horz-marks-before-slider" fill="url(#color-background-dark)"/>
+      <use xlink:href="#base-scale-horz-marks-before-slider" fill="url(#color-text-secondary-disabled-dark)"/>
+    </g>
 
-    <use xlink:href="#base-scale-horz-marks-after-slider" transform="translate(72 8)" fill="url(#color-primary-light)" stroke="none" id="scale-horz-marks-after-slider-dark"/>
-    <use xlink:href="#base-scale-horz-marks-after-slider" transform="translate(72 40)" fill="url(#color-background-dark)" stroke="url(#color-divider-dark)" id="scale-horz-marks-after-slider-disabled-dark"/>
+    <g id="scale-horz-marks-after-slider-dark" transform="translate(72 8)">
+      <use xlink:href="#base-scale-horz-marks-after-slider" fill="url(#color-primary-light)"/>
+    </g>
+    <g id="scale-horz-marks-after-slider-disabled-dark" transform="translate(72 40)">
+      <use xlink:href="#base-scale-horz-marks-after-slider" fill="url(#color-background-dark)"/>
+      <use xlink:href="#base-scale-horz-marks-after-slider" fill="url(#color-text-secondary-disabled-dark)"/>
+    </g>
 
-    <use xlink:href="#base-scale-vert-marks-before-slider" transform="translate(104 8)" fill="url(#color-primary-light)" stroke="none" id="scale-vert-marks-before-slider-dark"/>
-    <use xlink:href="#base-scale-vert-marks-before-slider" transform="translate(104 40)" fill="url(#color-background-dark)" stroke="url(#color-divider-dark)" id="scale-vert-marks-before-slider-disabled-dark"/>
+    <g id="scale-vert-marks-before-slider-dark" transform="translate(104 8)">
+      <use xlink:href="#base-scale-vert-marks-before-slider" fill="url(#color-primary-light)"/>
+    </g>
+    <g id="scale-vert-marks-before-slider-disabled-dark" transform="translate(104 40)">
+      <use xlink:href="#base-scale-vert-marks-before-slider" fill="url(#color-background-dark)"/>
+      <use xlink:href="#base-scale-vert-marks-before-slider" fill="url(#color-text-secondary-disabled-dark)"/>
+    </g>
 
-    <use xlink:href="#base-scale-vert-marks-after-slider" transform="translate(136 8)" fill="url(#color-primary-light)" stroke="none" id="scale-vert-marks-after-slider-dark"/>
-    <use xlink:href="#base-scale-vert-marks-after-slider" transform="translate(136 40)" fill="url(#color-background-dark)" stroke="url(#color-divider-dark)" id="scale-vert-marks-after-slider-disabled-dark"/>
+    <g id="scale-vert-marks-after-slider-dark" transform="translate(136 8)">
+      <use xlink:href="#base-scale-vert-marks-after-slider" fill="url(#color-primary-light)"/>
+    </g>
+    <g id="scale-vert-marks-after-slider-disabled-dark" transform="translate(136 40)">
+      <use xlink:href="#base-scale-vert-marks-after-slider" fill="url(#color-background-dark)"/>
+      <use xlink:href="#base-scale-vert-marks-after-slider" fill="url(#color-text-secondary-disabled-dark)"/>
+    </g>
 
-    <use xlink:href="#base-selectionmode-checkbox-unchecked" transform="translate(8 72)" fill="url(#color-surface-dark)" id="selectionmode-checkbox-unchecked-dark"/>
-    <use xlink:href="#base-selectionmode-checkbox-checked" transform="translate(56 72)" id="selectionmode-checkbox-checked-dark"/>
+    <g id="selectionmode-checkbox-unchecked-dark" transform="translate(8 72)">
+      <use xlink:href="#base-selectionmode-checkbox" fill="url(#color-surface-dark)"/>
+    </g>
+    <g id="selectionmode-checkbox-checked-dark" transform="translate(56 72)">
+      <use xlink:href="#base-selectionmode-checkbox" fill="url(#color-primary-dark)"/>
+      <use xlink:href="#base-selectionmode-checkmark" fill="url(#color-on-primary-dark)"/>
+    </g>
   </g>
 </svg>
