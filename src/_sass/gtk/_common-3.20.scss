@@ -2626,6 +2626,8 @@ frame.flat > border { @extend .frame.flat; } // for backward compatibility
 actionbar > revealer > box {
   padding: $container-padding;
   border-top: 1px solid $divider;
+  background-color: $base;
+  background-clip: border-box;
 
   button:not(.suggested-action):not(.destructive-action):not(.server-list-button) { @extend %button_basic.flat; }
 }
