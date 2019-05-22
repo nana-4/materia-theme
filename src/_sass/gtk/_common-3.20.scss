@@ -1916,7 +1916,7 @@ scrollbar {
 
   // slider
   slider {
-    transition: $transition, margin 0ms, border-width 0ms;
+    transition: background-color $duration $ease-out;
     min-width: 8px;
     min-height: 8px;
     border: 4px solid transparent;
@@ -1933,7 +1933,6 @@ scrollbar {
 
   &.fine-tune {
     slider {
-      transition: $transition, margin 0ms, border-width 0ms, min-width 0ms, min-height 0ms;
       min-width: 4px;
       min-height: 4px;
     }
@@ -1944,6 +1943,10 @@ scrollbar {
   }
 
   &.overlay-indicator {
+    &:not(.fine-tune) slider {
+      transition-property: background-color, min-height, min-width;
+    }
+
     &:not(.dragging):not(.hovering) {
       border-color: transparent;
       background-color: transparent;
