@@ -2338,10 +2338,13 @@ scale {
 
   // the colored part of the backing bit
   highlight {
-    transition: background-color $duration $ease-out;
-    background-color: $primary;
+    transition: background-image $duration $ease-out;
+    background-image: image($primary);
 
-    &:disabled { background-color: transparent; }
+    &:disabled {
+      background-color: $background;
+      background-image: image($text-secondary-disabled);
+    }
   }
 
   // this is another differently styled part of the backing bit, the most relevant use case is for example
