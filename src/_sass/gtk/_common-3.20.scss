@@ -2396,28 +2396,27 @@ scale {
     }
   }
 
-  marks label,
+  marks,
   value { color: $text-secondary; }
 
-  marks {
-    color: $track;
+  indicator {
+    background-color: $track;
+    color: transparent;
+  }
 
-    @each $marks_class, $marks_pos, $marks_margin in (top, top, bottom),
-                                                     (bottom, bottom, top),
-                                                     (left, left, right),
-                                                     (right, right, left) {
+  //marks margins
+  @each $scale_orient, $marks_class, $marks_pos, $marks_margin in (horizontal, top, top, bottom),
+                                                                  (horizontal, bottom, bottom, top),
+                                                                  (vertical, top, left, right),
+                                                                  (vertical, bottom, right, left) {
+    &.#{$scale_orient} marks {
       &.#{$marks_class} {
         margin-#{$marks_margin}: $_marks_distance;
         margin-#{$marks_pos}: -($_marks_distance + $_marks_length);
       }
     }
-  }
 
-  &.fine-tune marks {
-    @each $marks_class, $marks_pos, $marks_margin in (top, top, bottom),
-                                                     (bottom, bottom, top),
-                                                     (left, left, right),
-                                                     (right, right, left) {
+    &.#{$scale_orient}.fine-tune marks {
       &.#{$marks_class} {
         margin-#{$marks_margin}: $_marks_distance - 1px;
         margin-#{$marks_pos}: -($_marks_distance + $_marks_length - 1px);
