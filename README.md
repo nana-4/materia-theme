@@ -60,7 +60,7 @@ Distro | Package Name / Link
 Arch Linux | [`materia-gtk-theme`](https://www.archlinux.org/packages/community/any/materia-gtk-theme)
 Debian testing / unstable <br> Ubuntu 18.04+ | [`materia-gtk-theme`](https://packages.debian.org/unstable/materia-gtk-theme)
 Ubuntu 16.04 / 17.10 | `materia-gtk-theme` from [@igor-dyatlov's PPA](https://launchpad.net/~dyatlov-igor/+archive/ubuntu/materia-theme)
-Fedora | `materia-theme` from [@LaurentTreguier's Copr](https://copr.fedorainfracloud.org/coprs/tcg/themes)
+Fedora | `materia-gtk-theme` from [@LaurentTreguier's Copr](https://copr.fedorainfracloud.org/coprs/tcg/themes)
 Solus | [`materia-gtk-theme`](https://dev.getsol.us/source/materia-gtk-theme/)
 
 ### Flatpak
