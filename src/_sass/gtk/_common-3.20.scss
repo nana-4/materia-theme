@@ -1148,44 +1148,44 @@ searchbar > revealer > box {
     // but let's keep it for backwards compatibility.
     transition: background-color 0.1ms $ripple-fade-in-duration, color $duration $ease-out;
     animation: ripple-on-headerbar $ripple-fade-in-duration $ease-out;
-    box-shadow: $shadow-1, inset 0 1px highlight($primary-dark);
-    background-color: $primary-dark;
-    color: on($primary-dark);
+    box-shadow: $shadow-1, inset 0 1px highlight($primary);
+    background-color: $primary;
+    color: on($primary);
 
     &:backdrop {
-      color: on($primary-dark, secondary);
+      color: on($primary, secondary);
     }
 
-    .subtitle:link { color: on($primary-dark); }
+    .subtitle:link { color: on($primary); }
 
     button:not(.suggested-action):not(.destructive-action) {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                     currentColor 0%,
                                     transparent 0%)
                                     0 0 0 / 0 0 0px;
-      color: on($primary-dark);
+      color: on($primary);
 
-      &:disabled { color: on($primary-dark, disabled); }
+      &:disabled { color: on($primary, disabled); }
 
       &:checked {
         border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                       currentColor 100%,
                                       transparent 0%)
                                       0 0 2 / 0 0 2px;
-        color: on($primary-dark);
+        color: on($primary);
 
-        &:disabled { color: on($primary-dark, disabled); }
+        &:disabled { color: on($primary, disabled); }
       }
 
       &:backdrop {
-        color: on($primary-dark, secondary);
+        color: on($primary, secondary);
 
-        &:disabled { color: on($primary-dark, secondary-disabled); }
+        &:disabled { color: on($primary, secondary-disabled); }
 
         &:checked {
-          color: on($primary-dark, secondary);
+          color: on($primary, secondary);
 
-          &:disabled { color: on($primary-dark, secondary-disabled); }
+          &:disabled { color: on($primary, secondary-disabled); }
         }
       }
     }
@@ -1201,8 +1201,8 @@ searchbar > revealer > box {
   }
 
   .selection-mode {
-    box-shadow: inset 0 1px highlight($primary-dark); // Avoid double shadows
-    background-color: $primary-dark;
+    box-shadow: inset 0 1px highlight($primary); // Avoid double shadows
+    background-color: $primary;
   }
 
   // squared corners when the window is maximized, tiled, or fullscreen
