@@ -716,13 +716,20 @@ button.color {
  *********/
 *:link {
   color: $link;
-
-  &:visited { color: $link-visited; }
 }
 
-button:link,
-button:visited {
-  &, &:focus, &:hover, &:active { @extend *:link; }
+*:visited {
+  color: $link-visited;
+}
+
+button.link {
+  &:link {
+    &, &:focus, &:hover, &:active { @extend *:link; }
+  }
+
+  &:visited {
+    &, &:focus, &:hover, &:active { @extend *:visited; }
+  }
 
   > label { text-decoration-line: underline; }
 }
