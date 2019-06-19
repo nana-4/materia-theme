@@ -1675,20 +1675,20 @@ style "menu" {
   xthickness = 0
   ythickness = 0
 
-  bg[NORMAL]      = @base_color
-  bg[INSENSITIVE] = @base_color
-  bg[PRELIGHT]    = @base_color
-  bg[SELECTED]    = mix(0.08, @fg_color, @base_color)
+  bg[NORMAL]      = @menu_color
+  bg[INSENSITIVE] = @menu_color
+  bg[PRELIGHT]    = @menu_color
+  bg[SELECTED]    = mix(0.08, @fg_color, @menu_color)
 }
 
 style "menu_item" {
   xthickness = 4
   ythickness = 4
 
-  bg[PRELIGHT]   = mix(0.08, @fg_color, @base_color)
+  bg[PRELIGHT]   = mix(0.08, @fg_color, @menu_color)
   fg[PRELIGHT]   = @fg_color
   # Chromium uses this setting
-  bg[SELECTED]   = mix(0.08, @fg_color, @base_color)
+  bg[SELECTED]   = mix(0.08, @fg_color, @menu_color)
   text[SELECTED] = @fg_color
   # Some widgets use text, we need to handle that
   text[NORMAL]   = @fg_color
