@@ -21,7 +21,5 @@
 - [Make gtk2 check/radio buttons a bit smaller for Qt apps](../../issues/106)
 - [Use `#757575` as check/radio buttons color for some web interfaces](../../issues/123) (if possible)
 - [Make compact variant more compact](../../issues/79) (WIP)
-- Change gtk2 spinbutton to flat button style
-- Update gtk2 entry and combo button style
 - Rework the focus state styles (WIP)
 - Polish Inkscape (using gtk3) styling
