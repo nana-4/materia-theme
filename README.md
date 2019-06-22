@@ -31,14 +31,21 @@ It supports GTK 2, GTK 3, GNOME Shell, Budgie, Cinnamon, MATE, Unity, Xfce, Ligh
 [5]: ../images/Materia-light.png?raw=true
 [6]: ../images/Materia-light-compact.png?raw=true
 
-Various **desktop environments** are supported:
+## Supported Desktop Environments
 
-- GNOME Shell `>=3.18`
 - Budgie `>=10.4`
 - Cinnamon `>=3.x`
+- GNOME Shell `>=3.18`
 - MATE `>=1.14`
 - Unity `>=7.4`
 - Xfce `>=4.13`
+
+### Unsupported
+
+- Downstream customized GNOME sessions (e.g. "Ubuntu" session, "Pop" session)
+  > To properly use Materia on GNOME Shell, please install `gnome-session` and then switch to "GNOME" or "GNOME on Xorg" session from your display manager.
+- elementary apps
+  > Because they are based on [their own stylesheet](https://github.com/elementary/stylesheet) that conflicts with GTK standards.
 
 ## Requirements
 
