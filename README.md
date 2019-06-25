@@ -12,7 +12,7 @@ It supports GTK 2, GTK 3, GNOME Shell, Budgie, Cinnamon, MATE, Unity, Xfce, Ligh
 
 ## Features
 
-**Ripple effect** animations for GTK 3 are supported:
+Supports **ripple animations** for GTK 3:
 
 ![Button](../images/Button.gif?raw=true)
 
@@ -40,10 +40,10 @@ It supports GTK 2, GTK 3, GNOME Shell, Budgie, Cinnamon, MATE, Unity, Xfce, Ligh
 - Unity `>=7.4`
 - Xfce `>=4.13`
 
-### Unsupported
+## Unsupported
 
-- Downstream customized GNOME sessions (e.g. "Ubuntu" session, "Pop" session)
-  > To properly use Materia on GNOME Shell, please install `gnome-session` and then switch to "GNOME" or "GNOME on Xorg" session from your display manager.
+- Downstream customized GNOME sessions
+  > e.g. "Ubuntu" session, "Pop" session. To properly use Materia on GNOME Shell, please install `gnome-session` and then switch to "GNOME" or "GNOME on Xorg" session from your display manager.
 - elementary apps
   > Because they are based on [their own stylesheet](https://github.com/elementary/stylesheet) that conflicts with GTK standards.
 
@@ -90,7 +90,7 @@ cd materia-theme
 sudo ./install.sh
 ```
 
-Tip: `./install.sh` allows the following options:
+> Tip: `./install.sh` allows the following options:
 
 ```
 -d, --dest DIR          Specify destination directory (Default: /usr/share/themes)
@@ -100,6 +100,8 @@ Tip: `./install.sh` allows the following options:
 -g, --gdm               Install and apply GDM theme (for advanced users)
 -h, --help              Show help
 ```
+
+> For more information, run: `./install.sh --help`
 
 ### Manual Uninstallation
 
@@ -114,7 +116,7 @@ sudo rm -rf /usr/share/themes/Materia{,-dark,-light}{,-compact}
 ### Font
 
 - To properly display the theme, use a font family including **Medium** weight (e.g. [Roboto](https://github.com/google/roboto) or [M+](https://mplus-fonts.osdn.jp)).
-- Set the font size to `9.75` or `10.5` (i.e. 13px or 14px at 96dpi).
+- Set the font size to `9.75` (= 13px at 96dpi) or `10.5` (= 14px at 96dpi).
 
 ### Chrome Theme
 
@@ -145,6 +147,7 @@ Todo list can be found at [`TODO.md`](TODO.md).
 - [**Materia KDE**](https://github.com/PapirusDevelopmentTeam/materia-kde) by @PapirusDevelopmentTeam
 - [**Materia VSCode Theme**](https://marketplace.visualstudio.com/items?itemName=m-thorsen.vscode-materia) by @m-thorsen
 - [**Materia Kolorizer**](https://github.com/DarthWound/materia-kolorizer) by @DarthWound
+- [**oomox theme designer**](https://github.com/themix-project/oomox) by @themix-project
 
 ## License
 
