@@ -1095,7 +1095,7 @@ searchbar > revealer > box {
     }
   }
 
-  .linked:not(.vertical) > entry { border-radius: $corner-radius $corner-radius 0 0; }
+  .linked:not(.vertical) > entry:not(:only-child) { border-radius: $corner-radius $corner-radius 0 0; }
 
   @at-root %titlebar-button, & button:not(.suggested-action):not(.destructive-action) {
     @extend %button_basic.flat;
@@ -1633,6 +1633,8 @@ popover.background {
   // &.osd { @extend %osd; }
 
   // button:not(.suggested-action):not(.destructive-action) { @extend %button_basic.flat; }
+
+  // .linked:not(.vertical) > entry:not(:only-child) { border-radius: $corner-radius $corner-radius 0 0; }
 
   &.menu button,
   button.model {
@@ -2641,6 +2643,8 @@ actionbar > revealer > box {
   background-clip: border-box;
 
   button:not(.suggested-action):not(.destructive-action) { @extend %button_basic.flat; }
+
+  .linked:not(.vertical) > entry:not(:only-child) { border-radius: $corner-radius $corner-radius 0 0; }
 }
 
 scrolledwindow {
