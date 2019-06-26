@@ -856,7 +856,7 @@ combobox {
     &:dir(rtl) { margin-right: 8px - ($medium-size - 16px) / 2; }
   }
 
-  #gtk-combobox-popup-menu {
+  menu {
     padding: 2px 0;
 
     menuitem {
@@ -1310,8 +1310,24 @@ window.devel .titlebar:not(.selection-mode) {
  ************/
 %pathbar_button,
 .path-bar button {
+  @extend %button-flat;
+
   padding-left: ($medium-size - 24px) / 2;
   padding-right: ($medium-size - 24px) / 2;
+  border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
+                                $primary 0%,
+                                transparent 0%)
+                                0 0 0 / 0 0 0px;
+  border-radius: $corner-radius;
+
+  &:checked {
+    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
+                                  $primary 100%,
+                                  transparent 0%)
+                                  0 0 2 / 0 0 2px;
+
+    &, &:disabled { background-color: transparent; }
+  }
 
   label:not(:only-child) {
     &:first-child { margin-left: 0; }
@@ -1326,25 +1342,6 @@ window.devel .titlebar:not(.selection-mode) {
   &.slider-button {
     padding-left: (24px - 16px) / 2;
     padding-right: (24px - 16px) / 2;
-  }
-
-  #pathbarbox & {
-    @extend %button-flat;
-
-    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  $primary 0%,
-                                  transparent 0%)
-                                  0 0 0 / 0 0 0px;
-    border-radius: $corner-radius;
-
-    &:checked {
-      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                    $primary 100%,
-                                    transparent 0%)
-                                    0 0 2 / 0 0 2px;
-
-      &, &:disabled { background-color: transparent; }
-    }
   }
 }
 
