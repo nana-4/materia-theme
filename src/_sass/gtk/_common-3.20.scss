@@ -759,12 +759,11 @@ spinbutton {
     }
 
     button {
+      @extend %button-flat-simple;
+      @extend %small_button;
+
       // margin: $container-padding;
       border: solid $container-padding transparent;
-
-      @extend %button-flat-simple;
-
-      @extend %small_button;
 
       // Remove unwanted focus indicator
       &:focus:not(:hover):not(:active):not(:disabled) {
@@ -1119,11 +1118,13 @@ searchbar > revealer > box {
                                     $titlebar-indicator 100%,
                                     transparent 0%)
                                     0 0 2 / 0 0 2px;
+      background-color: transparent;
       color: $titlebar-text;
 
-      &:disabled { color: $titlebar-text-disabled; }
-
-      &, &:disabled { background-color: transparent; }
+      &:disabled {
+        background-color: transparent;
+        color: $titlebar-text-disabled;
+      }
     }
 
     &:backdrop {
@@ -2898,7 +2899,7 @@ filechooser {
 }
 
 filechooserbutton:drop(active) {
-  box-shadow: none;
+  // box-shadow: none;
 }
 
 
