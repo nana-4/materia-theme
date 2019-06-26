@@ -284,7 +284,7 @@ entry {
   .linked:not(.vertical) > & { @extend %linked; }
 
   // Vertically linked entries
-  .linked.vertical > & { @extend %linked_vertical; }
+  .linked.vertical > & { @extend %linked-vertical; }
 }
 
 %entry_raised {
@@ -470,22 +470,26 @@ button {
       image:not(:only-child) { margin: 0 (24px - 16px) / 2; }
     }
 
-    .linked:not(.vertical) > & { @extend %linked; }
+    .linked:not(.vertical) > & {
+      @extend %linked;
 
-    .linked:not(.vertical) > &.image-button { @extend %linked-image-button; }
+      &.image-button { @extend %linked-image-button; }
+    }
 
-    .linked.vertical > & { @extend %linked_vertical; }
+    .linked.vertical > & {
+      @extend %linked-vertical;
 
-    .linked.vertical > &.image-button { @extend %linked-vertical-image-button; }
+      &.image-button { @extend %linked-vertical-image-button; }
+    }
 
     .linked:not(.vertical) > &.flat,
     .linked.vertical > &.flat {
-      border-radius: $corner-radius;
-
-      &.image-button { @extend %circular_button; }
-
-      &.text-button.image-button {
+      &:not(:only-child) { // specificity bump
         border-radius: $corner-radius;
+
+        &.image-button { border-radius: $circular-radius; }
+
+        &.text-button.image-button { border-radius: $corner-radius; }
       }
     }
   }
@@ -635,7 +639,7 @@ toolbar.inline-toolbar toolbutton {
   }
 }
 
-%linked_vertical {
+%linked-vertical {
   &:not(:first-child) {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -915,9 +919,9 @@ combobox {
 }
 
 .linked.vertical > combobox {
-  &:not(:first-child) > box > button.combo { @extend %linked_vertical:not(:first-child); }
+  &:not(:first-child) > box > button.combo { @extend %linked-vertical:not(:first-child); }
 
-  &:not(:last-child) > box > button.combo { @extend %linked_vertical:not(:last-child); }
+  &:not(:last-child) > box > button.combo { @extend %linked-vertical:not(:last-child); }
 }
 
 button.combo:only-child {
@@ -2863,13 +2867,12 @@ messagedialog { // Message Dialog styling
       border-bottom-right-radius: $corner-radius;
     }
 
-    .dialog-action-area {
+    .dialog-action-box {
       margin-top: -$container-padding;
       padding: $container-padding;
 
       button {
-        @extend %button-flat-simple;
-        border-radius: $corner-radius;
+        @extend %button_basic.flat;
 
         &:not(:last-child) { margin-right: $container-padding; }
 
