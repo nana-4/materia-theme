@@ -1,7 +1,10 @@
 $asset-suffix: if($variant == 'dark', '-dark', '');
 $background-clip-extra: if($variant == 'light', padding-box, border-box);
 
-// sizes
+//
+// Sizes
+//
+
 $container-padding: if($compact == 'false', 6px, 4px);
 
 $small-size: if($compact == 'false', 24px, 24px);
@@ -11,32 +14,48 @@ $large-size: if($compact == 'false', 48px, 40px);
 $bar-size: 4px;
 $menuitem-size: 28px;
 
-// radii
+//
+// Radii
+//
+
 $corner-radius: 4px;
 $circular-radius: 9999px;
 
-// durations
+//
+// Durations
+//
+
 $duration: 75ms;
 $ripple-fade-in-duration: 225ms;
 $ripple-fade-out-duration: 300ms;
 $ripple-fade-out-opacity-duration: 1200ms;
 
-// timing functions
+//
+// Timing functions
+//
+
 $ease: cubic-bezier(0.4, 0.0, 0.2, 1);
 $ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
 $ease-in: cubic-bezier(0.4, 0.0, 1, 1);
 $ease-in-out: cubic-bezier(0.4, 0.0, 0.6, 1);
 
-// transition shorthands
+//
+// Transition shorthands
+//
+
 $transition: all $duration $ease-out;
 $transition-shadow: box-shadow $duration $ease-out;
 
-// shadows
+//
+// Shadows
+//
+
 // based shadow values:
 // https://material-design.storage.googleapis.com/images/layout-principles-dimensionality-shadows-08_large_mdpi.png
 
-// box-shadow 1px blur doesn't draw correctly, see
+// NOTE: box-shadow 1px blur doesn't work properly, see
 // https://gitlab.gnome.org/GNOME/gtk/issues/511
+
 // $shadow-1: 0 1px 1.5px rgba(black, 0.12), 0 1px 1px rgba(black, 0.24);
 $shadow-1: 0 1px 1px rgba(black, 0.12), 0 1px 2px rgba(black, 0.24);
 $shadow-2: 0 3px 3px rgba(black, 0.16), 0 3px 3px rgba(black, 0.23);

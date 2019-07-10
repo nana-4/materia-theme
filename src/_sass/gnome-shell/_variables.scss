@@ -1,36 +1,50 @@
-// font families
+//
+// Font families
+//
+
 $font-family: "M+ 1c", Roboto, Cantarell, Sans-Serif;
 $font-family-large: Roboto, "M+ 1c", Cantarell, Sans-Serif;
 
-// font sizes
+//
+// Font sizes
+//
+
 $font-size: if($compact == 'false', 14px, 14px);
 $font-size-subheading: if($compact == 'false', 16px, 15px);
 
+//
 // Override sizes
+//
+
 $menuitem-size: if($compact == 'false', 32px, 28px);
 
-// durations
-$duration-panel: 250ms;
-
+//
 // Override durations; since St does not support transition-timing-function
+//
+
 $duration: 100ms;
 $duration-ripple: 200ms;
+$duration-panel: 250ms;
 
-// shadows
+//
+// Override shadows
+//
 
 // This should be none, but it's creating some issues with borders, so to
 // workaround it for now, use inset wich goes through a different code path.
 // see https://bugzilla.gnome.org/show_bug.cgi?id=752934
 $shadow-0: 0 0 transparent;
 
-// Override shadows
 $shadow-1: 0 1px 1.5px rgba(black, 0.12), 0 1px 1px rgba(black, 0.24);
 $shadow-2: 0 3px 3px rgba(black, 0.16 * 1.5), 0 3px 3px rgba(black, 0.23 * 1.5);
 $shadow-3: 0 10px 10px rgba(black, 0.19 * 1.5), 0 6px 3px rgba(black, 0.23 * 1.5);
 $shadow-4: 0 14px 14px rgba(black, 0.25 * 2), 0 10px 5px rgba(black, 0.22 * 2);
 $shadow-5: 0 19px 19px rgba(black, 0.30 * 2), 0 15px 6px rgba(black, 0.22 * 2);
 
-// Override overlay colors; since St does not support alpha() function
+//
+// Override overlay colors; since St does not support GTK-specific alpha() function
+//
+
 $overlay-hover:       rgba($text, 0.08);
 $overlay-focus:       rgba($text, 0.12);
 $overlay-focus-hover: rgba($text, 0.16);
