@@ -181,7 +181,8 @@ for FILEPATH in "${PATHLIST[@]}"; do
       -e 's/#BDBDBD/%INACTIVE_FG%/g' \
       -e 's/#FAFAFA/%INACTIVE_MATERIA_VIEW%/g' \
       -e 's/#F2F2F2/%BG%/g' \
-      -e 's/#4285F4/%SEL_BG%/g' \
+      -e 's/#1A73E8/%SEL_BG%/g' \
+      -e 's/#8AB4F8/%SEL_BG%/g' \
       -e 's/#FFFFFF/%MATERIA_VIEW%/g' \
       -e 's/#383838/%HDR_BG%/g' \
       -e 's/#E0E0E0/%HDR_BG%/g' \
@@ -201,7 +202,8 @@ for FILEPATH in "${PATHLIST[@]}"; do
       -e 's/#FFFFFF/%FG%/g' \
       -e 's/#FAFAFA/%FG%/g' \
       -e 's/#424242/%MATERIA_SURFACE%/g' \
-      -e 's/#4285F4/%SEL_BG%/g' \
+      -e 's/#1A73E8/%SEL_BG%/g' \
+      -e 's/#8AB4F8/%SEL_BG%/g' \
       -e 's/#303030/%MATERIA_VIEW%/g' \
       -e 's/#383838/%HDR_BG%/g' \
       -e 's/#212121/%HDR_BG2%/g' \
