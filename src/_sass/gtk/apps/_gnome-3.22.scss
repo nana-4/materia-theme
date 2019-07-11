@@ -41,7 +41,7 @@
   animation: nautilus-operations-button-needs-attention $ripple-fade-out-duration $ease 6 alternate;
 }
 
-.linked > button:not(.suggested-action):not(.destructive-action).disclosure-button { @extend %circular_button; }
+.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action):not(:only-child).disclosure-button { @extend %circular_button; }
 
 // Path bar
 
@@ -70,9 +70,11 @@
   }
 
   // for 3.32
-  .nautilus-path-bar button {
+  .nautilus-path-bar button:not(.suggested-action):not(.destructive-action) {
     padding-left: ($medium-size - 24px) / 2;
     padding-right: ($medium-size - 24px) / 2;
+
+    &.text-button { min-width: 0; }
 
     label:not(:only-child) {
       &:first-child { margin-left: 0; }
