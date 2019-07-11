@@ -342,7 +342,7 @@ na-tray-applet widget box widget {
 
 // window and desktop mode
 .caja-canvas-item {
-  // border-radius: $corner-radius;
+  border-radius: $corner-radius;
 }
 
 // desktop mode
@@ -351,6 +351,27 @@ na-tray-applet widget box widget {
 }
 
 .caja-desktop EelEditableLabel.entry {
+}
+
+// override https://github.com/mate-desktop/caja/blob/master/data/caja.css
+.caja-desktop.view .entry,
+.caja-navigation-window .view .entry {
+  border: none;
+  border-radius: $corner-radius;
+  background-color: $fill;
+  background-image: none;
+  color: $text;
+
+  &:selected { background-color: $overlay-selected; }
+}
+
+.caja-desktop.view .entry {
+  background-color: $scrim-alt;
+  color: on(dark);
+  text-shadow: $shadow-1;
+  caret-color: currentColor; // this shouldn't be needed.
+
+  &:selected { background-color: $overlay-selected; } // FIXME: this should have light overlay.
 }
 
 // statusbar
