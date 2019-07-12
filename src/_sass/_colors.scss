@@ -3,11 +3,6 @@
 
 @import 'color-palette';
 
-$blue:                                  #4285F4;
-$green:                                 #34A853;
-$yellow:                                #FBBC05;
-$red:                                   #EA4335;
-
 @function gtkalpha($c, $a) {
   @return unquote("alpha(#{$c}, #{$a})");
 }
@@ -77,9 +72,9 @@ $panel-solid:                           if($topbar == 'dark', #212121, #CCCCCC);
 $link:                                  $primary;
 $link-visited:                          if($variant == 'light', $purple-500, $purple-200);
 
-$warning:                               $yellow;
-$error:                                 $red;
-$success:                               $green;
+$warning:                               if($variant == 'light', #F4B400, #FDD633);
+$error:                                 if($variant == 'light', #D93025, #F28B82);
+$success:                               if($variant == 'light', #0F9D58, #81C995);
 
 $suggested:                             $primary;
 $destructive:                           $error;
