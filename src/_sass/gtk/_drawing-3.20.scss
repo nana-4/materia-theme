@@ -65,22 +65,22 @@
   @if $t == raised-normal {
     transition: $transition;
     border-image: none;
-    box-shadow: $shadow-1;
+    box-shadow: $shadow-z1;
     background-color: if($fc == $primary, $base, $fc);
     color: if($fc == $primary, $text, on($fc));
   }
 
   @if $t == raised-hover {
-    box-shadow: $shadow-2;
+    box-shadow: $shadow-z3;
   }
 
   @if $t == raised-focus {
     border-image: none;
-    box-shadow: $shadow-2;
+    box-shadow: $shadow-z3;
   }
 
   @if $t == raised-disabled {
-    box-shadow: $shadow-1;
+    box-shadow: $shadow-z1;
     background-color: $base-alt;
     color: $text-disabled;
   }
@@ -99,7 +99,7 @@
                 background-size $ripple-fade-out-duration $ease-out,
                 background-image $ripple-fade-out-opacity-duration $ease-out;
     outline: none;
-    box-shadow: inset 0 0 0 9999px transparent, $shadow-1;
+    box-shadow: inset 0 0 0 9999px transparent, $shadow-z2;
     background-color: $surface;
     background-image: radial-gradient(circle, transparent 10%, transparent 0%);
     background-repeat: no-repeat;
@@ -109,11 +109,11 @@
   }
 
   @if $t == hover {
-    box-shadow: inset 0 0 0 9999px transparent, $shadow-2;
+    box-shadow: inset 0 0 0 9999px transparent, $shadow-z4;
   }
 
   @if $t == focus {
-    box-shadow: inset 0 0 0 9999px $overlay-focus, $shadow-2;
+    box-shadow: inset 0 0 0 9999px $overlay-focus, $shadow-z4;
   }
 
   @if $t == active {
@@ -121,7 +121,7 @@
                 background-size 0ms,
                 background-image 0ms;
     animation: ripple $ripple-fade-in-duration $ease-out forwards;
-    box-shadow: inset 0 0 0 9999px $overlay-hover, $shadow-2;
+    box-shadow: inset 0 0 0 9999px $overlay-hover, $shadow-z8;
     background-image: radial-gradient(circle, $overlay-active 10%, transparent 0%);
     background-size: 0% 0%;
   }

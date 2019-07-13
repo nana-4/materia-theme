@@ -957,10 +957,10 @@ toolbar {
     transition: $transition-shadow;
     padding: $container-padding;
     border-radius: $corner-radius;
-    box-shadow: $shadow-2, inset 0 1px highlight($surface);
+    box-shadow: $shadow-z4, inset 0 1px highlight($surface);
     background-color: $surface;
 
-    &:backdrop { box-shadow: $shadow-1, inset 0 1px highlight($surface); }
+    &:backdrop { box-shadow: $shadow-z2, inset 0 1px highlight($surface); }
 
     &.left,
     &.right,
@@ -1036,7 +1036,7 @@ searchbar > revealer > box {
 .titlebar {
   transition: background-color $duration $ease-out, color $duration $ease-out;
   border-radius: $corner-radius $corner-radius 0 0;
-  box-shadow: $shadow-1, inset 0 1px highlight($titlebar);
+  box-shadow: $shadow-z1, inset 0 1px highlight($titlebar);
   background-color: $titlebar;
   color: $titlebar-text;
 
@@ -1164,7 +1164,7 @@ searchbar > revealer > box {
     // but let's keep it for backwards compatibility.
     transition: background-color 0.1ms $ripple-fade-in-duration, color $duration $ease-out;
     animation: ripple-on-headerbar $ripple-fade-in-duration $ease-out;
-    box-shadow: $shadow-1, inset 0 1px highlight($primary);
+    box-shadow: $shadow-z1, inset 0 1px highlight($primary);
     background-color: $primary;
     color: on($primary);
 
@@ -1230,7 +1230,7 @@ searchbar > revealer > box {
   .maximized &,
   .fullscreen & {
     border-radius: 0;
-    box-shadow: $shadow-1;
+    box-shadow: $shadow-z1;
   }
 
   &.default-decoration {
@@ -1259,7 +1259,7 @@ searchbar > revealer > box {
       // margin-right: -2px;
       // margin-top: -2px;
       border-radius: 0;
-      box-shadow: $shadow-1; // Remove highlight as window managers should have it
+      box-shadow: $shadow-z1; // Remove highlight as window managers should have it
     }
   }
 }
@@ -1601,10 +1601,10 @@ menuitem {
 popover.background {
   transition: $transition-shadow;
   padding: 2px;
-  box-shadow: $shadow-2; // TODO: this should really have a highlight
+  box-shadow: $shadow-z4; // TODO: this should really have a highlight
   background-color: $surface;
 
-  &:backdrop { box-shadow: $shadow-1; }
+  &:backdrop { box-shadow: $shadow-z2; }
 
   &, .csd & {
     border-style: solid;
@@ -2066,15 +2066,15 @@ switch {
     margin: -3px -2px;
     border-radius: $circular-radius;
     outline: none;
-    box-shadow: 0 0 0 10px transparent, $shadow-1;
+    box-shadow: 0 0 0 10px transparent, $shadow-z1;
     background-color: $surface;
   }
 
-  &:focus slider { box-shadow: 0 0 0 10px $overlay-focus, $shadow-1; }
+  &:focus slider { box-shadow: 0 0 0 10px $overlay-focus, $shadow-z1; }
 
-  &:hover slider { box-shadow: 0 0 0 10px $overlay-hover, $shadow-1; }
+  &:hover slider { box-shadow: 0 0 0 10px $overlay-hover, $shadow-z1; }
 
-  &:focus:hover slider { box-shadow: 0 0 0 10px $overlay-focus-hover, $shadow-1; }
+  &:focus:hover slider { box-shadow: 0 0 0 10px $overlay-focus-hover, $shadow-z1; }
 
   &:checked slider {
     background-color: $primary;
@@ -2102,9 +2102,9 @@ switch {
   box-shadow: none;
   background-color: transparent;
   background-image: none;
-  -gtk-icon-shadow: $shadow-1;
+  -gtk-icon-shadow: $icon-shadow-z2;
 
-  &:hover, &:active { -gtk-icon-shadow: $shadow-2; }
+  &:hover, &:active { -gtk-icon-shadow: $icon-shadow-z4; }
 
   @each $s, $as in ('', '-unchecked'),
                    (':checked', '-checked') {
@@ -2588,7 +2588,7 @@ levelbar {
   trough {
     // padding: 2px;
     // border-radius: $corner-radius;
-    // box-shadow: $shadow-1;
+    // box-shadow: $shadow-z1;
     // background-color: $base;
 
     // &:disabled { background-color: $base-alt; }
@@ -3260,11 +3260,11 @@ colorswatch {
 
   overlay {
     transition: $transition-shadow;
-    box-shadow: $shadow-1;
+    box-shadow: $shadow-z1;
 
-    &:hover { box-shadow: $shadow-2; }
+    &:hover { box-shadow: $shadow-z3; }
 
-    &:drop(active) { box-shadow: $shadow-2; }
+    &:drop(active) { box-shadow: $shadow-z3; }
   }
 
   &#add-color-button {
@@ -3292,7 +3292,7 @@ colorswatch {
 
     overlay { border-radius: $corner-radius; }
 
-    // overlay:hover { box-shadow: $shadow-1; }
+    // overlay:hover { box-shadow: $shadow-z1; }
   }
 }
 
@@ -3300,10 +3300,10 @@ colorswatch {
 colorchooser .popover.osd {
   transition: $transition-shadow;
   border-radius: $corner-radius;
-  box-shadow: $shadow-2, inset 0 1px highlight($surface);
+  box-shadow: $shadow-z4, inset 0 1px highlight($surface);
   background-color: $surface;
 
-  &:backdrop { box-shadow: $shadow-1, inset 0 1px highlight($surface); }
+  &:backdrop { box-shadow: $shadow-z2, inset 0 1px highlight($surface); }
 }
 
 
@@ -3336,7 +3336,7 @@ colorchooser .popover.osd {
 decoration {
   transition: $transition-shadow;
   border-radius: $corner-radius $corner-radius 0 0;
-  box-shadow: $shadow-4, 0 16px 16px transparent;
+  box-shadow: $shadow-z16, 0 6px (30px * .6) 5px transparent;
 
   // FIXME rationalize shadows
 
@@ -3348,7 +3348,7 @@ decoration {
     // change when we go to backdrop, to prevent jumping windows.
     // The biggest shadow should be in the same order then in the active state
     // or the jumping will happen during the transition.
-    box-shadow: $shadow-2, 0 16px 16px transparent;
+    box-shadow: $shadow-z4, 0 6px (30px * .6) 5px transparent;
   }
 
   .maximized &,
@@ -3366,7 +3366,7 @@ decoration {
 
   .csd.popup & {
     border-radius: $corner-radius;
-    box-shadow: $shadow-2;
+    box-shadow: $shadow-z4;
   }
 
   tooltip.csd & {
@@ -3376,9 +3376,9 @@ decoration {
 
   messagedialog.csd & {
     border-radius: $corner-radius;
-    // box-shadow: $shadow-4, 0 16px 16px transparent;
+    // box-shadow: $shadow-z24, 0 9px (46px * .6) 8px transparent;
 
-    // &:backdrop { box-shadow: $shadow-2, 0 16px 16px transparent; }
+    // &:backdrop { box-shadow: $shadow-z4, 0 9px (46px * .6) 8px transparent; }
   }
 
   .solid-csd & {
