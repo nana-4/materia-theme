@@ -228,8 +228,14 @@ if [[ ! -w "${dest:-$DEST_DIR}" ]]; then
   exit 1
 fi
 
-for color in "${colors[@]:-${COLOR_VARIANTS[@]}}"; do
-  for size in "${sizes[@]:-${SIZE_VARIANTS[@]}}"; do
+if [[ "${#colors[@]}" -eq 0 ]] ; then
+  colors=("${COLOR_VARIANTS[@]}")
+fi
+if [[ "${#sizes[@]}" -eq 0 ]] ; then
+  sizes=("${SIZE_VARIANTS[@]}")
+fi
+for color in "${colors[@]}"; do
+  for size in "${sizes[@]}"; do
     install "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$color" "$size"
   done
 done
