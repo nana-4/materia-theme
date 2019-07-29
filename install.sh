@@ -146,6 +146,8 @@ install_gdm() {
   fi
 }
 
+colors=()
+sizes=()
 while [[ "$#" -gt 0 ]]; do
   case "${1:-}" in
     -d|--dest)
