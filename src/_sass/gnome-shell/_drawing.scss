@@ -12,77 +12,89 @@
 
 // Typography
 // based on:
-// https://material.io/guidelines/style/typography.html#typography-styles
+// https://material.io/design/typography/the-type-system.html
 
-@mixin font($size) {
-  @if $size == display-4 {
+@mixin type($style) {
+  @if $style == headline1 {
     // font-family: $font-family-large;
-    font-size: 112px;
+    font-size: 96px;
     font-weight: 300;
     // line-height: 1;
   }
 
-  @if $size == display-3 {
+  @if $style == headline2 {
     // font-family: $font-family-large;
-    font-size: 56px;
-    font-weight: 400;
+    font-size: 60px;
+    font-weight: 300;
     // line-height: 1;
   }
 
-  @if $size == display-2 {
+  @if $style == headline3 {
     // font-family: $font-family-large;
-    font-size: 45px;
+    font-size: 48px;
     font-weight: 400;
-    // line-height: 48px;
+    // line-height: 50px;
   }
 
-  @if $size == display-1 {
+  @if $style == headline4 {
     // font-family: $font-family-large;
     font-size: 34px;
     font-weight: 400;
     // line-height: 40px;
   }
 
-  @if $size == headline {
+  @if $style == headline5 {
     font-size: pt(24px);
     font-weight: 400;
     // line-height: 32px;
   }
 
-  @if $size == title {
+  @if $style == headline6 {
     font-size: pt(20px);
     font-weight: 500;
-    // line-height: 1;
+    // line-height: 32px;
   }
 
-  @if $size == subheading {
+  @if $style == subtitle1 {
+    font-size: pt($font-size-subheading);
+    font-weight: 400;
+    // line-height: 28px;
+  }
+
+  @if $style == subtitle2 {
+    font-size: pt($font-size);
+    font-weight: 500;
+    // line-height: 22px;
+  }
+
+  @if $style == body1 {
     font-size: pt($font-size-subheading);
     font-weight: 400;
     // line-height: 24px;
   }
 
-  @if $size == body-2 {
-    font-size: pt($font-size);
-    font-weight: 500;
-    // line-height: 24px;
-  }
-
-  @if $size == body-1 {
+  @if $style == body2 {
     font-size: pt($font-size);
     font-weight: 400;
     // line-height: 20px;
   }
 
-  @if $size == caption {
+  @if $style == caption {
     font-size: pt(12px);
     font-weight: 400;
-    // line-height: 1;
+    // line-height: 20px;
   }
 
-  @if $size == button {
+  @if $style == button {
     font-size: pt($font-size);
     font-weight: 500;
-    // line-height: 20px;
+    // line-height: 36px;
+  }
+
+  @if $style == overline {
+    font-size: pt(12px);
+    font-weight: 400;
+    // line-height: 32px;
   }
 }
 

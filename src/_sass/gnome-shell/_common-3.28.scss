@@ -27,7 +27,7 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
 /* GLOBALS */
 stage {
   font-family: $font-family;
-  @include font(body-1);
+  @include type(body2);
   color: $text;
 }
 
@@ -39,7 +39,7 @@ stage {
   padding: 0 16px;
   border-width: 0;
   border-radius: $corner-radius;
-  @include font(button);
+  @include type(button);
   @include button(flat-normal);
   &:hover { @include button(flat-hover); }
   &:active { @include button(flat-active); }
@@ -55,7 +55,7 @@ stage {
   margin-right: 0;
   border-right-width: 0;
   border-radius: $corner-radius;
-  @include font(button);
+  @include type(button);
   @include button(flat-normal);
   &:hover { @include button(flat-hover); }
   &:active { @include button(flat-active); }
@@ -86,7 +86,7 @@ StEntry {
   color: $text;
   selection-background-color: $overlay-selected;
   selected-color: $text;
-  @include font(subheading);
+  @include type(body1);
   @include entry(normal);
   &:hover { @include entry(hover);}
   &:focus { @include entry(focus);}
@@ -229,7 +229,7 @@ StScrollBar {
 
 /* Modal Dialogs */
 
-.headline { @include font(title); }
+.headline { @include type(headline6); }
 .lightbox { background-color: black; }
 .flashspot { background-color: white; }
 
@@ -259,7 +259,7 @@ StScrollBar {
 
   .mount-dialog-subject,
   .end-session-dialog-subject { //this should be a generic header class
-    @include font(title);
+    @include type(headline6);
   }
 
 /* Message Dialog */
@@ -432,7 +432,7 @@ StScrollBar {
 
   .message-dialog-main-layout { spacing: 24px; padding: 10px; }
   .message-dialog-content { spacing: 16px; }
-  .message-dialog-title { @include font(title); color: $text; }
+  .message-dialog-title { @include type(headline6); color: $text; }
 }
 
   .prompt-dialog-description:rtl {
@@ -663,7 +663,7 @@ StScrollBar {
   min-width: 64px;
   min-height: 64px;
 
-  .osd-monitor-label { @include font(display-2); }
+  .osd-monitor-label { @include type(headline3); }
   .level {
     height: 8px;
     border-radius: 0;
@@ -745,7 +745,7 @@ StScrollBar {
   }
 
   .input-source-switcher-symbol {
-    @include font(display-2);
+    @include type(headline3);
     width: 96px;
     height: 96px;
   }
@@ -1004,7 +1004,7 @@ StScrollBar {
     }
 
     .datemenu-today-button .date-label {
-      @include font(headline);
+      @include type(headline5);
     }
 
     .world-clocks-header,
@@ -1057,7 +1057,7 @@ StScrollBar {
 
     .calendar-day-base {
       transition-duration: $duration;
-      @include font(caption);
+      @include type(caption);
       text-align: center;
       width: $menuitem-size; height: $menuitem-size;
       padding: 0;
@@ -1082,7 +1082,7 @@ StScrollBar {
         border-radius: 100px;
         background-color: transparent;
         color: $text-disabled;
-        @include font(caption);
+        @include type(caption);
         font-weight: bold;
         text-align: center;
       }
@@ -1370,7 +1370,7 @@ StScrollBar {
   .nm-dialog-airplane-text { color: $text; }
   .nm-dialog-header-icon { icon-size: 32px; }
   .nm-dialog-scroll-view { border: none; }
-  .nm-dialog-header { @include font(title); }
+  .nm-dialog-header { @include type(headline6); }
 
   .nm-dialog-item {
     transition-duration: $duration;
@@ -1477,7 +1477,7 @@ StScrollBar {
   .search-section-separator { height: 1px; background-color: on(dark, divider); }
 
   .list-search-result-content { spacing: 30px; }
-  .list-search-result-title { @include font(subheading); color: on(dark); spacing: 12px; }
+  .list-search-result-title { @include type(subtitle1); color: on(dark); spacing: 12px; }
   .list-search-result-description { color: on(dark, secondary); }
   .list-search-provider-details { width: 150px; color: on(dark, secondary); margin-top: 0.24em; }
   .list-search-provider-content { spacing: 20px; }
@@ -1735,7 +1735,7 @@ StScrollBar {
 }
 
 %status_text {
-  @include font(display-2);
+  @include type(headline3);
   color: on(dark, disabled);
 }
 
@@ -1815,7 +1815,7 @@ StScrollBar {
   }
   .chat-meta-message {
     padding-left: 4px;
-    @include font(caption);
+    @include type(caption);
     color: $text-secondary;
     &:rtl { padding-left: 0; padding-right: 4px; }
   }
@@ -1880,7 +1880,7 @@ StScrollBar {
 //Keyboard
 /* On-screen Keyboard */
 .word-suggestions {
-    @include font(subheading);
+    @include type(subtitle1);
     spacing: 12px;
     min-height: 20pt;
 }
@@ -2115,7 +2115,7 @@ StScrollBar {
   .login-dialog-username,
   .user-widget-label {
     color: on($os-background);
-    @include font(title);
+    @include type(headline6);
     text-align: left;
     padding-left: 15px;
   }
@@ -2170,11 +2170,11 @@ StScrollBar {
 }
 
 .screen-shield-clock-time {
-  @include font(display-4);
+  @include type(headline1);
   text-shadow: $shadow-1;
 }
 
-.screen-shield-clock-date { @include font(display-2); }
+.screen-shield-clock-date { @include type(headline4); }
 
 .screen-shield-notifications-container {
   spacing: 6px;
@@ -2301,7 +2301,7 @@ StScrollBar {
       padding: 0 16px;
       border: none;
       border-radius: $corner-radius;
-      @include font(button);
+      @include type(button);
       @include button(flat-normal);
       &:hover { @include button(flat-hover); }
       &:active { @include button(flat-active); }
@@ -2324,7 +2324,7 @@ StScrollBar {
   }
 
   .lg-extension-name {
-      @include font(headline);
+      @include type(headline5);
   }
 
   .lg-extension-meta {

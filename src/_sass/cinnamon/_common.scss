@@ -1,7 +1,7 @@
 // defines font family and standard font size across the whole theme
 // em is preferred for better support for text scaling
 stage {
-  @include font(body-1);
+  @include type(body2);
 
   font-family: $font-family;
   color: $text;
@@ -54,7 +54,7 @@ StScrollView {
   @extend %slider-shared;
 }
 #Tooltip {
-  @include font(caption);
+  @include type(caption);
   
   padding: 6px 8px;
   color: on($tooltip);
@@ -125,7 +125,7 @@ StScrollView {
   &:insensitive { color: $text-disabled; }
 }
 .popup-subtitle-menu-item {
-  @include font(body-2);
+  @include type(subtitle2);
 }
 .popup-menu-icon {
   icon-size: 1.14em;
@@ -135,7 +135,7 @@ StScrollView {
 .popup-submenu-menu-item:open {
 }
 .popup-alternating-menu-item:alternate {
-  @include font(body-2);
+  @include type(subtitle2);
 }
 // toggles in menus
 .toggle-switch {
@@ -440,7 +440,7 @@ StScrollView {
 }
 // keyboard layout applet
 .panel-status-button {
-  @include font(body-2);
+  @include type(subtitle2);
   -natural-hpadding: 4px;
   -minimum-hpadding: 4px;
   color: $titlebar-text-secondary;
@@ -478,7 +478,7 @@ StScrollView {
     
 }
 .window-caption {
-  @include font(caption);
+  @include type(caption);
 
   background-color: rgba(0, 0, 0, 0.01);
   color: $titlebar-text-secondary;
@@ -569,7 +569,7 @@ StScrollView {
 }
 // also covers the year label
 .datemenu-date-label {
-    @include font(title);
+    @include type(headline6);
 
     height: $menuitem-size - 2px * 2;
     margin: 2px;
@@ -580,7 +580,7 @@ StScrollView {
     &:focus { background-color: $divider }; 
 }
 .calendar-month-label {
-    @include font(body-2);
+    @include type(subtitle2);
 
     height: $menuitem-size - 6px * 2;
     margin: 2px;
@@ -607,7 +607,7 @@ StScrollView {
   }
 }
 .calendar-day-base {
-  @include font(caption);
+  @include type(caption);
 
   text-align: center;
   width: $menuitem-size; height: $menuitem-size;
@@ -622,7 +622,7 @@ StScrollView {
   }
 }
 .calendar-week-number {
-  @include font(caption);
+  @include type(caption);
 
   width: $menuitem-size - 7px; height: $menuitem-size;
   margin: 2px;
@@ -633,7 +633,7 @@ StScrollView {
   text-align: center;
 }
 .calendar-day-heading  {
-  @include font(caption);
+  @include type(caption);
 
   width: $menuitem-size; height: $menuitem-size - 7px;
   margin: 2px;
@@ -936,7 +936,7 @@ StScrollView {
 }
 .keyboard-key {
   @extend %icon-button-shared;
-  @include font(button);
+  @include type(button);
 }
 .keyboard-layout {
   spacing: 8px;
@@ -1028,10 +1028,10 @@ StScrollView {
   }
 }
 .menu-selected-app-title {
-  @include font(caption);
+  @include type(caption);
 }
 .menu-selected-app-description {
-  @include font(caption);
+  @include type(caption);
 
   max-width: 150px;
 }
@@ -1058,7 +1058,7 @@ StScrollView {
 }
 // the window list applet. Some third party applets inherit some of this theming.
 .window-list-box {
-  @include font(caption);
+  @include type(caption);
   
   spacing: 4px;
   padding: 0 3px;
@@ -1117,7 +1117,7 @@ StScrollView {
     padding-bottom: 6px;
   }
   &-number-label {
-    @include font(caption);
+    @include type(caption);
     
     z-index: 99;
   }
@@ -1325,7 +1325,7 @@ StScrollView {
   }
 }
 .applet-label {
-  @include font(body-2);
+  @include type(subtitle2);
 
   color: $titlebar-text-secondary;
 }
@@ -1339,7 +1339,7 @@ StScrollView {
 // desklets - the base .desklet selector is for 'undecorated' desklets however some subtle background themeing is desirable
 // to maintain visibility irrespctive of wallpaper and to allow for the highlighting scheme to work
 .desklet {
-  @include font(caption);
+  @include type(caption);
   
   color: $titlebar-text;
   border: none;
@@ -1351,7 +1351,7 @@ StScrollView {
 // these do not inherit from .desklet
 .desklet-with-borders {
   @extend %desklet-shared;
-  @include font(caption);
+  @include type(caption);
 
   background-color: $surface;
   border-radius: $corner-radius;
@@ -1361,7 +1361,7 @@ StScrollView {
 }
 .desklet-with-borders-and-header {
   @extend %desklet-shared;
-  @include font(caption);
+  @include type(caption);
   
   background-color: $surface;
   border-radius-bottomleft: 2px;
@@ -1371,7 +1371,7 @@ StScrollView {
   }
 }
 .desklet-header {
-  @include font(title)
+  @include type(headline6)
   @extend %desklet-shared;
 
   background-color: $surface;
@@ -1409,10 +1409,10 @@ StScrollView {
   padding-bottom: 16px;
 }
 .about-title {
-  @include font(title);
+  @include type(headline6);
 }
 .about-uuid {
-  @include font(caption);
+  @include type(caption);
 }
 .about-icon {
   padding-right: 20px;
@@ -1435,7 +1435,7 @@ StScrollView {
   @extend %osd-info-workspace-shared;  
 }
 .expo-workspaces-name-entry {
-  @include font(body-1);
+  @include type(body1);
 
   background-color: on(dark, fill);
   color: on(dark); 
@@ -1598,7 +1598,7 @@ StScrollView {
   border: none;
 }
 .user-label {
-  @include font(body-2);
+  @include type(subtitle2);
   
   color: $text;
 }
