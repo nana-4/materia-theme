@@ -1136,8 +1136,9 @@ StScrollBar {
 
         .message-list-clear-button.button {
           background-color: transparent;
-          &:hover,&:focus { background-color: $overlay-hover; }
-          &:active { background-color: $overlay-active; }
+          &:focus { background-color: $primary-overlay-focus; }
+          &:hover { background-color: $primary-overlay-hover; }
+          &:active { background-color: $primary-overlay-active; }
           margin: 8px 8px 0;
         }
 
@@ -1776,15 +1777,15 @@ StScrollBar {
       padding: 0 8px;
       border-radius: $corner-radius;
       background-color: transparent;
-      color: $text-secondary;
+      color: $primary;
       font-weight: 500;
       &:first-child { border-radius: $corner-radius; }
       &:last-child { border-radius: $corner-radius; }
-      &:hover, &focus { background-color: $overlay-hover; color: $text; }
+      &:focus { background-color: $primary-overlay-focus; }
+      &:hover { background-color: $primary-overlay-hover; }
       &:active {
         transition-duration: $duration-ripple;
-        background-color: $overlay-active;
-        color: $text;
+        background-color: $primary-overlay-active;
       }
     }
   }

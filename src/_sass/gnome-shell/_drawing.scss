@@ -186,7 +186,7 @@
   }
 
   @if $t == flat-normal {
-    color: if($tc != on(dark), $text-secondary, on(dark, secondary));
+    color: if($tc != on(dark), $primary, on(dark, secondary));
     background-color: transparent;
     border-color: transparent;
     box-shadow: $shadow-0;
@@ -196,15 +196,16 @@
   }
 
   @if $t == flat-focus {
-    color: if($tc != on(dark), $text, on(dark));
+    color: if($tc != on(dark), $primary, on(dark));
+    background-color: if($tc != on(dark), $primary-overlay-focus, $inverse-overlay-focus);
     text-shadow: none;
     icon-shadow: none;
     box-shadow: $shadow-0;
   }
 
   @if $t == flat-hover {
-    color: if($tc != on(dark), $text, on(dark));
-    background-color: if($tc != on(dark), $overlay-hover, $inverse-overlay-hover);
+    color: if($tc != on(dark), $primary, on(dark));
+    background-color: if($tc != on(dark), $primary-overlay-hover, $inverse-overlay-hover);
     border-color: transparent;
     box-shadow: $shadow-0;
     text-shadow: none;
@@ -212,8 +213,8 @@
   }
 
   @if $t == flat-active {
-    color: if($tc != on(dark), $text, on(dark));
-    background-color: if($tc != on(dark), $overlay-active, $inverse-overlay-active);
+    color: if($tc != on(dark), $primary, on(dark));
+    background-color: if($tc != on(dark), $primary-overlay-active, $inverse-overlay-active);
     border-color: transparent;
     box-shadow: $shadow-0;
     text-shadow: none;
