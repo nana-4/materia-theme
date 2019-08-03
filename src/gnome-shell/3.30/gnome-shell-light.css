@@ -29,12 +29,13 @@ stage {
 /* Buttons */
 .button {
   min-height: 36px;
-  padding: 0 16px;
+  min-width: 48px;
+  padding: 0 8px;
   border-width: 0;
   border-radius: 4px;
   font-size: 10.5pt;
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.54);
+  color: #1A73E8;
   background-color: transparent;
   border-color: transparent;
   box-shadow: 0 0 transparent;
@@ -44,15 +45,16 @@ stage {
 }
 
 .button:focus {
-  color: rgba(0, 0, 0, 0.87);
+  color: #1A73E8;
+  background-color: rgba(26, 115, 232, 0.12);
   text-shadow: none;
   icon-shadow: none;
   box-shadow: 0 0 transparent;
 }
 
 .button:hover {
-  color: rgba(0, 0, 0, 0.87);
-  background-color: rgba(0, 0, 0, 0.08);
+  color: #1A73E8;
+  background-color: rgba(26, 115, 232, 0.08);
   border-color: transparent;
   box-shadow: 0 0 transparent;
   text-shadow: none;
@@ -60,8 +62,8 @@ stage {
 }
 
 .button:active {
-  color: rgba(0, 0, 0, 0.87);
-  background-color: rgba(0, 0, 0, 0.2);
+  color: #1A73E8;
+  background-color: rgba(26, 115, 232, 0.2);
   border-color: transparent;
   box-shadow: 0 0 transparent;
   text-shadow: none;
@@ -80,6 +82,7 @@ stage {
 
 .modal-dialog-linked-button {
   min-height: 36px;
+  min-width: 48px;
   margin: 6px;
   padding: 0 8px;
   margin-right: 0;
@@ -87,7 +90,7 @@ stage {
   border-radius: 4px;
   font-size: 10.5pt;
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.54);
+  color: #1A73E8;
   background-color: transparent;
   border-color: transparent;
   box-shadow: 0 0 transparent;
@@ -97,15 +100,16 @@ stage {
 }
 
 .modal-dialog-linked-button:focus {
-  color: rgba(0, 0, 0, 0.87);
+  color: #1A73E8;
+  background-color: rgba(26, 115, 232, 0.12);
   text-shadow: none;
   icon-shadow: none;
   box-shadow: 0 0 transparent;
 }
 
 .modal-dialog-linked-button:hover {
-  color: rgba(0, 0, 0, 0.87);
-  background-color: rgba(0, 0, 0, 0.08);
+  color: #1A73E8;
+  background-color: rgba(26, 115, 232, 0.08);
   border-color: transparent;
   box-shadow: 0 0 transparent;
   text-shadow: none;
@@ -113,8 +117,8 @@ stage {
 }
 
 .modal-dialog-linked-button:active {
-  color: rgba(0, 0, 0, 0.87);
-  background-color: rgba(0, 0, 0, 0.2);
+  color: #1A73E8;
+  background-color: rgba(26, 115, 232, 0.2);
   border-color: transparent;
   box-shadow: 0 0 transparent;
   text-shadow: none;
@@ -420,7 +424,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .message-dialog-subtitle {
   color: rgba(0, 0, 0, 0.54);
-  font-weight: bold;
+  font-weight: normal;
 }
 
 /* End Session Dialog */
@@ -814,7 +818,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .popup-menu-boxpointer,
 .candidate-popup-boxpointer {
-  -arrow-border-radius: 0;
+  -arrow-border-radius: 20px;
   -arrow-background-color: transparent;
   -arrow-border-width: 0;
   -arrow-border-color: transparent;
@@ -856,7 +860,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .osd-window .osd-monitor-label {
-  font-size: 45px;
+  font-size: 48px;
   font-weight: 400;
 }
 
@@ -940,7 +944,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .input-source-switcher-symbol {
-  font-size: 45px;
+  font-size: 48px;
   font-weight: 400;
   width: 96px;
   height: 96px;
@@ -1385,7 +1389,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .calendar-other-month-day {
   color: rgba(0, 0, 0, 0.26);
-  opacity: 0.5;
 }
 
 .calendar-week-number {
@@ -1411,12 +1414,16 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   margin: 8px 8px 0;
 }
 
-.message-list-clear-button.button:hover, .message-list-clear-button.button:focus {
-  background-color: rgba(0, 0, 0, 0.08);
+.message-list-clear-button.button:focus {
+  background-color: rgba(26, 115, 232, 0.12);
+}
+
+.message-list-clear-button.button:hover {
+  background-color: rgba(26, 115, 232, 0.08);
 }
 
 .message-list-clear-button.button:active {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(26, 115, 232, 0.2);
 }
 
 .message-list-sections {
@@ -1954,7 +1961,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .app-view-control {
-  padding: 0 16px;
+  padding: 0 8px;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -2168,7 +2175,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .search-statustext, .no-frequent-applications-label {
-  font-size: 45px;
+  font-size: 48px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.5);
 }
@@ -2224,7 +2231,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   padding: 0 8px;
   border-radius: 4px;
   background-color: transparent;
-  color: rgba(0, 0, 0, 0.54);
+  color: #1A73E8;
   font-weight: 500;
 }
 
@@ -2236,15 +2243,17 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   border-radius: 4px;
 }
 
-.notification-banner .notification-button:hover, .notification-banner .notification-buttonfocus {
-  background-color: rgba(0, 0, 0, 0.08);
-  color: rgba(0, 0, 0, 0.87);
+.notification-banner .notification-button:focus {
+  background-color: rgba(26, 115, 232, 0.12);
+}
+
+.notification-banner .notification-button:hover {
+  background-color: rgba(26, 115, 232, 0.08);
 }
 
 .notification-banner .notification-button:active {
   transition-duration: 200ms;
-  background-color: rgba(0, 0, 0, 0.2);
-  color: rgba(0, 0, 0, 0.87);
+  background-color: rgba(26, 115, 232, 0.2);
 }
 
 .summary-source-counter {
@@ -2614,7 +2623,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .login-dialog .modal-dialog-button {
-  padding: 0 16px;
+  min-width: 48px;
+  padding: 0 8px;
   color: rgba(255, 255, 255, 0.7);
   background-color: transparent;
   border-color: transparent;
@@ -2653,6 +2663,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .login-dialog .modal-dialog-button:default {
+  min-width: 32px;
+  padding: 0 16px;
   color: white;
   background-color: #1A73E8;
   border-color: transparent;
@@ -2879,14 +2891,14 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .screen-shield-clock-time {
-  font-size: 112px;
+  font-size: 96px;
   font-weight: 300;
   text-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
   font-feature-settings: "tnum";
 }
 
 .screen-shield-clock-date {
-  font-size: 45px;
+  font-size: 34px;
   font-weight: 400;
 }
 
@@ -3028,12 +3040,13 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .lg-obj-inspector-button {
   min-height: 36px;
-  padding: 0 16px;
+  min-width: 48px;
+  padding: 0 8px;
   border: none;
   border-radius: 4px;
   font-size: 10.5pt;
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.54);
+  color: #1A73E8;
   background-color: transparent;
   border-color: transparent;
   box-shadow: 0 0 transparent;
@@ -3043,8 +3056,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .lg-obj-inspector-button:hover {
-  color: rgba(0, 0, 0, 0.87);
-  background-color: rgba(0, 0, 0, 0.08);
+  color: #1A73E8;
+  background-color: rgba(26, 115, 232, 0.08);
   border-color: transparent;
   box-shadow: 0 0 transparent;
   text-shadow: none;
@@ -3052,8 +3065,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .lg-obj-inspector-button:active {
-  color: rgba(0, 0, 0, 0.87);
-  background-color: rgba(0, 0, 0, 0.2);
+  color: #1A73E8;
+  background-color: rgba(26, 115, 232, 0.2);
   border-color: transparent;
   box-shadow: 0 0 transparent;
   text-shadow: none;
@@ -3071,7 +3084,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .lg-obj-inspector-button:focus {
-  color: rgba(0, 0, 0, 0.87);
+  color: #1A73E8;
+  background-color: rgba(26, 115, 232, 0.12);
   text-shadow: none;
   icon-shadow: none;
   box-shadow: 0 0 transparent;
