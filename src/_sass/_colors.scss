@@ -17,7 +17,7 @@
 
   @if ($brightness >= 128) {
     @if ($state == 'primary') { @return rgba(black, 0.87); }
-    @if ($state == 'secondary') { @return rgba(black, 0.54); }
+    @if ($state == 'secondary') { @return rgba(black, 0.6); }
     @if ($state == 'disabled') { @return rgba(black, 0.38); }
     @if ($state == 'secondary-disabled') { @return rgba(black, 0.26); }
     @if ($state == 'track') { @return rgba(black, 0.26); }
@@ -117,4 +117,4 @@ $titlebar-divider:                      on($titlebar, divider);
 $titlebar-fill:                         on($titlebar, fill);
 
 // workaround for GTK3 @placeholder_text_color which doesn't allow translucent colors
-$placeholder_text_color:                if($variant == 'light', $grey-600, mix($white, $base, percentage(0.7)));
+$placeholder_text_color:                if($variant == 'light', mix(black, $base, percentage(0.6)), mix(white, $base, percentage(0.7)));
