@@ -36,7 +36,8 @@ stage {
 /* Buttons */
 .button {
   min-height: $medium-size;
-  padding: 0 16px;
+  min-width: 64px - 8px * 2;
+  padding: 0 8px;
   border-width: 0;
   border-radius: $corner-radius;
   @include type(button);
@@ -49,6 +50,7 @@ stage {
 
 .modal-dialog-linked-button {
   min-height: $medium-size;
+  min-width: 64px - 8px * 2;
   margin: $container-padding;
   padding: 0 8px;
   margin-right: 0;
@@ -1556,7 +1558,7 @@ StScrollBar {
     padding-bottom: 32px;
   }
   .app-view-control { //favorties | all toggle button
-    padding: 0 16px;
+    padding: 0 8px;
     font-weight: bold;
     color: on(dark, secondary);
     &:hover {
@@ -2036,13 +2038,16 @@ StScrollBar {
 
   .modal-dialog-button-box { spacing: 3px; }
   .modal-dialog-button {
-    padding: 0 16px;
+    min-width: 64px - 8px * 2;
+    padding: 0 8px;
     @include button(flat-normal, $tc: on($os-background));
     &:hover,&:focus { @include button(flat-hover, $tc: on($os-background)); }
     &:active { @include button(flat-active, $tc: on($os-background)); }
     &:insensitive { @include button(flat-insensitive, $tc: on($os-background)); }
 
     &:default {
+      min-width: 64px - 16px * 2;
+      padding: 0 16px;
       @include button(normal, $c: $suggested, $tc: on($suggested));
       &:hover,&:focus { @include button(hover, $c: $suggested, $tc: on($suggested)); }
       &:active { @include button(active, $c: $suggested, $tc: on($suggested)); }
@@ -2303,7 +2308,8 @@ StScrollBar {
 
   .lg-obj-inspector-button {
       min-height: $medium-size;
-      padding: 0 16px;
+      min-width: 64px - 8px * 2;
+      padding: 0 8px;
       border: none;
       border-radius: $corner-radius;
       @include type(button);
