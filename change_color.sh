@@ -177,36 +177,36 @@ for FILEPATH in "${PATHLIST[@]}"; do
       -e '/color-base/{n;s/#FFFFFF/%MATERIA_VIEW%/g}' \
       -e 's/#000000/%FG%/g' \
       -e 's/#212121/%FG%/g' \
-      -e 's/#757575/%INACTIVE_FG%/g' \
+      -e 's/#616161/%INACTIVE_FG%/g' \
       -e 's/#BDBDBD/%INACTIVE_FG%/g' \
       -e 's/#FAFAFA/%INACTIVE_MATERIA_VIEW%/g' \
       -e 's/#F2F2F2/%BG%/g' \
       -e 's/#1A73E8/%SEL_BG%/g' \
       -e 's/#8AB4F8/%SEL_BG%/g' \
       -e 's/#FFFFFF/%MATERIA_VIEW%/g' \
-      -e 's/#383838/%HDR_BG%/g' \
+      -e 's/#353535/%HDR_BG%/g' \
       -e 's/#E0E0E0/%HDR_BG%/g' \
       -e 's/Materia/%OUTPUT_THEME_NAME%/g' \
       -e 's/#282828/%HDR_BG%/g' \
-      -e 's/#303030/%MATERIA_VIEW%/g' \
+      -e 's/#2C2C2C/%MATERIA_VIEW%/g' \
       -e 's/#2C2C2C/%INACTIVE_MATERIA_VIEW%/g' \
-      -e 's/#424242/%MATERIA_SURFACE%/g' \
+      -e 's/#3C3C3C/%MATERIA_SURFACE%/g' \
       {} \; ;
   else
     find "$FILEPATH" -type f -not -name '_color-palette.scss' -exec sed -i'' \
       -e 's/#000000/%BG%/g' \
-      -e 's/#282828/%BG%/g' \
-      -e 's/#757575/%INACTIVE_FG%/g' \
+      -e 's/#212121/%BG%/g' \
+      -e 's/#616161/%INACTIVE_FG%/g' \
       -e 's/#BDBDBD/%INACTIVE_FG%/g' \
       -e 's/#2C2C2C/%INACTIVE_MATERIA_VIEW%/g' \
       -e 's/#FFFFFF/%FG%/g' \
       -e 's/#FAFAFA/%FG%/g' \
-      -e 's/#424242/%MATERIA_SURFACE%/g' \
+      -e 's/#3C3C3C/%MATERIA_SURFACE%/g' \
       -e 's/#1A73E8/%SEL_BG%/g' \
       -e 's/#8AB4F8/%SEL_BG%/g' \
-      -e 's/#303030/%MATERIA_VIEW%/g' \
-      -e 's/#383838/%HDR_BG%/g' \
-      -e 's/#212121/%HDR_BG2%/g' \
+      -e 's/#2C2C2C/%MATERIA_VIEW%/g' \
+      -e 's/#353535/%HDR_BG%/g' \
+      -e 's/#1F1F1F/%HDR_BG2%/g' \
       -e 's/Materia/%OUTPUT_THEME_NAME%/g' \
       -e 's/#F2F2F2/%FG%/g' \
       -e 's/#E0E0E0/%HDR_FG%/g' \
