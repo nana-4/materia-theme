@@ -60,17 +60,17 @@ if [[ -z "${THEME:-}" ]]; then
 fi
 
 PATHLIST=(
+  './src/_sass/_colors.scss'
   './src/chrome'
   './src/cinnamon'
   './src/cinnamon/assets'
   './src/gnome-shell'
+  './src/gtk/assets.svg'
+  './src/gtk-2.0/assets.svg'
+  './src/gtk-2.0/assets-dark.svg'
   './src/gtk-2.0/gtkrc'
   './src/gtk-2.0/gtkrc-dark'
   './src/gtk-2.0/gtkrc-light'
-  './src/_sass/_colors.scss'
-  './src/gtk-2.0/assets.svg'
-  './src/gtk-2.0/assets-dark.svg'
-  './src/gtk/assets.svg'
   './src/metacity-1'
   './src/unity'
   './src/xfwm4'
