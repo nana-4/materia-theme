@@ -46,3 +46,11 @@
 
   &:disabled { background-color: $text-secondary-disabled; }
 }
+
+//
+// Workaround: Chrome does not properly load selection style of GTK theme.
+//
+
+::selection {
+  background-color: rgba($primary-dark, 0.24);
+}
