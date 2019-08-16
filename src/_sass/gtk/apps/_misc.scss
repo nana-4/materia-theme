@@ -68,31 +68,45 @@ window.background > box.vertical > scrolledwindow > widget toolbar {
  * Chromium *
  ************/
 window.background.chromium {
-  background-color: if($variant == 'light', $background, $surface);
+  background-color: $surface;
 
-  // FIXME: no way to change the toolbar button colors only
+  // FIXME: There is no way to change the color of the toolbar buttons
   // toolbar button { color: $text-secondary; }
 
   // toolbar's border-bottom refers to button's border
+  // FIXME: Chrome's button border ignores theme's alpha value :(
   entry,
-  > button:not(.suggested-action):not(.destructive-action) { border: 1px solid $border-alt; }
+  > button { border: 1px solid $track; }
 
   > button {
-    box-shadow: none;
-    background-size: auto;
+    color: $primary;
 
-    &:hover { background-image: image($overlay-hover); }
-
-    &:active { background-image: image($overlay-checked); }
+    &:disabled { color: $text-secondary-disabled; }
   }
 
+  menubar,
+  headerbar { color: $titlebar-text-secondary; }
+
   // workaround for headerbar's non-animatable buttons
-  headerbar button:active { background-size: 1000% 1000%; }
+  headerbar button:active { background-color: $overlay-active; }
 
   spinner { color: $primary; }
 
-  // entry uses this as well
-  textview { background-color: $surface; }
+  // For text field
+  textview.view { background-color: transparent; }
+
+  // For prominent button, starred icon, etc.
+  treeview.view.cell:selected:focus {
+    background-color: $primary;
+    color: on($primary);
+  }
+
+  // For table header
+  treeview.view button {
+    border: 1px solid $track;
+    background-color: $base; // FIXME: This should not be necessary
+    // color: $text-secondary;
+  }
 }
 
 tooltip.background.chromium { background-color: rgba($tooltip, 1); }
