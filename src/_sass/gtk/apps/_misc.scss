@@ -87,7 +87,7 @@ window.background.chromium {
   menubar,
   headerbar { color: $titlebar-text-secondary; }
 
-  // workaround for headerbar's non-animatable buttons
+  // Workaround for non-animatable buttons in headerbar
   headerbar button:active { background-color: $overlay-active; }
 
   spinner { color: $primary; }
@@ -127,14 +127,13 @@ tooltip.background.chromium { background-color: rgba($tooltip, 1); }
       color: on($primary);
     }
 
-    // for the bookmark toolbar's separators
+    // For separators in bookmark toolbar
     > separator { color: $divider; }
 
     // avoid black border
     // > scrollbar { background-clip: border-box; }
 
-    // emphasize borders color
-    // > scrollbar,
+    // Emphasize toolbar's border-bottom
     > frame > border { border-color: $track; }
 
     > entry,
@@ -172,6 +171,12 @@ tooltip.background.chromium { background-color: rgba($tooltip, 1); }
 
     > radiobutton > radio { @extend %small_radio; }
 
+    > checkbutton > check,
+    > radiobutton > radio {
+      margin: 0;
+      padding: 0;
+    }
+
     // make check/radio visible regardless of whether the background is bright or dark
     > checkbutton > check:not(:checked):not(:indeterminate),
     > radiobutton > radio:not(:checked):not(:indeterminate) {
@@ -199,12 +204,6 @@ tooltip.background.chromium { background-color: rgba($tooltip, 1); }
     }
 
     > frame { color: $track; }
-
-    > checkbutton > check,
-    > radiobutton > radio {
-      margin: 0;
-      padding: 0;
-    }
   }
 
   menu > separator { color: $divider; }
