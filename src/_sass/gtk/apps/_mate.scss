@@ -467,7 +467,9 @@ na-tray-applet widget box widget {
   frame > border { border-style: none; }
 
   button {
-    @extend %button-flat-simple;
+    @extend %button_basic.flat;
+
+    &:not(:disabled) { color: $primary; }
   }
 }
 
