@@ -3341,7 +3341,7 @@ colorchooser .popover.osd {
 decoration {
   transition: $transition-shadow;
   border-radius: $corner-radius $corner-radius 0 0;
-  box-shadow: $shadow-z16, 0 6px (30px * .6) 5px transparent;
+  box-shadow: $shadow-z16, 0 16px (24px * .6) 2px transparent, 0 6px (30px * .6) 5px transparent;
 
   // FIXME rationalize shadows
 
@@ -3353,7 +3353,7 @@ decoration {
     // change when we go to backdrop, to prevent jumping windows.
     // The biggest shadow should be in the same order then in the active state
     // or the jumping will happen during the transition.
-    box-shadow: $shadow-z4, 0 6px (30px * .6) 5px transparent;
+    box-shadow: $shadow-z4, 0 16px (24px * .6) 2px transparent, 0 6px (30px * .6) 5px transparent;
   }
 
   .maximized &,
@@ -3381,9 +3381,9 @@ decoration {
 
   messagedialog.csd & {
     border-radius: $corner-radius;
-    // box-shadow: $shadow-z24, 0 9px (46px * .6) 8px transparent;
+    // box-shadow: $shadow-z24, 0 24px (38px * .6) 3px transparent, 0 9px (46px * .6) 8px transparent;
 
-    // &:backdrop { box-shadow: $shadow-z4, 0 9px (46px * .6) 8px transparent; }
+    // &:backdrop { box-shadow: $shadow-z4, 0 24px (38px * .6) 3px transparent, 0 9px (46px * .6) 8px transparent; }
   }
 
   .solid-csd & {
