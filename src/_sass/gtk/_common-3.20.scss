@@ -3130,14 +3130,9 @@ infobar {
     background-color: $base;
 
     button {
-      @extend %button-flat-simple;
+      @extend %button_basic.flat;
 
-      &.text-button {
-        padding-left: 8px;
-        padding-right: 8px;
-
-        &:not(:disabled) { color: $primary; }
-      }
+      &.text-button:not(:disabled) { color: $primary; }
     }
   }
 
