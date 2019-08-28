@@ -479,13 +479,13 @@ button {
     .linked:not(.vertical) > & {
       @extend %linked;
 
-      &.image-button { @extend %linked-image-button; }
+      &.image-button:not(.text-button) { @extend %linked-image-button; }
     }
 
     .linked.vertical > & {
       @extend %linked-vertical;
 
-      &.image-button { @extend %linked-vertical-image-button; }
+      &.image-button:not(.text-button) { @extend %linked-vertical-image-button; }
     }
 
     .linked:not(.vertical) > &.flat,
@@ -493,9 +493,7 @@ button {
       &:not(:only-child) { // specificity bump
         border-radius: $corner-radius;
 
-        &.image-button { border-radius: $circular-radius; }
-
-        &.text-button.image-button { border-radius: $corner-radius; }
+        &.image-button:not(.text-button) { border-radius: $circular-radius; }
       }
     }
   }
