@@ -58,7 +58,11 @@
 #restart_dialog button {
 }
 
-.lightdm-gtk-greeter button { @extend %button-flat-simple; }
+.lightdm-gtk-greeter button {
+  @extend %button_basic.flat;
+
+  &:not(:disabled) { color: $primary; }
+}
 
 // the user's avatar box
 #user_image {
