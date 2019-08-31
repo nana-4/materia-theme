@@ -2964,6 +2964,7 @@ stacksidebar.sidebar {
 
     &:selected {
       background-color: $overlay-checked;
+      color: $primary;
       font-weight: 500;
     }
 
@@ -2993,8 +2994,11 @@ separator.sidebar {
  * File chooser *
  ****************/
 // dim the sidebar icons, see bug #786613 for details on this oddity
-row {
-  image.sidebar-icon { color: $text-secondary; }
+row image.sidebar-icon {
+  transition: color $duration $ease-out;
+  color: $text-secondary;
+
+  &:disabled { color: $text-secondary-disabled; }
 }
 
 placessidebar.sidebar {
@@ -3015,7 +3019,10 @@ placessidebar.sidebar {
 
     &:selected {
       background-color: $overlay-checked;
+      color: $primary;
       font-weight: 500;
+
+      image.sidebar-icon { color: $primary; }
     }
 
     &:disabled { color: $text-disabled; }
@@ -3026,12 +3033,11 @@ placessidebar.sidebar {
     }
 
     label.sidebar-label {
+      color: inherit;
+
       &:dir(ltr) { padding-right: 2px; }
       &:dir(rtl) { padding-left: 2px; }
     }
-
-    &:selected image.sidebar-icon,
-    &:selected label.sidebar-label { color: inherit; }
 
     @at-root button.sidebar-button {
       @extend %button-flat-simple;
@@ -3040,7 +3046,11 @@ placessidebar.sidebar {
 
     &.sidebar-placeholder-row { background-color: $overlay-hover; }
 
-    &.sidebar-new-bookmark-row { color: $primary; }
+    &.sidebar-new-bookmark-row {
+      color: $primary;
+
+      image.sidebar-icon { color: $primary; }
+    }
 
     &:drop(active) { @extend row:hover; }
   }
