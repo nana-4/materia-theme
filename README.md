@@ -66,7 +66,7 @@ Supports **ripple animations** for GTK 3:
 Distro | Package Name / Link
 --- | ---
 Arch Linux | `materia-gtk-theme`
-Debian testing / unstable | `materia-gtk-theme`
+Debian 10 or later | `materia-gtk-theme`
 Fedora | `materia-gtk-theme` from [@LaurentTreguier's Copr](https://copr.fedorainfracloud.org/coprs/tcg/themes)
 Solus | `materia-gtk-theme`
 Ubuntu 18.04 or later | `materia-gtk-theme`
