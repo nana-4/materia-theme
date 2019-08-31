@@ -455,7 +455,7 @@ button {
       @extend %circular_button;
     }
 
-    // NOTE: sometimes image-only buttons use this
+    // NOTE: Some image-only buttons use this as well
     &.text-button.image-button {
       min-width: 24px;
       padding: ($medium-size - 24px) / 2;
@@ -498,7 +498,7 @@ button {
     }
   }
 
-  @at-root %button_selected {
+  @at-root %button-on-dark {
     &.flat {
       color: on(dark, secondary);
 
@@ -3154,7 +3154,7 @@ infobar {
     background-color: $warning;
     color: on($warning);
 
-    // button { @extend %button_selected; }
+    // button { @extend %button-on-dark; }
 
     selection {}
 
@@ -3165,7 +3165,7 @@ infobar {
     background-color: $error;
     color: on($error);
 
-    button { @extend %button_selected; }
+    button { @extend %button-on-dark; }
 
     selection {}
 
