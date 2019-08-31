@@ -4,7 +4,6 @@
   height: 17px;
   border: 0 solid rgba(0, 0, 0, 0.12);
   background-color: rgba(255, 255, 255, 0.9);
-  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar:horizontal,
@@ -15,6 +14,10 @@
 ::-webkit-scrollbar:vertical,
 ::-webkit-scrollbar-corner {
   border-left-width: 1px;
+}
+
+::-webkit-scrollbar {
+  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -39,7 +42,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.54);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 ::-webkit-scrollbar-thumb:active {
@@ -48,4 +51,8 @@
 
 ::-webkit-scrollbar-thumb:disabled {
   background-color: rgba(0, 0, 0, 0.26);
+}
+
+::selection {
+  background-color: rgba(26, 115, 232, 0.24);
 }
