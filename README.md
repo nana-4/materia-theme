@@ -6,9 +6,10 @@ Materia is a [Material Design](https://material.io) theme for GNOME/GTK based de
 
 It supports GTK 2, GTK 3, GNOME Shell, Budgie, Cinnamon, MATE, Unity, Xfce, LightDM, GDM, Chrome theme, etc.
 
-## Preview
+## Previews
 
 ![widget-factory](../images/widget-factory.png?raw=true)
+![widget-factory-dark](../images/widget-factory-dark.png?raw=true)
 
 ## Features
 
