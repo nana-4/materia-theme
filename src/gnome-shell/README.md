@@ -53,13 +53,13 @@ To change the GDM (lock/login screen) theme, you need to replace the system's _d
 1. Restore to the original theme file(s) from the backup:
 
   ```sh
-  sudo mv -av /usr/share/gnome-shell/gnome-shell-theme.gresource{~,}
+  sudo mv -v /usr/share/gnome-shell/gnome-shell-theme.gresource{~,}
 
   # For Ubuntu 17.10 or 18.04, you also need the following:
-  sudo mv -av /usr/share/gnome-shell/theme/ubuntu.css{~,}
+  sudo mv -v /usr/share/gnome-shell/theme/ubuntu.css{~,}
 
   # For Ubuntu 18.10, you also need the following:
-  sudo mv -av /usr/share/gnome-shell/theme/Yaru/gnome-shell.css{~,}
+  sudo mv -v /usr/share/gnome-shell/theme/Yaru/gnome-shell.css{~,}
   ```
 
 2. Reload the theme. If you are running GNOME Shell, press <kbd>Alt</kbd> + <kbd>F2</kbd> then type `rt`.
