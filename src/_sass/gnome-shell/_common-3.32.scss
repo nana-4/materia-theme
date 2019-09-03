@@ -237,7 +237,7 @@ StScrollBar {
   color: $text;
   background-color: $surface;
   border: none;
-  box-shadow: $shadow-4;
+  box-shadow: none;
   .modal-dialog-content-box {
     padding: 24px;
   }
@@ -618,8 +618,7 @@ StScrollBar {
     width: 16px;
     height: 16px;
   }
-  .popup-menu-boxpointer,
-  .candidate-popup-boxpointer {
+  .popup-menu-boxpointer {
     -arrow-border-radius: 20px; // This is necessary for the weird bug: materia-theme#296
     -arrow-background-color: transparent;
     -arrow-border-width: 0;
@@ -627,10 +626,26 @@ StScrollBar {
     -arrow-base: 0;
     -arrow-rise: 0;
     -arrow-box-shadow: none; //dreaming. bug #689995
-    margin: 5px 8px 8px;
-    background-color: $surface;
-    border-radius: $corner-radius;
-    box-shadow: $shadow-2;
+
+    .popup-menu-content { 
+      margin: 5px 8px 8px;
+      background-color: $surface;
+      border-radius: $corner-radius;
+      box-shadow: $shadow-2; 
+    }
+  }
+
+  .candidate-popup-boxpointer {
+    -arrow-background-color: transparent;
+    border: 0 none transparent;
+    background: transparent;
+
+    .candidate-popup-content {
+      margin: 5px 8px 8px;
+      background-color: $surface;
+      border-radius: $corner-radius;
+      box-shadow: $shadow-2; 
+    }
   }
 
   .popup-separator-menu-item {
