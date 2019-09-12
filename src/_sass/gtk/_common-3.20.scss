@@ -1259,11 +1259,11 @@ searchbar > revealer > box {
 
   .solid-csd & {
     &:dir(rtl), &:dir(ltr) { // specificity bump
-      // margin-left: -2px;
-      // margin-right: -2px;
-      // margin-top: -2px;
+      margin-left: -4px;
+      margin-right: -4px;
+      margin-top: -4px;
       border-radius: 0;
-      box-shadow: $shadow-z1; // Remove highlight as window managers should have it
+      // box-shadow: $shadow-z1;
     }
   }
 }
@@ -3395,11 +3395,13 @@ decoration {
 
   .solid-csd & {
     margin: 0;
-    // padding: 4px;
+    padding: 4px;
     border-radius: 0;
     box-shadow: none;
-    // box-shadow: inset 0 0 0 4px $titlebar;
+    // box-shadow: inset 0 1px highlight($titlebar);
     background-color: $titlebar;
+
+    &:backdrop { background-color: $titlebar-backdrop; }
   }
 }
 
