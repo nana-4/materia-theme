@@ -27,7 +27,7 @@ stage {
 
 /* WIDGETS */
 /* Buttons */
-.button {
+.button, .modal-dialog .button, .prompt-dialog .button, .audio-device-selection-dialog .button, .access-dialog .button, .geolocation-dialog .button, .extension-dialog .button, .inhibit-shortcuts-dialog .button, .nm-dialog .button, .message-list-clear-button.button {
   min-height: 36px;
   min-width: 48px;
   padding: 0 8px;
@@ -44,7 +44,7 @@ stage {
   transition-duration: 100ms;
 }
 
-.button:focus {
+.button:focus, .modal-dialog .button:focus, .prompt-dialog .button:focus, .audio-device-selection-dialog .button:focus, .access-dialog .button:focus, .geolocation-dialog .button:focus, .extension-dialog .button:focus, .inhibit-shortcuts-dialog .button:focus, .nm-dialog .button:focus, .message-list-clear-button.button:focus {
   color: white;
   background-color: rgba(255, 255, 255, 0.12);
   text-shadow: none;
@@ -52,7 +52,7 @@ stage {
   box-shadow: 0 0 transparent;
 }
 
-.button:hover {
+.button:hover, .modal-dialog .button:hover, .prompt-dialog .button:hover, .audio-device-selection-dialog .button:hover, .access-dialog .button:hover, .geolocation-dialog .button:hover, .extension-dialog .button:hover, .inhibit-shortcuts-dialog .button:hover, .nm-dialog .button:hover, .message-list-clear-button.button:hover {
   color: white;
   background-color: rgba(255, 255, 255, 0.08);
   border-color: transparent;
@@ -61,7 +61,7 @@ stage {
   icon-shadow: none;
 }
 
-.button:active {
+.button:active, .modal-dialog .button:active, .prompt-dialog .button:active, .audio-device-selection-dialog .button:active, .access-dialog .button:active, .geolocation-dialog .button:active, .extension-dialog .button:active, .inhibit-shortcuts-dialog .button:active, .nm-dialog .button:active, .message-list-clear-button.button:active {
   color: white;
   background-color: rgba(255, 255, 255, 0.2);
   border-color: transparent;
@@ -71,7 +71,7 @@ stage {
   transition-duration: 200ms;
 }
 
-.button:insensitive {
+.button:insensitive, .modal-dialog .button:insensitive, .prompt-dialog .button:insensitive, .audio-device-selection-dialog .button:insensitive, .access-dialog .button:insensitive, .geolocation-dialog .button:insensitive, .extension-dialog .button:insensitive, .inhibit-shortcuts-dialog .button:insensitive, .nm-dialog .button:insensitive, .message-list-clear-button.button:insensitive {
   color: rgba(255, 255, 255, 0.3);
   background-color: transparent;
   border-color: transparent;
@@ -80,12 +80,13 @@ stage {
   icon-shadow: none;
 }
 
-.modal-dialog-linked-button {
+.modal-dialog-linked-button, .notification-banner .notification-button, .hotplug-notification-item {
   min-height: 36px;
   min-width: 48px;
   margin: 6px;
-  padding: 0 8px;
   margin-right: 0;
+  padding: 0 8px;
+  border-top: 0;
   border-right-width: 0;
   border-radius: 4px;
   font-size: 10.5pt;
@@ -99,7 +100,7 @@ stage {
   transition-duration: 100ms;
 }
 
-.modal-dialog-linked-button:focus {
+.modal-dialog-linked-button:focus, .notification-banner .notification-button:focus, .hotplug-notification-item:focus {
   color: white;
   background-color: rgba(255, 255, 255, 0.12);
   text-shadow: none;
@@ -107,7 +108,7 @@ stage {
   box-shadow: 0 0 transparent;
 }
 
-.modal-dialog-linked-button:hover {
+.modal-dialog-linked-button:hover, .notification-banner .notification-button:hover, .hotplug-notification-item:hover {
   color: white;
   background-color: rgba(255, 255, 255, 0.08);
   border-color: transparent;
@@ -116,7 +117,7 @@ stage {
   icon-shadow: none;
 }
 
-.modal-dialog-linked-button:active {
+.modal-dialog-linked-button:active, .notification-banner .notification-button:active, .hotplug-notification-item:active {
   color: white;
   background-color: rgba(255, 255, 255, 0.2);
   border-color: transparent;
@@ -126,7 +127,7 @@ stage {
   transition-duration: 200ms;
 }
 
-.modal-dialog-linked-button:insensitive {
+.modal-dialog-linked-button:insensitive, .notification-banner .notification-button:insensitive, .hotplug-notification-item:insensitive {
   color: rgba(255, 255, 255, 0.3);
   background-color: transparent;
   border-color: transparent;
@@ -135,24 +136,24 @@ stage {
   icon-shadow: none;
 }
 
-.modal-dialog-linked-button:first-child {
+.modal-dialog-linked-button:first-child, .notification-banner .notification-button:first-child, .hotplug-notification-item:first-child {
   border-radius: 4px;
 }
 
-.modal-dialog-linked-button:last-child {
+.modal-dialog-linked-button:last-child, .notification-banner .notification-button:last-child, .hotplug-notification-item:last-child {
   margin-right: 6px;
   border-right-width: 0px;
   border-radius: 4px;
 }
 
-.modal-dialog-linked-button:first-child:last-child {
+.modal-dialog-linked-button:first-child:last-child, .notification-banner .notification-button:first-child:last-child, .hotplug-notification-item:first-child:last-child {
   margin-right: 6px;
   border-right-width: 0px;
   border-radius: 4px;
 }
 
 /* Entries */
-StEntry {
+StEntry, .modal-dialog StEntry, .prompt-dialog StEntry, .audio-device-selection-dialog StEntry, .access-dialog StEntry, .geolocation-dialog StEntry, .extension-dialog StEntry, .inhibit-shortcuts-dialog StEntry, .nm-dialog StEntry, .notification-banner StEntry {
   min-height: 36px;
   padding: 0 8px;
   border-radius: 4px 4px 0 0;
@@ -168,22 +169,23 @@ StEntry {
   box-shadow: inset 0 -1px rgba(255, 255, 255, 0.3);
 }
 
-StEntry:hover {
+StEntry:hover, .modal-dialog StEntry:hover, .prompt-dialog StEntry:hover, .audio-device-selection-dialog StEntry:hover, .access-dialog StEntry:hover, .geolocation-dialog StEntry:hover, .extension-dialog StEntry:hover, .inhibit-shortcuts-dialog StEntry:hover, .nm-dialog StEntry:hover, .notification-banner StEntry:hover {
   box-shadow: inset 0 -1px white;
 }
 
-StEntry:focus {
+StEntry:focus, .modal-dialog StEntry:focus, .prompt-dialog StEntry:focus, .audio-device-selection-dialog StEntry:focus, .access-dialog StEntry:focus, .geolocation-dialog StEntry:focus, .extension-dialog StEntry:focus, .inhibit-shortcuts-dialog StEntry:focus, .nm-dialog StEntry:focus, .notification-banner StEntry:focus {
   border-color: transparent;
   box-shadow: inset 0 -2px #8AB4F8;
+  border: none;
 }
 
-StEntry:insensitive {
+StEntry:insensitive, .modal-dialog StEntry:insensitive, .prompt-dialog StEntry:insensitive, .audio-device-selection-dialog StEntry:insensitive, .access-dialog StEntry:insensitive, .geolocation-dialog StEntry:insensitive, .extension-dialog StEntry:insensitive, .inhibit-shortcuts-dialog StEntry:insensitive, .nm-dialog StEntry:insensitive, .notification-banner StEntry:insensitive {
   color: rgba(255, 255, 255, 0.5);
   border-color: transparent;
   box-shadow: inset 0 -1px rgba(255, 255, 255, 0.12);
 }
 
-StEntry StIcon.capslock-warning {
+StEntry StIcon.capslock-warning, .modal-dialog StEntry StIcon.capslock-warning, .prompt-dialog StEntry StIcon.capslock-warning, .audio-device-selection-dialog StEntry StIcon.capslock-warning, .access-dialog StEntry StIcon.capslock-warning, .geolocation-dialog StEntry StIcon.capslock-warning, .extension-dialog StEntry StIcon.capslock-warning, .inhibit-shortcuts-dialog StEntry StIcon.capslock-warning, .nm-dialog StEntry StIcon.capslock-warning, .notification-banner StEntry StIcon.capslock-warning {
   icon-size: 16px;
   warning-color: #FDD633;
   padding: 0 0;
@@ -247,7 +249,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 /* Slider */
 .slider {
   height: 20px;
-  color: #8AB4F8;
   -barlevel-height: 2px;
   -barlevel-background-color: rgba(255, 255, 255, 0.3);
   -barlevel-border-color: transparent;
@@ -258,6 +259,17 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   -barlevel-overdrive-separator-width: 2px;
   -barlevel-border-width: 0;
   -slider-handle-radius: 6px;
+  -slider-handle-border-width: 0;
+  -slider-handle-border-color: transparent;
+  color: #8AB4F8;
+}
+
+.slider:hover {
+  color: #8AB4F8;
+}
+
+.slider:active {
+  color: #8AB4F8;
 }
 
 /* Check Boxes */
@@ -310,6 +322,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 /* Switches */
 .toggle-switch {
+  color: transparent;
   width: 40px;
   height: 20px;
   background-size: contain;
@@ -354,9 +367,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .modal-dialog {
   border-radius: 4px;
-  color: white;
-  background-color: #3C3C3C;
-  border: none;
   box-shadow: 0 14px 14px rgba(0, 0, 0, 0.5), 0 10px 5px rgba(0, 0, 0, 0.44);
 }
 
@@ -575,7 +585,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 /* Password or Authentication Dialog */
 .prompt-dialog {
   width: 34em;
-  border: none;
 }
 
 .prompt-dialog .message-dialog-main-layout {
@@ -620,6 +629,23 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 .prompt-dialog-null-label {
   font-size: 1em;
   padding-bottom: 8px;
+}
+
+.prompt-dialog-pim-box {
+  spacing: 1em;
+}
+
+.prompt-dialog-grid {
+  spacing-rows: 15px;
+  spacing-columns: 1em;
+}
+
+.prompt-dialog-keyfiles-box {
+  spacing: 1em;
+}
+
+.prompt-dialog-button.button {
+  padding: 0 8px;
 }
 
 /* Polkit Dialog */
@@ -678,6 +704,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .audio-selection-device:active {
   background-color: rgba(255, 255, 255, 0.2);
+  color: white;
 }
 
 .audio-selection-device-box {
@@ -706,6 +733,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .extension-dialog .message-dialog-title {
+  font-weight: normal;
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -728,6 +756,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 /* Popovers/Menus */
 .popup-menu {
   min-width: 200px;
+  color: white;
+  border-color: transparent;
 }
 
 .popup-menu .popup-sub-menu {
@@ -834,6 +864,12 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   border-bottom-style: none;
 }
 
+.rename-folder-popup-box {
+  spacing: 6px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
 .background-menu {
   -boxpointer-gap: 4px;
   -arrow-rise: 0;
@@ -843,6 +879,19 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 - odd thing for styling App menu when apparently not running under shell. Light Adwaita styled
   app menu inside the main app window itself rather than the top bar
 */
+/*************
+ * App Icons *
+ *************/
+/* Outline for low res icons */
+.lowres-icon {
+  icon-shadow: none;
+}
+
+/* Drapshadow for large icons */
+.icon-dropshadow {
+  icon-shadow: none;
+}
+
 /* OSD */
 .osd-window {
   text-align: center;
@@ -962,7 +1011,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   spacing: 8px;
 }
 
-.ws-switcher-active-up, .ws-switcher-active-down {
+.ws-switcher-active-up, .ws-switcher-active-down,
+.ws-switcher-active-left, .ws-switcher-active-right {
   height: 48px;
   background-color: #8AB4F8;
   color: rgba(0, 0, 0, 0.87);
@@ -986,6 +1036,12 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   box-shadow: 0 14px 14px rgba(0, 0, 0, 0.5), 0 10px 5px rgba(0, 0, 0, 0.44);
   border-radius: 4px;
   padding: 12px;
+}
+
+.modal-dialog, .prompt-dialog, .audio-device-selection-dialog, .access-dialog, .geolocation-dialog, .extension-dialog, .inhibit-shortcuts-dialog, .nm-dialog {
+  color: white;
+  background-color: #3C3C3C;
+  border: none;
 }
 
 /* Tiled window previews */
@@ -1428,20 +1484,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .message-list-clear-button.button {
-  background-color: transparent;
   margin: 8px 8px 0;
-}
-
-.message-list-clear-button.button:focus {
-  background-color: rgba(138, 180, 248, 0.12);
-}
-
-.message-list-clear-button.button:hover {
-  background-color: rgba(138, 180, 248, 0.08);
-}
-
-.message-list-clear-button.button:active {
-  background-color: rgba(138, 180, 248, 0.2);
 }
 
 .message-list-sections {
@@ -1456,6 +1499,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 .message {
   transition-duration: 100ms;
   min-height: 64px;
+  border: none;
   background-color: transparent;
   border-radius: 4px;
 }
@@ -1598,13 +1642,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.system-switch-user-submenu-icon {
-  icon-size: 16px;
-  padding: 0 4px;
-}
-
 #appMenu {
-  spinner-image: url("process-working.svg");
   spacing: 4px;
 }
 
@@ -1684,6 +1722,14 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   border: 1px solid #8AB4F8;
 }
 
+.ripple-pointer-location {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: rgba(138, 180, 248, 0.24);
+  box-shadow: none;
+}
+
 .popup-menu-arrow {
   icon-size: 1.14286em;
 }
@@ -1727,6 +1773,14 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .window-close:rtl:hover {
   -st-background-image-shadow: 0 3px 3px rgba(0, 0, 0, 0.24), 0 3px 3px rgba(0, 0, 0, 0.345);
+}
+
+.pie-timer {
+  width: 60px;
+  height: 60px;
+  -pie-border-width: 0;
+  -pie-border-color: transparent;
+  -pie-background-color: rgba(138, 180, 248, 0.24);
 }
 
 /* NETWORK DIALOGS */
@@ -1878,11 +1932,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   color: white;
 }
 
-#searchResultsBin {
-  max-width: 1000px;
-}
-
 #searchResultsContent {
+  max-width: 1000px;
   padding-left: 20px;
   padding-right: 20px;
   spacing: 16px;
@@ -1940,13 +1991,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 /* DASHBOARD */
 #dash {
-  transition-duration: 250ms;
   font-size: 1em;
-  color: white;
-  background-color: rgba(255, 255, 255, 0.1);
   padding: 3px 0;
-  border: none;
-  border-left: 0px;
   border-radius: 0px 4px 4px 0px;
 }
 
@@ -1975,6 +2021,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   color: white;
   background-color: #3C3C3C;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.24), 0 3px 3px rgba(0, 0, 0, 0.345);
+  border: none;
   text-align: center;
   -x-offset: 8px;
 }
@@ -2005,8 +2052,19 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .app-view-control {
   padding: 0 8px;
+  margin: 0;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.7);
+}
+
+.app-view-control, .app-view-control:hover, .app-view-control:active, .app-view-control:checked {
+  color: #8AB4F8;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: 0 0 transparent;
+  text-shadow: none;
+  icon-shadow: none;
+  transition-duration: 100ms;
 }
 
 .app-view-control:hover {
@@ -2073,6 +2131,13 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   transition-duration: 0ms;
   border-image: none;
   background-image: none;
+}
+
+.app-well-app:drop .overview-icon,
+.app-well-app.app-folder:drop .overview-icon,
+.show-apps:drop .overview-icon,
+.grid-search-result:drop .overview-icon {
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .app-well-app:active .overview-icon,
@@ -2210,13 +2275,12 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   border-radius: 0;
 }
 
-.search-display > StBoxLayout,
 .all-apps,
 .frequent-apps > StBoxLayout {
   padding: 0px 88px 10px 88px;
 }
 
-.workspace-thumbnails {
+#dash, .workspace-thumbnails {
   transition-duration: 250ms;
   color: white;
   background-color: rgba(255, 255, 255, 0.1);
@@ -2247,11 +2311,23 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .notification-banner:hover {
+  background: #3C3C3C;
+}
+
+.notification-banner, .notification-banner:focus, .notification-banner:active {
   background-color: #3C3C3C;
 }
 
-.notification-banner:focus {
-  background-color: #3C3C3C;
+.notification-banner .message-title, .notification-banner:focus .message-title, .notification-banner:active .message-title {
+  color: white;
+}
+
+.notification-banner .message-content, .notification-banner:focus .message-content, .notification-banner:active .message-content {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.notification-banner .message-icon-bin > StIcon {
+  color: white;
 }
 
 .notification-banner .notification-icon {
@@ -2270,39 +2346,19 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 .notification-banner .notification-actions {
   background-color: transparent;
   padding-top: 0;
-  padding: 6px;
-  spacing: 6px;
+  color: inherit;
+  border-top: none;
+  spacing: 0;
 }
 
 .notification-banner .notification-button {
-  transition-duration: 100ms;
   min-height: 36px;
   padding: 0 8px;
-  border-radius: 4px;
-  background-color: transparent;
-  color: #8AB4F8;
-  font-weight: 500;
-}
-
-.notification-banner .notification-button:first-child {
-  border-radius: 4px;
-}
-
-.notification-banner .notification-button:last-child {
-  border-radius: 4px;
+  border: none;
 }
 
 .notification-banner .notification-button:focus {
-  background-color: rgba(138, 180, 248, 0.12);
-}
-
-.notification-banner .notification-button:hover {
-  background-color: rgba(138, 180, 248, 0.08);
-}
-
-.notification-banner .notification-button:active {
-  transition-duration: 200ms;
-  background-color: rgba(138, 180, 248, 0.2);
+  box-shadow: none;
 }
 
 .summary-source-counter {
@@ -2376,6 +2432,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .hotplug-notification-item {
+  border: none;
+  box-shadow: none;
   padding: 2px 10px;
 }
 
@@ -2516,6 +2574,10 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   background-size: 24px;
 }
 
+.keyboard-key.default-key:hover, .keyboard-key.default-key:checked {
+  background-color: #3C3C3C;
+}
+
 .keyboard-key.default-key:active {
   background-color: #636363;
 }
@@ -2524,6 +2586,10 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   border-color: transparent;
   background-color: #8AB4F8;
   background-image: url("assets/key-enter.svg");
+}
+
+.keyboard-key.enter-key:hover, .keyboard-key.enter-key:checked {
+  background-color: #8AB4F8;
 }
 
 .keyboard-key.enter-key:active {

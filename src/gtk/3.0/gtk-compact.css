@@ -27,8 +27,8 @@
   -GtkToolItemGroup-expander-size: 11;
   -GtkWidget-text-handle-width: 24;
   -GtkWidget-text-handle-height: 24;
-  -GtkDialog-button-spacing: 4;
-  -GtkDialog-action-area-border: 0;
+  -GtkDialog-button-spacing: 6;
+  -GtkDialog-action-area-border: 6;
   outline-style: solid;
   outline-width: 2px;
   outline-color: transparent;
@@ -1513,8 +1513,10 @@ searchbar > revealer > box {
 }
 
 .solid-csd .titlebar:dir(rtl), .solid-csd .titlebar:dir(ltr) {
+  margin-left: -4px;
+  margin-right: -4px;
+  margin-top: -4px;
   border-radius: 0;
-  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.24), 0 1px 2px -0.6px rgba(0, 0, 0, 0.17);
 }
 
 headerbar {
@@ -3285,7 +3287,6 @@ messagedialog.csd.background {
 
 messagedialog.csd .dialog-action-box {
   margin-top: -4px;
-  padding: 4px;
 }
 
 messagedialog.csd .dialog-action-box button:not(:last-child) {
@@ -3731,9 +3732,14 @@ messagedialog.csd decoration {
 
 .solid-csd decoration {
   margin: 0;
+  padding: 4px;
   border-radius: 0;
   box-shadow: none;
   background-color: #353535;
+}
+
+.solid-csd decoration:backdrop {
+  background-color: #2C2C2C;
 }
 
 .view selection, .view:selected, flowbox flowboxchild:selected, label selection, spinbutton:not(.vertical) selection,
