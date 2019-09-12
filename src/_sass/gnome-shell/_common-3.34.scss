@@ -34,7 +34,7 @@ stage {
 /* WIDGETS */
 
 /* Buttons */
-.button {
+.button, %button {
   min-height: $medium-size;
   min-width: 64px - 8px * 2;
   padding: 0 8px;
@@ -48,12 +48,13 @@ stage {
   &:insensitive { @include button(flat-insensitive); }
 }
 
-.modal-dialog-linked-button {
+.modal-dialog-linked-button, %bubble_button {
   min-height: $medium-size;
   min-width: 64px - 8px * 2;
   margin: $container-padding;
-  padding: 0 8px;
   margin-right: 0;
+  padding: 0 8px;
+  border-top: 0;
   border-right-width: 0;
   border-radius: $corner-radius;
   @include type(button);
@@ -79,7 +80,7 @@ stage {
 }
 
 /* Entries */
-StEntry {
+StEntry, %entry {
   min-height: $medium-size;
   padding: 0 8px;
   border-radius: $corner-radius $corner-radius 0 0;
@@ -90,7 +91,7 @@ StEntry {
   @include type(body1);
   @include entry(normal);
   &:hover { @include entry(hover);}
-  &:focus { @include entry(focus);}
+  &:focus { @include entry(focus); border: none; }
   &:insensitive { @include entry(insensitive);}
   StIcon.capslock-warning {
     icon-size: 16px;
@@ -148,7 +149,6 @@ StScrollBar {
 
 .slider {
   height: 20px;
-  color: $primary;
   -barlevel-height: 2px;
   -barlevel-background-color: $track; //background of the trough
   -barlevel-border-color: transparent; //trough border color
@@ -159,6 +159,11 @@ StScrollBar {
   -barlevel-overdrive-separator-width: 2px;
   -barlevel-border-width: 0;
   -slider-handle-radius: 6px;
+  -slider-handle-border-width: 0;
+  -slider-handle-border-color: transparent;
+  color: $primary;
+  &:hover { color: $primary; }
+  &:active { color: $primary; }
 }
 
 /* Check Boxes */
@@ -203,6 +208,7 @@ StScrollBar {
 
 /* Switches */
 .toggle-switch {
+  color: transparent;
   width: 40px;
   height: 20px;
   background-size: contain;
@@ -234,9 +240,7 @@ StScrollBar {
 
 .modal-dialog {
   border-radius: $corner-radius;
-  color: $text;
-  background-color: $surface;
-  border: none;
+  @extend %bubble-panel;
   box-shadow: $shadow-4;
   .modal-dialog-content-box {
     padding: 24px;
@@ -424,9 +428,9 @@ StScrollBar {
 /* Password or Authentication Dialog */
 
 .prompt-dialog {
+  @extend %bubble-panel;
   //this is the width of the entire modal popup
   width: 34em;
-  border: none;
 
   .message-dialog-main-layout { spacing: 24px; padding: 10px; }
   .message-dialog-content { spacing: 16px; }
@@ -504,6 +508,7 @@ StScrollBar {
 
 /* Audio selection dialog */
 .audio-device-selection-dialog {
+  @extend %bubble-panel;
   spacing: 30px;
 }
 
@@ -526,7 +531,10 @@ StScrollBar {
     border-radius: $corner-radius;
     &:focus { background-color: $overlay-focus; }
     &:hover { background-color: $overlay-hover; }
-    &:active { background-color: $overlay-active; }
+    &:active {
+      background-color: $overlay-active;
+      color: $text;
+    }
   }
 
   .audio-selection-device-box {
@@ -540,22 +548,26 @@ StScrollBar {
 
 /* Access Dialog */
 .access-dialog {
+  @extend %bubble-panel;
   spacing: 30px;
 }
 
 /* Geolocation Dialog */
 .geolocation-dialog {
+  @extend %bubble-panel;
   spacing: 30px;
 }
 
 /* Extension Dialog */
 .extension-dialog {
+  @extend %bubble-panel;
   .message-dialog-main-layout { spacing: 24px; padding: 10px; }
-  .message-dialog-title { color: $text-secondary; }
+  .message-dialog-title { font-weight: normal; color: $text-secondary; }
 }
 
 /* Inhibit-Shortcuts Dialog */
 .inhibit-shortcuts-dialog {
+  @extend %bubble-panel;
   spacing: 30px;
 }
 
@@ -575,6 +587,8 @@ StScrollBar {
 
 .popup-menu {
   min-width: 200px;
+  color: $text;
+  border-color: transparent;
 
   .popup-menu-arrow { } //defined globally in the TOP BAR
   .popup-sub-menu {
@@ -808,6 +822,15 @@ StScrollBar {
   box-shadow: $shadow-4;
   border-radius: $corner-radius;
   padding: 12px;
+}
+
+%bubble-panel {
+  color: $text;
+  background-color: $surface;
+  border: none;
+
+  StEntry { @extend %entry; }
+  .button { @extend %button; }
 }
 
 /* Tiled window previews */
@@ -1181,10 +1204,7 @@ StScrollBar {
       }
 
         .message-list-clear-button.button {
-          background-color: transparent;
-          &:focus { background-color: $primary-overlay-focus; }
-          &:hover { background-color: $primary-overlay-hover; }
-          &:active { background-color: $primary-overlay-active; }
+          @extend %button;
           margin: 8px 8px 0;
         }
 
@@ -1200,6 +1220,7 @@ StScrollBar {
         .message {
           transition-duration: $duration;
           min-height: $menuitem-size * 2;
+          border: none;
           background-color: transparent;
           &:hover,&:focus { background-color: $overlay-hover; }
           &:active {
@@ -1444,6 +1465,7 @@ StScrollBar {
 /* NETWORK DIALOGS */
 
 .nm-dialog {
+  @extend %bubble-panel;
   max-height: 34em;
   min-height: 31em;
   min-width: 32em;
@@ -1526,7 +1548,7 @@ StScrollBar {
   }
 
   //search entry
-  .search-entry {
+  .search-entry, %search_entry {
     width: 320px - 8px * 2;
     padding: 0 8px;
     border-radius: $corner-radius $corner-radius 0 0;
@@ -1583,13 +1605,9 @@ StScrollBar {
   /* DASHBOARD */
 
   #dash {
-    transition-duration: $duration-panel;
+    @extend %overview-panel;
     font-size: 1em;
-    color: on(dark);
-    background-color: $scrim-inverse;
     padding: 3px 0;
-    border: none;
-    border-left: 0px;
     border-radius: 0px $corner-radius $corner-radius 0px;
 
     &:rtl {
@@ -1620,6 +1638,7 @@ StScrollBar {
     color: $text;
     background-color: $surface;
     box-shadow: $shadow-2;
+    border: none;
     text-align: center;
     -x-offset: 8px;
   }
@@ -1648,8 +1667,12 @@ StScrollBar {
   }
   .app-view-control { //favorties | all toggle button
     padding: 0 8px;
+    margin: 0;
     font-weight: bold;
     color: on(dark, secondary);
+
+    &, &:hover, &:active, &:checked { @include button(flat-normal, $tc: on(dark, secondary)); }
+
     &:hover {
       color: on(dark);
       background-color: $inverse-overlay-hover !important;
@@ -1855,8 +1878,18 @@ StScrollBar {
     background-color: $surface;
     border: none;
     box-shadow: $shadow-2;
-    &:hover { background-color: $surface; }
-    &:focus { background-color: $surface; }
+    &:hover { background: $surface; }
+    &, &:focus, &:active {
+      background-color: $surface;
+      .message-title { color: $text; }
+      .message-content { color: $text-secondary; }
+    }
+
+    .message-icon-bin > StIcon {
+      color: $text;
+    }
+
+    StEntry { @extend %entry; }
 
     .notification-icon { padding: 5px; }
     .notification-content { padding: 5px; spacing: 5px; }
@@ -1864,25 +1897,16 @@ StScrollBar {
     .notification-actions {
       background-color: transparent;
       padding-top: 0;
-      padding: $container-padding;
-      spacing: $container-padding;
+      color: inherit;
+      border-top: none;
+      spacing: 0;
     }
     .notification-button {
-      transition-duration: $duration;
+      @extend %bubble_button;
+      &:focus { box-shadow: none; }
       min-height: $medium-size;
       padding: 0 8px;
-      border-radius: $corner-radius;
-      background-color: transparent;
-      color: $primary;
-      font-weight: 500;
-      &:first-child { border-radius: $corner-radius; }
-      &:last-child { border-radius: $corner-radius; }
-      &:focus { background-color: $primary-overlay-focus; }
-      &:hover { background-color: $primary-overlay-hover; }
-      &:active {
-        transition-duration: $duration-ripple;
-        background-color: $primary-overlay-active;
-      }
+      border: none;
     }
   }
   .summary-source-counter {
@@ -1927,6 +1951,8 @@ StScrollBar {
     padding: 2px 72px 2px 12px;
   }
     .hotplug-notification-item {
+      @extend %bubble_button;
+      border: none; box-shadow: none;
       padding: 2px 10px;
       &:focus { padding: 1px 71px 1px 11px; }
     }
