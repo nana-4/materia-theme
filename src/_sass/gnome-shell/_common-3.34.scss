@@ -2045,12 +2045,14 @@ StScrollBar {
       border-color: transparent;
       background-color: $surface;
       background-size: 24px;
+      &:hover, &:checked { background-color: $surface; }
       &:active { background-color: mix($text, $surface, percentage(0.2)); }
     }
     &.enter-key {
       border-color: transparent;
       background-color: $suggested;
       background-image: url("assets/key-enter.svg");
+      &:hover, &:checked { background-color: $suggested; }
       &:active { background-color: mix(on($suggested), $suggested, percentage(0.2)); }
     }
     &.shift-key-lowercase {
