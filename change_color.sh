@@ -19,11 +19,11 @@ is_dark() {
 
 
 print_usage() {
-  echo "usage: $0 [-d DEST_DIR] [-o OUTPUT_THEME_NAME] [-p PATH_LIST] PATH_TO_PRESET"
+  echo "usage: $0 [-t TARGET_DIR] [-o OUTPUT_THEME_NAME] [-p PATH_LIST] PATH_TO_PRESET"
   echo "examples:"
   # shellcheck disable=SC2028 # This is meant to be usage text.
   echo "       $0 -o my-theme-name <(echo -e \"ROUNDNESS=0\\nBG=d8d8d8\\nFG=101010\\nHDR_BG=3c3c3c\\nHDR_FG=e6e6e6\\nSEL_BG=ad7fa8\\nMATERIA_VIEW=ffffff\\nMATERIA_SURFACE=f5f5f5\\nMATERIA_STYLE_COMPACT=True\\n\")"
-  echo "       $0 -d ~/.themes ../colors/retro/twg"
+  echo "       $0 -t ~/.themes ../colors/retro/twg"
   echo "       $0 --hidpi True ../colors/retro/clearlooks"
   exit 1
 }
@@ -35,8 +35,8 @@ while [[ "$#" -gt 0 ]]; do
       CUSTOM_PATHLIST="$2"
       shift
       ;;
-    -d|--dest)
-      DEST_DIR="$2"
+    -t|--target)
+      TARGET_DIR="$2"
       shift
       ;;
     -o|--output)
@@ -138,9 +138,9 @@ TERMINAL_COLOR10=${TERMINAL_COLOR10:-00C853}
 TERMINAL_COLOR11=${TERMINAL_COLOR11:-FF6D00}
 TERMINAL_COLOR12=${TERMINAL_COLOR12:-66BB6A}
 
-DEST_DIR=${DEST_DIR-$HOME/.themes}
+TARGET_DIR=${TARGET_DIR-$HOME/.themes}
 OUTPUT_THEME_NAME=${OUTPUT_THEME_NAME-oomox-$THEME}
-DEST_PATH="$DEST_DIR/${OUTPUT_THEME_NAME/\//-}"
+DEST_PATH="$TARGET_DIR/${OUTPUT_THEME_NAME/\//-}"
 
 if [[ "$SRC_PATH" == "$DEST_PATH" ]]; then
   echo "can't do that"
@@ -295,7 +295,7 @@ fi
 echo "== Rendering GTK 3 assets..."
 ./render-assets.sh gtk
 
-./install.sh --dest "$DEST_DIR" --name "${OUTPUT_THEME_NAME/\//-}" --color "$COLOR_VARIANT" --size "$SIZE_VARIANT"
+./install.sh --dest "$TARGET_DIR" --name "${OUTPUT_THEME_NAME/\//-}" --color "$COLOR_VARIANT" --size "$SIZE_VARIANT"
 
 GENERATED_PATH="$DEST_PATH$(tr -d ',' <<< "$COLOR_VARIANTS")$(tr -d ',' <<< "$SIZE_VARIANTS")"
 if [[ "$GENERATED_PATH" != "$DEST_PATH" ]]; then
