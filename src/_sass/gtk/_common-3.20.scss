@@ -1259,11 +1259,8 @@ searchbar > revealer > box {
 
   .solid-csd & {
     &:dir(rtl), &:dir(ltr) { // specificity bump
-      margin-left: -4px;
-      margin-right: -4px;
-      margin-top: -4px;
       border-radius: 0;
-      // box-shadow: $shadow-z1;
+      box-shadow: $shadow-z1; // just remove the highlight
     }
   }
 }
@@ -3395,10 +3392,10 @@ decoration {
 
   .solid-csd & {
     margin: 0;
-    padding: 4px;
+    padding: 2px;
     border-radius: 0;
     box-shadow: none;
-    // box-shadow: inset 0 1px highlight($titlebar);
+    box-shadow: inset 0 1px highlight($titlebar);
     background-color: $titlebar;
 
     &:backdrop { background-color: $titlebar-backdrop; }
