@@ -397,6 +397,22 @@ row#workspaces-only-on-primary {
   margin-top: 4px;
 }
 
+// Workaround for gnome-tweaks 3.34
+// See https://github.com/nana-4/materia-theme/issues/432
+hdyleaflet.titlebar > .titlebar.tweak-titlebar-left,
+hdyleaflet.titlebar > .titlebar.tweak-titlebar-right {
+  background-color: inherit;
+  box-shadow: inherit;
+  // Remove only background-color transition.
+  // This shouldn't be necessary, but otherwise it gets lag...
+  transition: color $duration $ease-out;
+
+  + separator {
+    background-color: inherit;
+    background-image: image($titlebar-divider);
+  }
+}
+
 
 /***********
  * Builder *
