@@ -14,19 +14,21 @@ GTK_VERSIONS=('3.0')
 GS_VERSIONS=('3.18' '3.24' '3.26' '3.28' '3.30' '3.32' '3.34')
 LATEST_GS_VERSION="${GS_VERSIONS[-1]}"
 
-# Set a proper gnome-shell theme version
-if command -v gnome-shell >/dev/null; then
-  CURRENT_GS_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -2)"
-  for version in "${GS_VERSIONS[@]}"; do
-    if (( "$(bc <<< "$CURRENT_GS_VERSION <= $version")" )); then
-      GS_VERSION="$version"
-      break
-    else
-      GS_VERSION="$LATEST_GS_VERSION"
-    fi
-  done
-else
-  GS_VERSION="$LATEST_GS_VERSION"
+if test -z "${GS_VERSION:-}"; then
+  # Set a proper gnome-shell theme version
+  if command -v gnome-shell >/dev/null; then
+    CURRENT_GS_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -2)"
+    for version in "${GS_VERSIONS[@]}"; do
+      if (( "$(bc <<< "$CURRENT_GS_VERSION <= $version")" )); then
+        GS_VERSION="$version"
+        break
+      else
+        GS_VERSION="$LATEST_GS_VERSION"
+      fi
+    done
+  else
+    GS_VERSION="$LATEST_GS_VERSION"
+  fi
 fi
 
 usage() {
