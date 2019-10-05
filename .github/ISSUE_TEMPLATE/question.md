@@ -2,15 +2,15 @@
 name: Question
 about: Ask a question related to this project
 title: ''
-labels: ''
+labels: question
 assignees: ''
 
 ---
 
-**Reporter Info**
+**Questioner Info**
 <!--
-Please provide the following information as much as possible.
-To check your GTK3 version, run: "pkg-config --modversion gtk+-3.0"
+Please provide the following information *as much as possible* if your question is technical.
+To check your GTK3 version, run: `gtk-launch --version`
 -->
 
 - Materia version: 

@@ -10,13 +10,13 @@ assignees: ''
 <!--
 IMPORTANT NOTE:
 
-Before reporting a bug, please check whether it also occurs with other themes, especially Adwaita or Adwaita-dark. If it also occurs with the upstream default theme, it is very likely an upstream issue.
+Before reporting a bug, please check whether it also happens with other themes, especially Adwaita or Adwaita-dark. If it happens even with the upstream default theme, it is very likely an upstream issue.
 -->
 
 **Reporter Info**
 <!--
-Please provide the following information as much as possible.
-To check your GTK3 version, run: "pkg-config --modversion gtk+-3.0"
+Please provide the following information *as much as possible*.
+To check your GTK3 version, run: `gtk-launch --version`
 -->
 
 - Materia version: 
