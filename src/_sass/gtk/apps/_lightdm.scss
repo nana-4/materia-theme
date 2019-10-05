@@ -59,9 +59,6 @@
 }
 
 .lightdm-gtk-greeter button {
-  @extend %button_basic.flat;
-
-  &:not(:disabled) { color: $primary; }
 }
 
 // the user's avatar box
@@ -76,7 +73,14 @@
 #buttonbox_frame {
   padding-top: 24px;
 
-  button { margin: -16px; }
+  > box,
+  > buttonbox { margin: -16px; }
+
+  button {
+    @extend %button_basic.flat;
+
+    &:not(:disabled) { color: $primary; }
+  }
 }
 
 // the shutdown button
