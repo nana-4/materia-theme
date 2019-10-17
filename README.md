@@ -63,14 +63,14 @@ Supports **ripple animations** for GTK 3:
 
 ### Distro Packages
 
-Distro | Package Name / Link
---- | ---
-Arch Linux | `materia-gtk-theme`
-Debian 10 or later | `materia-gtk-theme`
-Fedora | `materia-gtk-theme` from [@LaurentTreguier's Copr](https://copr.fedorainfracloud.org/coprs/tcg/themes)
-Solus | `materia-gtk-theme`
-Ubuntu 18.04 or later | `materia-gtk-theme`
-Ubuntu 17.10 | `materia-gtk-theme` from [@igor-dyatlov's PPA](https://launchpad.net/~dyatlov-igor/+archive/ubuntu/materia-theme)
+Distro | Package Name | Annotation
+--- | --- | ---
+Arch Linux | `materia-gtk-theme` | [Link](https://www.archlinux.org/packages/community/any/materia-gtk-theme/)
+Debian 10 or later | `materia-gtk-theme` | [Link](https://packages.debian.org/materia-gtk-theme)
+Fedora | `materia-gtk-theme` | Available from [@LaurentTreguier's Copr](https://copr.fedorainfracloud.org/coprs/tcg/themes)
+Solus | `materia-gtk-theme` | [Link](https://dev.getsol.us/source/materia-gtk-theme/)
+Ubuntu 18.04 or later | `materia-gtk-theme` | [Link](https://packages.ubuntu.com/materia-gtk-theme)
+Ubuntu 17.10 | `materia-gtk-theme` | Available from [@igor-dyatlov's PPA](https://launchpad.net/~dyatlov-igor/+archive/ubuntu/materia-theme)
 
 ### Flatpak
 
