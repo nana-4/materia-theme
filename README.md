@@ -72,6 +72,8 @@ Solus | `materia-gtk-theme` | [Link](https://dev.getsol.us/source/materia-gtk-th
 Ubuntu 18.04 or later | `materia-gtk-theme` | [Link](https://packages.ubuntu.com/materia-gtk-theme)
 Ubuntu 17.10 | `materia-gtk-theme` | Available from [@igor-dyatlov's PPA](https://launchpad.net/~dyatlov-igor/+archive/ubuntu/materia-theme)
 
+> Note: Some distro packages (especially Ubuntu ones) may be outdated and incompatible with your desktop environment. You can check the latest version [here](https://github.com/nana-4/materia-theme/releases).
+
 ### Flatpak
 
 All 6 variants are available via Flathub:
