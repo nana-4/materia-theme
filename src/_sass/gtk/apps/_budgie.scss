@@ -212,7 +212,7 @@ button.raven-trigger {
 .budgie-panel {
   transition: background-color $duration $ease-out;
   background-color: $panel;
-  color: on($panel, secondary);
+  color: on($panel, text2);
   font-weight: 500;
 
   &.transparent { background-color: $scrim; }
@@ -250,7 +250,7 @@ button.raven-trigger {
     color: on($panel);
 
     button:not(.suggested-action):not(.destructive-action) {
-      color: on($panel, secondary);
+      color: on($panel, text2);
 
       &:hover,
       &:active { color: on($panel); }
@@ -274,11 +274,11 @@ button.raven-trigger {
 
     // for indicator colors
     &:not(:checked) {
-      color: on($panel, disabled);
+      color: on($panel, text-disabled);
 
-      &:hover, &:active { color: on($panel, secondary); }
+      &:hover, &:active { color: on($panel, text2); }
 
-      &:disabled { color: on($panel, secondary-disabled); }
+      &:disabled { color: on($panel, text2-disabled); }
     }
   }
 
@@ -434,7 +434,7 @@ calendar.raven-calendar {
 .budgie-notification {
   .notification-title { font-size: 120%; }
 
-  .notification-body { color: $text-secondary; }
+  .notification-body { color: $text2; }
 }
 
 // On Screen Display in Budgie
@@ -501,7 +501,7 @@ calendar.raven-calendar {
 .budgie-polkit-dialog {
   @extend %budgie_dialog;
 
-  .message { color: $text-secondary; }
+  .message { color: $text2; }
 
   .failure { color: $destructive; }
 }

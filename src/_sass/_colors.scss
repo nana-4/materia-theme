@@ -7,34 +7,51 @@
   @return unquote("alpha(#{$c}, #{$a})");
 }
 
-@function on($color, $state: 'primary') {
-  // Allow 'light' or 'dark' to $color
-  @if ($color == 'light') { $color: white; }
-  @if ($color == 'dark') { $color: black; }
+// Determine whether the color is "light" or "dark".
+@function tone($color) {
+  @if $color == "dark" or $color == "light" {
+    @return $color;
+  }
 
-  // Calculate color brightness according to https://www.w3.org/TR/AERT/#color-contrast
+  // Calculate color brightness as per https://www.w3.org/TR/AERT/#color-contrast
   $brightness: (red($color) * 299 + green($color) * 587 + blue($color) * 114) / 1000;
 
-  @if ($brightness >= 128) {
-    @if ($state == 'primary') { @return rgba(black, 0.87); }
-    @if ($state == 'secondary') { @return rgba(black, 0.6); }
-    @if ($state == 'disabled') { @return rgba(black, 0.38); }
-    @if ($state == 'secondary-disabled') { @return rgba(black, 0.26); }
-    @if ($state == 'track') { @return rgba(black, 0.26); }
-    @if ($state == 'track-disabled') { @return rgba(black, 0.12); }
-    @if ($state == 'divider') { @return rgba(black, 0.12); }
-    @if ($state == 'fill') { @return rgba(black, 0.04); }
+  @if $brightness >= 128 {
+    @return "light";
   } @else {
-    @if ($state == 'primary') { @return white; }
-    @if ($state == 'secondary') { @return rgba(white, 0.7); }
-    @if ($state == 'disabled') { @return rgba(white, 0.5); }
-    @if ($state == 'secondary-disabled') { @return rgba(white, 0.3); }
-    @if ($state == 'track') { @return rgba(white, 0.3); }
-    @if ($state == 'track-disabled') { @return rgba(white, 0.12); }
-    @if ($state == 'divider') { @return rgba(white, 0.12); }
-    @if ($state == 'fill') { @return rgba(white, 0.04); }
+    @return "dark";
   }
 }
+
+// Determine whether to use dark or light color on top of given color to meet accessibility standards for contrast.
+@function on($color, $type: text) {
+  $contrast-tone: if(tone($color) == "dark", "light", "dark");
+
+  @return map-get(map-get($on-colors, $contrast-tone), $type);
+}
+
+$on-colors: (
+  dark: (
+    text: rgba(black, .87),
+    text2: rgba(black, .6),
+    text-disabled: rgba(black, .38),
+    text2-disabled: rgba(black, .26),
+    track: rgba(black, .26),
+    track-disabled: rgba(black, .12),
+    divider: rgba(black, .12),
+    fill: rgba(black, .04)
+  ),
+  light: (
+    text: white,
+    text2: rgba(white, .7),
+    text-disabled: rgba(white, .5),
+    text2-disabled: rgba(white, .3),
+    track: rgba(white, .3),
+    track-disabled: rgba(white, .12),
+    divider: rgba(white, .12),
+    fill: rgba(white, .04)
+  )
+);
 
 @function highlight($color) {
   @if (lightness($color) >= 80%) { @return rgba(white, 0.4); }
@@ -105,18 +122,18 @@ $overlay-selected:                      rgba($primary, 0.24);
 //
 
 $text:                                  on($background);
-$text-secondary:                        on($background, secondary);
-$text-disabled:                         on($background, disabled);
-$text-secondary-disabled:               on($background, secondary-disabled);
+$text2:                                 on($background, text2);
+$text-disabled:                         on($background, text-disabled);
+$text2-disabled:                        on($background, text2-disabled);
 $track:                                 on($background, track);
 $track-disabled:                        on($background, track-disabled);
 $divider:                               on($background, divider);
 $fill:                                  on($background, fill);
 
 $titlebar-text:                         on($titlebar);
-$titlebar-text-secondary:               on($titlebar, secondary);
-$titlebar-text-disabled:                on($titlebar, disabled);
-$titlebar-text-secondary-disabled:      on($titlebar, secondary-disabled);
+$titlebar-text2:                        on($titlebar, text2);
+$titlebar-text-disabled:                on($titlebar, text-disabled);
+$titlebar-text2-disabled:               on($titlebar, text2-disabled);
 $titlebar-track:                        on($titlebar, track);
 $titlebar-track-disabled:               on($titlebar, track-disabled);
 $titlebar-divider:                      on($titlebar, divider);

@@ -102,7 +102,7 @@ textview {
 
   border {
     background-color: $base-alt;
-    color: $text-secondary; // FIXME: not working
+    color: $text2; // FIXME: not working
   }
 }
 
@@ -140,7 +140,7 @@ label {
   caret-color: currentColor; // this shouldn't be needed.
 
   &.separator {
-    color: $text-secondary;
+    color: $text2;
   }
 
   selection { @extend %selected_items; }
@@ -162,7 +162,7 @@ label {
   }
 }
 
-.dim-label { color: $text-secondary; }
+.dim-label { color: $text2; }
 
 assistant {
   .sidebar {
@@ -239,7 +239,7 @@ entry {
       // min-height: $small-size;
       // min-width: $small-size;
       // border-radius: $circular-radius;
-      color: $text-secondary;
+      color: $text2;
 
       &:hover, &:active { color: $text; }
 
@@ -315,11 +315,11 @@ entry {
       &:disabled { @include entry(raised-disabled, $e_color); }
 
       image {
-        color: on($e_color, secondary);
+        color: on($e_color, text2);
 
         &:hover, &:active { color: on($e_color); }
 
-        &:disabled { color: on($e_color, disabled); }
+        &:disabled { color: on($e_color, text-disabled); }
       }
     }
   }
@@ -366,7 +366,7 @@ treeview entry {
     box-shadow: none;
     background-color: transparent;
 
-    &:not(:hover):not(:active) { color: $text-secondary; }
+    &:not(:hover):not(:active) { color: $text2; }
   }
 }
 
@@ -500,13 +500,13 @@ button {
 
   @at-root %button-on-dark {
     &.flat {
-      color: on(dark, secondary);
+      color: on(dark, text2);
 
       &:focus, &:hover, &:active, &:checked { color: on(dark); }
 
-      &:disabled { color: on(dark, secondary-disabled); }
+      &:disabled { color: on(dark, text2-disabled); }
 
-      &:checked:disabled { color: on(dark, disabled); }
+      &:checked:disabled { color: on(dark, text-disabled); }
     }
   }
 
@@ -772,7 +772,7 @@ spinbutton {
       // Remove unwanted focus indicator
       &:focus:not(:hover):not(:active):not(:disabled) {
         box-shadow: inset 0 0 0 9999px transparent;
-        color: $text-secondary;
+        color: $text2;
       }
 
       &.up:dir(ltr),
@@ -815,7 +815,7 @@ spinbutton {
       // Remove unwanted focus indicator
       &:focus:not(:hover):not(:active) {
         box-shadow: inset 0 0 0 9999px transparent;
-        color: $text-secondary;
+        color: $text2;
       }
 
       &.up { border-radius: $corner-radius $corner-radius 0 0; }
@@ -1048,9 +1048,9 @@ searchbar > revealer > box {
 
   &:backdrop {
     background-color: $titlebar-backdrop;
-    color: $titlebar-text-secondary;
+    color: $titlebar-text2;
 
-    &:disabled { color: $titlebar-text-secondary-disabled; }
+    &:disabled { color: $titlebar-text2-disabled; }
   }
 
   .title {
@@ -1066,7 +1066,7 @@ searchbar > revealer > box {
   .subtitle,
   .dim-label {
     transition: color $duration $ease-out;
-    color: $titlebar-text-secondary;
+    color: $titlebar-text2;
 
     &:backdrop { color: $titlebar-text-disabled; }
   }
@@ -1094,7 +1094,7 @@ searchbar > revealer > box {
     }
 
     image {
-      color: $titlebar-text-secondary;
+      color: $titlebar-text2;
 
       &:hover, &:active { color: $titlebar-text; }
 
@@ -1111,11 +1111,11 @@ searchbar > revealer > box {
                                   $titlebar-indicator 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
-    color: $titlebar-text-secondary;
+    color: $titlebar-text2;
 
     &:focus, &:hover, &:active { color: $titlebar-text; }
 
-    &:disabled { color: $titlebar-text-secondary-disabled; }
+    &:disabled { color: $titlebar-text2-disabled; }
 
     &:checked {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
@@ -1134,14 +1134,14 @@ searchbar > revealer > box {
     &:backdrop {
       color: $titlebar-text-disabled;
 
-      &:focus, &:hover, &:active { color: $titlebar-text-secondary; }
+      &:focus, &:hover, &:active { color: $titlebar-text2; }
 
-      &:disabled { color: $titlebar-text-secondary-disabled; }
+      &:disabled { color: $titlebar-text2-disabled; }
 
       &:checked {
-        color: $titlebar-text-secondary;
+        color: $titlebar-text2;
 
-        &:disabled { color: $titlebar-text-secondary-disabled; }
+        &:disabled { color: $titlebar-text2-disabled; }
       }
     }
   }
@@ -1173,7 +1173,7 @@ searchbar > revealer > box {
     color: on($primary);
 
     &:backdrop {
-      color: on($primary, secondary);
+      color: on($primary, text2);
     }
 
     .subtitle:link { color: on($primary); }
@@ -1185,7 +1185,7 @@ searchbar > revealer > box {
                                     0 0 0 / 0 0 0px;
       color: on($primary);
 
-      &:disabled { color: on($primary, disabled); }
+      &:disabled { color: on($primary, text-disabled); }
 
       &:checked {
         border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
@@ -1194,18 +1194,18 @@ searchbar > revealer > box {
                                       0 0 2 / 0 0 2px;
         color: on($primary);
 
-        &:disabled { color: on($primary, disabled); }
+        &:disabled { color: on($primary, text-disabled); }
       }
 
       &:backdrop {
-        color: on($primary, secondary);
+        color: on($primary, text2);
 
-        &:disabled { color: on($primary, secondary-disabled); }
+        &:disabled { color: on($primary, text2-disabled); }
 
         &:checked {
-          color: on($primary, secondary);
+          color: on($primary, text2);
 
-          &:disabled { color: on($primary, secondary-disabled); }
+          &:disabled { color: on($primary, text2-disabled); }
         }
       }
     }
@@ -1398,11 +1398,11 @@ treeview.view {
 
     &:checked { -gtk-icon-transform: unset; }
 
-    color: $text-secondary;
+    color: $text2;
 
     &:hover, &:active { color: $text; }
 
-    &:disabled { color: $text-secondary-disabled; }
+    &:disabled { color: $text2-disabled; }
   }
 
   &.progressbar { // progress bar in treeviews
@@ -1434,7 +1434,7 @@ treeview.view {
       border-radius: 0;
       background-clip: border-box;
 
-      &:not(:focus):not(:hover):not(:active) { color: $text-secondary; }
+      &:not(:focus):not(:hover):not(:active) { color: $text2; }
 
       &, &:disabled { background-color: $base; }
 
@@ -1472,7 +1472,7 @@ menubar,
 
   &:backdrop {
     background-color: $titlebar-backdrop;
-    color: $titlebar-text-secondary;
+    color: $titlebar-text2;
   }
 
   .csd & { transition: $transition; }
@@ -1481,7 +1481,7 @@ menubar,
     transition: $transition;
     min-height: 20px;
     padding: 4px 8px;
-    color: $titlebar-text-secondary;
+    color: $titlebar-text2;
 
     &:hover { // Seems like it :hover even with keyboard focus
       transition: none;
@@ -1489,7 +1489,7 @@ menubar,
       color: $titlebar-text;
     }
 
-    &:disabled { color: $titlebar-text-secondary-disabled; }
+    &:disabled { color: $titlebar-text2-disabled; }
 
     label:disabled { color: inherit; } // to inherit the above color
   }
@@ -1557,7 +1557,7 @@ menu,
     min-width: 16px;
     padding: 4px;
     background-color: $surface;
-    color: $text-secondary;
+    color: $text2;
 
     &.top {
       margin-top: -4px;
@@ -1583,7 +1583,7 @@ menu,
       border-color: transparent;
       background-color: transparent;
       color: transparent;
-      // color: $text-secondary-disabled;
+      // color: $text2-disabled;
     }
   }
 
@@ -1591,9 +1591,9 @@ menu,
 }
 
 menuitem {
-  accelerator { color: $text-secondary; }
+  accelerator { color: $text2; }
 
-  &:disabled accelerator { color: $text-secondary-disabled; }
+  &:disabled accelerator { color: $text2-disabled; }
 }
 
 
@@ -1817,7 +1817,7 @@ notebook {
       background-size: 0% 0%;
       background-clip: border-box;
 
-      color: $text-secondary;
+      color: $text2;
       font-weight: 500;
 
       &:hover {
@@ -1825,7 +1825,7 @@ notebook {
         color: $text;
       }
 
-      &:disabled { color: $text-secondary-disabled; }
+      &:disabled { color: $text2-disabled; }
 
       &:checked {
         transition: $transition,
@@ -1940,11 +1940,11 @@ scrollbar {
     background-clip: padding-box;
     background-color: $text-disabled;
 
-    &:hover { background-color: $text-secondary; }
+    &:hover { background-color: $text2; }
 
     &:active { background-color: $text; }
 
-    &:disabled { background-color: $text-secondary-disabled; }
+    &:disabled { background-color: $text2-disabled; }
   }
 
   &.fine-tune {
@@ -1984,7 +1984,7 @@ scrollbar {
         background-clip: padding-box;
         -gtk-icon-source: none;
 
-        &:disabled { background-color: $text-secondary-disabled; }
+        &:disabled { background-color: $text2-disabled; }
       }
 
       &.horizontal {
@@ -2144,7 +2144,7 @@ radio {
   &:checked, &:indeterminate {
     color: $primary;
 
-    &:disabled { color: $text-secondary-disabled; }
+    &:disabled { color: $text2-disabled; }
   }
 
   // &:only-child { margin: -12px; }
@@ -2156,7 +2156,7 @@ radio {
       background-image: none;
     }
 
-    &:not(:checked):not(:indeterminate):not(:disabled) { color: $text-secondary; }
+    &:not(:checked):not(:indeterminate):not(:disabled) { color: $text2; }
 
     &.left:dir(rtl) {
       margin-left: -12px;
@@ -2178,7 +2178,7 @@ radio {
 
     &:dir(rtl) { margin-left: 8px; }
 
-    &:not(:checked):not(:indeterminate):not(:disabled) { color: $text-secondary; }
+    &:not(:checked):not(:indeterminate):not(:disabled) { color: $text2; }
 
     &, &:hover, &:disabled {
       box-shadow: none;
@@ -2229,7 +2229,7 @@ radio {
     border-image-source: -gtk-gradient(radial,
                                        center center, 0,
                                        center center, $radio_indicator,
-                                       to($text-secondary-disabled),
+                                       to($text2-disabled),
                                        to(transparent));
   }
 }
@@ -2277,15 +2277,15 @@ treeview.view radio {
   }
 
   & {
-    color: $text-secondary;
+    color: $text2;
 
     &:hover, &:active { color: $text; }
 
-    &:disabled { color: $text-secondary-disabled; }
+    &:disabled { color: $text2-disabled; }
 
     &:checked, &:indeterminate { color: $primary; }
 
-    &:checked:disabled, &:indeterminate:disabled { color: $text-secondary-disabled; }
+    &:checked:disabled, &:indeterminate:disabled { color: $text2-disabled; }
   }
 }
 
@@ -2362,7 +2362,7 @@ scale {
 
     &:disabled {
       background-color: $background;
-      background-image: image($text-secondary-disabled);
+      background-image: image($text2-disabled);
     }
   }
 
@@ -2416,7 +2416,7 @@ scale {
   }
 
   marks,
-  value { color: $text-secondary; }
+  value { color: $text2; }
 
   indicator {
     background-color: $track;
@@ -2540,7 +2540,7 @@ progressbar {
   }
 
   // FIXME: insensitive state missing and some other state should be set probably
-  color: $text-secondary;
+  color: $text2;
   font-size: smaller;
 
   trough { background-color: $track-disabled; }
@@ -2802,11 +2802,11 @@ expander {
 
     &:checked { -gtk-icon-transform: unset; }
 
-    color: $text-secondary;
+    color: $text2;
 
     &:hover, &:active { color: $text; }
 
-    &:disabled { color: $text-secondary-disabled; }
+    &:disabled { color: $text2-disabled; }
   }
 }
 
@@ -2836,11 +2836,11 @@ calendar {
   &.button { @extend %button-flat-simple; }
 
   &.highlight {
-    color: $text-secondary;
+    color: $text2;
     font-weight: 500;
   }
 
-  &:indeterminate { color: $text-secondary-disabled; }
+  &:indeterminate { color: $text2-disabled; }
 }
 
 
@@ -2859,7 +2859,7 @@ messagedialog { // Message Dialog styling
 
     &:backdrop {
       background-color: $surface;
-      color: $text-secondary;
+      color: $text2;
     }
   }
 
@@ -2994,9 +2994,9 @@ separator.sidebar {
 // dim the sidebar icons, see bug #786613 for details on this oddity
 row image.sidebar-icon {
   transition: color $duration $ease-out;
-  color: $text-secondary;
+  color: $text2;
 
-  &:disabled { color: $text-secondary-disabled; }
+  &:disabled { color: $text2-disabled; }
 }
 
 placessidebar.sidebar {

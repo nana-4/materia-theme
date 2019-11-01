@@ -71,7 +71,7 @@ window.background.chromium {
   background-color: $surface;
 
   // FIXME: There is no way to change the color of the toolbar buttons
-  // toolbar button { color: $text-secondary; }
+  // toolbar button { color: $text2; }
 
   // toolbar's border-bottom refers to button's border
   // FIXME: Chrome's button border ignores theme's alpha value :(
@@ -81,11 +81,11 @@ window.background.chromium {
   > button {
     color: $primary;
 
-    &:disabled { color: $text-secondary-disabled; }
+    &:disabled { color: $text2-disabled; }
   }
 
   menubar,
-  headerbar { color: $titlebar-text-secondary; }
+  headerbar { color: $titlebar-text2; }
 
   // Workaround for non-animatable buttons in headerbar
   headerbar button:active { background-color: $overlay-active; }
@@ -105,7 +105,7 @@ window.background.chromium {
   treeview.view button {
     border: 1px solid $track;
     background-color: $base; // FIXME: This should not be necessary
-    // color: $text-secondary;
+    // color: $text2;
   }
 }
 
@@ -196,11 +196,11 @@ tooltip.background.chromium { background-color: rgba($tooltip, 1); }
 #MozillaGtkWidget {
   > widget {
     > menubar {
-      color: $titlebar-text-secondary;
+      color: $titlebar-text2;
 
       &:hover { color: $titlebar-text; }
 
-      &:disabled { color: $titlebar-text-secondary-disabled; }
+      &:disabled { color: $titlebar-text2-disabled; }
     }
 
     > frame { color: $track; }

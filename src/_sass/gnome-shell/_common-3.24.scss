@@ -128,7 +128,7 @@ StScrollBar {
     background-color: $text-disabled;
     //border: 4px solid transparent; //would be nice to margin or at least to transparent
     margin: 4px;
-    &:hover { background-color: $text-secondary; }
+    &:hover { background-color: $text2; }
     &:active { background-color: $text; }
   }
 }
@@ -139,8 +139,8 @@ StScrollBar {
   }
 
   StButton#vhandle, StButton#hhandle {
-    background-color: on(dark, disabled);
-    &:hover { background-color: on(dark, secondary); }
+    background-color: on(dark, text-disabled);
+    &:hover { background-color: on(dark, text2); }
     &:active { background-color: on(dark); }
   }
 }
@@ -253,7 +253,7 @@ StScrollBar {
   .run-dialog-label {
     font-size: 1em;
     font-weight: normal;
-    color: $text-secondary;
+    color: $text2;
     padding-bottom: .4em;
   }
 
@@ -339,7 +339,7 @@ StScrollBar {
   }
 
   .end-session-dialog-app-list-item-description {
-    color: $text-secondary;
+    color: $text2;
     font-size: 1em;
   }
 
@@ -543,7 +543,7 @@ StScrollBar {
   }
 
   .access-dialog-subtitle {
-    color: $text-secondary;
+    color: $text2;
     font-weight: normal;
   }
 
@@ -569,7 +569,7 @@ StScrollBar {
   }
 
   .geolocation-dialog-reason {
-    color: $text-secondary;
+    color: $text2;
     font-weight: normal;
   }
 
@@ -766,7 +766,7 @@ StScrollBar {
   .switcher-arrow {
     transition-duration: $duration;
     border-color: rgba(0,0,0,0);
-    color: $text-secondary;
+    color: $text2;
     &:highlighted {
       color: $text;
     }
@@ -879,7 +879,7 @@ StScrollBar {
     -natural-hpadding: $panel-button-hpadding;
     -minimum-hpadding: $panel-button-hpadding / 2;
     font-weight: bold;
-    color: on($panel, secondary);
+    color: on($panel, text2);
     transition-duration: $duration;
 
     .app-menu-icon {
@@ -907,7 +907,7 @@ StScrollBar {
     .unlock-screen &,
     .login-screen &,
     .lock-screen & {
-      color: on($panel, secondary);
+      color: on($panel, text2);
       &:focus, &:hover, &:active { color: on($panel); }
     }
   }
@@ -995,7 +995,7 @@ StScrollBar {
     .world-clocks-header,
     .weather-header,
     .events-section-title {
-      color: $text-secondary;
+      color: $text2;
       font-weight: bold;
     }
 
@@ -1096,7 +1096,7 @@ StScrollBar {
         background-image: none;
       }
       .calendar-other-month-day {
-        color: $text-secondary-disabled;
+        color: $text2-disabled;
       }
       .calendar-week-number {
         width: $menuitem-size; height: $menuitem-size - 7px;
@@ -1164,7 +1164,7 @@ StScrollBar {
           .message-secondary-bin > .event-time {
             min-height: $small-size - 2px;
             padding-top: 2px;
-            color: $text-secondary;
+            color: $text2;
             font-size: 1em;
             /* HACK: the label should be baseline-aligned with a 1em label,
                      fake this with some bottom padding */
@@ -1186,7 +1186,7 @@ StScrollBar {
           .message-content {
             min-height: $menuitem-size * 2 - 8px * 2;
             padding: 8px;
-            color: $text-secondary;
+            color: $text2;
             font-size: 1em;
           }
 
@@ -1195,7 +1195,7 @@ StScrollBar {
             icon-size: 16px;
             border-radius: 16px;
             padding: ($small-size - 16px) / 2;
-            color: $text-secondary;
+            color: $text2;
           }
 
           /* FIXME: how do you do this in sass? */
@@ -1216,10 +1216,10 @@ StScrollBar {
             margin: 16px 0;
             padding: 8px;
             border-radius: 100px;
-            color: $text-secondary;
+            color: $text2;
             &:hover,&:focus { color: $text; background-color: $overlay-hover; }
             &:active { color: $text; background-color: $overlay-active; transition-duration: $duration-ripple; }
-            &:insensitive { color: $text-secondary-disabled; }
+            &:insensitive { color: $text2-disabled; }
 
             &:last-child:ltr { margin-right: 16px; padding-right: 8px; }
             &:last-child:rtl { margin-left: 16px; padding-left: 8px; }
@@ -1270,7 +1270,7 @@ StScrollBar {
   }
 
   .system-menu-action {
-    color: $text-secondary;
+    color: $text2;
     border-radius: 100px; /* wish we could do 50% */
     padding: ($large-size - 16px) / 2;
     border: none;
@@ -1421,7 +1421,7 @@ StScrollBar {
     width: 320px - 8px * 2;
     padding: 0 8px;
     border-radius: $corner-radius $corner-radius 0 0;
-    color: on(dark, disabled);
+    color: on(dark, text-disabled);
     selection-background-color: on(dark, track);
     selected-color: on(dark);
     @include entry(normal,$fc:on(dark, track));
@@ -1433,7 +1433,7 @@ StScrollBar {
       color: on(dark);
     }
 
-    .search-entry-icon { icon-size: 16px; padding: 0 0; color: on(dark, secondary); }
+    .search-entry-icon { icon-size: 16px; padding: 0 0; color: on(dark, text2); }
 
     &:hover, &:focus {
       .search-entry-icon { color: on(dark); }
@@ -1469,7 +1469,7 @@ StScrollBar {
 
   .list-search-result-content { spacing: 12px; padding: 12px; }
   .list-search-result-title { @include type(headline5); color: on(dark); }
-  .list-search-result-description { color: on(dark, secondary); }
+  .list-search-result-description { color: on(dark, text2); }
   .search-provider-icon { padding: 15px; }
   .search-provider-icon-more {
     width: 16px;
@@ -1539,7 +1539,7 @@ StScrollBar {
   .app-view-control { //favorties | all toggle button
     padding: 0 8px;
     font-weight: bold;
-    color: on(dark, secondary);
+    color: on(dark, text2);
     &:hover {
       color: on(dark);
       background-color: $inverse-overlay-hover !important;
@@ -1621,7 +1621,7 @@ StScrollBar {
   }
 
   .show-apps .show-apps-icon {
-    color: on(dark, secondary);
+    color: on(dark, text2);
   }
 
   .show-apps:hover .show-apps-icon,
@@ -1655,16 +1655,16 @@ StScrollBar {
       height: 12px;
       border-radius: 12px;
       background-image: none;
-      background-color: on(dark, secondary-disabled);
+      background-color: on(dark, text2-disabled);
       transition-duration: $duration;
     }
     &:hover .page-indicator-icon {
       background-image: none;
-      background-color: on(dark, disabled);
+      background-color: on(dark, text-disabled);
     }
     &:active .page-indicator-icon {
       background-image: none;
-      background-color: on(dark, secondary);
+      background-color: on(dark, text2);
     }
     &:checked .page-indicator-icon {
       background-image: none;
@@ -1722,7 +1722,7 @@ StScrollBar {
 
 %status_text {
   @include type(headline3);
-  color: on(dark, disabled);
+  color: on(dark, text-disabled);
 }
 
 /* NOTIFICATIONS & MESSAGE TRAY */
@@ -1796,13 +1796,13 @@ StScrollBar {
   }
   .chat-sent {
     padding-left: 18pt;
-    color: $text-secondary;
+    color: $text2;
     &:rtl { padding-left: 0; padding-right: 18pt; }
   }
   .chat-meta-message {
     padding-left: 4px;
     @include type(caption);
-    color: $text-secondary;
+    color: $text2;
     &:rtl { padding-left: 0; padding-right: 4px; }
   }
 
@@ -1945,7 +1945,7 @@ $legacy_icon_size: 24px;
 
   .candidate-index {
     padding: 0 4px 0 0;
-    color: $text-secondary;
+    color: $text2;
   }
 
   .candidate-box {
@@ -2007,7 +2007,7 @@ $legacy_icon_size: 24px;
     &:focus { @include entry(focus, $fc:on($os-background)); }
     &:insensitive {
       @include entry(insensitive, $fc:on($os-background, track-disabled));
-      color: on($os-background, disabled);
+      color: on($os-background, text-disabled);
     }
   }
 
@@ -2026,13 +2026,13 @@ $legacy_icon_size: 24px;
       @include button(normal, $c: $suggested, $tc: on($suggested));
       &:hover,&:focus { @include button(hover, $c: $suggested, $tc: on($suggested)); }
       &:active { @include button(active, $c: $suggested, $tc: on($suggested)); }
-      &:insensitive { @include button(insensitive, $c: on($os-background, fill), $tc: on($os-background, disabled)); }
+      &:insensitive { @include button(insensitive, $c: on($os-background, fill), $tc: on($os-background, text-disabled)); }
     }
   }
 }
 
   .login-dialog-logo-bin { padding: 24px 0px; }
-  .login-dialog-banner { color: on($os-background, secondary); }
+  .login-dialog-banner { color: on($os-background, text2); }
   .login-dialog-button-box { spacing: 5px; }
   .login-dialog-message-warning { color: $warning; }
   .login-dialog-message-hint { padding-top: 0; padding-bottom: 20px; }
@@ -2048,7 +2048,7 @@ $legacy_icon_size: 24px;
     transition-duration: $duration;
     font-size: 1em;
     font-weight: bold;
-    color: on($os-background, secondary);
+    color: on($os-background, text2);
     padding-top: 1em;
     border-radius: $corner-radius;
     &:hover {
@@ -2077,7 +2077,7 @@ $legacy_icon_size: 24px;
     transition-duration: $duration;
     border-radius: $corner-radius;
     padding: 4px 4px 0;
-    color: on($os-background, secondary);
+    color: on($os-background, text2);
     &:ltr { padding-right: 1em; }
     &:rtl { padding-left: 1em; }
     &:hover {
@@ -2117,7 +2117,7 @@ $legacy_icon_size: 24px;
   }
 
   .login-dialog-prompt-label {
-      color: on($os-background, secondary);
+      color: on($os-background, text2);
       font-size: 1em;
       padding-top: 1em;
   }
@@ -2127,7 +2127,7 @@ $legacy_icon_size: 24px;
   }
 
   .login-dialog-session-list-button {
-      color: on($os-background, secondary);
+      color: on($os-background, text2);
       &:hover,&:focus { color: on($os-background); }
       &:active { color: on($os-background); }
   }
@@ -2192,7 +2192,7 @@ $legacy_icon_size: 24px;
 .screen-shield-notification-count-text {
   min-height: $small-size - 2px;
   padding: 2px 0px 0px 16px;
-  color: on($scrim-alt, secondary);
+  color: on($scrim-alt, text2);
 }
 
 #panel.lock-screen { background-color: $scrim-alt; }
@@ -2205,7 +2205,7 @@ $legacy_icon_size: 24px;
 #lockDialogGroup {
   background: $os-background;
   background-size: cover;
-  color: on($os-background, secondary);
+  color: on($os-background, text2);
 }
 
 #screenShieldNotifications {
@@ -2233,7 +2233,7 @@ $legacy_icon_size: 24px;
     -natural-hpadding: 12px;
     -minimum-hpadding: 6px;
     font-weight: bold;
-    color: $text-secondary;
+    color: $text2;
     transition-duration: $duration;
     padding-left: 16px;
     padding-right: 16px;
