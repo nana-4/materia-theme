@@ -36,17 +36,17 @@
                                   $fc 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
-    box-shadow: inset 0 0 0 9999px transparent, inset 0 -1px if($fc == $primary, $track, $fc);
+    box-shadow: inset 0 0 0 9999px transparent, inset 0 -1px if($fc == $primary, $stroke, $fc);
     background-color: $fill;
     color: $text;
   }
 
   @if $t == hover {
-    box-shadow: inset 0 0 0 9999px $overlay-hover, inset 0 -1px if($fc == $primary, $track, $fc);
+    box-shadow: inset 0 0 0 9999px $overlay-hover, inset 0 -1px if($fc == $primary, $stroke, $fc);
   }
 
   @if $t == focus {
-    box-shadow: inset 0 0 0 9999px $overlay-focus, inset 0 -1px if($fc == $primary, $track, $fc);
+    box-shadow: inset 0 0 0 9999px $overlay-focus, inset 0 -1px if($fc == $primary, $stroke, $fc);
   }
 
   @if $t == checked {
@@ -57,7 +57,7 @@
   }
 
   @if $t == disabled {
-    box-shadow: inset 0 0 0 9999px transparent, inset 0 -1px $track-disabled;
+    box-shadow: inset 0 0 0 9999px transparent, inset 0 -1px $stroke-disabled;
     background-color: $fill;
     color: $text-disabled;
   }
@@ -239,7 +239,7 @@
 // top, bottom, right, left
 //
 
-  $_undershoot_color_dark: $track;
+  $_undershoot_color_dark: $stroke;
   $_undershoot_color_light: transparent;
 
   $_gradient_dir: left;

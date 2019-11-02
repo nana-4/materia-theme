@@ -119,7 +119,7 @@ StScrollBar {
   StBin#trough {
     margin: 4px;
     border-radius: 100px;
-    background-color: $track-disabled;
+    background-color: $stroke-disabled;
   }
 
   StButton#vhandle, StButton#hhandle {
@@ -135,7 +135,7 @@ StScrollBar {
 
 %overview_scrollbar {
   StBin#trough {
-    background-color: on(dark, track-disabled);
+    background-color: on(dark, stroke-disabled);
   }
 
   StButton#vhandle, StButton#hhandle {
@@ -151,7 +151,7 @@ StScrollBar {
   height: 20px;
   color: $primary;
   -slider-height: 2px;
-  -slider-background-color: $track; //background of the trough
+  -slider-background-color: $stroke; //background of the trough
   -slider-border-color: transparent; //trough border color
   -slider-active-background-color: $primary; //active trough fill
   -slider-active-border-color: transparent; //active trough border
@@ -669,7 +669,7 @@ StScrollBar {
   .level {
     height: 8px;
     border-radius: 0;
-    background-color: $track-disabled;
+    background-color: $stroke-disabled;
     color: $text;
   }
   .level-bar {
@@ -714,7 +714,7 @@ StScrollBar {
   .switcher-list .item-box:outlined {
     padding: 8px;
     border: none;
-    background-color: $track-disabled;
+    background-color: $stroke-disabled;
     color: $text; // for Ubuntu session
   }
 
@@ -781,7 +781,7 @@ StScrollBar {
   .ws-switcher-box {
     height: 48px;
     border: none;
-    background: $track-disabled;
+    background: $stroke-disabled;
     border-radius: $corner-radius;
   }
 
@@ -1251,7 +1251,7 @@ StScrollBar {
               padding: 8px;
               border: none;
               border-radius: $corner-radius;
-              background-color: $track-disabled;
+              background-color: $stroke-disabled;
               color: $text-disabled;
             }
           }
@@ -1309,7 +1309,7 @@ StScrollBar {
   width: 48px;
   height: 48px;
   border-radius: 0 0 48px 0;
-  background-color: on(dark, track);
+  background-color: on(dark, stroke);
   background-image: none;
   background-size: auto;
 }
@@ -1418,12 +1418,12 @@ StScrollBar {
   }
 
   .window-clone-border {
-    border: 4px solid on(dark, track);
+    border: 4px solid on(dark, stroke);
     border-radius: $corner-radius;
     // For window decorations with round corners we can't match
     // the exact shape when the window is scaled. So apply a shadow
     // to fix that case
-    box-shadow: inset 0 0 0 1px on(dark, track);
+    box-shadow: inset 0 0 0 1px on(dark, stroke);
   }
   .window-caption {
     spacing: 25px;
@@ -1439,10 +1439,10 @@ StScrollBar {
     padding: 0 8px;
     border-radius: $corner-radius $corner-radius 0 0;
     color: on(dark, text-disabled);
-    selection-background-color: on(dark, track);
+    selection-background-color: on(dark, stroke);
     selected-color: on(dark);
-    @include entry(normal,$fc:on(dark, track));
-    &:hover { @include entry(hover,$fc:on(dark, track)); }
+    @include entry(normal,$fc:on(dark, stroke));
+    &:hover { @include entry(hover,$fc:on(dark, stroke)); }
     &:focus {
       @include entry(focus,$fc:on(dark));
       padding: 0 8px;
@@ -2021,12 +2021,12 @@ StScrollBar {
 
   StEntry {
     color: on($os-background);
-    selection-background-color: on($os-background, track);
+    selection-background-color: on($os-background, stroke);
     selected-color: on($os-background);
-    @include entry(normal, $fc:on($os-background, track));
+    @include entry(normal, $fc:on($os-background, stroke));
     &:focus { @include entry(focus, $fc:on($os-background)); }
     &:insensitive {
-      @include entry(insensitive, $fc:on($os-background, track-disabled));
+      @include entry(insensitive, $fc:on($os-background, stroke-disabled));
       color: on($os-background, text-disabled);
     }
   }

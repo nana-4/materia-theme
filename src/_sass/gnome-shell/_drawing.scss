@@ -111,7 +111,7 @@
     transition-duration: $duration;
     background-color: if($fc == $primary, $fill, on(dark, fill));
     border-color: transparent;
-    box-shadow: inset 0 -1px if($fc == $primary, $track, $fc);
+    box-shadow: inset 0 -1px if($fc == $primary, $stroke, $fc);
   }
 
   @if $t == focus {
@@ -126,7 +126,7 @@
   @if $t == insensitive {
     color: $text-disabled;
     border-color: transparent;
-    box-shadow: inset 0 -1px if($fc == $primary, $track-disabled, $fc);
+    box-shadow: inset 0 -1px if($fc == $primary, $stroke-disabled, $fc);
   }
 }
 
