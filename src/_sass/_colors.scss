@@ -57,10 +57,15 @@ $on-colors: (
   )
 );
 
+// Determine the strength of highlight on top of given color.
 @function highlight($color) {
-  @if (lightness($color) >= 80%) { @return rgba(white, 0.4); }
-  @else if (lightness($color) >= 40%) { @return rgba(white, 0.2); }
-  @else { @return rgba(white, 0.1); }
+  @if lightness($color) >= 80% {
+    @return rgba(white, .4);
+  } @else if lightness($color) >= 40% {
+    @return rgba(white, .2);
+  } @else {
+    @return rgba(white, .1);
+  }
 }
 
 // Do not use these variables in other files
