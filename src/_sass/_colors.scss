@@ -32,6 +32,8 @@
 
 $on-colors: (
   dark: (
+    primary: #1A73E8,
+    error: #D93025,
     text: rgba(black, .87),
     text2: rgba(black, .6),
     text-disabled: rgba(black, .38),
@@ -42,6 +44,8 @@ $on-colors: (
     fill: rgba(black, .04)
   ),
   light: (
+    primary: #8AB4F8,
+    error: #F28B82,
     text: white,
     text2: rgba(white, .7),
     text-disabled: rgba(white, .5),
@@ -69,10 +73,6 @@ $dark-surface-8dp:                      mix(white, $dark-background, 12%);
 // Basic colors
 //
 
-$primary-dark:                          #1A73E8;
-$primary-light:                         #8AB4F8;
-$primary:                               if($variant == 'light', $primary-dark, $primary-light);
-
 $background:                            if($variant == 'light', #F2F2F2, $dark-background);
 $surface:                               if($variant == 'light', #FFFFFF, $dark-surface-8dp);
 $base:                                  if($variant == 'light', #FFFFFF, $dark-surface-1dp); // semi-surface with 1dp elevation
@@ -92,11 +92,13 @@ $panel-solid:                           if($topbar == 'dark', #1F1F1F, #CCCCCC);
 // Misc colors
 //
 
+$primary:                               on($background, primary);
+
 $link:                                  $primary;
 $link-visited:                          if($variant == 'light', $purple-500, $purple-200);
 
+$error:                                 on($background, error);
 $warning:                               if($variant == 'light', #F4B400, #FDD633);
-$error:                                 if($variant == 'light', #D93025, #F28B82);
 $success:                               if($variant == 'light', #0F9D58, #81C995);
 
 $suggested:                             $primary;
