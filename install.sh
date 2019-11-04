@@ -41,6 +41,7 @@ OPTIONS:
   -c, --color VARIANT...  Specify color variant(s) [standard|dark|light] (Default: All variants)
   -s, --size VARIANT      Specify size variant [standard|compact] (Default: All variants)
   -g, --gdm               Install and apply GDM theme (for advanced users)
+                          See also: src/gnome-shell/README.md
   -h, --help              Show help
 
 INSTALLATION EXAMPLES:

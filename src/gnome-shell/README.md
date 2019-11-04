@@ -14,7 +14,7 @@ To change the GDM (lock/login screen) theme, you need to replace the system's _d
 - `glib-compile-resources` — The package name depends on the distro.
   - `glib2` (Arch Linux)
   - `glib2-devel` (Fedora, openSUSE, etc.)
-  - `libglib2.0-dev` (Debian, Ubuntu, etc.)
+  - `libglib2.0-dev-bin` (Debian, Ubuntu, etc.)
 - `libxml2-utils` — Ubuntu users only.
 
 ## Installation
