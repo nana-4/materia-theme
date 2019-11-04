@@ -41,7 +41,8 @@ $on-colors: (
     stroke: rgba(black, .26),
     stroke-disabled: rgba(black, .12),
     divider: rgba(black, .12),
-    fill: rgba(black, .04)
+    fill: rgba(black, .08),
+    entry-fill: rgba(black, .04)
   ),
   light: (
     primary: #8AB4F8,
@@ -53,7 +54,8 @@ $on-colors: (
     stroke: rgba(white, .3),
     stroke-disabled: rgba(white, .12),
     divider: rgba(white, .12),
-    fill: rgba(white, .04)
+    fill: rgba(white, .08),
+    entry-fill: rgba(white, .04)
   )
 );
 
@@ -136,6 +138,7 @@ $stroke:                                on($background, stroke);
 $stroke-disabled:                       on($background, stroke-disabled);
 $divider:                               on($background, divider);
 $fill:                                  on($background, fill);
+$entry-fill:                            on($background, entry-fill);
 
 $titlebar-text:                         on($titlebar);
 $titlebar-text2:                        on($titlebar, text2);
@@ -145,6 +148,7 @@ $titlebar-stroke:                       on($titlebar, stroke);
 $titlebar-stroke-disabled:              on($titlebar, stroke-disabled);
 $titlebar-divider:                      on($titlebar, divider);
 $titlebar-fill:                         on($titlebar, fill);
+$titlebar-entry-fill:                   on($titlebar, entry-fill);
 
 // workaround for GTK3 @placeholder_text_color which doesn't allow translucent colors
 $placeholder_text_color:                if($variant == 'light', mix(black, $base, percentage(0.6)), mix(white, $base, percentage(0.7)));
