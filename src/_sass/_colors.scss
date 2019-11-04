@@ -27,6 +27,10 @@
 @function on($color, $type: text) {
   $contrast-tone: if(tone($color) == "dark", "light", "dark");
 
+  @if not map-has-key(map-get($on-colors, $contrast-tone), $type) {
+    @error "Invalid type: '#{$type}'";
+  }
+
   @return map-get(map-get($on-colors, $contrast-tone), $type);
 }
 
