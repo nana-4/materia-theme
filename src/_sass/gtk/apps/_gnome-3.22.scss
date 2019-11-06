@@ -754,6 +754,14 @@ popover.messagepopover {
   }
 }
 
+// Workaround for hard-coded .title color
+dzlsuggestionpopover > revealer > box > elastic > scrolledwindow > viewport > list > row:selected {
+  // .title { color: @theme_selected_fg_color; }
+
+  background-color: $primary;
+  color: on($primary);
+}
+
 // Workaround for hard-coded button background
 #titlebar_container .suggestionbutton button {
   // background-color: @content_view_bg;
