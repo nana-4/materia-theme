@@ -754,6 +754,42 @@ popover.messagepopover {
   }
 }
 
+// Workaround for hard-coded button background
+#titlebar_container .suggestionbutton button {
+  // background-color: @content_view_bg;
+  // background-image: none;
+
+  padding: 0;
+  border-radius: 0;
+  box-shadow: inset 0 0 0 9999px $titlebar;
+
+  &:backdrop {
+    box-shadow: inset 0 0 0 9999px $titlebar-backdrop;
+  }
+
+  // For some reason background-image doesn't work well with transition :(
+  image {
+    transition: box-shadow $duration $ease-out,
+                background-color $ripple-fade-in-duration $ease-out;
+    min-width: $medium-size;
+    min-height: $medium-size;
+    border-radius: $circular-radius;
+    box-shadow: inset 0 0 0 9999px transparent;
+  }
+
+  &:hover image {
+    box-shadow: inset 0 0 0 9999px $overlay-hover;
+  }
+
+  &:focus image {
+    box-shadow: inset 0 0 0 9999px $overlay-focus;
+  }
+
+  &:active image {
+    background-color: $overlay-active;
+  }
+}
+
 
 /**********
  * Photos *
@@ -1017,7 +1053,7 @@ button.title label { min-height: $medium-size; }
  **********/
 // Color is needed for Evince to match hardcoded background-color,
 // since Documents app is also uses this style, background-color needs to be set accordingly.
-evview.content-view.view:selected  {
+evview.content-view.view:selected {
   background-color: $primary;
   color: on($primary);
 }
