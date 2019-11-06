@@ -1010,3 +1010,14 @@ button.title label { min-height: $medium-size; }
 
   &:dir(rtl) { margin-right: -5px; }
 }
+
+
+/**********
+ * Evince *
+ **********/
+// Color is needed for Evince to match hardcoded background-color,
+// since Documents app is also uses this style, background-color needs to be set accordingly.
+evview.content-view.view:selected  {
+  background-color: $primary;
+  color: on($primary);
+}
