@@ -1065,3 +1065,16 @@ evview.content-view.view:selected {
   background-color: $primary;
   color: on($primary);
 }
+
+
+/**********
+ * Polari *
+ **********/
+// hard-coded css:
+// https://gitlab.gnome.org/GNOME/polari/blob/master/data/resources/application.css
+
+// background-color is needed to match hard-coded row colors.
+// Just $primary is too harsh for activated rows, so add transparency.
+.polari-room-list row:selected {
+  background-color: rgba($primary, .5);
+}
