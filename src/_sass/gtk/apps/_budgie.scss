@@ -481,19 +481,29 @@ calendar.raven-calendar {
 .budgie-session-dialog {
   @extend %budgie_dialog;
 
+  > box { padding: 8px; }
+
+  // Hide power icon
+  image {
+    margin: -8px;
+    -gtk-icon-transform: scale(0);
+  }
+
   label:not(:last-child),
-  .dialog-title { font-size: 120%; }
+  .dialog-title {
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .dialog-title + label { color: $text2; }
 
   .linked.horizontal > button {
-    padding: 8px 16px;
-    border-top: 1px solid $divider;
-    border-radius: 0;
+    @extend %button_basic.flat;
 
-    @extend %button-flat-simple;
+    &:not(:last-child) { margin-right: 8px; }
 
-    &:first-child { border-bottom-left-radius: $corner-radius; }
-
-    &:last-child { border-bottom-right-radius: $corner-radius; }
+    &:not(:disabled) { color: $primary; }
   }
 }
 
