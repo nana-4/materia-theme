@@ -378,11 +378,6 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
   .expander-button { @extend %circular_button; }
 
   .raven-background {
-    border-style: solid none;
-    border-width: 1px;
-    border-color: $divider;
-    background-color: $base;
-
     // &.middle { border-bottom-style: none; } // applet background between two headers
 
     // Choice chips
@@ -404,7 +399,9 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
     > overlay > widget > image { color: $fill; }
   }
 
-  scrolledwindow.raven-background { border-bottom-style: none; }
+  revealer > .raven-background { border-bottom: 1px solid $divider; }
+
+  .raven-header + .raven-background { border-top: 1px solid $divider; }
 
   .powerstrip button {
     margin: 2px 0 1px;
