@@ -464,9 +464,13 @@ calendar.raven-calendar {
   box-shadow: $shadow-z4, inset 0 1px highlight($surface);
   background-color: $surface;
 
-  button { @extend %button-flat-simple; }
+  button {
+    @extend %button_basic.flat;
 
-  .linked > button { border-radius: $corner-radius; }
+    &.text-button:not(:disabled) { color: $primary; }
+  }
+
+  .linked > button { margin-right: $container-padding; }
 }
 
 %budgie_dialog {
