@@ -524,8 +524,6 @@ calendar.raven-calendar {
 .budgie-run-dialog {
   @extend %budgie_dialog;
 
-  background-color: $base;
-
   entry.search {
     font-size: 120%;
     padding: $container-padding 8px + $container-padding;
@@ -534,7 +532,24 @@ calendar.raven-calendar {
     background-color: transparent;
   }
 
-  list .dim-label { color: $text; }
+  list {
+    padding: 4px 0;
+    background-color: transparent;
+
+    .dim-label { color: inherit; }
+  }
 
   scrolledwindow { border-top: 1px solid $divider; }
+
+  scrollbar {
+    &.right,
+    &.bottom {
+      border-bottom-right-radius: $corner-radius;
+    }
+
+    &.left,
+    &.bottom {
+      border-bottom-left-radius: $corner-radius;
+    }
+  }
 }
