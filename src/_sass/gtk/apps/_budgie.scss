@@ -336,24 +336,6 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
   > box { margin-bottom: -10px; } // remove extra space between box and .raven-header.bottom
 
-  stackswitcher.linked > button {
-    @extend %button-flat;
-
-    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  $primary 0%,
-                                  transparent 0%)
-                                  0 0 0 / 0 0 0px;
-    border-radius: 0;
-
-    &:checked {
-      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                    $primary 100%,
-                                    transparent 0%)
-                                    0 0 2 / 0 0 2px;
-      background-color: transparent;
-    }
-  }
-
   .raven-header {
     min-height: $medium-size;
     padding: 3px;
@@ -362,10 +344,25 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
       padding: 0;
       border-bottom: 1px solid $divider;
 
-      stackswitcher button {
+      stackswitcher.linked > button {
+        @extend %button-flat;
+
         margin: -4px 0 -5px; // remove unwanted vertical margins
         padding: 0 16px;
         min-height: $large-size;
+        border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
+                                      $primary 0%,
+                                      transparent 0%)
+                                      0 0 0 / 0 0 0px;
+        border-radius: 0;
+
+        &:checked {
+          border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
+                                        $primary 100%,
+                                        transparent 0%)
+                                        0 0 2 / 0 0 2px;
+          background-color: transparent;
+        }
       }
     }
 
@@ -387,6 +384,22 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
     background-color: $base;
 
     // &.middle { border-bottom-style: none; } // applet background between two headers
+
+    // Choice chips
+    stackswitcher.linked > button {
+      @extend %button-flat;
+
+      margin: -4px 8px 8px;
+      padding: 0 12px;
+      min-height: 32px;
+      border-radius: $circular-radius;
+      background-color: $fill;
+      font-weight: normal;
+
+      &:checked { color: $primary; }
+
+      &:not(:first-child) { margin-left: 0; }
+    }
 
     > overlay > widget > image { color: $fill; }
   }
