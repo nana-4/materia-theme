@@ -334,6 +334,8 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 .raven {
   background-color: $surface;
 
+  list { background-color: transparent; }
+
   > box { margin-bottom: -10px; } // remove extra space between box and .raven-header.bottom
 
   .raven-header {
@@ -402,6 +404,51 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
   revealer > .raven-background { border-bottom: 1px solid $divider; }
 
   .raven-header + .raven-background { border-top: 1px solid $divider; }
+
+  // Application block in Notifications stack
+  viewport.frame > list > row {
+    // Remove all effects. This should be just a container.
+    padding: 0;
+    box-shadow: none;
+    background: none;
+
+    &:not(:first-child) { border-top: 1px solid $divider; }
+
+    > box {
+      // Remove awkward hard-coded margins
+      margin-top: -5px;
+      margin-left: -5px;
+      margin-bottom: -5px;
+
+      // Application header
+      > box {
+        padding: 6px;
+        margin-bottom: -10px; // Remove hard-coded spacing
+      }
+
+      // Notifications
+      > list > row {
+        padding: 8px;
+
+        > box {
+          margin-bottom: -5px; // Remove hard-coded margin-bottom
+
+          > box {
+            // Title
+            > label { font-weight: bold; }
+
+            // Close button
+            > button.image-button { padding: 0; }
+          }
+
+          > label {
+            margin-top: -6px; // For less spacing: 10 -> 4
+            font-size: smaller;
+          }
+        }
+      }
+    }
+  }
 
   .powerstrip button {
     margin: 2px 0 1px;
