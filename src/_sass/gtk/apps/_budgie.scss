@@ -336,12 +336,13 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
   list { background-color: transparent; }
 
-  > box { margin-bottom: -10px; } // remove extra space between box and .raven-header.bottom
+  > box:not(:only-child) { margin-bottom: -10px; } // remove extra space between box and .raven-header.bottom
 
   .raven-header {
     min-height: $medium-size;
     padding: 3px;
 
+    // Adopt tabs style only for .top
     &.top {
       padding: 0;
       border-bottom: 1px solid $divider;
@@ -382,11 +383,11 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
   .raven-background {
     // &.middle { border-bottom-style: none; } // applet background between two headers
 
-    // Choice chips
+    // Adopt Choice chips style
     stackswitcher.linked > button {
       @extend %button-flat;
 
-      margin: -4px 8px 8px;
+      margin: -2px 8px 9px;
       padding: 0 12px;
       min-height: 32px;
       border-radius: $circular-radius;
@@ -398,6 +399,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
       &:not(:first-child) { margin-left: 0; }
     }
 
+    // Default music icon
     > overlay > widget > image { color: $fill; }
   }
 
