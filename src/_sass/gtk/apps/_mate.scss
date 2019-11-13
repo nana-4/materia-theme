@@ -45,12 +45,21 @@ PanelSeparator {
 }
 
 // the grid left from na-tray and wncktasklist
-MatePanelAppletFrameDBus {
-  border-style: solid;
-  border-color: on($panel, divider);
+MatePanelAppletFrameDBus > MatePanelAppletFrameDBus {
+  background-image:
+    repeating-linear-gradient(
+      currentcolor,
+      currentcolor 4px,
+      transparent 4px,
+      transparent 6px
+    );
+  background-repeat: no-repeat;
+  background-size: 4px 10px;
+  color: on($panel, text2-disabled);
 
-  .mate-panel-menu-bar.horizontal & { border-width: 0 1px; }
-  .mate-panel-menu-bar.vertical & { border-width: 1px 0; }
+  &:dir(ltr) { background-position: 3px; }
+
+  &:dir(rtl) { background-position: calc(100% - 3px); }
 }
 
 // main menu
