@@ -34,32 +34,35 @@
   @return map-get(map-get($on-colors, $contrast-tone), $type);
 }
 
+$oomox-dark: if(tone(%FG%) == dark, %FG%, %BG%); // BG should be the darkest background-color in MD theory.
+$oomox-light: if(tone(%FG%) == light, %FG%, %MATERIA_SURFACE%); // MATERIA_SURFACE should be the lightest background-color in MD theory.
+
 $on-colors: (
   dark: (
     primary: %SEL_BG%,
     error: %TERMINAL_COLOR9%,
-    text: rgba(black, .87),
-    text2: rgba(black, .6),
-    text-disabled: rgba(black, .38),
-    text2-disabled: rgba(black, .26),
-    stroke: rgba(black, .26),
-    stroke-disabled: rgba(black, .12),
-    divider: rgba(black, .12),
-    fill: rgba(black, .08),
-    entry-fill: rgba(black, .04)
+    text: $oomox-dark,
+    text2: rgba($oomox-dark, .7),
+    text-disabled: rgba($oomox-dark, .5),
+    text2-disabled: rgba($oomox-dark, .3),
+    stroke: rgba($oomox-dark, .3),
+    stroke-disabled: rgba($oomox-dark, .12),
+    divider: rgba($oomox-dark, .12),
+    fill: rgba($oomox-dark, .08),
+    entry-fill: rgba($oomox-dark, .04)
   ),
   light: (
     primary: %SEL_BG%,
     error: %TERMINAL_COLOR9%,
-    text: white,
-    text2: rgba(white, .7),
-    text-disabled: rgba(white, .5),
-    text2-disabled: rgba(white, .3),
-    stroke: rgba(white, .3),
-    stroke-disabled: rgba(white, .12),
-    divider: rgba(white, .12),
-    fill: rgba(white, .08),
-    entry-fill: rgba(white, .04)
+    text: $oomox-light,
+    text2: rgba($oomox-light, .7),
+    text-disabled: rgba($oomox-light, .5),
+    text2-disabled: rgba($oomox-light, .3),
+    stroke: rgba($oomox-light, .3),
+    stroke-disabled: rgba($oomox-light, .12),
+    divider: rgba($oomox-light, .12),
+    fill: rgba($oomox-light, .08),
+    entry-fill: rgba($oomox-light, .04)
   )
 );
 
