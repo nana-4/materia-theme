@@ -43,11 +43,12 @@ UnityDecoration {
   .bottom {}
 
   .menuitem {
+    border-radius: $corner-radius $corner-radius 0 0;
+    box-shadow: none; // Don't inherit from .top
     color: $titlebar-text2;
 
     &:hover {
-      box-shadow: inset 0 -2px $titlebar-indicator;
-      background-color: transparent;
+      background-color: $overlay-checked;
       color: $titlebar-text;
     }
   }
@@ -84,8 +85,7 @@ UnityPanelWidget,
 
 .unity-panel.menubar.menuitem:hover,
 .unity-panel.menubar .menuitem *:hover {
-  box-shadow: inset 0 -2px $titlebar-indicator;
-  background-color: transparent;
+  background-color: $overlay-checked;
   color: $titlebar-text;
 }
 
