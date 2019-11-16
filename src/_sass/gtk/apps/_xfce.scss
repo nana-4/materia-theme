@@ -39,6 +39,14 @@
   // &.horizontal .tasklist button { margin: 0 1px; }
 
   // &.vertical .tasklist button { margin: 1px 0; }
+
+  frame > border { border-style: none; }
+
+  progressbar {
+    progress { background-color: on($panel, primary); }
+
+    trough { background-color: on($panel, stroke-disabled); }
+  }
 }
 
 // Workspace switcher provided by libwnck
@@ -109,6 +117,7 @@ XfdesktopIconView.view {
 .thunar {
   #location-toolbar { border-bottom: 1px solid $divider; }
 
+  .shortcuts-pane.frame,
   .standard-view.frame { border-style: none; }
 
   .sidebar .view:not(:selected) { background-color: transparent; }
