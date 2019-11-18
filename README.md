@@ -73,6 +73,8 @@ Ubuntu 18.04 or later | `materia-gtk-theme` | [Link](https://packages.ubuntu.com
 
 <!-- For contributors, please add your package alphabetically! -->
 
+**Warning:** **Ubuntu disco (19.04) & eoan (19.10)** packages are very outdated and incompatible with GNOME 3.32 or later! If you are using GNOME on Ubuntu, you should _manually_ install the theme.
+
 > Note: Some distro packages (especially Ubuntu ones) may be outdated and incompatible with your desktop environment. You can check the latest version [here](https://github.com/nana-4/materia-theme/releases).
 
 ### Flatpak
