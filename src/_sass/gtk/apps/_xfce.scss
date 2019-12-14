@@ -81,12 +81,17 @@ XfdesktopIconView.view {
 }
 
 #XfceNotifyWindow {
-  buttonbox { padding: 0; }
+  border-radius: $corner-radius;
+  box-shadow: $shadow-z4, inset 0 1px highlight($surface);
+  background-color: $surface;
 
-  button {
+  buttonbox button:not(:disabled) { color: $primary; }
+
+  label#summary {
+    font-weight: bold;
+
+    + label { color: $text2; }
   }
-
-  label#summary { font-weight: bold; }
 
   progressbar {
     progress {
