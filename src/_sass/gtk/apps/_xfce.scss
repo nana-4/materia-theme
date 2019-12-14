@@ -120,7 +120,17 @@ XfdesktopIconView.view {
  * Thunar *
  **********/
 .thunar {
-  #location-toolbar { border-bottom: 1px solid $divider; }
+  #location-toolbar {
+    border-bottom: 1px solid $divider;
+
+    // FIXME: This has no .image-button style class :(
+    > toolitem > button {
+      min-width: 24px;
+      padding: ($medium-size - 24px) / 2;
+
+      @extend %circular_button;
+    }
+  }
 
   .shortcuts-pane.frame,
   .standard-view.frame { border-style: none; }
