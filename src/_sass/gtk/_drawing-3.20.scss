@@ -159,6 +159,16 @@
   }
 }
 
+@mixin list-item {
+  &:hover:not(:active) {
+    transition:
+      all $duration $ease-out,
+      box-shadow 0ms,
+      background-size $ripple-fade-out-duration $ease-out,
+      background-image $ripple-fade-out-opacity-duration $ease-out;
+  }
+}
+
 
 @mixin overshoot($p) {
 //

@@ -76,8 +76,6 @@
 }
 
 .view {
-  // @extend row.activatable;
-
   background-color: $base;
   color: $text;
 
@@ -1446,8 +1444,6 @@ treeview.view {
 
   header {
     button {
-      @extend row.activatable;
-
       padding: 2px 6px;
       border-style: none solid solid none;
       border-width: 1px;
@@ -1455,6 +1451,8 @@ treeview.view {
       border-radius: 0;
       background-clip: border-box;
       color: $text2;
+      @include ink-color($text2);
+      @include list-item;
 
       &:disabled { color: $text2-disabled; }
 
@@ -2735,14 +2733,7 @@ row {
   &.activatable {
     @extend %ripple;
     @include ink-color($text, $fg: false);
-
-    &:hover:not(:active) {
-      transition:
-        all $duration $ease-out,
-        box-shadow 0ms,
-        background-size $ripple-fade-out-duration $ease-out,
-        background-image $ripple-fade-out-opacity-duration $ease-out;
-    }
+    @include list-item;
 
     // this is for indicathing which row generated a popover
     // see https://bugzilla.gnome.org/show_bug.cgi?id=754411

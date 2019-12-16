@@ -63,11 +63,11 @@
     }
 
     button.flat:not(.image-button) {
-      @extend row.activatable;
-
       min-height: 32px;
       padding: 0 8px;
       border-radius: 0;
+
+      @include list-item;
 
       &:checked { @extend %selected_items; }
 
