@@ -513,18 +513,6 @@ button.flat {
 }
 
 button {
-  @at-root %button-on-dark {
-    &.flat {
-      @include ink-color(on(dark, text2));
-
-      &:checked { color: on(dark); }
-
-      &:disabled { color: on(dark, text2-disabled); }
-
-      &:checked:disabled { color: on(dark, text-disabled); }
-    }
-  }
-
   // big standalone buttons like in Documents pager
   &.osd {
     padding: ($large-size - 24px) / 2 ($large-size - 16px) / 2;
@@ -3145,7 +3133,9 @@ infobar {
     background-color: $warning;
     color: on($warning);
 
-    // button { @extend %button-on-dark; }
+    button.flat {
+      @include ink-color(on($warning));
+    }
 
     selection {}
 
@@ -3156,7 +3146,9 @@ infobar {
     background-color: $error;
     color: on($error);
 
-    button { @extend %button-on-dark; }
+    button.flat {
+      @include ink-color(on($error));
+    }
 
     selection {}
 
