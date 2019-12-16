@@ -532,8 +532,8 @@ button {
   }
 
   // Suggested and Destructive Action buttons
-  @each $b_type, $b_color in (suggested-action, $suggested),
-                             (destructive-action, $destructive) {
+  @each $b_type, $b_color in (suggested-action, $primary),
+                             (destructive-action, $error) {
     &.#{$b_type} {
       background-color: $b_color;
       color: on($b_color);
@@ -2884,11 +2884,11 @@ messagedialog { // Message Dialog styling
         }
 
         &.suggested-action:not(:disabled) {
-          // @include ink-color($suggested);
+          // @include ink-color($primary);
         }
 
         &.destructive-action:not(:disabled) {
-          @include ink-color($destructive);
+          @include ink-color($error);
         }
       }
     }
