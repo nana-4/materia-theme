@@ -321,16 +321,16 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
 @each $pos, $b_pos in $pos_list {
   // Panel borders
-  // .#{$pos} .budgie-panel { border-#{$b_pos}: 1px solid $frame; }
+  // .#{$pos} .budgie-panel { border-#{$b_pos}: 1px solid $divider; }
 
   // Raven borders
   .#{$pos} frame.raven-frame > border {
     margin-#{$b_pos}: 32px;
-    // border-#{$b_pos}: 1px solid $frame;
+    // border-#{$b_pos}: 1px solid $divider;
   }
 
   // Shadows
-  // .#{$pos} .shadow-block { background-image: linear-gradient(to $b_pos, $frame, transparent); }
+  // .#{$pos} .shadow-block { background-image: linear-gradient(to $b_pos, $divider, transparent); }
 }
 
 // Raven

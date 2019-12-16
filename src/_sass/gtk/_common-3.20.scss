@@ -1047,7 +1047,7 @@ toolbar {
   padding: $container-padding;
   border-style: solid;
   border-width: 0 1px 1px;
-  border-color: $frame;
+  border-color: $divider;
   background-color: $base-alt;
 }
 
@@ -1541,7 +1541,7 @@ menu,
   box-shadow: inset 0 1px highlight($surface);
   background-color: $surface;
   background-clip: border-box;
-  border: 1px solid $frame; // adds borders in a non composited env
+  border: 1px solid $divider; // adds borders in a non composited env
 
   .csd & {
     border: none; // axes borders in a composited env
@@ -1715,7 +1715,7 @@ notebook {
         > tab {
           border-image: linear-gradient(to top, transparent 2px, transparent 2px) 2 / 0 0 2px;
 
-          &:checked { border-image-source: linear-gradient(to top, $primary 2px, $frame 2px); }
+          &:checked { border-image-source: linear-gradient(to top, $primary 2px, $divider 2px); }
 
           &.reorderable-page { border-image-width: 0 1px 2px; }
         }
@@ -1731,7 +1731,7 @@ notebook {
         > tab {
           border-image: linear-gradient(to bottom, transparent 2px, transparent 2px) 2 / 2px 0 0;
 
-          &:checked { border-image-source: linear-gradient(to bottom, $primary 2px, $frame 2px); }
+          &:checked { border-image-source: linear-gradient(to bottom, $primary 2px, $divider 2px); }
 
           &.reorderable-page { border-image-width: 2px 1px 0; }
         }
@@ -1747,7 +1747,7 @@ notebook {
         > tab {
           border-image: linear-gradient(to left, transparent 2px, transparent 2px) 2 / 0 2px 0 0;
 
-          &:checked { border-image-source: linear-gradient(to left, $primary 2px, $frame 2px); }
+          &:checked { border-image-source: linear-gradient(to left, $primary 2px, $divider 2px); }
 
           &.reorderable-page { border-image-width: 1px 2px 1px 0; }
         }
@@ -1763,7 +1763,7 @@ notebook {
         > tab {
           border-image: linear-gradient(to right, transparent 2px, transparent 2px) 2 / 0 0 0 2px;
 
-          &:checked { border-image-source: linear-gradient(to right, $primary 2px, $frame 2px); }
+          &:checked { border-image-source: linear-gradient(to right, $primary 2px, $divider 2px); }
 
           &.reorderable-page { border-image-width: 1px 0 1px 2px; }
         }
@@ -1875,7 +1875,7 @@ notebook {
         &:disabled { color: $text-disabled; }
 
         &.reorderable-page {
-          border-color: $frame;
+          border-color: $divider;
           background-color: $base;
         }
       }
@@ -2645,7 +2645,7 @@ levelbar {
 printdialog {
   paper {
     padding: 0;
-    border: 1px solid $frame;
+    border: 1px solid $divider;
     background-color: $base;
     color: $text;
   }
@@ -2661,7 +2661,7 @@ frame > border,
 .frame {
   margin: 0;
   padding: 0;
-  border: 1px solid $frame;
+  border: 1px solid $divider;
   border-radius: 0;
   box-shadow: none;
 
@@ -2737,7 +2737,7 @@ separator {
  * Lists *
  *********/
 list {
-  border-color: $frame;
+  border-color: $divider;
   background-color: $base;
 
   row { padding: 2px; }
@@ -2816,7 +2816,7 @@ expander {
  ************/
 calendar {
   padding: 1px;
-  border: 1px solid $frame;
+  border: 1px solid $divider;
   color: $text;
 
   &:disabled { color: $text-disabled; }
@@ -3197,7 +3197,7 @@ tooltip {
   box-shadow: none; // otherwise it gets inherited by windowframe.csd
 
   &:not(.csd):not(.unity-csd) {
-    // border: 1px solid $frame;
+    // border: 1px solid $divider;
     // border-radius: $corner-radius + 1px;
     // background-clip: $background-clip-extra;
   }
@@ -3465,9 +3465,9 @@ cursor-handle {
   padding-left: 8px;
   padding-right: 8px;
 
-  border: solid 1px $frame;
+  border: solid 1px $divider;
   border-radius: $corner-radius + 1px;
-  box-shadow: inset 0 -2px $frame;
+  box-shadow: inset 0 -2px $divider;
   background-color: $surface;
   color: $text;
   font-size: smaller;
