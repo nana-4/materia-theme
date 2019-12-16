@@ -303,8 +303,6 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
     &.error ~ button {
       color: on($error, text2);
 
-      &:hover, &:active { color: on($error); }
-
       &:disabled { color: on($error, text2-disabled); }
     }
   }
@@ -496,7 +494,7 @@ popover.popover-selector list {
 omnibar {
   &.linked:not(.vertical) entry { border-radius: $corner-radius; }
 
-  &:not(:hover):not(:active) entry { color: $text2; }
+  entry { color: $text2; }
 }
 
 popover.omnibar list row:not(:last-child) {
@@ -597,7 +595,6 @@ docktab {
 
   &:hover {
     background-color: $overlay-hover;
-    color: $text;
   }
 
   &:checked {

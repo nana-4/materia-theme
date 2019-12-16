@@ -59,16 +59,13 @@
 
   &:hover {
     background-color: darken($background, 5%);
-    color: $text;
   }
 
   &:active {
     background-color: darken($background, 10%);
-    color: $text;
   }
 
   &:disabled {
-    background-color: $background;
     color: $text-disabled;
   }
 
@@ -365,8 +362,7 @@ treeview entry {
   &.button {
     box-shadow: none;
     background-color: transparent;
-
-    &:not(:hover):not(:active) { color: $text2; }
+    color: $text2;
   }
 }
 
@@ -502,7 +498,7 @@ button {
     &.flat {
       color: on(dark, text2);
 
-      &:focus, &:hover, &:active, &:checked { color: on(dark); }
+      &:checked { color: on(dark); }
 
       &:disabled { color: on(dark, text2-disabled); }
 
@@ -730,11 +726,11 @@ button.color {
 
 button.link {
   &:link {
-    &, &:focus, &:hover, &:active { @extend *:link; }
+    @extend *:link;
   }
 
   &:visited {
-    &, &:focus, &:hover, &:active { @extend *:visited; }
+    @extend *:visited;
   }
 
   > label { text-decoration-line: underline; }
@@ -770,9 +766,8 @@ spinbutton {
       border: solid $container-padding transparent;
 
       // Remove unwanted focus indicator
-      &:focus:not(:hover):not(:active):not(:disabled) {
+      &:focus:not(:hover):not(:active) {
         box-shadow: inset 0 0 0 9999px transparent;
-        color: $text2;
       }
 
       &.up:dir(ltr),
@@ -815,7 +810,6 @@ spinbutton {
       // Remove unwanted focus indicator
       &:focus:not(:hover):not(:active) {
         box-shadow: inset 0 0 0 9999px transparent;
-        color: $text2;
       }
 
       &.up { border-radius: $corner-radius $corner-radius 0 0; }
@@ -1113,8 +1107,6 @@ searchbar > revealer > box {
                                   0 0 0 / 0 0 0px;
     color: $titlebar-text2;
 
-    &:focus, &:hover, &:active { color: $titlebar-text; }
-
     &:disabled { color: $titlebar-text2-disabled; }
 
     &:checked {
@@ -1133,8 +1125,6 @@ searchbar > revealer > box {
 
     &:backdrop {
       color: $titlebar-text-disabled;
-
-      &:focus, &:hover, &:active { color: $titlebar-text2; }
 
       &:disabled { color: $titlebar-text2-disabled; }
 
@@ -1433,8 +1423,9 @@ treeview.view {
       border-color: $divider;
       border-radius: 0;
       background-clip: border-box;
+      color: $text2;
 
-      &:not(:focus):not(:hover):not(:active) { color: $text2; }
+      &:disabled { color: $text2-disabled; }
 
       &, &:disabled { background-color: $base; }
 
@@ -1576,7 +1567,6 @@ menu,
 
     &:hover {
       background-image: image($overlay-hover);
-      color: $text;
     }
 
     &:disabled {
@@ -1822,7 +1812,6 @@ notebook {
 
       &:hover {
         background-color: $overlay-hover;
-        color: $text;
       }
 
       &:disabled { color: $text2-disabled; }
@@ -2156,8 +2145,6 @@ radio {
       background-image: none;
     }
 
-    &:not(:checked):not(:indeterminate):not(:disabled) { color: $text2; }
-
     &.left:dir(rtl) {
       margin-left: -12px;
       margin-right: -4px;
@@ -2178,11 +2165,8 @@ radio {
 
     &:dir(rtl) { margin-left: 8px; }
 
-    &:not(:checked):not(:indeterminate):not(:disabled) { color: $text2; }
-
     &, &:hover, &:disabled {
       box-shadow: none;
-      // color: inherit;
     }
   }
 }
@@ -2279,13 +2263,10 @@ treeview.view radio {
   & {
     color: $text2;
 
-    &:hover, &:active { color: $text; }
+    &:checked,
+    &:indeterminate { color: $primary; }
 
     &:disabled { color: $text2-disabled; }
-
-    &:checked, &:indeterminate { color: $primary; }
-
-    &:checked:disabled, &:indeterminate:disabled { color: $text2-disabled; }
   }
 }
 
