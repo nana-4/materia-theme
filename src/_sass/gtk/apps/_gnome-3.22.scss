@@ -41,7 +41,9 @@
   animation: nautilus-operations-button-needs-attention $ripple-fade-out-duration $ease 6 alternate;
 }
 
-.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action):not(:only-child).disclosure-button { @extend %circular_button; }
+.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action):not(:only-child).disclosure-button {
+  border-radius: $circular-radius;
+}
 
 // Path bar
 
@@ -215,7 +217,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 }
 
 // Make operations button circular
-.nautilus-window headerbar revealer > button { @extend %circular_button; }
+.nautilus-window headerbar revealer > button { border-radius: $circular-radius; }
 
 // Ensure paned separator rendering. See issue #84 for details.
 .nautilus-window paned > separator { background-color: $base-alt; }
@@ -455,7 +457,7 @@ layouttab {
   }
 
   // Close button styling for layouttab.
-  // > box > button.close { @extend %circular_button; }
+  // > box > button.close { border-radius: $circular-radius; }
 }
 
 layout {

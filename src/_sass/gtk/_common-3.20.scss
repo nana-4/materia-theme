@@ -429,8 +429,7 @@ button {
   &.image-button {
     min-width: 24px;
     padding: ($medium-size - 24px) / 2;
-
-    @extend %circular_button;
+    border-radius: $circular-radius;
   }
 
   // NOTE: Some image-only buttons use this as well
@@ -615,12 +614,11 @@ button {
   .inline-toolbar & {
     // @extend %button-flat;
 
-    &:not(.text-button) { @extend %circular_button; }
+    &:not(.text-button) { border-radius: $circular-radius; }
   }
 
   .primary-toolbar & { -gtk-icon-shadow: none; } // tango icons don't need shadows
 
-  @at-root %circular_button,
   &.close,
   &.circular { // The Bloody Circul Button
     border-radius: $circular-radius;
@@ -2162,8 +2160,8 @@ radio {
   min-width: 24px;
   margin: -($check_radio_size - 24px) / 2;
   padding: ($check_radio_size - 24px) / 2;
+  border-radius: $circular-radius;
 
-  @extend %circular_button;
   @extend %ripple;
   @include ink-color($text2);
 
@@ -2901,7 +2899,8 @@ filechooser {
 
     > stack > box > button { // The new folder button
       @extend %button-flat;
-      @extend %circular_button;
+
+      border-radius: $circular-radius;
     }
   }
 }
@@ -3410,9 +3409,7 @@ decoration {
 
 // Window Close button
 button.titlebutton {
-  // @extend %button-flat-basic;
-
-  @extend %circular_button;
+  border-radius: $circular-radius;
 
   .selection-mode & {
   }
