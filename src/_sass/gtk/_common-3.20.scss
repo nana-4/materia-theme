@@ -1150,6 +1150,7 @@ searchbar > revealer > box {
 
     &:disabled { color: $titlebar-text2-disabled; }
 
+    @at-root %titlebar-button-checked,
     &:checked {
       border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                     $titlebar-indicator 100%,
@@ -2667,7 +2668,7 @@ frame > border,
   &.flat { border-style: none; }
 }
 
-frame.flat > border { @extend .frame.flat; } // for backward compatibility
+frame.flat > border { border-style: none; } // for backward compatibility
 
 actionbar > revealer > box {
   padding: $container-padding;

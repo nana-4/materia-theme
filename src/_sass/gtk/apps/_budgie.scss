@@ -285,7 +285,7 @@ button.raven-trigger {
   }
 
   .unpinned button.flat.launcher,
-  .pinned button.flat.launcher.running { @extend %underscores:checked; }
+  .pinned button.flat.launcher.running { @extend %underscores-checked; }
 }
 
 %underscores {
@@ -301,6 +301,7 @@ button.raven-trigger {
                                       0 0 0 0 / 0 0 0 0;
       }
 
+      @at-root %underscores-checked,
       &:checked {
         border-image: radial-gradient(circle closest-corner at #{$b_pos},
                                       currentColor 100%,
