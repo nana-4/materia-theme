@@ -641,32 +641,48 @@ button {
 
 // More inline toolbar buttons
 toolbar.inline-toolbar toolbutton {
-  // &:not(:first-child) > button.flat { @extend %linked:not(:first-child); }
+  // &:not(:first-child) > button.flat { @extend %linked-not-first-child; }
 
-  // &:not(:last-child) > button.flat { @extend %linked:not(:last-child); }
+  // &:not(:last-child) > button.flat { @extend %linked-not-last-child; }
+}
+
+%linked-not-first-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+%linked-not-last-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 %linked {
   &:not(:first-child) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    @extend %linked-not-first-child;
   }
 
   &:not(:last-child) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    @extend %linked-not-last-child;
   }
+}
+
+%linked-vertical-not-first-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+%linked-vertical-not-last-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 %linked-vertical {
   &:not(:first-child) {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    @extend %linked-vertical-not-first-child;
   }
 
   &:not(:last-child) {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    @extend %linked-vertical-not-last-child;
   }
 }
 
@@ -893,8 +909,8 @@ combobox {
 
   &.linked {
     button:nth-child(2) {
-      &:dir(ltr) { @extend %linked:not(:first-child); }
-      &:dir(rtl) { @extend %linked:not(:last-child); }
+      &:dir(ltr) { @extend %linked-not-first-child; }
+      &:dir(rtl) { @extend %linked-not-last-child; }
     }
   }
 
@@ -929,15 +945,15 @@ combobox {
 // https://bugzilla.gnome.org/show_bug.cgi?id=733979
 
 .linked:not(.vertical) > combobox {
-  &:not(:first-child) > box > button.combo { @extend %linked:not(:first-child); }
+  &:not(:first-child) > box > button.combo { @extend %linked-not-first-child; }
 
-  &:not(:last-child) > box > button.combo { @extend %linked:not(:last-child); }
+  &:not(:last-child) > box > button.combo { @extend %linked-not-last-child; }
 }
 
 .linked.vertical > combobox {
-  &:not(:first-child) > box > button.combo { @extend %linked-vertical:not(:first-child); }
+  &:not(:first-child) > box > button.combo { @extend %linked-vertical-not-first-child; }
 
-  &:not(:last-child) > box > button.combo { @extend %linked-vertical:not(:last-child); }
+  &:not(:last-child) > box > button.combo { @extend %linked-vertical-not-last-child; }
 }
 
 button.combo:only-child {
