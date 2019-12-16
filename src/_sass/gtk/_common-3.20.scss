@@ -625,13 +625,13 @@ button {
 
     // label { padding: 0; }
   }
+}
 
-  @at-root %small_button {
-    min-height: $small-size;
-    min-width: $small-size;
-    padding: 0;
-    border-radius: $circular-radius;
-  }
+%button-small {
+  min-height: $small-size;
+  min-width: $small-size;
+  padding: 0;
+  border-radius: $circular-radius;
 }
 
 %needs-attention {
@@ -789,7 +789,7 @@ spinbutton {
 
     button {
       @extend %button-flat-basic;
-      @extend %small_button;
+      @extend %button-small;
 
       // margin: $container-padding;
       border: solid $container-padding transparent;
@@ -924,7 +924,7 @@ combobox {
 
   > .linked:not(.vertical) > button:not(:only-child) {
     @extend %button-flat-activatable;
-    // @extend %small_button;
+    // @extend %button-small;
 
     min-height: 16px;
     min-width: 16px;
@@ -1879,7 +1879,7 @@ notebook {
 
       // colors the button like the label, overridden otherwise
       button.flat {
-        @extend %small_button;
+        @extend %button-small;
 
         &:last-child {
           margin-left: $container-padding;
@@ -3039,7 +3039,7 @@ placessidebar.sidebar {
 
     @at-root button.sidebar-button {
       @extend %button-flat-basic;
-      @extend %small_button;
+      @extend %button-small;
     }
 
     &.sidebar-placeholder-row { background-color: $overlay-hover; }
