@@ -416,8 +416,6 @@ button {
     }
   }
 
-  &:drop(active) { @extend button:hover; }
-
   &.text-button {
     min-width: 64px - 16px * 2;
     padding-left: 16px;
@@ -944,6 +942,7 @@ button.combo:only-child {
 
   &:focus { @include entry(focus); }
 
+  &:drop(active),
   &:hover { @include entry(hover); }
 
   &:checked { @include entry(checked); }
@@ -1860,7 +1859,7 @@ notebook {
         margin: -$container-padding -12px;
         padding: $container-padding 12px;
 
-        &:drop(active) { @extend tab:hover; }
+        &:drop(active) { background-color: $overlay-hover; }
       }
 
       // colors the button like the label, overridden otherwise
@@ -3028,8 +3027,6 @@ placessidebar.sidebar {
 
       image.sidebar-icon { color: $primary; }
     }
-
-    &:drop(active) { @extend row:hover; }
   }
 }
 
