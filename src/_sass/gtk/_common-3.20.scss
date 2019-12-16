@@ -231,11 +231,11 @@ entry {
     }
 
     image { // icons inside the entry
-      // @extend %button-flat;
-
       // min-height: $small-size;
       // min-width: $small-size;
       // border-radius: $circular-radius;
+      // @extend %ripple;
+      // @include ink-color($text2);
       color: $text2;
 
       &:hover, &:active { color: $text; }
@@ -414,38 +414,10 @@ button {
 
     &:drop(active) { @extend button:hover; }
 
-    @at-root %button-flat, &.flat {
-      @at-root %button-flat-simple, & {
-        background-color: transparent;
-        @extend %ripple;
-        @include ink-color($text2);
-
-        &:disabled {
-          background-color: transparent;
-          color: $text2-disabled;
-        }
-      }
-
-      &:checked {
-        background-color: $overlay-checked;
-        color: $text;
-
-        &:disabled {
-          color: $text-disabled;
-        }
-      }
-    }
-
     &.text-button {
       min-width: 64px - 16px * 2;
       padding-left: 16px;
       padding-right: 16px;
-
-      &.flat {
-        min-width: 64px - 8px * 2;
-        padding-left: 8px;
-        padding-right: 8px;
-      }
     }
 
     &.image-button {
@@ -467,12 +439,6 @@ button {
         &:last-child { margin-right: 16px - ($medium-size - 24px) / 2; }
       }
 
-      &.flat label {
-        &:first-child { margin-left: 12px - ($medium-size - 24px) / 2; }
-
-        &:last-child { margin-right: 12px - ($medium-size - 24px) / 2; }
-      }
-
       image:not(:only-child) { margin: 0 (24px - 16px) / 2; }
     }
 
@@ -487,17 +453,64 @@ button {
 
       &.image-button:not(.text-button) { @extend %linked-vertical-image-button; }
     }
+  }
+}
 
-    .linked:not(.vertical) > &.flat,
-    .linked.vertical > &.flat {
-      &:not(:only-child) { // specificity bump
-        border-radius: $corner-radius;
+%button-flat-basic {
+  background-color: transparent;
+  @include ink-color($text2);
 
-        &.image-button:not(.text-button) { border-radius: $circular-radius; }
-      }
+  &:disabled {
+    background-color: transparent;
+    color: $text2-disabled;
+  }
+}
+
+%button-flat-activatable {
+  @extend %button-flat-basic;
+
+  &:checked {
+    background-color: $overlay-checked;
+    color: $text;
+
+    &:disabled {
+      color: $text-disabled;
+    }
+  }
+}
+
+%button-flat,
+button.flat {
+  @extend %button-flat-activatable;
+
+  &.text-button {
+    min-width: 64px - 8px * 2;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  &.text-button.image-button {
+    min-width: 24px;
+    padding: ($medium-size - 24px) / 2;
+
+    label {
+      &:first-child { margin-left: 12px - ($medium-size - 24px) / 2; }
+
+      &:last-child { margin-right: 12px - ($medium-size - 24px) / 2; }
     }
   }
 
+  .linked:not(.vertical) > &,
+  .linked.vertical > & {
+    &:not(:only-child) { // specificity bump
+      border-radius: $corner-radius;
+
+      &.image-button:not(.text-button) { border-radius: $circular-radius; }
+    }
+  }
+}
+
+button {
   @at-root %button-on-dark {
     &.flat {
       @include ink-color(on(dark, text2));
@@ -586,7 +599,7 @@ button {
 
   // inline-toolbar buttons
   .inline-toolbar & {
-    // @extend %button_basic.flat;
+    // @extend %button-flat;
 
     &:not(.text-button) { @extend %circular_button; }
   }
@@ -763,7 +776,7 @@ spinbutton {
     }
 
     button {
-      @extend %button-flat-simple;
+      @extend %button-flat-basic;
       @extend %small_button;
 
       // margin: $container-padding;
@@ -809,7 +822,7 @@ spinbutton {
       min-width: $large-size;
       padding: 0;
 
-      @extend %button-flat-simple;
+      @extend %button-flat-basic;
 
       // Remove unwanted focus indicator
       &:focus:not(:hover):not(:active) {
@@ -898,7 +911,7 @@ combobox {
   }
 
   > .linked:not(.vertical) > button:not(:only-child) {
-    @extend %button-flat;
+    @extend %button-flat-activatable;
     // @extend %small_button;
 
     min-height: 16px;
@@ -949,7 +962,7 @@ toolbar {
   padding: 2px;
   background-color: $background;
 
-  button { @extend %button_basic.flat; }
+  button { @extend %button-flat; }
 
   // on OSD
   .osd & { background-color: transparent; }
@@ -1103,7 +1116,7 @@ searchbar > revealer > box {
   .linked:not(.vertical) > entry:not(:only-child) { border-radius: $corner-radius $corner-radius 0 0; }
 
   @at-root %titlebar-button, & button:not(.suggested-action):not(.destructive-action) {
-    @extend %button_basic.flat;
+    @extend %button-flat;
 
     border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
                                   $titlebar-indicator 0%,
@@ -1307,7 +1320,7 @@ window.devel .titlebar:not(.selection-mode) {
  ************/
 %pathbar_button,
 .path-bar.linked:not(.vertical) > button {
-  @extend %button-flat;
+  @extend %button-flat-basic;
 
   padding-left: ($medium-size - 24px) / 2;
   padding-right: ($medium-size - 24px) / 2;
@@ -1322,6 +1335,7 @@ window.devel .titlebar:not(.selection-mode) {
                                   $primary 100%,
                                   transparent 0%)
                                   0 0 2 / 0 0 2px;
+    color: $text;
 
     &, &:disabled { background-color: transparent; }
   }
@@ -1631,13 +1645,13 @@ popover.background {
   // &.magnifier,
   // &.osd { @extend %osd; }
 
-  // button:not(.suggested-action):not(.destructive-action) { @extend %button_basic.flat; }
+  // button:not(.suggested-action):not(.destructive-action) { @extend %button-flat; }
 
   // .linked:not(.vertical) > entry:not(:only-child) { border-radius: $corner-radius $corner-radius 0 0; }
 
   &.menu button,
   button.model {
-    @extend %button_basic.flat;
+    @extend %button-flat;
 
     min-height: 32px;
     padding: 0 8px;
@@ -1787,11 +1801,14 @@ notebook {
     }
 
     > tabs > arrow {
-      @extend %button-flat-simple;
-
       min-height: 16px;
       min-width: 16px;
       border-radius: 0;
+
+      @extend %ripple;
+      @include ink-color($text2);
+
+      &:disabled { color: $text2-disabled; }
     }
 
     tab {
@@ -2004,7 +2021,7 @@ scrollbar {
 
   // button styling
   button {
-    @extend %button-flat-simple;
+    @extend %button-flat-basic;
 
     min-width: 16px;
     min-height: 16px;
@@ -2635,7 +2652,7 @@ actionbar > revealer > box {
   background-color: $base;
   background-clip: border-box;
 
-  button:not(.suggested-action):not(.destructive-action) { @extend %button_basic.flat; }
+  button:not(.suggested-action):not(.destructive-action) { @extend %button-flat; }
 
   .linked:not(.vertical) > entry:not(:only-child) { border-radius: $corner-radius $corner-radius 0 0; }
 }
@@ -2741,7 +2758,7 @@ row {
   margin: 8px;
 
   button {
-    @extend %button_basic.flat;
+    @extend %button-flat;
 
     &.text-button:not(:disabled) {
       @include ink-color($primary);
@@ -2799,7 +2816,7 @@ calendar {
     border-radius: 0;
   }
 
-  &.button { @extend %button-flat-simple; }
+  &.button { @extend %button-flat-basic; }
 
   &.highlight {
     color: $text2;
@@ -2841,7 +2858,7 @@ messagedialog { // Message Dialog styling
       // padding: $container-padding;
 
       button {
-        @extend %button_basic.flat;
+        @extend %button-flat;
 
         &:not(:last-child) { margin-right: $container-padding; }
 
@@ -2869,7 +2886,7 @@ filechooser {
     background-color: $background;
 
     > stack > box > button { // The new folder button
-      @extend %button_basic.flat;
+      @extend %button-flat;
       @extend %circular_button;
     }
   }
@@ -3008,7 +3025,7 @@ placessidebar.sidebar {
     }
 
     @at-root button.sidebar-button {
-      @extend %button-flat-simple;
+      @extend %button-flat-basic;
       @extend %small_button;
     }
 
@@ -3112,7 +3129,7 @@ infobar {
     background-color: $base;
 
     button {
-      @extend %button_basic.flat;
+      @extend %button-flat;
 
       &.text-button:not(:disabled) {
         @include ink-color($primary);
@@ -3379,7 +3396,7 @@ decoration {
 
 // Window Close button
 button.titlebutton {
-  // @extend %button-flat-simple;
+  // @extend %button-flat-basic;
 
   @extend %circular_button;
 

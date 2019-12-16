@@ -19,13 +19,20 @@
   font-weight: 500;
 
   button {
-    @extend %button-flat;
-    @extend %button-on-dark.flat;
-
     min-height: 16px;
     min-width: 16px;
     padding: 0;
     border-radius: 0;
+
+    @include ink-color(on($panel, text2));
+
+    &:disabled { color: on($panel, text2-disabled); }
+
+    &:checked {
+      color: on(dark);
+
+      &:disabled { color: on(dark, text-disabled); }
+    }
   }
 
   .tasklist button {

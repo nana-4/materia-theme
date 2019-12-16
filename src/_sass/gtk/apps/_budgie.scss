@@ -14,7 +14,7 @@
   button {
     border-radius: $corner-radius;
 
-    @extend %button-flat-simple;
+    @extend %button-flat-basic;
   }
 }
 
@@ -218,13 +218,20 @@ button.raven-trigger {
   &.transparent { background-color: $scrim; }
 
   button {
-    @extend %button-flat;
-    @extend %button-on-dark.flat;
-
     min-height: 16px;
     min-width: 16px;
     padding: 0;
     border-radius: 0;
+
+    @include ink-color(on($panel, text2));
+
+    &:disabled { color: on($panel, text2-disabled); }
+
+    &:checked {
+      color: on(dark);
+
+      &:disabled { color: on(dark, text-disabled); }
+    }
   }
 
   &.horizontal button { padding: 0 4px; }
@@ -343,7 +350,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
       border-bottom: 1px solid $divider;
 
       stackswitcher.linked > button {
-        @extend %button-flat;
+        @extend %button-flat-activatable;
 
         margin: -4px 0 -5px; // remove unwanted vertical margins
         padding: 0 16px;
@@ -380,7 +387,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
     // Adopt Choice chips style
     stackswitcher.linked > button {
-      @extend %button-flat;
+      @extend %button-flat-activatable;
 
       margin: -2px 8px 9px;
       padding: 0 12px;
@@ -519,7 +526,7 @@ calendar.raven-calendar {
   background-color: $surface;
 
   button {
-    @extend %button_basic.flat;
+    @extend %button-flat;
 
     &.text-button:not(:disabled) { @include ink-color($primary); }
   }
@@ -557,7 +564,7 @@ calendar.raven-calendar {
   .dialog-title + label { color: $text2; }
 
   .linked.horizontal > button {
-    @extend %button_basic.flat;
+    @extend %button-flat;
 
     &:not(:last-child) { margin-right: 8px; }
 

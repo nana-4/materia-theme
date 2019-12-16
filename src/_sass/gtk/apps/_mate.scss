@@ -17,13 +17,20 @@
   font-weight: 500;
 
   button {
-    @extend %button-flat;
-    @extend %button-on-dark.flat;
-
     min-height: 16px;
     min-width: 16px;
     padding: 0; // NOTE: Most buttons padding are hard-coded to 0 (except for hide buttons)
     border-radius: 0;
+
+    @include ink-color(on($panel, text2));
+
+    &:disabled { color: on($panel, text2-disabled); }
+
+    &:checked {
+      color: on(dark);
+
+      &:disabled { color: on(dark, text-disabled); }
+    }
   }
 }
 
@@ -165,7 +172,7 @@ PanelApplet.wnck-applet .wnck-pager {
   expander > title { min-height: 32px; }
 
   button {
-    @extend %button-flat-simple;
+    @extend %button-flat-basic;
 
     padding: 4px 16px;
   }
@@ -222,7 +229,7 @@ na-tray-applet widget box widget {
   background-color: $surface;
 
   button {
-    @extend %button-flat-simple;
+    @extend %button-flat-basic;
 
     min-height: 24px;
     min-width: 24px;
@@ -476,7 +483,7 @@ na-tray-applet widget box widget {
   frame > border { border-style: none; }
 
   button {
-    @extend %button_basic.flat;
+    @extend %button-flat;
 
     &:not(:disabled) { @include ink-color($primary); }
   }

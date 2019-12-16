@@ -201,7 +201,6 @@
     background-size $ripple-fade-out-duration $ease-out,
     background-image $ripple-fade-out-opacity-duration $ease-out;
   outline: none;
-  box-shadow: inset 0 0 0 9999px transparent;
   background-image: radial-gradient(circle, transparent 10%, transparent 0%);
   background-repeat: no-repeat;
   background-position: center;
@@ -230,6 +229,8 @@
   @if $activated {
     background-color: rgba($color, $overlay-checked-opacity + $opacity-modifier);
   }
+
+  box-shadow: inset 0 0 0 9999px transparent;
 
   &:hover {
     box-shadow: inset 0 0 0 9999px rgba($color, $overlay-hover-opacity + $opacity-modifier);

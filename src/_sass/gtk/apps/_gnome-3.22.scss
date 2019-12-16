@@ -311,7 +311,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
     border: solid $container-padding transparent;
     border-radius: $circular-radius;
 
-    @extend %button-flat-simple;
+    @extend %button-flat-basic;
     @extend %small_button;
 
     &:last-child:dir(ltr),
@@ -428,7 +428,7 @@ layouttabbar {
   border-bottom: 1px solid $divider;
   background-color: $background;
 
-  button { @extend %button-flat; }
+  button { @extend %button-flat-activatable; }
 
   > box > button {
     margin: (40px - $medium-size) / 2 0;
@@ -529,7 +529,7 @@ popover.messagepopover {
   &.background { padding: 0; }
 
   .popover-action-area button {
-    @extend %button-flat-simple;
+    @extend %button-flat-basic;
 
     padding: 8px 16px;
     border-top: 1px solid $divider;
@@ -1081,7 +1081,7 @@ evview.content-view.view:selected {
  * Fractal *
  ***********/
 .message-input-area button {
-  @extend %button-flat;
+  @extend %button-flat-activatable;
 }
 
 // To display the drop shadow
