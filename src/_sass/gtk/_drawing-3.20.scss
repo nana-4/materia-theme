@@ -173,20 +173,17 @@
 }
 
 
-@mixin overshoot($p) {
-//
-// overshoot
-//
-// $p: position
-//
-// possible $p values:
-// top, bottom, right, left
-//
+@mixin overshoot($side) {
+  $valid-sides: top, bottom, left, right;
 
-  $_position: center $p;
+  @if not index($valid-sides, $side) {
+    @error "#{$side} is not a valid side. Expected one of #{$valid-sides}.";
+  }
 
-  @if ($p == left) or ($p == right) {
-    $_position: $p center;
+  $_position: center $side;
+
+  @if $side == left or $side == right {
+    $_position: $side center;
   }
 
   background-image: -gtk-gradient(radial,
@@ -204,15 +201,12 @@
 }
 
 
-@mixin undershoot($p) {
-//
-// undershoot
-//
-// $p: position
-//
-// possible $p values:
-// top, bottom, right, left
-//
+@mixin undershoot($side) {
+  $valid-sides: top, bottom, left, right;
+
+  @if not index($valid-sides, $side) {
+    @error "#{$side} is not a valid side. Expected one of #{$valid-sides}.";
+  }
 
   $_undershoot_color_dark: $stroke;
   $_undershoot_color_light: transparent;
@@ -220,13 +214,13 @@
   $_gradient_dir: left;
   $_dash_bg_size: 12px 1px;
   $_gradient_repeat: repeat-x;
-  $_bg_pos: left $p;
+  $_bg_pos: left $side;
 
-  @if ($p == left) or ($p == right) {
+  @if $side == left or $side == right {
     $_gradient_dir: top;
     $_dash_bg_size: 1px 12px;
     $_gradient_repeat: repeat-y;
-    $_bg_pos: $p top;
+    $_bg_pos: $side top;
   }
 
   background-color: transparent; // shouldn't be needed, but better to be sure
@@ -235,7 +229,7 @@
                                     $_undershoot_color_light 50%,
                                     $_undershoot_color_dark 50%);
 
-  padding-#{$p}: 1px;
+  padding-#{$side}: 1px;
   background-size: $_dash_bg_size;
   background-repeat: $_gradient_repeat;
   background-origin: content-box;
