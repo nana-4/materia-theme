@@ -389,7 +389,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
       background-color: $fill;
       font-weight: normal;
 
-      &:checked { color: $primary; }
+      &:checked { @include ink-color($primary); }
 
       &:not(:first-child) { margin-left: 0; }
     }
@@ -521,7 +521,7 @@ calendar.raven-calendar {
   button {
     @extend %button_basic.flat;
 
-    &.text-button:not(:disabled) { color: $primary; }
+    &.text-button:not(:disabled) { @include ink-color($primary); }
   }
 
   .linked > button { margin-right: $container-padding; }
@@ -561,7 +561,7 @@ calendar.raven-calendar {
 
     &:not(:last-child) { margin-right: 8px; }
 
-    &:not(:disabled) { color: $primary; }
+    &:not(:disabled) { @include ink-color($primary); }
   }
 }
 

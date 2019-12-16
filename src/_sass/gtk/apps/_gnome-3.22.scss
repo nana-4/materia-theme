@@ -301,7 +301,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
     &:not(.error) { background-color: $surface; }
 
     &.error ~ button {
-      color: on($error, text2);
+      @include ink-color(on($error, text2));
 
       &:disabled { color: on($error, text2-disabled); }
     }

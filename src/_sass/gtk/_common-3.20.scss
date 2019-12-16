@@ -416,20 +416,24 @@ button {
 
     @at-root %button-flat, &.flat {
       @at-root %button-flat-simple, & {
-        @include button(flat-normal);
+        background-color: transparent;
+        @extend %ripple;
+        @include ink-color($text2);
 
-        &:focus { @include button(flat-focus); }
-
-        &:hover { @include button(flat-hover); }
-
-        &:active { @include button(flat-active); }
-
-        &:disabled { @include button(flat-disabled); }
+        &:disabled {
+          background-color: transparent;
+          color: $text2-disabled;
+        }
       }
 
-      &:checked { @include button(flat-checked); }
+      &:checked {
+        background-color: $overlay-checked;
+        color: $text;
 
-      &:checked:disabled { @include button(flat-checked-disabled); }
+        &:disabled {
+          color: $text-disabled;
+        }
+      }
     }
 
     &.text-button {
@@ -496,7 +500,7 @@ button {
 
   @at-root %button-on-dark {
     &.flat {
-      color: on(dark, text2);
+      @include ink-color(on(dark, text2));
 
       &:checked { color: on(dark); }
 
@@ -533,7 +537,7 @@ button {
 
       &.flat {
         background-color: transparent;
-        color: $b_color;
+        @include ink-color($b_color);
 
         &:disabled { @include button(flat-disabled); }
 
@@ -689,9 +693,9 @@ modelbutton.flat,
   min-height: $menuitem-size;
   padding: 0 8px;
   border-radius: $corner-radius;
-  color: $text;
 
-  @extend %button-flat-simple;
+  @extend %ripple;
+  @include ink-color($text, $fg: false);
 
   &:selected { @extend %selected_items; }
 }
@@ -726,11 +730,11 @@ button.color {
 
 button.link {
   &:link {
-    @extend *:link;
+    @include ink-color($link);
   }
 
   &:visited {
-    @extend *:visited;
+    @include ink-color($link-visited);
   }
 
   > label { text-decoration-line: underline; }
@@ -1105,7 +1109,8 @@ searchbar > revealer > box {
                                   $titlebar-indicator 0%,
                                   transparent 0%)
                                   0 0 0 / 0 0 0px;
-    color: $titlebar-text2;
+
+    @include ink-color($titlebar-text2);
 
     &:disabled { color: $titlebar-text2-disabled; }
 
@@ -2127,13 +2132,17 @@ radio {
   margin: -($check_radio_size - 24px) / 2;
   padding: ($check_radio_size - 24px) / 2;
 
-  @extend %button-flat-simple;
   @extend %circular_button;
+  @extend %ripple;
+  @include ink-color($text2);
 
-  &:checked, &:indeterminate {
-    color: $primary;
+  &:checked,
+  &:indeterminate {
+    @include ink-color($primary);
+  }
 
-    &:disabled { color: $text2-disabled; }
+  &:disabled {
+    color: $text2-disabled;
   }
 
   // &:only-child { margin: -12px; }
@@ -2695,54 +2704,28 @@ list {
 
 row {
   &.activatable {
-    transition: $transition,
-                background-size $ripple-fade-out-duration $ease-out,
-                background-image $ripple-fade-out-opacity-duration $ease-out;
-    outline: none;
-    box-shadow: inset 0 0 0 9999px transparent;
-    background-image: radial-gradient(circle, transparent 10%, transparent 0%);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 1000% 1000%;
+    @extend %ripple;
+    @include ink-color($text, $fg: false);
 
-    &:focus {
-      box-shadow: inset 0 0 0 9999px $overlay-focus;
+    &:hover:not(:active) {
+      transition:
+        all $duration $ease-out,
+        box-shadow 0ms,
+        background-size $ripple-fade-out-duration $ease-out,
+        background-image $ripple-fade-out-opacity-duration $ease-out;
     }
 
-    &:hover {
-      transition: $transition,
-                  box-shadow 0ms,
-                  background-size $ripple-fade-out-duration $ease-out,
-                  background-image $ripple-fade-out-opacity-duration $ease-out;
-      box-shadow: inset 0 0 0 9999px $overlay-hover;
-    }
-
-    &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
-    &:active {
-      transition: $transition,
-                  background-size 0ms,
-                  background-image 0ms;
-      animation: ripple $ripple-fade-in-duration $ease-out forwards;
-      box-shadow: inset 0 0 0 9999px $overlay-hover;
-      background-image: radial-gradient(circle, $overlay-active 10%, transparent 0%);
-      background-size: 0% 0%;
+    // this is for indicathing which row generated a popover
+    // see https://bugzilla.gnome.org/show_bug.cgi?id=754411
+    &.has-open-popup {
+      background-color: $overlay-checked;
     }
   }
 
   &:selected {
     @extend %selected_items;
-    color: $primary; // for overlays
 
-    image,
-    label { color: $text; }
-
-    button image,
-    button label { color: inherit; }
-
-    &:disabled {
-      image,
-      label { color: $text-disabled; }
-    }
+    @include ink-color($primary, $fg: false);
   }
 }
 
@@ -2760,7 +2743,9 @@ row {
   button {
     @extend %button_basic.flat;
 
-    &.text-button:not(:disabled) { color: $primary; }
+    &.text-button:not(:disabled) {
+      @include ink-color($primary);
+    }
   }
 
   &.frame,
@@ -2860,11 +2845,17 @@ messagedialog { // Message Dialog styling
 
         &:not(:last-child) { margin-right: $container-padding; }
 
-        &:not(:disabled) { color: $primary; }
+        &:not(:disabled) {
+          @include ink-color($primary);
+        }
 
-        // &.suggested-action:not(:disabled) { color: $suggested; }
+        &.suggested-action:not(:disabled) {
+          // @include ink-color($suggested);
+        }
 
-        &.destructive-action:not(:disabled) { color: $destructive; }
+        &.destructive-action:not(:disabled) {
+          @include ink-color($destructive);
+        }
       }
     }
   }
@@ -2942,9 +2933,8 @@ stacksidebar.sidebar {
     border-radius: $corner-radius;
 
     &:selected {
-      background-color: $overlay-checked;
-      color: $primary;
       font-weight: 500;
+      @include ink-color($primary, $activated: true);
     }
 
     + row { margin-top: 4px; }
@@ -2997,9 +2987,8 @@ placessidebar.sidebar {
     > revealer { padding: 0 8px; }
 
     &:selected {
-      background-color: $overlay-checked;
-      color: $primary;
       font-weight: 500;
+      @include ink-color($primary, $activated: true);
 
       image.sidebar-icon { color: $primary; }
     }
@@ -3125,7 +3114,9 @@ infobar {
     button {
       @extend %button_basic.flat;
 
-      &.text-button:not(:disabled) { color: $primary; }
+      &.text-button:not(:disabled) {
+        @include ink-color($primary);
+      }
     }
   }
 
@@ -3497,7 +3488,7 @@ button.emoji-section {
 
   &:checked {
     // background-color: transparent;
-    color: $primary;
+    @include ink-color($primary, $activated: true);
   }
 
   &:not(:last-child) { margin-right: 0; }

@@ -194,6 +194,56 @@
   }
 }
 
+%ripple {
+  transition:
+    all $duration $ease-out,
+    border-image $ripple-fade-in-duration $ease-out,
+    background-size $ripple-fade-out-duration $ease-out,
+    background-image $ripple-fade-out-opacity-duration $ease-out;
+  outline: none;
+  box-shadow: inset 0 0 0 9999px transparent;
+  background-image: radial-gradient(circle, transparent 10%, transparent 0%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1000% 1000%;
+
+  &:active {
+    transition:
+      all $duration $ease-out,
+      border-image $ripple-fade-in-duration $ease-out,
+      background-size 0ms,
+      background-image 0ms;
+    animation: ripple $ripple-fade-in-duration $ease-out forwards;
+    background-size: 0% 0%;
+  }
+}
+
+@mixin ink-color($color, $opacity-modifier: 0, $fg: true, $activated: false) {
+  @if saturation($color) > 50% {
+    $opacity-modifier: .04;
+  }
+
+  @if $fg {
+    color: $color;
+  }
+
+  @if $activated {
+    background-color: rgba($color, $overlay-checked-opacity + $opacity-modifier);
+  }
+
+  &:hover {
+    box-shadow: inset 0 0 0 9999px rgba($color, $overlay-hover-opacity + $opacity-modifier);
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 0 9999px rgba($color, $overlay-focus-opacity + $opacity-modifier);
+  }
+
+  &:active {
+    background-image: radial-gradient(circle, rgba($color, $overlay-active-opacity + $opacity-modifier) 10%, transparent 0%);
+  }
+}
+
 
 @mixin overshoot($p) {
 //
