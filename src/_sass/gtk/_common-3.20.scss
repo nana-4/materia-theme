@@ -396,21 +396,28 @@ button {
     min-width: 16px;
     padding: ($medium-size - 24px) / 2 ($medium-size - 16px) / 2;
     border-radius: $corner-radius;
+    background-color: $surface;
+    color: $text;
     font-weight: 500;
 
-    @include button(normal);
+    @extend %ripple;
+    @include raised-ink-color($text);
 
-    &:focus { @include button(focus); }
+    &:disabled {
+      box-shadow: none;
+      background-color: $fill;
+      color: $text-disabled;
+    }
 
-    &:hover { @include button(hover); }
+    &:checked {
+      background-color: mix(rgba($text, 1), $surface, percentage($overlay-checked-opacity));
 
-    &:active { @include button(active); }
-
-    &:disabled { @include button(disabled); }
-
-    &:checked { @include button(checked); }
-
-    &:checked:disabled { @include button(checked-disabled); }
+      &:disabled {
+        box-shadow: inset 0 0 0 9999px $overlay-checked;
+        background-color: $fill;
+        color: $text-disabled;
+      }
+    }
 
     &:drop(active) { @extend button:hover; }
 
@@ -543,18 +550,27 @@ button {
     &.#{$b_type} {
       background-color: $b_color;
       color: on($b_color);
+      @include raised-ink-color(on($b_color));
 
-      &:disabled { @include button(disabled); }
+      &:disabled {
+        box-shadow: none;
+        background-color: $fill;
+        color: $text-disabled;
+      }
 
-      &:checked { background-color: mix(on($b_color), $b_color, percentage(0.3)); }
+      &:checked { background-color: mix(on($b_color), $b_color, percentage($overlay-checked-opacity)); }
 
       &.flat {
         background-color: transparent;
         @include ink-color($b_color);
 
-        &:disabled { @include button(flat-disabled); }
+        &:disabled {
+          box-shadow: none;
+          background-color: transparent;
+          color: $text2-disabled;
+        }
 
-        &:checked { background-color: rgba($b_color, 0.3); }
+        &:checked { background-color: rgba($b_color, $overlay-checked-opacity); }
       }
 
       .osd & {
