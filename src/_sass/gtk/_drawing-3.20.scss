@@ -133,8 +133,7 @@
   }
 
   @if $t == checked {
-    background-color: $primary;
-    color: on($primary);
+    background-color: mix(rgba($text, 1), $surface, percentage($overlay-checked-opacity));
   }
 
   @if $t == checked-disabled {
