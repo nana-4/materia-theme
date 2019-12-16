@@ -972,13 +972,7 @@ toolbar {
 
   // stand-alone OSD toolbars
   &.osd {
-    transition: $transition-shadow;
-    padding: $container-padding;
-    border-radius: $corner-radius;
-    box-shadow: $shadow-z4, inset 0 1px highlight($surface);
-    background-color: $surface;
-
-    &:backdrop { box-shadow: $shadow-z2, inset 0 1px highlight($surface); }
+    @extend %toolbar-osd;
 
     &.left,
     &.right,
@@ -1020,6 +1014,16 @@ toolbar {
 
     switch { margin: 2px + $container-padding 2px; }
   }
+}
+
+%toolbar-osd {
+  transition: $transition-shadow;
+  padding: $container-padding;
+  border-radius: $corner-radius;
+  box-shadow: $shadow-z4, inset 0 1px highlight($surface);
+  background-color: $surface;
+
+  &:backdrop { box-shadow: $shadow-z2, inset 0 1px highlight($surface); }
 }
 
 // searchbar, location-bar & inline-toolbar
@@ -2749,7 +2753,7 @@ row {
 .app-notification {
   // @extend %osd;
 
-  @extend toolbar.osd;
+  @extend %toolbar-osd;
 
   margin: 8px;
 
