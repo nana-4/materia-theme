@@ -75,7 +75,7 @@ $on-colors: (
 }
 
 // Private variables for dark background colors
-$-dark-background:                       #212121;
+$-dark-background:                       #1F1F1F;
 $-dark-surface-1dp:                      mix(white, $-dark-background, 5%);
 $-dark-surface-4dp:                      mix(white, $-dark-background, 9%);
 $-dark-surface-8dp:                      mix(white, $-dark-background, 12%);
@@ -127,28 +127,32 @@ $overlay-checked:                       gtkalpha(currentColor, 0.12);
 $overlay-selected:                      rgba($primary, 0.24);
 
 //
-// Text and derivative colors
+// “On” colors
 //
 
-$text:                                  on($background);
-$text2:                                 on($background, text2);
-$text-disabled:                         on($background, text-disabled);
-$text2-disabled:                        on($background, text2-disabled);
-$stroke:                                on($background, stroke);
-$stroke-disabled:                       on($background, stroke-disabled);
-$divider:                               on($background, divider);
-$fill:                                  on($background, fill);
-$entry-fill:                            on($background, entry-fill);
+$base-fg:                               if($variant == 'light', black, white);
 
-$titlebar-text:                         on($titlebar);
-$titlebar-text2:                        on($titlebar, text2);
-$titlebar-text-disabled:                on($titlebar, text-disabled);
-$titlebar-text2-disabled:               on($titlebar, text2-disabled);
-$titlebar-stroke:                       on($titlebar, stroke);
-$titlebar-stroke-disabled:              on($titlebar, stroke-disabled);
-$titlebar-divider:                      on($titlebar, divider);
-$titlebar-fill:                         on($titlebar, fill);
-$titlebar-entry-fill:                   on($titlebar, entry-fill);
+$text:                                  rgba($base-fg, .87);
+$text2:                                 rgba($base-fg, .6);
+$text-disabled:                         rgba($base-fg, .38);
+$text2-disabled:                        rgba($base-fg, .26);
+$stroke:                                rgba($base-fg, .26);
+$stroke-disabled:                       rgba($base-fg, .12);
+$divider:                               rgba($base-fg, .12);
+$fill:                                  rgba($base-fg, .08);
+$entry-fill:                            rgba($base-fg, .04);
+
+$titlebar-base-fg:                      if($topbar == 'dark', white, black);
+
+$titlebar-text:                         rgba($titlebar-base-fg, .87);
+$titlebar-text2:                        rgba($titlebar-base-fg, .6);
+$titlebar-text-disabled:                rgba($titlebar-base-fg, .38);
+$titlebar-text2-disabled:               rgba($titlebar-base-fg, .26);
+$titlebar-stroke:                       rgba($titlebar-base-fg, .26);
+$titlebar-stroke-disabled:              rgba($titlebar-base-fg, .12);
+$titlebar-divider:                      rgba($titlebar-base-fg, .12);
+$titlebar-fill:                         rgba($titlebar-base-fg, .08);
+$titlebar-entry-fill:                   rgba($titlebar-base-fg, .04);
 
 // workaround for GTK3 @placeholder_text_color which doesn't allow translucent colors
-$placeholder_text_color:                if($variant == 'light', mix(black, $base, percentage(0.6)), mix(white, $base, percentage(0.7)));
+$placeholder_text_color:                mix($base-fg, $base, percentage(.6));
