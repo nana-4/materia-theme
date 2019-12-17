@@ -74,11 +74,11 @@ $on-colors: (
   }
 }
 
-// Do not use these variables in other files
-$dark-background:                       #212121;
-$dark-surface-1dp:                      mix(white, $dark-background, 5%);
-$dark-surface-4dp:                      mix(white, $dark-background, 9%);
-$dark-surface-8dp:                      mix(white, $dark-background, 12%);
+// Private variables for dark background colors
+$-dark-background:                       #212121;
+$-dark-surface-1dp:                      mix(white, $-dark-background, 5%);
+$-dark-surface-4dp:                      mix(white, $-dark-background, 9%);
+$-dark-surface-8dp:                      mix(white, $-dark-background, 12%);
 
 //
 // Main colors
@@ -86,17 +86,17 @@ $dark-surface-8dp:                      mix(white, $dark-background, 12%);
 
 $primary:                               if($variant == 'light', on(light, primary), on(dark, primary));
 
-$background:                            if($variant == 'light', #F2F2F2, $dark-background);
-$surface:                               if($variant == 'light', #FFFFFF, $dark-surface-8dp);
-$base:                                  if($variant == 'light', #FFFFFF, $dark-surface-1dp); // semi-surface with 1dp elevation
-$base-alt:                              if($variant == 'light', #FAFAFA, $dark-surface-1dp);
+$background:                            if($variant == 'light', #F2F2F2, $-dark-background);
+$surface:                               if($variant == 'light', #FFFFFF, $-dark-surface-8dp);
+$base:                                  if($variant == 'light', #FFFFFF, $-dark-surface-1dp); // semi-surface with 1dp elevation
+$base-alt:                              if($variant == 'light', #FAFAFA, $-dark-surface-1dp);
 
 $error:                                 if($variant == 'light', on(light, error), on(dark, error));
 $warning:                               if($variant == 'light', #F4B400, #FDD633);
 $success:                               if($variant == 'light', #0F9D58, #81C995);
 $visited:                               if($variant == 'light', $purple-500, $purple-200);
 
-$os-background:                         $dark-background;
+$os-background:                         $-dark-background;
 $tooltip:                               rgba(#616161, 0.9);
 $scrim:                                 rgba(black, 0.6);
 $scrim-alt:                             rgba(black, 0.3);
@@ -104,8 +104,8 @@ $scrim-alt:                             rgba(black, 0.3);
 $panel:                                 if($topbar == 'dark', #1F1F1F, $scrim);
 $panel-solid:                           if($topbar == 'dark', #1F1F1F, #CCCCCC); // for Unity panel which doesn't allow translucent colors
 
-$titlebar:                              if($topbar == 'dark', $dark-surface-4dp, #E0E0E0);
-$titlebar-backdrop:                     if($topbar == 'dark', $dark-surface-1dp, #D6D6D6);
+$titlebar:                              if($topbar == 'dark', $-dark-surface-4dp, #E0E0E0);
+$titlebar-backdrop:                     if($topbar == 'dark', $-dark-surface-1dp, #D6D6D6);
 $titlebar-indicator:                    if($topbar == 'dark', currentColor, $primary);
 
 //
