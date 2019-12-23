@@ -87,12 +87,14 @@
 }
 
 
+$ripple-transition-property: all, border-image, background-size, background-image;
+$ripple-transition-duration: $duration, $ripple-fade-in-duration, $ripple-fade-out-duration, $ripple-fade-out-opacity-duration;
+$ripple-active-transition-duration: $duration, $ripple-fade-in-duration, 0ms, 0ms;
+
 %ripple {
-  transition:
-    all $duration $ease-out,
-    border-image $ripple-fade-in-duration $ease-out,
-    background-size $ripple-fade-out-duration $ease-out,
-    background-image $ripple-fade-out-opacity-duration $ease-out;
+  transition-property: $ripple-transition-property;
+  transition-duration: $ripple-transition-duration;
+  transition-timing-function: $ease-out;
   outline: none;
   background-image: radial-gradient(circle, transparent 10%, transparent 0%);
   background-repeat: no-repeat;
@@ -100,11 +102,7 @@
   background-size: 1000% 1000%;
 
   &:active {
-    transition:
-      all $duration $ease-out,
-      border-image $ripple-fade-in-duration $ease-out,
-      background-size 0ms,
-      background-image 0ms;
+    transition-duration: $ripple-active-transition-duration;
     animation: ripple $ripple-fade-in-duration $ease-out forwards;
     background-size: 0% 0%;
   }
@@ -164,11 +162,8 @@
 @mixin list-item {
   &:drop(active):not(:active),
   &:hover:not(:active) {
-    transition:
-      all $duration $ease-out,
-      box-shadow 0ms,
-      background-size $ripple-fade-out-duration $ease-out,
-      background-image $ripple-fade-out-opacity-duration $ease-out;
+    transition-property: $ripple-transition-property, box-shadow;
+    transition-duration: $ripple-transition-duration, 0ms;
   }
 }
 
