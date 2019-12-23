@@ -78,47 +78,43 @@ $on-colors: (
 }
 
 //
-// Basic colors
+// Main colors
 //
+
+$primary:                               if($variant == 'light', on(light, primary), on(dark, primary));
 
 $background:                            %BG%;
 $surface:                               %MATERIA_SURFACE%;
 $base:                                  %MATERIA_VIEW%;
 $base-alt:                              %INACTIVE_MATERIA_VIEW%;
 
+$error:                                 if($variant == 'light', on(light, error), on(dark, error));
+$warning:                               %TERMINAL_COLOR11%;
+$success:                               %TERMINAL_COLOR10%;
+$visited:                               %TERMINAL_COLOR5%;
+
 $os-background:                         %HDR_BG3%;
 $tooltip:                               rgba(%HDR_BG%, 0.9);
 $scrim:                                 rgba(black, %MATERIA_PANEL_OPACITY%);
 $scrim-alt:                             rgba(black, 0.3);
-$scrim-inverse:                         rgba(white, 0.1);
-$titlebar:                              %HDR_BG%;
-$titlebar-backdrop:                     %HDR_BG2%;
+
 $panel:                                 if($topbar == 'dark', %HDR_BG3%, $scrim);
 $panel-solid:                           %HDR_BG3%; // for Unity panel which doesn't allow translucent colors
 
-//
-// Misc colors
-//
-
-$primary:                               on($background, primary);
-
-$link:                                  $primary;
-$link-visited:                          %TERMINAL_COLOR5%;
-
-$error:                                 on($background, error);
-$warning:                               %TERMINAL_COLOR11%;
-$success:                               %TERMINAL_COLOR10%;
-
-$suggested:                             $primary;
-$destructive:                           $error;
-
-$frame:                                 if($variant == 'light', rgba(black, 0.12), rgba(black, 0.26)); // instead of shadows
-$border-alt:                            rgba(black, 0.26); // darker border color for Chrome and Firefox
+$titlebar:                              %HDR_BG%;
+$titlebar-backdrop:                     %HDR_BG2%;
 $titlebar-indicator:                    if($topbar == 'dark', currentColor, $primary);
 
 //
 // Overlay state colors
 //
+
+$overlay-hover-opacity:                 .08;
+$overlay-focus-opacity:                 .08;
+$overlay-focus-hover-opacity:           .16;
+$overlay-active-opacity:                .12;
+$overlay-checked-opacity:               .12;
+$overlay-selected-opacity:              .24;
 
 $overlay-hover:                         gtkalpha(currentColor, 0.08);
 $overlay-focus:                         gtkalpha(currentColor, 0.08);
@@ -128,7 +124,7 @@ $overlay-checked:                       gtkalpha(currentColor, 0.12);
 $overlay-selected:                      rgba($primary, %MATERIA_SELECTION_OPACITY%);
 
 //
-// Text and derivative colors
+// “On” colors
 //
 
 $text:                                  %FG%;
