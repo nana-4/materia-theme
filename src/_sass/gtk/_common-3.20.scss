@@ -2889,29 +2889,31 @@ messagedialog { // Message Dialog styling
       border-bottom-left-radius: $corner-radius;
       border-bottom-right-radius: $corner-radius;
     }
+  }
 
-    .dialog-action-box {
-      margin-top: -$container-padding;
-      // padding: $container-padding;
+  .dialog-action-box {
+    margin-top: -$container-padding;
+    // padding: $container-padding;
 
-      button {
-        @extend %button-flat;
-
-        &:not(:last-child) { margin-right: $container-padding; }
-
-        &:not(:disabled) {
-          @include ink-color($primary);
-        }
-
-        &.suggested-action:not(:disabled) {
-          // @include ink-color($primary);
-        }
-
-        &.destructive-action:not(:disabled) {
-          @include ink-color($error);
-        }
-      }
+    button:not(:last-child) {
+      margin-right: $container-padding;
     }
+  }
+}
+
+.dialog-action-box button {
+  @extend %button-flat;
+
+  &:not(:disabled) {
+    @include ink-color($primary);
+  }
+
+  &.suggested-action:not(:disabled) {
+    // @include ink-color($primary);
+  }
+
+  &.destructive-action:not(:disabled) {
+    @include ink-color($error);
   }
 }
 
