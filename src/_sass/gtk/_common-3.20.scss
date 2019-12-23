@@ -2301,9 +2301,20 @@ menu menuitem radio {
 // the transformation is set on the active state and it get reset on the checked state.
 // radio:not(:checked):active { -gtk-icon-transform: scale(0); }
 
+// Otherwise, treeview.view styling will be applied...
 treeview.view check,
 treeview.view radio {
   padding: 0;
+  color: $text2;
+
+  &:checked,
+  &:indeterminate {
+    color: $primary;
+  }
+
+  &:disabled {
+    color: $text2-disabled;
+  }
 
   &,
   &:hover,
@@ -2311,15 +2322,6 @@ treeview.view radio {
   &:selected:hover {
     box-shadow: none;
     background-color: transparent;
-  }
-
-  & {
-    color: $text2;
-
-    &:checked,
-    &:indeterminate { color: $primary; }
-
-    &:disabled { color: $text2-disabled; }
   }
 }
 
