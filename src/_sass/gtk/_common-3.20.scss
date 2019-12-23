@@ -2824,7 +2824,9 @@ calendar {
   border: 1px solid $divider;
   color: $text;
 
-  &:disabled { color: $text-disabled; }
+  &:disabled {
+    color: $text-disabled;
+  }
 
   &:selected {
     @extend %selected_items;
@@ -2838,14 +2840,27 @@ calendar {
     border-radius: 0;
   }
 
-  &.button { @extend %button-flat-basic; }
+  &.button {
+    border-radius: $corner-radius + 1px;
+    color: $text2;
+
+    &:hover {
+      background-image: image($overlay-hover);
+    }
+
+    &:disabled {
+      color: $text2-disabled;
+    }
+  }
 
   &.highlight {
     color: $text2;
     font-weight: 500;
   }
 
-  &:indeterminate { color: $text2-disabled; }
+  &:indeterminate {
+    color: $text2-disabled;
+  }
 }
 
 
