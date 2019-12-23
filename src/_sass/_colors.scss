@@ -79,6 +79,7 @@ $-dark-background:                       #1F1F1F;
 $-dark-surface-1dp:                      mix(white, $-dark-background, 5%);
 $-dark-surface-4dp:                      mix(white, $-dark-background, 9%);
 $-dark-surface-8dp:                      mix(white, $-dark-background, 12%);
+$-dark-surface-switch:                   mix(white, $-dark-background, 60%);
 
 //
 // Main colors
@@ -88,6 +89,8 @@ $primary:                               if($variant == 'light', on(light, primar
 
 $background:                            if($variant == 'light', #F2F2F2, $-dark-background);
 $surface:                               if($variant == 'light', #FFFFFF, $-dark-surface-8dp);
+$switch-surface:                        if($variant == 'light', #FFFFFF, $-dark-surface-switch); // Special case for switches
+
 $base:                                  if($variant == 'light', #FFFFFF, $-dark-surface-1dp); // semi-surface with 1dp elevation
 $base-alt:                              if($variant == 'light', #FAFAFA, $-dark-surface-1dp);
 
