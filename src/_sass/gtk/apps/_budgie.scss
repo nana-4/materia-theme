@@ -288,11 +288,14 @@ button.raven-trigger {
   .pinned button.flat.launcher.running { @extend %underscores-checked; }
 }
 
+$underscores-list:
+  (top,    center calc(1px),        2 0 0 0 / 2px 0 0 0),
+  (bottom, center calc(100% - 1px), 0 0 2 0 / 0 0 2px 0),
+  (left,   calc(1px) center,        0 0 0 2 / 0 0 0 2px),
+  (right,  calc(100% - 1px) center, 0 2 0 0 / 0 2px 0 0);
+
 %underscores {
-  @each $pos, $b_pos, $b_wid in (top,    center calc(1px),        2 0 0 0 / 2px 0 0 0),
-                                (bottom, center calc(100% - 1px), 0 0 2 0 / 0 0 2px 0),
-                                (left,   calc(1px) center,        0 0 0 2 / 0 0 0 2px),
-                                (right,  calc(100% - 1px) center, 0 2 0 0 / 0 2px 0 0) {
+  @each $pos, $b_pos, $b_wid in $underscores-list {
     .#{$pos} & {
       & {
         border-image: radial-gradient(circle closest-corner at #{$b_pos},
@@ -317,7 +320,7 @@ frame.raven-frame > border {
   box-shadow: $shadow-z16;
 }
 
-$pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
+$pos_list: (top: bottom, bottom: top, left: right, right: left);
 
 @each $pos, $b_pos in $pos_list {
   // Panel borders

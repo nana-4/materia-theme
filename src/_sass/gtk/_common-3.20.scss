@@ -266,14 +266,13 @@ entry {
   selection { @extend %selected_items; }
 
   // entry error and warning style
-  @each $e_type, $e_color in (error, $error),
-                             (warning, $warning) {
-    &.#{$e_type} {
-      @include entry(normal, $e_color);
+  @each $class, $color in (".error": $error, ".warning": $warning) {
+    &#{$class} {
+      @include entry(normal, $color);
 
-      &:focus { @include entry(checked, $e_color); }
+      &:focus { @include entry(checked, $color); }
 
-      &:disabled { @include entry(disabled, $e_color); }
+      &:disabled { @include entry(disabled, $color); }
     }
   }
 
@@ -305,22 +304,21 @@ entry {
   &:disabled { @include entry(raised-disabled); }
 
   // entry error and warning style
-  @each $e_type, $e_color in (error, $error),
-                             (warning, $warning) {
-    &.#{$e_type} {
-      @include entry(raised-normal, $e_color);
+  @each $class, $color in (".error": $error, ".warning": $warning) {
+    &#{$class} {
+      @include entry(raised-normal, $color);
 
-      &:focus { @include entry(raised-focus, $e_color); }
+      &:focus { @include entry(raised-focus, $color); }
 
-      &:disabled { @include entry(raised-disabled, $e_color); }
+      &:disabled { @include entry(raised-disabled, $color); }
 
       image {
-        color: on($e_color, text2);
+        color: on($color, text2);
 
         &:hover,
-        &:active { color: on($e_color); }
+        &:active { color: on($color); }
 
-        &:disabled { color: on($e_color, text-disabled); }
+        &:disabled { color: on($color, text-disabled); }
       }
     }
   }
@@ -532,12 +530,11 @@ button {
   }
 
   // Suggested and Destructive Action buttons
-  @each $b_type, $b_color in (suggested-action, $primary),
-                             (destructive-action, $error) {
-    &.#{$b_type} {
-      background-color: $b_color;
-      color: on($b_color);
-      @include raised-ink-color(on($b_color));
+  @each $class, $color in (".suggested-action": $primary, ".destructive-action": $error) {
+    &#{$class} {
+      background-color: $color;
+      color: on($color);
+      @include raised-ink-color(on($color));
 
       &:disabled {
         box-shadow: none;
@@ -545,11 +542,11 @@ button {
         color: $text-disabled;
       }
 
-      &:checked { background-color: mix(on($b_color), $b_color, percentage($overlay-checked-opacity)); }
+      &:checked { background-color: mix(on($color), $color, percentage($overlay-checked-opacity)); }
 
       &.flat {
         background-color: transparent;
-        @include ink-color($b_color);
+        @include ink-color($color);
 
         &:disabled {
           box-shadow: none;
@@ -557,7 +554,7 @@ button {
           color: $text2-disabled;
         }
 
-        &:checked { background-color: rgba($b_color, $overlay-checked-opacity); }
+        &:checked { background-color: rgba($color, $overlay-checked-opacity); }
       }
 
       .osd & {
@@ -2142,11 +2139,11 @@ switch {
 
   &:hover, &:active { -gtk-icon-shadow: $icon-shadow-z4; }
 
-  @each $s, $as in ('', '-unchecked'),
-                   (':checked', '-checked') {
-    &#{$s} {
-      -gtk-icon-source: -gtk-scaled(url("assets/selectionmode-checkbox#{$as}#{$asset-suffix}.png"),
-                                    url("assets/selectionmode-checkbox#{$as}#{$asset-suffix}@2.png"));
+  @each $class, $suffix in ("": "-unchecked", ":checked": "-checked") {
+    &#{$class} {
+      $_url: 'assets/selectionmode-checkbox#{$suffix}#{$asset-suffix}';
+
+      -gtk-icon-source: -gtk-scaled(url("#{$_url}.png"), url("#{$_url}@2.png"));
     }
   }
 }
@@ -2421,10 +2418,9 @@ scale {
     border-radius: 50%;
     color: $primary;
 
-    @each $s, $as in ('', ''),
-                     (':disabled', '-disabled') {
-      &#{$s} {
-        $_url: 'assets/scale-slider#{$as}#{$asset-suffix}';
+    @each $class, $suffix in ("": "", ":disabled": "-disabled") {
+      &#{$class} {
+        $_url: 'assets/scale-slider#{$suffix}#{$asset-suffix}';
 
         background-image: -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png')),
                           radial-gradient(circle, transparent 10%, transparent 0%);
@@ -2495,16 +2491,16 @@ scale {
 
   // *WARNING* scale with marks madness following
 
-  @each $dir_class, $dir_infix in ('horizontal', 'horz'),
-                                  ('vertical', 'vert') {
-    @each $marks_infix, $marks_class in ('marks-before', 'marks-before:not(.marks-after)'),
-                                        ('marks-after', 'marks-after:not(.marks-before)') {
-      &.#{$dir_class}.#{$marks_class} {
+  @each $dir_class, $dir_infix in (".horizontal": "-horz", ".vertical": "-vert") {
+    @each $marks_class, $marks_infix in (
+      ".marks-before:not(.marks-after)": "-marks-before",
+      ".marks-after:not(.marks-before)": "-marks-after"
+    ) {
+      &#{$dir_class}#{$marks_class} {
         slider {
-          @each $state, $state_infix in ('', ''),
-                                        (':disabled', '-disabled') {
-            &#{$state} {
-              $_scale_asset: 'assets/scale-#{$dir_infix}-#{$marks_infix}-slider#{$state_infix}#{$asset-suffix}';
+          @each $state_class, $state_infix in ("": "", ":disabled": "-disabled") {
+            &#{$state_class} {
+              $_scale_asset: 'assets/scale#{$dir_infix}#{$marks_infix}-slider#{$state_infix}#{$asset-suffix}';
 
               background-image: -gtk-scaled(url('#{$_scale_asset}.png'), url('#{$_scale_asset}@2.png')),
                                 radial-gradient(circle, transparent 10%, transparent 0%);
@@ -2512,7 +2508,7 @@ scale {
           }
 
           &:active {
-            $_scale_asset: 'assets/scale-#{$dir_infix}-#{$marks_infix}-slider#{$asset-suffix}';
+            $_scale_asset: 'assets/scale#{$dir_infix}#{$marks_infix}-slider#{$asset-suffix}';
 
             background-image: -gtk-scaled(url('#{$_scale_asset}.png'), url('#{$_scale_asset}@2.png')),
                               radial-gradient(circle, $overlay-active 10%, transparent 0%);

@@ -81,18 +81,11 @@
 }
 
 // Default running and focused application style
-@each $p, $pt in ('.left', 'left'),
-                 ('.right', 'right'),
-                 ('.top', 'top'),
-                 ('.bottom', 'bottom') {
-  @each $n, $nb in ('.running1', 'running1'),
-                   ('.running2', 'running2'),
-                   ('.running3', 'running3'),
-                   ('.running4', 'running4') {
-    @each $f, $fc in ('', ''),
-                     ('.focused', '-focused') {
-      #dashtodockContainer#{$p} .default#{$n}#{$f} {
-        background-image: url("assets/dash/#{$pt}-#{$nb}#{$fc}.svg");
+@each $side in "left", "right", "top", "bottom" {
+  @for $i from 1 through 4 {
+    @each $class, $suffix in ("": "", ".focused": "-focused") {
+      #dashtodockContainer.#{$side} .default.running#{$i}#{$class} {
+        background-image: url("assets/dash/#{$side}-running#{$i}#{$suffix}.svg");
       }
     }
   }
