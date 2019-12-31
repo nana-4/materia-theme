@@ -403,15 +403,22 @@ na-tray-applet widget box widget {
 }
 
 // infobar
+
 .caja-notebook frame > border {
   border-style: none;
 }
 
 #caja-extra-view-widget {
   border-bottom: 1px solid $divider;
-  background-color: $base; // needs overriding
+  background-color: $base;
 
   > box > box > label { font-weight: bold; }
+
+  button {
+    @extend %button-flat;
+
+    &:not(:disabled) { @include ink-color($primary); }
+  }
 }
 
 
