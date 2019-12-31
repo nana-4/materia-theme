@@ -11,10 +11,9 @@
   .primary-toolbar {
     border-bottom: 1px solid $divider;
 
-    // FIXME: workaround for wrong size allocation of Nemo
-    entry {
-      min-height: 0;
-      margin: 0;
+    // FIXME: workaround for hard-coded border-width of GtkEventBox for entry
+    stack > box {
+      margin: -2px;
     }
 
     // instead of .path-bar button
