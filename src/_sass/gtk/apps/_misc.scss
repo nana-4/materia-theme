@@ -188,6 +188,12 @@ tooltip.background.chromium { background-color: rgba($tooltip, 1); }
 
   // remove ugly border around the menus
   menu { border: none; }
+
+  // Workaround: Firefox doesn't properly read color from
+  // menuitem:disabled, but from menuitem label:disabled.
+  menuitem label:disabled {
+    color: $text-disabled;
+  }
 }
 
 // for backward compatibility
