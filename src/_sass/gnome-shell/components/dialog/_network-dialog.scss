@@ -10,47 +10,81 @@
   padding: 24px;
 }
 
-.nm-dialog-airplane-box { spacing: 12px; }
+.nm-dialog-airplane-box {
+  spacing: 12px;
+}
 
 .nm-dialog-airplane-headline {
   font-weight: bold;
   text-align: center;
 }
 
-.nm-dialog-airplane-text { color: $fg_color; }
+.nm-dialog-airplane-text {
+  color: inherit;
+}
 
 // header
 .nm-dialog-header {
-  font-weight: bold;
+  @include type(headline6);
 }
+
 .nm-dialog-header-icon {
-  icon-size: $base_icon_size * 2;
+  icon-size: 32px;
 }
-.nm-dialog-header-hbox { spacing: 10px; }
+
+.nm-dialog-header-hbox {
+  spacing: 10px;
+}
 
 // list of networks
 .nm-dialog-scroll-view {
-  border: 1px solid $borders_color;
-  padding:0;
-  background-color: darken($bg_color, 3%);
+  border: 0;
+  padding: 0;
+  background-color: transparent;
 }
 
 // list item
 .nm-dialog-item {
-  @include fontsize($base_font_size);
-  border-bottom: 1px solid $borders_color;
-  padding: $base_padding * 2;
-  spacing: 0px;
+  transition-duration: $duration;
+  padding: 12px;
+  spacing: 20px;
+  border-bottom: 0;
+  border-radius: $corner-radius;
+  font-size: 1em;
+
+  &:focus {
+    background-color: $overlay-focus;
+  }
+
+  &:hover {
+    background-color: $overlay-hover;
+  }
+
+  &:active {
+    transition-duration: $duration-ripple;
+    background-color: $overlay-active;
+  }
+
   &:selected {
-    background-color: $selected_bg_color;
-    color: $selected_fg_color;
+    background-color: $overlay-selected;
+    color: $text;
   }
 }
 
 // icons in list
-.nm-dialog-icon { icon-size: $base_icon_size; }
-.nm-dialog-icons { spacing: $base_spacing * 2; }
+.nm-dialog-icon {
+  icon-size: 16px;
+}
+
+.nm-dialog-icons {
+  spacing: .5em;
+}
 
 // no networks
-.no-networks-label { color: $insensitive_fg_color; }
-.no-networks-box { spacing: $base_padding; }
+.no-networks-label {
+  color: $text2;
+}
+
+.no-networks-box {
+  spacing: 12px;
+}
