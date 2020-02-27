@@ -2,31 +2,31 @@
 
 // thumbnails in overview
 .workspace-thumbnails {
-  @extend %overview_panel;
-  visible-width: 32px; //amount visible before hover
-  spacing: $base_spacing;
-  padding: $base_padding;
+  @extend %overview-panel;
+  visible-width: 32px; // amount visible before hover
+  spacing: 12px;
+  padding: 12px;
 
-  border-radius: $modal_radius 0 0 $modal_radius;
   border-right-width: 0;
+  border-radius: $corner-radius 0 0 $corner-radius;
 
   &:rtl {
-    border-radius: 0 $modal_radius $modal_radius 0;
     border-left-width: 0;
+    border-radius: 0 $corner-radius $corner-radius 0;
   }
 
   // drag and drop indicator
   .placeholder {
-    background-image: url("resource:///org/gnome/shell/theme/dash-placeholder.svg");
-    background-size: contain;
     height: 24px;
+    background-image: url("assets/dash-placeholder.svg");
+    background-size: contain;
   }
 }
 
 // selected indicator
 .workspace-thumbnail-indicator {
-  border: 3px solid $selected_bg_color;
-  border-radius: 3px;
-  padding: 0px;
-  // background-color: transparentize($selected_bg_color, 0.9);
+  padding: 6px 10px;
+  border: 0 solid on(dark);
+  border-left-width: 2px;
+  border-radius: 0;
 }

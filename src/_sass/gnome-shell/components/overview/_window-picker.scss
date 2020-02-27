@@ -29,22 +29,10 @@
   padding: 4px 8px;
   border: 0;
   border-radius: $corner-radius;
+  background-color: $scrim;
+  color: on($scrim);
   font-size: 1em;
   font-weight: normal;
-
-  @if $version >= 3.26 {
-    background-color: $scrim;
-    color: on($scrim);
-  } @else {
-    -shell-caption-spacing: 12px;
-    background-color: transparent;
-    color: on(dark);
-
-    &:hover {
-      background-color: on(dark, stroke);
-      color: on(dark);
-    }
-  }
 }
 
 // Close button
@@ -81,16 +69,5 @@
 
     // transition-duration: $duration-ripple;
     background-image: url("assets/window-close-active.svg");
-  }
-
-  // For <= 3.26.0
-  @if $version <= 3.26 {
-    &:rtl {
-      -st-background-image-shadow: $shadow-1;
-
-      &:hover {
-        -st-background-image-shadow: $shadow-2;
-      }
-    }
   }
 }
