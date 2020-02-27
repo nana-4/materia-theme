@@ -67,91 +67,6 @@
     -x-offset: 8px;
   }
 
-  /* App Vault/Grid */
-  .icon-grid {
-    spacing: 30px;
-    -shell-grid-horizontal-item-size: 136px;
-    -shell-grid-vertical-item-size: 136px;
-
-    .overview-icon { icon-size: 96px; }
-  }
-  //.app-display { spacing: 20px; }
-
-  .system-action-icon {
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2); // FIXME: this should really have a highlight
-    background-color: $grey_900;
-    color: $white;
-    border-radius: 99px;
-    icon-size: 48px;
-  }
-
-  .app-view-controls { //favorties | all toggle container
-    width: 320px;
-    padding-bottom: 32px;
-  }
-  .app-view-control { //favorties | all toggle button
-    padding: 0 8px;
-    font-weight: bold;
-    color: on(dark, text2);
-    &:hover {
-      color: on(dark);
-      background-color: $inverse-overlay-hover !important;
-    }
-    &:active {
-      color: on(dark);
-      background-color: $inverse-overlay-active !important;
-    }
-    &:checked {
-      color: on(dark);
-      background-color: rgba($scrim, 0.01) !important;
-      box-shadow: inset 0 2px 0 on(dark);
-    }
-    &:first-child {
-      border-right-width: 0;
-      border-radius: $corner-radius;
-      &:checked { border-radius: 0; }
-    }
-    &:last-child {
-      border-radius: $corner-radius;
-      &:checked { border-radius: 0; }
-    }
-  }
-
-  //Icon tile
-  .app-well-app,
-  .app-well-app.app-folder,
-  .show-apps,
-  .grid-search-result {
-    & .overview-icon {
-      @extend %icon_tile;
-    }
-    &:hover .overview-icon,
-    &:focus .overview-icon,
-    &:selected .overview-icon {
-      background-color: $inverse-overlay-hover;
-      transition-duration: 0ms;
-      border-image: none;
-      background-image: none;
-    }
-    &:active .overview-icon,
-    &:checked .overview-icon {
-      background-color: $inverse-overlay-active;
-      box-shadow: $shadow-0;
-      transition-duration: $duration-ripple;
-    }
-
-  }
-
-  .app-well-app-running-dot { //running apps indicator
-    width: 32px; height: 2px;
-    background-color: on(dark);
-    margin-bottom: 0;
-  }
-
-  .app-well-app.app-folder > .overview-icon {
-    background-color: on(dark, fill);
-  }
-
   .show-apps .show-apps-icon {
     color: on(dark, text2);
   }
@@ -164,55 +79,6 @@
     transition-duration: $duration;
   }
 
-
-  // Collections
-  .app-folder-popup { //expanded collection
-    -arrow-border-radius: $corner-radius;
-    -arrow-background-color: on(dark, fill);
-    -arrow-base: 24px;
-    -arrow-rise: 12px;
-  }
-  .app-folder-popup-bin { padding: 5px; }
-  .app-folder-icon {
-    padding: 5px;
-    spacing-rows: 5px;
-    spacing-columns: 5px;
-  }
-
-  .page-indicator {
-    padding: 15px 20px;
-
-    .page-indicator-icon {
-      width: 12px;
-      height: 12px;
-      border-radius: 12px;
-      background-image: none;
-      background-color: on(dark, text2-disabled);
-      transition-duration: $duration;
-    }
-    &:hover .page-indicator-icon {
-      background-image: none;
-      background-color: on(dark, text-disabled);
-    }
-    &:active .page-indicator-icon {
-      background-image: none;
-      background-color: on(dark, text2);
-    }
-    &:checked .page-indicator-icon {
-      background-image: none;
-      background-color: on(dark);
-      transition-duration: 0ms;
-    }
-    &:checked:active { background-image: none; }
-  }
-
-  .no-frequent-applications-label { @extend %status_text; }
-
-  .app-well-app > .overview-icon.overview-icon-with-label,
-  .grid-search-result .overview-icon.overview-icon-with-label {
-    padding: 10px 8px 5px 8px;
-    spacing: 4px;
-  }
 
   // Workspace pager
   .workspace-thumbnails { //container ala dash
@@ -235,14 +101,6 @@
     border-left-width: 2px;
     padding: 6px 10px;
     border-radius: 0;
-  }
-
-  //Some hacks I don't even
-  .search-display > StBoxLayout,
-  .all-apps,
-  .frequent-apps > StBoxLayout {
-    // horizontal padding to make sure scrollbars or dash don't overlap content
-    padding: 0px 88px 10px 88px;
   }
 
 /* Eeeky things */
