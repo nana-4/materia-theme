@@ -7,145 +7,240 @@
 
 .login-dialog {
   //reset
-  border: none;
+  border: 0;
   background-color: transparent;
 
-  $_gdm_bg: lighten(#2e3436, 19%);
-
   StEntry {
-    @if $variant=='dark' {
-      $_gdm_entry_bg: transparentize(lighten(desaturate(#241f31, 20%), 2%), 0.5);
-      background-color: $_gdm_entry_bg;
-      color: $osd_fg_color;
-    }
-  }
+    @include entry(normal, $fc: on($os-background, stroke));
+    color: on($os-background);
+    selection-background-color: on($os-background, stroke);
+    selected-color: on($os-background);
 
-  .modal-dialog-button-box { spacing: 3px; }
-  .modal-dialog-button {
-    padding: 4px 18px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    background-color: $_gdm_bg;
-    border-color: $_gdm_bg;
-    color: $fg_color;
+    &:focus {
+      @include entry(focus, $fc: on($os-background));
+    }
 
-    $_hover_c: lighten($_gdm_bg, 5%);
-    &:hover, &:focus {
-      background-color: $_hover_c;
-      border-color: $_hover_c;
-    }
-    &:active {
-      $_active_c: darken($_gdm_bg, 5%);
-      box-shadow: none;
-      background-color: $_active_c;
-      border-color: $_active_c;
-    }
     &:insensitive {
-      @include button(insensitive);
-      border-color: darken($_gdm_bg, 5%);
-      background-color: darken($_gdm_bg, 5%);
-      color: transparentize($fg_color, 0.3);
+      @include entry(insensitive, $fc: on($os-background, stroke-disabled));
+      color: on($os-background, text-disabled);
     }
+
+    StLabel.hint-text {
+      color: on($os-background, text2);
+    }
+
+    StIcon.peek-password {
+      color: on($os-background, text2);
+
+      &:hover {
+        color: on($os-background);
+      }
+    }
+  }
+
+  .modal-dialog-button-box {
+    spacing: 3px;
+  }
+
+  .modal-dialog-button {
+    @include button(flat-normal, $tc: on($os-background));
+
+    &:focus {
+      @include button(flat-focus, $tc: on($os-background));
+    }
+
+    &:hover {
+      @include button(flat-hover, $tc: on($os-background));
+    }
+
+    &:active {
+      @include button(flat-active, $tc: on($os-background));
+    }
+
+    &:insensitive {
+      @include button(flat-insensitive, $tc: on($os-background));
+    }
+
     &:default {
-      @include button(normal, $c:$selected_bg_color, $tc:$selected_fg_color);
-      border-color: $selected_bg_color;
-      &:hover, &:focus { 
-        @include button(hover,$c:$selected_bg_color, $tc:$selected_fg_color);
-        $_def_hover_c: lighten($selected_bg_color, 5%);
-        background-color: $_def_hover_c;
-        border-color: $_def_hover_c;
+      min-width: 64px - 16px * 2;
+      padding: 0 16px;
+      @include button(normal, $c: $primary, $tc: on($primary));
+
+      &:focus {
+        @include button(focus, $c: $primary, $tc: on($primary));
       }
+
+      &:hover {
+        @include button(hover, $c: $primary, $tc: on($primary));
+      }
+
       &:active {
-        @include button(active,$c:$selected_bg_color, $tc:$selected_fg_color);
-        $_def_active_c: darken($selected_bg_color, 5%);
-        background-color: $_def_active_c;
-        border-color: $_def_active_c;
+        @include button(active, $c: $primary, $tc: on($primary));
       }
+
       &:insensitive {
-        @include button(insensitive);
-        border-color: darken($selected_bg_color, 10%);
-        background-color: darken($selected_bg_color, 10%);
-        color: transparentize($selected_fg_color, 0.3);
+        @include button(insensitive, $c: on($os-background, fill), $tc: on($os-background, text-disabled));
       }
     }
   }
 }
 
-.login-dialog-logo-bin { padding: 24px 0px; }
-.login-dialog-banner { color: darken($osd_fg_color,10%); }
-.login-dialog-button-box { spacing: 5px; }
-.login-dialog-message-warning { color: $warning_color; }
-.login-dialog-message-hint { padding-top: 0; padding-bottom: 20px; }
-.login-dialog-user-selection-box { padding: 100px 0px; }
-.login-dialog-not-listed-label {
-  padding-left: 2px;
-  .login-dialog-not-listed-button:focus &,
-  .login-dialog-not-listed-button:hover & {
-    color: $osd_fg_color;
+.login-dialog-logo-bin {
+  padding: 24px 0;
+}
+
+.login-dialog-banner {
+  color: on($os-background, text2);
+}
+
+.login-dialog-button-box {
+  spacing: 5px;
+}
+
+.login-dialog-message-warning {
+  color: on($os-background, error);
+}
+
+.login-dialog-message-hint {
+  padding-top: 0;
+  padding-bottom: 20px;
+  color: on($os-background, text2);
+}
+
+.login-dialog-user-selection-box {
+  padding: 100px 0;
+}
+
+.login-dialog-not-listed-button {
+  transition-duration: $duration;
+  min-height: 32px;
+  padding: 0 8px;
+  margin-top: 1em;
+  border-radius: $corner-radius;
+  color: on($os-background, text2);
+  @include type(button);
+
+  &:focus {
+    background-color: $inverse-overlay-focus;
+  }
+
+  &:hover {
+    background-color: $inverse-overlay-hover;
+  }
+
+  &:active {
+    transition-duration: $duration-ripple;
+    background-color: $inverse-overlay-active;
   }
 }
 
 .login-dialog-not-listed-label {
-  @include fontsize($base_font_size - 1);
-  font-weight: bold;
-  color: darken($osd_fg_color,30%);
-  padding-top: 1em;
 }
 
-.login-dialog-user-list-view { -st-vfade-offset: 1em; }
+.login-dialog-user-list-view {
+  -st-vfade-offset: 1em;
+}
+
 .login-dialog-user-list {
   spacing: 12px;
   width: 23em;
-  &:expanded .login-dialog-user-list-item:selected { background-color: $selected_bg_color; color: $selected_fg_color; }
-  &:expanded .login-dialog-user-list-item:logged-in { border-right: 2px solid $selected_bg_color; }
+
+  &:expanded .login-dialog-user-list-item {
+    &:selected {
+      background-color: $inverse-overlay-focus;
+    }
+
+    &:logged-in {
+      border-right: 2px solid on($os-background);
+    }
+  }
 }
 
 .login-dialog-user-list-item {
-  border-radius: 5px;
+  transition-duration: $duration;
   padding: 6px;
-  color: darken($osd_fg_color,30%);
-  &:ltr .user-widget { padding-right: 1em; }
-  &:rtl .user-widget { padding-left: 1em; }
+  border-radius: $corner-radius;
+  color: inherit;
+
+  &:focus {
+    background-color: $inverse-overlay-focus;
+  }
+
+  &:hover {
+    background-color: $inverse-overlay-hover;
+  }
+
+  &:active {
+    transition-duration: $duration-ripple;
+    background-color: $inverse-overlay-active;
+  }
+
+  &:ltr .user-widget {
+    padding-right: 1em;
+  }
+
+  &:rtl .user-widget {
+    padding-left: 1em;
+  }
+
   .login-dialog-timed-login-indicator {
     height: 2px;
     margin-top: 6px;
-    background-color: $osd_fg_color;
+    background-color: on($os-background);
   }
-  &:focus .login-dialog-timed-login-indicator { background-color: $selected_fg_color; }
 }
 
 .login-dialog-username,
 .user-widget-label {
-  color: $osd_fg_color;
-  @include fontsize($base_font_size + 2);
-  font-weight: bold;
+  padding-left: 16px;
+  @include type(headline6);
   text-align: left;
-  padding-left: 15px;
 }
 
 .user-widget-label {
-  &:ltr { padding-left: 14px; }
-  &:rtl { padding-right: 14px; }
+  &:ltr {
+    padding-left: 14px;
+  }
+
+  &:rtl {
+    padding-right: 14px;
+  }
 }
 
 .login-dialog-prompt-layout {
+  width: 23em;
   padding-top: 24px;
   padding-bottom: 12px;
-  spacing: $base_spacing * 2;
-  width: 23em;
+  spacing: 8px;
 }
 
 .login-dialog-prompt-label {
-  color: darken($osd_fg_color, 20%);
-  @include fontsize($base_font_size + 1);
+  color: on($os-background, text2);
+  font-size: 1em;
   padding-top: 1em;
 }
 
-.login-dialog-session-list-button StIcon {
-  icon-size: 1.25em;
-}
-
 .login-dialog-session-list-button {
-  color: darken($osd_fg_color,30%);
-  &:hover,&:focus { color: $osd_fg_color; }
-  &:active { color: darken($osd_fg_color, 50%); }
+  transition-duration: $duration;
+  width: $medium-size;
+  height: $medium-size;
+  border-radius: $medium-size / 2;
+  color: on($os-background, text2);
+
+  &:focus {
+    background-color: $inverse-overlay-focus;
+  }
+
+  &:hover {
+    background-color: $inverse-overlay-hover;
+  }
+
+  &:active {
+    transition-duration: $duration-ripple;
+    background-color: $inverse-overlay-active;
+  }
+
+  StIcon {
+    icon-size: 16px;
+  }
 }
