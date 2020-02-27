@@ -329,109 +329,6 @@
   spacing-columns: 1em;
 }
 
-/* Popovers/Menus */
-
-.popup-menu {
-  min-width: 200px;
-
-  .popup-menu-arrow { } //defined globally in the TOP BAR
-  .popup-sub-menu {
-    padding-bottom: 0;
-    background-color: $entry-fill;
-    box-shadow: $shadow-0;
-  }
-
-  .popup-menu-content { padding: 8px 0; }
-  .popup-menu-item {
-    // min-height: $menuitem-size - 4px * 2;
-    spacing: 8px;
-    transition-duration: $duration;
-
-    &:ltr { padding: 0.4em 24px 0.4em 0; }
-    &:rtl { padding: 0.4em 0 0.4em 24px; }
-    &:checked {
-      background-color: $overlay-selected;
-      box-shadow: $shadow-0;
-      font-weight: normal;
-      &.selected {
-        background-color: rgba($primary, 0.4);
-      }
-      &:active {
-        background-color: rgba($primary, 0.6);
-      }
-    }
-    &.selected {
-      background-color: $overlay-hover;
-      color: $text;
-      transition-duration: 0ms;
-    }
-    &:active {
-      background-color: $overlay-active;
-      color: $text;
-      transition-duration: $duration-ripple;
-    }
-    &.selected:active { color: $text; }
-    &:insensitive { color: $text-disabled; }
-  }
-
-  .popup-inactive-menu-item { //all icons and other graphical elements
-    color: $text;
-
-    &:insensitive { color: $text-disabled; }
-  }
-  //.popup-status-menu-item { font-weight: normal;  color: pink; } //dunno what that is
-  &.panel-menu {
-    -boxpointer-gap: 4px;
-    margin-bottom: 1.75em;
-  }
-}
-
-
-
-  .popup-menu-ornament {
-    text-align: right;
-    width: 16px;
-    height: 16px;
-  }
-  .popup-menu-boxpointer,
-  .candidate-popup-boxpointer {
-    -arrow-border-radius: 20px; // This is necessary for the weird bug: materia-theme#296
-    -arrow-background-color: transparent;
-    -arrow-border-width: 0;
-    -arrow-border-color: transparent;
-    -arrow-base: 0;
-    -arrow-rise: 0;
-    -arrow-box-shadow: none; //dreaming. bug #689995
-
-    @at-root .popup-menu-content,
-    .candidate-popup-content {
-      margin: 5px 8px 8px;
-      background-color: $surface;
-      border-radius: $corner-radius;
-      box-shadow: $shadow-2;
-    }
-  }
-
-  .popup-separator-menu-item {
-    //-margin-horizontal: 24px;
-    height: 1px; //not really the whole box
-    margin: 8px 64px - 24px;
-    background-color: $divider;
-    border-color: transparent;
-    border-bottom-width: 0;
-    border-bottom-style: none;
-  }
-
-
-// Background menu
-.background-menu { -boxpointer-gap: 4px; -arrow-rise: 0; }
-
-/* fallback menu
-- odd thing for styling App menu when apparently not running under shell. Light Adwaita styled
-  app menu inside the main app window itself rather than the top bar
-*/
-
-
 /* OSD */
 .osd-window {
   text-align: center;
@@ -1070,11 +967,6 @@
 
   // a little unstructured mess:
 
-  .system-switch-user-submenu-icon {
-    icon-size: 16px;
-    padding: 0 4px;
-  }
-
   #appMenu {
     spinner-image: url("process-working.svg");
     spacing: 4px;
@@ -1085,36 +977,6 @@
   .app-menu,
   .app-well-menu {
     max-width: 27.25em;
-  }
-
-  .aggregate-menu {
-    min-width: 280px;
-    .popup-menu-icon { padding: 0 4px; }
-    .popup-sub-menu .popup-menu-item > :first-child {
-      &:ltr { /* 8px spacing + 2*4px padding */
-              padding-left: 16px; margin-left: em(16px); }
-      &:rtl { /* 8px spacing + 2*4px padding */
-              padding-right: 16px; margin-right: em(16px); }
-    }
-  }
-
-  .system-menu-action {
-    -st-icon-style: symbolic;
-    color: $text2;
-    border-radius: 100px; /* wish we could do 50% */
-    padding: ($large-size - 16px) / 2;
-    border: none;
-    transition-duration: $duration;
-
-    &:hover, &:focus {
-      background-color: $overlay-hover;
-      color: $text;
-      border: none;
-      padding: ($large-size - 16px) / 2;
-    }
-    &:active { background-color: $overlay-active; color: $text; transition-duration: $duration-ripple; }
-
-    & > StIcon { icon-size: 16px; }
   }
 
 // Activities Ripples
@@ -1138,10 +1000,6 @@
   background-color: rgba(on(dark, primary), 0.3);
   border: 1px solid on(dark, primary);
 }
-
-// not really top bar only
-.popup-menu-arrow { icon-size: em(16px); }
-.popup-menu-icon { icon-size: em(16px); }
 
 //close buttons
 
