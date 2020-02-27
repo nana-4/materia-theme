@@ -1,19 +1,12 @@
 /* On-screen Keyboard */
 
-$key_size: 1.2em;
-$key_border_radius: $base_border_radius + 3px;
-$key_bg_color:  $bg_color;
-// $default_key_bg_color: darken($key_bg_color, 4%);
-$default_key_bg_color: if($variant=='light', darken($osd_bg_color, 11%), lighten($osd_bg_color, 2%));
-
-
 // draw keys using button function
 #keyboard {
-  background-color: transparentize(if($variant=='light', darken($bg_color, 5%), darken($bg_color, 8%)), 0.1);
-  box-shadow: inset 0 1px 0 0 $osd_outer_borders_color;
+  background-color: $scrim-alt;
+  box-shadow: none;
 
   .page-indicator {
-    padding: $base_padding;
+    padding: 4px;
 
     .page-indicator-icon {
       width: 8px;
@@ -23,102 +16,180 @@ $default_key_bg_color: if($variant=='light', darken($osd_bg_color, 11%), lighten
 }
 
 // the container for individual keys
-.key-container {
-  padding: $base_margin;
-  spacing: $base_margin;
+@if $version >= 3.28 {
+  .key-container {
+    padding: 4px;
+    spacing: 4px;
+  }
+} @else {
+  .keyboard-layout {
+    spacing: 10px;
+    padding: 10px;
+  }
+
+  .keyboard-row {
+    spacing: 15px;
+  }
 }
 
 // the keys
 .keyboard-key {
+  min-height: 1.2em;
+  min-width: 1.2em;
+  font-size: 2em;
+  font-weight: 500;
+  border: 0;
+  border-width: 0;
+  border-style: none;
+  border-radius: $corner-radius;
 
-  @include button(normal, $c:$key_bg_color);
+  @include button(normal);
 
-  &:focus { @include button(focus);}
-  &:hover, &:checked { @include button(hover, $c: $key_bg_color);}
-  &:active { @include button(active, $c: $key_bg_color); }
+  &:focus {
+    @include button(focus);
+  }
 
-  @include fontsize($base_font_size + 5);
-  min-height: $key_size;
-  min-width: $key_size;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: $key_border_radius;
+  &:hover,
+  &:checked {
+    @include button(hover);
+  }
+
+  &:active {
+    @include button(active);
+  }
 
   &:grayed { //FIXMEy
-    background-color: darken($bg_color, 3%);
-    color: $osd_fg_color;
-    border-color: $osd_borders_color;
+    border-color: transparent;
+    background-color: $scrim-alt;
+    color: on($scrim-alt);
   }
 
   // non-character keys
   &.default-key {
-
     // size of the icon asset
     background-size: 24px;
 
-    @include button(normal, $c:$default_key_bg_color);
-    &:hover, &:checked {@include button(hover, $c: $default_key_bg_color);}
-    &:active { @include button(active, $c: $default_key_bg_color);}
+    @include button(normal);
+
+    &:focus {
+      @include button(focus);
+    }
+
+    &:hover,
+    &:checked {
+      @include button(hover);
+    }
+
+    &:active {
+      @include button(active);
+    }
   }
 
   // enter key is suggested-action
   &.enter-key {
-    background-image: url("resource:///org/gnome/shell/theme/key-enter.svg");
+    background-image: url("assets/key-enter.svg");
 
-    @include button(normal, $c:$selected_bg_color, $tc:$selected_fg_color);
-    &:hover, &:checked { @include button(hover, $c: lighten($selected_bg_color, 3%));}
-    &:active {@include button(active, $c: darken($selected_bg_color, 2%));}
+    @include button(normal, $c: $primary, $tc: on($primary));
+
+    &:hover,
+    &:checked {
+      @include button(hover, $c: $primary, $tc: on($primary));
+    }
+
+    &:active {
+      @include button(active, $c: $primary, $tc: on($primary));
+    }
   }
 
   // key assets
-  &.shift-key-lowercase {background-image: url("resource:///org/gnome/shell/theme/key-shift.svg");}
-  &.shift-key-uppercase {background-image: url("resource:///org/gnome/shell/theme/key-shift-uppercase.svg");}
-  &.shift-key-uppercase:latched {background-image: url("resource:///org/gnome/shell/theme/key-shift-latched-uppercase.svg");}
-  &.hide-key {background-image: url("resource:///org/gnome/shell/theme/key-hide.svg");}
-  &.layout-key {background-image: url("resource:///org/gnome/shell/theme/key-layout.svg");}
+
+  &.shift-key-lowercase {
+    background-image: url("assets/key-shift.svg");
+  }
+
+  &.shift-key-uppercase {
+    background-image: url("assets/key-shift-uppercase.svg");
+  }
+
+  &.shift-key-uppercase:latched {
+    background-image: url("assets/key-shift-latched-uppercase.svg");
+  }
+
+  &.hide-key {
+    background-image: url("assets/key-hide.svg");
+  }
+
+  &.layout-key {
+    background-image: url("assets/key-layout.svg");
+  }
 }
 
 // long press on a key popup
 .keyboard-subkeys {
-  color: $osd_fg_color;
-  -arrow-border-radius: $modal_radius;
-  -arrow-background-color: $osd_bg_color;
-  -arrow-border-width: 1px;
-  -arrow-border-color: lighten($osd_bg_color, 9%);
-  -arrow-base: 20px;
-  -arrow-rise: 10px;
-  -boxpointer-gap: $base_spacing;
+  -boxpointer-gap: 5px;
+  -arrow-base: 0;
+  -arrow-rise: 0;
+  -arrow-border-width: 0;
+  -arrow-border-color: transparent;
+  -arrow-border-radius: 0;
+  -arrow-background-color: transparent;
+  padding: 5px;
+  border-radius: $corner-radius;
+  box-shadow: $shadow-2;
+  background-color: $surface;
+  color: $text;
 
   .keyboard-key {
-    @include button(normal, $c:$key_bg_color);
+    border-radius: $corner-radius;
 
-    &:focus { @include button(focus);}
-    &:hover, &:checked { @include button(hover, $c: $key_bg_color);}
-    &:active { @include button(active, $c: $key_bg_color); }
+    @include button(flat-normal);
 
-    border-radius:$base_border_radius;
+    &:focus {
+      @include button(flat-focus);
+    }
+
+    &:hover,
+    &:checked {
+      @include button(flat-hover);
+    }
+
+    &:active {
+      @include button(flat-active);
+    }
   }
 }
 
 // emoji
 .emoji-page {
   .keyboard-key {
-    background-color: transparent;
-    border: none;
-    color: initial;
+    border: 0;
+    @include button(flat-normal, $tc: on($scrim-alt));
+
+    &:focus {
+      @include button(flat-focus, $tc: on($scrim-alt));
+    }
+
+    &:hover {
+      @include button(flat-hover, $tc: on($scrim-alt));
+    }
+
+    &:active {
+      @include button(flat-active, $tc: on($scrim-alt));
+    }
   }
 }
 
 .emoji-panel {
   .keyboard-key:latched {
-    border-color: lighten($selected_bg_color, 5%);
-    background-color: $selected_bg_color;
+    border-color: transparent;
+    background-color: $primary;
+    color: on($primary);
   }
 }
 
 // suggestions
 .word-suggestions {
-  @include fontsize($base_font_size + 3);
+  @include type(subtitle1);
   spacing: 12px;
   min-height: 20pt;
 }
