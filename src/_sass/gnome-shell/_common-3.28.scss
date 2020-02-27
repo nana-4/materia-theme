@@ -23,63 +23,6 @@
     border-radius: 0;
   }
 
-  /* DASHBOARD */
-
-  #dash {
-    transition-duration: $duration-panel;
-    font-size: 1em;
-    color: on(dark);
-    background-color: on(dark, fill);
-    padding: 3px 0;
-    border: none;
-    border-left: 0px;
-    border-radius: 0px $corner-radius $corner-radius 0px;
-
-    &:rtl {
-      border-radius: $corner-radius 0 0 $corner-radius;
-    }
-
-    .placeholder {
-      background-image: url("assets/dash-placeholder.svg");
-      background-size: contain;
-      height: 24px;
-    }
-
-    .empty-dash-drop-target {
-      width: 24px;
-      height: 24px;
-    }
-
-  }
-
-  .dash-item-container > StWidget {
-    padding: 3px 6px;
-  }
-
-  .dash-label { //osd tooltip
-    // min-height: 32px - 6px * 2;
-    border-radius: $corner-radius;
-    padding: 7px 8px;
-    color: $text;
-    background-color: $surface;
-    box-shadow: $shadow-2;
-    text-align: center;
-    -x-offset: 8px;
-  }
-
-  .show-apps .show-apps-icon {
-    color: on(dark, text2);
-  }
-
-  .show-apps:hover .show-apps-icon,
-  .show-apps:active .show-apps-icon,
-  .show-apps:checked .show-apps-icon,
-  .show-apps:focus .show-apps-icon {
-    color: on(dark);
-    transition-duration: $duration;
-  }
-
-
   // Workspace pager
   .workspace-thumbnails { //container ala dash
     @extend %overview-panel;

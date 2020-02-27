@@ -1,61 +1,55 @@
 /* Dash */
 
-$dash_placeholder_size: 32px;
-$dash_spacing: $base_padding + 4px;
-$dash_border_radius: $modal_radius * 1.5;
+$dash-spacing: 6px;
 
 #dash {
-  @extend %overview_panel;
-  @include fontsize($base_font_size - 2);
-  padding: ($dash_spacing / 2) 0;
-
-  border-radius: 0 $dash_border_radius $dash_border_radius 0; 
+  @extend %overview-panel;
+  font-size: 1em;
+  padding: ($dash-spacing / 2) 0;
   border-left-width: 0;
+  border-radius: 0 $corner-radius $corner-radius 0;
+
   &:rtl {
-    border-radius: $dash_border_radius 0 0 $dash_border_radius;
     border-right-width: 0;
+    border-radius: $corner-radius 0 0 $corner-radius;
   }
 
   .placeholder {
-    // background-image: url("resource:///org/gnome/shell/theme/dash-placeholder.svg");
-    background-image:none;
+    height: 24px;
+    background-image: url("assets/dash-placeholder.svg");
     background-size: contain;
-    height: $dash_placeholder_size;
   }
 
   .empty-dash-drop-target {
-    width: $dash_placeholder_size;
-    height: $dash_placeholder_size;
+    width: 24px;
+    height: 24px;
   }
 }
 
 // Dash Items
 .dash-item-container > StWidget {
-  padding: ($dash_spacing / 2) $dash_spacing;
+  padding: ($dash-spacing / 2) $dash-spacing;
 }
 
 // OSD Tooltip
 .dash-label {
-  background-color: transparentize($osd_bg_color,0.05);
-  border-radius: $base_border_radius + 2px;
-  border:none;
-  box-shadow:0 0 0 1px $osd_outer_borders_color;
-  color: $osd_fg_color;
-  padding: $base_padding $base_padding + 2px;
+  // min-height: 32px - 6px * 2;
+  padding: 7px 8px;
+  border: 0;
+  border-radius: $corner-radius;
+  box-shadow: $shadow-2;
+  background-color: $surface;
+  color: $text;
   text-align: center;
-  -x-offset: $base_margin * 2; // distance from the dash edge
+  -x-offset: 8px; // distance from the dash edge
 }
 
 // Show apps button
 .show-apps {
-  @include overview-icon($osd_fg_color);
+  @extend %overview-icon;
+  color: on(dark, text2);
 
-  &:focus,
   &:checked {
-    .overview-icon {
-      background-color: darken($osd_bg_color,10%);
-      color: $fg_color;
-    }
+    color: on(dark);
   }
 }
-
