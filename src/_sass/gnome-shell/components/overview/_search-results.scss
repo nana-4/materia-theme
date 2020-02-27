@@ -1,0 +1,104 @@
+/* Search */
+
+// search overview container
+#searchResultsContent {
+  max-width: 1024px;
+  spacing: $base_margin * 2;
+}
+
+// search results sections "the boxes"
+.search-section {
+  // This should be equal to #searchResultsContent spacing
+  spacing: $base_margin * 2;
+
+  // separator
+  .search-section-separator { 
+    // height: 1px;
+    // background-color: $osd_outer_borders_color;
+    height: 0;
+    background-color: transparent;
+  }
+}
+
+// content
+.search-section-content {
+  background-color: transparentize(lighten($osd_bg_color, 5%), 0.2);
+  border-radius: $modal_radius+3;
+  border: 1px solid $osd_outer_borders_color;
+  box-shadow: 0 2px 4px 0 $shadow_color;
+  text-shadow: 0 1px if($variant == 'light', rgba(255,255,255,0.2), rgba(0,0,0,0.2));
+  color: $osd_fg_color;
+  padding: $base_padding * 3;
+  // This is the space between the provider icon and the results container
+  spacing: $base_margin * 2;
+}
+
+%search-section-content-item {
+  @extend %icon_tile;
+
+  &:focus,
+  &:hover,
+  &:selected {
+    background-color: transparentize($osd_fg_color, .9);
+    transition-duration: 200ms;
+  }
+
+  &:active,
+  &:checked {
+    background-color: transparentize(darken($osd_bg_color, 10%), .1);
+  }
+}
+
+// "no results" text
+.search-statustext {
+  @extend %status_text;
+}
+
+// Search results with icons
+.grid-search-result {
+  @extend %app-well-app;
+}
+
+// search result provider
+.search-provider-icon {
+  @extend %search-section-content-item;
+
+  // content
+  .list-search-provider-content {
+    spacing: $base_spacing * 2;
+
+    // provider labels
+    .list-search-provider-details {
+      width: 120px;
+      margin-top: 0;
+      color: darken($osd_fg_color, 8%);
+      // font-weight: bold;
+    }
+  }
+}
+
+// search results list
+.list-search-results {
+  spacing: $base_spacing;
+}
+
+// search result listitem
+.list-search-result {
+  @extend %search-section-content-item;
+
+  // content
+  .list-search-result-content {
+    spacing: $base_padding;
+  }
+
+  // list item title (with leading icon)
+  .list-search-result-title {
+    spacing: $base_spacing * 2;
+    // font-weight: bold;
+  }
+
+  // list item description
+  .list-search-result-description {
+    color: darken($osd_fg_color, 30%);
+  }
+}

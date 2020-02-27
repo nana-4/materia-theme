@@ -1,0 +1,255 @@
+/* Date/Time Menu */
+
+.clock-display-box { spacing: $base_spacing; }
+
+// overall menu
+#calendarArea {
+  padding:0;
+}
+
+// Calendar menu side column
+.datemenu-calendar-column {
+  spacing: $base_spacing;
+  border: 0 solid $bubble_borders_color;
+  padding: 0 $base_padding * 2;
+
+  &:ltr {margin-right: $base_margin * 2; border-left-width: 1px; }
+  &:rtl {margin-left: $base_margin * 2; border-right-width: 1px; }
+
+  .datemenu-displays-section {
+  }
+
+  .datemenu-displays-box {
+    spacing: $base_spacing;
+  }
+}
+
+.events-section-title {
+  @include notification_bubble($flat: true);
+  color: desaturate(darken($fg_color,40%), 10%);
+  font-weight: bold;
+  padding: .4em;
+}
+
+/* today button (the date) */
+.datemenu-today-button {
+  @include notification_bubble($flat: true);
+  padding: $base_padding * 1.5;
+
+  // weekday label
+  .day-label {
+    @include fontsize($base_font_size+1);
+    font-weight: bold;
+  }
+
+  // date label
+  .date-label {
+    @include fontsize($base_font_size+7);
+    font-weight: 1000;
+  }
+}
+
+/* Calendar */
+.calendar {
+  @include notification_bubble;
+  padding: $base_padding;
+
+  // month
+  .calendar-month-label {
+    color: lighten($fg_color,5%);
+    font-weight: bold;
+    padding: 8px 0;
+    &:focus {}
+  }
+
+  // prev/next month icons
+  .calendar-change-month-back StIcon,
+  .calendar-change-month-forward StIcon {
+    icon-size: $base_icon_size;
+  }
+
+  .pager-button {
+    background-color: transparent;
+    height: 32px;
+    width: 32px;
+    border-radius: $base_border_radius;
+    &:hover, &:focus { background-color: lighten($hover_bg_color, 5%); }
+    &:active { background-color: $active_bg_color; }
+  }
+
+
+  $calendar_day_size: 32px;
+
+  .calendar-day-base {
+    @include fontsize($base_font_size - 3);
+    text-align: center;
+    width: $calendar_day_size;
+    height: $calendar_day_size;
+    padding: 0;
+    margin: 2px;
+    border-radius: $calendar_day_size * 0.5 + 2px;
+    border: 1px solid transparent; //avoid jumparound due to today
+    font-feature-settings: "tnum";
+    &:hover, &:focus { background-color: $hover_bg_color; }
+    &:active,&:selected {
+      color: lighten($fg_color,10%);
+      background-color: darken($bg_color,5%);
+    }
+
+    // day of week heading
+    &.calendar-day-heading {
+      color: lighten($fg_color,10%);
+      margin-top: 1em;
+      @include fontsize($base_font_size - 4);
+    }
+  }
+
+  .calendar-day { //border collapse hack - see calendar.js
+    border-width: 0;
+  }
+
+  .calendar-day-top {
+    border-top-width: 1px;
+  }
+
+  .calendar-day-left {
+    border-left-width: 1px;
+  }
+
+  .calendar-work-day {}
+
+  .calendar-nonwork-day {
+    color: $insensitive_fg_color;
+  }
+
+  // Today
+  .calendar-today {
+    font-weight: bold;
+    border: 1px solid transparent;
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+
+    &:hover,&:focus {
+      background-color:lighten($selected_bg_color, 3%);
+      color: $selected_fg_color;
+    }
+
+    &:active,&:selected {
+      background-color: $selected_bg_color;
+      color: $selected_fg_color;
+
+      &:hover,&:focus {
+        background-color:lighten($selected_bg_color, 3%);
+        color: $selected_fg_color;
+      }
+    }
+  }
+
+  .calendar-day-with-events {
+    color: lighten($fg_color,10%);
+    font-weight: bold;
+    background-image: url("resource:///org/gnome/shell/theme/calendar-today.svg");
+  }
+
+  .calendar-other-month-day {
+    color: transparentize($fg_color ,0.5);
+  }
+
+  .calendar-week-number {
+    @include fontsize($base_font_size - 4);
+    font-weight: bold;
+    height: 1.8em;
+    width: 2.3em; 
+    border-radius: 2px;
+    padding: 0.5em 0 0;
+    margin: 6px;
+    background-color: darken($bg_color, 2%);
+    color: lighten($fg_color, 5%);
+  }
+}
+
+/* World clocks */
+.world-clocks-button {
+  @include notification_bubble;
+  padding: $base_padding * 2;
+
+  .world-clocks-grid {
+    spacing-rows: $base_spacing;
+    spacing-columns: $base_spacing * 2;
+  }
+
+  // title
+  .world-clocks-header {
+    color: desaturate(darken($fg_color,40%), 10%);
+    font-weight: bold;
+  }
+
+  // city label
+  .world-clocks-city {
+    color: $fg_color;
+    @include fontsize($base_font_size);
+    font-weight: normal;
+  }
+
+  // timezone time
+  .world-clocks-time {
+    font-weight: bold;
+    color: $fg_color;
+    font-feature-settings: "lnum";
+    @include fontsize($base_font_size);
+    text-align: right;
+  }
+
+  // timezone offset label
+  .world-clocks-timezone {
+    color: darken($fg_color,20%);
+    font-feature-settings: "tnum";
+    @include fontsize($base_font_size - 1);
+  }
+}
+
+/* Weather */
+.weather-button {
+  @include notification_bubble;
+  padding: $base_padding * 2;
+
+  .weather-box {
+    spacing: $base_spacing + $base_margin;
+  }
+
+  .weather-header-box {
+    spacing: $base_spacing;
+  }
+
+  .weather-header {
+    color: desaturate(darken($fg_color,40%), 10%);
+    font-weight: bold;
+
+    &.location {
+      font-weight: normal;
+      @include fontsize($base_font_size - 1);
+    }
+  }
+
+  .weather-grid {
+    spacing-rows: $base_spacing;
+    spacing-columns: $base_spacing * 2;
+  }
+
+  .weather-forecast-time {
+    color: darken($fg_color,30%);
+    font-feature-settings: "tnum";
+    @include fontsize($base_font_size - 2);
+    font-weight: normal;
+    padding-top: 0.2em;
+    padding-bottom: 0.4em;
+  }
+
+  .weather-forecast-icon {
+    icon-size: $base_icon_size * 2;
+  }
+
+  .weather-forecast-temp {
+    font-weight: bold;
+  }
+}

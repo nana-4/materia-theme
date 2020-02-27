@@ -1,0 +1,16 @@
+/* Switches */
+
+// these are equal to the size of the SVG assets
+$switch_height: 22px;
+$switch_width: 46px;
+
+.toggle-switch {
+  color: $fg_color;
+  height: $switch_height;
+  width: $switch_width;
+  background-size: contain;
+  background-image: if($variant == 'light', url("resource:///org/gnome/shell/theme/toggle-off.svg"),url("resource:///org/gnome/shell/theme/toggle-off-dark.svg"));
+  &:checked { 
+    background-image: if($variant == 'light', url("resource:///org/gnome/shell/theme/toggle-on.svg"),url("resource:///org/gnome/shell/theme/toggle-on-dark.svg"));
+  }
+}

@@ -1,0 +1,18 @@
+/* Check Boxes */
+
+// these are equal to the size of the SVG assets
+$check_height: 22px;
+$check_width: 24px;
+
+
+.check-box {
+  StBoxLayout { spacing: .8em; }
+  StBin {
+    width: $check_width;
+    height: $check_height;
+    background-image: url("resource:///org/gnome/shell/theme/checkbox-off.svg");
+  }
+  &:focus StBin { background-image: url("resource:///org/gnome/shell/theme/checkbox-off-focused.svg"); }
+  &:checked StBin { background-image: url("resource:///org/gnome/shell/theme/checkbox.svg"); }
+  &:focus:checked StBin { background-image: url("resource:///org/gnome/shell/theme/checkbox-focused.svg"); }
+}

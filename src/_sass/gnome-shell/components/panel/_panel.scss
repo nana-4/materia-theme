@@ -1,0 +1,106 @@
+/* Top Bar */
+// a.k.a. the panel
+
+$panel_corner_radius: $base_border_radius+1;
+$panel_bg_color: #000;
+$panel_fg_color: #ccc;
+$panel_height: 1.86em;
+
+
+#panel {
+  background-color: $panel_bg_color;
+  font-weight: bold;
+  height: $panel_height;
+  font-feature-settings: "tnum";
+
+  // transparent panel on lock & login screens
+  &.unlock-screen,
+  &.login-screen,
+  &.lock-screen {
+    background-color: transparent;
+
+    .panel-corner {
+      -panel-corner-radius: 0;
+      -panel-corner-background-color: transparent;
+      -panel-corner-border-color: transparent;
+    }
+  }
+
+  // spacing between activities, app menu and such
+  #panelLeft, #panelCenter {
+    spacing: $base_spacing;
+  }
+
+  // the rounded outset corners
+  .panel-corner {
+    -panel-corner-radius: $panel_corner_radius;
+    -panel-corner-background-color: $panel_bg_color;
+    -panel-corner-border-width: 2px;
+    -panel-corner-border-color: transparent;
+
+    &:active, &:overview, &:focus {
+      -panel-corner-border-color: lighten($selected_bg_color,5%);
+    }
+  }
+
+  // panel menus
+  .panel-button {
+    font-weight: bold;
+    color: $panel_fg_color;
+    -natural-hpadding: $base_padding * 2;
+    -minimum-hpadding: $base_padding;
+
+    &:hover {
+      color: lighten($panel_fg_color, 20%);
+    }
+
+    &:active, &:overview, &:focus, &:checked {
+      // Trick due to St limitations. It needs a background to draw a box-shadow
+      background-color: rgba(0, 0, 0, 0.01);
+      box-shadow: inset 0 -2px 0 0 lighten($selected_bg_color,5%);
+      color: lighten($panel_fg_color, 20%);
+    }
+
+    // status area icons
+    .system-status-icon {
+      icon-size: $base_icon_size;
+      padding: $base_padding - 1px;
+    }
+
+    // app menu icon
+    .app-menu-icon {
+      margin-left: $base_margin;
+      margin-right: $base_margin;
+      -st-icon-style: symbolic;
+      // dimensions of the icon are hardcoded
+    }
+
+    // lock & login screen styles
+    .unlock-screen &,
+    .login-screen &,
+    .lock-screen & {
+      color: lighten($fg_color, 10%);
+      &:focus, &:hover, &:active { color: lighten($fg_color, 10%); }
+    }
+  }
+
+  .panel-status-indicators-box,
+  .panel-status-menu-box {
+    spacing: 2px;
+  }
+
+  // spacing between power icon and (optional) percentage label
+  .power-status.panel-status-indicators-box {
+    spacing: 0;
+  }
+
+  // indicator for active
+  .screencast-indicator,
+  .remote-access-indicator { color: $warning_color; }
+}
+
+// App Menu
+#appMenu {
+  spacing: $base_spacing;
+  .label-shadow { color: transparent; }
+}

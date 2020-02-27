@@ -1,0 +1,66 @@
+/* Window Picker */
+
+$window_picker_spacing: $base_spacing * 8; // 48px
+$window_picker_padding: $base_padding * 10; // 60px
+
+$window_thumbnail_border_color:transparentize($selected_fg_color, 0.65);
+
+$window_close_button_size: 24px;
+$window_close_button_padding: 3px;
+
+
+// Window picker
+.window-picker {
+  // Space between window thumbnails
+  -horizontal-spacing: $window_picker_spacing;
+  -vertical-spacing: $window_picker_spacing;
+  // Padding for container around window thumbnails
+  padding: $window_picker_padding;
+
+  &.external-monitor { padding: $window_picker_padding; }
+}
+
+// Borders on window thumbnails
+.window-clone-border {
+  border-width: 6px;
+  border-style: solid;
+  border-color: $window_thumbnail_border_color;
+  border-radius: $base_border_radius + 2;
+  // For window decorations with round corners we can't match
+  // the exact shape when the window is scaled. So apply a shadow
+  // to fix that case
+  box-shadow: inset 0 0 0 1px transparentize($borders_color, 0.8);
+}
+
+// Window titles
+.window-caption {
+  color: $osd_fg_color;
+  background-color: $osd_bg_color;
+  border:1px solid $osd_outer_borders_color;
+  border-radius: $base_border_radius + 1;
+  padding: $base_padding $base_padding * 2;
+  font-weight: bold;
+  @include fontsize($base_font_size + 1);
+}
+
+// Close button
+.window-close {
+  background-color: $selected_bg_color;
+  color: $selected_fg_color;
+  border: none;
+  border-radius: $window_close_button_size * 0.5 + $window_close_button_padding * 2;
+  padding: $window_close_button_padding;
+  height: $window_close_button_size;
+  width: $window_close_button_size;
+  box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.5);
+
+  -shell-close-overlap: $window_close_button_size * 0.5;
+
+  &:hover {
+    background-color: lighten($selected_bg_color, 5%);
+  }
+
+  &:active {
+    background-color: darken($selected_bg_color, 5%);
+  }
+}

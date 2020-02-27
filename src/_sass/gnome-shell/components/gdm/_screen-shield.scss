@@ -1,0 +1,83 @@
+/* Screen Shield */
+
+$_screenshield_shadow: 0px 0px 6px rgba(0, 0, 0, 0.726);
+
+.screen-shield-arrows {
+  padding-bottom: 3em;
+}
+
+.screen-shield-arrows Gjs_Arrow {
+  color: white;
+  width: 80px;
+  height: 48px;
+  -arrow-thickness: 12px;
+  -arrow-shadow: $_screenshield_shadow;
+}
+
+.screen-shield-clock {
+  color: white;
+  text-shadow: $_screenshield_shadow;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 1.5em;
+}
+
+.screen-shield-clock-time {
+  font-size: 72pt;
+  text-shadow: $_screenshield_shadow;
+  font-feature-settings: "tnum";
+}
+
+.screen-shield-clock-date { 
+  font-size: 28pt;
+  font-weight: normal;
+}
+
+.screen-shield-notifications-container {
+  spacing: 6px;
+  width: 30em;
+  background-color: transparent;
+  max-height: 500px;
+  .summary-notification-stack-scrollview {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .notification,
+  .screen-shield-notification-source {
+    padding: 12px 6px;
+    border: 1px solid $osd_outer_borders_color;
+    background-color: transparentize($osd_bg_color,0.5);
+    color: $osd_fg_color;
+    border-radius: 4px;
+  }
+  .notification { margin-right: 15px; } //compensate for space allocated to the scrollbar
+}
+
+
+.screen-shield-notification-label {
+  font-weight: bold;
+  padding: 0px 0px 0px 12px;
+}
+
+.screen-shield-notification-count-text { padding: 0px 0px 0px 12px; }
+
+#panel.lock-screen { background-color: transparentize($osd_bg_color, 0.5); }
+
+.screen-shield-background { //just the shadow, really
+  background: black;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.6);
+}
+
+#lockDialogGroup {
+  background: lighten(#2e3436, 8%) url(resource:///org/gnome/shell/theme/noise-texture.png);
+  background-repeat: repeat;
+}
+
+#screenShieldNotifications {
+  StButton#vhandle, StButton#hhandle {
+    background-color: transparentize($bg_color,0.7);
+    &:hover, &:focus { background-color: transparentize($bg_color,0.5); }
+    &:active { background-color: transparentize($selected_bg_color,0.5); }
+  }
+}

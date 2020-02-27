@@ -1,0 +1,119 @@
+/* Popovers/Menus */
+
+$popover_arrow_height: 12px;
+
+//.the popover itself
+.popup-menu-boxpointer {
+  -arrow-border-radius: $base_border_radius+4;
+  -arrow-background-color: $bg_color;
+  -arrow-border-width: 1px;
+  -arrow-border-color: $borders_color;
+  -arrow-base: $popover_arrow_height * 2;
+  -arrow-rise: $popover_arrow_height;
+  -arrow-box-shadow: 0 1px 3px rgba(0,0,0,0.5); // dreaming bugzilla #689995
+}
+
+// container of the popover menu
+.popup-menu {
+  min-width: 15em;
+  color: $fg_color;
+
+  //.popup-status-menu-item { font-weight: normal;  color: pink; } //dunno what that is
+  &.panel-menu {
+    -boxpointer-gap: $base_margin; // distance from the panel
+    margin-bottom: 1.75em;
+  }
+}
+
+.popup-menu-content {
+  padding: $base_padding * 2 + $base_margin 0;
+}
+
+// menu items
+.popup-menu-item {
+  spacing: $base_padding;
+  padding: $base_padding;
+
+  &:ltr { padding-right:1.75em; padding-left: 0; }
+  &:rtl { padding-right: 0; padding-left:1.75em; }
+
+  &:checked {
+    background-color: lighten($bg_color, 2%);
+    box-shadow: none;
+  }
+
+  &.selected {
+    background-color: transparentize(white, if($variant=='light', 0.2, 0.9));
+    color: $fg_color;
+  }
+
+  &:active { 
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+  }
+
+  &:insensitive { color: transparentize($fg_color,0.5);}
+}
+
+// all icons and other graphical elements
+.popup-inactive-menu-item {
+  color: $fg_color;
+
+  &:insensitive { color: transparentize($fg_color,0.5); }
+}
+
+// symbolic icons in popover
+.popup-menu-arrow,
+.popup-menu-icon { icon-size: $base_icon_size; }
+
+// popover submenus
+.popup-sub-menu {
+  background-color: darken($bg_color, 3%);
+  box-shadow: none;
+  border-top: 1px solid transparentize($borders_color, 0.2);
+  border-bottom: 1px solid transparentize($borders_color, 0.2);
+}
+
+// container for radio and check boxes
+.popup-menu-ornament {
+  text-align: right;
+  width: 1.2em;
+}
+
+// separator
+.popup-separator-menu-item {
+  //-margin-horizontal: 24px;
+  height: 1px; //not really the whole box
+  margin: 6px 64px;
+  background-color: lighten($borders_color, 2%);
+}
+
+// desktop background menu
+.background-menu {
+  -boxpointer-gap: $base_margin;
+  -arrow-rise: 0px; // hide the beak on the menu
+}
+
+// system status menu
+.aggregate-menu {
+  min-width: 21em;
+
+  // lock screen, shutdown, etc. buttons
+  .popup-menu-icon { 
+    padding:0;
+    margin: 0 $base_margin;
+    -st-icon-style: symbolic;
+  }
+
+  .popup-sub-menu .popup-menu-item > :first-child {
+    // account for icons in submenus with padding
+    &:ltr {
+      padding-left: $base_padding + $base_margin * 2; 
+      margin-left: $base_icon_size;
+    }
+    &:rtl {
+      padding-right: $base_padding + $base_margin * 2; ;
+      margin-right: $base_icon_size;
+    }
+  }
+}

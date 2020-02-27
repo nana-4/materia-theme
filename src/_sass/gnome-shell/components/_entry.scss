@@ -1,0 +1,27 @@
+/* Entries */
+
+StEntry {
+  border-radius: $base_border_radius;
+  padding: 8px;
+  border-width: 1px;
+  color: $fg_color;
+  @include entry(normal);
+  //&:hover { @include entry(hover);}
+  &:focus { @include entry(focus);}
+  &:insensitive { @include entry(insensitive);}
+  selection-background-color: $selected_bg_color;
+  selected-color: $selected_fg_color;
+  StIcon.capslock-warning {
+    icon-size: 16px;
+    warning-color: $warning_color;
+    padding: 0 4px;
+  }
+  StIcon.peek-password {
+    icon-size: $base_icon_size;
+    padding: 0 4px;
+  }
+  StLabel.hint-text {
+    margin-left: 2px;
+    color: transparentize($fg_color, 0.3);
+  }
+}
