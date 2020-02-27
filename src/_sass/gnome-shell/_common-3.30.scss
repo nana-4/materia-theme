@@ -5,47 +5,12 @@
     color: rgba(0,0,0,0);
   }
 
-/* OSD */
-.osd-window {
-  text-align: center;
-  font-weight: bold;
-  spacing: 1em;
-  margin: 32px;
-  min-width: 64px;
-  min-height: 64px;
-
-  .osd-monitor-label { @include type(headline3); }
-  .level {
-    height: 8px;
-    -barlevel-height: 8px;
-    -barlevel-background-color: $stroke-disabled;
-    -barlevel-active-background-color: $primary;
-    -barlevel-overdrive-color: $error;
-    -barlevel-overdrive-separator-width: 2px;
-  }
-}
-
-/* Pad OSD */
-.pad-osd-window {
-  padding: 32px;
-  background-color: $scrim;
-
-  .pad-osd-title-box { spacing: 12px; }
-  .pad-osd-title-menu-box { spacing: 6px; }
-}
-
-.combo-box-label {
-  width: 15em;
-}
-
 /* App Switcher */
 .switcher-popup {
   padding: 8px;
   spacing: 16px;
 }
 
-.osd-window,
-.resize-popup,
 .switcher-list {
   @extend %osd-panel;
 }
@@ -131,15 +96,6 @@
     background: $stroke-disabled;
     border-radius: $corner-radius;
   }
-
-%osd-panel {
-  color: $text;
-  background-color: $surface;
-  border: none;
-  box-shadow: $shadow-4;
-  border-radius: $corner-radius;
-  padding: 12px;
-}
 
 /* Tiled window previews */
 .tile-preview {
