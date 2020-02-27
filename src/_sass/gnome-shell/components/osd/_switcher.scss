@@ -2,34 +2,41 @@
 
 .switcher-popup {
   padding: 8px;
-  spacing: $base_spacing * 4;
+  spacing: 16px;
 }
 
 // switcher onscreen panel
 .switcher-list {
-  @extend %osd_panel;
+  @extend %osd-panel;
+
+  .switcher-list-item-container {
+    spacing: 8px;
+  }
 
   .item-box {
+    transition-duration: $duration;
     padding: 8px;
-    border-radius: $base_border_radius + 1px;
-    border: 1px solid transparent;
+    border: 0;
+    border-radius: $corner-radius;
 
     &:outlined {
-      border: 1px solid darken($borders_color,5%);
-      background-color: transparentize($osd_fg_color, 0.9);
-      box-shadow: inset 0 2px 2px 0 rgba(0,0,0,0.4);
+      padding: 8px;
+      border: 0;
+      box-shadow: none;
+      background-color: $stroke-disabled;
+      color: inherit;
     }
 
     &:selected {
-      background-color: transparentize($osd_fg_color, 0.9);
-      color: $osd_fg_color;
+      background-color: $overlay-selected;
+      color: inherit;
     }
   }
 
   // window thumbnails
   .thumbnail-box {
     padding: 2px;
-    spacing: $base_spacing;
+    spacing: 4px;
   }
 
   .thumbnail {
@@ -38,30 +45,28 @@
 
   .separator {
     width: 1px;
-    background: $borders_color;
-  }
-
-  .switcher-list-item-container {
-    spacing: $base_spacing * 2;
+    background: $divider;
   }
 }
 
 .switcher-arrow {
-  border-color: rgba(0,0,0,0);
-  color: transparentize($fg_color,0.2);
+  transition-duration: $duration;
+  border-color: transparent;
+  color: $text2;
+
   &:highlighted {
-    color: $fg_color;
+    color: $text;
   }
 }
 
 // Input Source Switcher
 .input-source-switcher-symbol {
-  font-size: 34pt;
   width: 96px;
   height: 96px;
+  @include type(headline3);
 }
 
 // Window cycler highlight
 .cycler-highlight {
-  border: 5px solid $selected_bg_color;
+  border: 4px solid $primary;
 }
