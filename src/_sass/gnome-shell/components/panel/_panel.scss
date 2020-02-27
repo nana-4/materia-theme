@@ -1,86 +1,81 @@
 /* Top Bar */
-// a.k.a. the panel
-
-$panel_corner_radius: $base_border_radius+1;
-$panel_bg_color: #000;
-$panel_fg_color: #ccc;
-$panel_height: 1.86em;
-
 
 #panel {
-  background-color: $panel_bg_color;
+  $background: if($version >= 3.26 and $version <= 3.30, $scrim, $panel);
+
+  transition-duration: $duration-panel;
+  height: $menuitem-size;
+  background-color: $background;
   font-weight: bold;
-  height: $panel_height;
   font-feature-settings: "tnum";
 
-  // transparent panel on lock & login screens
-  &.unlock-screen,
-  &.login-screen,
-  &.lock-screen {
-    background-color: transparent;
-
-    .panel-corner {
-      -panel-corner-radius: 0;
-      -panel-corner-background-color: transparent;
-      -panel-corner-border-color: transparent;
-    }
-  }
-
   // spacing between activities, app menu and such
-  #panelLeft, #panelCenter {
-    spacing: $base_spacing;
+  #panelLeft,
+  #panelCenter {
+    spacing: 0;
   }
 
   // the rounded outset corners
   .panel-corner {
-    -panel-corner-radius: $panel_corner_radius;
-    -panel-corner-background-color: $panel_bg_color;
-    -panel-corner-border-width: 2px;
+    -panel-corner-radius: 0;
+    -panel-corner-background-color: transparent;
+    -panel-corner-border-width: 0;
     -panel-corner-border-color: transparent;
 
     &:active, &:overview, &:focus {
-      -panel-corner-border-color: lighten($selected_bg_color,5%);
+      -panel-corner-border-color: transparent;
     }
   }
 
   // panel menus
   .panel-button {
+    -natural-hpadding: $panel-button-hpadding;
+    -minimum-hpadding: $panel-button-hpadding / 2;
+    transition-duration: $duration;
+    color: on($background, text2);
+    text-shadow: none;
     font-weight: bold;
-    color: $panel_fg_color;
-    -natural-hpadding: $base_padding * 2;
-    -minimum-hpadding: $base_padding;
+
+    .system-status-icon,
+    .app-menu-icon > StIcon,
+    .popup-menu-arrow {
+      icon-shadow: none;
+    }
 
     &:hover {
-      color: lighten($panel_fg_color, 20%);
+      color: on($background);
+      text-shadow: none;
+
+      .system-status-icon,
+      .app-menu-icon > StIcon,
+      .popup-menu-arrow {
+        icon-shadow: none;
+      }
     }
 
     &:active, &:overview, &:focus, &:checked {
+      box-shadow: inset 0 -2px on($background);
       // Trick due to St limitations. It needs a background to draw a box-shadow
-      background-color: rgba(0, 0, 0, 0.01);
-      box-shadow: inset 0 -2px 0 0 lighten($selected_bg_color,5%);
-      color: lighten($panel_fg_color, 20%);
+      background-color: rgba($background, .01);
+      color: on($background);
+
+      > .system-status-icon {
+        icon-shadow: none;
+      }
     }
 
     // status area icons
     .system-status-icon {
-      icon-size: $base_icon_size;
-      padding: $base_padding - 1px;
+      icon-size: 16px;
+      padding: 0 4px;
     }
 
     // app menu icon
     .app-menu-icon {
-      margin-left: $base_margin;
-      margin-right: $base_margin;
       -st-icon-style: symbolic;
+      margin-left: 4px;
+      margin-right: 4px;
       // dimensions of the icon are hardcoded
-    }
-
-    // lock & login screen styles
-    .unlock-screen &,
-    .login-screen &,
-    .lock-screen & {
-      color: lighten($fg_color, 10%);
-      &:focus, &:hover, &:active { color: lighten($fg_color, 10%); }
     }
   }
 
@@ -96,11 +91,68 @@ $panel_height: 1.86em;
 
   // indicator for active
   .screencast-indicator,
-  .remote-access-indicator { color: $warning_color; }
+  .remote-access-indicator {
+    color: $warning;
+  }
+
+  // transparent panel on lock & login screens
+  &:overview,
+  &.unlock-screen,
+  &.login-screen,
+  &.lock-screen {
+    background-color: transparent;
+
+    .panel-corner {
+      -panel-corner-radius: 0;
+      -panel-corner-background-color: transparent;
+      -panel-corner-border-color: transparent;
+    }
+
+    .panel-button {
+      color: on(dark, text2);
+
+      &:hover, &:active, &:overview, &:focus, &:checked {
+        color: on(dark);
+      }
+    }
+  }
+
+  @if $version >= 3.26 and $version <= 3.30 {
+    &.solid {
+      transition-duration: $duration-panel;
+      background-color: $panel;
+
+      .panel-corner {
+        -panel-corner-background-color: transparent;
+      }
+
+      .panel-button {
+        color: on($panel, text2);
+        text-shadow: none;
+
+        &:hover, &:active, &:overview, &:focus, &:checked {
+          color: on($panel);
+        }
+      }
+
+      .system-status-icon,
+      .app-menu-icon > StIcon,
+      .popup-menu-arrow {
+        icon-shadow: none;
+      }
+    }
+  }
 }
 
 // App Menu
 #appMenu {
-  spacing: $base_spacing;
-  .label-shadow { color: transparent; }
+  spacing: 4px;
+
+  @if $version <= 3.32 {
+    spinner-image: url("process-working.svg");
+  }
+
+  .label-shadow {
+    color: transparent;
+  }
 }
