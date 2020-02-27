@@ -62,46 +62,6 @@ StScrollBar {
   -slider-handle-radius: 6px;
 }
 
-/* Check Boxes */
-
-.check-box {
-  * {
-    min-height: $medium-size - 8px * 2;
-    padding: 8px 0;
-  }
-  StBoxLayout { spacing: 8px; }
-  StBin {
-    transition-duration: $duration;
-    width: 24px;
-    height: 24px;
-    padding: ($medium-size - 24px) / 2;
-    border-radius: 100px;
-    background-image: url("assets/checkbox-off.svg");
-  }
-  &:focus StBin {
-    background-image: url("assets/checkbox-off.svg");
-  }
-  &:hover StBin {
-    background-color: $overlay-hover;
-  }
-  &:active StBin {
-    transition-duration: $duration-ripple;
-    background-color: $overlay-active;
-  }
-  &:checked StBin {
-    background-image: url("assets/checkbox.svg");
-  }
-  &:focus:checked StBin {
-    background-image: url("assets/checkbox.svg");
-  }
-  &:hover:checked StBin {
-    background-color: rgba($primary, 0.08);
-  }
-  &:active:checked StBin {
-    background-color: rgba($primary, 0.2);
-  }
-}
-
 /* Switches */
 .toggle-switch {
   width: 40px;
