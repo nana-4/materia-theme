@@ -1,27 +1,51 @@
 /* Entries */
 
+%entry,
 StEntry {
-  border-radius: $base_border_radius;
-  padding: 8px;
-  border-width: 1px;
-  color: $fg_color;
+  min-height: $medium-size;
+  padding: 0 8px;
+  border-width: 0;
+  border-radius: $corner-radius $corner-radius 0 0;
+  color: $text;
+  selection-background-color: $overlay-selected;
+  selected-color: $text;
+  @include type(body1);
   @include entry(normal);
-  //&:hover { @include entry(hover);}
-  &:focus { @include entry(focus);}
-  &:insensitive { @include entry(insensitive);}
-  selection-background-color: $selected_bg_color;
-  selected-color: $selected_fg_color;
+
+  &:hover {
+    @include entry(hover);
+  }
+
+  &:focus {
+    @include entry(focus);
+
+    @if $version == 3.34 {
+      border: 0;
+    }
+  }
+
+  &:insensitive {
+    @include entry(insensitive);
+  }
+
   StIcon.capslock-warning {
     icon-size: 16px;
-    warning-color: $warning_color;
     padding: 0 4px;
+    warning-color: $warning;
   }
+
   StIcon.peek-password {
-    icon-size: $base_icon_size;
+    icon-size: 16px;
     padding: 0 4px;
+    color: $text2;
+
+    &:hover {
+      color: $text;
+    }
   }
+
   StLabel.hint-text {
     margin-left: 2px;
-    color: transparentize($fg_color, 0.3);
+    color: $text2;
   }
 }
