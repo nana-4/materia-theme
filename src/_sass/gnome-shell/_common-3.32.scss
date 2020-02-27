@@ -34,68 +34,6 @@
   border: 1px solid on(dark, primary);
 }
 
-//close buttons
-
-.window-close {
-  // FIXME: unless disable the transition, button will distort when hovering
-  // transition-duration: $duration;
-  background-color: transparent;
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
-  color: transparent;
-  height: $medium-size;
-  width: $medium-size;
-  -shell-close-overlap: $medium-size / 2;
-  -st-background-image-shadow: $shadow-1;
-  background-image: url("assets/window-close.svg");
-  background-size: $medium-size;
-
-  &:hover {
-    background-color: transparent;
-    border-color: transparent;
-    color: transparent;
-    -st-background-image-shadow: $shadow-2;
-    background-image: url("assets/window-close.svg");
-  }
-
-  &:active {
-    background-color: transparent;
-    border-color: transparent;
-    color: transparent;
-    // transition-duration: $duration-ripple;
-    background-image: url("assets/window-close-active.svg");
-  }
-
-  // For backward compatibility of 3.26.0
-  &:rtl { -st-background-image-shadow: $shadow-1; }
-  &:rtl:hover { -st-background-image-shadow: $shadow-2; }
-}
-
-  .window-picker { //container around window thumbnails
-    -horizontal-spacing: 16px;
-    -vertical-spacing: 16px;
-    padding: 0 16px 32px;
-
-    &.external-monitor { padding: 16px; }
-  }
-
-  .window-clone-border {
-    border: 4px solid on(dark, stroke);
-    border-radius: $corner-radius;
-    // For window decorations with round corners we can't match
-    // the exact shape when the window is scaled. So apply a shadow
-    // to fix that case
-    box-shadow: inset 0 0 0 1px on(dark, stroke);
-  }
-  .window-caption {
-    spacing: 25px;
-    color: on($scrim);
-    background-color: $scrim;
-    border-radius: $corner-radius;
-    padding: 4px 8px;
-  }
-
   //search entry
   .search-entry {
     width: 320px - 8px * 2;
