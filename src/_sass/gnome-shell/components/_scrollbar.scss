@@ -1,29 +1,58 @@
 /* Scrollbars */
 
 StScrollView {
-  &.vfade { -st-vfade-offset: 68px; }
-  &.hfade { -st-hfade-offset: 68px; }
+  &.vfade { -st-vfade-offset: 32px; }
+  &.hfade { -st-hfade-offset: 32px; }
 }
 
 StScrollBar {
   padding: 0;
 
   StScrollView & {
-    min-width: 14px;
-    min-height: 14px;
+    min-width: 16px;
+    min-height: 16px;
   }
 
   StBin#trough {
-    border-radius: 0;
-    background-color: transparent;
+    margin: 4px;
+    border-radius: (8px / 2);
+    background-color: $stroke-disabled;
   }
 
-  StButton#vhandle, StButton#hhandle {
-    border-radius: 8px;
-    background-color: mix($fg_color, $bg_color, 60%);
-    //border: 3px solid transparent; //would be nice to margin or at least to transparent
-    margin: 3px;
-    &:hover { background-color: mix($fg_color, $bg_color, 80%); }
-    &:active { background-color: $selected_bg_color; }
+  StButton#vhandle,
+  StButton#hhandle {
+    transition-duration: $duration;
+    margin: 4px;
+    // would be nice to margin or at least to transparent
+    // border: 4px solid transparent;
+    border-radius: (8px / 2);
+    background-color: $text-disabled;
+
+    &:hover {
+      background-color: $text2;
+    }
+
+    &:active {
+      background-color: $text;
+    }
+  }
+}
+
+%scrollbar-on-dark {
+  StBin#trough {
+    background-color: on(dark, stroke-disabled);
+  }
+
+  StButton#vhandle,
+  StButton#hhandle {
+    background-color: on(dark, text-disabled);
+
+    &:hover {
+      background-color: on(dark, text2);
+    }
+
+    &:active {
+      background-color: on(dark);
+    }
   }
 }

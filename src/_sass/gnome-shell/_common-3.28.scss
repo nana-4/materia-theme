@@ -1,50 +1,6 @@
 .modal-dialog-linked-button {
 }
 
-/* Scrollbars */
-
-StScrollView {
-  &.vfade { -st-vfade-offset: 32px; }
-  &.hfade { -st-hfade-offset: 32px; }
-}
-
-StScrollBar {
-  padding: 0;
-
-  StScrollView & {
-    min-width: 16px;
-    min-height: 16px;
-  }
-
-  StBin#trough {
-    margin: 4px;
-    border-radius: 100px;
-    background-color: $stroke-disabled;
-  }
-
-  StButton#vhandle, StButton#hhandle {
-    transition-duration: $duration;
-    border-radius: 100px;
-    background-color: $text-disabled;
-    //border: 4px solid transparent; //would be nice to margin or at least to transparent
-    margin: 4px;
-    &:hover { background-color: $text2; }
-    &:active { background-color: $text; }
-  }
-}
-
-%overview_scrollbar {
-  StBin#trough {
-    background-color: on(dark, stroke-disabled);
-  }
-
-  StButton#vhandle, StButton#hhandle {
-    background-color: on(dark, text-disabled);
-    &:hover { background-color: on(dark, text2); }
-    &:active { background-color: on(dark); }
-  }
-}
-
 /* Modal Dialogs */
 
 .headline { @include type(headline6); }
