@@ -12,7 +12,7 @@ _COLOR_VARIANTS=('' '-dark' '-light')
 _SIZE_VARIANTS=('' '-compact')
 
 GTK_VERSIONS=('3.0')
-GS_VERSIONS=('3.26' '3.28' '3.30' '3.32' '3.34')
+GS_VERSIONS=('3.26' '3.28' '3.30' '3.32' '3.34' '3.36')
 
 if [[ -n "${COLOR_VARIANTS:-}" ]]; then
   IFS=', ' read -r -a _COLOR_VARIANTS <<< "${COLOR_VARIANTS:-}"
