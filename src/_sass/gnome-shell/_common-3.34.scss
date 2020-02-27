@@ -98,17 +98,6 @@
   -pie-background-color: $overlay-selected;
 }
 
-/* OVERVIEW */
-
-#overview {
-  spacing: 24px; //
-  StScrollBar { @extend %overview_scrollbar; }
-}
-
-.overview-controls {
-  padding-bottom: 32px;
-}
-
   .window-picker { //container around window thumbnails
     -horizontal-spacing: 16px;
     -vertical-spacing: 16px;
@@ -326,15 +315,6 @@
     margin-bottom: 0;
   }
 
-  %icon_tile {
-    color: on(dark);
-    border-radius: $corner-radius;
-    padding: 6px;
-    border: none;
-    transition-duration: $duration;
-    text-align: center;
-  }
-
   .app-well-app.app-folder > .overview-icon {
     background-color: on(dark, fill);
   }
@@ -435,18 +415,6 @@
     // horizontal padding to make sure scrollbars or dash don't overlap content
     padding: 0px 88px 10px 88px;
   }
-
-%overview-panel {
-  transition-duration: $duration-panel;
-  color: on(dark);
-  background-color: on(dark, fill);
-  border: none;
-}
-
-%status_text {
-  @include type(headline3);
-  color: on(dark, text-disabled);
-}
 
 /* Eeeky things */
 

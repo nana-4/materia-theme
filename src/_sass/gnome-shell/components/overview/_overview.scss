@@ -3,8 +3,103 @@
 #overview {
   spacing: 24px;
   background-color: transparent;
+  color: on(dark);
+
+  StScrollBar {
+    @extend %scrollbar-on-dark;
+  }
 }
 
 .overview-controls {
   padding-bottom: 32px;
+}
+
+%overview-panel {
+  transition-duration: $duration-panel;
+  border: 0;
+  background-color: on(dark, fill);
+  color: on(dark);
+}
+
+%overview-status-text {
+  @include type(headline3);
+  color: on(dark, text-disabled);
+}
+
+%overview-item {
+  @extend %-overview-item;
+
+  &:focus {
+    @extend %-overview-item-focus;
+  }
+
+  &:hover,
+  &:selected {
+    @extend %-overview-item-hover;
+  }
+
+  &:active,
+  &:checked {
+    @extend %-overview-item-active;
+  }
+}
+
+%overview-icon {
+  .overview-icon {
+    @extend %-overview-item;
+  }
+
+  &:focus {
+    .overview-icon {
+      @extend %-overview-item-focus;
+    }
+  }
+
+  &:drop,
+  &:hover,
+  &:selected {
+    .overview-icon {
+      @extend %-overview-item-hover;
+    }
+  }
+
+  &:active,
+  &:checked {
+    .overview-icon {
+      @extend %-overview-item-active;
+    }
+  }
+}
+
+%-overview-item {
+  padding: 6px;
+  border: 0;
+  border-radius: $corner-radius;
+  background-color: transparent;
+  color: inherit;
+  text-align: center;
+  transition-duration: $duration;
+}
+
+%-overview-item-focus {
+  border-image: none;
+  background-image: none;
+  background-color: $inverse-overlay-focus;
+  color: inherit;
+  transition-duration: 0ms;
+}
+
+%-overview-item-hover {
+  border-image: none;
+  background-image: none;
+  background-color: $inverse-overlay-hover;
+  color: inherit;
+  transition-duration: 0ms;
+}
+
+%-overview-item-active {
+  box-shadow: none;
+  background-color: $inverse-overlay-active;
+  color: inherit;
+  transition-duration: $duration-ripple;
 }
