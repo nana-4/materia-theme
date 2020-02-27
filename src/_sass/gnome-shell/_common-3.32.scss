@@ -34,37 +34,6 @@
   border: 1px solid on(dark, primary);
 }
 
-  //search results
-
-  #searchResultsBin {
-    max-width: 1000px;
-  }
-
-  #searchResultsContent {
-    padding-left: 20px;
-    padding-right: 20px;
-    spacing: 16px;
-  }
-
-  .search-section { spacing: 16px; } // This should be equal to #searchResultsContent spacing
-  .search-section-content { spacing: 32px; } // This is the space between the provider icon and the results container
-  .search-statustext { // "no results"
-    @extend %status_text;
-  }
-  .list-search-results { spacing: 3px; }
-
-  .search-section-separator { height: 1px; background-color: on(dark, divider); }
-
-  .search-section:last-child .search-section-separator { background-color: transparent; }
-
-  .list-search-result-content { spacing: 30px; }
-  .list-search-result-title { @include type(subtitle1); color: on(dark); spacing: 12px; }
-  .list-search-result-description { color: on(dark, text2); }
-  .list-search-provider-details { width: 150px; color: on(dark, text2); margin-top: 0.24em; }
-  .list-search-provider-content { spacing: 20px; }
-  .search-provider-icon { padding: 15px; }
-
-
   /* DASHBOARD */
 
   #dash {
@@ -160,18 +129,6 @@
   }
 
   //Icon tile
-  .search-provider-icon,
-  .list-search-result {
-    @extend %icon_tile;
-    &:focus, &:selected, &:hover {
-      background-color: $inverse-overlay-hover;
-      transition-duration: 0ms;
-    }
-    &:active, &:checked {
-      background-color: $inverse-overlay-active;
-      transition-duration: $duration-ripple;
-    }
-  }
   .app-well-app,
   .app-well-app.app-folder,
   .show-apps,

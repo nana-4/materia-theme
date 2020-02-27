@@ -1,20 +1,30 @@
 /* Search */
 
 // search overview container
-#searchResultsContent {
+$searchResultsContent: if($version >= 3.34, "#searchResultsContent", "#searchResultsBin");
+
+#{$searchResultsContent} {
   max-width: 1024px;
-  spacing: $base_margin * 2;
+}
+
+#searchResultsContent {
+  padding-left: 16px;
+  padding-right: 16px;
+  spacing: 16px;
 }
 
 // search results sections "the boxes"
 .search-section {
   // This should be equal to #searchResultsContent spacing
-  spacing: $base_margin * 2;
+  spacing: 16px;
 
   // separator
-  .search-section-separator { 
-    // height: 1px;
-    // background-color: $osd_outer_borders_color;
+  .search-section-separator {
+    height: 1px;
+    background-color: on(dark, divider);
+  }
+
+  &:last-child .search-section-separator {
     height: 0;
     background-color: transparent;
   }
@@ -22,36 +32,21 @@
 
 // content
 .search-section-content {
-  background-color: transparentize(lighten($osd_bg_color, 5%), 0.2);
-  border-radius: $modal_radius+3;
-  border: 1px solid $osd_outer_borders_color;
-  box-shadow: 0 2px 4px 0 $shadow_color;
-  text-shadow: 0 1px if($variant == 'light', rgba(255,255,255,0.2), rgba(0,0,0,0.2));
-  color: $osd_fg_color;
-  padding: $base_padding * 3;
   // This is the space between the provider icon and the results container
-  spacing: $base_margin * 2;
-}
+  spacing: 32px;
 
-%search-section-content-item {
-  @extend %icon_tile;
-
-  &:focus,
-  &:hover,
-  &:selected {
-    background-color: transparentize($osd_fg_color, .9);
-    transition-duration: 200ms;
-  }
-
-  &:active,
-  &:checked {
-    background-color: transparentize(darken($osd_bg_color, 10%), .1);
-  }
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+  color: inherit;
+  text-shadow: none;
 }
 
 // "no results" text
 .search-statustext {
-  @extend %status_text;
+  @extend %overview-status-text;
 }
 
 // Search results with icons
@@ -61,17 +56,17 @@
 
 // search result provider
 .search-provider-icon {
-  @extend %search-section-content-item;
+  @extend %overview-item;
 
   // content
   .list-search-provider-content {
-    spacing: $base_spacing * 2;
+    spacing: 20px;
 
     // provider labels
     .list-search-provider-details {
-      width: 120px;
+      width: 150px;
       margin-top: 0;
-      color: darken($osd_fg_color, 8%);
+      color: on(dark, text2);
       // font-weight: bold;
     }
   }
@@ -79,26 +74,27 @@
 
 // search results list
 .list-search-results {
-  spacing: $base_spacing;
+  spacing: 4px;
 }
 
 // search result listitem
 .list-search-result {
-  @extend %search-section-content-item;
+  @extend %overview-item;
 
   // content
   .list-search-result-content {
-    spacing: $base_padding;
+    spacing: 30px;
   }
 
   // list item title (with leading icon)
   .list-search-result-title {
-    spacing: $base_spacing * 2;
-    // font-weight: bold;
+    spacing: 12px;
+    color: inherit;
+    @include type(subtitle1);
   }
 
   // list item description
   .list-search-result-description {
-    color: darken($osd_fg_color, 30%);
+    color: on(dark, text2);
   }
 }
