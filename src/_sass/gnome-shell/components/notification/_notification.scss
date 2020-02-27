@@ -1,15 +1,51 @@
 /* Notifications & Mesage Tray */
 
-$notification_banner_height: 64px;
-$notification_banner_width: 34em;
-
 // Banner notifications
 .notification-banner {
-  min-height: $notification_banner_height;
-  width: $notification_banner_width;
+  min-height: $menuitem-size * 2;
+  width: 34em;
+  margin: 5px;
+  border: 0;
+  border-radius: $corner-radius;
+  font-size: 1em;
+
+  &,
+  &:focus,
+  &:hover,
+  &:active {
+    box-shadow: $shadow-2;
+    background-color: $surface;
+    color: $text;
+  }
+
+  @if $version == 3.34 {
+    &,
+    &:focus,
+    &:active {
+      .message-title {
+        color: $text;
+      }
+
+      .message-content {
+        color: $text2;
+      }
+    }
+
+    .message-icon-bin > StIcon {
+      color: inherit;
+    }
+
+    StEntry {
+      @extend %entry;
+    }
+  }
 
   .notification-actions {
     spacing: 0;
+    padding-top: 0;
+    border-top: 0;
+    background-color: transparent;
+    color: inherit;
   }
 
   .notification-button {
@@ -19,39 +55,62 @@ $notification_banner_width: 34em;
 
 // counter
 .summary-source-counter {
-  font-size: $base_font_size - 1pt;
-  font-weight: bold;
-  height: 1.6em;
-  width: 1.6em;
   -shell-counter-overlap-x: 3px;
   -shell-counter-overlap-y: 3px;
-  background-color: $selected_bg_color;
-  color: $selected_fg_color;
-  border: 2px solid $fg_color;
-  box-shadow: 0 2px 2px rgba(0,0,0,0.5);
-  border-radius: 0.9em; // should be 0.8 but whatever; wish I could do 50%;
+  height: 1.6em;
+  width: 1.6em;
+  border: 0;
+  border-radius: .8em;
+  box-shadow: $shadow-2;
+  background-color: $primary;
+  color: on($primary);
+  font-weight: bold;
+  font-size: 1em;
 }
 
 // chat bubbles
-.chat-body { spacing: 5px; }
-.chat-response { margin: 5px; }
-.chat-log-message { color: darken($fg_color,10%); }
-.chat-new-group { padding-top: 1em; }
+.chat-body {
+  spacing: 5px;
+}
+
+.chat-response {
+  margin: 5px;
+}
+
+.chat-log-message {
+  color: $text;
+}
+
+.chat-new-group {
+  padding-top: 1em;
+}
+
 .chat-received {
   padding-left: 4px;
-  &:rtl { padding-left: 0px; padding-right: 4px; }
+
+  &:rtl {
+    padding-left: 0;
+    padding-right: 4px;
+  }
 }
 
 .chat-sent {
   padding-left: 18pt;
-  color: lighten($fg_color, 15%);
-  &:rtl { padding-left: 0; padding-right: 18pt; }
+  color: $text2;
+
+  &:rtl {
+    padding-left: 0;
+    padding-right: 18pt;
+  }
 }
 
 .chat-meta-message {
   padding-left: 4px;
-  @include fontsize($base_font_size - 2);
-  font-weight: bold;
-  color: lighten($fg_color,18%);
-  &:rtl { padding-left: 0; padding-right: 4px; }
+  color: $text2;
+  @include type(caption);
+
+  &:rtl {
+    padding-left: 0;
+    padding-right: 4px;
+  }
 }
