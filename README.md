@@ -36,7 +36,7 @@ Supports **ripple animations** for GTK 3:
 
 - Budgie `>=10.4`
 - Cinnamon `>=3.x`
-- GNOME Shell `>=3.18`
+- GNOME Shell `>=3.26`
 - MATE `>=1.14`
 - Unity `>=7.4`
 - Xfce `>=4.13`
