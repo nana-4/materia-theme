@@ -1,35 +1,41 @@
 // Search entry
 
-$search_entry_width: 320px;
-$search_entry_height: 36px;
-
-%search_entry,
+%search-entry,
 .search-entry {
-  width: $search_entry_width;
-  padding: $base_padding+1 $base_padding+3;
-  border-radius: $search_entry_height * 0.5; // half the height
-  color: transparentize($fg_color,0.3);
-  background-color: $bg_color;
-  border-color: $borders_color;
+  width: 320px - 8px * 2;
+  padding: 0 8px;
+  border-radius: $corner-radius $corner-radius 0 0;
+  color: on(dark, text-disabled);
+  selection-background-color: on(dark, stroke);
+  selected-color: on(dark);
+  @include entry(normal, $fc: on(dark, stroke));
 
   &:hover {
-    background-color: $hover_bg_color;
-    border-color: $hover_borders_color;
-    color: $hover_fg_color;
+    @include entry(hover, $fc: on(dark, stroke));
+    color: on(dark, text-disabled);
   }
 
   &:focus {
-    padding: $base_padding $base_padding+2; // 1px less to account for wider border
-    border-width: 2px;
-    border-style: solid;
-    border-color: $selected_bg_color;
-    color: $fg_color;
-    box-shadow: inset 0 1px 2px 1px rgba(0,0,0,0.2);
+    @include entry(focus, $fc: on(dark));
+    padding: 0 8px;
+    border: 0;
+    color: on(dark);
   }
 
-  .search-entry-icon { 
-    icon-size: $base_icon_size;
+  StLabel.hint-text {
+    color: on(dark, text2);
+  }
+
+  .search-entry-icon {
+    icon-size: 16px;
     padding: 0 4px;
-    color: inherit;
+    color: on(dark, text2);
+  }
+
+  &:hover,
+  &:focus {
+    .search-entry-icon {
+      color: on(dark);
+    }
   }
 }
