@@ -5,12 +5,6 @@ RENDER_SVG="$(command -v rendersvg)" || true
 INKSCAPE="$(command -v inkscape)" || true
 OPTIPNG="$(command -v optipng)" || true
 
-if "$INKSCAPE" --help | grep -e "--export-png" > /dev/null; then
-  EXPORT_FILE_OPTION="--export-png"
-else
-  EXPORT_FILE_OPTION="--export-file"
-fi
-
 if [[ "$1" == "dark" ]]; then
   SRC_FILE="assets-dark.svg"
   ASSETS_DIR="assets-dark"
@@ -39,6 +33,11 @@ if [[ -n "${RENDER_SVG}" ]]; then
                 --zoom ${ZOOM} \
                 "$SRC_FILE" "$ASSETS_DIR/$i.png"
 else
+  if "$INKSCAPE" --help | grep -e "--export-png" > /dev/null; then
+    EXPORT_FILE_OPTION="--export-png"
+  else
+    EXPORT_FILE_OPTION="--export-file"
+  fi
   "$INKSCAPE" --export-id="$i" \
               --export-id-only \
               --export-dpi=${DPI} \
