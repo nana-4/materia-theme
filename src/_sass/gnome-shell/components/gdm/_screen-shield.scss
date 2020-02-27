@@ -1,7 +1,5 @@
 /* Screen Shield */
 
-$_screenshield_shadow: 0px 0px 6px rgba(0, 0, 0, 0.726);
-
 .screen-shield-arrows {
   padding-bottom: 3em;
 }
@@ -11,33 +9,33 @@ $_screenshield_shadow: 0px 0px 6px rgba(0, 0, 0, 0.726);
   width: 80px;
   height: 48px;
   -arrow-thickness: 12px;
-  -arrow-shadow: $_screenshield_shadow;
+  -arrow-shadow: $shadow-1;
 }
 
 .screen-shield-clock {
   color: white;
-  text-shadow: $_screenshield_shadow;
-  font-weight: bold;
+  text-shadow: $shadow-1;
+  font-weight: normal;
   text-align: center;
   padding-bottom: 1.5em;
 }
 
 .screen-shield-clock-time {
-  font-size: 72pt;
-  text-shadow: $_screenshield_shadow;
+  @include type(headline1);
+  text-shadow: $shadow-1;
   font-feature-settings: "tnum";
 }
 
-.screen-shield-clock-date { 
-  font-size: 28pt;
-  font-weight: normal;
+.screen-shield-clock-date {
+  @include type(headline4);
 }
 
 .screen-shield-notifications-container {
   spacing: 6px;
   width: 30em;
-  background-color: transparent;
   max-height: 500px;
+  background-color: transparent;
+
   .summary-notification-stack-scrollview {
     padding-top: 0;
     padding-bottom: 0;
@@ -45,39 +43,49 @@ $_screenshield_shadow: 0px 0px 6px rgba(0, 0, 0, 0.726);
 
   .notification,
   .screen-shield-notification-source {
-    padding: 12px 6px;
-    border: 1px solid $osd_outer_borders_color;
-    background-color: transparentize($osd_bg_color,0.5);
-    color: $osd_fg_color;
-    border-radius: 4px;
+    padding: 8px;
+    border: 0;
+    border-radius: $corner-radius;
+    background-color: $scrim-alt;
+    color: on($scrim-alt);
   }
-  .notification { margin-right: 15px; } //compensate for space allocated to the scrollbar
-}
 
+  // compensate for space allocated to the scrollbar
+  .notification {
+    margin-right: 16px;
+  }
+}
 
 .screen-shield-notification-label {
+  min-height: $small-size - 2px;
+  padding: 2px 0 0 16px;
   font-weight: bold;
-  padding: 0px 0px 0px 12px;
 }
 
-.screen-shield-notification-count-text { padding: 0px 0px 0px 12px; }
+.screen-shield-notification-count-text {
+  min-height: $small-size - 2px;
+  padding: 2px 0 0 16px;
+  color: on($scrim-alt, text2);
+}
 
-#panel.lock-screen { background-color: transparentize($osd_bg_color, 0.5); }
+#panel.lock-screen {
+  background-color: $scrim-alt;
+}
 
-.screen-shield-background { //just the shadow, really
+// just the shadow, really
+.screen-shield-background {
   background: black;
-  box-shadow: 0px 2px 4px rgba(0,0,0,0.6);
+  box-shadow: $shadow-5;
 }
 
 #lockDialogGroup {
-  background: lighten(#2e3436, 8%) url(resource:///org/gnome/shell/theme/noise-texture.png);
+  background: $os-background;
   background-repeat: repeat;
+  color: on($os-background);
 }
 
 #screenShieldNotifications {
-  StButton#vhandle, StButton#hhandle {
-    background-color: transparentize($bg_color,0.7);
-    &:hover, &:focus { background-color: transparentize($bg_color,0.5); }
-    &:active { background-color: transparentize($selected_bg_color,0.5); }
+  StScrollBar {
+    @extend %scrollbar-on-dark;
   }
 }
