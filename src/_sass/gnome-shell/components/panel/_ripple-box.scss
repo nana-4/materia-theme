@@ -1,15 +1,17 @@
 /* Activities Ripple */
 
-$ripple_size: 50px;
-
 .ripple-box {
-  background-color: lighten(transparentize($selected_bg_color, 0.7), 40%);
-  box-shadow: 0 0 2px 2px lighten($selected_bg_color, 20%);
-  // plus + 2px for the border (box-shadow)
-  width: $ripple_size + 2px;
-  height: $ripple_size + 2px;
-  border-radius: 0 0 $ripple_size + 2px 0; // radius equals the size of the box to give us the curve
+  width: 48px;
+  height: 48px;
+  border-radius: 0 0 48px 0; // radius equals the size of the box to give us the curve
+  box-shadow: none;
+  background-color: on(dark, stroke);
+  background-image: none;
+  background-size: auto;
 
   // just a simple change to the border radius position
-  &:rtl { border-radius: 0 0 0 $ripple_size + 2px; }
+  &:rtl {
+    border-radius: 0 0 0 48px;
+    background-image: none;
+  }
 }
