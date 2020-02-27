@@ -1,30 +1,43 @@
 // Rubberband for select-area screenshots
 .select-area-rubberband {
-  background-color: transparentize($selected_bg_color,0.7);
-  border: 1px solid $selected_bg_color;
+  border: 1px solid on(dark, primary);
+  background-color: rgba(on(dark, primary), .3);
 }
 
 // User icon
-.user-icon {
+$user-icon: if($version >= 3.32, ".user-icon", ".framed-user-icon");
+
+#{$user-icon} {
+  border: 0;
+  border-radius: $circular-radius;
   background-size: contain;
-  color: $osd_fg_color;
-  border-radius: 99px;
+  color: inherit;
+
   &:hover {
-    color: lighten($osd_fg_color,30%);
+    border-color: transparent;
+    color: inherit;
   }
 }
 
-.lightbox { background-color: black; }
-.flashspot { background-color: white; }
+// Lightbox
+.lightbox {
+  background-color: black;
+}
 
+// Flashspot
+.flashspot {
+  background-color: white;
+}
 
 // Hidden
-.hidden { color: rgba(0,0,0,0);}
+.hidden {
+  color: transparent;
+}
 
 // Caps-lock warning
 .caps-lock-warning-label {
   text-align: center;
   padding-bottom: 8px;
-  @include fontsize($base_font_size - 1);
-  color: $warning_color;
+  font-size: 1em;
+  color: $warning;
 }
