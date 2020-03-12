@@ -19,6 +19,27 @@ $user-icon: if($version >= 3.32, ".user-icon", ".framed-user-icon");
   }
 }
 
+@if $version >= 3.36 {
+  .user-icon {
+    StIcon {
+      background-color: $fill;
+      border-radius: $circular-radius;
+    }
+  }
+
+  @each $class, $size in (".vertical", 128px), (".horizontal", 64px) {
+    .user-widget#{$class} .user-icon {
+      icon-size: $size;
+
+      StIcon {
+        width: $size / 2;
+        height: $size / 2;
+        padding: $size / 4;
+      }
+    }
+  }
+}
+
 // Lightbox
 .lightbox {
   background-color: black;
