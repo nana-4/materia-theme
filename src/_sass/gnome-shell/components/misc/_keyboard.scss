@@ -43,32 +43,9 @@
   border-style: none;
   border-radius: $corner-radius;
 
-  @include button(normal);
-
-  &:focus {
-    @include button(focus);
-  }
-
-  &:hover,
-  &:checked {
-    @include button(hover);
-  }
-
-  &:active {
-    @include button(active);
-  }
-
-  &:grayed { //FIXMEy
-    border-color: transparent;
-    background-color: $scrim-alt;
-    color: on($scrim-alt);
-  }
-
+  &,
   // non-character keys
   &.default-key {
-    // size of the icon asset
-    background-size: 24px;
-
     @include button(normal);
 
     &:focus {
@@ -85,10 +62,14 @@
     }
   }
 
+  &:grayed { //FIXMEy
+    border-color: transparent;
+    background-color: $scrim-alt;
+    color: on($scrim-alt);
+  }
+
   // enter key is suggested-action
   &.enter-key {
-    background-image: url("assets/key-enter.svg");
-
     @include button(normal, $c: $primary, $tc: on($primary));
 
     &:hover,
@@ -101,26 +82,44 @@
     }
   }
 
-  // key assets
+  @if $version >= 3.36 {
+    &.shift-key-uppercase {
+      color: $primary;
+    }
 
-  &.shift-key-lowercase {
-    background-image: url("assets/key-shift.svg");
-  }
+    StIcon {
+      icon-size: 32px;
+    }
+  } @else {
+    // size of the icon asset
+    &.default-key {
+      background-size: 24px;
+    }
 
-  &.shift-key-uppercase {
-    background-image: url("assets/key-shift-uppercase.svg");
-  }
+    // key assets
+    &.enter-key {
+      background-image: url("assets/key-enter.svg");
+    }
 
-  &.shift-key-uppercase:latched {
-    background-image: url("assets/key-shift-latched-uppercase.svg");
-  }
+    &.shift-key-lowercase {
+      background-image: url("assets/key-shift.svg");
+    }
 
-  &.hide-key {
-    background-image: url("assets/key-hide.svg");
-  }
+    &.shift-key-uppercase {
+      background-image: url("assets/key-shift-uppercase.svg");
+    }
 
-  &.layout-key {
-    background-image: url("assets/key-layout.svg");
+    &.shift-key-uppercase:latched {
+      background-image: url("assets/key-shift-latched-uppercase.svg");
+    }
+
+    &.hide-key {
+      background-image: url("assets/key-hide.svg");
+    }
+
+    &.layout-key {
+      background-image: url("assets/key-layout.svg");
+    }
   }
 }
 
