@@ -64,6 +64,21 @@
       }
     }
 
+    @if $version >= 3.36 {
+      &.clock-display {
+        // Move highlight from .panel-button to .clock
+        &:active, &:overview, &:focus, &:checked {
+          box-shadow: none;
+          background-color: transparent;
+
+          .clock {
+            box-shadow: inset 0 -2px on($background);
+            background-color: rgba($background, .01);
+          }
+        }
+      }
+    }
+
     // status area icons
     .system-status-icon {
       icon-size: 16px;
