@@ -133,15 +133,39 @@
 }
 
 // separator
-.popup-separator-menu-item {
-  // -margin-horizontal: 24px;
-  height: 1px; // not really the whole box
-  margin: 8px 64px - 24px;
-  background-color: $divider;
+@if $version >= 3.36 {
+  .popup-separator-menu-item {
+    padding: 0;
 
-  border-color: transparent;
-  border-bottom-width: 0;
-  border-bottom-style: none;
+    .popup-separator-menu-item-separator {
+      // -margin-horizontal: 24px;
+      height: 1px; // not really the whole box
+      margin: 8px 0;
+      background-color: $divider;
+
+      // submenu separators
+      .popup-sub-menu & {
+        margin: 8px 0;
+        background-color: $divider;
+
+        &:ltr {
+          margin-right: 32px;
+        }
+
+        &:rtl {
+          margin-left: 32px;
+        }
+      }
+    }
+  }
+} @else {
+  .popup-separator-menu-item {
+    // -margin-horizontal: 24px;
+    height: 1px; // not really the whole box
+    margin: 8px 64px - 24px;
+    border: 0;
+    background-color: $divider;
+  }
 }
 
 // desktop background menu
