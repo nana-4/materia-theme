@@ -111,10 +111,7 @@
   }
 
   // transparent panel on lock & login screens
-  &:overview,
-  &.unlock-screen,
-  &.login-screen,
-  &.lock-screen {
+  @at-root %transparent-panel {
     background-color: transparent;
 
     .panel-corner {
@@ -129,6 +126,19 @@
       &:hover, &:active, &:overview, &:focus, &:checked {
         color: on(dark);
       }
+    }
+  }
+
+  &:overview,
+  &.unlock-screen,
+  &.login-screen {
+    @extend %transparent-panel;
+  }
+
+  @if $version <= 3.34 {
+    &.lock-screen {
+      @extend %transparent-panel;
+      background-color: $scrim-alt;
     }
   }
 
