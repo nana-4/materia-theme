@@ -1,0 +1,64 @@
+// Rubberband for select-area screenshots
+.select-area-rubberband {
+  border: 1px solid on(dark, primary);
+  background-color: rgba(on(dark, primary), .3);
+}
+
+// User icon
+$user-icon: if($version >= 3.32, ".user-icon", ".framed-user-icon");
+
+#{$user-icon} {
+  border: 0;
+  border-radius: $circular-radius;
+  background-size: contain;
+  color: inherit;
+
+  &:hover {
+    border-color: transparent;
+    color: inherit;
+  }
+}
+
+@if $version >= 3.36 {
+  .user-icon {
+    StIcon {
+      background-color: $fill;
+      border-radius: $circular-radius;
+    }
+  }
+
+  @each $class, $size in (".vertical", 128px), (".horizontal", 64px) {
+    .user-widget#{$class} .user-icon {
+      icon-size: $size;
+
+      StIcon {
+        width: $size / 2;
+        height: $size / 2;
+        padding: $size / 4;
+      }
+    }
+  }
+}
+
+// Lightbox
+.lightbox {
+  background-color: black;
+}
+
+// Flashspot
+.flashspot {
+  background-color: white;
+}
+
+// Hidden
+.hidden {
+  color: transparent;
+}
+
+// Caps-lock warning
+.caps-lock-warning-label {
+  text-align: center;
+  padding-bottom: 8px;
+  font-size: 1em;
+  color: $warning;
+}

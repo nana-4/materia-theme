@@ -1,0 +1,42 @@
+/* Slider */
+
+$handle-size: 12px;
+
+.slider {
+  height: 20px;
+
+  @if $version >= 3.30 {
+    // slider trough
+    -barlevel-height: 2px;
+    -barlevel-border-width: 0;
+    -barlevel-border-color: transparent;
+    -barlevel-background-color: $stroke;
+    // fill style
+    -barlevel-active-border-color: transparent;
+    -barlevel-active-background-color: $primary;
+    // overfill style
+    -barlevel-overdrive-color: $error;
+    -barlevel-overdrive-border-color: transparent;
+    -barlevel-overdrive-separator-width: 2px;
+  } @else {
+    // slider trough
+    -slider-height: 2px;
+    -slider-border-width: 0;
+    -slider-border-color: transparent;
+    -slider-background-color: $stroke;
+    // fill style
+    -slider-active-border-color: transparent;
+    -slider-active-background-color: $primary;
+  }
+
+  // slider handle
+  -slider-handle-radius: $handle-size / 2;
+  -slider-handle-border-width: 0;
+  -slider-handle-border-color: transparent;
+
+  &,
+  &:hover,
+  &:active {
+    color: $primary;
+  }
+}

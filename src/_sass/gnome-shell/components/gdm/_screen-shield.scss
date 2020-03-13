@@ -1,0 +1,164 @@
+/* Screen Shield */
+
+@if $version >= 3.36 {
+  .unlock-dialog-clock {
+    padding-bottom: 2.5em;
+    spacing: 24px;
+    color: on(dark);
+    font-weight: normal;
+    text-align: center;
+  }
+
+  .unlock-dialog-clock-time {
+    padding-top: 42px;
+    @include type(headline1);
+    font-feature-settings: "tnum";
+  }
+
+  .unlock-dialog-clock-date {
+    @include type(headline4);
+  }
+
+  .unlock-dialog-clock-hint {
+    padding-top: 48px;
+    color: on(dark, text2);
+    font-weight: normal;
+  }
+
+  .unlock-dialog-notifications-container {
+    width: 23em;
+    margin: 12px 0;
+    spacing: 6px;
+    background-color: transparent;
+
+    .summary-notification-stack-scrollview {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .notification,
+    .unlock-dialog-notification-source {
+      padding: 8px;
+      border: 0;
+      border-radius: $corner-radius;
+      background-color: on(dark, entry-fill);
+      color: on(dark);
+
+      &.critical {
+        background-color: on(dark, entry-fill);
+        color: on(dark, error);
+      }
+    }
+  }
+
+  .unlock-dialog-notification-label {
+    padding: 0 0 0 12px;
+  }
+
+  .unlock-dialog-notification-count-text {
+    // min-height: $small-size;
+    margin-right: 12px;
+    padding: 2px 8px;
+    border-radius: 99px;
+    background-color: on(dark, fill);
+    color: on(dark);
+    // font-weight: bold;
+  }
+
+  #lockDialogGroup {
+    background-color: $os-background;
+    color: on($os-background);
+  }
+
+  #unlockDialogNotifications {
+    StScrollBar {
+      @extend %scrollbar-on-dark;
+    }
+  }
+} @else {
+  .screen-shield-arrows {
+    padding-bottom: 3em;
+  }
+
+  .screen-shield-arrows Gjs_Arrow {
+    width: 80px;
+    height: 48px;
+    color: on(dark);
+    -arrow-thickness: 12px;
+    -arrow-shadow: $shadow-1;
+  }
+
+  .screen-shield-clock {
+    padding-bottom: 1.5em;
+    color: on(dark);
+    text-shadow: $shadow-1;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  .screen-shield-clock-time {
+    @include type(headline1);
+    text-shadow: $shadow-1;
+    font-feature-settings: "tnum";
+  }
+
+  .screen-shield-clock-date {
+    @include type(headline4);
+  }
+
+  .screen-shield-notifications-container {
+    spacing: 6px;
+    width: 30em;
+    max-height: 500px;
+    background-color: transparent;
+
+    .summary-notification-stack-scrollview {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .notification,
+    .screen-shield-notification-source {
+      padding: 8px;
+      border: 0;
+      border-radius: $corner-radius;
+      background-color: $scrim-alt;
+      color: on($scrim-alt);
+    }
+
+    // compensate for space allocated to the scrollbar
+    .notification {
+      margin-right: 16px;
+    }
+  }
+
+  .screen-shield-notification-label {
+    min-height: $small-size - 2px;
+    padding: 2px 0 0 16px;
+    font-weight: bold;
+  }
+
+  .screen-shield-notification-count-text {
+    min-height: $small-size - 2px;
+    padding: 2px 0 0 16px;
+    color: on($scrim-alt, text2);
+  }
+
+  #lockDialogGroup {
+    background-color: $os-background;
+    background-repeat: repeat;
+    color: on($os-background);
+  }
+
+  #screenShieldNotifications {
+    StScrollBar {
+      @extend %scrollbar-on-dark;
+    }
+  }
+}
+
+// just the shadow, really
+.screen-shield-background {
+  background: black;
+  box-shadow: $shadow-5;
+}

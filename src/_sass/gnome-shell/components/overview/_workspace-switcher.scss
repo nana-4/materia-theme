@@ -1,0 +1,32 @@
+/* Workspace pager */
+
+// thumbnails in overview
+.workspace-thumbnails {
+  @extend %overview-panel;
+  visible-width: 32px; // amount visible before hover
+  spacing: 12px;
+  padding: 12px;
+
+  border-right-width: 0;
+  border-radius: $corner-radius 0 0 $corner-radius;
+
+  &:rtl {
+    border-left-width: 0;
+    border-radius: 0 $corner-radius $corner-radius 0;
+  }
+
+  // drag and drop indicator
+  .placeholder {
+    height: 24px;
+    background-image: url("assets/dash-placeholder.svg");
+    background-size: contain;
+  }
+}
+
+// selected indicator
+.workspace-thumbnail-indicator {
+  padding: 6px 10px;
+  border: 0 solid on(dark);
+  border-left-width: 2px;
+  border-radius: 0;
+}

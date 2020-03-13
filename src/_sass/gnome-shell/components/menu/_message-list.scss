@@ -1,0 +1,220 @@
+/* Message List */
+// a.k.a. notifications in the menu
+
+// main list
+.message-list {
+  width: 31.5em;
+  padding: 0;
+
+  .message-list-placeholder {
+    spacing: 12px;
+  }
+}
+
+.message-list-sections {
+  spacing: 8px;
+  margin: 0 8px; // to account for scrollbar
+}
+
+.message-list-section,
+.message-list-section-list {
+  spacing: 8px;
+}
+
+.message-list-section-list {
+  &:ltr {
+    padding-left: 0;
+  }
+
+  &:rtl {
+    padding-right: 0;
+  }
+}
+
+@if $version >= 3.36 {
+  // do-not-disturb + clear button
+  .message-list-controls {
+    margin: 8px 8px 0;
+    padding: 0;
+    spacing: 8px;
+  }
+} @else {
+  // clear button
+  .message-list-clear-button.button {
+    @extend %button;
+    margin: 8px 8px 0;
+  }
+}
+
+// message bubbles
+.message {
+  @extend %calendar-item;
+  min-height: $menuitem-size * 2;
+
+  // icon container
+  .message-icon-bin {
+    padding: 12px 0 12px 12px;
+
+    &:rtl {
+      padding: 12px 12px 12px 0;
+    }
+
+    // icon size and color
+    > StIcon {
+      -st-icon-style: requested;
+      icon-size: 16px;
+      color: inherit;
+
+      &,
+      &:rtl {
+        margin: 0;
+      }
+    }
+
+    // fallback
+    > .fallback-app-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  // content
+  .message-content {
+    min-height: $menuitem-size * 2 - 8px * 2;
+    padding: 8px;
+    spacing: 0;
+    color: inherit;
+    font-size: 1em;
+  }
+
+  // title
+  .message-title {
+    min-height: $small-size - 2px;
+    padding-top: 2px;
+    color: inherit;
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+  // secondary container in title box
+  .message-secondary-bin {
+    padding: 0 8px;
+
+    // notification time stamp
+    > .event-time {
+      min-height: $small-size - 2px;
+      padding-top: 2px;
+      color: $text2;
+      font-size: 1em;
+      text-align: right;
+
+      // HACK: the label should be baseline-aligned with a 1em label,
+      //       fake this with some bottom padding
+      padding-bottom: 0;
+    }
+
+    > StIcon {
+      icon-size: 16px;
+    }
+  }
+
+  // close button
+  $message-close-button: if($version >= 3.36, ".message-close-button", ".message-content > StBoxLayout > StButton");
+
+  #{$message-close-button} {
+    transition-duration: $duration;
+    icon-size: 16px;
+    padding: ($small-size - 16px) / 2;
+    border-radius: $small-size / 2;
+
+    &,
+    &:hover,
+    &:active {
+      color: $text2;
+    }
+
+    &:focus {
+      background-color: $overlay-focus;
+    }
+
+    &:hover {
+      background-color: $overlay-hover;
+    }
+
+    &:active {
+      transition-duration: $duration-ripple;
+      background-color: $overlay-active;
+    }
+  }
+
+  // body
+  .message-body {
+    color: $text2;
+  }
+}
+
+// URLs in messages
+.url-highlighter {
+  link-color: $primary;
+}
+
+/* Media Controls */
+.message-media-control {
+  transition-duration: $duration;
+  margin: 16px 0;
+  padding: 8px;
+  border-radius: 16px;
+
+  &,
+  &:focus,
+  &:hover,
+  &:active {
+    color: $text2;
+  }
+
+  &:focus {
+    background-color: $overlay-focus;
+  }
+
+  &:hover {
+    background-color: $overlay-hover;
+  }
+
+  &:active {
+    background-color: $overlay-active;
+    transition-duration: $duration-ripple;
+  }
+
+  &:insensitive {
+    color: $text2-disabled;
+  }
+
+  &:last-child:ltr {
+    margin-right: 16px;
+    padding-right: 8px;
+    border-radius: 16px;
+  }
+
+  &:last-child:rtl {
+    margin-left: 16px;
+    padding-left: 8px;
+    border-radius: 16px;
+  }
+}
+
+// album-art
+.media-message-cover-icon {
+  icon-size: 32px !important;
+  margin: 4px 0 !important;
+  border-radius: 0;
+
+  // when there is no artwork
+  &.fallback {
+    icon-size: 16px !important;
+    padding: 8px;
+    border: 0;
+    border-radius: $corner-radius;
+    background-color: $fill;
+    color: $text-disabled !important;
+  }
+}

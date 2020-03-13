@@ -1,0 +1,136 @@
+/* Looking Glass */
+
+// Dialog
+#LookingGlassDialog {
+  spacing: 0;
+  padding: 0;
+  border: 0;
+  border-radius: $corner-radius;
+  box-shadow: $shadow-4;
+  background-color: $surface;
+  color: $text;
+
+  & > #Toolbar {
+    padding: 0 8px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: inset 0 -1px $divider;
+    background-color: rgba($surface, .01);
+  }
+
+  .labels {
+    spacing: 0;
+  }
+
+  .notebook-tab {
+    -natural-hpadding: 12px;
+    -minimum-hpadding: 6px;
+    transition-duration: $duration;
+    min-height: $medium-size;
+    padding-left: 16px * 2;
+    padding-right: 16px * 2;
+    border: 0;
+    color: $text2;
+    font-weight: bold;
+
+    &:hover {
+      background-color: $overlay-hover;
+      color: $text2;
+      text-shadow: none;
+    }
+
+    &:active {
+      transition-duration: $duration-ripple;
+      background-color: $overlay-active;
+    }
+
+    &:selected {
+      border: 0;
+      box-shadow: inset 0 -2px $primary;
+      background-color: rgba($surface, .01);
+      color: $text;
+      text-shadow: none;
+    }
+  }
+
+  StBoxLayout#EvalBox {
+    padding: 8px;
+    spacing: 4px;
+  }
+
+  StBoxLayout#ResultsArea {
+    spacing: 4px;
+  }
+}
+
+.lg-dialog {
+  StEntry {
+    @extend %entry;
+  }
+
+  .shell-link {
+    &,
+    &:hover,
+    &:active {
+      color: $primary;
+    }
+  }
+}
+
+.lg-completions-text {
+  font-size: 1em;
+  font-style: italic;
+}
+
+.lg-obj-inspector-title {
+  spacing: 4px;
+}
+
+.lg-obj-inspector-button {
+  @extend %button;
+
+  &,
+  &:hover {
+    border: 0;
+  }
+}
+
+// Windows
+#Windows {
+  padding: 8px;
+}
+
+// Extensions
+#lookingGlassExtensions {
+  padding: 8px;
+}
+
+.lg-extensions-list {
+  padding: 0;
+  spacing: 6px;
+}
+
+.lg-extension {
+  padding: 4px;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+.lg-extension-name {
+  @include type(headline6);
+}
+
+.lg-extension-meta {
+  spacing: 6px;
+}
+
+// Inspector
+#LookingGlassPropertyInspector {
+  padding: 6px;
+  border: 0;
+  border-radius: $corner-radius;
+  box-shadow: $shadow-4;
+  background-color: $surface;
+  color: $text;
+}

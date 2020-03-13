@@ -1,0 +1,48 @@
+/* Buttons */
+
+%button,
+.button {
+  min-height: $medium-size;
+  min-width: 64px - 8px * 2;
+  padding: 0 8px;
+  border: 0;
+  border-radius: $corner-radius;
+
+  @include type(button);
+  @include button(flat-normal);
+
+  &:focus {
+    @include button(flat-focus);
+  }
+
+  &:hover {
+    @include button(flat-hover);
+  }
+
+  &:active {
+    @include button(flat-active);
+  }
+
+  &:insensitive {
+    @include button(flat-insensitive);
+  }
+}
+
+// buttons in dialogs and notifications
+%bubble_button {
+  @extend %button;
+  margin: $container-padding;
+  margin-right: 0;
+
+  &:first-child,
+  &:last-child,
+  &:first-child:last-child {
+    border-radius: $corner-radius;
+  }
+
+  &:last-child,
+  &:first-child:last-child {
+    margin-right: $container-padding;
+    border-right-width: 0;
+  }
+}

@@ -1,0 +1,41 @@
+// Search entry
+
+%search-entry,
+.search-entry {
+  width: 320px - 8px * 2;
+  padding: 0 8px;
+  border-radius: $corner-radius $corner-radius 0 0;
+  color: on(dark, text-disabled);
+  selection-background-color: on(dark, stroke);
+  selected-color: on(dark);
+  @include entry(normal, $fc: on(dark, stroke));
+
+  &:hover {
+    @include entry(hover, $fc: on(dark, stroke));
+    color: on(dark, text-disabled);
+  }
+
+  &:focus {
+    @include entry(focus, $fc: on(dark));
+    padding: 0 8px;
+    border: 0;
+    color: on(dark);
+  }
+
+  StLabel.hint-text {
+    color: on(dark, text2);
+  }
+
+  .search-entry-icon {
+    icon-size: 16px;
+    padding: 0 4px;
+    color: on(dark, text2);
+  }
+
+  &:hover,
+  &:focus {
+    .search-entry-icon {
+      color: on(dark);
+    }
+  }
+}

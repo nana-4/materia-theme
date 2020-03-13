@@ -1,0 +1,194 @@
+/* On-screen Keyboard */
+
+// draw keys using button function
+#keyboard {
+  background-color: $scrim-alt;
+  box-shadow: none;
+
+  .page-indicator {
+    padding: 4px;
+
+    .page-indicator-icon {
+      width: 8px;
+      height: 8px;
+    }
+  }
+}
+
+// the container for individual keys
+@if $version >= 3.28 {
+  .key-container {
+    padding: 4px;
+    spacing: 4px;
+  }
+} @else {
+  .keyboard-layout {
+    spacing: 10px;
+    padding: 10px;
+  }
+
+  .keyboard-row {
+    spacing: 15px;
+  }
+}
+
+// the keys
+.keyboard-key {
+  min-height: 1.2em;
+  min-width: 1.2em;
+  font-size: 2em;
+  font-weight: 500;
+  border: 0;
+  border-width: 0;
+  border-style: none;
+  border-radius: $corner-radius;
+
+  &,
+  // non-character keys
+  &.default-key {
+    @include button(normal);
+
+    &:focus {
+      @include button(focus);
+    }
+
+    &:hover,
+    &:checked {
+      @include button(hover);
+    }
+
+    &:active {
+      @include button(active);
+    }
+  }
+
+  &:grayed { //FIXMEy
+    border-color: transparent;
+    background-color: $scrim-alt;
+    color: on($scrim-alt);
+  }
+
+  // enter key is suggested-action
+  &.enter-key {
+    @include button(normal, $c: $primary, $tc: on($primary));
+
+    &:hover,
+    &:checked {
+      @include button(hover, $c: $primary, $tc: on($primary));
+    }
+
+    &:active {
+      @include button(active, $c: $primary, $tc: on($primary));
+    }
+  }
+
+  @if $version >= 3.36 {
+    &.shift-key-uppercase {
+      color: $primary;
+    }
+
+    StIcon {
+      icon-size: 32px;
+    }
+  } @else {
+    // size of the icon asset
+    &.default-key {
+      background-size: 24px;
+    }
+
+    // key assets
+    &.enter-key {
+      background-image: url("assets/key-enter.svg");
+    }
+
+    &.shift-key-lowercase {
+      background-image: url("assets/key-shift.svg");
+    }
+
+    &.shift-key-uppercase {
+      background-image: url("assets/key-shift-uppercase.svg");
+    }
+
+    &.shift-key-uppercase:latched {
+      background-image: url("assets/key-shift-latched-uppercase.svg");
+    }
+
+    &.hide-key {
+      background-image: url("assets/key-hide.svg");
+    }
+
+    &.layout-key {
+      background-image: url("assets/key-layout.svg");
+    }
+  }
+}
+
+// long press on a key popup
+.keyboard-subkeys {
+  -boxpointer-gap: 5px;
+  -arrow-base: 0;
+  -arrow-rise: 0;
+  -arrow-border-width: 0;
+  -arrow-border-color: transparent;
+  -arrow-border-radius: 0;
+  -arrow-background-color: transparent;
+  padding: 5px;
+  border-radius: $corner-radius;
+  box-shadow: $shadow-2;
+  background-color: $surface;
+  color: $text;
+
+  .keyboard-key {
+    border-radius: $corner-radius;
+
+    @include button(flat-normal);
+
+    &:focus {
+      @include button(flat-focus);
+    }
+
+    &:hover,
+    &:checked {
+      @include button(flat-hover);
+    }
+
+    &:active {
+      @include button(flat-active);
+    }
+  }
+}
+
+// emoji
+.emoji-page {
+  .keyboard-key {
+    border: 0;
+    @include button(flat-normal, $tc: on($scrim-alt));
+
+    &:focus {
+      @include button(flat-focus, $tc: on($scrim-alt));
+    }
+
+    &:hover {
+      @include button(flat-hover, $tc: on($scrim-alt));
+    }
+
+    &:active {
+      @include button(flat-active, $tc: on($scrim-alt));
+    }
+  }
+}
+
+.emoji-panel {
+  .keyboard-key:latched {
+    border-color: transparent;
+    background-color: $primary;
+    color: on($primary);
+  }
+}
+
+// suggestions
+.word-suggestions {
+  @include type(subtitle1);
+  spacing: 12px;
+  min-height: 20pt;
+}

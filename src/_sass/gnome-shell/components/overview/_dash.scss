@@ -1,0 +1,55 @@
+/* Dash */
+
+$dash-spacing: 6px;
+
+#dash {
+  @extend %overview-panel;
+  font-size: 1em;
+  padding: ($dash-spacing / 2) 0;
+  border-left-width: 0;
+  border-radius: 0 $corner-radius $corner-radius 0;
+
+  &:rtl {
+    border-right-width: 0;
+    border-radius: $corner-radius 0 0 $corner-radius;
+  }
+
+  .placeholder {
+    height: 24px;
+    background-image: url("assets/dash-placeholder.svg");
+    background-size: contain;
+  }
+
+  .empty-dash-drop-target {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+// Dash Items
+.dash-item-container > StWidget {
+  padding: ($dash-spacing / 2) $dash-spacing;
+}
+
+// OSD Tooltip
+.dash-label {
+  // min-height: 32px - 6px * 2;
+  padding: 7px 8px;
+  border: 0;
+  border-radius: $corner-radius;
+  box-shadow: $shadow-2;
+  background-color: $surface;
+  color: $text;
+  text-align: center;
+  -x-offset: 8px; // distance from the dash edge
+}
+
+// Show apps button
+.show-apps {
+  @extend %overview-icon;
+  color: on(dark, text2);
+
+  &:checked {
+    color: on(dark);
+  }
+}

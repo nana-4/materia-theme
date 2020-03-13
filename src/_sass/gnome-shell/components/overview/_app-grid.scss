@@ -1,0 +1,283 @@
+/* App Grid */
+
+// app icons
+.icon-grid {
+  -shell-grid-horizontal-item-size: 136px;
+  -shell-grid-vertical-item-size: 136px;
+  spacing: 32px;
+
+  .overview-icon {
+    icon-size: 96px;
+  }
+}
+
+.app-display {
+  // spacing: 20px;
+}
+
+/* App Icons */
+
+// Icon tiles in the app grid
+.app-well-app,
+%app-well-app {
+  @extend %overview-icon;
+
+  .overview-icon.overview-icon-with-label {
+    padding: 8px;
+    spacing: 0;
+
+    > StBoxLayout {
+      spacing: 4px;
+    }
+  }
+}
+
+/* App Folders */
+.app-well-app.app-folder {
+  @extend %app-well-app;
+  border-radius: $corner-radius; // same as .overview-icon
+  background-color: on(dark, fill);
+}
+
+// expanded folder
+.app-folder-dialog {
+  spacing: 12px;
+  border: 0;
+  border-radius: $corner-radius;
+  background-color: $surface;
+  color: $text;
+
+  .folder-name-container {
+    padding: 24px 36px 0;
+    spacing: 12px;
+
+    .folder-name-label,
+    .folder-name-entry {
+      @include type(headline6);
+    }
+
+    .folder-name-entry {
+      width: 300px;
+    }
+
+    // FIXME: this is to keep the label in sync with the entry
+    .folder-name-label {
+      padding: 0 8px;
+      color: inherit;
+    }
+
+    .edit-folder-button {
+      @extend %button;
+
+      width: $medium-size;
+      height: $medium-size;
+      min-width: 0;
+      min-height: 0;
+      padding: 0;
+      border-radius: $medium-size / 2;
+
+      > StIcon {
+        icon-size: 16px;
+      }
+    }
+  }
+
+  .app-well-app {
+    &:focus {
+      .overview-icon {
+        background-color: $overlay-focus;
+      }
+    }
+
+    &:drop,
+    &:hover,
+    &:selected {
+      .overview-icon {
+        background-color: $overlay-hover;
+      }
+    }
+
+    &:active,
+    &:checked {
+      .overview-icon {
+        background-color: $overlay-active;
+      }
+    }
+  }
+}
+
+.app-folder-dialog-container {
+  width: 800px;
+  height: 600px;
+  padding: 12px;
+}
+
+@if $version <= 3.34 {
+  // expanded collection
+  .app-folder-popup {
+    -arrow-base: 24px;
+    -arrow-rise: 12px;
+    -arrow-border-radius: $corner-radius;
+    -arrow-background-color: on(dark, fill);
+  }
+
+  .app-folder-popup-bin {
+    padding: 6px;
+  }
+}
+
+.app-folder-icon {
+  padding: 5px;
+  spacing-rows: 10px;
+  spacing-columns: 10px;
+}
+
+// Running app indicator (also shown in dash)
+.app-well-app-running-dot {
+  height: 2px;
+  width: 32px;
+  margin-bottom: 0;
+  border-radius: 0;
+  background-color: on(dark);
+}
+
+// Rename popup for app folders
+.rename-folder-popup {
+  .rename-folder-popup-item {
+    spacing: 6px;
+
+    &:ltr,
+    &:rtl {
+      padding: 0 12px;
+    }
+  }
+}
+
+// right-click app menu
+.app-menu,
+.app-well-menu {
+  max-width: 27.25em;
+}
+
+// App Grid pagination indicators
+.page-indicator {
+  padding: 15px 20px;
+
+  @if $version >= 3.36 {
+    .page-indicator-icon {
+      width: 12px;
+      height: 12px;
+      border-radius: 12px; // the same as height&width
+      background-color: on(dark);
+    }
+  } @else {
+    .page-indicator-icon {
+      width: 12px;
+      height: 12px;
+      border: 0;
+      border-radius: 12px;
+      background-image: none;
+      background-color: on(dark, text2-disabled);
+      transition-duration: $duration;
+    }
+
+    &:hover .page-indicator-icon {
+      border-color: transparent;
+      background-image: none;
+      background-color: on(dark, text-disabled);
+    }
+
+    &:active .page-indicator-icon {
+      margin: 0;
+      border: 0;
+      background-image: none;
+      background-color: on(dark, text2);
+    }
+
+    &:checked .page-indicator-icon,
+    &:checked:active .page-indicator-icon {
+      background-image: none;
+      background-color: on(dark);
+      transition-duration: 0ms;
+    }
+
+    &:checked:active {
+      background-image: none;
+      background-color: transparent;
+    }
+  }
+}
+
+// Some hacks I don't even know
+$search-display: if($version <= 3.32, ".search-display > StBoxLayout,", null);
+
+#{$search-display}
+.all-apps,
+.frequent-apps > StBoxLayout {
+  // horizontal padding to make sure scrollbars or dash don't overlap content
+  padding: 0 88px 10px;
+}
+
+// Label when no frequent apps
+.no-frequent-applications-label {
+  @extend %overview-status-text;
+}
+
+// shutdown and other actions in the grid
+.system-action-icon {
+  icon-size: 48px;
+  border-radius: $circular-radius;
+  box-shadow: 0 4px 4px rgba(black, .2); // FIXME: this should really have a highlight
+  background-color: $grey-900;
+  color: on($grey-900);
+}
+
+/* Frequent | All toggle */
+
+// container
+.app-view-controls {
+  width: 320px;
+  padding-bottom: 32px;
+}
+
+// buttons
+.app-view-control {
+  margin: 0;
+  padding: 0 8px;
+
+  &, &:focus, &:hover, &:active, &:checked {
+    @include button(flat-normal, $tc: on(dark));
+  }
+
+  &:hover {
+    background-color: $inverse-overlay-hover;
+  }
+
+  &:active {
+    background-color: $inverse-overlay-active;
+    transition-duration: $duration-ripple;
+  }
+
+  &:checked {
+    box-shadow: inset 0 2px 0 on(dark);
+    background-color: rgba(black, .01);
+    color: on(dark);
+  }
+
+  &:focus {
+    background-color: $inverse-overlay-focus;
+  }
+
+  &:first-child {
+    border-right-width: 0;
+    border-radius: $corner-radius;
+  }
+
+  &:last-child {
+    border-radius: $corner-radius;
+  }
+
+  &:checked {
+    border-radius: 0;
+  }
+}

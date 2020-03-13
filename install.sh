@@ -11,7 +11,7 @@ COLOR_VARIANTS=('' '-dark' '-light')
 SIZE_VARIANTS=('' '-compact')
 
 GTK_VERSIONS=('3.0')
-GS_VERSIONS=('3.18' '3.24' '3.26' '3.28' '3.30' '3.32' '3.34')
+GS_VERSIONS=('3.26' '3.28' '3.30' '3.32' '3.34' '3.36')
 LATEST_GS_VERSION="${GS_VERSIONS[-1]}"
 
 if test -z "${GS_VERSION:-}"; then
@@ -88,6 +88,7 @@ install() {
   mkdir -p                                                                      "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/"{*.svg,extensions,noise-texture.png,pad-osd.css} "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/gnome-shell-theme.gresource.xml"                  "$THEME_DIR/gnome-shell"
+  cp -r "$SRC_DIR/gnome-shell/icons"                                            "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/README.md"                                        "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/assets${ELSE_DARK:-}"                             "$THEME_DIR/gnome-shell/assets"
   cp -r "$SRC_DIR/gnome-shell/$GS_VERSION/gnome-shell$color$size.css"           "$THEME_DIR/gnome-shell/gnome-shell.css"
