@@ -95,8 +95,19 @@
 
 .login-dialog-button-box {
   spacing: 5px;
+
+  @if $version >= 3.36 {
+    width: 23em;
+  }
 }
 
+@if $version >= 3.36 {
+  .login-dialog-message {
+    text-align: center;
+  }
+}
+
+.caps-lock-warning-label,
 .login-dialog-message-warning {
   color: on($os-background, error);
 }
@@ -190,20 +201,50 @@
   }
 }
 
-.login-dialog-username,
-.user-widget-label {
-  padding-left: 16px;
-  @include type(headline6);
-  text-align: left;
-}
-
-.user-widget-label {
-  &:ltr {
-    padding-left: 14px;
+@if $version >= 3.36 {
+  .login-dialog .user-icon StIcon {
+    background-color: on($os-background, fill);
   }
 
-  &:rtl {
-    padding-right: 14px;
+  .user-widget-label {
+    color: inherit;
+  }
+
+  .user-widget.horizontal .user-widget-label {
+    padding-left: 16px;
+    @include type(headline6);
+    text-align: left;
+
+    &:ltr {
+      padding-left: 14px;
+    }
+
+    &:rtl {
+      padding-right: 14px;
+    }
+  }
+
+  .user-widget.vertical .user-widget-label {
+    padding-top: 16px;
+    @include type(headline5);
+    text-align: center;
+  }
+} @else {
+  .login-dialog-username,
+  .user-widget-label {
+    padding-left: 16px;
+    @include type(headline6);
+    text-align: left;
+  }
+
+  .user-widget-label {
+    &:ltr {
+      padding-left: 14px;
+    }
+
+    &:rtl {
+      padding-right: 14px;
+    }
   }
 }
 
@@ -220,10 +261,15 @@
   padding-top: 1em;
 }
 
+.cancel-button,
+.switch-user-button,
 .login-dialog-session-list-button {
   transition-duration: $duration;
   width: $medium-size;
   height: $medium-size;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
   border-radius: $medium-size / 2;
   color: on($os-background, text2);
 
