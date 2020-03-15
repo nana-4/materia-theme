@@ -112,8 +112,8 @@ $scrim-alt:                             rgba(black, .3);
 $panel:                                 if($topbar == 'dark', #1F1F1F, $scrim);
 $panel-solid:                           if($topbar == 'dark', #1F1F1F, #CCCCCC); // for Unity panel which doesn't allow translucent colors
 
-$titlebar:                              if($topbar == 'dark', $-dark-surface-4dp, #E0E0E0);
-$titlebar-backdrop:                     if($topbar == 'dark', $-dark-surface-1dp, #D6D6D6);
+$titlebar:                              if($topbar == 'dark', if($variant == 'light', #383838, $-dark-surface-4dp), #E0E0E0);
+$titlebar-backdrop:                     if($topbar == 'dark', if($variant == 'light', #303030, $-dark-surface-1dp), #D6D6D6);
 $titlebar-indicator:                    if($topbar == 'dark', currentColor, $primary);
 
 //
