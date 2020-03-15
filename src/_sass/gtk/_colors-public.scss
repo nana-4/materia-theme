@@ -96,4 +96,5 @@ read if you used those and something break with a version upgrade you're on your
 /*
 FIXME this is really an API */
 @define-color content_view_bg #{"" + $base};
-@define-color placeholder_text_color #{"" + $placeholder_text_color};
+// NOTE: @placeholder_text_color doesn't allow translucent colors.
+@define-color placeholder_text_color #{"" + opacify($text2, $base)};
