@@ -134,7 +134,13 @@ tooltip.background.chromium { background-color: rgba($tooltip, 1); }
     // > scrollbar { background-clip: border-box; }
 
     // Emphasize toolbar's border-bottom
-    > frame > border { border-color: $stroke; }
+    > frame > border {
+      // FIXME: On Wayland, translucent colors don't work well here.
+      // See: https://github.com/nana-4/materia-theme/issues/467
+
+      // border-color: $stroke;
+      border-color: opacify($stroke, $background);
+    }
 
     > entry,
     > button > button {
