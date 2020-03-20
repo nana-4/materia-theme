@@ -1,14 +1,19 @@
 // generic drawing of more complex things
 
-
-// ripple effect animations
+//
+// Ripple keyframes
+//
 
 @keyframes ripple {
-  to { background-size: 1000% 1000%; }
+  to {
+    background-size: 1000% 1000%;
+  }
 }
 
 @keyframes ripple-on-slider {
-  to { background-size: auto, 1000% 1000%; }
+  to {
+    background-size: auto, 1000% 1000%;
+  }
 }
 
 @keyframes ripple-on-headerbar {
@@ -32,10 +37,12 @@
 
   @if $t == normal {
     transition: $transition, border-image $ripple-fade-in-duration $ease-out;
-    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  $fc 0%,
-                                  transparent 0%)
-                                  0 0 0 / 0 0 0px;
+    border-image:
+      radial-gradient(
+        circle closest-corner at center calc(100% - 1px),
+        $fc 0%,
+        transparent 0%
+      ) 2 / 0 0 0px;
     box-shadow: inset 0 0 0 9999px transparent, inset 0 -1px if($fc == $primary, $stroke, $fc);
     background-color: $entry-fill;
     color: $text;
@@ -50,10 +57,12 @@
   }
 
   @if $t == checked {
-    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  $fc 100%,
-                                  transparent 0%)
-                                  0 0 2 / 0 0 2px;
+    border-image:
+      radial-gradient(
+        circle closest-corner at center calc(100% - 1px),
+        $fc 100%,
+        transparent 0%
+      ) 2 / 0 0 2px;
   }
 
   @if $t == disabled {

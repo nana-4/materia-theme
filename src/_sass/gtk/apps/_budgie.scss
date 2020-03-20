@@ -298,18 +298,22 @@ $underscores-list:
   @each $pos, $b_pos, $b_wid in $underscores-list {
     .#{$pos} & {
       & {
-        border-image: radial-gradient(circle closest-corner at #{$b_pos},
-                                      currentColor 0%,
-                                      transparent 0%)
-                                      0 0 0 0 / 0 0 0 0;
+        border-image:
+          radial-gradient(
+            circle closest-corner at #{$b_pos},
+            currentColor 0%,
+            transparent 0%
+          ) 0 0 0 0 / 0 0 0 0;
       }
 
       @at-root %underscores-checked,
       &:checked {
-        border-image: radial-gradient(circle closest-corner at #{$b_pos},
-                                      currentColor 100%,
-                                      transparent 0%)
-                                      #{$b_wid};
+        border-image:
+          radial-gradient(
+            circle closest-corner at #{$b_pos},
+            currentColor 100%,
+            transparent 0%
+          ) #{$b_wid};
       }
     }
   }
