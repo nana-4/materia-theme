@@ -62,6 +62,22 @@
       <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.04"/>
     </linearGradient>
 
+    <linearGradient id="color-overlay-hover">
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.08"/>
+    </linearGradient>
+
+    <linearGradient id="color-overlay-active">
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <linearGradient id="color-overlay-primary-hover">
+      <stop offset="1" stop-color="#8AB4F8" stop-opacity="0.12"/>
+    </linearGradient>
+
+    <linearGradient id="color-overlay-primary-active">
+      <stop offset="1" stop-color="#8AB4F8" stop-opacity="0.28"/>
+    </linearGradient>
+
     <filter id="z1" color-interpolation-filters="sRGB" x="0" y="0" width="1" height="1">
       <!-- <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.12"/> -->
       <!-- <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.24"/> -->
@@ -119,7 +135,7 @@
 
     <g id="base-button-active">
       <use xlink:href="#base-button-hover"/>
-      <use xlink:href="#base-button-box" fill="url(#color-text)" fill-opacity="0.2"/>
+      <use xlink:href="#base-button-box" fill="url(#color-overlay-active)"/>
     </g>
 
     <g id="base-button-disabled">
@@ -138,12 +154,12 @@
 
     <g id="base-entry-hover">
       <use xlink:href="#base-entry"/>
-      <use xlink:href="#base-entry-box" fill="url(#color-text)" fill-opacity="0.08"/>
+      <use xlink:href="#base-entry-box" fill="url(#color-overlay-hover)"/>
     </g>
 
     <g id="base-entry-active">
       <use xlink:href="#base-entry"/>
-      <use xlink:href="#base-entry-box" fill="url(#color-text)" fill-opacity="0.2"/>
+      <use xlink:href="#base-entry-box" fill="url(#color-overlay-active)"/>
     </g>
 
     <g id="base-entry-focus">
@@ -159,33 +175,27 @@
     <rect id="button-fill" width="24" height="24" rx="4"/>
 
     <g id="base-checkbox-unchecked">
-      <use xlink:href="#button-fill"/>
-      <path fill-opacity="1" d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+      <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
     </g>
 
     <g id="base-checkbox-checked">
-      <use xlink:href="#button-fill"/>
-      <path fill-opacity="1" d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
     </g>
 
     <g id="base-checkbox-mixed">
-      <use xlink:href="#button-fill"/>
-      <path fill-opacity="1" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"/>
+      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"/>
     </g>
 
     <g id="base-radio-unchecked">
-      <use xlink:href="#button-fill"/>
-      <path fill-opacity="1" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
     </g>
 
     <g id="base-radio-checked">
-      <use xlink:href="#button-fill"/>
-      <path fill-opacity="1" d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+      <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
     </g>
 
     <g id="base-radio-mixed">
-      <use xlink:href="#button-fill"/>
-      <path fill-opacity="1" d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+      <path d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
     </g>
 
     <g id="base-menu-checkbox-unchecked">
@@ -296,9 +306,9 @@
     </g>
 
     <g id="base-treeview-ltr-button">
-      <rect width="2" height="2" fill="url(#color-base)" fill-opacity="1"/>
-      <rect width="2" height="2" fill="url(#color-divider)" fill-opacity="1"/>
-      <rect width="1" height="1" fill="url(#color-base)" fill-opacity="1"/>
+      <rect width="2" height="2" fill="url(#color-base)"/>
+      <rect width="2" height="2" fill="url(#color-divider)"/>
+      <rect width="1" height="1" fill="url(#color-base)"/>
       <rect width="1" height="1"/>
     </g>
 
@@ -308,16 +318,16 @@
   </defs>
 
   <g id="flat-button" transform="translate(8 8)">
-    <use xlink:href="#base-button-box" fill="url(#color-text)" fill-opacity="0"/>
+    <use xlink:href="#base-button-box" fill="none"/>
   </g>
   <g id="flat-button-hover" transform="translate(8 28)">
-    <use xlink:href="#base-button-box" fill="url(#color-text)" fill-opacity="0.08"/>
+    <use xlink:href="#base-button-box" fill="url(#color-overlay-hover)"/>
   </g>
   <g id="flat-button-active" transform="translate(8 48)">
-    <use xlink:href="#base-button-box" fill="url(#color-text)" fill-opacity="0.2"/>
+    <use xlink:href="#base-button-box" fill="url(#color-overlay-active)"/>
   </g>
   <g id="flat-button-disabled" transform="translate(8 68)">
-    <use xlink:href="#base-button-box" fill="url(#color-text)" fill-opacity="0"/>
+    <use xlink:href="#base-button-box" fill="none"/>
   </g>
 
   <g id="button" transform="translate(32 8)">
@@ -432,81 +442,105 @@
   </g>
 
   <g id="checkbox-unchecked" transform="translate(8 92)">
-    <use xlink:href="#base-checkbox-unchecked" fill="url(#color-text2)" fill-opacity="0"/>
+    <use xlink:href="#button-fill" fill="none"/>
+    <use xlink:href="#base-checkbox-unchecked" fill="url(#color-text2)"/>
   </g>
   <g id="checkbox-unchecked-hover" transform="translate(8 124)">
-    <use xlink:href="#base-checkbox-unchecked" fill="url(#color-text)" fill-opacity="0.08"/>
+    <use xlink:href="#button-fill" fill="url(#color-overlay-hover)"/>
+    <use xlink:href="#base-checkbox-unchecked" fill="url(#color-text2)"/>
   </g>
   <g id="checkbox-unchecked-active" transform="translate(8 156)">
-    <use xlink:href="#base-checkbox-unchecked" fill="url(#color-text)" fill-opacity="0.2"/>
+    <use xlink:href="#button-fill" fill="url(#color-overlay-active)"/>
+    <use xlink:href="#base-checkbox-unchecked" fill="url(#color-text2)"/>
   </g>
   <g id="checkbox-unchecked-disabled" transform="translate(8 188)">
-    <use xlink:href="#base-checkbox-unchecked" fill="url(#color-text2-disabled)" fill-opacity="0"/>
+    <use xlink:href="#button-fill" fill="none"/>
+    <use xlink:href="#base-checkbox-unchecked" fill="url(#color-text2-disabled)"/>
   </g>
 
   <g id="checkbox-checked" transform="translate(40 92)">
-    <use xlink:href="#base-checkbox-checked" fill="url(#color-primary)" fill-opacity="0"/>
+    <use xlink:href="#button-fill" fill="none"/>
+    <use xlink:href="#base-checkbox-checked" fill="url(#color-primary)"/>
   </g>
   <g id="checkbox-checked-hover" transform="translate(40 124)">
-    <use xlink:href="#base-checkbox-checked" fill="url(#color-primary)" fill-opacity="0.08"/>
+    <use xlink:href="#button-fill" fill="url(#color-overlay-primary-hover)"/>
+    <use xlink:href="#base-checkbox-checked" fill="url(#color-primary)"/>
   </g>
   <g id="checkbox-checked-active" transform="translate(40 156)">
-    <use xlink:href="#base-checkbox-checked" fill="url(#color-primary)" fill-opacity="0.2"/>
+    <use xlink:href="#button-fill" fill="url(#color-overlay-primary-active)"/>
+    <use xlink:href="#base-checkbox-checked" fill="url(#color-primary)"/>
   </g>
   <g id="checkbox-checked-disabled" transform="translate(40 188)">
-    <use xlink:href="#base-checkbox-checked" fill="url(#color-text2-disabled)" fill-opacity="0"/>
+    <use xlink:href="#button-fill" fill="none"/>
+    <use xlink:href="#base-checkbox-checked" fill="url(#color-text2-disabled)"/>
   </g>
 
   <g id="checkbox-mixed" transform="translate(72 92)">
-    <use xlink:href="#base-checkbox-mixed" fill="url(#color-primary)" fill-opacity="0"/>
+    <use xlink:href="#button-fill" fill="none"/>
+    <use xlink:href="#base-checkbox-mixed" fill="url(#color-primary)"/>
   </g>
   <g id="checkbox-mixed-hover" transform="translate(72 124)">
-    <use xlink:href="#base-checkbox-mixed" fill="url(#color-primary)" fill-opacity="0.08"/>
+    <use xlink:href="#button-fill" fill="url(#color-overlay-primary-hover)"/>
+    <use xlink:href="#base-checkbox-mixed" fill="url(#color-primary)"/>
   </g>
   <g id="checkbox-mixed-active" transform="translate(72 156)">
-    <use xlink:href="#base-checkbox-mixed" fill="url(#color-primary)" fill-opacity="0.2"/>
+    <use xlink:href="#button-fill" fill="url(#color-overlay-primary-active)"/>
+    <use xlink:href="#base-checkbox-mixed" fill="url(#color-primary)"/>
   </g>
   <g id="checkbox-mixed-disabled" transform="translate(72 188)">
-    <use xlink:href="#base-checkbox-mixed" fill="url(#color-text2-disabled)" fill-opacity="0"/>
+    <use xlink:href="#button-fill" fill="none"/>
+    <use xlink:href="#base-checkbox-mixed" fill="url(#color-text2-disabled)"/>
   </g>
 
   <g id="radio-unchecked" transform="translate(104 92)">
-    <use xlink:href="#base-radio-unchecked" fill="url(#color-text2)" fill-opacity="0"/>
+    <use xlink:href="#button-fill" fill="none"/>
+    <use xlink:href="#base-radio-unchecked" fill="url(#color-text2)"/>
   </g>
   <g id="radio-unchecked-hover" transform="translate(104 124)">
-    <use xlink:href="#base-radio-unchecked" fill="url(#color-text)" fill-opacity="0.08"/>
+    <use xlink:href="#button-fill" fill="url(#color-overlay-hover)"/>
+    <use xlink:href="#base-radio-unchecked" fill="url(#color-text2)"/>
   </g>
   <g id="radio-unchecked-active" transform="translate(104 156)">
-    <use xlink:href="#base-radio-unchecked" fill="url(#color-text)" fill-opacity="0.2"/>
+    <use xlink:href="#button-fill" fill="url(#color-overlay-active)"/>
+    <use xlink:href="#base-radio-unchecked" fill="url(#color-text2)"/>
   </g>
   <g id="radio-unchecked-disabled" transform="translate(104 188)">
-    <use xlink:href="#base-radio-unchecked" fill="url(#color-text2-disabled)" fill-opacity="0"/>
+    <use xlink:href="#button-fill" fill="none"/>
+    <use xlink:href="#base-radio-unchecked" fill="url(#color-text2-disabled)"/>
   </g>
 
   <g id="radio-checked" transform="translate(136 92)">
-    <use xlink:href="#base-radio-checked" fill="url(#color-primary)" fill-opacity="0"/>
+    <use xlink:href="#button-fill" fill="none"/>
+    <use xlink:href="#base-radio-checked" fill="url(#color-primary)"/>
   </g>
   <g id="radio-checked-hover" transform="translate(136 124)">
-    <use xlink:href="#base-radio-checked" fill="url(#color-primary)" fill-opacity="0.08"/>
+    <use xlink:href="#button-fill" fill="url(#color-overlay-primary-hover)"/>
+    <use xlink:href="#base-radio-checked" fill="url(#color-primary)"/>
   </g>
   <g id="radio-checked-active" transform="translate(136 156)">
-    <use xlink:href="#base-radio-checked" fill="url(#color-primary)" fill-opacity="0.2"/>
+    <use xlink:href="#button-fill" fill="url(#color-overlay-primary-active)"/>
+    <use xlink:href="#base-radio-checked" fill="url(#color-primary)"/>
   </g>
   <g id="radio-checked-disabled" transform="translate(136 188)">
-    <use xlink:href="#base-radio-checked" fill="url(#color-text2-disabled)" fill-opacity="0"/>
+    <use xlink:href="#button-fill" fill="none"/>
+    <use xlink:href="#base-radio-checked" fill="url(#color-text2-disabled)"/>
   </g>
 
   <g id="radio-mixed" transform="translate(168 92)">
-    <use xlink:href="#base-radio-mixed" fill="url(#color-primary)" fill-opacity="0"/>
+    <use xlink:href="#button-fill" fill="none"/>
+    <use xlink:href="#base-radio-mixed" fill="url(#color-primary)"/>
   </g>
   <g id="radio-mixed-hover" transform="translate(168 124)">
-    <use xlink:href="#base-radio-mixed" fill="url(#color-primary)" fill-opacity="0.08"/>
+    <use xlink:href="#button-fill" fill="url(#color-overlay-primary-hover)"/>
+    <use xlink:href="#base-radio-mixed" fill="url(#color-primary)"/>
   </g>
   <g id="radio-mixed-active" transform="translate(168 156)">
-    <use xlink:href="#base-radio-mixed" fill="url(#color-primary)" fill-opacity="0.2"/>
+    <use xlink:href="#button-fill" fill="url(#color-overlay-primary-active)"/>
+    <use xlink:href="#base-radio-mixed" fill="url(#color-primary)"/>
   </g>
   <g id="radio-mixed-disabled" transform="translate(168 188)">
-    <use xlink:href="#base-radio-mixed" fill="url(#color-text2-disabled)" fill-opacity="0"/>
+    <use xlink:href="#button-fill" fill="none"/>
+    <use xlink:href="#base-radio-mixed" fill="url(#color-text2-disabled)"/>
   </g>
 
   <g id="menu-checkbox-unchecked" transform="translate(12 220)">
@@ -552,15 +586,15 @@
   </g>
 
   <g id="scale-slider" transform="translate(8 268)">
-    <circle cx="12" cy="12" r="12" fill="url(#color-primary)" fill-opacity="0"/>
+    <circle cx="12" cy="12" r="12" fill="none"/>
     <circle cx="12" cy="12" r="6" fill="url(#color-primary)"/>
   </g>
   <g id="scale-slider-hover" transform="translate(8 300)">
-    <circle cx="12" cy="12" r="12" fill="url(#color-primary)" fill-opacity="0.08"/>
+    <circle cx="12" cy="12" r="12" fill="url(#color-overlay-primary-hover)"/>
     <circle cx="12" cy="12" r="6" fill="url(#color-primary)"/>
   </g>
   <g id="scale-slider-active" transform="translate(8 332)">
-    <circle cx="12" cy="12" r="12" fill="url(#color-primary)" fill-opacity="0.2"/>
+    <circle cx="12" cy="12" r="12" fill="url(#color-overlay-primary-active)"/>
     <circle cx="12" cy="12" r="6" fill="url(#color-primary)"/>
   </g>
   <g id="scale-slider-disabled" transform="translate(8 364)">
@@ -756,22 +790,22 @@
   </g>
 
   <g id="treeview-ltr-button" transform="translate(180 396)">
-    <use xlink:href="#base-treeview-ltr-button" fill="url(#color-text)" fill-opacity="0"/>
+    <use xlink:href="#base-treeview-ltr-button" fill="none"/>
   </g>
   <g id="treeview-ltr-button-hover" transform="translate(180 404)">
-    <use xlink:href="#base-treeview-ltr-button" fill="url(#color-text)" fill-opacity="0.08"/>
+    <use xlink:href="#base-treeview-ltr-button" fill="url(#color-overlay-hover)"/>
   </g>
   <g id="treeview-ltr-button-active" transform="translate(180 412)">
-    <use xlink:href="#base-treeview-ltr-button" fill="url(#color-text)" fill-opacity="0.2"/>
+    <use xlink:href="#base-treeview-ltr-button" fill="url(#color-overlay-active)"/>
   </g>
 
   <g id="treeview-rtl-button" transform="translate(190 396)">
-    <use xlink:href="#base-treeview-rtl-button" fill="url(#color-text)" fill-opacity="0"/>
+    <use xlink:href="#base-treeview-rtl-button" fill="none"/>
   </g>
   <g id="treeview-rtl-button-hover" transform="translate(190 404)">
-    <use xlink:href="#base-treeview-rtl-button" fill="url(#color-text)" fill-opacity="0.08"/>
+    <use xlink:href="#base-treeview-rtl-button" fill="url(#color-overlay-hover)"/>
   </g>
   <g id="treeview-rtl-button-active" transform="translate(190 412)">
-    <use xlink:href="#base-treeview-rtl-button" fill="url(#color-text)" fill-opacity="0.2"/>
+    <use xlink:href="#base-treeview-rtl-button" fill="url(#color-overlay-active)"/>
   </g>
 </svg>
