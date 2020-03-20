@@ -189,8 +189,8 @@ for FILEPATH in "${PATHLIST[@]}"; do
       -e 's/#FFFFFF/%MATERIA_SURFACE%/g' \
       -e 's/#FFFFFF/%MATERIA_VIEW%/g' \
       -e 's/#FAFAFA/%INACTIVE_MATERIA_VIEW%/g' \
-      -e 's/#353535/%HDR_BG%/g' \
-      -e 's/#2C2C2C/%HDR_BG2%/g' \
+      -e 's/#383838/%HDR_BG%/g' \
+      -e 's/#303030/%HDR_BG2%/g' \
       -e 's/#E0E0E0/%HDR_BG%/g' \
       -e 's/#D6D6D6/%HDR_BG2%/g' \
       -e 's/Materia/%OUTPUT_THEME_NAME%/g' \
@@ -199,13 +199,14 @@ for FILEPATH in "${PATHLIST[@]}"; do
     find "$FILEPATH" -type f -not -name '_color-palette.scss' -exec sed -i'' \
       -e 's/#1A73E8/%SEL_BG%/g' \
       -e 's/#FFFFFF/%FG%/g' \
+      -e 's/#EEEEEE/%FG%/g' \
       -e 's/#BDBDBD/%INACTIVE_FG%/g' \
-      -e 's/#212121/%BG%/g' \
-      -e 's/#3C3C3C/%MATERIA_SURFACE%/g' \
-      -e 's/#2C2C2C/%MATERIA_VIEW%/g' \
-      -e 's/#2C2C2C/%INACTIVE_MATERIA_VIEW%/g' \
-      -e 's/#353535/%HDR_BG%/g' \
-      -e 's/#2C2C2C/%HDR_BG2%/g' \
+      -e 's/#181818/%BG%/g' \
+      -e 's/#343434/%MATERIA_SURFACE%/g' \
+      -e 's/#242424/%MATERIA_VIEW%/g' \
+      -e 's/#242424/%INACTIVE_MATERIA_VIEW%/g' \
+      -e 's/#2d2d2d/%HDR_BG%/g' \
+      -e 's/#242424/%HDR_BG2%/g' \
       -e 's/Materia/%OUTPUT_THEME_NAME%/g' \
       {} \; ;
   fi
