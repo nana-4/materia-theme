@@ -46,6 +46,7 @@
     box-shadow: inset 0 0 0 9999px transparent, inset 0 -1px if($fc == $primary, $stroke, $fc);
     background-color: $entry-fill;
     color: $text;
+    caret-color: $fc;
   }
 
   @if $t == hover {
@@ -77,6 +78,7 @@
     box-shadow: $shadow-z1;
     background-color: if($fc == $primary, $surface, $fc);
     color: if($fc == $primary, $text, on($fc));
+    caret-color: if($fc == $primary, $fc, on($fc));
   }
 
   @if $t == raised-hover {

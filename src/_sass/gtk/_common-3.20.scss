@@ -108,6 +108,7 @@ textview {
   // FIXME: we need to override background-color to ensure text rendering
   text {
     background-color: $base;
+    caret-color: $primary;
   }
 
   border {
@@ -159,7 +160,7 @@ flowbox {
 }
 
 label {
-  caret-color: currentColor; // this shouldn't be needed.
+  caret-color: $primary; // this shouldn't be needed.
 
   &.separator {
     color: $text2;
@@ -249,7 +250,6 @@ entry {
   min-height: $medium-size;
   padding: 0 8px;
   border-radius: $corner-radius $corner-radius 0 0;
-  caret-color: currentColor; // this shouldn't be needed.
 
   @include entry(normal);
 
@@ -964,6 +964,10 @@ spinbutton {
     // in the vertical configuration, we treat the spinbutton
     // as a box, and tweak the style of the entry in the middle
     // so that it's linked
+
+    // FIXME: this should not be set at all, but otherwise it gets the wrong
+    // color
+    caret-color: $primary;
 
     // FIXME: this should not be set at all, but otherwise it gets the wrong
     // color
@@ -4135,7 +4139,7 @@ cursor-handle {
 }
 
 :not(decoration):not(window):drop(active) { // FIXME needs to be done widget by widget, this wildcard should really die
-  caret-color: $primary;
+  // caret-color: $primary;
 }
 
 stackswitcher button.text-button { // FIXME aggregate with buttons
