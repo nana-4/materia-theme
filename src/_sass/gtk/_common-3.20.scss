@@ -2505,16 +2505,12 @@ switch {
     background-color: $switch-surface;
   }
 
-  &:focus slider {
-    box-shadow: 0 0 0 10px $overlay-focus, $shadow-z1;
-  }
-
   &:hover slider {
     box-shadow: 0 0 0 10px $overlay-hover, $shadow-z1;
   }
 
-  &:focus:hover slider {
-    box-shadow: 0 0 0 10px $overlay-focus-hover, $shadow-z1;
+  &:focus slider {
+    box-shadow: 0 0 0 10px $overlay-focus, $shadow-z1;
   }
 
   &:checked slider {
@@ -2884,16 +2880,12 @@ scale {
       }
     }
 
-    &:focus {
-      background-color: $overlay-focus;
-    }
-
     &:hover {
       background-color: $overlay-hover;
     }
 
-    &:focus:hover {
-      background-color: $overlay-focus-hover;
+    &:focus {
+      background-color: $overlay-focus;
     }
 
     &:active {
@@ -2903,7 +2895,6 @@ scale {
                   background-size 0ms,
                   background-image 0ms;
       animation: ripple-on-slider $ripple-fade-in-duration $ease-out forwards;
-      background-color: $overlay-hover;
       background-image: -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png')),
                         radial-gradient(circle, $overlay-active 10%, transparent 0%);
       background-size: auto, 0% 0%;
