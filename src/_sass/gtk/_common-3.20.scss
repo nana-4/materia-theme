@@ -494,7 +494,9 @@ button {
   }
 
   &:checked {
-    background-color: mix(rgba($text, 1), $surface, percentage($overlay-checked-opacity));
+    background-color: mix($primary, $surface, percentage($overlay-checked-opacity + .04));
+    color: $primary;
+    @include raised-ink-color($primary);
 
     &:disabled {
       box-shadow: inset 0 0 0 9999px $overlay-checked;
@@ -569,6 +571,7 @@ button {
   &:checked {
     background-color: $overlay-checked;
     color: $text;
+    @include ink-color($text);
 
     &:disabled {
       color: $text-disabled;
@@ -1380,6 +1383,7 @@ searchbar > revealer > box {
                                     0 0 2 / 0 0 2px;
       background-color: transparent;
       color: $titlebar-text;
+      @include ink-color($titlebar-text);
 
       &:disabled {
         background-color: transparent;
