@@ -3,7 +3,7 @@
   width: 17px;
   height: 17px;
   border: 0 solid $divider;
-  background-color: rgba($surface, 0.9);
+  background-color: rgba($surface, .9);
 }
 
 ::-webkit-scrollbar:horizontal,
@@ -40,11 +40,17 @@
     border-bottom-left-radius: 9px 8px;
   }
 
-  &:hover { background-color: $text2; }
+  &:hover {
+    background-color: $text2;
+  }
 
-  &:active { background-color: $text; }
+  &:active {
+    background-color: $text;
+  }
 
-  &:disabled { background-color: $text2-disabled; }
+  &:disabled {
+    background-color: $text2-disabled;
+  }
 }
 
 //
@@ -52,5 +58,5 @@
 //
 
 ::selection {
-  background-color: rgba(on(light, primary), 0.24);
+  background-color: rgba(on(light, primary), $overlay-selected-opacity);
 }
