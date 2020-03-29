@@ -91,9 +91,11 @@ test() {
   ln -s  "$SRC_DIR/unity/"{*.svg,*.png,dash-widgets.json}                       "$THEME_DIR/unity"
   ln -sT "$SRC_DIR/unity/assets${ELSE_LIGHT:-}"                                 "$THEME_DIR/unity/assets"
 
-  mkdir -p                                                                      "$THEME_DIR/xfwm4"
-  ln -s  "$SRC_DIR/xfwm4/"{*.svg,themerc}                                       "$THEME_DIR/xfwm4"
-  ln -sT "$SRC_DIR/xfwm4/assets${ELSE_LIGHT:-}"                                 "$THEME_DIR/xfwm4/assets"
+  if [[ "$color" == '-light' ]]; then
+    ln -sT "$SRC_DIR/xfwm4/light"                                               "$THEME_DIR/xfwm4"
+  else
+    ln -sT "$SRC_DIR/xfwm4/default"                                             "$THEME_DIR/xfwm4"
+  fi
 
   echo "Installed to '$THEME_DIR'"
 }

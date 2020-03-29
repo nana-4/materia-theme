@@ -121,9 +121,11 @@ install() {
   cp -r "$SRC_DIR/unity/"{*.svg,*.png,dash-widgets.json}                        "$THEME_DIR/unity"
   cp -r "$SRC_DIR/unity/assets${ELSE_LIGHT:-}"                                  "$THEME_DIR/unity/assets"
 
-  mkdir -p                                                                      "$THEME_DIR/xfwm4"
-  cp -r "$SRC_DIR/xfwm4/"{*.svg,themerc}                                        "$THEME_DIR/xfwm4"
-  cp -r "$SRC_DIR/xfwm4/assets${ELSE_LIGHT:-}"                                  "$THEME_DIR/xfwm4/assets"
+  if [[ "$color" == '-light' ]]; then
+    cp -r "$SRC_DIR/xfwm4/light"                                                "$THEME_DIR/xfwm4"
+  else
+    cp -r "$SRC_DIR/xfwm4/default"                                              "$THEME_DIR/xfwm4"
+  fi
 }
 
 # Bakup and install files related to GDM theme
