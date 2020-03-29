@@ -12,7 +12,8 @@
 
 <constant name="C_titlebar_focused" value="#2d2d2d"/>
 <constant name="C_titlebar_unfocused" value="#242424"/>
-<constant name="C_highlight" value="blend/#2d2d2d/#ffffff/0.1"/>
+<constant name="C_highlight_focused" value="blend/#2d2d2d/#ffffff/0.1"/>
+<constant name="C_highlight_unfocused" value="blend/#242424/#ffffff/0.1"/>
 <constant name="C_title_focused" value="blend/#2d2d2d/#ffffff/0.87"/>
 <constant name="C_title_unfocused" value="blend/#242424/#ffffff/0.6"/>
 
@@ -104,20 +105,26 @@
   <rectangle color="C_titlebar_unfocused" x="0" y="0" width="width" height="height" filled="true"/>
 </draw_ops>
 
-<draw_ops name="highlight">
-  <line color="C_highlight" x1="4" y1="0" x2="width - 5" y2="0"/>
-  <arc color="C_highlight" x="0 - 1" y="0" width="13" height="13" start_angle="270" extent_angle="90"/>
-  <arc color="C_highlight" x="width - 13" y="0" width="13" height="13" start_angle="0" extent_angle="90"/>
+<draw_ops name="highlight_focused">
+  <line color="C_highlight_focused" x1="4" y1="0" x2="width - 5" y2="0"/>
+  <arc color="C_highlight_focused" x="0 - 1" y="0" width="13" height="13" start_angle="270" extent_angle="90"/>
+  <arc color="C_highlight_focused" x="width - 13" y="0" width="13" height="13" start_angle="0" extent_angle="90"/>
+</draw_ops>
+
+<draw_ops name="highlight_unfocused">
+  <line color="C_highlight_unfocused" x1="4" y1="0" x2="width - 5" y2="0"/>
+  <arc color="C_highlight_unfocused" x="0 - 1" y="0" width="13" height="13" start_angle="270" extent_angle="90"/>
+  <arc color="C_highlight_unfocused" x="width - 13" y="0" width="13" height="13" start_angle="0" extent_angle="90"/>
 </draw_ops>
 
 <draw_ops name="titlebar_focused">
   <include name="entire_background_focused"/>
-  <include name="highlight"/>
+  <include name="highlight_focused"/>
 </draw_ops>
 
 <draw_ops name="titlebar_unfocused">
   <include name="entire_background_unfocused"/>
-  <include name="highlight"/>
+  <include name="highlight_unfocused"/>
 </draw_ops>
 
 <!-- button icons -->
