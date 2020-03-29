@@ -64,7 +64,7 @@ if [[ -z "${THEME:-}" ]]; then
 fi
 
 PATHLIST=(
-  './src/_sass/_colors.scss'
+  './src/_colors.scss'
   './src/chrome'
   './src/cinnamon'
   './src/cinnamon/assets'
@@ -216,13 +216,13 @@ done
       #-e 's/%SPACING%/'"$SPACING"'/g' \
 
 # shellcheck disable=SC2016
-sed -i -e 's/^$corner-radius: .px/$corner-radius: '"$ROUNDNESS"'px/g' ./src/_sass/_variables.scss
+sed -i -e 's/^$corner-radius: .px/$corner-radius: '"$ROUNDNESS"'px/g' ./src/_variables.scss
 
 if [[ "${DEBUG:-}" ]]; then
   echo "You can debug TEMP DIR: $tempdir, press [Enter] when finished"; read -r
 fi
 
-mv ./src/_sass/_colors.scss.template ./src/_sass/_colors.scss
+mv ./src/_colors.scss.template ./src/_colors.scss
 
 echo "== Filling the template with the new colorscheme..."
 for FILEPATH in "${PATHLIST[@]}"; do
