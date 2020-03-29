@@ -93,6 +93,10 @@ read if you used those and something break with a version upgrade you're on your
 @define-color wm_bg #{"" + $titlebar};
 @define-color wm_unfocused_bg #{"" + $titlebar-backdrop};
 
+// To export opaque text colors for xfwm4 themerc using Sass.
+@define-color xfwm4_title #{"" + opacify($titlebar-text, $titlebar)};
+@define-color xfwm4_unfocused_title #{"" + opacify($titlebar-text2, $titlebar-backdrop)};
+
 /*
 FIXME this is really an API */
 @define-color content_view_bg #{"" + $base};
