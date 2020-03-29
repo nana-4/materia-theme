@@ -99,10 +99,12 @@ install() {
   cp -r "$SRC_DIR/gtk-2.0/gtkrc$color"                                          "$THEME_DIR/gtk-2.0/gtkrc"
 
   cp -r "$SRC_DIR/gtk/assets"                                                   "$THEME_DIR/gtk-assets"
+  cp -r "$SRC_DIR/gtk/icons"                                                    "$THEME_DIR/gtk-icons"
 
   for version in "${GTK_VERSIONS[@]}"; do
     mkdir -p                                                                    "$THEME_DIR/gtk-$version"
     ln -s ../gtk-assets                                                         "$THEME_DIR/gtk-$version/assets"
+    ln -s ../gtk-icons                                                          "$THEME_DIR/gtk-$version/icons"
     cp -r "$SRC_DIR/gtk/$version/gtk$color$size.css"                            "$THEME_DIR/gtk-$version/gtk.css"
     [[ "$color" != '-dark' ]] && \
     cp -r "$SRC_DIR/gtk/$version/gtk-dark$size.css"                             "$THEME_DIR/gtk-$version/gtk-dark.css"

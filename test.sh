@@ -74,6 +74,7 @@ test() {
   for version in "${GTK_VERSIONS[@]}"; do
     mkdir -p                                                                    "$THEME_DIR/gtk-$version"
     ln -s  "$SRC_DIR/gtk/assets"                                                "$THEME_DIR/gtk-$version"
+    ln -s  "$SRC_DIR/gtk/icons"                                                 "$THEME_DIR/gtk-$version"
     ln -sT "$SRC_DIR/gtk/$version/gtk$color$size.css"                           "$THEME_DIR/gtk-$version/gtk.css"
     [[ "$color" != '-dark' ]] && \
     ln -sT "$SRC_DIR/gtk/$version/gtk-dark$size.css"                            "$THEME_DIR/gtk-$version/gtk-dark.css"
