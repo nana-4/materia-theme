@@ -112,7 +112,7 @@ install() {
 
   mkdir -p                                                                      "$THEME_DIR/metacity-1"
   cp -r "$SRC_DIR/metacity-1/"{assets,metacity-theme-3.xml}                     "$THEME_DIR/metacity-1"
-  cp -r "$SRC_DIR/metacity-1/metacity-theme-2${ELSE_LIGHT:-}.xml"               "$THEME_DIR/metacity-1/metacity-theme-2.xml"
+  cp -r "$SRC_DIR/metacity-1/metacity-theme-2$color.xml"                        "$THEME_DIR/metacity-1/metacity-theme-2.xml"
 
   mkdir -p                                                                      "$THEME_DIR/plank"
   cp -r "$SRC_DIR/plank/dock.theme"                                             "$THEME_DIR/plank"
