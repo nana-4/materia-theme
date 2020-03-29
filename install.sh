@@ -123,6 +123,8 @@ install() {
 
   if [[ "$color" == '-light' ]]; then
     cp -r "$SRC_DIR/xfwm4/light"                                                "$THEME_DIR/xfwm4"
+  elif [[ "$color" == '-dark' ]]; then
+    cp -r "$SRC_DIR/xfwm4/dark"                                                 "$THEME_DIR/xfwm4"
   else
     cp -r "$SRC_DIR/xfwm4/default"                                              "$THEME_DIR/xfwm4"
   fi

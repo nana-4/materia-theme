@@ -93,6 +93,8 @@ test() {
 
   if [[ "$color" == '-light' ]]; then
     ln -sT "$SRC_DIR/xfwm4/light"                                               "$THEME_DIR/xfwm4"
+  elif [[ "$color" == '-dark' ]]; then
+    ln -sT "$SRC_DIR/xfwm4/dark"                                                "$THEME_DIR/xfwm4"
   else
     ln -sT "$SRC_DIR/xfwm4/default"                                             "$THEME_DIR/xfwm4"
   fi
