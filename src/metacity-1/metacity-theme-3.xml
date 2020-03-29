@@ -4,10 +4,9 @@
   <name>Materia</name>
   <author>nana-4</author>
   <copyright>GPL</copyright>
-  <date>2018</date>
+  <date>2020</date>
   <description>Materia Metacity theme</description>
 </info>
-
 
 <!-- meaningful constants -->
 
@@ -16,7 +15,6 @@
 <constant name="C_highlight" value="gtk:custom(wm_highlight,gtk:base[NORMAL])"/>
 <constant name="C_title_focused" value="gtk:custom(wm_title,gtk:fg[NORMAL])"/>
 <constant name="C_title_unfocused" value="gtk:custom(wm_unfocused_title,gtk:fg[INSENSITIVE])"/>
-
 
 <!-- geometries -->
 
@@ -78,10 +76,10 @@
   <distance name="title_vertical_pad" value="4"/>
 </frame_geometry>
 
-
 <!-- drawing operations -->
 
 <!-- title -->
+
 <draw_ops name="title_focused">
   <title version="< 3.1"
     x="(0 `max` ((width - title_width) / 2))"
@@ -107,6 +105,7 @@
 </draw_ops>
 
 <!-- window decorations -->
+
 <draw_ops name="entire_background_focused">
   <rectangle color="C_titlebar_focused" x="0" y="0" width="width" height="height" filled="true"/>
 </draw_ops>
@@ -131,10 +130,10 @@
   <include name="highlight"/>
 </draw_ops>
 
-
 <!-- button icons -->
 
 <!-- close -->
+
 <draw_ops name="close_focused">
   <image filename="assets/close.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_focused"/>
 </draw_ops>
@@ -160,6 +159,7 @@
 </draw_ops>
 
 <!-- maximize -->
+
 <draw_ops name="maximize_focused">
   <image filename="assets/maximize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_focused"/>
 </draw_ops>
@@ -185,6 +185,7 @@
 </draw_ops>
 
 <!-- unmaximize -->
+
 <draw_ops name="unmaximize_focused">
   <image filename="assets/unmaximize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_focused"/>
 </draw_ops>
@@ -210,6 +211,7 @@
 </draw_ops>
 
 <!-- minimize -->
+
 <draw_ops name="minimize_focused">
   <image filename="assets/minimize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_focused"/>
 </draw_ops>
@@ -235,6 +237,7 @@
 </draw_ops>
 
 <!-- menu -->
+
 <draw_ops name="menu_focused">
   <image filename="assets/menu.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_focused"/>
 </draw_ops>
@@ -260,6 +263,7 @@
 </draw_ops>
 
 <!-- shade -->
+
 <draw_ops name="shade_focused">
   <image filename="assets/shade.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_focused"/>
 </draw_ops>
@@ -285,6 +289,7 @@
 </draw_ops>
 
 <!-- unshade -->
+
 <draw_ops name="unshade_focused">
   <image filename="assets/unshade.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.7" colorize="C_title_focused"/>
 </draw_ops>
@@ -310,6 +315,7 @@
 </draw_ops>
 
 <!-- appmenu -->
+
 <constant name="D_appmenu_icon_size" value="16"/>
 
 <draw_ops name="appmenu_icon_focused">
@@ -349,7 +355,6 @@
   <include name="appmenu_icon_unfocused"/>
 </draw_ops>
 
-
 <!-- button backgrounds -->
 
 <draw_ops name="button_focused">
@@ -373,7 +378,6 @@
 <draw_ops name="button_unfocused_pressed">
   <image filename="assets/button.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.2" colorize="C_title_unfocused"/>
 </draw_ops>
-
 
 <!-- frame styles -->
 
@@ -530,6 +534,7 @@
 </frame_style>
 
 <!-- placeholder for unimplementated styles-->
+
 <frame_style name="blank" geometry="normal">
   <button function="close" state="normal"><draw_ops></draw_ops></button>
   <button function="close" state="pressed"><draw_ops></draw_ops></button>
@@ -554,7 +559,6 @@
   <button function="unstick" state="normal"><draw_ops></draw_ops></button>
   <button function="unstick" state="pressed"><draw_ops></draw_ops></button>
 </frame_style>
-
 
 <!-- frame style sets -->
 
@@ -631,7 +635,6 @@
   <frame focus="yes" state="maximized_and_shaded" style="blank"/>
   <frame focus="no" state="maximized_and_shaded" style="blank"/>
 </frame_style_set>
-
 
 <!-- windows -->
 
