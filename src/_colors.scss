@@ -37,8 +37,8 @@
 
 $on-colors: (
   dark: (
-    primary: #1A73E8,
-    error: #D93025,
+    primary: #1a73e8,
+    error: #d93025,
     text: rgba(black, .87),
     text2: rgba(black, .6),
     text-disabled: rgba(black, .38),
@@ -50,8 +50,8 @@ $on-colors: (
     entry-fill: rgba(black, .04)
   ),
   light: (
-    primary: #8AB4F8,
-    error: #F28B82,
+    primary: #8ab4f8,
+    error: #f28b82,
     text: white,
     text2: rgba(white, .7),
     text-disabled: rgba(white, .5),
@@ -93,16 +93,16 @@ $-dark-surface-switch:                   mix(white, $-dark-background, 60%);
 
 $primary:                               if($variant == 'light', on(light, primary), on(dark, primary));
 
-$background:                            if($variant == 'light', #F2F2F2, $-dark-background);
-$surface:                               if($variant == 'light', #FFFFFF, $-dark-surface-8dp);
-$switch-surface:                        if($variant == 'light', #FFFFFF, $-dark-surface-switch); // Special case for switches
+$background:                            if($variant == 'light', #f2f2f2, $-dark-background);
+$surface:                               if($variant == 'light', #ffffff, $-dark-surface-8dp);
+$switch-surface:                        if($variant == 'light', #ffffff, $-dark-surface-switch); // Special case for switches
 
-$base:                                  if($variant == 'light', #FFFFFF, $-dark-surface-1dp); // semi-surface with 1dp elevation
-$base-alt:                              if($variant == 'light', #FAFAFA, $-dark-surface-1dp);
+$base:                                  if($variant == 'light', #ffffff, $-dark-surface-1dp); // semi-surface with 1dp elevation
+$base-alt:                              if($variant == 'light', #fafafa, $-dark-surface-1dp);
 
 $error:                                 if($variant == 'light', on(light, error), on(dark, error));
-$warning:                               if($variant == 'light', #F4B400, #FDD633);
-$success:                               if($variant == 'light', #0F9D58, #81C995);
+$warning:                               if($variant == 'light', #f4b400, #fdd633);
+$success:                               if($variant == 'light', #0f9d58, #81c995);
 $visited:                               if($variant == 'light', $purple-500, $purple-200);
 
 $os-background:                         $-dark-background;
@@ -110,12 +110,12 @@ $tooltip:                               rgba(#616161, .9);
 $scrim:                                 rgba(black, .6);
 $scrim-alt:                             rgba(black, .3);
 
-$panel:                                 if($topbar == 'dark', #1F1F1F, $scrim);
-$panel-solid:                           if($topbar == 'dark', #1F1F1F, #CCCCCC); // for Unity panel which doesn't allow translucent colors
+$panel:                                 if($topbar == 'dark', #1f1f1f, $scrim);
+$panel-solid:                           if($topbar == 'dark', #1f1f1f, #cccccc); // for Unity panel which doesn't allow translucent colors
 
-$titlebar:                              if($topbar == 'dark', if($variant == 'light', #383838, $-dark-surface-4dp), #E0E0E0);
-$titlebar-backdrop:                     if($topbar == 'dark', if($variant == 'light', #303030, $-dark-surface-1dp), #D6D6D6);
-$titlebar-indicator:                    if($topbar == 'dark', currentColor, $primary);
+$titlebar:                              if($topbar == 'dark', if($variant == 'light', #383838, $-dark-surface-4dp), #e0e0e0);
+$titlebar-backdrop:                     if($topbar == 'dark', if($variant == 'light', #303030, $-dark-surface-1dp), #d6d6d6);
+$titlebar-indicator:                    if($topbar == 'dark', currentcolor, $primary);
 
 //
 // Overlay state colors
@@ -127,11 +127,11 @@ $overlay-active-opacity:                .12;
 $overlay-checked-opacity:               .12;
 $overlay-selected-opacity:              .24;
 
-$overlay-hover:                         gtkalpha(currentColor, .08);
-$overlay-focus:                         gtkalpha(currentColor, .08);
-$overlay-focus-hover:                   gtkalpha(currentColor, .16);
-$overlay-active:                        gtkalpha(currentColor, .12);
-$overlay-checked:                       gtkalpha(currentColor, .12);
+$overlay-hover:                         gtkalpha(currentcolor, .08);
+$overlay-focus:                         gtkalpha(currentcolor, .08);
+$overlay-focus-hover:                   gtkalpha(currentcolor, .16);
+$overlay-active:                        gtkalpha(currentcolor, .12);
+$overlay-checked:                       gtkalpha(currentcolor, .12);
 $overlay-selected:                      rgba($primary, .24);
 
 //
