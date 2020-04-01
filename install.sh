@@ -118,8 +118,10 @@ install() {
   cp -r "$SRC_DIR/plank/dock.theme"                                             "$THEME_DIR/plank"
 
   mkdir -p                                                                      "$THEME_DIR/unity"
-  cp -r "$SRC_DIR/unity/"{*.svg,*.png,dash-widgets.json}                        "$THEME_DIR/unity"
-  cp -r "$SRC_DIR/unity/assets${ELSE_LIGHT:-}"                                  "$THEME_DIR/unity/assets"
+  cp -rT "$SRC_DIR/unity/dash-buttons"                                          "$THEME_DIR/unity"
+  cp -r  "$SRC_DIR/unity/dash-widgets.json"                                     "$THEME_DIR/unity"
+  cp -rT "$SRC_DIR/unity/launcher"                                              "$THEME_DIR/unity"
+  cp -rT "$SRC_DIR/unity/window-buttons${ELSE_LIGHT:-}"                         "$THEME_DIR/unity"
 
   if [[ "$color" == '-light' ]]; then
     cp -r "$SRC_DIR/xfwm4/light"                                                "$THEME_DIR/xfwm4"

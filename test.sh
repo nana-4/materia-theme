@@ -88,8 +88,10 @@ test() {
   ln -s  "$SRC_DIR/plank/dock.theme"                                            "$THEME_DIR/plank"
 
   mkdir -p                                                                      "$THEME_DIR/unity"
-  ln -s  "$SRC_DIR/unity/"{*.svg,*.png,dash-widgets.json}                       "$THEME_DIR/unity"
-  ln -sT "$SRC_DIR/unity/assets${ELSE_LIGHT:-}"                                 "$THEME_DIR/unity/assets"
+  ln -s  "$SRC_DIR/unity/dash-buttons/"*                                        "$THEME_DIR/unity"
+  ln -s  "$SRC_DIR/unity/dash-widgets.json"                                     "$THEME_DIR/unity"
+  ln -s  "$SRC_DIR/unity/launcher/"*                                            "$THEME_DIR/unity"
+  ln -s  "$SRC_DIR/unity/window-buttons${ELSE_LIGHT:-}/"*                       "$THEME_DIR/unity"
 
   if [[ "$color" == '-light' ]]; then
     ln -sT "$SRC_DIR/xfwm4/light"                                               "$THEME_DIR/xfwm4"
