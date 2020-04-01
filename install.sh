@@ -123,13 +123,7 @@ install() {
   cp -rT "$SRC_DIR/unity/launcher"                                              "$THEME_DIR/unity"
   cp -rT "$SRC_DIR/unity/window-buttons${ELSE_LIGHT:-}"                         "$THEME_DIR/unity"
 
-  if [[ "$color" == '-light' ]]; then
-    cp -r "$SRC_DIR/xfwm4/light"                                                "$THEME_DIR/xfwm4"
-  elif [[ "$color" == '-dark' ]]; then
-    cp -r "$SRC_DIR/xfwm4/dark"                                                 "$THEME_DIR/xfwm4"
-  else
-    cp -r "$SRC_DIR/xfwm4/default"                                              "$THEME_DIR/xfwm4"
-  fi
+  cp -r "$SRC_DIR/xfwm4/xfwm4$color"                                            "$THEME_DIR/xfwm4"
 }
 
 # Bakup and install files related to GDM theme

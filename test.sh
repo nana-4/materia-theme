@@ -93,13 +93,7 @@ test() {
   ln -s  "$SRC_DIR/unity/launcher/"*                                            "$THEME_DIR/unity"
   ln -s  "$SRC_DIR/unity/window-buttons${ELSE_LIGHT:-}/"*                       "$THEME_DIR/unity"
 
-  if [[ "$color" == '-light' ]]; then
-    ln -sT "$SRC_DIR/xfwm4/light"                                               "$THEME_DIR/xfwm4"
-  elif [[ "$color" == '-dark' ]]; then
-    ln -sT "$SRC_DIR/xfwm4/dark"                                                "$THEME_DIR/xfwm4"
-  else
-    ln -sT "$SRC_DIR/xfwm4/default"                                             "$THEME_DIR/xfwm4"
-  fi
+  ln -sT "$SRC_DIR/xfwm4/xfwm4$color"                                           "$THEME_DIR/xfwm4"
 
   echo "Installed to '$THEME_DIR'"
 }
