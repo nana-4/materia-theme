@@ -59,9 +59,13 @@ Supports **ripple animations** for GTK 3:
   - `gtk2-engines-murrine` on Debian, Ubuntu, etc.
 - `bc` — build dependency
 
-## Installation
+## Package Installation
 
 ### Distro Packages
+
+> NOTE: Some of these distro packages could be outdated and incompatible with your desktop environment. You can check the latest version [here](https://github.com/nana-4/materia-theme/releases).
+
+<!-- For contributors, please add your package alphabetically. -->
 
 Distro | Package Name | Annotation
 --- | --- | ---
@@ -71,11 +75,7 @@ Fedora | `materia-gtk-theme` | Available from [@LaurentTreguier's Copr](https://
 Solus | `materia-gtk-theme` | [Link](https://dev.getsol.us/source/materia-gtk-theme/)
 Ubuntu 18.04 or later | `materia-gtk-theme` | [Link](https://packages.ubuntu.com/materia-gtk-theme)
 
-<!-- For contributors, please add your package alphabetically! -->
-
-**Warning:** **Ubuntu disco (19.04) & eoan (19.10)** packages are very outdated and incompatible with GNOME 3.32 or later! If you are using GNOME on Ubuntu, you should _manually_ install the theme.
-
-> Note: Some distro packages (especially Ubuntu ones) may be outdated and incompatible with your desktop environment. You can check the latest version [here](https://github.com/nana-4/materia-theme/releases).
+**WARNING:** Ubuntu **disco (19.04)** & **eoan (19.10)** packages are very outdated and incompatible with GNOME 3.32 or later! If you're using GNOME on Ubuntu 19.04 or 19.10, I highly recommend [manual installation](#manual-installation) below.
 
 ### Flatpak
 
@@ -86,7 +86,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 flatpak install flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact}
 ```
 
-### Manual Installation
+## Manual Installation
 
 Run the following commands in the terminal:
 
@@ -110,7 +110,7 @@ sudo ./install.sh
 
 > For more information, run: `./install.sh --help`
 
-### Manual Uninstallation
+## Manual Uninstallation
 
 Delete the installed directories:
 
