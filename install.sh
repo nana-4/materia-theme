@@ -31,6 +31,13 @@ if test -z "${GS_VERSION:-}"; then
   fi
 fi
 
+if [[ ! "$(command -v sassc)" ]]; then
+  echo "'sassc' needs to be installed to generate the CSS."
+  exit 1
+fi
+
+SASSC_OPT=('-M' '-t' 'expanded')
+
 usage() {
   cat << EOF
 Usage: $0 [OPTION]...
@@ -58,14 +65,31 @@ EOF
 
 install() {
   local dest="$1"
-  local name="$2"
+  local name="$2$3$4"
   local color="$3"
   local size="$4"
+
+  if [[ "$color" == '' ]]; then
+    local scss_variant="light"
+    local scss_topbar="dark"
+  elif [[ "$color" == '-light' ]]; then
+    local scss_variant="light"
+    local scss_topbar="light"
+  elif [[ "$color" == '-dark' ]]; then
+    local scss_variant="dark"
+    local scss_topbar="dark"
+  fi
+
+  if [[ "$size" == '' ]]; then
+    local scss_compact="false"
+  elif [[ "$size" == '-compact' ]]; then
+    local scss_compact="true"
+  fi
 
   [[ "$color" == '-dark' ]] && local ELSE_DARK="$color"
   [[ "$color" == '-light' ]] && local ELSE_LIGHT="$color"
 
-  local THEME_DIR="$dest/$name$color$size"
+  local THEME_DIR="$dest/$name"
 
   # SC2115: Protect /.
   [[ -d "$THEME_DIR" ]] && rm -rf "${THEME_DIR:?}"
@@ -74,7 +98,9 @@ install() {
 
   mkdir -p                                                                      "$THEME_DIR"
   cp -r "$REPO_DIR/COPYING"                                                     "$THEME_DIR"
-  cp -r "$SRC_DIR/index$color$size.theme"                                       "$THEME_DIR/index.theme"
+  sed \
+    -e "s/@theme_name@/$name/g" \
+    "$SRC_DIR/index.theme.in" > "$THEME_DIR/index.theme"
 
   mkdir -p                                                                      "$THEME_DIR/chrome"
   cp -r "$SRC_DIR/chrome/chrome-theme$color.crx"                                "$THEME_DIR/chrome/chrome-theme.crx"
@@ -83,7 +109,12 @@ install() {
   mkdir -p                                                                      "$THEME_DIR/cinnamon"
   cp -r "$SRC_DIR/cinnamon/assets"                                              "$THEME_DIR/cinnamon"
   cp -r "$SRC_DIR/cinnamon/thumbnail.png"                                       "$THEME_DIR/cinnamon"
-  cp -r "$SRC_DIR/cinnamon/cinnamon$color$size.css"                             "$THEME_DIR/cinnamon/cinnamon.css"
+  sed \
+    -e "s/@variant@/$scss_variant/g" \
+    -e "s/@topbar@/$scss_topbar/g" \
+    -e "s/@compact@/$scss_compact/g" \
+    "$SRC_DIR/cinnamon/cinnamon.scss.in" > "$SRC_DIR/cinnamon/cinnamon.$name.scss"
+  sassc "${SASSC_OPT[@]}" "$SRC_DIR/cinnamon/cinnamon.$name.scss"               "$THEME_DIR/cinnamon/cinnamon.css"
 
   mkdir -p                                                                      "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/"{*.svg,extensions,noise-texture.png,pad-osd.css} "$THEME_DIR/gnome-shell"
@@ -91,7 +122,13 @@ install() {
   cp -r "$SRC_DIR/gnome-shell/icons"                                            "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/README.md"                                        "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/assets${ELSE_DARK:-}"                             "$THEME_DIR/gnome-shell/assets"
-  cp -r "$SRC_DIR/gnome-shell/$GS_VERSION/gnome-shell$color$size.css"           "$THEME_DIR/gnome-shell/gnome-shell.css"
+  sed \
+    -e "s/@variant@/$scss_variant/g" \
+    -e "s/@topbar@/$scss_topbar/g" \
+    -e "s/@compact@/$scss_compact/g" \
+    -e "s/@version@/$GS_VERSION/g" \
+    "$SRC_DIR/gnome-shell/gnome-shell.scss.in" > "$SRC_DIR/gnome-shell/gnome-shell.$name.scss"
+  sassc "${SASSC_OPT[@]}" "$SRC_DIR/gnome-shell/gnome-shell.$name.scss"         "$THEME_DIR/gnome-shell/gnome-shell.css"
 
   mkdir -p                                                                      "$THEME_DIR/gtk-2.0"
   cp -r "$SRC_DIR/gtk-2.0/"{apps.rc,hacks.rc,main.rc}                           "$THEME_DIR/gtk-2.0"
@@ -101,13 +138,22 @@ install() {
   cp -r "$SRC_DIR/gtk/assets"                                                   "$THEME_DIR/gtk-assets"
   cp -r "$SRC_DIR/gtk/icons"                                                    "$THEME_DIR/gtk-icons"
 
+  local GTK_VARIANTS=('')
+  [[ "$color" != '-dark' ]] && local GTK_VARIANTS+=('-dark')
+
   for version in "${GTK_VERSIONS[@]}"; do
     mkdir -p                                                                    "$THEME_DIR/gtk-$version"
     ln -s ../gtk-assets                                                         "$THEME_DIR/gtk-$version/assets"
     ln -s ../gtk-icons                                                          "$THEME_DIR/gtk-$version/icons"
-    cp -r "$SRC_DIR/gtk/$version/gtk$color$size.css"                            "$THEME_DIR/gtk-$version/gtk.css"
-    [[ "$color" != '-dark' ]] && \
-    cp -r "$SRC_DIR/gtk/$version/gtk-dark$size.css"                             "$THEME_DIR/gtk-$version/gtk-dark.css"
+
+    for variant in "${GTK_VARIANTS[@]}"; do
+      sed \
+        -e "s/@variant@/$scss_variant/g" \
+        -e "s/@topbar@/$scss_topbar/g" \
+        -e "s/@compact@/$scss_compact/g" \
+        "$SRC_DIR/gtk/gtk$variant.scss.in" > "$SRC_DIR/gtk/gtk$variant.gtk-$version.$name.scss"
+      sassc "${SASSC_OPT[@]}" "$SRC_DIR/gtk/gtk$variant.gtk-$version.$name.scss" "$THEME_DIR/gtk-$version/gtk$variant.css"
+    done
   done
 
   mkdir -p                                                                      "$THEME_DIR/metacity-1"

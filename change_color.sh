@@ -286,8 +286,6 @@ else
   SIZE_VARIANT="standard"
 fi
 
-SIZE_VARIANTS="$SIZE_VARIANTS" COLOR_VARIANTS="$COLOR_VARIANTS" THEME_DIR_BASE="$DEST_PATH" ./parse-sass.sh
-
 # NOTE we use the functions we already have in render-assets.sh
 echo "== Rendering GTK 2 assets..."
 if [[ "$MATERIA_COLOR_VARIANT" != "dark" ]]; then
