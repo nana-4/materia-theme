@@ -1,7 +1,3 @@
-## General
-
-- Use `make` or `meson` for building? (`help wanted`)
-
 ## Supports
 
 - GTK 4

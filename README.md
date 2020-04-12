@@ -57,7 +57,7 @@ Supports **ripple animations** for GTK 3:
   - `gtk-murrine-engine` on Fedora
   - `gtk2-engine-murrine` on openSUSE
   - `gtk2-engines-murrine` on Debian, Ubuntu, etc.
-- `bc` — build dependency
+- `sassc` — build-time dependency
 
 ## Package Installation
 
@@ -88,15 +88,45 @@ flatpak install flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact}
 
 ## Manual Installation
 
-Run the following commands in the terminal:
+1. Clone the repository and move into the project directory in the terminal:
 
 ```sh
 git clone --depth 1 https://github.com/nana-4/materia-theme
 cd materia-theme
+```
+
+2. Build and install it using Meson:
+
+```sh
+meson "build" --prefix=/usr
+sudo ninja -C "build" install
+```
+
+> NOTE: The default prefix is `/usr`, but you can optionally specify `$HOME/.local`.
+
+Alternatively, you can use `./install.sh` script instead:
+
+```sh
 sudo ./install.sh
 ```
 
-> Tip: `./install.sh` allows the following options:
+> NOTE: `./install.sh` requires additional build-time dependency, `bc`.
+
+#### Build Options for Meson
+
+Option | Default Value | Description
+--- | --- | ---
+`colors` | `default,light,dark` | Choose color variant(s)
+`sizes` | `default,compact` | Choose size variant(s)
+`gnome_shell_version` | n/a (auto) | Manually set gnome-shell version
+
+Example of usage:
+
+```sh
+meson "build" -Dcolors=default,dark -Dsizes=compact
+```
+
+#### Build Options for `./install.sh`
 
 ```
 -d, --dest DIR          Specify destination directory (Default: /usr/share/themes)
@@ -108,7 +138,7 @@ sudo ./install.sh
 -h, --help              Show help
 ```
 
-> For more information, run: `./install.sh --help`
+Run `./install.sh --help` for more information.
 
 ## Manual Uninstallation
 
@@ -169,5 +199,6 @@ Materia is distributed under the terms of the GNU General Public License, versio
 - Yauhen Kirylau (@actionless) who is oomox author polished scripts and supported Materia with [oomox](https://github.com/themix-project/oomox).
 - @n3oxmind who helped improve the installation script.
 - @smurphos who made and provided the Cinnamon theme for Materia.
+- Meson code/implementation in Materia was heavily influenced by @monday15's [lounge-gtk-theme](https://github.com/monday15/lounge-gtk-theme).
 
 Also thank you to all contributors and upstream developers.
