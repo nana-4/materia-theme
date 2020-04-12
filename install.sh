@@ -11,23 +11,22 @@ COLOR_VARIANTS=('' '-dark' '-light')
 SIZE_VARIANTS=('' '-compact')
 
 GTK_VERSIONS=('3.0')
-GS_VERSIONS=('3.26' '3.28' '3.30' '3.32' '3.34' '3.36')
-LATEST_GS_VERSION="${GS_VERSIONS[-1]}"
 
-if test -z "${GS_VERSION:-}"; then
+if [[ -z "${GS_VERSION:-}" ]]; then
   # Set a proper gnome-shell theme version
-  if command -v gnome-shell >/dev/null; then
+  if [[ "$(command -v gnome-shell)" ]]; then
     CURRENT_GS_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -2)"
-    for version in "${GS_VERSIONS[@]}"; do
-      if (( "$(bc <<< "$CURRENT_GS_VERSION <= $version")" )); then
-        GS_VERSION="$version"
-        break
-      else
-        GS_VERSION="$LATEST_GS_VERSION"
-      fi
-    done
+    MAJOR_VER="$(echo "$CURRENT_GS_VERSION" | cut -d . -f 1)"
+    MINOR_VER="$(echo "$CURRENT_GS_VERSION" | cut -d . -f 2)"
+
+    if (( "$MINOR_VER" % 2 == 0 )); then
+      GS_VERSION="$MAJOR_VER.$MINOR_VER"
+    else
+      GS_VERSION="$MAJOR_VER.$(($MINOR_VER + 1))"
+    fi
   else
-    GS_VERSION="$LATEST_GS_VERSION"
+    echo "'gnome-shell' not found, using styles for last gnome-shell version available."
+    GS_VERSION="3.36"
   fi
 fi
 

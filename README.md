@@ -110,8 +110,6 @@ Alternatively, you can use `./install.sh` script instead:
 sudo ./install.sh
 ```
 
-> NOTE: `./install.sh` requires additional build-time dependency, `bc`.
-
 #### Build Options for Meson
 
 Option | Default Value | Description
