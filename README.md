@@ -98,11 +98,9 @@ cd materia-theme
 2. Build and install it using Meson:
 
 ```sh
-meson "build" --prefix=/usr
+meson "build"
 sudo ninja -C "build" install
 ```
-
-> NOTE: The default prefix is `/usr`, but you can optionally specify `$HOME/.local`.
 
 Alternatively, you can use `./install.sh` script instead:
 
@@ -114,6 +112,7 @@ sudo ./install.sh
 
 Option | Default Value | Description
 --- | --- | ---
+`prefix` | `/usr` | Installation prefix
 `colors` | `default,light,dark` | Choose color variant(s)
 `sizes` | `default,compact` | Choose size variant(s)
 `gnome_shell_version` | n/a (auto) | Manually set gnome-shell version
@@ -121,7 +120,7 @@ Option | Default Value | Description
 Example of usage:
 
 ```sh
-meson "build" -Dcolors=default,dark -Dsizes=compact
+meson "build" -Dprefix="$HOME/.local" -Dcolors=default,dark -Dsizes=compact
 ```
 
 #### Build Options for `./install.sh`
