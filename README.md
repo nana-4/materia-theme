@@ -102,7 +102,7 @@ meson "build"
 sudo ninja -C "build" install
 ```
 
-Alternatively, you can use `./install.sh` script instead:
+Alternatively, you can use `./install.sh` script without using Meson:
 
 ```sh
 sudo ./install.sh
@@ -125,17 +125,7 @@ meson "build" -Dprefix="$HOME/.local" -Dcolors=default,dark -Dsizes=compact
 
 #### Build Options for `./install.sh`
 
-```
--d, --dest DIR          Specify destination directory (Default: /usr/share/themes)
--n, --name NAME         Specify theme name (Default: Materia)
--c, --color VARIANT...  Specify color variant(s) [standard|dark|light] (Default: All variants)
--s, --size VARIANT      Specify size variant [standard|compact] (Default: All variants)
--g, --gdm               Install and apply GDM theme (for advanced users)
-                        See also: src/gnome-shell/README.md
--h, --help              Show help
-```
-
-Run `./install.sh --help` for more information.
+Run `./install.sh --help` for details.
 
 ## Manual Uninstallation
 
