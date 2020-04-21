@@ -82,7 +82,7 @@ foreach theme: themes
 
       # Rename it to a valid name
       meson.add_install_script(
-        'mv',
+        '../../scripts/install-theme.sh',
         join_paths(get_option('prefix'), gtk_version_dir, '@0@.css'.format(gtk_temp_name)),
         join_paths(get_option('prefix'), gtk_version_dir, 'gtk@0@.css'.format(gtk_variant)),
       )

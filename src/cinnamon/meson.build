@@ -58,7 +58,7 @@ foreach theme: themes
 
   # Rename it to a valid name
   meson.add_install_script(
-    'mv',
+    '../../scripts/install-theme.sh',
     join_paths(get_option('prefix'), cinnamon_dir, 'cinnamon.@0@.css'.format(theme['name'])),
     join_paths(get_option('prefix'), cinnamon_dir, 'cinnamon.css'),
   )
