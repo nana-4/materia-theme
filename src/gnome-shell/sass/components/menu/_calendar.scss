@@ -183,6 +183,7 @@ $calendar-column-margin: 0 8px;
     @include type(caption);
     font-feature-settings: "tnum";
     text-align: center;
+    color: $text;
 
     &:focus {
       background-color: $overlay-focus;
@@ -242,11 +243,13 @@ $calendar-column-margin: 0 8px;
 
   .calendar-nonwork-day {
     color: inherit;
+    font-weight: bold;
   }
 
   // Today
   .calendar-today {
-    border: 0;
+    border: 1px solid $overlay-selected;
+    margin: 1px !important;
     background-color: transparent;
     color: inherit;
     font-weight: bold !important;
@@ -281,10 +284,7 @@ $calendar-column-margin: 0 8px;
   }
 
   .calendar-day-with-events {
-    background-image: none;
-    color: $primary !important;
-    font-weight: normal;
-    text-decoration: underline;
+    background-image: url("assets/calendar-event.svg");
   }
 
   .calendar-other-month-day {
