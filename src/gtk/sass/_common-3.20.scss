@@ -230,10 +230,11 @@ spinner {
   opacity: 0; // non spinning spinner makes no sense
   color: $primary;
   -gtk-icon-source: -gtk-icontheme('process-working-symbolic');
+  transition: opacity $duration * 4 $ease-out;
+  animation: spin 1s linear infinite;
 
   &:checked {
     opacity: 1;
-    animation: spin 1s linear infinite;
   }
 
   &:disabled {
