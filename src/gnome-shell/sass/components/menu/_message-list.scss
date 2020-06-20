@@ -104,7 +104,7 @@
     > .event-time {
       min-height: $small-size - 2px;
       padding-top: 2px;
-      color: $text2;
+      color: hint($on-surface);
       font-size: 1em;
       text-align: right;
 
@@ -130,26 +130,26 @@
     &,
     &:hover,
     &:active {
-      color: $text2;
+      color: hint($on-surface);
     }
 
     &:focus {
-      background-color: $overlay-focus;
+      background-color: overlay("focus", $on-surface);
     }
 
     &:hover {
-      background-color: $overlay-hover;
+      background-color: overlay("hover", $on-surface);
     }
 
     &:active {
       transition-duration: $duration-ripple;
-      background-color: $overlay-active;
+      background-color: overlay("pressed", $on-surface);
     }
   }
 
   // body
   .message-body {
-    color: $text2;
+    color: hint($on-surface);
   }
 }
 
@@ -169,24 +169,24 @@
   &:focus,
   &:hover,
   &:active {
-    color: $text2;
+    color: hint($on-surface);
   }
 
   &:focus {
-    background-color: $overlay-focus;
+    background-color: overlay("focus", $on-surface);
   }
 
   &:hover {
-    background-color: $overlay-hover;
+    background-color: overlay("hover", $on-surface);
   }
 
   &:active {
-    background-color: $overlay-active;
+    background-color: overlay("pressed", $on-surface);
     transition-duration: $duration-ripple;
   }
 
   &:insensitive {
-    color: $text2-disabled;
+    color: disabled-hint($on-surface);
   }
 
   &:last-child:ltr {
@@ -214,7 +214,7 @@
     padding: 8px;
     border: 0;
     border-radius: $corner-radius;
-    background-color: $fill;
-    color: $text-disabled !important;
+    background-color: fill($on-surface);
+    color: disabled($on-surface) !important;
   }
 }

@@ -7,12 +7,13 @@
   @return unquote("alpha(#{$c}, #{$a})");
 }
 
+// Determine whether the color has alpha.
+@function has-alpha($color) {
+  @return if(alpha($color) < 1, true, false);
+}
+
 // Determine whether the color is "light" or "dark".
 @function tone($color) {
-  @if $color == "dark" or $color == "light" {
-    @return $color;
-  }
-
   // Calculate color brightness as per https://www.w3.org/TR/AERT/#color-contrast
   $brightness: (red($color) * 299 + green($color) * 587 + blue($color) * 114) / 1000;
 
@@ -23,46 +24,20 @@
   }
 }
 
+$on-light: #000;
+$on-dark: #fff;
+
 // Determine whether to use dark or light color on top of given color
 // to meet accessibility standards for contrast.
-@function on($color, $type: text) {
-  $contrast-tone: if(tone($color) == "dark", "light", "dark");
+@function on($color) {
+  $contrast-color: if(tone($color) == "dark", $on-dark, $on-light);
 
-  @if not map-has-key(map-get($on-colors, $contrast-tone), $type) {
-    @error "Invalid type: '#{$type}'";
+  @if saturation($color) > 50% or alpha($color) < 1 {
+    @return $contrast-color;
+  } @else {
+    @return rgba($contrast-color, .87);
   }
-
-  @return map-get(map-get($on-colors, $contrast-tone), $type);
 }
-
-$on-colors: (
-  dark: (
-    primary: #1a73e8,
-    error: #d93025,
-    text: rgba(black, .87),
-    text2: rgba(black, .6),
-    text-disabled: rgba(black, .38),
-    text2-disabled: rgba(black, .26),
-    stroke: rgba(black, .26),
-    stroke-disabled: rgba(black, .12),
-    divider: rgba(black, .12),
-    fill: rgba(black, .08),
-    entry-fill: rgba(black, .04)
-  ),
-  light: (
-    primary: #8ab4f8,
-    error: #f28b82,
-    text: white,
-    text2: rgba(white, .7),
-    text-disabled: rgba(white, .5),
-    text2-disabled: rgba(white, .3),
-    stroke: rgba(white, .3),
-    stroke-disabled: rgba(white, .12),
-    divider: rgba(white, .12),
-    fill: rgba(white, .08),
-    entry-fill: rgba(white, .04)
-  )
-);
 
 // Determine the strength of highlight on top of given color.
 @function highlight($color) {
@@ -118,31 +93,54 @@ $-dark-surface-switch:                   mix(white, $-dark-background, 60%);
 // Main colors
 //
 
-$primary:                               if($variant == 'light', on(light, primary), on(dark, primary));
-
 $background:                            if($variant == 'light', #f2f2f2, $-dark-background);
 $surface:                               if($variant == 'light', #ffffff, $-dark-surface-8dp);
 $switch-surface:                        if($variant == 'light', #ffffff, $-dark-surface-switch); // Special case for switches
-
 $base:                                  if($variant == 'light', #ffffff, $-dark-surface-1dp); // semi-surface with 1dp elevation
 $base-alt:                              if($variant == 'light', #fafafa, $-dark-surface-1dp);
+$on-surface:                            on($surface);
 
-$error:                                 if($variant == 'light', on(light, error), on(dark, error));
+$primary-on-light:                      #1a73e8;
+$primary-on-dark:                       #8ab4f8;
+$primary:                               if($variant == 'light', $primary-on-light, $primary-on-dark);
+$on-primary:                            on($primary);
+
+$error-on-light:                        #d93025;
+$error-on-dark:                         #f28b82;
+$error:                                 if($variant == 'light', $error-on-light, $error-on-dark);
+$on-error:                              on($error);
+
 $warning:                               if($variant == 'light', #f4b400, #fdd633);
+$on-warning:                            on($warning);
+
 $success:                               if($variant == 'light', #0f9d58, #81c995);
+$on-success:                            on($success);
+
 $visited:                               if($variant == 'light', $purple-500, $purple-200);
+$on-visited:                            on($visited);
 
 $os-background:                         $-dark-background;
+$on-os-background:                      on($os-background);
+
 $tooltip:                               rgba(#616161, .9);
+$on-tooltip:                            on($tooltip);
+
 $scrim:                                 rgba(black, .6);
+$on-scrim:                              on($scrim);
+
 $scrim-alt:                             rgba(black, .3);
+$on-scrim-alt:                          on($scrim-alt);
 
 $panel:                                 if($topbar == 'dark', #1f1f1f, $scrim);
+$on-panel:                              on($panel);
+
 $panel-solid:                           if($topbar == 'dark', #1f1f1f, #cccccc); // for Unity panel which doesn't allow translucent colors
+$on-panel-solid:                        on($panel-solid);
 
 $titlebar:                              if($topbar == 'dark', if($variant == 'light', #383838, $-dark-surface-4dp), #e0e0e0);
 $titlebar-backdrop:                     if($topbar == 'dark', if($variant == 'light', #303030, $-dark-surface-1dp), #d6d6d6);
 $titlebar-indicator:                    if($topbar == 'dark', currentcolor, $primary);
+$on-titlebar:                           on($titlebar);
 
 //
 // Overlay state colors
@@ -151,29 +149,45 @@ $titlebar-indicator:                    if($topbar == 'dark', currentcolor, $pri
 $overlay-selected:                      rgba($primary, .24);
 
 //
-// “On” colors
+// For “on” colors
 //
 
-$base-fg:                               if($variant == 'light', black, white);
+@function primary($color) {
+  @return if(tone($color) == "dark", $primary-on-light, $primary-on-dark);
+}
 
-$text:                                  rgba($base-fg, .87);
-$text2:                                 rgba($base-fg, .6);
-$text-disabled:                         rgba($base-fg, .38);
-$text2-disabled:                        rgba($base-fg, .26);
-$stroke:                                rgba($base-fg, .26);
-$stroke-disabled:                       rgba($base-fg, .12);
-$divider:                               rgba($base-fg, .12);
-$fill:                                  rgba($base-fg, .08);
-$entry-fill:                            rgba($base-fg, .04);
+@function error($color) {
+  @return if(tone($color) == "dark", $error-on-light, $error-on-dark);
+}
 
-$titlebar-base-fg:                      if($topbar == 'dark', white, black);
+@function hint($color) {
+  @return rgba($color, if(has-alpha($color), .6, .7));
+}
 
-$titlebar-text:                         rgba($titlebar-base-fg, .87);
-$titlebar-text2:                        rgba($titlebar-base-fg, .6);
-$titlebar-text-disabled:                rgba($titlebar-base-fg, .38);
-$titlebar-text2-disabled:               rgba($titlebar-base-fg, .26);
-$titlebar-stroke:                       rgba($titlebar-base-fg, .26);
-$titlebar-stroke-disabled:              rgba($titlebar-base-fg, .12);
-$titlebar-divider:                      rgba($titlebar-base-fg, .12);
-$titlebar-fill:                         rgba($titlebar-base-fg, .08);
-$titlebar-entry-fill:                   rgba($titlebar-base-fg, .04);
+@function disabled($color) {
+  @return rgba($color, if(has-alpha($color), .38, .5));
+}
+
+@function disabled-hint($color) {
+  @return rgba($color, if(has-alpha($color), .26, .3));
+}
+
+@function stroke($color) {
+  @return rgba($color, if(has-alpha($color), .26, .3));
+}
+
+@function disabled-stroke($color) {
+  @return rgba($color, if(has-alpha($color), .12, .2));
+}
+
+@function divider($color) {
+  @return rgba($color, if(has-alpha($color), .12, .2));
+}
+
+@function fill($color) {
+  @return rgba($color, if(has-alpha($color), .08, .08));
+}
+
+@function entry-fill($color) {
+  @return rgba($color, if(has-alpha($color), .04, .04));
+}

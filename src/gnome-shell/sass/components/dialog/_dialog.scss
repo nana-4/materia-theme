@@ -9,7 +9,7 @@
   border-radius: $corner-radius;
   box-shadow: $shadow-4;
   background-color: $surface;
-  color: $text;
+  color: $on-surface;
 
   @if $version >= 3.36 {
     .modal-dialog-content-box {
@@ -99,7 +99,7 @@
   .end-session-dialog-shutdown-icon {
     width: 48px;
     height: 48px;
-    color: $text2;
+    color: hint($on-surface);
   }
 
   .end-session-dialog-inhibitor-layout {
@@ -133,7 +133,7 @@
   }
 
   .end-session-dialog-app-list-item-description {
-    color: $text2;
+    color: hint($on-surface);
     font-size: 1em;
   }
 }
@@ -153,7 +153,7 @@
     }
 
     .message-dialog-description {
-      color: $text2;
+      color: hint($on-surface);
       text-align: inherit;
     }
   }
@@ -178,7 +178,7 @@
   }
 
   .message-dialog-subtitle {
-    color: $text2;
+    color: hint($on-surface);
     font-weight: normal;
   }
 }
@@ -207,7 +207,7 @@
       }
 
       .dialog-list-item-description {
-        color: $text2;
+        color: hint($on-surface);
         font-size: 1em;
       }
     }
@@ -228,13 +228,13 @@
 
     .run-dialog-description {
       text-align: inherit;
-      color: $text2;
+      color: hint($on-surface);
       font-size: 1em;
     }
   } @else {
     .run-dialog-label {
       padding-bottom: .4em;
-      color: $text2;
+      color: hint($on-surface);
       font-weight: normal;
       font-size: 1em;
     }
@@ -421,16 +421,16 @@
   border-radius: $corner-radius;
 
   &:focus {
-    background-color: $overlay-focus;
+    background-color: overlay("focus", $on-surface);
   }
 
   &:hover {
-    background-color: $overlay-hover;
+    background-color: overlay("hover", $on-surface);
   }
 
   &:active {
     transition-duration: $duration-ripple;
-    background-color: $overlay-active;
+    background-color: overlay("pressed", $on-surface);
     color: inherit;
   }
 }
@@ -539,7 +539,7 @@
     }
 
     .message-dialog-title {
-      color: $text2;
+      color: hint($on-surface);
       font-weight: normal;
     }
   }

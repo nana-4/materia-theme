@@ -3,7 +3,7 @@
 #overview {
   spacing: 24px;
   background-color: transparent;
-  color: on(dark);
+  color: $on-dark;
 
   StScrollBar {
     @extend %scrollbar-on-dark;
@@ -17,13 +17,13 @@
 %overview-panel {
   transition-duration: $duration-panel;
   border: 0;
-  background-color: on(dark, fill);
-  color: on(dark);
+  background-color: fill($on-dark);
+  color: $on-dark;
 }
 
 %overview-status-text {
   @include type(headline3);
-  color: on(dark, text-disabled);
+  color: disabled($on-dark);
 }
 
 %overview-item {
@@ -84,7 +84,7 @@
 %-overview-item-focus {
   border-image: none;
   background-image: none;
-  background-color: $inverse-overlay-focus;
+  background-color: overlay("focus", $on-dark);
   color: inherit;
   transition-duration: 0ms;
 }
@@ -92,14 +92,14 @@
 %-overview-item-hover {
   border-image: none;
   background-image: none;
-  background-color: $inverse-overlay-hover;
+  background-color: overlay("hover", $on-dark);
   color: inherit;
   transition-duration: 0ms;
 }
 
 %-overview-item-active {
   box-shadow: none;
-  background-color: $inverse-overlay-active;
+  background-color: overlay("pressed", $on-dark);
   color: inherit;
   transition-duration: $duration-ripple;
 }

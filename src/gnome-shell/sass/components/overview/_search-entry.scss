@@ -5,37 +5,37 @@
   width: 320px - 8px * 2;
   padding: 0 8px;
   border-radius: $corner-radius $corner-radius 0 0;
-  color: on(dark, text-disabled);
-  selection-background-color: on(dark, stroke);
-  selected-color: on(dark);
-  @include entry(normal, $fc: on(dark, stroke));
+  color: disabled($on-dark);
+  selection-background-color: stroke($on-dark);
+  selected-color: $on-dark;
+  @include entry(normal, $fc: stroke($on-dark));
 
   &:hover {
-    @include entry(hover, $fc: on(dark, stroke));
-    color: on(dark, text-disabled);
+    @include entry(hover, $fc: stroke($on-dark));
+    color: disabled($on-dark);
   }
 
   &:focus {
-    @include entry(focus, $fc: on(dark));
+    @include entry(focus, $fc: $on-dark);
     padding: 0 8px;
     border: 0;
-    color: on(dark);
+    color: $on-dark;
   }
 
   StLabel.hint-text {
-    color: on(dark, text2);
+    color: hint($on-dark);
   }
 
   .search-entry-icon {
     icon-size: 16px;
     padding: 0 4px;
-    color: on(dark, text2);
+    color: hint($on-dark);
   }
 
   &:hover,
   &:focus {
     .search-entry-icon {
-      color: on(dark);
+      color: $on-dark;
     }
   }
 }

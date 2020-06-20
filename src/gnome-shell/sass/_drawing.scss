@@ -109,9 +109,9 @@
 
   @if $t == normal {
     transition-duration: $duration;
-    background-color: if($fc == $primary, $entry-fill, on(dark, entry-fill));
+    background-color: if($fc == $primary, entry-fill($on-surface), entry-fill($on-dark));
     border-color: transparent;
-    box-shadow: inset 0 -1px if($fc == $primary, $stroke, $fc);
+    box-shadow: inset 0 -1px if($fc == $primary, stroke($on-surface), $fc);
   }
 
   @if $t == focus {
@@ -120,18 +120,18 @@
   }
 
   @if $t == hover {
-    box-shadow: inset 0 -1px if($fc == $primary, $text, $fc);
+    box-shadow: inset 0 -1px if($fc == $primary, $on-surface, $fc);
   }
 
   @if $t == insensitive {
-    color: $text-disabled;
+    color: disabled($on-surface);
     border-color: transparent;
-    box-shadow: inset 0 -1px if($fc == $primary, $stroke-disabled, $fc);
+    box-shadow: inset 0 -1px if($fc == $primary, disabled-stroke($on-surface), $fc);
   }
 }
 
 
-@mixin button($t, $c: $surface, $tc: $text) {
+@mixin button($t, $c: $surface, $tc: $on-surface) {
 //
 // button
 //
@@ -177,8 +177,8 @@
   }
 
   @if $t == insensitive {
-    color: if($tc == $text, $text-disabled, $tc);
-    background-color: if($c == $surface, $fill, $c);
+    color: if($tc == $on-surface, disabled($on-surface), $tc);
+    background-color: if($c == $surface, fill($on-surface), $c);
     border-color: transparent;
     box-shadow: $shadow-0;
     text-shadow: none;
@@ -186,7 +186,7 @@
   }
 
   @if $t == flat-normal {
-    color: if($tc != on(dark), $primary, on(dark, text2));
+    color: if($tc != $on-dark, $primary, hint($on-dark));
     background-color: transparent;
     border-color: transparent;
     box-shadow: $shadow-0;
@@ -196,16 +196,16 @@
   }
 
   @if $t == flat-focus {
-    color: if($tc != on(dark), $primary, on(dark, text2));
-    background-color: if($tc != on(dark), $primary-overlay-focus, $inverse-overlay-focus);
+    color: if($tc != $on-dark, $primary, hint($on-dark));
+    background-color: overlay("focus", if($tc != $on-dark, $primary, $on-dark));
     text-shadow: none;
     icon-shadow: none;
     box-shadow: $shadow-0;
   }
 
   @if $t == flat-hover {
-    color: if($tc != on(dark), $primary, on(dark, text2));
-    background-color: if($tc != on(dark), $primary-overlay-hover, $inverse-overlay-hover);
+    color: if($tc != $on-dark, $primary, hint($on-dark));
+    background-color: overlay("hover", if($tc != $on-dark, $primary, $on-dark));
     border-color: transparent;
     box-shadow: $shadow-0;
     text-shadow: none;
@@ -213,8 +213,8 @@
   }
 
   @if $t == flat-active {
-    color: if($tc != on(dark), $primary, on(dark, text2));
-    background-color: if($tc != on(dark), $primary-overlay-active, $inverse-overlay-active);
+    color: if($tc != $on-dark, $primary, hint($on-dark));
+    background-color: overlay("pressed", if($tc != $on-dark, $primary, $on-dark));
     border-color: transparent;
     box-shadow: $shadow-0;
     text-shadow: none;
@@ -223,7 +223,7 @@
   }
 
   @if $t == flat-insensitive {
-    color: if($tc != on(dark), $text2-disabled, on(dark, text2-disabled));
+    color: if($tc != $on-dark, disabled-hint($on-surface), disabled-hint($on-dark));
     background-color: transparent;
     border-color: transparent;
     box-shadow: $shadow-0;

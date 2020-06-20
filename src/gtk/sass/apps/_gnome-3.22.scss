@@ -19,7 +19,7 @@
 
 .nautilus-canvas-item.dim-label,
 .nautilus-list-dim-label {
-  color: $text2;
+  color: hint($on-surface);
 }
 
 .nautilus-desktop.nautilus-canvas-item {
@@ -30,7 +30,7 @@
 
 @keyframes nautilus-operations-button-needs-attention {
   to {
-    background-color: overlay("focus", $titlebar-text);
+    background-color: overlay("focus", $on-titlebar);
   }
 }
 
@@ -59,13 +59,13 @@
   }
 
   &.width-maximized {
-    background-color: $titlebar-entry-fill;
+    background-color: entry-fill($on-titlebar);
   }
 
   // workaround for 3.30.1
   &.background.frame {
     border-style: none;
-    background-color: $titlebar-entry-fill;
+    background-color: entry-fill($on-titlebar);
   }
 
   // for 3.30
@@ -117,7 +117,7 @@
   padding: 0;
   border-style: solid solid none;
   border-width: 1px;
-  border-color: $divider;
+  border-color: divider($on-surface);
   border-radius: ($corner-radius + 1px) ($corner-radius + 1px) 0 0;
   background-color: rgba($surface, .9);
 
@@ -147,8 +147,8 @@
   // border-width: 2px;
 
   &.unknown {
-    background-color: $stroke;
-    color: $stroke;
+    background-color: stroke($on-surface);
+    color: stroke($on-surface);
   }
 
   &.used {
@@ -157,22 +157,22 @@
   }
 
   &.free {
-    background-color: $fill;
-    color: $fill;
+    background-color: fill($on-surface);
+    color: fill($on-surface);
   }
 }
 
 // View
 // Hide superfluous treeview drop target indication
 .nautilus-list-view .view:not(.dnd) {
-  // border-bottom: 1px solid $divider;
+  // border-bottom: 1px solid divider($on-surface);
 }
 
 .search-information {
   padding: 2px;
-  border-bottom: 1px solid $divider;
+  border-bottom: 1px solid divider($on-surface);
   background-color: $base;
-  color: $text;
+  color: $on-surface;
 }
 
 .documents-entry-tag {
@@ -211,7 +211,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 
   > box.horizontal:last-child {
     margin: -6px 0 0 -6px;
-    border-top: 1px solid $divider;
+    border-top: 1px solid divider($on-surface);
 
     > label {
       margin: 0 8px;
@@ -252,7 +252,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
   font-weight: 500;
 
   &:disabled {
-    color: $text2;
+    color: hint($on-surface);
   }
 }
 
@@ -283,14 +283,14 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 
 // Only normal state is handle
 .open-document-selector-path-label {
-  color: $text2;
+  color: hint($on-surface);
   font-size: smaller;
 }
 
 // Only normal state is handle
 .open-document-selector-match {
   background-color: $warning;
-  color: on($warning);
+  color: $on-warning;
 }
 
 .gedit-document-panel {
@@ -306,11 +306,11 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 }
 
 .gedit-document-panel-group-row:not(:first-child) {
-  border-top: 1px solid $divider;
+  border-top: 1px solid divider($on-surface);
 }
 
 .gedit-side-panel-paned statusbar {
-  border-top: 1px solid $divider;
+  border-top: 1px solid divider($on-surface);
 }
 
 .gedit-search-slider {
@@ -322,7 +322,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 
     .gedit-search-entry-occurrences-tag {
       all: unset;
-      color: $text2;
+      color: hint($on-surface);
     }
 
     $buttons_width: $small-size * 2 + $container-padding * 3;
@@ -358,10 +358,11 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
     }
 
     &.error ~ button {
-      @include ink-color(on($error, text2));
+      color: hint($on-error);
+      @include ink-color($on-error);
 
       &:disabled {
-        color: on($error, text2-disabled);
+        color: disabled-hint($on-error);
       }
     }
   }
@@ -438,7 +439,7 @@ frame.gedit-map-frame > border {
 .tweak-group-startup {
   // background-color: @view_separators;
   background-image: image($base);
-  border: 1px solid $divider;
+  border: 1px solid divider($on-surface);
 }
 
 //
@@ -452,10 +453,10 @@ row#dynamic-workspaces,
 row#PrimaryWorkspaceTweak, // for 3.26.0
 row#workspaces-only-on-primary {
   padding: 0;
-  border: 1px solid $divider;
+  border: 1px solid divider($on-surface);
 
   row:not(:last-child) {
-    border-bottom: 1px solid $divider;
+    border-bottom: 1px solid divider($on-surface);
   }
 
   &.tweak > list {
@@ -483,7 +484,7 @@ hdyleaflet.titlebar > .titlebar.tweak-titlebar-right {
 
   + separator {
     background-color: inherit;
-    background-image: image($titlebar-divider);
+    background-image: image(divider($on-titlebar));
   }
 }
 
@@ -501,7 +502,7 @@ hdyleaflet.titlebar > .titlebar.tweak-titlebar-right {
 // Layout tab and tab bar tweaks
 // The following makes the layout stack header look similar to a tab bar.
 layouttabbar {
-  border-bottom: 1px solid $divider;
+  border-bottom: 1px solid divider($on-surface);
   background-color: $background;
 
   button {
@@ -518,7 +519,7 @@ layouttab {
   margin: 0 8px; // not working
   border-style: none solid;
   border-width: 1px;
-  border-color: $divider;
+  border-color: divider($on-surface);
   box-shadow: inset 0 -2px $primary;
   background-color: $base;
 
@@ -543,18 +544,18 @@ layouttab {
 }
 
 layout {
-  border: 1px solid $divider;
+  border: 1px solid divider($on-surface);
   -PnlDockBin-handle-size: 1;
 }
 
 entry.search-missing {
   background-color: $error;
-  color: on($error);
+  color: $on-error;
 }
 
 // tweak icons for treeviews
 window.workbench treeview.image {
-  color: $text2;
+  color: hint($on-surface);
 }
 
 popover.popover-selector list {
@@ -591,26 +592,26 @@ omnibar {
   }
 
   entry {
-    color: $text2;
+    color: hint($on-surface);
   }
 }
 
 popover.omnibar list row:not(:last-child) {
-  border-bottom: 1px solid $divider;
+  border-bottom: 1px solid divider($on-surface);
 }
 
 entry.preferences-search {
-  border-bottom: 1px solid $divider;
+  border-bottom: 1px solid divider($on-surface);
   box-shadow: none;
   background-color: $base;
 
   // doesn't work properly
   &:dir(ltr) {
-    // border-right: 1px solid $divider;
+    // border-right: 1px solid divider($on-surface);
   }
 
   &:dir(rtl) {
-    // border-left: 1px solid $divider;
+    // border-left: 1px solid divider($on-surface);
   }
 }
 
@@ -633,11 +634,11 @@ preferences stacksidebar.sidebar {
 
 preferences > box > box {
   &:dir(ltr) {
-    border-right: 1px solid $divider;
+    border-right: 1px solid divider($on-surface);
   }
 
   &:dir(rtl) {
-    border-left: 1px solid $divider;
+    border-left: 1px solid divider($on-surface);
   }
 }
 
@@ -650,7 +651,7 @@ popover.messagepopover {
     @extend %button-flat-basic;
 
     padding: 8px 16px;
-    border-top: 1px solid $divider;
+    border-top: 1px solid divider($on-surface);
     border-radius: 0;
 
     &:first-child {
@@ -671,7 +672,7 @@ popover.transfers list {
   background-color: transparent;
 
   row:not(:first-child) {
-    border-top: 1px solid $divider;
+    border-top: 1px solid divider($on-surface);
   }
 
   row > box {
@@ -680,23 +681,23 @@ popover.transfers list {
 }
 
 dockbin {
-  border: 1px solid $divider;
+  border: 1px solid divider($on-surface);
   -PnlDockBin-handle-size: 1;
 }
 
 dockpaned {
-  border: 1px solid $divider;
+  border: 1px solid divider($on-surface);
 }
 
 eggsearchbar box.search-bar {
   padding: 0 8px;
-  border-bottom: 1px solid $divider;
+  border-bottom: 1px solid divider($on-surface);
   background-color: $background;
 }
 
 docktabstrip {
   padding: 0 8px;
-  border-bottom: 1px solid $divider;
+  border-bottom: 1px solid divider($on-surface);
   background-color: $background;
 }
 
@@ -718,11 +719,11 @@ docktab {
   background-position: center;
   background-size: 0% 0%;
 
-  color: $text2;
+  color: hint($on-surface);
   font-weight: 500;
 
   &:hover {
-    background-color: overlay("hover", $text);
+    background-color: overlay("hover", $on-surface);
   }
 
   &:checked {
@@ -733,7 +734,7 @@ docktab {
     background-color: transparent;
     background-image: radial-gradient(circle, transparent 10%, transparent 0%);
     background-size: 1000% 1000%;
-    color: $text;
+    color: $on-surface;
   }
 }
 
@@ -764,7 +765,7 @@ buildperspective row {
 }
 
 layoutpane entry.search {
-  border-bottom: 1px solid $divider;
+  border-bottom: 1px solid divider($on-surface);
   box-shadow: none;
   background-color: $base;
 }
@@ -821,19 +822,19 @@ button.dzlmenubutton image {
 }
 
 button.dzlmenubuttonitem {
-  color: $text;
+  color: $on-surface;
   font-weight: normal;
 
   &:disabled {
-    color: $text-disabled;
+    color: disabled($on-surface);
   }
 }
 
 idelayoutstackheader {
-  border-bottom: 1px solid $divider;
+  border-bottom: 1px solid divider($on-surface);
 
   button:checked {
-    color: $text;
+    color: $on-surface;
   }
 }
 
@@ -843,11 +844,11 @@ ideeditorutilities > dzldockpaned > box > stackswitcher {
   background-color: $background;
 
   &:dir(ltr) {
-    border-right: 1px solid $divider;
+    border-right: 1px solid divider($on-surface);
   }
 
   &:dir(rtl) {
-    border-left: 1px solid $divider;
+    border-left: 1px solid divider($on-surface);
   }
 
   button {
@@ -861,7 +862,7 @@ ideeditorutilities > dzldockpaned > box > stackswitcher {
 
     &:checked {
       background-color: transparent;
-      color: $text;
+      color: $on-surface;
     }
 
     &:dir(ltr) {
@@ -891,10 +892,10 @@ popover.messagepopover {
   // padding: 0;
 
   list {
-    border: 1px solid $divider;
+    border: 1px solid divider($on-surface);
 
     row:not(:last-child) {
-      border-bottom: 1px solid $divider;
+      border-bottom: 1px solid divider($on-surface);
     }
   }
 }
@@ -906,7 +907,7 @@ dzlsuggestionpopover > revealer > box > elastic > scrolledwindow > viewport > li
   }
 
   background-color: $primary;
-  color: on($primary);
+  color: $on-primary;
 }
 
 // Workaround for hard-coded button background
@@ -934,15 +935,15 @@ dzlsuggestionpopover > revealer > box > elastic > scrolledwindow > viewport > li
   }
 
   &:hover image {
-    box-shadow: inset 0 0 0 9999px overlay("hover", $titlebar-text);
+    box-shadow: inset 0 0 0 9999px overlay("hover", $on-titlebar);
   }
 
   &:focus image {
-    box-shadow: inset 0 0 0 9999px overlay("focus", $titlebar-text);
+    box-shadow: inset 0 0 0 9999px overlay("focus", $on-titlebar);
   }
 
   &:active image {
-    background-color: overlay("pressed", $titlebar-text);
+    background-color: overlay("pressed", $on-titlebar);
   }
 }
 
@@ -959,7 +960,7 @@ GdMainIconView.content-view {
   // Make spinner visible on both dark and bright backgrounds w/o making
   // it look ugly/weird.
   &.cell:active {
-    // color: $text-disabled;
+    // color: disabled($on-surface);
   }
 }
 
@@ -968,7 +969,7 @@ GdMainIconView.content-view {
   border-radius: $circular-radius;
   box-shadow: $shadow-z4;
   background-color: $primary;
-  color: on($primary);
+  color: $on-primary;
   font-weight: bold;
 }
 
@@ -1001,15 +1002,15 @@ GdMainIconView.content-view {
 }
 
 button.photos-filter-preview {
-  color: $text;
+  color: $on-surface;
   font-weight: normal;
 
   &:checked {
     background-color: $overlay-selected;
-    color: $text;
+    color: $on-surface;
 
     image {
-      color: on(dark);
+      color: $on-dark;
       -gtk-icon-shadow: $text-shadow;
     }
   }
@@ -1035,13 +1036,13 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
 .side-panel:dir(ltr) {
   // border-width: 0 1px 0 0;
   border-style: solid;
-  border-color: $divider;
+  border-color: divider($on-surface);
 }
 
 .side-panel:dir(rtl) {
   // border-width: 0 0 0 1px;
   border-style: solid;
-  border-color: $divider;
+  border-color: divider($on-surface);
 }
 
 .side-panel .view {
@@ -1049,7 +1050,7 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
   background-image: image($base-alt);
 
   &:hover {
-    background-image: image(mix($text, $base-alt, percentage(.08)));
+    background-image: image(mix($on-surface, $base-alt, percentage(.08)));
   }
 }
 
@@ -1058,7 +1059,7 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
   background-image: image($primary);
 
   &:hover {
-    background-image: image(mix(on($primary), $primary, percentage(.08)));
+    background-image: image(mix($on-primary, $primary, percentage(.08)));
   }
 }
 
@@ -1067,7 +1068,7 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
   // background-color: @theme_bg_color;
 
   &:hover {
-    background-image: image(overlay("hover", $text));
+    background-image: image(overlay("hover", $on-surface));
   }
 }
 
@@ -1082,7 +1083,7 @@ frame.documents-dropdown {
 }
 
 box.vertical > revealer > toolbar.search-bar {
-  border-bottom: 1px solid $divider;
+  border-bottom: 1px solid divider($on-surface);
   background-clip: border-box; // avoid black border
 
   button > widget {
@@ -1199,7 +1200,7 @@ frame.commit-frame > border {
  */
 
 box.dialog-vbox scrolledwindow.related {
-  border: 1px solid $divider;
+  border: 1px solid divider($on-surface);
 }
 
 list.categories {
@@ -1215,7 +1216,7 @@ list.categories {
   padding: 0 4px;
   border-radius: $corner-radius;
   background-color: $scrim;
-  color: on($scrim);
+  color: $on-scrim;
 }
 
 /**
@@ -1226,7 +1227,7 @@ list.categories {
 // since Documents app is also uses this style, background-color needs to be set accordingly.
 evview.content-view.view:selected {
   background-color: $primary;
-  color: on($primary);
+  color: $on-primary;
 }
 
 /**

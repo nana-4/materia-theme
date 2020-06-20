@@ -52,11 +52,11 @@
   button.flat:not(.image-button) {
     min-height: $menuitem-size;
     padding: 0 8px;
-    color: $text;
+    color: $on-surface;
     font-weight: normal;
 
     &:disabled {
-      color: $text-disabled;
+      color: disabled($on-surface);
     }
   }
 
@@ -72,7 +72,7 @@
     }
 
     entry.search {
-      border-bottom: 1px solid $divider;
+      border-bottom: 1px solid divider($on-surface);
       border-image: none;
       border-radius: 0;
       box-shadow: none;
@@ -152,7 +152,7 @@
     .places-list:not(.always-expand) {
       margin-top: 4px;
       padding-top: 4px;
-      border-top: 1px solid $divider;
+      border-top: 1px solid divider($on-surface);
     }
 
     // FIXME: untested
@@ -189,7 +189,7 @@
 // FIXME: workspace has unnecessary/unknown margin
 .workspace-switcher {
   .workspace-layout {
-    border: 0 solid on($panel, divider);
+    border: 0 solid divider($on-panel);
 
     .top &,
     .bottom & {
@@ -210,7 +210,7 @@
 
   .workspace-item,
   .workspace-add-button {
-    border: 0 solid on($panel, divider);
+    border: 0 solid divider($on-panel);
 
     .top &,
     .bottom & {
@@ -233,7 +233,7 @@
     transition: $transition;
 
     &.current-workspace {
-      background-color: overlay("activated", on($panel));
+      background-color: overlay("activated", $on-panel);
     }
   }
 
@@ -276,7 +276,7 @@ button.raven-trigger {
 .budgie-panel {
   transition: background-color $duration $ease-out;
   background-color: $panel;
-  color: on($panel, text2);
+  color: hint($on-panel);
   font-weight: 500;
 
   &.transparent {
@@ -288,18 +288,18 @@ button.raven-trigger {
     min-width: 16px;
     padding: 0;
     border-radius: 0;
-
-    @include ink-color(on($panel, text2));
+    color: hint($on-panel);
+    @include ink-color($on-panel);
 
     &:disabled {
-      color: on($panel, text2-disabled);
+      color: disabled-hint($on-panel);
     }
 
     &:checked {
-      color: on(dark);
+      color: $on-panel;
 
       &:disabled {
-        color: on(dark, text-disabled);
+        color: disabled($on-panel);
       }
     }
   }
@@ -313,12 +313,12 @@ button.raven-trigger {
   }
 
   separator {
-    background-color: on($panel, stroke);
+    background-color: stroke($on-panel);
   }
 
   // used to indicate unread notifications
   .alert {
-    color: on($panel, primary);
+    color: primary($on-panel);
   }
 
   // End Section needs to be fancy
@@ -332,10 +332,10 @@ button.raven-trigger {
     padding: 0;
     box-shadow: none;
     background-color: transparent;
-    color: on($panel);
+    color: $on-panel;
 
     button:not(.suggested-action):not(.destructive-action) {
-      color: on($panel, text2);
+      color: hint($on-panel);
     }
   }
 
@@ -358,10 +358,10 @@ button.raven-trigger {
 
     // for indicator colors
     &:not(:checked) {
-      color: on($panel, text-disabled);
+      color: disabled($on-panel);
 
       &:disabled {
-        color: on($panel, text2-disabled);
+        color: disabled-hint($on-panel);
       }
     }
   }
@@ -413,18 +413,18 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
 @each $pos, $b_pos in $pos_list {
   // Panel borders
   .#{$pos} .budgie-panel {
-    // border-#{$b_pos}: 1px solid $divider;
+    // border-#{$b_pos}: 1px solid divider($on-surface);
   }
 
   // Raven borders
   .#{$pos} frame.raven-frame > border {
     margin-#{$b_pos}: 32px;
-    // border-#{$b_pos}: 1px solid $divider;
+    // border-#{$b_pos}: 1px solid divider($on-surface);
   }
 
   // Shadows
   .#{$pos} .shadow-block {
-    // background-image: linear-gradient(to $b_pos, $divider, transparent);
+    // background-image: linear-gradient(to $b_pos, divider($on-surface), transparent);
   }
 }
 
@@ -448,7 +448,7 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
     // Adopt tabs style only for .top
     &.top {
       padding: 0;
-      border-bottom: 1px solid $divider;
+      border-bottom: 1px solid divider($on-surface);
 
       stackswitcher.linked > button {
         @extend %button-flat-activatable;
@@ -477,7 +477,7 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
     }
 
     &.bottom {
-      border-top: 1px solid $divider;
+      border-top: 1px solid divider($on-surface);
     }
   }
 
@@ -511,7 +511,7 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
       padding: 0 12px;
       min-height: 32px;
       border-radius: $circular-radius;
-      background-color: $fill;
+      background-color: fill($on-surface);
       font-weight: normal;
 
       &:checked {
@@ -525,16 +525,16 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
 
     // Default music icon
     > overlay > widget > image {
-      color: $fill;
+      color: fill($on-surface);
     }
   }
 
   revealer > .raven-background {
-    border-bottom: 1px solid $divider;
+    border-bottom: 1px solid divider($on-surface);
   }
 
   .raven-header + .raven-background {
-    border-top: 1px solid $divider;
+    border-top: 1px solid divider($on-surface);
   }
 
   // Application block in Notifications stack
@@ -545,7 +545,7 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
     background: none;
 
     &:not(:first-child) {
-      border-top: 1px solid $divider;
+      border-top: 1px solid divider($on-surface);
     }
 
     > box {
@@ -614,7 +614,7 @@ calendar.raven-calendar {
 // MPRIS Applet
 .raven-mpris {
   background-color: $scrim;
-  color: on($scrim);
+  color: $on-scrim;
 
   label {
     min-height: 24px;
@@ -622,8 +622,8 @@ calendar.raven-calendar {
 
   button.image-button {
     padding: ($large-size - 24px) / 2;
-
-    @include ink-color(on($scrim, text2));
+    color: hint($on-scrim);
+    @include ink-color($on-scrim);
   }
 }
 
@@ -638,7 +638,7 @@ calendar.raven-calendar {
   }
 
   .notification-body {
-    color: $text2;
+    color: hint($on-surface);
   }
 }
 
@@ -716,7 +716,7 @@ calendar.raven-calendar {
   }
 
   .dialog-title + label {
-    color: $text2;
+    color: hint($on-surface);
   }
 
   .linked.horizontal > button {
@@ -737,7 +737,7 @@ calendar.raven-calendar {
   @extend %budgie_dialog;
 
   .message {
-    color: $text2;
+    color: hint($on-surface);
   }
 
   .failure {
@@ -767,7 +767,7 @@ calendar.raven-calendar {
   }
 
   scrolledwindow {
-    border-top: 1px solid $divider;
+    border-top: 1px solid divider($on-surface);
   }
 
   scrollbar {

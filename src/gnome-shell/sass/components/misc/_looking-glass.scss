@@ -8,13 +8,13 @@
   border-radius: $corner-radius;
   box-shadow: $shadow-4;
   background-color: $surface;
-  color: $text;
+  color: $on-surface;
 
   & > #Toolbar {
     padding: 0 8px;
     border: 0;
     border-radius: 0;
-    box-shadow: inset 0 -1px $divider;
+    box-shadow: inset 0 -1px divider($on-surface);
     background-color: rgba($surface, .01);
   }
 
@@ -30,25 +30,25 @@
     padding-left: 16px * 2;
     padding-right: 16px * 2;
     border: 0;
-    color: $text2;
+    color: hint($on-surface);
     font-weight: bold;
 
     &:hover {
-      background-color: $overlay-hover;
-      color: $text2;
+      background-color: overlay("hover", $on-surface);
+      color: hint($on-surface);
       text-shadow: none;
     }
 
     &:active {
       transition-duration: $duration-ripple;
-      background-color: $overlay-active;
+      background-color: overlay("pressed", $on-surface);
     }
 
     &:selected {
       border: 0;
       box-shadow: inset 0 -2px $primary;
       background-color: rgba($surface, .01);
-      color: $text;
+      color: $on-surface;
       text-shadow: none;
     }
   }
@@ -132,5 +132,5 @@
   border-radius: $corner-radius;
   box-shadow: $shadow-4;
   background-color: $surface;
-  color: $text;
+  color: $on-surface;
 }

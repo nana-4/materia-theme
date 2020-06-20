@@ -15,12 +15,12 @@
 
 // Borders on window thumbnails
 .window-clone-border {
-  border: 4px solid on(dark, stroke);
+  border: 4px solid stroke($on-dark);
   border-radius: $corner-radius;
   // For window decorations with round corners we can't match
   // the exact shape when the window is scaled. So apply a shadow
   // to fix that case
-  box-shadow: inset 0 0 0 1px on(dark, stroke);
+  box-shadow: inset 0 0 0 1px stroke($on-dark);
 }
 
 // Window titles
@@ -30,7 +30,7 @@
   border: 0;
   border-radius: $corner-radius;
   background-color: $scrim;
-  color: on($scrim);
+  color: $on-scrim;
   font-size: 1em;
   font-weight: normal;
 }

@@ -16,7 +16,7 @@ StScrollBar {
   StBin#trough {
     margin: 4px;
     border-radius: (8px / 2);
-    background-color: $stroke-disabled;
+    background-color: disabled-stroke($on-surface);
   }
 
   StButton#vhandle,
@@ -26,33 +26,33 @@ StScrollBar {
     // would be nice to margin or at least to transparent
     // border: 4px solid transparent;
     border-radius: (8px / 2);
-    background-color: $text-disabled;
+    background-color: disabled($on-surface);
 
     &:hover {
-      background-color: $text2;
+      background-color: hint($on-surface);
     }
 
     &:active {
-      background-color: $text;
+      background-color: $on-surface;
     }
   }
 }
 
 %scrollbar-on-dark {
   StBin#trough {
-    background-color: on(dark, stroke-disabled);
+    background-color: disabled-stroke($on-dark);
   }
 
   StButton#vhandle,
   StButton#hhandle {
-    background-color: on(dark, text-disabled);
+    background-color: disabled($on-dark);
 
     &:hover {
-      background-color: on(dark, text2);
+      background-color: hint($on-dark);
     }
 
     &:active {
-      background-color: on(dark);
+      background-color: $on-dark;
     }
   }
 }

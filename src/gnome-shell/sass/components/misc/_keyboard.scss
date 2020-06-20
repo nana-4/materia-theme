@@ -65,20 +65,20 @@
   &:grayed { //FIXMEy
     border-color: transparent;
     background-color: $scrim-alt;
-    color: on($scrim-alt);
+    color: $on-scrim-alt;
   }
 
   // enter key is suggested-action
   &.enter-key {
-    @include button(normal, $c: $primary, $tc: on($primary));
+    @include button(normal, $c: $primary, $tc: $on-primary);
 
     &:hover,
     &:checked {
-      @include button(hover, $c: $primary, $tc: on($primary));
+      @include button(hover, $c: $primary, $tc: $on-primary);
     }
 
     &:active {
-      @include button(active, $c: $primary, $tc: on($primary));
+      @include button(active, $c: $primary, $tc: $on-primary);
     }
   }
 
@@ -136,7 +136,7 @@
   border-radius: $corner-radius;
   box-shadow: $shadow-2;
   background-color: $surface;
-  color: $text;
+  color: $on-surface;
 
   .keyboard-key {
     border-radius: $corner-radius;
@@ -162,18 +162,18 @@
 .emoji-page {
   .keyboard-key {
     border: 0;
-    @include button(flat-normal, $tc: on($scrim-alt));
+    @include button(flat-normal, $tc: $on-scrim-alt);
 
     &:focus {
-      @include button(flat-focus, $tc: on($scrim-alt));
+      @include button(flat-focus, $tc: $on-scrim-alt);
     }
 
     &:hover {
-      @include button(flat-hover, $tc: on($scrim-alt));
+      @include button(flat-hover, $tc: $on-scrim-alt);
     }
 
     &:active {
-      @include button(flat-active, $tc: on($scrim-alt));
+      @include button(flat-active, $tc: $on-scrim-alt);
     }
   }
 }
@@ -182,7 +182,7 @@
   .keyboard-key:latched {
     border-color: transparent;
     background-color: $primary;
-    color: on($primary);
+    color: $on-primary;
   }
 }
 

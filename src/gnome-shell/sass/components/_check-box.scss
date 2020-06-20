@@ -19,16 +19,16 @@
   }
 
   &:focus StBin {
-    background-color: $overlay-focus;
+    background-color: overlay("focus", $on-surface);
   }
 
   &:hover StBin {
-    background-color: $overlay-hover;
+    background-color: overlay("hover", $on-surface);
   }
 
   &:active StBin {
     transition-duration: $duration-ripple;
-    background-color: $overlay-active;
+    background-color: overlay("pressed", $on-surface);
   }
 
   &:checked StBin,
@@ -37,14 +37,14 @@
   }
 
   &:checked:focus StBin {
-    background-color: rgba($primary, .08);
+    background-color: overlay("focus", $primary);
   }
 
   &:checked:hover StBin {
-    background-color: rgba($primary, .08);
+    background-color: overlay("hover", $primary);
   }
 
   &:checked:active StBin {
-    background-color: rgba($primary, .2);
+    background-color: overlay("pressed", $primary);
   }
 }

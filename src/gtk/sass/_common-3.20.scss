@@ -31,7 +31,7 @@
   -gtk-outline-radius: $corner-radius;
 
   &:focus {
-    outline-color: overlay("focus", $text);
+    outline-color: overlay("focus", $on-surface);
   }
 }
 
@@ -41,7 +41,7 @@
 
 .background {
   background-color: $background;
-  color: $text;
+  color: $on-surface;
 }
 
 /*
@@ -57,7 +57,7 @@
 
 .gtkstyle-fallback {
   background-color: $background;
-  color: $text;
+  color: $on-surface;
 
   &:hover {
     background-color: darken($background, 5%);
@@ -68,21 +68,21 @@
   }
 
   &:disabled {
-    color: $text-disabled;
+    color: disabled($on-surface);
   }
 
   &:selected {
     background-color: $primary;
-    color: on($primary);
+    color: $on-primary;
   }
 }
 
 .view {
   background-color: $base;
-  color: $text;
+  color: $on-surface;
 
   &:hover {
-    box-shadow: inset 0 0 0 9999px overlay("hover", $text);
+    box-shadow: inset 0 0 0 9999px overlay("hover", $on-surface);
   }
 
   &:selected:hover {
@@ -90,7 +90,7 @@
   }
 
   &:disabled {
-    color: $text-disabled;
+    color: disabled($on-surface);
   }
 
   &:hover,
@@ -113,7 +113,7 @@ textview {
 
   border {
     background-color: $base-alt;
-    color: $text2; // FIXME: not working
+    color: hint($on-surface); // FIXME: not working
   }
 }
 
@@ -123,14 +123,14 @@ iconview {
 
 %iconview-desktop {
   // background-color: $scrim;
-  color: on(dark);
+  color: $on-dark;
   text-shadow: $text-shadow;
 }
 
 .rubberband,
 rubberband {
-  border: 1px solid on(dark, primary);
-  background-color: rgba(on(dark, primary), .3);
+  border: 1px solid $primary;
+  background-color: rgba($primary, .24);
 }
 
 flowbox {
@@ -163,7 +163,7 @@ label {
   caret-color: $primary; // this shouldn't be needed.
 
   &.separator {
-    color: $text2;
+    color: hint($on-surface);
   }
 
   selection {
@@ -171,7 +171,7 @@ label {
   }
 
   &:disabled {
-    color: $text-disabled;
+    color: disabled($on-surface);
 
     headerbar &,
     menuitem &,
@@ -184,12 +184,12 @@ label {
   &.osd {
     border-radius: $corner-radius;
     background-color: $tooltip;
-    color: on($tooltip);
+    color: $on-tooltip;
   }
 }
 
 .dim-label {
-  color: $text2;
+  color: hint($on-surface);
 }
 
 assistant {
@@ -201,11 +201,11 @@ assistant {
   .sidebar label {
     min-height: $medium-size;
     padding: 0 12px;
-    color: $text-disabled;
+    color: disabled($on-surface);
     font-weight: 500;
 
     &.highlight {
-      color: $text;
+      color: $on-surface;
     }
   }
 }
@@ -238,7 +238,7 @@ spinner {
   }
 
   &:disabled {
-    color: $text2-disabled;
+    color: disabled-hint($on-surface);
   }
 }
 
@@ -279,16 +279,16 @@ entry {
     // min-width: $small-size;
     // border-radius: $circular-radius;
     // @extend %ripple;
-    // @include ink-color($text2);
-    color: $text2;
+    // @include ink-color($on-surface);
+    color: hint($on-surface);
 
     &:hover,
     &:active {
-      color: $text;
+      color: $on-surface;
     }
 
     &:disabled {
-      color: $text-disabled;
+      color: disabled($on-surface);
     }
 
     &.left {
@@ -382,7 +382,7 @@ entry {
       }
 
       image {
-        color: on($color, text2);
+        color: hint(on($color));
 
         &:hover,
         &:active {
@@ -390,7 +390,7 @@ entry {
         }
 
         &:disabled {
-          color: on($color, text-disabled);
+          color: disabled(on($color));
         }
       }
     }
@@ -414,11 +414,11 @@ treeview entry {
   margin: 2px;
   border-radius: $circular-radius;
   box-shadow: none;
-  background-color: $fill;
-  color: $text;
+  background-color: fill($on-surface);
+  color: $on-surface;
 
   &:hover {
-    background-image: image(overlay("hover", $text));
+    background-image: image(overlay("hover", $on-surface));
   }
 
   // side margins: compensate the entry padding with a negative margin
@@ -441,7 +441,7 @@ treeview entry {
   &.button {
     box-shadow: none;
     background-color: transparent;
-    color: $text2;
+    color: hint($on-surface);
   }
 }
 
@@ -481,16 +481,16 @@ button {
   padding: ($medium-size - 24px) / 2 ($medium-size - 16px) / 2;
   border-radius: $corner-radius;
   background-color: $surface;
-  color: $text;
+  color: $on-surface;
   font-weight: 500;
 
   @extend %ripple;
-  @include ink-color($text, $elevation: true);
+  @include ink-color($on-surface, $elevation: true);
 
   &:disabled {
     box-shadow: none;
-    background-color: $fill;
-    color: $text-disabled;
+    background-color: fill($on-surface);
+    color: disabled($on-surface);
   }
 
   &:checked {
@@ -500,8 +500,8 @@ button {
 
     &:disabled {
       box-shadow: none;
-      background-color: overlay("activated", $text, $background: $fill);
-      color: $text-disabled;
+      background-color: overlay("activated", $on-surface, $background: fill($on-surface));
+      color: disabled($on-surface);
     }
   }
 
@@ -557,12 +557,12 @@ button {
 
 %button-flat-basic {
   background-color: transparent;
-  color: $text2;
-  @include ink-color($text);
+  color: hint($on-surface);
+  @include ink-color($on-surface);
 
   &:disabled {
     background-color: transparent;
-    color: $text2-disabled;
+    color: disabled-hint($on-surface);
   }
 }
 
@@ -570,12 +570,12 @@ button {
   @extend %button-flat-basic;
 
   &:checked {
-    background-color: overlay("activated", $text);
-    color: $text;
-    @include ink-color($text);
+    background-color: overlay("activated", $on-surface);
+    color: $on-surface;
+    @include ink-color($on-surface);
 
     &:disabled {
-      color: $text-disabled;
+      color: disabled($on-surface);
     }
   }
 }
@@ -645,8 +645,8 @@ button {
 
       &:disabled {
         box-shadow: none;
-        background-color: $fill;
-        color: $text-disabled;
+        background-color: fill($on-surface);
+        color: disabled($on-surface);
       }
 
       &:checked {
@@ -661,7 +661,7 @@ button {
         &:disabled {
           box-shadow: none;
           background-color: transparent;
-          color: $text2-disabled;
+          color: disabled-hint($on-surface);
         }
 
         &:checked {
@@ -856,7 +856,7 @@ modelbutton.flat,
   border-radius: $corner-radius;
 
   @extend %ripple;
-  @include ink-color($text);
+  @include ink-color($on-surface);
 
   &:selected {
     @extend %selected_items;
@@ -978,7 +978,7 @@ spinbutton {
     // FIXME: this should not be set at all, but otherwise it gets the wrong
     // color
     &:disabled {
-      color: $text-disabled;
+      color: disabled($on-surface);
     }
 
     entry {
@@ -1264,7 +1264,7 @@ toolbar {
   padding: $container-padding;
   border-style: solid;
   border-width: 0 1px 1px;
-  border-color: $divider;
+  border-color: divider($on-surface);
   background-color: $base-alt;
 }
 
@@ -1273,7 +1273,7 @@ searchbar > revealer > box,
   padding: $container-padding;
   border-style: solid;
   border-width: 0 0 1px;
-  border-color: $divider;
+  border-color: divider($on-surface);
   background-color: $background;
   background-clip: border-box;
 }
@@ -1293,18 +1293,18 @@ searchbar > revealer > box {
   border-radius: $corner-radius $corner-radius 0 0;
   box-shadow: $shadow-z1, inset 0 1px highlight($titlebar);
   background-color: $titlebar;
-  color: $titlebar-text;
+  color: $on-titlebar;
 
   &:disabled {
-    color: $titlebar-text-disabled;
+    color: disabled($on-titlebar);
   }
 
   &:backdrop {
     background-color: $titlebar-backdrop;
-    color: $titlebar-text2;
+    color: hint($on-titlebar);
 
     &:disabled {
-      color: $titlebar-text2-disabled;
+      color: disabled-hint($on-titlebar);
     }
   }
 
@@ -1323,10 +1323,10 @@ searchbar > revealer > box {
   .subtitle,
   .dim-label {
     transition: color $duration $ease-out;
-    color: $titlebar-text2;
+    color: hint($on-titlebar);
 
     &:backdrop {
-      color: $titlebar-text-disabled;
+      color: disabled($on-titlebar);
     }
   }
 
@@ -1338,30 +1338,30 @@ searchbar > revealer > box {
 
   // The separator for split headerbars
   headerbar + separator {
-    background-color: $titlebar-divider;
+    background-color: divider($on-titlebar);
   }
 
   entry {
-    box-shadow: inset 0 -1px $titlebar-stroke;
-    background-color: $titlebar-entry-fill;
-    color: $titlebar-text;
+    box-shadow: inset 0 -1px stroke($on-titlebar);
+    background-color: entry-fill($on-titlebar);
+    color: $on-titlebar;
 
     &:disabled {
-      box-shadow: inset 0 -1px $titlebar-stroke-disabled;
-      background-color: $titlebar-entry-fill;
-      color: $titlebar-text-disabled;
+      box-shadow: inset 0 -1px disabled-stroke($on-titlebar);
+      background-color: entry-fill($on-titlebar);
+      color: disabled($on-titlebar);
     }
 
     image {
-      color: $titlebar-text2;
+      color: hint($on-titlebar);
 
       &:hover,
       &:active {
-        color: $titlebar-text;
+        color: $on-titlebar;
       }
 
       &:disabled {
-        color: $titlebar-text-disabled;
+        color: disabled($on-titlebar);
       }
     }
   }
@@ -1379,12 +1379,12 @@ searchbar > revealer > box {
         $titlebar-indicator 0%,
         transparent 0%
       ) 0 0 0 / 0 0 0;
-
-    color: $titlebar-text2;
-    @include ink-color($titlebar-text2);
+    background-color: transparent;
+    color: hint($on-titlebar);
+    @include ink-color($on-titlebar);
 
     &:disabled {
-      color: $titlebar-text2-disabled;
+      color: disabled-hint($on-titlebar);
     }
 
     @at-root %titlebar-button-checked,
@@ -1396,27 +1396,27 @@ searchbar > revealer > box {
           transparent 0%
         ) 0 0 2 / 0 0 2px;
       background-color: transparent;
-      color: $titlebar-text;
-      @include ink-color($titlebar-text);
+      color: $on-titlebar;
+      @include ink-color($on-titlebar);
 
       &:disabled {
         background-color: transparent;
-        color: $titlebar-text-disabled;
+        color: disabled($on-titlebar);
       }
     }
 
     &:backdrop {
-      color: $titlebar-text-disabled;
+      color: disabled($on-titlebar);
 
       &:disabled {
-        color: $titlebar-text2-disabled;
+        color: disabled-hint($on-titlebar);
       }
 
       &:checked {
-        color: $titlebar-text2;
+        color: hint($on-titlebar);
 
         &:disabled {
-          color: $titlebar-text2-disabled;
+          color: disabled-hint($on-titlebar);
         }
       }
     }
@@ -1424,8 +1424,8 @@ searchbar > revealer > box {
 
   button.suggested-action, button.destructive-action {
     &:disabled {
-      background-color: $titlebar-fill;
-      color: $titlebar-text-disabled;
+      background-color: fill($on-titlebar);
+      color: disabled($on-titlebar);
     }
   }
 
@@ -1448,14 +1448,14 @@ searchbar > revealer > box {
     animation: ripple-on-headerbar $ripple-fade-in-duration $ease-out;
     box-shadow: $shadow-z1, inset 0 1px highlight($primary);
     background-color: $primary;
-    color: on($primary);
+    color: $on-primary;
 
     &:backdrop {
-      color: on($primary, text2);
+      color: hint($on-primary);
     }
 
     .subtitle:link {
-      color: on($primary);
+      color: $on-primary;
     }
 
     button:not(.suggested-action):not(.destructive-action) {
@@ -1465,10 +1465,10 @@ searchbar > revealer > box {
           currentcolor 0%,
           transparent 0%
         ) 0 0 0 / 0 0 0;
-      color: on($primary);
+      color: $on-primary;
 
       &:disabled {
-        color: on($primary, text-disabled);
+        color: disabled($on-primary);
       }
 
       &:checked {
@@ -1478,25 +1478,25 @@ searchbar > revealer > box {
             currentcolor 100%,
             transparent 0%
           ) 0 0 2 / 0 0 2px;
-        color: on($primary);
+        color: $on-primary;
 
         &:disabled {
-          color: on($primary, text-disabled);
+          color: disabled($on-primary);
         }
       }
 
       &:backdrop {
-        color: on($primary, text2);
+        color: hint($on-primary);
 
         &:disabled {
-          color: on($primary, text2-disabled);
+          color: disabled-hint($on-primary);
         }
 
         &:checked {
-          color: on($primary, text2);
+          color: hint($on-primary);
 
           &:disabled {
-            color: on($primary, text2-disabled);
+            color: disabled-hint($on-primary);
           }
         }
       }
@@ -1581,7 +1581,7 @@ headerbar {
   separator.titlebutton {
     margin-top: $large-size / 4;
     margin-bottom: $large-size / 4;
-    background-color: $titlebar-divider;
+    background-color: divider($on-titlebar);
   }
 
   switch {
@@ -1631,7 +1631,7 @@ window.devel .titlebar:not(.selection-mode) {
         $primary 100%,
         transparent 0%
       ) 0 0 2 / 0 0 2px;
-    color: $text;
+    color: $on-surface;
 
     &,
     &:disabled {
@@ -1673,8 +1673,8 @@ treeview.view {
     -GtkTreeView-expander-size: 16;
   }
 
-  border-left-color: $stroke; // this is actually the tree lines color,
-  border-top-color: $divider; // while this is the grid lines color, better then nothing
+  border-left-color: stroke($on-surface); // this is actually the tree lines color,
+  border-top-color: divider($on-surface); // while this is the grid lines color, better then nothing
 
   // FIXME: Avoid transparency background-color being slightly darker
   &:selected {
@@ -1694,14 +1694,14 @@ treeview.view {
 
   &.separator {
     min-height: 1px + 2px * 2;
-    color: $divider;
+    color: divider($on-surface);
   }
 
   &:drop(active) {
     // FIXME: box-shadow, background-color and background-image are not available here.
     border-style: solid none;
     border-width: 9999px;
-    border-color: overlay("hover", $text);
+    border-color: overlay("hover", $on-surface);
 
     &.after {
       border-top-style: none;
@@ -1724,15 +1724,15 @@ treeview.view {
       -gtk-icon-transform: unset;
     }
 
-    color: $text2;
+    color: hint($on-surface);
 
     &:hover,
     &:active {
-      color: $text;
+      color: $on-surface;
     }
 
     &:disabled {
-      color: $text2-disabled;
+      color: disabled-hint($on-surface);
     }
   }
 
@@ -1748,7 +1748,7 @@ treeview.view {
   }
 
   &.trough { // progress bar trough in treeviews
-    border-bottom: $bar-size solid $stroke-disabled;
+    border-bottom: $bar-size solid disabled-stroke($on-surface);
     box-shadow: none;
     background-color: transparent;
     background-image: none;
@@ -1763,15 +1763,15 @@ treeview.view {
       padding: 2px 6px;
       border-style: none solid solid none;
       border-width: 1px;
-      border-color: $divider;
+      border-color: divider($on-surface);
       border-radius: 0;
       background-clip: border-box;
-      color: $text2;
-      @include ink-color($text2);
+      color: hint($on-surface);
+      @include ink-color($on-surface);
       @include list-item;
 
       &:disabled {
-        color: $text2-disabled;
+        color: disabled-hint($on-surface);
       }
 
       &,
@@ -1790,7 +1790,7 @@ treeview.view {
     padding: 2px 6px;
     border-style: none solid solid;
     border-width: 1px;
-    border-color: $divider;
+    border-color: divider($on-surface);
     border-radius: 0;
     box-shadow: none;
     background-color: $base;
@@ -1812,13 +1812,13 @@ menubar,
 .menubar {
   -GtkWidget-window-dragging: true;
   padding: 0;
-  // box-shadow: inset 0 -1px $divider;
+  // box-shadow: inset 0 -1px divider($on-surface);
   background-color: $titlebar;
-  color: $titlebar-text;
+  color: $on-titlebar;
 
   &:backdrop {
     background-color: $titlebar-backdrop;
-    color: $titlebar-text2;
+    color: hint($on-titlebar);
   }
 
   .csd & {
@@ -1829,16 +1829,16 @@ menubar,
     transition: $transition;
     min-height: 20px;
     padding: 4px 8px;
-    color: $titlebar-text2;
+    color: hint($on-titlebar);
 
     &:hover { // Seems like it :hover even with keyboard focus
       transition: none;
-      background-color: overlay("activated", $titlebar-text);
-      color: $titlebar-text;
+      background-color: overlay("activated", $on-titlebar);
+      color: $on-titlebar;
     }
 
     &:disabled {
-      color: $titlebar-text2-disabled;
+      color: disabled-hint($on-titlebar);
     }
   }
 }
@@ -1857,7 +1857,7 @@ menu,
   box-shadow: inset 0 1px highlight($surface);
   background-color: $surface;
   background-clip: border-box;
-  border: 1px solid $divider; // adds borders in a non composited env
+  border: 1px solid divider($on-surface); // adds borders in a non composited env
 
   .csd & {
     border: none; // axes borders in a composited env
@@ -1869,27 +1869,27 @@ menu,
     min-height: 20px;
     min-width: 40px;
     padding: 4px 8px;
-    color: $text;
+    color: $on-surface;
     font: initial;
     text-shadow: none;
 
     &:hover {
       transition: none;
-      background-color: overlay("hover", $text);
+      background-color: overlay("hover", $on-surface);
     }
 
     &:disabled {
-      color: $text-disabled;
+      color: disabled($on-surface);
     }
 
     // submenu indicators
     arrow {
       min-height: 16px;
       min-width: 16px;
-      color: $text2;
+      color: hint($on-surface);
 
       &:disabled {
-        color: $text2-disabled;
+        color: disabled-hint($on-surface);
       }
 
       &:dir(ltr) {
@@ -1919,11 +1919,11 @@ menu,
     min-width: 16px;
     padding: 4px;
     background-color: $surface;
-    color: $text2;
+    color: hint($on-surface);
 
     &.top {
       margin-top: -4px;
-      border-bottom: 1px solid $divider;
+      border-bottom: 1px solid divider($on-surface);
       border-radius: $corner-radius $corner-radius 0 0;
       -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
     }
@@ -1931,20 +1931,20 @@ menu,
     &.bottom {
       margin-top: 4px * 2;
       margin-bottom: -4px * 3;
-      border-top: 1px solid $divider;
+      border-top: 1px solid divider($on-surface);
       border-radius: 0 0 $corner-radius $corner-radius;
       -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
     }
 
     &:hover {
-      background-image: image(overlay("hover", $text));
+      background-image: image(overlay("hover", $on-surface));
     }
 
     &:disabled {
       border-color: transparent;
       background-color: transparent;
       color: transparent;
-      // color: $text2-disabled;
+      // color: disabled-hint($on-surface);
     }
   }
 
@@ -1955,11 +1955,11 @@ menu,
 
 menuitem {
   accelerator {
-    color: $text2;
+    color: hint($on-surface);
   }
 
   &:disabled accelerator {
-    color: $text2-disabled;
+    color: disabled-hint($on-surface);
   }
 }
 
@@ -2059,7 +2059,7 @@ notebook {
 
   > header {
     border-width: 1px;
-    border-color: $divider;
+    border-color: divider($on-surface);
     background-color: $background;
     background-clip: border-box;
 
@@ -2073,7 +2073,7 @@ notebook {
           border-image: linear-gradient(to top, transparent 2px, transparent 2px) 2 / 0 0 2px;
 
           &:checked {
-            border-image-source: linear-gradient(to top, $primary 2px, $divider 2px);
+            border-image-source: linear-gradient(to top, $primary 2px, divider($on-surface) 2px);
           }
 
           &.reorderable-page {
@@ -2093,7 +2093,7 @@ notebook {
           border-image: linear-gradient(to bottom, transparent 2px, transparent 2px) 2 / 2px 0 0;
 
           &:checked {
-            border-image-source: linear-gradient(to bottom, $primary 2px, $divider 2px);
+            border-image-source: linear-gradient(to bottom, $primary 2px, divider($on-surface) 2px);
           }
 
           &.reorderable-page {
@@ -2113,7 +2113,7 @@ notebook {
           border-image: linear-gradient(to left, transparent 2px, transparent 2px) 2 / 0 2px 0 0;
 
           &:checked {
-            border-image-source: linear-gradient(to left, $primary 2px, $divider 2px);
+            border-image-source: linear-gradient(to left, $primary 2px, divider($on-surface) 2px);
           }
 
           &.reorderable-page {
@@ -2133,7 +2133,7 @@ notebook {
           border-image: linear-gradient(to right, transparent 2px, transparent 2px) 2 / 0 0 0 2px;
 
           &:checked {
-            border-image-source: linear-gradient(to right, $primary 2px, $divider 2px);
+            border-image-source: linear-gradient(to right, $primary 2px, divider($on-surface) 2px);
           }
 
           &.reorderable-page {
@@ -2201,12 +2201,12 @@ notebook {
       min-height: 16px;
       min-width: 16px;
       border-radius: 0;
-
+      color: hint($on-surface);
       @extend %ripple;
-      @include ink-color($text2);
+      @include ink-color($on-surface);
 
       &:disabled {
-        color: $text2-disabled;
+        color: disabled-hint($on-surface);
       }
     }
 
@@ -2228,15 +2228,15 @@ notebook {
       background-size: 0% 0%;
       background-clip: border-box;
 
-      color: $text2;
+      color: hint($on-surface);
       font-weight: 500;
 
       &:hover {
-        background-color: overlay("hover", $text);
+        background-color: overlay("hover-alt", $on-surface);
       }
 
       &:disabled {
-        color: $text2-disabled;
+        color: disabled-hint($on-surface);
       }
 
       &:checked {
@@ -2247,14 +2247,14 @@ notebook {
         background-image: radial-gradient(circle, transparent 10%, transparent 0%);
         background-size: 1000% 1000%;
         background-clip: padding-box;
-        color: $text;
+        color: $on-surface;
 
         &:disabled {
-          color: $text-disabled;
+          color: disabled($on-surface);
         }
 
         &.reorderable-page {
-          border-color: $divider;
+          border-color: divider($on-surface);
           background-color: $base;
         }
       }
@@ -2266,7 +2266,7 @@ notebook {
         padding: $container-padding 12px;
 
         &:drop(active) {
-          background-color: overlay("hover", $text);
+          background-color: overlay("hover", $on-surface);
         }
       }
 
@@ -2353,10 +2353,10 @@ scrollbar {
   background-color: $base;
 
   // scrollbar border
-  &.top { border-bottom: 1px solid $divider; }
-  &.bottom { border-top: 1px solid $divider; }
-  &.left { border-right: 1px solid $divider; }
-  &.right { border-left: 1px solid $divider; }
+  &.top { border-bottom: 1px solid divider($on-surface); }
+  &.bottom { border-top: 1px solid divider($on-surface); }
+  &.left { border-right: 1px solid divider($on-surface); }
+  &.right { border-left: 1px solid divider($on-surface); }
 
   // slider
   slider {
@@ -2366,18 +2366,18 @@ scrollbar {
     border: 4px solid transparent;
     border-radius: $circular-radius;
     background-clip: padding-box;
-    background-color: $text-disabled;
+    background-color: disabled($on-surface);
 
     &:hover {
-      background-color: $text2;
+      background-color: hint($on-surface);
     }
 
     &:active {
-      background-color: $text;
+      background-color: $on-surface;
     }
 
     &:disabled {
-      background-color: $text2-disabled;
+      background-color: disabled-hint($on-surface);
     }
   }
 
@@ -2418,12 +2418,12 @@ scrollbar {
         margin: 4px - 1px;
         border: 1px solid rgba($base, .3);
         border-radius: $circular-radius;
-        background-color: $text-disabled;
+        background-color: disabled($on-surface);
         background-clip: padding-box;
         -gtk-icon-source: none;
 
         &:disabled {
-          background-color: $text2-disabled;
+          background-color: disabled-hint($on-surface);
         }
       }
 
@@ -2509,7 +2509,7 @@ switch {
   padding: 0 2px;
   border: 5px solid transparent;
   border-radius: $circular-radius;
-  background-color: $stroke;
+  background-color: stroke($on-surface);
   background-clip: padding-box;
   font-size: 0;
 
@@ -2539,11 +2539,11 @@ switch {
   }
 
   &:hover slider {
-    box-shadow: 0 0 0 10px overlay("hover", $text), $shadow-z1;
+    box-shadow: 0 0 0 10px overlay("hover", $on-surface), $shadow-z1;
   }
 
   &:focus slider {
-    box-shadow: 0 0 0 10px overlay("focus", $text), $shadow-z1;
+    box-shadow: 0 0 0 10px overlay("focus", $on-surface), $shadow-z1;
   }
 
   &:checked slider {
@@ -2619,9 +2619,9 @@ radio {
   margin: -($check-radio-size - 24px) / 2;
   padding: ($check-radio-size - 24px) / 2;
   border-radius: $circular-radius;
-  color: $text2;
+  color: hint($on-surface);
   @extend %ripple;
-  @include ink-color($text2);
+  @include ink-color($on-surface);
 
   &:checked,
   &:indeterminate {
@@ -2630,7 +2630,7 @@ radio {
   }
 
   &:disabled {
-    color: $text2-disabled;
+    color: disabled-hint($on-surface);
   }
 
   &:only-child {
@@ -2736,7 +2736,7 @@ radio {
           radial,
           center center, 0,
           center center, $radio-indicator-size,
-          to($text2-disabled),
+          to(disabled-hint($on-surface)),
           to(transparent)
         );
     }
@@ -2786,7 +2786,7 @@ radio:not(:checked):active {
 treeview.view check,
 treeview.view radio {
   padding: 0;
-  color: $text2;
+  color: hint($on-surface);
 
   &:checked,
   &:indeterminate {
@@ -2794,7 +2794,7 @@ treeview.view radio {
   }
 
   &:disabled {
-    color: $text2-disabled;
+    color: disabled-hint($on-surface);
   }
 
   &,
@@ -2873,10 +2873,10 @@ scale {
   trough {
     transition: background-color $duration $ease-out;
     outline: none;
-    background-color: $stroke;
+    background-color: stroke($on-surface);
 
     &:disabled {
-      background-color: $stroke-disabled;
+      background-color: disabled-stroke($on-surface);
     }
   }
 
@@ -2887,7 +2887,7 @@ scale {
 
     &:disabled {
       background-color: $background;
-      background-image: image($text2-disabled);
+      background-image: image(disabled-hint($on-surface));
     }
   }
 
@@ -2895,7 +2895,7 @@ scale {
   // in media player to indicate how much video stream as been cached
   fill {
     transition: background-color $duration $ease-out;
-    background-color: $stroke;
+    background-color: stroke($on-surface);
 
     &:disabled {
       background-color: transparent;
@@ -2946,11 +2946,11 @@ scale {
 
   marks,
   value {
-    color: $text2;
+    color: hint($on-surface);
   }
 
   indicator {
-    background-color: $stroke;
+    background-color: stroke($on-surface);
     color: transparent;
   }
 
@@ -3077,11 +3077,11 @@ progressbar {
   }
 
   // FIXME: insensitive state missing and some other state should be set probably
-  color: $text2;
+  color: hint($on-surface);
   font-size: smaller;
 
   trough {
-    background-color: $stroke-disabled;
+    background-color: disabled-stroke($on-surface);
   }
 
   progress {
@@ -3168,7 +3168,7 @@ levelbar {
     }
 
     &.empty {
-      background-color: $stroke-disabled;
+      background-color: disabled-stroke($on-surface);
     }
   }
 }
@@ -3180,9 +3180,9 @@ levelbar {
 printdialog {
   paper {
     padding: 0;
-    border: 1px solid $divider;
+    border: 1px solid divider($on-surface);
     background-color: $base;
-    color: $text;
+    color: $on-surface;
   }
 
   .dialog-action-box {
@@ -3198,7 +3198,7 @@ frame > border,
 .frame {
   margin: 0;
   padding: 0;
-  border: 1px solid $divider;
+  border: 1px solid divider($on-surface);
   border-radius: 0;
   box-shadow: none;
 
@@ -3214,7 +3214,7 @@ frame.flat > border {
 
 actionbar > revealer > box {
   padding: $container-padding;
-  border-top: 1px solid $divider;
+  border-top: 1px solid divider($on-surface);
   background-color: $base;
   background-clip: border-box;
 
@@ -3258,7 +3258,7 @@ scrolledwindow {
   @at-root junction { // the small square between two scrollbars
     border-style: solid none none solid;
     border-width: 1px;
-    border-color: $divider;
+    border-color: divider($on-surface);
     background-color: $base;
 
     &:dir(rtl) {
@@ -3271,7 +3271,7 @@ scrolledwindow {
 separator {
   min-width: 1px;
   min-height: 1px;
-  background-color: $divider;
+  background-color: divider($on-surface);
 }
 
 %hide_separators {
@@ -3285,7 +3285,7 @@ separator {
  */
 
 list {
-  border-color: $divider;
+  border-color: divider($on-surface);
   background-color: $base;
 
   row {
@@ -3296,13 +3296,13 @@ list {
 row {
   &.activatable {
     @extend %ripple;
-    @include ink-color($text);
+    @include ink-color($on-surface);
     @include list-item;
 
     // this is for indicathing which row generated a popover
     // see https://bugzilla.gnome.org/show_bug.cgi?id=754411
     &.has-open-popup {
-      background-color: overlay("activated", $text);
+      background-color: overlay("activated", $on-surface);
     }
   }
 
@@ -3363,15 +3363,15 @@ expander {
       -gtk-icon-transform: unset;
     }
 
-    color: $text2;
+    color: hint($on-surface);
 
     &:hover,
     &:active {
-      color: $text;
+      color: $on-surface;
     }
 
     &:disabled {
-      color: $text2-disabled;
+      color: disabled-hint($on-surface);
     }
   }
 }
@@ -3382,11 +3382,11 @@ expander {
 
 calendar {
   padding: 1px;
-  border: 1px solid $divider;
-  color: $text;
+  border: 1px solid divider($on-surface);
+  color: $on-surface;
 
   &:disabled {
-    color: $text-disabled;
+    color: disabled($on-surface);
   }
 
   &:selected {
@@ -3397,30 +3397,30 @@ calendar {
 
   &.header {
     border-style: none none solid;
-    border-color: $divider;
+    border-color: divider($on-surface);
     border-radius: 0;
   }
 
   &.button {
     border-radius: $corner-radius + 1px;
-    color: $text2;
+    color: hint($on-surface);
 
     &:hover {
-      background-image: image(overlay("hover", $text));
+      background-image: image(overlay("hover", $on-surface));
     }
 
     &:disabled {
-      color: $text2-disabled;
+      color: disabled-hint($on-surface);
     }
   }
 
   &.highlight {
-    color: $text2;
+    color: hint($on-surface);
     font-weight: 500;
   }
 
   &:indeterminate {
-    color: $text2-disabled;
+    color: disabled-hint($on-surface);
   }
 }
 
@@ -3438,11 +3438,11 @@ messagedialog { // Message Dialog styling
     border-style: none;
     box-shadow: inset 0 1px highlight($surface);
     background-color: $surface;
-    color: $text;
+    color: $on-surface;
 
     &:backdrop {
       background-color: $surface;
-      color: $text2;
+      color: hint($on-surface);
     }
   }
 
@@ -3456,7 +3456,7 @@ messagedialog { // Message Dialog styling
 
   // Hint text
   box.vertical > label + label {
-    color: $text2;
+    color: hint($on-surface);
   }
 
   .dialog-action-box {
@@ -3489,11 +3489,11 @@ messagedialog { // Message Dialog styling
 
 filechooser {
   .dialog-action-box {
-    border-top: 1px solid $divider;
+    border-top: 1px solid divider($on-surface);
   }
 
   #pathbarbox {
-    border-bottom: 1px solid $divider;
+    border-bottom: 1px solid divider($on-surface);
     background-color: $background;
 
     > stack > box > button { // The new folder button
@@ -3521,14 +3521,14 @@ filechooserbutton:drop(active) {
     &:dir(ltr),
     &.left,
     &.left:dir(rtl) {
-      border-right: 1px solid $divider;
+      border-right: 1px solid divider($on-surface);
       border-left-style: none;
     }
 
     @at-root %sidebar_right,
     &:dir(rtl),
     &.right {
-      border-left: 1px solid $divider;
+      border-left: 1px solid divider($on-surface);
       border-right-style: none;
     }
   }
@@ -3605,11 +3605,11 @@ stacksidebar.sidebar {
 }
 
 separator.sidebar {
-  background-color: $divider;
+  background-color: divider($on-surface);
 
   &.selection-mode,
   .selection-mode & {
-    // background-color: $divider;
+    // background-color: divider($on-primary);
   }
 }
 
@@ -3620,10 +3620,10 @@ separator.sidebar {
 // dim the sidebar icons, see bug #786613 for details on this oddity
 row image.sidebar-icon {
   transition: color $duration $ease-out;
-  color: $text2;
+  color: hint($on-surface);
 
   &:disabled {
-    color: $text2-disabled;
+    color: disabled-hint($on-surface);
   }
 }
 
@@ -3661,7 +3661,7 @@ placessidebar.sidebar {
     }
 
     &:disabled {
-      color: $text-disabled;
+      color: disabled($on-surface);
     }
 
     image.sidebar-icon {
@@ -3690,7 +3690,7 @@ placessidebar.sidebar {
     }
 
     &.sidebar-placeholder-row {
-      background-color: overlay("hover", $text);
+      background-color: overlay("hover", $on-surface);
     }
 
     &.sidebar-new-bookmark-row {
@@ -3733,7 +3733,7 @@ paned {
     border-style: none; // just to be sure
     background-color: transparent;
     // workaround, using background istead of a border since the border will get rendered twice (?)
-    background-image: image($divider);
+    background-image: image(divider($on-surface));
     background-size: 1px 1px;
     background-clip: content-box; // avoids borders image being rendered twice (?)
 
@@ -3741,7 +3741,7 @@ paned {
       min-width: 6px;
       min-height: 6px;
       background-color: $background;
-      background-image: image($divider), image($divider);
+      background-image: image(divider($on-surface)), image(divider($on-surface));
       background-size: 1px 1px, 1px 1px;
     }
   }
@@ -3793,7 +3793,7 @@ infobar {
 
   &.info,
   &.question {
-    border-bottom: 1px solid $divider;
+    border-bottom: 1px solid divider($on-surface);
     background-color: $base;
 
     button {
@@ -3808,35 +3808,35 @@ infobar {
 
   &.warning {
     background-color: $warning;
-    color: on($warning);
+    color: $on-warning;
 
     button.flat {
-      color: on($warning);
-      @include ink-color(on($warning));
+      color: $on-warning;
+      @include ink-color($on-warning);
     }
 
     selection {
     }
 
     *:link {
-      color: on($warning);
+      color: $on-warning;
     }
   }
 
   &.error {
     background-color: $error;
-    color: on($error);
+    color: $on-error;
 
     button.flat {
-      color: on($error);
-      @include ink-color(on($error));
+      color: $on-error;
+      @include ink-color($on-error);
     }
 
     selection {
     }
 
     *:link {
-      color: on($error);
+      color: $on-error;
     }
   }
 
@@ -3855,7 +3855,7 @@ tooltip {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
     background-color: $tooltip;
-    color: on($tooltip);
+    color: $on-tooltip;
   }
 
   // padding: 4px; /* not working */
@@ -3863,7 +3863,7 @@ tooltip {
   box-shadow: none; // otherwise it gets inherited by windowframe.csd
 
   &:not(.csd):not(.unity-csd) {
-    // border: 1px solid $divider;
+    // border: 1px solid divider($on-surface);
     // border-radius: $corner-radius + 1px;
     // background-clip: $background-clip-extra;
   }
@@ -3880,7 +3880,7 @@ tooltip {
   }
 
   .dim-label {
-    color: on($tooltip, text2);
+    color: hint($on-tooltip);
   }
 
   * {
@@ -3946,11 +3946,11 @@ colorswatch {
   }
 
   &.dark {
-    color: on(dark);
+    color: $on-dark;
   }
 
   &.light {
-    color: on(light);
+    color: $on-light;
   }
 
   overlay {
@@ -3965,7 +3965,7 @@ colorswatch {
 
   &#add-color-button {
     border-radius: $corner-radius $corner-radius 0 0;
-    color: $text;
+    color: $on-surface;
 
     &:only-child {
       border-radius: $corner-radius;
@@ -4175,11 +4175,11 @@ cursor-handle {
   padding-left: 8px;
   padding-right: 8px;
 
-  border: solid 1px $divider;
+  border: solid 1px divider($on-surface);
   border-radius: $corner-radius + 1px;
-  box-shadow: inset 0 -2px $divider;
+  box-shadow: inset 0 -2px divider($on-surface);
   background-color: $surface;
-  color: $text;
+  color: $on-surface;
   font-size: smaller;
 }
 
@@ -4220,7 +4220,7 @@ popover.emoji-picker {
   padding: 0;
 
   entry {
-    border-bottom: 1px solid $divider;
+    border-bottom: 1px solid divider($on-surface);
     border-image: none;
     border-radius: 0;
     box-shadow: none;
@@ -4228,7 +4228,7 @@ popover.emoji-picker {
   }
 
   scrolledwindow {
-    border-bottom: 1px solid $divider;
+    border-bottom: 1px solid divider($on-surface);
   }
 }
 
@@ -4257,7 +4257,7 @@ popover.emoji-picker .emoji {
     border-radius: $corner-radius;
 
     &:hover {
-      background-color: overlay("hover", $text);
+      background-color: overlay("hover", $on-surface);
     }
   }
 }
@@ -4276,6 +4276,6 @@ popover.emoji-completion {
   }
 
   .emoji:hover {
-    background-color: overlay("hover", $text);
+    background-color: overlay("hover", $on-surface);
   }
 }

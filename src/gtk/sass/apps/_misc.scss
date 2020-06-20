@@ -64,7 +64,7 @@ button.flat.tilix-small-button {
 
 #live_installer .menubar progressbar trough {
   border-radius: 4px; // Adjust to hard-coded progress border-radius
-  background-color: $titlebar-stroke-disabled;
+  background-color: disabled-stroke($on-titlebar);
 }
 
 /**
@@ -113,32 +113,32 @@ window.background.chromium {
 
   // FIXME: There is no way to change the color of the toolbar buttons
   toolbar button {
-    // color: $text2;
+    // color: hint($on-surface);
   }
 
   // toolbar's border-bottom refers to button's border
   // FIXME: Chrome's button border ignores theme's alpha value :(
   entry,
   > button {
-    border: 1px solid $stroke;
+    border: 1px solid stroke($on-surface);
   }
 
   > button {
     color: $primary;
 
     &:disabled {
-      color: $text2-disabled;
+      color: disabled-hint($on-surface);
     }
   }
 
   menubar,
   headerbar {
-    color: $titlebar-text2;
+    color: hint($on-titlebar);
   }
 
   // Workaround for non-animatable buttons in headerbar
   headerbar button:active {
-    background-color: overlay("pressed", $titlebar-text);
+    background-color: overlay("pressed", $on-titlebar);
   }
 
   spinner {
@@ -153,14 +153,14 @@ window.background.chromium {
   // For prominent button, starred icon, etc.
   treeview.view.cell:selected:focus {
     background-color: $primary;
-    color: on($primary);
+    color: $on-primary;
   }
 
   // For table header
   treeview.view button {
-    border: 1px solid $stroke;
+    border: 1px solid stroke($on-surface);
     background-color: $base; // FIXME: This should not be necessary
-    // color: $text2;
+    // color: hint($on-surface);
   }
 }
 
@@ -183,12 +183,12 @@ tooltip.background.chromium {
     text:selected {
       // Use traditional selection style as workaround
       background-color: $primary;
-      color: on($primary);
+      color: $on-primary;
     }
 
     // For separators in bookmark toolbar
     > separator {
-      color: $divider;
+      color: divider($on-surface);
     }
 
     // avoid black border
@@ -201,18 +201,18 @@ tooltip.background.chromium {
       // FIXME: On Wayland, translucent colors don't work well here.
       // See: https://github.com/nana-4/materia-theme/issues/467
 
-      // border-color: $stroke;
-      border-color: opacify($stroke, $background);
+      // border-color: stroke($on-surface);
+      border-color: opacify(stroke($on-surface), $background);
     }
 
     > entry,
     > button > button {
-      border: 1px solid $stroke;
+      border: 1px solid stroke($on-surface);
       border-radius: $corner-radius;
       box-shadow: none;
 
       &:disabled {
-        border-color: $stroke-disabled;
+        border-color: disabled-stroke($on-surface);
       }
     }
 
@@ -235,11 +235,11 @@ tooltip.background.chromium {
       background-size: auto;
 
       &:hover {
-        box-shadow: inset 0 0 0 9999px overlay("hover", $text);
+        box-shadow: inset 0 0 0 9999px overlay("hover", $on-surface);
       }
 
       &:active {
-        background-image: image(overlay("pressed", $text));
+        background-image: image(overlay("pressed", $on-surface));
       }
     }
 
@@ -277,7 +277,7 @@ tooltip.background.chromium {
   // Workaround: Firefox doesn't properly read color from
   // menuitem:disabled, but from menuitem label:disabled.
   menuitem label:disabled {
-    color: $text-disabled;
+    color: disabled($on-surface);
   }
 }
 
@@ -285,24 +285,24 @@ tooltip.background.chromium {
 #MozillaGtkWidget {
   > widget {
     > menubar {
-      color: $titlebar-text2;
+      color: hint($on-titlebar);
 
       &:hover {
-        color: $titlebar-text;
+        color: $on-titlebar;
       }
 
       &:disabled {
-        color: $titlebar-text2-disabled;
+        color: disabled-hint($on-titlebar);
       }
     }
 
     > frame {
-      color: $stroke;
+      color: stroke($on-surface);
     }
   }
 
   menu > separator {
-    color: $divider;
+    color: divider($on-surface);
   }
 }
 
@@ -357,16 +357,16 @@ tooltip.background.chromium {
   }
 
   #HorizontalScrollbar {
-    border-top: 1px solid $divider;
+    border-top: 1px solid divider($on-surface);
   }
 
   #VerticalScrollbar {
     &:dir(ltr) {
-      border-left: 1px solid $divider;
+      border-left: 1px solid divider($on-surface);
     }
 
     &:dir(rtl) {
-      border-right: 1px solid $divider;
+      border-right: 1px solid divider($on-surface);
     }
   }
 }

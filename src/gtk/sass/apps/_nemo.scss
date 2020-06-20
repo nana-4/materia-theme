@@ -10,7 +10,7 @@
 
 .nemo-window {
   .primary-toolbar {
-    border-bottom: 1px solid $divider;
+    border-bottom: 1px solid divider($on-surface);
 
     // FIXME: workaround for hard-coded border-width of GtkEventBox for entry
     stack > box {
@@ -51,7 +51,7 @@
   // Rename entry styling in the icon view.
   .nemo-window-pane widget.entry {
     border-radius: $corner-radius;
-    background-color: $entry-fill;
+    background-color: entry-fill($on-surface);
 
     &:selected {
       @extend %selected_items;
@@ -65,7 +65,7 @@
 
 // For Places Sidebar diskfull indicators
 .places-treeview {
-  -NemoPlacesTreeView-disk-full-bg-color: opacify($stroke-disabled, $base-alt); // Can't use translucent colors
+  -NemoPlacesTreeView-disk-full-bg-color: opacify(disabled-stroke($on-surface), $base-alt); // Can't use translucent colors
   -NemoPlacesTreeView-disk-full-fg-color: $primary;
   -NemoPlacesTreeView-disk-full-bar-width: 2px;
   -NemoPlacesTreeView-disk-full-bar-radius: 0;

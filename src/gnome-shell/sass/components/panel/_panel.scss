@@ -32,7 +32,7 @@
     -natural-hpadding: $panel-button-hpadding;
     -minimum-hpadding: $panel-button-hpadding / 2;
     transition-duration: $duration;
-    color: on($background, text2);
+    color: hint(on($background));
     text-shadow: none;
     font-weight: bold;
 
@@ -121,10 +121,10 @@
     }
 
     .panel-button {
-      color: on(dark, text2);
+      color: hint($on-dark);
 
       &:hover, &:active, &:overview, &:focus, &:checked {
-        color: on(dark);
+        color: $on-dark;
       }
     }
   }
@@ -152,11 +152,11 @@
       }
 
       .panel-button {
-        color: on($panel, text2);
+        color: hint($on-panel);
         text-shadow: none;
 
         &:hover, &:active, &:overview, &:focus, &:checked {
-          color: on($panel);
+          color: $on-panel;
         }
       }
 

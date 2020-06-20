@@ -26,7 +26,7 @@
    height: 20px;
    color: $primary;
   -slider-height: 2px;
-  -slider-background-color: $stroke; //background of the trough
+  -slider-background-color: stroke($on-surface); //background of the trough
   -slider-border-color: transparent; //trough border color
   -slider-active-background-color: $primary; //active trough fill
   -slider-active-border-color: transparent; //active trough border
@@ -35,8 +35,8 @@
 }
 %separator-shared {
   -gradient-height: 1px;
-  -gradient-start: $divider;
-  -gradient-end: $divider;
+  -gradient-start: divider($on-surface);
+  -gradient-end: divider($on-surface);
   -margin-horizontal: 4px;
   height: 1.5em;
 }
@@ -47,20 +47,20 @@
   min-height: $medium-size;
   padding: 0 8px;
   border-radius: $corner-radius $corner-radius 0 0;
-  color: $text;
-  caret-color: $text;
+  color: $on-surface;
+  caret-color: $on-surface;
   selection-background-color: $overlay-selected;
-  selected-color: $text;
+  selected-color: $on-surface;
   &:focus {
     @include entry(focus);
 
     padding: 0 8px;
     border-width: 0;
-    color: $text;
+    color: $on-surface;
   }
 }
 %desklet-shared {
-  color: $text;
+  color: $on-surface;
   border: none;
   padding: 12px;
   box-shadow: $shadow-4;
@@ -70,12 +70,12 @@
   height: 16px;
   border-radius: 999px;
   transition-duration: $duration;
-  &:active { background-color: $stroke;}
+  &:active { background-color: stroke($on-surface);}
 }
 %menu-shared {
   background-color: $surface;
   border-radius: $corner-radius;
-  color: $text;
+  color: $on-surface;
   box-shadow: $shadow-2;
 }
 %menu-button-label-shared {
@@ -88,7 +88,7 @@
 }
 %dialogs-subject-shared {
   font-weight: bold;
-  color: $text;
+  color: $on-surface;
   padding-top: 10px;
   padding-left: 17px;
   padding-bottom: 6px;
@@ -98,7 +98,7 @@
   padding-right: 17px;
 }
 %dialogs-description-shared {
-  color: $text;
+  color: $on-surface;
   padding-left: 17px;
   width: 28em;
 }
@@ -118,14 +118,14 @@
 }
 %tile-shared {
   background-color: $scrim-alt;
-  border: 2px solid $divider;
+  border: 2px solid divider($on-surface);
 }
 %tile-shared-snap {
   background-color: $scrim-alt;
   border: 2px solid $primary;
 }
 %osd-panel-shared {
-  color: $text;
+  color: $on-surface;
   background-color: $surface;
   border: none;
   border-radius: $corner-radius;

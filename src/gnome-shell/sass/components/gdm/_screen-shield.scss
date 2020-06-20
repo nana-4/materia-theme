@@ -4,7 +4,7 @@
   .unlock-dialog-clock {
     padding-bottom: 2.5em;
     spacing: 24px;
-    color: on(dark);
+    color: $on-dark;
     font-weight: normal;
     text-align: center;
   }
@@ -21,7 +21,7 @@
 
   .unlock-dialog-clock-hint {
     padding-top: 48px;
-    color: on(dark, text2);
+    color: hint($on-dark);
     font-weight: normal;
   }
 
@@ -41,12 +41,12 @@
       padding: 8px;
       border: 0;
       border-radius: $corner-radius;
-      background-color: on(dark, entry-fill);
-      color: on(dark);
+      background-color: entry-fill($on-dark);
+      color: $on-dark;
 
       &.critical {
-        background-color: on(dark, entry-fill);
-        color: on(dark, error);
+        background-color: entry-fill($on-dark);
+        color: error($on-dark);
       }
     }
   }
@@ -60,14 +60,14 @@
     margin-right: 12px;
     padding: 2px 8px;
     border-radius: 99px;
-    background-color: on(dark, fill);
-    color: on(dark);
+    background-color: fill($on-dark);
+    color: $on-dark;
     // font-weight: bold;
   }
 
   #lockDialogGroup {
     background-color: $os-background;
-    color: on($os-background);
+    color: $on-os-background;
   }
 
   #unlockDialogNotifications {
@@ -83,14 +83,14 @@
   .screen-shield-arrows Gjs_Arrow {
     width: 80px;
     height: 48px;
-    color: on(dark);
+    color: $on-dark;
     -arrow-thickness: 12px;
     -arrow-shadow: $shadow-1;
   }
 
   .screen-shield-clock {
     padding-bottom: 1.5em;
-    color: on(dark);
+    color: $on-dark;
     text-shadow: $shadow-1;
     font-weight: normal;
     text-align: center;
@@ -123,7 +123,7 @@
       border: 0;
       border-radius: $corner-radius;
       background-color: $scrim-alt;
-      color: on($scrim-alt);
+      color: $on-scrim-alt;
     }
 
     // compensate for space allocated to the scrollbar
@@ -141,13 +141,13 @@
   .screen-shield-notification-count-text {
     min-height: $small-size - 2px;
     padding: 2px 0 0 16px;
-    color: on($scrim-alt, text2);
+    color: hint($on-scrim-alt);
   }
 
   #lockDialogGroup {
     background-color: $os-background;
     background-repeat: repeat;
-    color: on($os-background);
+    color: $on-os-background;
   }
 
   #screenShieldNotifications {

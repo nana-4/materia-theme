@@ -11,29 +11,29 @@
   background-color: transparent;
 
   StEntry {
-    @include entry(normal, $fc: on($os-background, stroke));
-    color: on($os-background);
-    selection-background-color: on($os-background, stroke);
-    selected-color: on($os-background);
+    @include entry(normal, $fc: stroke($on-os-background));
+    color: $on-os-background;
+    selection-background-color: stroke($on-os-background);
+    selected-color: $on-os-background;
 
     &:focus {
-      @include entry(focus, $fc: on($os-background));
+      @include entry(focus, $fc: $on-os-background);
     }
 
     &:insensitive {
-      @include entry(insensitive, $fc: on($os-background, stroke-disabled));
-      color: on($os-background, text-disabled);
+      @include entry(insensitive, $fc: disabled-stroke($on-os-background));
+      color: disabled($on-os-background);
     }
 
     StLabel.hint-text {
-      color: on($os-background, text2);
+      color: hint($on-os-background);
     }
 
     StIcon.peek-password {
-      color: on($os-background, text2);
+      color: hint($on-os-background);
 
       &:hover {
-        color: on($os-background);
+        color: $on-os-background;
       }
     }
   }
@@ -43,43 +43,43 @@
   }
 
   .modal-dialog-button {
-    @include button(flat-normal, $tc: on($os-background));
+    @include button(flat-normal, $tc: $on-os-background);
 
     &:focus {
-      @include button(flat-focus, $tc: on($os-background));
+      @include button(flat-focus, $tc: $on-os-background);
     }
 
     &:hover {
-      @include button(flat-hover, $tc: on($os-background));
+      @include button(flat-hover, $tc: $on-os-background);
     }
 
     &:active {
-      @include button(flat-active, $tc: on($os-background));
+      @include button(flat-active, $tc: $on-os-background);
     }
 
     &:insensitive {
-      @include button(flat-insensitive, $tc: on($os-background));
+      @include button(flat-insensitive, $tc: $on-os-background);
     }
 
     &:default {
       min-width: 64px - 16px * 2;
       padding: 0 16px;
-      @include button(normal, $c: $primary, $tc: on($primary));
+      @include button(normal, $c: $primary, $tc: $on-primary);
 
       &:focus {
-        @include button(focus, $c: $primary, $tc: on($primary));
+        @include button(focus, $c: $primary, $tc: $on-primary);
       }
 
       &:hover {
-        @include button(hover, $c: $primary, $tc: on($primary));
+        @include button(hover, $c: $primary, $tc: $on-primary);
       }
 
       &:active {
-        @include button(active, $c: $primary, $tc: on($primary));
+        @include button(active, $c: $primary, $tc: $on-primary);
       }
 
       &:insensitive {
-        @include button(insensitive, $c: on($os-background, fill), $tc: on($os-background, text-disabled));
+        @include button(insensitive, $c: fill($on-os-background), $tc: disabled($on-os-background));
       }
     }
   }
@@ -90,7 +90,7 @@
 }
 
 .login-dialog-banner {
-  color: on($os-background, text2);
+  color: hint($on-os-background);
 }
 
 .login-dialog-button-box {
@@ -109,13 +109,13 @@
 
 .caps-lock-warning-label,
 .login-dialog-message-warning {
-  color: on($os-background, error);
+  color: error($on-os-background);
 }
 
 .login-dialog-message-hint {
   padding-top: 0;
   padding-bottom: 20px;
-  color: on($os-background, text2);
+  color: hint($on-os-background);
 }
 
 .login-dialog-user-selection-box {
@@ -128,20 +128,20 @@
   padding: 0 8px;
   margin-top: 1em;
   border-radius: $corner-radius;
-  color: on($os-background, text2);
+  color: hint($on-os-background);
   @include type(button);
 
   &:focus {
-    background-color: $inverse-overlay-focus;
+    background-color: overlay("focus", $on-os-background);
   }
 
   &:hover {
-    background-color: $inverse-overlay-hover;
+    background-color: overlay("hover", $on-os-background);
   }
 
   &:active {
     transition-duration: $duration-ripple;
-    background-color: $inverse-overlay-active;
+    background-color: overlay("pressed", $on-os-background);
   }
 }
 
@@ -158,11 +158,11 @@
 
   &:expanded .login-dialog-user-list-item {
     &:selected {
-      background-color: $inverse-overlay-focus;
+      background-color: overlay("focus", $on-os-background);
     }
 
     &:logged-in {
-      border-right: 2px solid on($os-background);
+      border-right: 2px solid $on-os-background;
     }
   }
 }
@@ -174,16 +174,16 @@
   color: inherit;
 
   &:focus {
-    background-color: $inverse-overlay-focus;
+    background-color: overlay("focus", $on-os-background);
   }
 
   &:hover {
-    background-color: $inverse-overlay-hover;
+    background-color: overlay("hover", $on-os-background);
   }
 
   &:active {
     transition-duration: $duration-ripple;
-    background-color: $inverse-overlay-active;
+    background-color: overlay("pressed", $on-os-background);
   }
 
   &:ltr .user-widget {
@@ -197,13 +197,13 @@
   .login-dialog-timed-login-indicator {
     height: 2px;
     margin-top: 6px;
-    background-color: on($os-background);
+    background-color: $on-os-background;
   }
 }
 
 @if $version >= 3.36 {
   .login-dialog .user-icon StIcon {
-    background-color: on($os-background, fill);
+    background-color: fill($on-os-background);
   }
 
   .user-widget-label {
@@ -256,7 +256,7 @@
 }
 
 .login-dialog-prompt-label {
-  color: on($os-background, text2);
+  color: hint($on-os-background);
   font-size: 1em;
   padding-top: 1em;
 }
@@ -271,19 +271,19 @@
   min-height: 0;
   padding: 0;
   border-radius: $medium-size / 2;
-  color: on($os-background, text2);
+  color: hint($on-os-background);
 
   &:focus {
-    background-color: $inverse-overlay-focus;
+    background-color: overlay("focus", $on-os-background);
   }
 
   &:hover {
-    background-color: $inverse-overlay-hover;
+    background-color: overlay("hover", $on-os-background);
   }
 
   &:active {
     transition-duration: $duration-ripple;
-    background-color: $inverse-overlay-active;
+    background-color: overlay("pressed", $on-os-background);
   }
 
   StIcon {

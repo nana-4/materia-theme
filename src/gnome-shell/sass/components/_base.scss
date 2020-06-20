@@ -19,7 +19,7 @@
 
 // Stage
 stage {
-  color: $text;
+  color: $on-surface;
 
   @if $version >= 3.36 {
     font-size: 1em;
@@ -36,13 +36,13 @@ stage {
   color: $primary;
 
   &:hover {
-    background-color: rgba($primary, .08);
+    background-color: overlay("hover", $primary);
     color: $primary;
   }
 
   &:active {
     transition-duration: $duration-ripple;
-    background-color: rgba($primary, .2);
+    background-color: overlay("pressed", $primary);
     color: $primary;
   }
 }

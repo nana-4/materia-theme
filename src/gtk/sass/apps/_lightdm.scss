@@ -8,7 +8,7 @@
 // the panel widget at the top
 #panel_window {
   background-color: $scrim-alt;
-  color: on($scrim-alt);
+  color: $on-scrim-alt;
   // font-weight: bold;
 
   // the menubars/menus of the panel, i.e. indicators
@@ -26,14 +26,14 @@
   }
 
   menubar > menuitem {
-    color: on($scrim-alt, text2);
+    color: hint($on-scrim-alt);
 
     &:hover {
-      color: on($scrim-alt);
+      color: $on-scrim-alt;
     }
 
     &:disabled {
-      color: on($scrim-alt, text2-disabled);
+      color: disabled-hint($on-scrim-alt);
     }
   }
 }
@@ -46,6 +46,7 @@
   border-radius: $corner-radius;
   box-shadow: $shadow-z6, inset 0 1px highlight($surface);
   background-color: $surface;
+  color: $on-surface;
 }
 
 // the top half of the login-window, in GtkDialog terms, the content
@@ -93,6 +94,7 @@
     @extend %button-flat;
 
     &:not(:disabled) {
+      color: $primary;
       @include ink-color($primary);
     }
   }

@@ -22,15 +22,15 @@ $calendar-column-margin: 0 8px;
   }
 
   &:focus {
-    background-color: $overlay-focus;
+    background-color: overlay("focus", $on-surface);
   }
 
   &:hover {
-    background-color: $overlay-hover;
+    background-color: overlay("hover", $on-surface);
   }
 
   &:active {
-    background-color: $overlay-active;
+    background-color: overlay("pressed", $on-surface);
     transition-duration: $duration-ripple;
   }
 }
@@ -53,7 +53,7 @@ $calendar-column-margin: 0 8px;
 .datemenu-calendar-column {
   spacing: $calendar-column-spacing;
   padding: 0;
-  border: 0 solid $divider;
+  border: 0 solid divider($on-surface);
 
   &:ltr {
     margin-right: 0;
@@ -79,7 +79,7 @@ $calendar-column-margin: 0 8px;
   @extend %calendar-item;
   min-height: $menuitem-size - 4px * 2;
   padding: 4px 8px;
-  color: $text2 !important;
+  color: hint($on-surface) !important;
   font-weight: bold;
 }
 
@@ -121,7 +121,7 @@ $calendar-column-margin: 0 8px;
     text-align: center;
 
     &:focus {
-      background-color: $overlay-focus;
+      background-color: overlay("focus", $on-surface);
     }
   }
 
@@ -156,18 +156,18 @@ $calendar-column-margin: 0 8px;
     margin: 2px;
     border-radius: $menuitem-size / 2;
     background-color: transparent;
-    color: $text2;
+    color: hint($on-surface);
 
     &:focus {
-      background-color: $overlay-focus;
+      background-color: overlay("focus", $on-surface);
     }
 
     &:hover {
-      background-color: $overlay-hover;
+      background-color: overlay("hover", $on-surface);
     }
 
     &:active {
-      background-color: $overlay-active;
+      background-color: overlay("pressed", $on-surface);
       transition-duration: $duration-ripple;
     }
   }
@@ -185,17 +185,17 @@ $calendar-column-margin: 0 8px;
     text-align: center;
 
     &:focus {
-      background-color: $overlay-focus;
+      background-color: overlay("focus", $on-surface);
     }
 
     &:hover {
-      background-color: $overlay-hover;
+      background-color: overlay("hover", $on-surface);
     }
 
     &:active {
       transition-duration: $duration-ripple;
       border-color: transparent;
-      background-color: $overlay-active;
+      background-color: overlay("pressed", $on-surface);
       color: inherit;
     }
 
@@ -213,13 +213,13 @@ $calendar-column-margin: 0 8px;
       padding: 7px 0 0;
       border-radius: $menuitem-size / 2;
       background-color: transparent;
-      color: $text-disabled;
+      color: disabled($on-surface);
       @include type(caption);
       font-weight: bold;
       text-align: center;
 
       &:focus {
-        background-color: $overlay-focus;
+        background-color: overlay("focus", $on-surface);
       }
     }
   }
@@ -252,12 +252,12 @@ $calendar-column-margin: 0 8px;
     font-weight: bold !important;
 
     &:focus {
-      background-color: $overlay-focus;
+      background-color: overlay("focus", $on-surface);
       color: inherit;
     }
 
     &:hover {
-      background-color: $overlay-hover;
+      background-color: overlay("hover", $on-surface);
       color: inherit;
     }
 
@@ -265,7 +265,7 @@ $calendar-column-margin: 0 8px;
       &,
       &:hover,
       &:focus {
-        background-color: $overlay-active;
+        background-color: overlay("pressed", $on-surface);
         color: inherit;
       }
     }
@@ -288,7 +288,7 @@ $calendar-column-margin: 0 8px;
   }
 
   .calendar-other-month-day {
-    color: $text2-disabled !important;
+    color: disabled-hint($on-surface) !important;
   }
 
   .calendar-week-number {
@@ -298,7 +298,7 @@ $calendar-column-margin: 0 8px;
     padding: 7px 0 0;
     border-radius: $menuitem-size / 2;
     background-color: transparent;
-    color: $text-disabled;
+    color: disabled($on-surface);
     font-weight: bold;
     font-size: 1em;
     text-align: center;
@@ -318,7 +318,7 @@ $calendar-column-margin: 0 8px;
 
   // title
   .world-clocks-header {
-    color: $text2;
+    color: hint($on-surface);
     font-weight: bold;
   }
 
@@ -331,7 +331,7 @@ $calendar-column-margin: 0 8px;
 
   // timezone time
   .world-clocks-time {
-    color: $text2;
+    color: hint($on-surface);
     font-weight: normal;
     font-size: 1em;
     font-feature-settings: "tnum";
@@ -340,7 +340,7 @@ $calendar-column-margin: 0 8px;
 
   // timezone offset label
   .world-clocks-timezone {
-    color: $text-disabled;
+    color: disabled($on-surface);
     font-size: 1em;
     font-feature-settings: "tnum";
   }
@@ -361,7 +361,7 @@ $calendar-column-margin: 0 8px;
   }
 
   .weather-header {
-    color: $text2;
+    color: hint($on-surface);
     font-weight: bold;
 
     &.location {
@@ -378,7 +378,7 @@ $calendar-column-margin: 0 8px;
   .weather-forecast-time {
     padding-top: 0;
     padding-bottom: 0;
-    color: $text2;
+    color: hint($on-surface);
     @include type(caption);
     font-feature-settings: "tnum";
   }

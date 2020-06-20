@@ -53,21 +53,21 @@
   font-size: 1em;
 
   &:focus {
-    background-color: $overlay-focus;
+    background-color: overlay("focus", $on-surface);
   }
 
   &:hover {
-    background-color: $overlay-hover;
+    background-color: overlay("hover", $on-surface);
   }
 
   &:active {
     transition-duration: $duration-ripple;
-    background-color: $overlay-active;
+    background-color: overlay("pressed", $on-surface);
   }
 
   &:selected {
     background-color: $overlay-selected;
-    color: $text;
+    color: $on-surface;
   }
 }
 
@@ -82,7 +82,7 @@
 
 // no networks
 .no-networks-label {
-  color: $text2;
+  color: hint($on-surface);
 }
 
 .no-networks-box {

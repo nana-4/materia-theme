@@ -1,7 +1,7 @@
 // Rubberband for select-area screenshots
 .select-area-rubberband {
-  border: 1px solid on(dark, primary);
-  background-color: rgba(on(dark, primary), .3);
+  border: 1px solid primary($on-dark);
+  background-color: rgba(primary($on-dark), .3);
 }
 
 // User icon
@@ -22,7 +22,7 @@ $user-icon: if($version >= 3.32, ".user-icon", ".framed-user-icon");
 @if $version >= 3.36 {
   .user-icon {
     StIcon {
-      background-color: $fill;
+      background-color: fill($on-surface);
       border-radius: $circular-radius;
     }
   }

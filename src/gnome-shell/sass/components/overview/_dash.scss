@@ -39,7 +39,7 @@ $dash-spacing: 6px;
   border-radius: $corner-radius;
   box-shadow: $shadow-2;
   background-color: $surface;
-  color: $text;
+  color: $on-surface;
   text-align: center;
   -x-offset: 8px; // distance from the dash edge
 }
@@ -47,9 +47,9 @@ $dash-spacing: 6px;
 // Show apps button
 .show-apps {
   @extend %overview-icon;
-  color: on(dark, text2);
+  color: hint($on-dark);
 
   &:checked {
-    color: on(dark);
+    color: $on-dark;
   }
 }

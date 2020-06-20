@@ -30,11 +30,11 @@ UnityDecoration {
     border-radius: $corner-radius $corner-radius 0 0;
     box-shadow: inset 0 1px highlight($titlebar);
     background-color: $titlebar;
-    color: $titlebar-text;
+    color: $on-titlebar;
 
     &:backdrop {
       background-color: $titlebar-backdrop;
-      color: $titlebar-text2;
+      color: hint($on-titlebar);
     }
   }
 
@@ -48,11 +48,11 @@ UnityDecoration {
   .menuitem {
     border-radius: $corner-radius $corner-radius 0 0;
     box-shadow: none; // Don't inherit from .top
-    color: $titlebar-text2;
+    color: hint($on-titlebar);
 
     &:hover {
-      background-color: overlay("activated", $titlebar-text);
-      color: $titlebar-text;
+      background-color: overlay("activated", $on-titlebar);
+      color: $on-titlebar;
     }
   }
 }
@@ -74,10 +74,10 @@ sheet-style-dialog.unity-force-quit {
 UnityPanelWidget,
 .unity-panel {
   background-color: $panel-solid;
-  color: $titlebar-text;
+  color: $on-panel-solid;
 
   &:backdrop {
-    color: $titlebar-text2;
+    color: hint($on-panel-solid);
   }
 }
 
@@ -87,13 +87,13 @@ UnityPanelWidget,
 
 .unity-panel.menuitem,
 .unity-panel .menuitem {
-  color: $titlebar-text2;
+  color: hint($on-panel-solid);
 }
 
 .unity-panel.menubar.menuitem:hover,
 .unity-panel.menubar .menuitem *:hover {
-  background-color: overlay("activated", $titlebar-text);
-  color: $titlebar-text;
+  background-color: overlay("activated", $on-panel-solid);
+  color: $on-panel-solid;
 }
 
 .menu IdoPlaybackMenuItem.menuitem:active {

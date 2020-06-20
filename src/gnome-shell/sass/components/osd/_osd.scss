@@ -6,7 +6,7 @@
   border-radius: $corner-radius;
   box-shadow: $shadow-4;
   background-color: $surface;
-  color: $text;
+  color: $on-surface;
 }
 
 .osd-window {
@@ -30,7 +30,7 @@
     .level {
       height: 8px;
       -barlevel-height: 8px;
-      -barlevel-background-color: $stroke-disabled;
+      -barlevel-background-color: disabled-stroke($on-surface);
       -barlevel-active-background-color: $primary;
       -barlevel-overdrive-color: $error;
       -barlevel-overdrive-separator-width: 2px;
@@ -39,8 +39,8 @@
     .level {
       height: 8px;
       border-radius: 0;
-      background-color: $stroke-disabled;
-      color: $text;
+      background-color: disabled-stroke($on-surface);
+      color: $on-surface;
     }
 
     .level-bar {

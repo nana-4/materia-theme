@@ -15,7 +15,7 @@
   &:active {
     box-shadow: $shadow-2;
     background-color: $surface;
-    color: $text;
+    color: $on-surface;
   }
 
   @if $version == 3.34 {
@@ -23,11 +23,11 @@
     &:focus,
     &:active {
       .message-title {
-        color: $text;
+        color: $on-surface;
       }
 
       .message-content {
-        color: $text2;
+        color: hint($on-surface);
       }
     }
 
@@ -63,7 +63,7 @@
   border-radius: .8em;
   box-shadow: $shadow-2;
   background-color: $primary;
-  color: on($primary);
+  color: $on-primary;
   font-weight: bold;
   font-size: 1em;
 }
@@ -78,7 +78,7 @@
 }
 
 .chat-log-message {
-  color: $text;
+  color: $on-surface;
 }
 
 .chat-new-group {
@@ -96,7 +96,7 @@
 
 .chat-sent {
   padding-left: 18pt;
-  color: $text2;
+  color: hint($on-surface);
 
   &:rtl {
     padding-left: 0;
@@ -106,7 +106,7 @@
 
 .chat-meta-message {
   padding-left: 4px;
-  color: $text2;
+  color: hint($on-surface);
   @include type(caption);
 
   &:rtl {

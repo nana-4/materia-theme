@@ -16,7 +16,7 @@
 .xfce4-panel.background {
   border: none; // Sadly the border is hard-coded
   background-color: $panel;
-  color: on($panel, text2);
+  color: hint($on-panel);
   font-weight: 500;
 
   button {
@@ -24,20 +24,20 @@
     min-width: 16px;
     padding: 0;
     border-radius: 0;
-
-    @include ink-color(on($panel, text2));
+    color: hint($on-panel);
+    @include ink-color($on-panel);
 
     &:disabled {
-      color: on($panel, text2-disabled);
+      color: disabled-hint($on-panel);
     }
 
     &:checked {
-      background-color: overlay("activated", on($panel));
-      color: on($panel);
-      @include ink-color(on($panel));
+      background-color: overlay("activated", $on-panel);
+      color: $on-panel;
+      @include ink-color($on-panel);
 
       &:disabled {
-        color: on($panel, text-disabled);
+        color: disabled($on-panel);
       }
     }
   }
@@ -68,11 +68,11 @@
 
   progressbar {
     progress {
-      background-color: on($panel, primary);
+      background-color: primary($on-panel);
     }
 
     trough {
-      background-color: on($panel, stroke-disabled);
+      background-color: disabled-stroke($on-panel);
     }
   }
 }
@@ -80,11 +80,11 @@
 // Workspace switcher provided by libwnck
 wnck-pager {
   &:hover {
-    background-color: overlay("hover", on($panel));
+    background-color: overlay("hover", $on-panel);
   }
 
   &:active {
-    background-color: overlay("pressed", on($panel));
+    background-color: overlay("pressed", $on-panel);
   }
 
   &:selected {
@@ -95,7 +95,7 @@ wnck-pager {
 XfdesktopIconView.view {
   border-radius: $corner-radius;
   background-color: transparent;
-  color: on(dark);
+  color: $on-dark;
   text-shadow: $text-shadow;
 
   // XfdesktopIconView uses :active instead of :selected for selection
@@ -120,8 +120,10 @@ XfdesktopIconView.view {
   border-radius: $corner-radius;
   box-shadow: $shadow-z4, inset 0 1px highlight($surface);
   background-color: $surface;
+  color: $on-surface;
 
   buttonbox button:not(:disabled) {
+    color: $primary;
     @include ink-color($primary);
   }
 
@@ -129,7 +131,7 @@ XfdesktopIconView.view {
     font-weight: bold;
 
     + label {
-      color: $text2;
+      color: hint($on-surface);
     }
   }
 
@@ -161,7 +163,7 @@ XfdesktopIconView.view {
 
 .thunar {
   #location-toolbar {
-    border-bottom: 1px solid $divider;
+    border-bottom: 1px solid divider($on-surface);
 
     // FIXME: This has no .image-button style class :(
     > toolitem > button {
@@ -183,6 +185,6 @@ XfdesktopIconView.view {
   statusbar {
     margin: 0 -10px;
     padding: 0 4px;
-    border-top: 1px solid $divider;
+    border-top: 1px solid divider($on-surface);
   }
 }

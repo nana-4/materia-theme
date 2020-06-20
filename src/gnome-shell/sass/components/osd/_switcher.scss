@@ -23,7 +23,7 @@
       padding: 8px;
       border: 0;
       box-shadow: none;
-      background-color: $stroke-disabled;
+      background-color: overlay("activated", $on-surface);
       color: inherit;
     }
 
@@ -45,17 +45,17 @@
 
   .separator {
     width: 1px;
-    background: $divider;
+    background: divider($on-surface);
   }
 }
 
 .switcher-arrow {
   transition-duration: $duration;
   border-color: transparent;
-  color: $text2;
+  color: hint($on-surface);
 
   &:highlighted {
-    color: $text;
+    color: $on-surface;
   }
 }
 
