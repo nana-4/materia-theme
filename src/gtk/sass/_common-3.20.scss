@@ -1166,6 +1166,15 @@ button.combo:only-child {
   &:disabled {
     @include entry(disabled);
   }
+
+  arrow {
+    transition: color $duration $ease-out;
+    color: hint($on-surface);
+
+    &:disabled {
+      color: disabled-hint($on-surface);
+    }
+  }
 }
 
 /**
