@@ -3,8 +3,8 @@
 
 @import 'color-palette';
 
-@function gtkalpha($c, $a) {
-  @return unquote("alpha(#{$c}, #{$a})");
+@function gtkalpha($color, $alpha) {
+  @return unquote("alpha(#{$color}, #{$alpha})");
 }
 
 // Determine whether the color has alpha.
@@ -83,70 +83,120 @@ $on-dark: #fff;
 }
 
 // Private variables for dark background colors
-$-dark-background:                       #181818;
-$-dark-surface-1dp:                      mix(white, $-dark-background, 5%);
-$-dark-surface-4dp:                      mix(white, $-dark-background, 9%);
-$-dark-surface-8dp:                      mix(white, $-dark-background, 12%);
-$-dark-surface-switch:                   mix(white, $-dark-background, 60%);
+$-dark-background: #181818;
+$-dark-surface-1dp: mix(white, $-dark-background, 5%);
+$-dark-surface-4dp: mix(white, $-dark-background, 9%);
+$-dark-surface-8dp: mix(white, $-dark-background, 12%);
+$-dark-surface-switch: mix(white, $-dark-background, 60%);
 
 //
 // Main colors
 //
 
-$background:                            if($variant == 'light', #f2f2f2, $-dark-background);
-$surface:                               if($variant == 'light', #ffffff, $-dark-surface-8dp);
-$switch-surface:                        if($variant == 'light', #ffffff, $-dark-surface-switch); // Special case for switches
-$base:                                  if($variant == 'light', #ffffff, $-dark-surface-1dp); // semi-surface with 1dp elevation
-$base-alt:                              if($variant == 'light', #fafafa, $-dark-surface-1dp);
-$on-surface:                            on($surface);
+$background: #f2f2f2;
+$base: #fff; // for views
+$base-alt: #fafafa;
+$surface: #fff;
+$switch-surface: #fff; // Special case for switches
+$on-surface: on($surface);
 
-$primary-on-light:                      #1a73e8;
-$primary-on-dark:                       #8ab4f8;
-$primary:                               if($variant == 'light', $primary-on-light, $primary-on-dark);
-$on-primary:                            on($primary);
+$primary-on-light: #1a73e8;
+$primary-on-dark: #8ab4f8;
+$primary: $primary-on-light;
+$on-primary: on($primary);
 
-$error-on-light:                        #d93025;
-$error-on-dark:                         #f28b82;
-$error:                                 if($variant == 'light', $error-on-light, $error-on-dark);
-$on-error:                              on($error);
+$error-on-light: #d93025;
+$error-on-dark: #f28b82;
+$error: $error-on-light;
+$on-error: on($error);
 
-$warning:                               if($variant == 'light', #f4b400, #fdd633);
-$on-warning:                            on($warning);
+$warning-on-light: #f4b400;
+$warning-on-dark: #fdd633;
+$warning: $warning-on-light;
+$on-warning: on($warning);
 
-$success:                               if($variant == 'light', #0f9d58, #81c995);
-$on-success:                            on($success);
+$success-on-light: #0f9d58;
+$success-on-dark: #81c995;
+$success: $success-on-light;
+$on-success: on($success);
 
-$visited:                               if($variant == 'light', $purple-500, $purple-200);
-$on-visited:                            on($visited);
+$visited-on-light: $purple-500;
+$visited-on-dark: $purple-200;
+$visited: $visited-on-light;
+$on-visited: on($visited);
 
-$os-background:                         $-dark-background;
-$on-os-background:                      on($os-background);
+$os-background: $-dark-background;
+$on-os-background: on($os-background);
 
-$tooltip:                               rgba(#616161, .9);
-$on-tooltip:                            on($tooltip);
+$tooltip: rgba(#616161, .9);
+$on-tooltip: on($tooltip);
 
-$scrim:                                 rgba(black, .6);
-$on-scrim:                              on($scrim);
+$scrim: rgba(black, .6);
+$on-scrim: on($scrim);
 
-$scrim-alt:                             rgba(black, .3);
-$on-scrim-alt:                          on($scrim-alt);
+$scrim-alt: rgba(black, .3);
+$on-scrim-alt: on($scrim-alt);
 
-$panel:                                 if($topbar == 'dark', #1f1f1f, $scrim);
-$on-panel:                              on($panel);
+$panel: #1f1f1f;
+$on-panel: on($panel);
 
-$panel-solid:                           if($topbar == 'dark', #1f1f1f, #cccccc); // for Unity panel which doesn't allow translucent colors
-$on-panel-solid:                        on($panel-solid);
+// for Unity panel which doesn't allow translucent colors
+$panel-solid: $panel;
+$on-panel-solid: on($panel-solid);
 
-$titlebar:                              if($topbar == 'dark', if($variant == 'light', #383838, $-dark-surface-4dp), #e0e0e0);
-$titlebar-backdrop:                     if($topbar == 'dark', if($variant == 'light', #303030, $-dark-surface-1dp), #d6d6d6);
-$titlebar-indicator:                    if($topbar == 'dark', currentcolor, $primary);
-$on-titlebar:                           on($titlebar);
+$titlebar: #383838;
+$titlebar-backdrop: #303030;
+$on-titlebar: on($titlebar);
+
+$titlebar-indicator: currentcolor;
+
+@if $variant == "dark" {
+  $background: $-dark-background;
+  $base: $-dark-surface-1dp;
+  $base-alt: $-dark-surface-1dp;
+  $surface: $-dark-surface-8dp;
+  $switch-surface: $-dark-surface-switch;
+  $on-surface: on($surface);
+
+  $primary: $primary-on-dark;
+  $on-primary: on($primary);
+
+  $error: $error-on-dark;
+  $on-error: on($error);
+
+  $warning: $warning-on-dark;
+  $on-warning: on($warning);
+
+  $success: $success-on-dark;
+  $on-success: on($success);
+
+  $visited: $visited-on-dark;
+  $on-visited: on($visited);
+
+  $titlebar: $-dark-surface-4dp;
+  $titlebar-backdrop: $-dark-surface-1dp;
+  $on-titlebar: on($titlebar);
+}
+
+@if $topbar == "light" {
+  $panel: $scrim;
+  $on-panel: on($panel);
+
+  $panel-solid: #ccc;
+  $on-panel-solid: on($panel-solid);
+
+  $titlebar: #e0e0e0;
+  $titlebar-backdrop: #d6d6d6;
+  $on-titlebar: on($titlebar);
+
+  $titlebar-indicator: $primary;
+}
 
 //
 // Overlay state colors
 //
 
-$overlay-selected:                      rgba($primary, .24);
+$overlay-selected: rgba($primary, .24);
 
 //
 // For “on” colors
