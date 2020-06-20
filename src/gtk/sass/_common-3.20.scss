@@ -864,6 +864,13 @@ modelbutton.flat,
 }
 
 modelbutton.flat arrow {
+  transition: color $duration $ease-out;
+  color: hint($on-surface);
+
+  &:disabled {
+    color: disabled-hint($on-surface);
+  }
+
   &.left {
     -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
   }
