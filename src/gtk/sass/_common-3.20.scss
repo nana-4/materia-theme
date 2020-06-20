@@ -3427,7 +3427,8 @@ calendar {
  * Dialogs
  */
 
-messagedialog { // Message Dialog styling
+// Message Dialog styling
+messagedialog {
   &.background {
     background-color: $surface;
   }
@@ -3462,27 +3463,30 @@ messagedialog { // Message Dialog styling
     margin-top: -$container-padding;
     // padding: $container-padding;
 
-    button:not(:last-child) {
-      margin-right: $container-padding;
+    button {
+      @extend %button-flat;
+
+      &:not(:last-child) {
+        margin-right: $container-padding;
+      }
+
+      &:not(:disabled) {
+        color: $primary;
+        @include ink-color($primary);
+      }
+
+      &.suggested-action:not(:disabled) {
+        background-color: transparent;
+        // color: $primary;
+        // @include ink-color($primary);
+      }
+
+      &.destructive-action:not(:disabled) {
+        background-color: transparent;
+        color: $error;
+        @include ink-color($error);
+      }
     }
-  }
-}
-
-.dialog-action-box button {
-  @extend %button-flat;
-
-  &:not(:disabled) {
-    @include ink-color($primary);
-  }
-
-  &.suggested-action:not(:disabled) {
-    background-color: transparent;
-    // @include ink-color($primary);
-  }
-
-  &.destructive-action:not(:disabled) {
-    background-color: transparent;
-    @include ink-color($error);
   }
 }
 
