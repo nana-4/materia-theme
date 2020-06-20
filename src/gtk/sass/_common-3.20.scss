@@ -100,7 +100,7 @@
 
   selection,
   &:selected {
-    @extend %selected_items;
+    background-color: $overlay-selected;
   }
 }
 
@@ -143,7 +143,7 @@ flowbox {
     border-radius: $corner-radius;
 
     &:selected {
-      @extend %selected_items;
+      background-color: $overlay-selected;
     }
   }
 }
@@ -167,7 +167,7 @@ label {
   }
 
   selection {
-    @extend %selected_items;
+    background-color: $overlay-selected;
   }
 
   &:disabled {
@@ -313,7 +313,7 @@ entry {
   }
 
   selection {
-    @extend %selected_items;
+    background-color: $overlay-selected;
   }
 
   // entry error and warning style
@@ -859,7 +859,7 @@ modelbutton.flat,
   @include ink-color($on-surface);
 
   &:selected {
-    @extend %selected_items;
+    background-color: $overlay-selected;
   }
 }
 
@@ -3307,7 +3307,7 @@ row {
   }
 
   &:selected {
-    @extend %selected_items;
+    background-color: $overlay-selected;
 
     @include ink-color($primary);
 
@@ -3390,9 +3390,8 @@ calendar {
   }
 
   &:selected {
-    @extend %selected_items;
-
     border-radius: $corner-radius + 1px;
+    background-color: $overlay-selected;
   }
 
   &.header {
@@ -4126,10 +4125,6 @@ button.titlebutton {
 
 
 // catch all extend :)
-
-%selected_items {
-  background-color: $overlay-selected;
-}
 
 .monospace {
   font-family: monospace;
