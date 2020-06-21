@@ -220,24 +220,27 @@ $ripple-active-transition-duration: $duration, $ripple-fade-in-duration, 0ms, 0m
   $_undershoot_color_light: transparent;
 
   $_gradient_dir: left;
-  $_dash_bg_size: 12px 1px;
+  $_dash_bg_size: 12px 5px;
   $_gradient_repeat: repeat-x;
   $_bg_pos: left $side;
 
   @if $side == left or $side == right {
-    $_gradient_dir: top;
-    $_dash_bg_size: 1px 12px;
+    $_dash_bg_size: 5px 12px;
     $_gradient_repeat: repeat-y;
     $_bg_pos: $side top;
   }
 
+  @if $side == top    { $_gradient_dir: bottom; }
+  @if $side == bottom { $_gradient_dir: top; }
+
+  @if $side == left   { $_gradient_dir: right; }
+  @if $side == right  { $_gradient_dir: left; }
+
   background-color: transparent; // shouldn't be needed, but better to be sure
 
-  background-image: linear-gradient(to $_gradient_dir, // this is the dashed line
-                                    $_undershoot_color_light 50%,
-                                    $_undershoot_color_dark 50%);
+  background-image: linear-gradient(to $_gradient_dir, $_undershoot_color_dark 5%, $_undershoot_color_light);
 
-  padding-#{$side}: 1px;
+  padding-#{$side}: 0px;
   background-size: $_dash_bg_size;
   background-repeat: $_gradient_repeat;
   background-origin: content-box;
