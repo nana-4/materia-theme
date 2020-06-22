@@ -45,21 +45,21 @@ foreach theme: themes
     meson.current_source_dir(),
   )
 
-  # Generate and install CSS file
-  custom_target(
+  # Generate CSS file
+  cinnamon_css = custom_target(
     'cinnamon.@0@.css'.format(theme['name']),
     input: 'cinnamon.@0@.scss'.format(theme['name']),
     output: 'cinnamon.@0@.css'.format(theme['name']),
     command: [sassc, sassc_opts, '@INPUT@', '@OUTPUT@'],
     depend_files: cinnamon_scss_depend_files,
-    install: true,
-    install_dir: cinnamon_dir,
+    build_by_default: true,
   )
 
-  # Rename it to a valid name
+  # Install it while renaming to a valid name
   meson.add_install_script(
-    'mv',
-    join_paths(get_option('prefix'), cinnamon_dir, 'cinnamon.@0@.css'.format(theme['name'])),
-    join_paths(get_option('prefix'), cinnamon_dir, 'cinnamon.css'),
+    'sh', '-c', 'cp "@0@" "@1@"'.format(
+      cinnamon_css.full_path(),
+      join_paths('$MESON_INSTALL_DESTDIR_PREFIX', cinnamon_dir, 'cinnamon.css'),
+    ),
   )
 endforeach

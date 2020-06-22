@@ -121,21 +121,21 @@ foreach theme: themes
     meson.current_source_dir(),
   )
 
-  # Generate and install CSS file
-  custom_target(
+  # Generate CSS file
+  gnome_shell_css = custom_target(
     'gnome-shell.@0@.css'.format(theme['name']),
     input: 'gnome-shell.@0@.scss'.format(theme['name']),
     output: 'gnome-shell.@0@.css'.format(theme['name']),
     command: [sassc, sassc_opts, '@INPUT@', '@OUTPUT@'],
     depend_files: gnome_shell_scss_depend_files,
-    install: true,
-    install_dir: gnome_shell_dir,
+    build_by_default: true,
   )
 
-  # Rename it to a valid name
+  # Install it while renaming to a valid name
   meson.add_install_script(
-    'mv',
-    join_paths(get_option('prefix'), gnome_shell_dir, 'gnome-shell.@0@.css'.format(theme['name'])),
-    join_paths(get_option('prefix'), gnome_shell_dir, 'gnome-shell.css'),
+    'sh', '-c', 'cp "@0@" "@1@"'.format(
+      gnome_shell_css.full_path(),
+      join_paths('$MESON_INSTALL_DESTDIR_PREFIX', gnome_shell_dir, 'gnome-shell.css'),
+    ),
   )
 endforeach
