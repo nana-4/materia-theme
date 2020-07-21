@@ -33,11 +33,14 @@ if [[ -n "${RENDER_SVG}" ]]; then
                 --zoom ${ZOOM} \
                 "$SRC_FILE" "$ASSETS_DIR/$i.png"
 else
-  if "$INKSCAPE" --help | grep -e "--export-png" > /dev/null; then
-    EXPORT_FILE_OPTION="--export-png"
-  else
+  if "$INKSCAPE" --help | grep -e "--export-filename" > /dev/null; then
+    EXPORT_FILE_OPTION="--export-filename"
+  elif "$INKSCAPE" --help | grep -e "--export-file" > /dev/null; then
     EXPORT_FILE_OPTION="--export-file"
+  elif "$INKSCAPE" --help | grep -e "--export-png" > /dev/null; then
+    EXPORT_FILE_OPTION="--export-png"
   fi
+
   "$INKSCAPE" --export-id="$i" \
               --export-id-only \
               --export-dpi=${DPI} \

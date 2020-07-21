@@ -5,10 +5,12 @@ RENDER_SVG="$(command -v rendersvg)" || true
 INKSCAPE="$(command -v inkscape)" || true
 OPTIPNG="$(command -v optipng)" || true
 
-if "$INKSCAPE" --help | grep -e "--export-png" > /dev/null; then
-  EXPORT_FILE_OPTION="--export-png"
-else
+if "$INKSCAPE" --help | grep -e "--export-filename" > /dev/null; then
+  EXPORT_FILE_OPTION="--export-filename"
+elif "$INKSCAPE" --help | grep -e "--export-file" > /dev/null; then
   EXPORT_FILE_OPTION="--export-file"
+elif "$INKSCAPE" --help | grep -e "--export-png" > /dev/null; then
+  EXPORT_FILE_OPTION="--export-png"
 fi
 
 i="$1"
