@@ -263,7 +263,6 @@
     width: 28em;
 
     .modal-dialog-content-box {
-      text-align: center;
       margin-bottom: 24px;
     }
   }
@@ -304,7 +303,6 @@
     }
 
     .message-dialog-content {
-      text-align: center;
       spacing: 16px;
     }
 
@@ -328,10 +326,9 @@
 .prompt-dialog-info-label,
 .prompt-dialog-null-label {
   font-size: 1em;
+  text-align: center;
 
-  @if $version >= 3.36 {
-    text-align: inherit;
-  } @else {
+  @if $version < 3.36 {
     padding-bottom: 8px;
   }
 }
