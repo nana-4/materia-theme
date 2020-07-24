@@ -35,10 +35,10 @@
   }
 }
 
-
 /***************
  * Base States *
  ***************/
+
 .background {
   background-color: $background;
   color: $text;
@@ -86,7 +86,7 @@
   }
 
   &:selected:hover {
-    box-shadow: inset 0 0 0 9999px rgba($primary, 0.08);
+    box-shadow: inset 0 0 0 9999px rgba($primary, .08);
   }
 
   &:disabled {
@@ -130,7 +130,7 @@ iconview {
 .rubberband,
 rubberband {
   border: 1px solid on(dark, primary);
-  background-color: rgba(on(dark, primary), 0.3);
+  background-color: rgba(on(dark, primary), .3);
 }
 
 flowbox {
@@ -215,10 +215,10 @@ assistant {
   // opacity: .9;
 }
 
-
 /*********************
  * Spinner Animation *
  *********************/
+
 @keyframes spin {
   to {
     -gtk-icon-transform: rotate(1turn);
@@ -242,10 +242,10 @@ spinner {
   }
 }
 
-
 /****************
  * Text Entries *
  ****************/
+
 %entry,
 entry {
   min-height: $medium-size;
@@ -445,10 +445,10 @@ treeview entry {
   }
 }
 
-
 /***********
  * Buttons *
  ***********/
+
 // stuff for .needs-attention
 @keyframes needs-attention {
   from {
@@ -884,10 +884,10 @@ button.color {
   }
 }
 
-
 /*********
  * Links *
  *********/
+
 *:link {
   color: $primary;
 }
@@ -913,6 +913,7 @@ button.link {
 /*****************
  * GtkSpinButton *
  *****************/
+
 spinbutton {
   &:not(.vertical) {
     // in this horizontal configuration, the whole spinbutton
@@ -1023,10 +1024,10 @@ spinbutton {
   }
 }
 
-
 /**************
  * ComboBoxes *
  **************/
+
 combobox {
   arrow {
     -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
@@ -1156,10 +1157,10 @@ button.combo:only-child {
   }
 }
 
-
 /************
  * Toolbars *
  ************/
+
 toolbar {
   -GtkWidget-window-dragging: true;
   padding: 2px;
@@ -1279,10 +1280,10 @@ searchbar > revealer > box {
   padding: $container-padding;
 }
 
-
 /***************
  * Header bars *
  ***************/
+
 .titlebar {
   transition: background-color $duration $ease-out, color $duration $ease-out;
   border-radius: $corner-radius $corner-radius 0 0;
@@ -1368,10 +1369,12 @@ searchbar > revealer > box {
   @at-root %titlebar-button, & button:not(.suggested-action):not(.destructive-action) {
     @extend %button-flat;
 
-    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  $titlebar-indicator 0%,
-                                  transparent 0%)
-                                  0 0 0 / 0 0 0px;
+    border-image:
+      radial-gradient(
+        circle closest-corner at center calc(100% - 1px),
+        $titlebar-indicator 0%,
+        transparent 0%
+      ) 0 0 0 / 0 0 0;
 
     @include ink-color($titlebar-text2);
 
@@ -1381,10 +1384,12 @@ searchbar > revealer > box {
 
     @at-root %titlebar-button-checked,
     &:checked {
-      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                    $titlebar-indicator 100%,
-                                    transparent 0%)
-                                    0 0 2 / 0 0 2px;
+      border-image:
+        radial-gradient(
+          circle closest-corner at center calc(100% - 1px),
+          $titlebar-indicator 100%,
+          transparent 0%
+        ) 0 0 2 / 0 0 2px;
       background-color: transparent;
       color: $titlebar-text;
       @include ink-color($titlebar-text);
@@ -1432,9 +1437,9 @@ searchbar > revealer > box {
   }
 
   &.selection-mode {
-    // 0.1ms was a workaround for https://gitlab.gnome.org/GNOME/gtk/issues/698
+    // .1ms was a workaround for https://gitlab.gnome.org/GNOME/gtk/issues/698
     // but let's keep it for backwards compatibility.
-    transition: background-color 0.1ms $ripple-fade-in-duration, color $duration $ease-out;
+    transition: background-color .1ms $ripple-fade-in-duration, color $duration $ease-out;
     animation: ripple-on-headerbar $ripple-fade-in-duration $ease-out;
     box-shadow: $shadow-z1, inset 0 1px highlight($primary);
     background-color: $primary;
@@ -1449,10 +1454,12 @@ searchbar > revealer > box {
     }
 
     button:not(.suggested-action):not(.destructive-action) {
-      border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                    currentColor 0%,
-                                    transparent 0%)
-                                    0 0 0 / 0 0 0px;
+      border-image:
+        radial-gradient(
+          circle closest-corner at center calc(100% - 1px),
+          currentcolor 0%,
+          transparent 0%
+        ) 0 0 0 / 0 0 0;
       color: on($primary);
 
       &:disabled {
@@ -1460,10 +1467,12 @@ searchbar > revealer > box {
       }
 
       &:checked {
-        border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                      currentColor 100%,
-                                      transparent 0%)
-                                      0 0 2 / 0 0 2px;
+        border-image:
+          radial-gradient(
+            circle closest-corner at center calc(100% - 1px),
+            currentcolor 100%,
+            transparent 0%
+          ) 0 0 2 / 0 0 2px;
         color: on($primary);
 
         &:disabled {
@@ -1592,27 +1601,31 @@ headerbar {
 window.devel .titlebar:not(.selection-mode) {
 }
 
-
 /************
  * Pathbars *
  ************/
+
 %pathbar_button,
 .path-bar.linked:not(.vertical) > button {
   @extend %button-flat-basic;
 
   padding-left: ($medium-size - 24px) / 2;
   padding-right: ($medium-size - 24px) / 2;
-  border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                $primary 0%,
-                                transparent 0%)
-                                0 0 0 / 0 0 0px;
+  border-image:
+    radial-gradient(
+      circle closest-corner at center calc(100% - 1px),
+      $primary 0%,
+      transparent 0%
+    ) 0 0 0 / 0 0 0;
   border-radius: $corner-radius;
 
   &:checked {
-    border-image: radial-gradient(circle closest-corner at center calc(100% - 1px),
-                                  $primary 100%,
-                                  transparent 0%)
-                                  0 0 2 / 0 0 2px;
+    border-image:
+      radial-gradient(
+        circle closest-corner at center calc(100% - 1px),
+        $primary 100%,
+        transparent 0%
+      ) 0 0 2 / 0 0 2px;
     color: $text;
 
     &,
@@ -1641,10 +1654,10 @@ window.devel .titlebar:not(.selection-mode) {
   }
 }
 
-
 /**************
  * Tree Views *
  **************/
+
 treeview.view {
   @at-root * {
     -GtkTreeView-horizontal-separator: 4;
@@ -1786,10 +1799,10 @@ treeview.view {
   }
 }
 
-
 /*********
  * Menus *
  *********/
+
 menubar,
 .menubar {
   -GtkWidget-window-dragging: true;
@@ -1945,10 +1958,10 @@ menuitem {
   }
 }
 
-
 /************
  * Popovers *
  ************/
+
 popover.background {
   transition: $transition-shadow;
   padding: 2px;
@@ -1962,7 +1975,7 @@ popover.background {
   &, .csd & {
     border-style: solid;
     border-width: 1px;
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.3);
+    border-color: rgba(black, .1) rgba(black, .2) rgba(black, .3);
     border-radius: $corner-radius + 1px;
   }
 
@@ -2028,6 +2041,7 @@ popover.background {
 /*************
  * Notebooks *
  *************/
+
 notebook {
   frame > paned > & > header,
   &.frame > header {
@@ -2035,7 +2049,7 @@ notebook {
   }
 
   &:focus tab:checked {
-    box-shadow: inset 0 0 0 9999px rgba($primary, 0.12);
+    box-shadow: inset 0 0 0 9999px rgba($primary, .12);
   }
 
   > header {
@@ -2317,10 +2331,10 @@ notebook {
   }
 }
 
-
 /**************
  * Scrollbars *
  **************/
+
 scrollbar {
   $_slider_min_length: 24px;
 
@@ -2390,14 +2404,14 @@ scrollbar {
         min-width: 4px;
         min-height: 4px;
         margin: 4px - 1px;
-        border: 1px solid rgba($base, 0.3);
+        border: 1px solid rgba($base, .3);
       }
 
       button {
         min-width: 4px;
         min-height: 4px;
         margin: 4px - 1px;
-        border: 1px solid rgba($base, 0.3);
+        border: 1px solid rgba($base, .3);
         border-radius: $circular-radius;
         background-color: $text-disabled;
         background-clip: padding-box;
@@ -2431,7 +2445,7 @@ scrollbar {
 
     &.dragging,
     &.hovering {
-      background-color: rgba($surface, 0.9);
+      background-color: rgba($surface, .9);
     }
   }
 
@@ -2483,6 +2497,7 @@ scrollbar {
 /**********
  * Switch *
  **********/
+
 switch {
   transition: all $duration $ease-out;
   margin: $container-padding 0;
@@ -2494,11 +2509,11 @@ switch {
   font-size: 0;
 
   &:checked {
-    background-color: rgba($primary, 0.5);
+    background-color: rgba($primary, .5);
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: .5;
   }
 
   // hide on/off icons for >=3.24.5
@@ -2535,10 +2550,10 @@ switch {
   }
 }
 
-
 /*************************
  * Check and Radio items *
  *************************/
+
 // draw regular check and radio items using our PNG assets
 // all assets are rendered from assets.svg. never add pngs directly
 
@@ -2783,10 +2798,10 @@ treeview.view radio:checked {
   border-image: none;
 }
 
-
 /************
  * GtkScale *
  ************/
+
 scale {
   // sizing
   $_marks_length: 8px;
@@ -2888,8 +2903,9 @@ scale {
       &#{$class} {
         $_url: 'assets/scale-slider#{$suffix}#{$asset-suffix}';
 
-        background-image: -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png')),
-                          radial-gradient(circle, transparent 10%, transparent 0%);
+        background-image:
+          -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png')),
+          radial-gradient(circle, transparent 10%, transparent 0%);
       }
     }
 
@@ -2908,8 +2924,9 @@ scale {
                   background-size 0ms,
                   background-image 0ms;
       animation: ripple-on-slider $ripple-fade-in-duration $ease-out forwards;
-      background-image: -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png')),
-                        radial-gradient(circle, $overlay-active 10%, transparent 0%);
+      background-image:
+        -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png')),
+        radial-gradient(circle, $overlay-active 10%, transparent 0%);
       background-size: auto, 0% 0%;
     }
   }
@@ -3026,10 +3043,10 @@ scale {
   }
 }
 
-
 /*****************
  * Progress bars *
  *****************/
+
 progressbar {
   // sizing
   &.horizontal {
@@ -3078,10 +3095,10 @@ progressbar {
   }
 }
 
-
 /*************
  * Level Bar *
  *************/
+
 levelbar {
   &.horizontal {
     block {
@@ -3143,10 +3160,10 @@ levelbar {
   }
 }
 
-
 /****************
  * Print dialog *
 *****************/
+
 printdialog {
   paper {
     padding: 0;
@@ -3160,10 +3177,10 @@ printdialog {
   }
 }
 
-
 /**********
  * Frames *
  **********/
+
 frame > border,
 .frame {
   margin: 0;
@@ -3250,10 +3267,10 @@ separator {
   background-color: transparent;
 }
 
-
 /*********
  * Lists *
  *********/
+
 list {
   border-color: $divider;
   background-color: $base;
@@ -3283,10 +3300,10 @@ row {
   }
 }
 
-
 /*********************
  * App Notifications *
  *********************/
+
 .app-notification {
   // @extend %osd;
 
@@ -3308,10 +3325,10 @@ row {
   }
 }
 
-
 /*************
  * Expanders *
  *************/
+
 expander {
   title > arrow {
     transition: all $duration $ease-out;
@@ -3341,10 +3358,10 @@ expander {
   }
 }
 
-
 /************
  * Calendar *
  ************/
+
 calendar {
   padding: 1px;
   border: 1px solid $divider;
@@ -3389,10 +3406,10 @@ calendar {
   }
 }
 
-
 /***********
  * Dialogs *
  ***********/
+
 messagedialog { // Message Dialog styling
   &.background {
     background-color: $surface;
@@ -3473,10 +3490,10 @@ filechooserbutton:drop(active) {
   // box-shadow: none;
 }
 
-
 /***********
  * Sidebar *
  ***********/
+
 .sidebar {
   border-style: none;
   background-color: $base-alt;
@@ -3576,10 +3593,10 @@ separator.sidebar {
   }
 }
 
-
 /****************
  * File chooser *
  ****************/
+
 // dim the sidebar icons, see bug #786613 for details on this oddity
 row image.sidebar-icon {
   transition: color $duration $ease-out;
@@ -3671,7 +3688,7 @@ placesview {
     }
 
     &:checked > image {
-      -gtk-icon-transform: rotate(-0.5turn);
+      -gtk-icon-transform: rotate(-.5turn);
     }
   }
 
@@ -3682,10 +3699,10 @@ placesview {
   }
 }
 
-
 /*********
  * Paned *
  *********/
+
 paned {
   > separator {
     min-width: 1px;
@@ -3745,10 +3762,10 @@ paned {
   }
 }
 
-
 /**************
  * GtkInfoBar *
  **************/
+
 infobar {
   border-style: none;
 
@@ -3774,7 +3791,8 @@ infobar {
       @include ink-color(on($warning));
     }
 
-    selection {}
+    selection {
+    }
 
     *:link {
       color: on($warning);
@@ -3789,7 +3807,8 @@ infobar {
       @include ink-color(on($error));
     }
 
-    selection {}
+    selection {
+    }
 
     *:link {
       color: on($error);
@@ -3802,10 +3821,10 @@ infobar {
   }
 }
 
-
 /************
  * Tooltips *
  ************/
+
 tooltip {
   &.background {
     // background-color needs to be set this way otherwise it gets drawn twice
@@ -3845,10 +3864,10 @@ tooltip {
   }
 }
 
-
 /*****************
  * Color Chooser *
  *****************/
+
 colorswatch {
   // This widget is made of two boxes one on top of the other, the lower box is colorswatch {} the other one
   // is colorswatch overlay {}, colorswatch has the programmatically set background, so most of the style is
@@ -3860,8 +3879,8 @@ colorswatch {
   // nth-child is needed by the custom color strip.
 
   &.top {
-    border-top-left-radius: $corner-radius + 0.5px;
-    border-top-right-radius: $corner-radius + 0.5px;
+    border-top-left-radius: $corner-radius + .5px;
+    border-top-right-radius: $corner-radius + .5px;
 
     overlay {
       border-top-left-radius: $corner-radius;
@@ -3870,8 +3889,8 @@ colorswatch {
   }
 
   &.bottom {
-    border-bottom-left-radius: $corner-radius + 0.5px;
-    border-bottom-right-radius: $corner-radius + 0.5px;
+    border-bottom-left-radius: $corner-radius + .5px;
+    border-bottom-right-radius: $corner-radius + .5px;
 
     overlay {
       border-bottom-left-radius: $corner-radius;
@@ -3881,8 +3900,8 @@ colorswatch {
 
   &.left,
   &:first-child:not(.top) {
-    border-top-left-radius: $corner-radius + 0.5px;
-    border-bottom-left-radius: $corner-radius + 0.5px;
+    border-top-left-radius: $corner-radius + .5px;
+    border-bottom-left-radius: $corner-radius + .5px;
 
     overlay {
       border-top-left-radius: $corner-radius;
@@ -3892,8 +3911,8 @@ colorswatch {
 
   &.right,
   &:last-child:not(.bottom) {
-    border-top-right-radius: $corner-radius + 0.5px;
-    border-bottom-right-radius: $corner-radius + 0.5px;
+    border-top-right-radius: $corner-radius + .5px;
+    border-bottom-right-radius: $corner-radius + .5px;
 
     overlay {
       border-top-right-radius: $corner-radius;
@@ -3933,7 +3952,7 @@ colorswatch {
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: .5;
 
     overlay {
       box-shadow: none;
@@ -3944,7 +3963,7 @@ colorswatch {
   }
 
   &#editor-color-sample {
-    border-radius: $corner-radius + 0.5px;
+    border-radius: $corner-radius + .5px;
 
     overlay {
       border-radius: $corner-radius;
@@ -3968,10 +3987,10 @@ colorchooser .popover.osd {
   }
 }
 
-
 /********
  * Misc *
  ********/
+
 // content view (grid/list)
 .content-view {
   background-color: $background;
@@ -3998,10 +4017,10 @@ colorchooser .popover.osd {
   }
 }
 
-
 /**********************
  * Window Decorations *
  **********************/
+
 decoration {
   transition: $transition-shadow;
   border-radius: $corner-radius $corner-radius 0 0;
@@ -4036,7 +4055,7 @@ decoration {
 
   // server-side decorations as used by mutter
   .ssd & {
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16); // just doing borders, wm draws actual shadows
+    box-shadow: 0 3px 3px rgba(black, .16); // just doing borders, wm draws actual shadows
   }
 
   .csd.popup & {
@@ -4091,10 +4110,10 @@ button.titlebutton {
   font-family: monospace;
 }
 
-
 /**********************
  * Touch Copy & Paste *
  **********************/
+
 // touch selection handlebars for the Popover.osd above
 cursor-handle {
   color: $primary;
@@ -4154,10 +4173,10 @@ stackswitcher button.text-button.circular { // FIXME aggregate with buttons
   padding: 0;
 }
 
-
 /*************
  * App Icons *
  *************/
+
 // Outline for low res icons
 .lowres-icon {
   // -gtk-icon-shadow: none;
@@ -4168,10 +4187,10 @@ stackswitcher button.text-button.circular { // FIXME aggregate with buttons
   // -gtk-icon-shadow: none;
 }
 
-
 /*********
  * Emoji *
  *********/
+
 popover.emoji-picker {
   padding: 0;
 

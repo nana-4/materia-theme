@@ -1,6 +1,7 @@
 /************
  * Nautilus *
  ************/
+
 // based css:
 // https://gitlab.gnome.org/GNOME/nautilus/blob/master/src/resources/css/Adwaita.css
 // hard-coded css:
@@ -52,9 +53,14 @@
   margin: $container-padding 0;
   border-radius: $corner-radius;
 
-  button { margin: 0; } // reset the margin
+  // reset the margin
+  button {
+    margin: 0;
+  }
 
-  &.width-maximized { background-color: $titlebar-entry-fill; }
+  &.width-maximized {
+    background-color: $titlebar-entry-fill;
+  }
 
   // workaround for 3.30.1
   &.background.frame {
@@ -65,9 +71,13 @@
   // for 3.30
   .path-bar button {
     label:not(:only-child) {
-      &:first-child { margin-left: 0; }
+      &:first-child {
+        margin-left: 0;
+      }
 
-      &:last-child { margin-right: 0; }
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 
@@ -76,18 +86,28 @@
     padding-left: ($medium-size - 24px) / 2;
     padding-right: ($medium-size - 24px) / 2;
 
-    &.text-button { min-width: 0; }
-
-    label:not(:only-child) {
-      &:first-child { margin-left: 0; }
-
-      &:last-child { margin-right: 0; }
+    &.text-button {
+      min-width: 0;
     }
 
-    &.text-button.image-button image:not(:only-child) { margin: 0; }
+    label:not(:only-child) {
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &.text-button.image-button image:not(:only-child) {
+      margin: 0;
+    }
 
     &:last-child:dir(ltr),
-    &:first-child:dir(rtl) { @extend %titlebar-button-checked; }
+    &:first-child:dir(rtl) {
+      @extend %titlebar-button-checked;
+    }
   }
 }
 
@@ -99,15 +119,17 @@
   border-width: 1px;
   border-color: $divider;
   border-radius: ($corner-radius + 1px) ($corner-radius + 1px) 0 0;
-  background-color: rgba($surface, 0.9);
+  background-color: rgba($surface, .9);
 
-  &.bottom.left { // axes left border and border radius
+  // axes left border and border radius
+  &.bottom.left {
     margin-right: 8px - 1px;
     border-left-style: none;
     border-top-left-radius: 0;
   }
 
-  &.bottom.right { // axes right border and border radius
+  // axes right border and border radius
+  &.bottom.right {
     margin-left: 8px - 1px;
     border-right-style: none;
     border-top-right-radius: 0;
@@ -157,11 +179,15 @@
   @extend .entry-tag;
 }
 
-.conflict-row:not(:selected) { background-color: mix($warning, $base, percentage(0.3)); }
+.conflict-row:not(:selected) {
+  background-color: mix($warning, $base, percentage(.3));
+}
 
 // Icon view
 .nautilus-window flowboxchild {
-  // .icon-background { background-color: black; }
+  .icon-background {
+    // background-color: black;
+  }
 
   .icon-item-background {
     padding: 4px;
@@ -171,21 +197,29 @@
   &:selected {
     background-color: transparent;
 
-    .icon-item-background { @extend %selected_items; }
+    .icon-item-background {
+      @extend %selected_items;
+    }
   }
 }
 
 // Batch rename dialog
 dialog.background > box.dialog-vbox.vertical > grid.horizontal {
-  > scrolledwindow.frame { border-style: none; }
+  > scrolledwindow.frame {
+    border-style: none;
+  }
 
   > box.horizontal:last-child {
     margin: -6px 0 0 -6px;
     border-top: 1px solid $divider;
 
-    > label { margin: 0 8px; }
+    > label {
+      margin: 0 8px;
+    }
 
-    > box > button { border-radius: 0; }
+    > box > button {
+      border-radius: 0;
+    }
   }
 }
 
@@ -199,11 +233,15 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
     > box {
       margin-bottom: -6px;
 
-      &.linked { margin-top: 1px; }
+      &.linked {
+        margin-top: 1px;
+      }
     }
   }
 
-  separator { margin-bottom: -2px; }
+  separator {
+    margin-bottom: -2px;
+  }
 }
 
 .nautilus-menu-sort-heading {
@@ -213,19 +251,26 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
   margin: 1px 3px;
   font-weight: 500;
 
-  &:disabled { color: $text2; }
+  &:disabled {
+    color: $text2;
+  }
 }
 
 // Make operations button circular
-.nautilus-window headerbar revealer > button { border-radius: $circular-radius; }
+.nautilus-window headerbar revealer > button {
+  border-radius: $circular-radius;
+}
 
 // Ensure paned separator rendering. See issue #84 for details.
-.nautilus-window paned > separator { background-color: $base-alt; }
+.nautilus-window paned > separator {
+  background-color: $base-alt;
+}
 
 
 /*********
  * gedit *
  *********/
+
 // based css:
 // https://gitlab.gnome.org/GNOME/gedit/blob/master/gedit/resources/css/gedit.adwaita.css
 // hard-coded css:
@@ -286,26 +331,38 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
       margin-right: -$buttons_width;
       padding-right: $buttons_width;
 
-      .gedit-search-entry-occurrences-tag { margin-left: $container-padding; }
+      .gedit-search-entry-occurrences-tag {
+        margin-left: $container-padding;
+      }
 
-      image.right { margin-right: 0; }
+      image.right {
+        margin-right: 0;
+      }
     }
 
     &:dir(rtl) {
       margin-left: -$buttons_width;
       padding-left: $buttons_width;
 
-      .gedit-search-entry-occurrences-tag { margin-right: $container-padding; }
+      .gedit-search-entry-occurrences-tag {
+        margin-right: $container-padding;
+      }
 
-      image.left { margin-left: 0; }
+      image.left {
+        margin-left: 0;
+      }
     }
 
-    &:not(.error) { background-color: $surface; }
+    &:not(.error) {
+      background-color: $surface;
+    }
 
     &.error ~ button {
       @include ink-color(on($error, text2));
 
-      &:disabled { color: on($error, text2-disabled); }
+      &:disabled {
+        color: on($error, text2-disabled);
+      }
     }
   }
 
@@ -317,22 +374,31 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
     @extend %button-small;
 
     &:last-child:dir(ltr),
-    &:not(:first-child):dir(rtl) { margin-left: -$container-padding / 2; }
+    &:not(:first-child):dir(rtl) {
+      margin-left: -$container-padding / 2;
+    }
 
     &:first-child:dir(rtl),
-    &:not(:last-child):dir(ltr) { margin-right: -$container-padding / 2; }
+    &:not(:last-child):dir(ltr) {
+      margin-right: -$container-padding / 2;
+    }
   }
 }
 
 frame.gedit-map-frame > border {
-  &:dir(ltr) { border-style: none none none solid; }
-  &:dir(rtl) { border-style: none solid none none; }
-}
+  &:dir(ltr) {
+    border-style: none none none solid;
+  }
 
+  &:dir(rtl) {
+    border-style: none solid none none;
+  }
+}
 
 /**********
  * Tweaks *
  **********/
+
 // hard-coded css:
 // https://gitlab.gnome.org/GNOME/gnome-tweaks/blob/master/data/shell.css
 
@@ -342,14 +408,18 @@ frame.gedit-map-frame > border {
   // background-color: shade(@theme_bg_color, 0.99);
   background-image: image($base-alt);
 
-  separator { @extend %hide_separators; }
+  separator {
+    @extend %hide_separators;
+  }
 }
 
 .tweak {
   // padding-top: 3px;
   padding: 3px;
 
-  &.title:hover { box-shadow: none; }
+  &.title:hover {
+    box-shadow: none;
+  }
 }
 
 .tweak-group-white,
@@ -384,9 +454,13 @@ row#workspaces-only-on-primary {
   padding: 0;
   border: 1px solid $divider;
 
-  row:not(:last-child) { border-bottom: 1px solid $divider; }
+  row:not(:last-child) {
+    border-bottom: 1px solid $divider;
+  }
 
-  &.tweak > list { margin-top: -3px; }
+  &.tweak > list {
+    margin-top: -3px;
+  }
 }
 
 // Add more spaces between title and list
@@ -413,10 +487,10 @@ hdyleaflet.titlebar > .titlebar.tweak-titlebar-right {
   }
 }
 
-
 /***********
  * Builder *
  ***********/
+
 // based css for 3.22:
 // https://gitlab.gnome.org/GNOME/gnome-builder/tree/gnome-builder-3-22/data/theme
 // based css for 3.24:
@@ -430,7 +504,9 @@ layouttabbar {
   border-bottom: 1px solid $divider;
   background-color: $background;
 
-  button { @extend %button-flat-activatable; }
+  button {
+    @extend %button-flat-activatable;
+  }
 
   > box > button {
     margin: (40px - $medium-size) / 2 0;
@@ -446,10 +522,14 @@ layouttab {
   box-shadow: inset 0 -2px $primary;
   background-color: $base;
 
-  separator.vertical { margin: 8px 4px; }
+  separator.vertical {
+    margin: 8px 4px;
+  }
 
   button {
-    &.text-button, &.image-button, & {
+    &,
+    &.text-button,
+    &.image-button {
       margin-top: 8px;
       margin-bottom: 8px;
       padding: 0 4px;
@@ -457,7 +537,9 @@ layouttab {
   }
 
   // Close button styling for layouttab.
-  // > box > button.close { border-radius: $circular-radius; }
+  > box > button.close {
+    // border-radius: $circular-radius;
+  }
 }
 
 layout {
@@ -482,21 +564,35 @@ popover.popover-selector list {
     border-radius: $corner-radius;
 
     image {
-      &:dir(ltr) { margin-right: 6px; }
-      &:dir(rtl) { margin-left: 6px; }
+      &:dir(ltr) {
+        margin-right: 6px;
+      }
+
+      &:dir(rtl) {
+        margin-left: 6px;
+      }
     }
 
     .accel {
-      &:dir(ltr) { margin-left: 6px; }
-      &:dir(rtl) { margin-right: 6px; }
+      &:dir(ltr) {
+        margin-left: 6px;
+      }
+
+      &:dir(rtl) {
+        margin-right: 6px;
+      }
     }
   }
 }
 
 omnibar {
-  &.linked:not(.vertical) entry { border-radius: $corner-radius; }
+  &.linked:not(.vertical) entry {
+    border-radius: $corner-radius;
+  }
 
-  entry { color: $text2; }
+  entry {
+    color: $text2;
+  }
 }
 
 popover.omnibar list row:not(:last-child) {
@@ -509,26 +605,46 @@ entry.preferences-search {
   background-color: $base;
 
   // doesn't work properly
-  // &:dir(ltr) { border-right: 1px solid $divider; }
-  // &:dir(rtl) { border-left: 1px solid $divider; }
+  &:dir(ltr) {
+    // border-right: 1px solid $divider;
+  }
+
+  &:dir(rtl) {
+    // border-left: 1px solid $divider;
+  }
 }
 
 preferences stacksidebar.sidebar {
-  list { background-color: $base-alt; }
+  list {
+    background-color: $base-alt;
+  }
 
   &:dir(ltr),
-  &:dir(rtl) { list { border-style: none; }}
+  &:dir(rtl) {
+    list {
+      border-style: none;
+    }
+  }
 
-  list separator { @extend %hide_separators; }
+  list separator {
+    @extend %hide_separators;
+  }
 }
 
 preferences > box > box {
-  &:dir(ltr) { border-right: 1px solid $divider; }
-  &:dir(rtl) { border-left: 1px solid $divider; }
+  &:dir(ltr) {
+    border-right: 1px solid $divider;
+  }
+
+  &:dir(rtl) {
+    border-left: 1px solid $divider;
+  }
 }
 
 popover.messagepopover {
-  &.background { padding: 0; }
+  &.background {
+    padding: 0;
+  }
 
   .popover-action-area button {
     @extend %button-flat-basic;
@@ -537,20 +653,30 @@ popover.messagepopover {
     border-top: 1px solid $divider;
     border-radius: 0;
 
-    &:first-child { border-bottom-left-radius: $corner-radius; }
+    &:first-child {
+      border-bottom-left-radius: $corner-radius;
+    }
 
-    &:last-child { border-bottom-right-radius: $corner-radius; }
+    &:last-child {
+      border-bottom-right-radius: $corner-radius;
+    }
   }
 
-  .popover-content-area { margin: 16px; }
+  .popover-content-area {
+    margin: 16px;
+  }
 }
 
 popover.transfers list {
   background-color: transparent;
 
-  row:not(:first-child) { border-top: 1px solid $divider; }
+  row:not(:first-child) {
+    border-top: 1px solid $divider;
+  }
 
-  row > box { padding: 10px; }
+  row > box {
+    padding: 10px;
+  }
 }
 
 dockbin {
@@ -619,9 +745,13 @@ dockoverlayedge {
     border: none;
   }
 
-  &.left-edge docktab:checked { box-shadow: inset -2px 0 $primary; }
+  &.left-edge docktab:checked {
+    box-shadow: inset -2px 0 $primary;
+  }
 
-  &.right-edge docktab:checked { box-shadow: inset 2px 0 $primary; }
+  &.right-edge docktab:checked {
+    box-shadow: inset 2px 0 $primary;
+  }
 }
 
 pillbox {
@@ -685,20 +815,26 @@ button.run-arrow-button {
 button.dzlmenubutton image {
   min-width: $medium-size - 6px;
 
-  &.arrow { min-width: $medium-size - 9px; }
+  &.arrow {
+    min-width: $medium-size - 9px;
+  }
 }
 
 button.dzlmenubuttonitem {
   color: $text;
   font-weight: normal;
 
-  &:disabled { color: $text-disabled; }
+  &:disabled {
+    color: $text-disabled;
+  }
 }
 
 idelayoutstackheader {
   border-bottom: 1px solid $divider;
 
-  button:checked { color: $text; }
+  button:checked {
+    color: $text;
+  }
 }
 
 // utilities stack switcher
@@ -706,9 +842,13 @@ ideeditorutilities > dzldockpaned > box > stackswitcher {
   padding: 8px 0;
   background-color: $background;
 
-  &:dir(ltr) { border-right: 1px solid $divider; }
+  &:dir(ltr) {
+    border-right: 1px solid $divider;
+  }
 
-  &:dir(rtl) { border-left: 1px solid $divider; }
+  &:dir(rtl) {
+    border-left: 1px solid $divider;
+  }
 
   button {
     border-radius: 0;
@@ -716,7 +856,7 @@ ideeditorutilities > dzldockpaned > box > stackswitcher {
     background-color: transparent;
 
     &:active {
-      background-image: radial-gradient(circle, rgba($primary, 0.7) 10%, transparent 0%);
+      background-image: radial-gradient(circle, rgba($primary, .7) 10%, transparent 0%);
     }
 
     &:checked {
@@ -727,13 +867,17 @@ ideeditorutilities > dzldockpaned > box > stackswitcher {
     &:dir(ltr) {
       margin-right: -1px;
 
-      &:checked { box-shadow: inset -2px 0 $primary; }
+      &:checked {
+        box-shadow: inset -2px 0 $primary;
+      }
     }
 
     &:dir(rtl) {
       margin-left: -1px;
 
-      &:checked { box-shadow: inset 2px 0 $primary; }
+      &:checked {
+        box-shadow: inset 2px 0 $primary;
+      }
     }
   }
 }
@@ -749,13 +893,17 @@ popover.messagepopover {
   list {
     border: 1px solid $divider;
 
-    row:not(:last-child) { border-bottom: 1px solid $divider; }
+    row:not(:last-child) {
+      border-bottom: 1px solid $divider;
+    }
   }
 }
 
 // Workaround for hard-coded .title color
 dzlsuggestionpopover > revealer > box > elastic > scrolledwindow > viewport > list > row:selected {
-  // .title { color: @theme_selected_fg_color; }
+  .title {
+    // color: @theme_selected_fg_color;
+  }
 
   background-color: $primary;
   color: on($primary);
@@ -776,8 +924,9 @@ dzlsuggestionpopover > revealer > box > elastic > scrolledwindow > viewport > li
 
   // For some reason background-image doesn't work well with transition :(
   image {
-    transition: box-shadow $duration $ease-out,
-                background-color $ripple-fade-in-duration $ease-out;
+    transition:
+      box-shadow $duration $ease-out,
+      background-color $ripple-fade-in-duration $ease-out;
     min-width: $medium-size;
     min-height: $medium-size;
     border-radius: $circular-radius;
@@ -797,10 +946,10 @@ dzlsuggestionpopover > revealer > box > elastic > scrolledwindow > viewport > li
   }
 }
 
-
 /**********
  * Photos *
  **********/
+
 // based css:
 // https://gitlab.gnome.org/GNOME/gnome-photos/blob/master/data/Adwaita.css
 
@@ -809,7 +958,9 @@ GdMainIconView.content-view {
 
   // Make spinner visible on both dark and bright backgrounds w/o making
   // it look ugly/weird.
-  // &.cell:active { color: $text-disabled; }
+  &.cell:active {
+    // color: $text-disabled;
+  }
 }
 
 .documents-counter {
@@ -828,7 +979,9 @@ GdMainIconView.content-view {
 .documents-scrolledwin.frame {
   border-style: none;
 
-  frame.content-view > border { border-style: none; }
+  frame.content-view > border {
+    border-style: none;
+  }
 }
 
 .photos-icon-bg {
@@ -863,14 +1016,19 @@ button.photos-filter-preview {
 }
 
 overlay grid.horizontal > revealer > scrolledwindow.frame {
-  &:dir(ltr) { border-style: none none none solid; }
-  &:dir(rtl) { border-style: none solid none none; }
-}
+  &:dir(ltr) {
+    border-style: none none none solid;
+  }
 
+  &:dir(rtl) {
+    border-style: none solid none none;
+  }
+}
 
 /*********
  * Music *
  *********/
+
 // hard-coded css:
 // https://gitlab.gnome.org/GNOME/gnome-music/blob/master/data/application.css
 
@@ -890,21 +1048,27 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
   // background-color: mix(@theme_fg_color, @theme_bg_color, 0.9);
   background-image: image($base-alt);
 
-  &:hover { background-image: image(mix($text, $base-alt, percentage(0.08))); }
+  &:hover {
+    background-image: image(mix($text, $base-alt, percentage(.08)));
+  }
 }
 
 .side-panel .view:selected {
   // background-color: mix(@theme_fg_color, @theme_bg_color, 0.5);
   background-image: image($primary);
 
-  &:hover { background-image: image(mix(on($primary), $primary, percentage(0.08))); }
+  &:hover {
+    background-image: image(mix(on($primary), $primary, percentage(.08)));
+  }
 }
 
 .songs-list {
   // box-shadow: inset 0 -1px shade(@borders, 1.30);
   // background-color: @theme_bg_color;
 
-  &:hover { background-image: image($overlay-hover); }
+  &:hover {
+    background-image: image($overlay-hover);
+  }
 }
 
 frame.documents-dropdown {
@@ -912,7 +1076,9 @@ frame.documents-dropdown {
 
   margin: 8px;
 
-  > border { border: none; }
+  > border {
+    border: none;
+  }
 }
 
 box.vertical > revealer > toolbar.search-bar {
@@ -925,10 +1091,10 @@ box.vertical > revealer > toolbar.search-bar {
   }
 }
 
-
 /************
  * Terminal *
  ************/
+
 terminal-window notebook > header > box {
   // Remove hard-coded margin around button(s)
   margin: -2px -2px -3px;
@@ -939,27 +1105,35 @@ terminal-window notebook > header > box {
   }
 }
 
-
 /*********
  * To Do *
  *********/
+
 // less than 3.28
 task-list-view {
   taskrow {
     transition: $transition;
     margin: 0 -8px;
 
-    &:hover { transition: none; }
+    &:hover {
+      transition: none;
+    }
 
-    label { margin: 0 8px; }
+    label {
+      margin: 0 8px;
+    }
 
-    image.dim-label { min-width: 16px; }
+    image.dim-label {
+      min-width: 16px;
+    }
   }
 
   > box > revealer > box > button {
     margin: (12px * 2 - $medium-size) / 2;
 
-    .dim-label { color: inherit; }
+    .dim-label {
+      color: inherit;
+    }
   }
 }
 
@@ -969,53 +1143,73 @@ tasklistview {
     outline: none;
 
     entry {
-      &, &:focus, &:disabled { box-shadow: none; }
+      &,
+      &:focus,
+      &:disabled {
+        box-shadow: none;
+      }
     }
 
-    image.dim-label { min-width: 16px; }
+    image.dim-label {
+      min-width: 16px;
+    }
   }
 
   > box > revealer > box > button {
     margin: (12px * 2 - $medium-size) / 2;
 
-    .dim-label { color: inherit; }
+    .dim-label {
+      color: inherit;
+    }
   }
 }
-
 
 /*******
  * eog *
  *******/
-#eog-thumb-nav {
-  scrolledwindow { border-top: none; }
-}
 
+#eog-thumb-nav {
+  scrolledwindow.frame {
+    border-top: none;
+  }
+}
 
 /*************
  * Evolution *
  *************/
-frame.taskbar > border { border-style: solid none none; }
 
-box.vertical > paned.horizontal notebook widget .frame { border-style: none; }
+frame.taskbar > border {
+  border-style: solid none none;
+}
 
+box.vertical > paned.horizontal notebook widget .frame {
+  border-style: none;
+}
 
 /********
  * gitg *
  ********/
-frame.commit-frame > border { border-style: solid none none; }
 
+frame.commit-frame > border {
+  border-style: solid none none;
+}
 
 /**************
  * Characters *
  **************/
-box.dialog-vbox scrolledwindow.related { border: 1px solid $divider; }
 
-list.categories { background-image: image($base-alt); }
+box.dialog-vbox scrolledwindow.related {
+  border: 1px solid $divider;
+}
 
+list.categories {
+  background-image: image($base-alt);
+}
 
 /*********
  * Boxes *
  *********/
+
 .transparent-bg + stack overlay > label {
   min-height: 24px;
   padding: 0 4px;
@@ -1024,10 +1218,10 @@ list.categories { background-image: image($base-alt); }
   color: on($scrim);
 }
 
-
 /**********
  * Evince *
  **********/
+
 // Color is needed for Evince to match hardcoded background-color,
 // since Documents app is also uses this style, background-color needs to be set accordingly.
 evview.content-view.view:selected {
@@ -1035,10 +1229,10 @@ evview.content-view.view:selected {
   color: on($primary);
 }
 
-
 /**********
  * Polari *
  **********/
+
 // hard-coded css:
 // https://gitlab.gnome.org/GNOME/polari/blob/master/data/resources/application.css
 
@@ -1048,10 +1242,10 @@ evview.content-view.view:selected {
   background-color: rgba($primary, .5);
 }
 
-
 /***********
  * Fractal *
  ***********/
+
 .message-input-area button {
   @extend %button-flat-activatable;
 }

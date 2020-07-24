@@ -1,6 +1,7 @@
 /********
  * Nemo *
  ********/
+
 // based css:
 // https://github.com/linuxmint/nemo/blob/master/gresources/nemo-style-fallback-mandatory.css
 // https://github.com/linuxmint/nemo/blob/master/gresources/nemo-style-fallback.css
@@ -32,7 +33,9 @@
   scrolledwindow.frame {
     border-style: none;
 
-    .view:not(:selected) { background-color: transparent; }
+    .view:not(:selected) {
+      background-color: transparent;
+    }
   }
 
   infobar {
@@ -41,17 +44,23 @@
   }
 
   // Inactive F3 pane shading
-  .nemo-inactive-pane .view:not(:selected) { background-color: $base-alt; }
+  .nemo-inactive-pane .view:not(:selected) {
+    background-color: $base-alt;
+  }
 
-  // Rename box styling in the icon view.
+  // Rename entry styling in the icon view.
   .nemo-window-pane widget.entry {
     border-radius: $corner-radius;
     background-color: $entry-fill;
 
-    &:selected { @extend %selected_items; }
+    &:selected {
+      @extend %selected_items;
+    }
   }
 
-  .toolbar button { @extend %button-flat-activatable; }
+  .toolbar button {
+    @extend %button-flat-activatable;
+  }
 }
 
 // For Places Sidebar diskfull indicators

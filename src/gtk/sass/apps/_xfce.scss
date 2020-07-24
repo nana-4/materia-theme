@@ -4,14 +4,15 @@
 /**************
  * Xfce4 Apps *
  **************/
+
 .XfceHeading {
   background-color: $base;
 }
 
-
 /***************
  * xfce4-panel *
  ***************/
+
 .xfce4-panel.background {
   border: none; // Sadly the border is hard-coded
   background-color: $panel;
@@ -26,43 +27,67 @@
 
     @include ink-color(on($panel, text2));
 
-    &:disabled { color: on($panel, text2-disabled); }
+    &:disabled {
+      color: on($panel, text2-disabled);
+    }
 
     &:checked {
       color: on(dark);
 
-      &:disabled { color: on(dark, text-disabled); }
+      &:disabled {
+        color: on(dark, text-disabled);
+      }
     }
   }
 
   .tasklist button {
     border-image: image(transparent) 0 0 2 / 0 0 2px;
 
-    &:checked { border-image: image(currentColor) 0 0 2 / 0 0 2px; }
+    &:checked {
+      border-image: image(currentcolor) 0 0 2 / 0 0 2px;
+    }
 
-    image { padding: 4px; }
+    image {
+      padding: 4px;
+    }
   }
 
-  // &.horizontal .tasklist button { margin: 0 1px; }
+  &.horizontal .tasklist button {
+    // margin: 0 1px;
+  }
 
-  // &.vertical .tasklist button { margin: 1px 0; }
+  &.vertical .tasklist button {
+    // margin: 1px 0;
+  }
 
-  frame > border { border-style: none; }
+  frame > border {
+    border-style: none;
+  }
 
   progressbar {
-    progress { background-color: on($panel, primary); }
+    progress {
+      background-color: on($panel, primary);
+    }
 
-    trough { background-color: on($panel, stroke-disabled); }
+    trough {
+      background-color: on($panel, stroke-disabled);
+    }
   }
 }
 
 // Workspace switcher provided by libwnck
 wnck-pager {
-  &:hover { background-color: $overlay-hover; }
+  &:hover {
+    background-color: $overlay-hover;
+  }
 
-  &:active { background-color: $overlay-active; }
+  &:active {
+    background-color: $overlay-active;
+  }
 
-  &:selected { background-color: $primary; }
+  &:selected {
+    background-color: $primary;
+  }
 }
 
 XfdesktopIconView.view {
@@ -78,7 +103,9 @@ XfdesktopIconView.view {
     box-shadow: none;
   }
 
-  // .label { text-shadow: $text-shadow; }
+  .label {
+    // text-shadow: $text-shadow;
+  }
 
   .rubberband {
     @extend rubberband;
@@ -92,12 +119,16 @@ XfdesktopIconView.view {
   box-shadow: $shadow-z4, inset 0 1px highlight($surface);
   background-color: $surface;
 
-  buttonbox button:not(:disabled) { @include ink-color($primary); }
+  buttonbox button:not(:disabled) {
+    @include ink-color($primary);
+  }
 
   label#summary {
     font-weight: bold;
 
-    + label { color: $text2; }
+    + label {
+      color: $text2;
+    }
   }
 
   progressbar {
@@ -122,10 +153,10 @@ XfdesktopIconView.view {
   }
 }
 
-
 /**********
  * Thunar *
  **********/
+
 .thunar {
   #location-toolbar {
     border-bottom: 1px solid $divider;
@@ -139,9 +170,13 @@ XfdesktopIconView.view {
   }
 
   .shortcuts-pane.frame,
-  .standard-view.frame { border-style: none; }
+  .standard-view.frame {
+    border-style: none;
+  }
 
-  .sidebar .view:not(:selected) { background-color: transparent; }
+  .sidebar .view:not(:selected) {
+    background-color: transparent;
+  }
 
   statusbar {
     margin: 0 -10px;

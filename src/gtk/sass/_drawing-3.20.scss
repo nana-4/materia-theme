@@ -42,7 +42,7 @@
         circle closest-corner at center calc(100% - 1px),
         $fc 0%,
         transparent 0%
-      ) 2 / 0 0 0px;
+      ) 2 / 0 0 0;
     box-shadow: inset 0 0 0 9999px transparent, inset 0 -1px if($fc == $primary, $stroke, $fc);
     background-color: $entry-fill;
     color: $text;
@@ -194,11 +194,14 @@ $ripple-active-transition-duration: $duration, $ripple-fade-in-duration, 0ms, 0m
     $_position: $side center;
   }
 
-  background-image: -gtk-gradient(radial,
-                                  $_position, 0,
-                                  $_position, 0.75,
-                                  to(rgba($primary, 0.24)),
-                                  to(transparent));
+  background-image:
+    -gtk-gradient(
+      radial,
+      $_position, 0,
+      $_position, .75,
+      to(rgba($primary, .24)),
+      to(transparent)
+    );
 
   background-repeat: no-repeat;
   background-position: $_position;

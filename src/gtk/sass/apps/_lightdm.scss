@@ -4,6 +4,7 @@
 /************************
  * LightDM GTK+ Greeter *
  ************************/
+
 // the panel widget at the top
 #panel_window {
   background-color: $scrim-alt;
@@ -12,20 +13,28 @@
 
   // the menubars/menus of the panel, i.e. indicators
   menubar,
-  separator { background-color: transparent; }
+  separator {
+    background-color: transparent;
+  }
 
   separator {
     padding: 0 4px;
 
-    &:first-child { padding: 0 8px; }
+    &:first-child {
+      padding: 0 8px;
+    }
   }
 
   menubar > menuitem {
     color: on($scrim-alt, text2);
 
-    &:hover { color: on($scrim-alt); }
+    &:hover {
+      color: on($scrim-alt);
+    }
 
-    &:disabled { color: on($scrim-alt, text2-disabled); }
+    &:disabled {
+      color: on($scrim-alt, text2-disabled);
+    }
   }
 }
 
@@ -46,10 +55,12 @@
 
 #login_window {
   // the user-combobox
-  #user_combobox button {}
+  #user_combobox button {
+  }
 
   // the entries, one for the username, one for the password
-  entry {}
+  entry {
+  }
 }
 
 // the buttons, alternatively this could also be done with a simple ".lightdm-gtk-greeter button"
@@ -74,12 +85,16 @@
   padding-top: 24px;
 
   > box,
-  > buttonbox { margin: -16px; }
+  > buttonbox {
+    margin: -16px;
+  }
 
   button {
     @extend %button-flat;
 
-    &:not(:disabled) { @include ink-color($primary); }
+    &:not(:disabled) {
+      @include ink-color($primary);
+    }
   }
 }
 
