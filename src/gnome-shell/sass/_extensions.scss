@@ -98,7 +98,6 @@
   background-color: $scrim;
 }
 
-
 /* GPaste */
 
 .popup-menu {
@@ -108,17 +107,24 @@
     selected-color: $on-surface;
     @include entry(normal);
 
-    &:hover { @include entry(hover); }
+    &:hover {
+      @include entry(hover);
+    }
 
     &:focus {
       @include entry(focus);
       color: $on-surface;
     }
 
-    .search-entry-icon { color: hint($on-surface); }
+    .search-entry-icon {
+      color: hint($on-surface);
+    }
 
-    &:hover, &:focus {
-      .search-entry-icon { color: $on-surface; }
+    &:hover,
+    &:focus {
+      .search-entry-icon {
+        color: $on-surface;
+      }
     }
   }
 }
