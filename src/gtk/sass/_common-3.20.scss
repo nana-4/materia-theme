@@ -485,7 +485,7 @@ button {
   font-weight: 500;
 
   @extend %ripple;
-  @include raised-ink-color($text);
+  @include ink-color($text, $elevation: true);
 
   &:disabled {
     box-shadow: none;
@@ -496,7 +496,7 @@ button {
   &:checked {
     background-color: overlay("activated", $primary, $background: $surface);
     color: $primary;
-    @include raised-ink-color($primary);
+    @include ink-color($primary, $elevation: true);
 
     &:disabled {
       box-shadow: none;
@@ -557,7 +557,8 @@ button {
 
 %button-flat-basic {
   background-color: transparent;
-  @include ink-color($text2);
+  color: $text2;
+  @include ink-color($text);
 
   &:disabled {
     background-color: transparent;
@@ -640,7 +641,7 @@ button {
     &#{$class} {
       background-color: $color;
       color: on($color);
-      @include raised-ink-color(on($color));
+      @include ink-color(on($color), $elevation: true);
 
       &:disabled {
         box-shadow: none;
@@ -654,6 +655,7 @@ button {
 
       &.flat {
         background-color: transparent;
+        color: $color;
         @include ink-color($color);
 
         &:disabled {
@@ -854,7 +856,7 @@ modelbutton.flat,
   border-radius: $corner-radius;
 
   @extend %ripple;
-  @include ink-color($text, $fg: false);
+  @include ink-color($text);
 
   &:selected {
     @extend %selected_items;
@@ -898,10 +900,12 @@ button.color {
 
 button.link {
   &:link {
+    color: $primary;
     @include ink-color($primary);
   }
 
   &:visited {
+    color: $visited;
     @include ink-color($visited);
   }
 
@@ -1376,6 +1380,7 @@ searchbar > revealer > box {
         transparent 0%
       ) 0 0 0 / 0 0 0;
 
+    color: $titlebar-text2;
     @include ink-color($titlebar-text2);
 
     &:disabled {
@@ -2614,12 +2619,13 @@ radio {
   margin: -($check-radio-size - 24px) / 2;
   padding: ($check-radio-size - 24px) / 2;
   border-radius: $circular-radius;
-
+  color: $text2;
   @extend %ripple;
   @include ink-color($text2);
 
   &:checked,
   &:indeterminate {
+    color: $primary;
     @include ink-color($primary);
   }
 
@@ -3290,7 +3296,7 @@ list {
 row {
   &.activatable {
     @extend %ripple;
-    @include ink-color($text, $fg: false);
+    @include ink-color($text);
     @include list-item;
 
     // this is for indicathing which row generated a popover
@@ -3303,7 +3309,7 @@ row {
   &:selected {
     @extend %selected_items;
 
-    @include ink-color($primary, $fg: false);
+    @include ink-color($primary);
 
     &.has-open-popup {
       background-color: overlay("activated", $primary, $background: $overlay-selected);
@@ -3326,6 +3332,7 @@ row {
     @extend %button-flat;
 
     &.text-button:not(:disabled) {
+      color: $primary;
       @include ink-color($primary);
     }
   }
@@ -3576,8 +3583,10 @@ stacksidebar.sidebar {
     border-radius: $corner-radius;
 
     &:selected {
+      background-color: overlay("activated", $primary);
+      color: $primary;
       font-weight: 500;
-      @include ink-color($primary, $activated: true);
+      @include ink-color($primary);
     }
 
     + row {
@@ -3641,8 +3650,10 @@ placessidebar.sidebar {
     }
 
     &:selected {
+      background-color: overlay("activated", $primary);
+      color: $primary;
       font-weight: 500;
-      @include ink-color($primary, $activated: true);
+      @include ink-color($primary);
 
       image.sidebar-icon {
         color: $primary;
@@ -3789,6 +3800,7 @@ infobar {
       @extend %button-flat;
 
       &.text-button:not(:disabled) {
+        color: $primary;
         @include ink-color($primary);
       }
     }
@@ -3799,6 +3811,7 @@ infobar {
     color: on($warning);
 
     button.flat {
+      color: on($warning);
       @include ink-color(on($warning));
     }
 
@@ -3815,6 +3828,7 @@ infobar {
     color: on($error);
 
     button.flat {
+      color: on($error);
       @include ink-color(on($error));
     }
 
@@ -4222,8 +4236,9 @@ button.emoji-section {
   margin: 4px;
 
   &:checked {
-    // background-color: transparent;
-    @include ink-color($primary, $activated: true);
+    background-color: overlay("activated", $primary);
+    color: $primary;
+    @include ink-color($primary);
   }
 
   &:not(:last-child) {

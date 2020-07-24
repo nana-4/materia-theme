@@ -32,10 +32,12 @@
     }
 
     &:checked {
-      color: on(dark);
+      background-color: overlay("activated", on($panel));
+      color: on($panel);
+      @include ink-color(on($panel));
 
       &:disabled {
-        color: on(dark, text-disabled);
+        color: on($panel, text-disabled);
       }
     }
   }
