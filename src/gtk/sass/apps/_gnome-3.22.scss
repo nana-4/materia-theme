@@ -30,7 +30,7 @@
 
 @keyframes nautilus-operations-button-needs-attention {
   to {
-    background-color: $overlay-focus;
+    background-color: overlay("focus", $titlebar-text);
   }
 }
 
@@ -722,7 +722,7 @@ docktab {
   font-weight: 500;
 
   &:hover {
-    background-color: $overlay-hover;
+    background-color: overlay("hover", $text);
   }
 
   &:checked {
@@ -934,15 +934,15 @@ dzlsuggestionpopover > revealer > box > elastic > scrolledwindow > viewport > li
   }
 
   &:hover image {
-    box-shadow: inset 0 0 0 9999px $overlay-hover;
+    box-shadow: inset 0 0 0 9999px overlay("hover", $titlebar-text);
   }
 
   &:focus image {
-    box-shadow: inset 0 0 0 9999px $overlay-focus;
+    box-shadow: inset 0 0 0 9999px overlay("focus", $titlebar-text);
   }
 
   &:active image {
-    background-color: $overlay-active;
+    background-color: overlay("pressed", $titlebar-text);
   }
 }
 
@@ -1067,7 +1067,7 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
   // background-color: @theme_bg_color;
 
   &:hover {
-    background-image: image($overlay-hover);
+    background-image: image(overlay("hover", $text));
   }
 }
 

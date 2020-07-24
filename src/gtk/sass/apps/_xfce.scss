@@ -78,11 +78,11 @@
 // Workspace switcher provided by libwnck
 wnck-pager {
   &:hover {
-    background-color: $overlay-hover;
+    background-color: overlay("hover", on($panel));
   }
 
   &:active {
-    background-color: $overlay-active;
+    background-color: overlay("pressed", on($panel));
   }
 
   &:selected {

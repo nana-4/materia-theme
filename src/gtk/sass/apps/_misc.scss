@@ -138,7 +138,7 @@ window.background.chromium {
 
   // Workaround for non-animatable buttons in headerbar
   headerbar button:active {
-    background-color: $overlay-active;
+    background-color: overlay("pressed", $titlebar-text);
   }
 
   spinner {
@@ -235,11 +235,11 @@ tooltip.background.chromium {
       background-size: auto;
 
       &:hover {
-        box-shadow: inset 0 0 0 9999px $overlay-hover;
+        box-shadow: inset 0 0 0 9999px overlay("hover", $text);
       }
 
       &:active {
-        background-image: image($overlay-active);
+        background-image: image(overlay("pressed", $text));
       }
     }
 

@@ -168,11 +168,11 @@ PanelApplet.wnck-applet .wnck-pager {
   color: on($panel, primary);
 
   &:hover {
-    background-color: $overlay-hover;
+    background-color: overlay("hover", on($panel));
   }
 
   &:active {
-    background-color: $overlay-active;
+    background-color: overlay("pressed", on($panel));
   }
 
   &:selected {
@@ -272,7 +272,7 @@ na-tray-applet widget box widget {
   }
 
   &:selected > box {
-    background-color: $overlay-checked;
+    background-color: overlay("activated", on($panel));
     color: on($panel);
   }
 }
@@ -292,7 +292,7 @@ na-tray-applet widget box widget {
     font-weight: normal;
 
     &:not(.flat) {
-      background-color: $overlay-checked;
+      background-color: overlay("activated", $text);
     }
 
     image,

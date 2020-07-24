@@ -31,7 +31,7 @@
   -gtk-outline-radius: $corner-radius;
 
   &:focus {
-    outline-color: $overlay-checked;
+    outline-color: overlay("focus", $text);
   }
 }
 
@@ -82,11 +82,11 @@
   color: $text;
 
   &:hover {
-    box-shadow: inset 0 0 0 9999px $overlay-hover;
+    box-shadow: inset 0 0 0 9999px overlay("hover", $text);
   }
 
   &:selected:hover {
-    box-shadow: inset 0 0 0 9999px rgba($primary, .08);
+    box-shadow: inset 0 0 0 9999px overlay("hover", $primary);
   }
 
   &:disabled {
@@ -418,7 +418,7 @@ treeview entry {
   color: $text;
 
   &:hover {
-    background-image: image($overlay-hover);
+    background-image: image(overlay("hover", $text));
   }
 
   // side margins: compensate the entry padding with a negative margin
@@ -494,13 +494,13 @@ button {
   }
 
   &:checked {
-    background-color: mix($primary, $surface, percentage($overlay-checked-opacity + .04));
+    background-color: overlay("activated", $primary, $background: $surface);
     color: $primary;
     @include raised-ink-color($primary);
 
     &:disabled {
-      box-shadow: inset 0 0 0 9999px $overlay-checked;
-      background-color: $fill;
+      box-shadow: none;
+      background-color: overlay("activated", $text, $background: $fill);
       color: $text-disabled;
     }
   }
@@ -569,7 +569,7 @@ button {
   @extend %button-flat-basic;
 
   &:checked {
-    background-color: $overlay-checked;
+    background-color: overlay("activated", $text);
     color: $text;
     @include ink-color($text);
 
@@ -649,7 +649,7 @@ button {
       }
 
       &:checked {
-        background-color: mix(on($color), $color, percentage($overlay-checked-opacity));
+        background-color: overlay("activated", on($color), $background: $color);
       }
 
       &.flat {
@@ -663,7 +663,7 @@ button {
         }
 
         &:checked {
-          background-color: rgba($color, $overlay-checked-opacity);
+          background-color: overlay("activated", $color);
         }
       }
 
@@ -1696,7 +1696,7 @@ treeview.view {
     // FIXME: box-shadow, background-color and background-image are not available here.
     border-style: solid none;
     border-width: 9999px;
-    border-color: $overlay-hover;
+    border-color: overlay("hover", $text);
 
     &.after {
       border-top-style: none;
@@ -1828,7 +1828,7 @@ menubar,
 
     &:hover { // Seems like it :hover even with keyboard focus
       transition: none;
-      background-color: $overlay-checked;
+      background-color: overlay("activated", $titlebar-text);
       color: $titlebar-text;
     }
 
@@ -1870,7 +1870,7 @@ menu,
 
     &:hover {
       transition: none;
-      background-color: $overlay-hover;
+      background-color: overlay("hover", $text);
     }
 
     &:disabled {
@@ -1932,7 +1932,7 @@ menu,
     }
 
     &:hover {
-      background-image: image($overlay-hover);
+      background-image: image(overlay("hover", $text));
     }
 
     &:disabled {
@@ -2227,7 +2227,7 @@ notebook {
       font-weight: 500;
 
       &:hover {
-        background-color: $overlay-hover;
+        background-color: overlay("hover", $text);
       }
 
       &:disabled {
@@ -2261,7 +2261,7 @@ notebook {
         padding: $container-padding 12px;
 
         &:drop(active) {
-          background-color: $overlay-hover;
+          background-color: overlay("hover", $text);
         }
       }
 
@@ -2534,16 +2534,23 @@ switch {
   }
 
   &:hover slider {
-    box-shadow: 0 0 0 10px $overlay-hover, $shadow-z1;
+    box-shadow: 0 0 0 10px overlay("hover", $text), $shadow-z1;
   }
 
   &:focus slider {
-    box-shadow: 0 0 0 10px $overlay-focus, $shadow-z1;
+    box-shadow: 0 0 0 10px overlay("focus", $text), $shadow-z1;
   }
 
   &:checked slider {
     background-color: $primary;
-    color: $primary;
+  }
+
+  &:checked:hover slider {
+    box-shadow: 0 0 0 10px overlay("hover", $primary), $shadow-z1;
+  }
+
+  &:checked:focus slider {
+    box-shadow: 0 0 0 10px overlay("focus", $primary), $shadow-z1;
   }
 
   row:selected & {
@@ -2910,11 +2917,11 @@ scale {
     }
 
     &:hover {
-      background-color: $overlay-hover;
+      background-color: overlay("hover", $primary);
     }
 
     &:focus {
-      background-color: $overlay-focus;
+      background-color: overlay("focus", $primary);
     }
 
     &:active {
@@ -2926,7 +2933,7 @@ scale {
       animation: ripple-on-slider $ripple-fade-in-duration $ease-out forwards;
       background-image:
         -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png')),
-        radial-gradient(circle, $overlay-active 10%, transparent 0%);
+        radial-gradient(circle, overlay("pressed", $primary) 10%, transparent 0%);
       background-size: auto, 0% 0%;
     }
   }
@@ -2999,7 +3006,7 @@ scale {
 
             background-image:
               -gtk-scaled(url('#{$_scale_asset}.png'), url('#{$_scale_asset}@2.png')),
-              radial-gradient(circle, $overlay-active 10%, transparent 0%);
+              radial-gradient(circle, overlay("pressed", $primary) 10%, transparent 0%);
           }
         }
       }
@@ -3289,7 +3296,7 @@ row {
     // this is for indicathing which row generated a popover
     // see https://bugzilla.gnome.org/show_bug.cgi?id=754411
     &.has-open-popup {
-      background-color: $overlay-checked;
+      background-color: overlay("activated", $text);
     }
   }
 
@@ -3297,6 +3304,10 @@ row {
     @extend %selected_items;
 
     @include ink-color($primary, $fg: false);
+
+    &.has-open-popup {
+      background-color: overlay("activated", $primary, $background: $overlay-selected);
+    }
   }
 }
 
@@ -3388,7 +3399,7 @@ calendar {
     color: $text2;
 
     &:hover {
-      background-image: image($overlay-hover);
+      background-image: image(overlay("hover", $text));
     }
 
     &:disabled {
@@ -3668,7 +3679,7 @@ placessidebar.sidebar {
     }
 
     &.sidebar-placeholder-row {
-      background-color: $overlay-hover;
+      background-color: overlay("hover", $text);
     }
 
     &.sidebar-new-bookmark-row {
@@ -4231,7 +4242,7 @@ popover.emoji-picker .emoji {
     border-radius: $corner-radius;
 
     &:hover {
-      background-color: $overlay-hover;
+      background-color: overlay("hover", $text);
     }
   }
 }
@@ -4250,6 +4261,6 @@ popover.emoji-completion {
   }
 
   .emoji:hover {
-    background-color: $overlay-hover;
+    background-color: overlay("hover", $text);
   }
 }

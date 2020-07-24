@@ -80,6 +80,33 @@ $on-colors: (
   @return mix(change-color($color, $alpha: 1), $bg, alpha($color) * 100%);
 }
 
+// Set the accessible opacity for the overlay depending on the given color.
+@function overlay($state, $color, $background: transparent, $opacity-modifier: 0) {
+  @if saturation($color) > 50% or saturation($background) > 50% {
+    $opacity-modifier: .04;
+  }
+
+  $opacity: ();
+
+  @if $state == "hover" {
+    $opacity: .08 + $opacity-modifier;
+  } @else if $state == "hover-alt" {
+    $opacity: .04 + $opacity-modifier;
+  } @else if $state == "focus" {
+    $opacity: .08 + $opacity-modifier;
+  } @else if $state == "pressed" {
+    $opacity: .12 + $opacity-modifier;
+  } @else if $state == "activated" {
+    $opacity: .12 + $opacity-modifier;
+  } @else if $state == "selected" {
+    @return rgba($color, .24);
+  } @else {
+    @error "Invalid type: '#{$state}'";
+  }
+
+  @return mix(rgba($color, 1), $background, $opacity * 100%);
+}
+
 // Private variables for dark background colors
 $-dark-background:                       #181818;
 $-dark-surface-1dp:                      mix(white, $-dark-background, 5%);
@@ -121,17 +148,6 @@ $titlebar-indicator:                    if($topbar == 'dark', currentcolor, $pri
 // Overlay state colors
 //
 
-$overlay-hover-opacity:                 .08;
-$overlay-focus-opacity:                 .08;
-$overlay-active-opacity:                .12;
-$overlay-checked-opacity:               .12;
-$overlay-selected-opacity:              .24;
-
-$overlay-hover:                         gtkalpha(currentcolor, .08);
-$overlay-focus:                         gtkalpha(currentcolor, .08);
-$overlay-focus-hover:                   gtkalpha(currentcolor, .16);
-$overlay-active:                        gtkalpha(currentcolor, .12);
-$overlay-checked:                       gtkalpha(currentcolor, .12);
 $overlay-selected:                      rgba($primary, .24);
 
 //
