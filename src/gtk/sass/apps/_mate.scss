@@ -22,6 +22,7 @@
     min-width: 16px;
     padding: 0; // NOTE: Most buttons padding are hard-coded to 0 (except for hide buttons)
     border-radius: 0;
+    background-color: transparent;
     color: hint($on-panel);
     @include ink-color($on-panel);
 
@@ -30,7 +31,9 @@
     }
 
     &:checked {
+      background-color: overlay("activated", $on-panel);
       color: $on-panel;
+      @include ink-color($on-panel);
 
       &:disabled {
         color: disabled($on-panel);
@@ -85,6 +88,7 @@ MatePanelAppletFrameDBus > MatePanelAppletFrameDBus {
     color: hint($on-panel);
 
     &:hover {
+      background-color: overlay("activated", $on-panel);
       color: $on-panel;
     }
 
@@ -347,6 +351,8 @@ na-tray-applet widget box widget {
       margin: 0 4px;
 
       &:checked {
+        background-color: overlay("activated", $primary);
+        color: $primary;
         @include ink-color($primary);
       }
     }
@@ -497,6 +503,7 @@ na-tray-applet widget box widget {
     @extend %button-flat;
 
     &:not(:disabled) {
+      color: $primary;
       @include ink-color($primary);
     }
   }
@@ -592,6 +599,7 @@ na-tray-applet widget box widget {
     @extend %button-flat;
 
     &:not(:disabled) {
+      color: $primary;
       @include ink-color($primary);
     }
   }

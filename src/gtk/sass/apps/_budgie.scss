@@ -281,6 +281,7 @@ button.raven-trigger {
 
   &.transparent {
     background-color: $scrim;
+    color: hint($on-scrim);
   }
 
   button {
@@ -288,6 +289,7 @@ button.raven-trigger {
     min-width: 16px;
     padding: 0;
     border-radius: 0;
+    background-color: transparent;
     color: hint($on-panel);
     @include ink-color($on-panel);
 
@@ -296,7 +298,9 @@ button.raven-trigger {
     }
 
     &:checked {
+      background-color: overlay("activated", $on-panel);
       color: $on-panel;
+      @include ink-color($on-panel);
 
       &:disabled {
         color: disabled($on-panel);
@@ -515,6 +519,8 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
       font-weight: normal;
 
       &:checked {
+        background-color: overlay("activated", $primary);
+        color: $primary;
         @include ink-color($primary);
       }
 
@@ -674,6 +680,7 @@ calendar.raven-calendar {
     @extend %button-flat;
 
     &.text-button:not(:disabled) {
+      color: $primary;
       @include ink-color($primary);
     }
   }
@@ -726,6 +733,7 @@ calendar.raven-calendar {
     }
 
     &:not(:disabled) {
+      color: $primary;
       @include ink-color($primary);
     }
   }
