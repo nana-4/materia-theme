@@ -298,15 +298,19 @@ $calendar-column-margin: 0 8px;
 
   .calendar-week-number {
     width: $menuitem-size;
-    height: $menuitem-size - 7px;
+    height: $menuitem-size;
     margin: 2px;
-    padding: 7px 0 0;
     border-radius: $menuitem-size / 2;
     background-color: transparent;
     color: disabled($on-surface);
     font-weight: bold;
     font-size: 1em;
     text-align: center;
+
+    @if $version <= 3.36 {
+      height: $menuitem-size - 7px;
+      padding: 7px 0 0;
+    }
   }
 }
 
