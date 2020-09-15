@@ -37,7 +37,10 @@
 
 // Close button
 .window-close {
-  -shell-close-overlap: $medium-size / 2;
+  @if $version <= 3.36 {
+    -shell-close-overlap: $medium-size / 2;
+  }
+
   // FIXME: unless disable the transition, button will distort when hovering
   // transition-duration: $duration;
   height: $medium-size;
