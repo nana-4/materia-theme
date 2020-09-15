@@ -3164,16 +3164,7 @@ levelbar {
     }
   }
 
-  // imitate the entry style
   trough {
-    // padding: 2px;
-    // border-radius: $corner-radius;
-    // box-shadow: $shadow-z1;
-    // background-color: $base;
-
-    &:disabled {
-      // background-color: $base-alt;
-    }
   }
 
   block {
@@ -3522,7 +3513,8 @@ filechooser {
     border-bottom: 1px solid divider($on-surface);
     background-color: $background;
 
-    > stack > box > button { // The new folder button
+    // The new folder button
+    > stack > box > button {
       @extend %button-flat;
 
       border-radius: $circular-radius;
@@ -4060,11 +4052,13 @@ colorchooser .popover.osd {
   .osd & {
     // @extend %osd;
 
-    button.flat { // FIXME: quick hack, redo properly
+    // FIXME: quick hack, redo properly
+    button.flat {
     }
   }
 
-  button { // +/- buttons on GtkVolumeButton popup
+  // +/- buttons on GtkVolumeButton popup
+  button {
   }
 }
 
@@ -4205,16 +4199,19 @@ cursor-handle {
   font-size: smaller;
 }
 
-:not(decoration):not(window):drop(active) { // FIXME needs to be done widget by widget, this wildcard should really die
+// FIXME needs to be done widget by widget, this wildcard should really die
+:not(decoration):not(window):drop(active) {
   // caret-color: $primary;
 }
 
-stackswitcher button.text-button { // FIXME aggregate with buttons
+// FIXME aggregate with buttons
+stackswitcher button.text-button {
   min-width: 100px;
 }
 
+// FIXME aggregate with buttons
 stackswitcher button.circular,
-stackswitcher button.text-button.circular { // FIXME aggregate with buttons
+stackswitcher button.text-button.circular {
   min-width: $medium-size;
   min-height: $medium-size;
   padding: 0;
