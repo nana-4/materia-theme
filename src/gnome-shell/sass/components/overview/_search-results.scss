@@ -49,6 +49,12 @@ $searchResultsContent: if($version >= 3.34, "#searchResultsContent", "#searchRes
   @extend %overview-status-text;
 }
 
+@if $version >= 3.38 {
+  .grid-search-results {
+    spacing: 32px;
+  }
+}
+
 // Search results with icons
 .grid-search-result {
   @extend %app-well-app;
