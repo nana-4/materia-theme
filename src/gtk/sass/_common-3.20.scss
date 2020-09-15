@@ -3809,6 +3809,10 @@ paned {
 infobar {
   border-style: none;
 
+  &.action:hover > revealer > box {
+    background-image: image(overlay("hover", $on-surface));
+  }
+
   &.info > revealer > box,
   &.question > revealer > box {
     border-bottom: 1px solid divider($on-surface);
