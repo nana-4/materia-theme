@@ -133,6 +133,7 @@ iconview {
   }
 }
 
+%rubberband,
 .rubberband,
 rubberband {
   border: 1px solid $primary;
@@ -141,7 +142,7 @@ rubberband {
 
 flowbox {
   rubberband {
-    @extend rubberband;
+    @extend %rubberband;
   }
 
   flowboxchild {
@@ -1706,7 +1707,7 @@ treeview.view {
 
   // to avoid borders being overridden by the previously set props
   rubberband {
-    @extend rubberband;
+    @extend %rubberband;
   }
 
   &:hover,
@@ -4051,7 +4052,7 @@ colorchooser .popover.osd {
 
   rubberband,
   .rubberband {
-    @extend rubberband;
+    @extend %rubberband;
   }
 }
 
