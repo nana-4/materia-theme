@@ -2,12 +2,19 @@
 
 // app icons
 .icon-grid {
-  -shell-grid-horizontal-item-size: 136px;
-  -shell-grid-vertical-item-size: 136px;
-  spacing: 32px;
+  @if $version >= 3.38 {
+    row-spacing: 32px;
+    column-spacing: 32px;
+    max-row-spacing: 64px;
+    max-column-spacing: 64px;
+  } @else {
+    -shell-grid-horizontal-item-size: 136px;
+    -shell-grid-vertical-item-size: 136px;
+    spacing: 32px;
 
-  .overview-icon {
-    icon-size: 96px;
+    .overview-icon {
+      icon-size: 96px;
+    }
   }
 }
 
