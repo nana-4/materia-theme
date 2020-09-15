@@ -50,11 +50,16 @@
 
 // expanded folder
 .app-folder-dialog {
-  spacing: 12px;
   border: 0;
   border-radius: $corner-radius;
   background-color: $surface;
   color: $on-surface;
+
+  @if $version >= 3.38 {
+    padding: 12px;
+  } @else {
+    spacing: 12px;
+  }
 
   .folder-name-container {
     padding: 24px 36px 0;
@@ -116,9 +121,15 @@
 }
 
 .app-folder-dialog-container {
-  width: 800px;
-  height: 600px;
   padding: 12px;
+
+  @if $version >= 3.38 {
+    width: 620px;
+    height: 620px;
+  } @else {
+    width: 800px;
+    height: 600px;
+  }
 }
 
 @if $version <= 3.34 {
