@@ -310,6 +310,35 @@ $calendar-column-margin: 0 8px;
   }
 }
 
+@if $version >= 3.38 {
+  /* Events */
+  .events-button {
+    @extend %calendar-item;
+    min-height: $menuitem-size - 4px * 2;
+    padding: 4px 8px;
+
+    .events-box {
+      spacing: 8px;
+    }
+
+    .events-list {
+      spacing: 8px;
+    }
+
+    .events-title {
+      color: hint($on-surface);
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .event-time {
+      color: hint($on-surface);
+      font-size: 1em;
+      font-feature-settings: "tnum";
+    }
+  }
+}
+
 /* World clocks */
 .world-clocks-button {
   @extend %calendar-item;
