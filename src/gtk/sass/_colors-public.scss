@@ -97,8 +97,14 @@ read if you used those and something break with a version upgrade you're on your
 @define-color xfwm4_title #{"" + opacify($on-titlebar, $titlebar)};
 @define-color xfwm4_unfocused_title #{"" + opacify(hint($on-titlebar), $titlebar-backdrop)};
 
-/*
-FIXME this is really an API */
+// FIXME this is really an API
+
+/* content view background such as thumbnails view in Photos or Boxes */
 @define-color content_view_bg #{"" + $base};
+
+/* Very contrasty background for text views (@theme_text_color foreground) */
+@define-color text_view_bg #{"" + $base};
+
+/* placeholder for entries */
 // NOTE: @placeholder_text_color doesn't allow translucent colors.
 @define-color placeholder_text_color #{"" + opacify(hint($on-surface), $base)};
