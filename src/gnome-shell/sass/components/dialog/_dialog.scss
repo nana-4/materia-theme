@@ -147,7 +147,9 @@
       @include type(headline6);
       text-align: inherit;
 
-      &.leightweight {
+      $lightweight: if($version >= 3.38, ".lightweight", ".leightweight");
+
+      &#{$lightweight} {
         @include type(headline6);
       }
     }
