@@ -3809,8 +3809,8 @@ paned {
 infobar {
   border-style: none;
 
-  &.info,
-  &.question {
+  &.info > revealer > box,
+  &.question > revealer > box {
     border-bottom: 1px solid divider($on-surface);
     background-color: $base;
 
@@ -3824,7 +3824,7 @@ infobar {
     }
   }
 
-  &.warning {
+  &.warning > revealer > box {
     background-color: $warning;
     color: $on-warning;
 
@@ -3841,7 +3841,7 @@ infobar {
     }
   }
 
-  &.error {
+  &.error > revealer > box {
     background-color: $error;
     color: $on-error;
 
