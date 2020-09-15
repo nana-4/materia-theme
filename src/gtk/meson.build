@@ -8,6 +8,7 @@ gtk_scss_depend_files = files([
   '../_variables.scss',
   'sass/apps/_budgie.scss',
   'sass/apps/_gnome-3.22.scss',
+  'sass/apps/_libhandy.scss',
   'sass/apps/_lightdm.scss',
   'sass/apps/_mate.scss',
   'sass/apps/_misc.scss',
