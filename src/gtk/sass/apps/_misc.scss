@@ -271,7 +271,11 @@ tooltip.background.chromium {
 
   // remove ugly border around the menus
   menu {
-    border: none;
+    // FIXME: The ugly border is still needed, since the menu doesn't
+    // draw its drop shadow in some environments. See:
+    // https://github.com/nana-4/materia-theme/issues/462
+
+    // border: none;
   }
 
   // Workaround: Firefox doesn't properly read color from
