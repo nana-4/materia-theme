@@ -47,6 +47,10 @@ while [[ "$#" -gt 0 ]]; do
       OPTION_GTK2_HIDPI="$2"
       shift
       ;;
+    -i|--inkscape)
+      OPTION_FORCE_INKSCAPE="$2"
+      shift
+      ;;
     *)
       if [[ "$1" == -* ]] || [[ "${THEME-}" ]]; then
         echo "unknown option $1"
@@ -91,6 +95,7 @@ for FILEPATH in "${PATHLIST[@]}"; do
 done
 
 OPTION_GTK2_HIDPI=$(tr '[:upper:]' '[:lower:]' <<< "${OPTION_GTK2_HIDPI-False}")
+OPTION_FORCE_INKSCAPE=$(tr '[:upper:]' '[:lower:]' <<< "${OPTION_FORCE_INKSCAPE-True}")
 
 
 if [[ "$THEME" == */* ]] || [[ "$THEME" == *.* ]]; then
@@ -289,15 +294,15 @@ fi
 # NOTE we use the functions we already have in render-assets.sh
 echo "== Rendering GTK 2 assets..."
 if [[ "$MATERIA_COLOR_VARIANT" != "dark" ]]; then
-  GTK2_HIDPI="$OPTION_GTK2_HIDPI" ./render-assets.sh gtk2-light
+  FORCE_INKSCAPE="$OPTION_FORCE_INKSCAPE" GTK2_HIDPI="$OPTION_GTK2_HIDPI" ./render-assets.sh gtk2-light
 else
-  GTK2_HIDPI="$OPTION_GTK2_HIDPI" ./render-assets.sh gtk2-dark
+  FORCE_INKSCAPE="$OPTION_FORCE_INKSCAPE" GTK2_HIDPI="$OPTION_GTK2_HIDPI" ./render-assets.sh gtk2-dark
 fi
 
 echo "== Rendering GTK 3 assets..."
-./render-assets.sh gtk
+FORCE_INKSCAPE="$OPTION_FORCE_INKSCAPE" ./render-assets.sh gtk
 
-./install.sh --dest "$TARGET_DIR" --name "${OUTPUT_THEME_NAME/\//-}" --color "$COLOR_VARIANT" --size "$SIZE_VARIANT"
+FORCE_INKSCAPE="$OPTION_FORCE_INKSCAPE" ./install.sh --dest "$TARGET_DIR" --name "${OUTPUT_THEME_NAME/\//-}" --color "$COLOR_VARIANT" --size "$SIZE_VARIANT"
 
 GENERATED_PATH="$DEST_PATH$(tr -d ',' <<< "$COLOR_VARIANTS")$(tr -d ',' <<< "$SIZE_VARIANTS")"
 if [[ "$GENERATED_PATH" != "$DEST_PATH" ]]; then

@@ -1,7 +1,12 @@
 #!/bin/bash
 set -ueo pipefail
 
-RENDER_SVG="$(command -v rendersvg)" || true
+FORCE_INKSCAPE="$(echo "${FORCE_INKSCAPE-False}" | tr '[:upper:]' '[:lower:]')"
+if [[ "${FORCE_INKSCAPE}" == "true" ]]; then
+  RENDER_SVG=""
+else
+  RENDER_SVG="$(command -v rendersvg)" || true
+fi
 INKSCAPE="$(command -v inkscape)" || true
 OPTIPNG="$(command -v optipng)" || true
 
@@ -28,7 +33,7 @@ if [[ -n "${RENDER_SVG}" ]]; then
 else
   "$INKSCAPE" --export-id="$i" \
               --export-id-only \
-              "$EXPORT_FILE_OPTION"="$ASSETS_DIR/$i.png" "$SRC_FILE" >/dev/null
+              "$EXPORT_FILE_OPTION=$ASSETS_DIR/$i.png" "$SRC_FILE" >/dev/null
 fi
 
 if [[ -n "${OPTIPNG}" ]]; then
@@ -47,7 +52,7 @@ else
   "$INKSCAPE" --export-id="$i" \
               --export-id-only \
               --export-dpi=192 \
-              "$EXPORT_FILE_OPTION"="$ASSETS_DIR/$i@2.png" "$SRC_FILE" >/dev/null
+              "$EXPORT_FILE_OPTION=$ASSETS_DIR/$i@2.png" "$SRC_FILE" >/dev/null
 fi
 
 if [[ -n "${OPTIPNG}" ]]; then
