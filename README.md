@@ -71,7 +71,7 @@ Distro | Package Name | Annotation
 --- | --- | ---
 Arch Linux | `materia-gtk-theme` | [Link](https://www.archlinux.org/packages/community/any/materia-gtk-theme/)
 Debian 10 or later | `materia-gtk-theme` | [Link](https://packages.debian.org/materia-gtk-theme)
-Fedora | `materia-gtk-theme` | Available from [@LaurentTreguier's Copr](https://copr.fedorainfracloud.org/coprs/tcg/themes)
+Fedora | `materia-gtk-theme` | [Link](https://src.fedoraproject.org/rpms/materia-gtk-theme)
 Solus | `materia-gtk-theme` | [Link](https://dev.getsol.us/source/materia-gtk-theme/)
 Ubuntu 18.04 or later | `materia-gtk-theme` | [Link](https://packages.ubuntu.com/materia-gtk-theme)
 
