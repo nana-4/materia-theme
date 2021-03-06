@@ -55,8 +55,6 @@ Supports **ripple animations** for GTK 3 and 4:
 
 ### Distro Packages
 
-> NOTE: Some of these distro packages could be outdated and incompatible with your desktop environment. You can check the latest version [here](https://github.com/nana-4/materia-theme/releases).
-
 <!-- For contributors, please add your package alphabetically. -->
 
 Distro | Package Name | Annotation
@@ -67,7 +65,9 @@ Fedora | `materia-gtk-theme` | [Link](https://src.fedoraproject.org/rpms/materia
 Solus | `materia-gtk-theme` | [Link](https://dev.getsol.us/source/materia-gtk-theme/)
 Ubuntu 18.04 or later | `materia-gtk-theme` | [Link](https://packages.ubuntu.com/materia-gtk-theme)
 
-**WARNING:** Ubuntu **disco (19.04)** & **eoan (19.10)** packages are very outdated and incompatible with GNOME 3.32 or later! If you're using GNOME on Ubuntu 19.04 or 19.10, I highly recommend [manual installation](#manual-installation) below.
+> NOTE: Distro packages could be outdated and incompatible with your desktop environment. You can check the latest version [here](https://github.com/nana-4/materia-theme/releases).
+
+> **Warning for Ubuntu 19.04 & 19.10 users:** Ubuntu 19.04 (disco) & 19.10 (eoan) packages are very outdated and incompatible with their GNOME versions. If you're using GNOME on Ubuntu 19.04 or 19.10, [manual installation](#manual-installation) is highly recommended.
 
 ### Flatpak
 
@@ -86,15 +86,15 @@ See [`INSTALL.md`](INSTALL.md) for details.
 
 ### Font
 
-- To properly display the theme, use a font family including **Medium** weight (e.g. [Roboto](https://github.com/google/roboto) or [M+](https://mplus-fonts.osdn.jp)).
+- Use a font family including **Medium** weight (e.g. [Roboto](https://github.com/google/roboto) or [M+](https://mplus-fonts.osdn.jp)) to properly display the theme.
 - Set the font size to `9.75` (= 13px at 96dpi) or `10.5` (= 14px at 96dpi).
 
-### Chrome Theme
+### Chrome Extensions
 
-To use the Chrome theme;
+To improve the appearance of Chrome, you can install our Chrome extensions as follows:
 
-1. Open the `chrome` folder on `/usr/share/themes/Materia<-variant>`.
-2. Drag and drop the `.crx` files into the Chrome/Chromium Extensions page (`chrome://extensions`).
+1. Open the `/usr/share/themes/Materia<-variant>/chrome` folder in your file manager.
+2. Drag and drop the `.crx` files into the Chrome's Extensions page (`chrome://extensions`).
 
 ### GDM Theme
 
@@ -124,15 +124,15 @@ Todo list can be found at [`TODO.md`](TODO.md).
 
 Materia is distributed under the terms of the GNU General Public License, version 2 or later. See the [`COPYING`](COPYING) file for details.
 
-## Credits
+## Acknowledgments
 
 - Materia is based on [Adwaita](HACKING.md#upstream-theme-sources) by GNOME.
 - Design and specifications are based on Google's [Material Design](https://material.io).
 - The included symbolic icons are based on [Material Design icons](https://github.com/google/material-design-icons) by Google.
-- Chrome/Chromium scrollbars extension was forked from [Adwaita-chrome-scrollbar](https://github.com/gnome-integration-team/chrome-gnome-scrollbar) by GNOME Integration Team.
+- The Chrome scrollbar extension was forked from [Adwaita-chrome-scrollbar](https://github.com/gnome-integration-team/chrome-gnome-scrollbar) by GNOME Integration Team.
 - Yauhen Kirylau (@actionless) who is oomox author polished scripts and supported Materia with [oomox](https://github.com/themix-project/oomox).
 - @n3oxmind who helped improve the installation script.
 - @smurphos who made and provided the Cinnamon theme for Materia.
-- Meson code/implementation in Materia was heavily influenced by @monday15's [lounge-gtk-theme](https://github.com/monday15/lounge-gtk-theme).
+- Our Meson code is heavily influenced by @monday15's [lounge-gtk-theme](https://github.com/monday15/lounge-gtk-theme).
 
 Also thank you to all contributors and upstream developers.
