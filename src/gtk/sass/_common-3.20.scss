@@ -3407,14 +3407,15 @@ expander {
     min-width: 16px;
     min-height: 16px;
     -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
-    -gtk-icon-transform: rotate(-90deg);
-
-    &:dir(rtl) {
-      -gtk-icon-transform: rotate(90deg);
-    }
 
     &:checked {
-      -gtk-icon-transform: unset;
+      &:dir(ltr) {
+        -gtk-icon-transform: rotate(-180deg);
+      }
+
+      &:dir(rtl) {
+        -gtk-icon-transform: rotate(180deg);
+      }
     }
 
     color: hint($on-surface);
