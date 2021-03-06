@@ -26,14 +26,14 @@ StScrollBar {
     // would be nice to margin or at least to transparent
     // border: 4px solid transparent;
     border-radius: (8px / 2);
-    background-color: disabled($on-surface);
+    background-color: scrollbar-thumb($on-surface);
 
     &:hover {
-      background-color: hint($on-surface);
+      background-color: scrollbar-thumb($on-surface, "hover");
     }
 
     &:active {
-      background-color: $on-surface;
+      background-color: scrollbar-thumb($on-surface, "pressed");
     }
   }
 }
@@ -45,14 +45,14 @@ StScrollBar {
 
   StButton#vhandle,
   StButton#hhandle {
-    background-color: disabled($on-dark);
+    background-color: scrollbar-thumb($on-dark);
 
     &:hover {
-      background-color: hint($on-dark);
+      background-color: scrollbar-thumb($on-dark, "hover");
     }
 
     &:active {
-      background-color: $on-dark;
+      background-color: scrollbar-thumb($on-dark, "pressed");
     }
   }
 }

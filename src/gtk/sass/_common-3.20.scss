@@ -2426,18 +2426,18 @@ scrollbar {
     border: 4px solid transparent;
     border-radius: $circular-radius;
     background-clip: padding-box;
-    background-color: disabled($on-surface);
+    background-color: scrollbar-thumb($on-surface);
 
     &:hover {
-      background-color: hint($on-surface);
+      background-color: scrollbar-thumb($on-surface, "hover");
     }
 
     &:active {
-      background-color: $on-surface;
+      background-color: scrollbar-thumb($on-surface, "pressed");
     }
 
     &:disabled {
-      background-color: disabled-hint($on-surface);
+      background-color: scrollbar-thumb($on-surface, "disabled");
     }
   }
 
@@ -2478,12 +2478,12 @@ scrollbar {
         margin: 4px - 1px;
         border: 1px solid rgba($base, .3);
         border-radius: $circular-radius;
-        background-color: disabled($on-surface);
+        background-color: scrollbar-thumb($on-surface);
         background-clip: padding-box;
         -gtk-icon-source: none;
 
         &:disabled {
-          background-color: disabled-hint($on-surface);
+          background-color: scrollbar-thumb($on-surface, "disabled");
         }
       }
 

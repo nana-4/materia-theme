@@ -239,3 +239,17 @@ $overlay-selected: rgba($primary, .24);
 @function entry-fill($color) {
   @return rgba($color, if(has-alpha($color), .04, .04));
 }
+
+@function scrollbar-thumb($color, $state: null) {
+  @if $state == null {
+    @return rgba($color, if(has-alpha($color), .38, .5));
+  } @else if $state == "hover" {
+    @return rgba($color, if(has-alpha($color), .48, .6));
+  } @else if $state == "pressed" {
+    @return rgba($color, if(has-alpha($color), .6, .7));
+  } @else if $state == "disabled" {
+    @return rgba($color, if(has-alpha($color), .26, .3));
+  } @else {
+    @error "Invalid type: '#{$state}'";
+  }
+}
