@@ -142,8 +142,9 @@ install() {
     -e "s/@dark_theme@/$scss_dark_theme/g" \
     -e "s/@light_topbar@/$scss_light_topbar/g" \
     -e "s/@compact@/$scss_compact/g" \
-    "$SRC_DIR/cinnamon/cinnamon.scss.in" > "$SRC_DIR/cinnamon/cinnamon.$name.scss"
-  sassc "${SASSC_OPT[@]}" "$SRC_DIR/cinnamon/cinnamon.$name.scss"               "$THEME_DIR/cinnamon/cinnamon.css"
+    -e "s#@current_source_dir@#$SRC_DIR/cinnamon#g" \
+    "$SRC_DIR/cinnamon/cinnamon.scss.in" | \
+  sassc --stdin "${SASSC_OPT[@]}"                                               "$THEME_DIR/cinnamon/cinnamon.css"
 
   #
   # GNOME Shell
@@ -163,8 +164,9 @@ install() {
     -e "s/@light_topbar@/$scss_light_topbar/g" \
     -e "s/@compact@/$scss_compact/g" \
     -e "s/@version@/$GS_VERSION/g" \
-    "$SRC_DIR/gnome-shell/gnome-shell.scss.in" > "$SRC_DIR/gnome-shell/gnome-shell.$name.scss"
-  sassc "${SASSC_OPT[@]}" "$SRC_DIR/gnome-shell/gnome-shell.$name.scss"         "$THEME_DIR/gnome-shell/gnome-shell.css"
+    -e "s#@current_source_dir@#$SRC_DIR/gnome-shell#g" \
+    "$SRC_DIR/gnome-shell/gnome-shell.scss.in" | \
+  sassc --stdin "${SASSC_OPT[@]}"                                               "$THEME_DIR/gnome-shell/gnome-shell.css"
 
   #
   # GTK 2
@@ -195,8 +197,9 @@ install() {
         -e "s/@light_topbar@/$scss_light_topbar/g" \
         -e "s/@compact@/$scss_compact/g" \
         -e "s/@version@/$GTK4_VERSION/g" \
-        "$SRC_DIR/gtk-$version/gtk$variant.scss.in" > "$SRC_DIR/gtk-$version/gtk$variant.$name.scss"
-      sassc "${SASSC_OPT[@]}" "$SRC_DIR/gtk-$version/gtk$variant.$name.scss" "$THEME_DIR/gtk-$version/gtk$variant.css"
+        -e "s#@current_source_dir@#$SRC_DIR/gtk-$version#g" \
+        "$SRC_DIR/gtk-$version/gtk$variant.scss.in" | \
+      sassc --stdin "${SASSC_OPT[@]}"                                           "$THEME_DIR/gtk-$version/gtk$variant.css"
     done
   done
 
