@@ -108,6 +108,7 @@ foreach theme: themes
   gnome_shell_scss_conf.set('light_topbar', theme['scss_light_topbar'])
   gnome_shell_scss_conf.set('compact', theme['scss_compact'])
   gnome_shell_scss_conf.set('version', gnome_shell_version)
+  gnome_shell_scss_conf.set('current_source_dir', meson.current_source_dir())
 
   # Configure SCSS file
   gnome_shell_scss = configure_file(
@@ -116,17 +117,10 @@ foreach theme: themes
     configuration: gnome_shell_scss_conf,
   )
 
-  # Copy it from build dir to source dir
-  run_command(
-    'cp',
-    gnome_shell_scss,
-    meson.current_source_dir(),
-  )
-
   # Generate CSS file
   gnome_shell_css = custom_target(
     'gnome-shell.@0@.css'.format(theme['name']),
-    input: 'gnome-shell.@0@.scss'.format(theme['name']),
+    input: gnome_shell_scss,
     output: 'gnome-shell.@0@.css'.format(theme['name']),
     command: [sassc, sassc_opts, '@INPUT@', '@OUTPUT@'],
     depend_files: gnome_shell_scss_depend_files,

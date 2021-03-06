@@ -47,6 +47,7 @@ foreach theme: themes
   gtk3_scss_conf.set('dark_theme', theme['scss_dark_theme'])
   gtk3_scss_conf.set('light_topbar', theme['scss_light_topbar'])
   gtk3_scss_conf.set('compact', theme['scss_compact'])
+  gtk3_scss_conf.set('current_source_dir', meson.current_source_dir())
 
   foreach gtk3_variant: gtk3_variants
     gtk3_temp_name = 'gtk@0@.@1@'.format(gtk3_variant, theme['name'])
@@ -58,17 +59,10 @@ foreach theme: themes
       configuration: gtk3_scss_conf,
     )
 
-    # Copy it from build dir to source dir
-    run_command(
-      'cp',
-      gtk3_scss,
-      meson.current_source_dir(),
-    )
-
     # Generate CSS file
     gtk3_css = custom_target(
       '@0@.css'.format(gtk3_temp_name),
-      input: '@0@.scss'.format(gtk3_temp_name),
+      input: gtk3_scss,
       output: '@0@.css'.format(gtk3_temp_name),
       command: [sassc, sassc_opts, '@INPUT@', '@OUTPUT@'],
       depend_files: gtk3_scss_depend_files,

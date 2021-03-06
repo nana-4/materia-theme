@@ -57,6 +57,7 @@ foreach theme: themes
   gtk4_scss_conf.set('light_topbar', theme['scss_light_topbar'])
   gtk4_scss_conf.set('compact', theme['scss_compact'])
   gtk4_scss_conf.set('version', gtk4_version)
+  gtk4_scss_conf.set('current_source_dir', meson.current_source_dir())
 
   foreach gtk4_variant: gtk4_variants
     gtk4_temp_name = 'gtk@0@.@1@'.format(gtk4_variant, theme['name'])
@@ -68,17 +69,10 @@ foreach theme: themes
       configuration: gtk4_scss_conf,
     )
 
-    # Copy it from build dir to source dir
-    run_command(
-      'cp',
-      gtk4_scss,
-      meson.current_source_dir(),
-    )
-
     # Generate CSS file
     gtk4_css = custom_target(
       '@0@.css'.format(gtk4_temp_name),
-      input: '@0@.scss'.format(gtk4_temp_name),
+      input: gtk4_scss,
       output: '@0@.css'.format(gtk4_temp_name),
       command: [sassc, sassc_opts, '@INPUT@', '@OUTPUT@'],
       depend_files: gtk4_scss_depend_files,
