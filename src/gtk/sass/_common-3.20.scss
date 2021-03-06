@@ -77,8 +77,8 @@
 }
 
 .view {
-  background-color: $base;
-  color: $on-surface;
+  // background-color: $background;
+  // color: $on-surface;
 
   &:hover {
     box-shadow: inset 0 0 0 9999px overlay("hover", $on-surface);
@@ -106,12 +106,12 @@
 textview {
   // FIXME: we need to override background-color to ensure text rendering
   text {
-    background-color: $base;
+    background-color: $background;
     caret-color: $primary;
   }
 
   border {
-    background-color: $base-alt;
+    // background-color: $background;
     color: hint($on-surface); // FIXME: not working
   }
 }
@@ -205,7 +205,6 @@ label {
 assistant {
   .sidebar {
     padding: 4px 0;
-    // background-color: $base;
   }
 
   .sidebar label {
@@ -1253,7 +1252,6 @@ button.combo:only-child {
 toolbar {
   -GtkWidget-window-dragging: true;
   padding: 2px;
-  background-color: $background;
 
   button {
     @extend %button-flat;
@@ -1261,7 +1259,6 @@ toolbar {
 
   // on OSD
   .osd & {
-    background-color: transparent;
   }
 
   // stand-alone OSD toolbars
@@ -1360,7 +1357,6 @@ searchbar > revealer > box,
   border-style: solid;
   border-width: 0 0 1px;
   border-color: divider($on-surface);
-  background-color: $background;
 }
 
 searchbar > revealer > box {
@@ -1761,12 +1757,6 @@ treeview.view {
   border-left-color: stroke($on-surface); // this is actually the tree lines color,
   border-top-color: divider($on-surface); // while this is the grid lines color, better then nothing
 
-  // FIXME: Avoid transparency background-color being slightly darker
-  &:selected {
-    background-color: $base;
-    background-image: image($overlay-selected);
-  }
-
   // to avoid borders being overridden by the previously set props
   rubberband {
     @extend %rubberband;
@@ -1861,7 +1851,7 @@ treeview.view {
 
       &,
       &:disabled {
-        background-color: $base;
+        background-color: transparent;
       }
 
       &:last-child {
@@ -1878,8 +1868,8 @@ treeview.view {
     border-color: divider($on-surface);
     border-radius: 0;
     box-shadow: none;
-    background-color: $base;
     background-clip: border-box;
+    background-color: $surface;
     color: $primary;
   }
 
@@ -2085,13 +2075,6 @@ popover.background {
     background-color: transparent;
   }
 
-  // FIXME: Use the popover color instead of transparent as a workaround for .view
-  list,
-  .view:not(:selected),
-  toolbar {
-    background-color: $surface;
-  }
-
   &.touch-selection,
   &.magnifier,
   &.osd {
@@ -2133,11 +2116,6 @@ popover.background {
  */
 
 notebook {
-  frame > paned > & > header,
-  &.frame > header {
-    background-color: $base;
-  }
-
   &:focus tab:checked {
     box-shadow: inset 0 0 0 9999px rgba($primary, .12);
   }
@@ -2145,7 +2123,6 @@ notebook {
   > header {
     border-width: 1px;
     border-color: divider($on-surface);
-    background-color: $background;
 
     &.top {
       border-bottom-style: solid;
@@ -2413,10 +2390,6 @@ notebook {
       }
     }
   }
-
-  > stack:not(:only-child) { // the :not(:only-child) is for "hidden" notebooks
-    background-color: $base;
-  }
 }
 
 /**
@@ -2433,7 +2406,7 @@ scrollbar {
   }
 
   transition: $transition;
-  background-color: $base;
+  // background-color: $background;
   background-clip: padding-box;
 
   // scrollbar border
@@ -3278,21 +3251,24 @@ frame > border,
   border-radius: 0;
   box-shadow: none;
   background-clip: padding-box;
+  background-color: $base;
 
   &.flat {
     border-style: none;
+    background-color: transparent;
   }
 }
 
 // for backward compatibility
 frame.flat > border {
   border-style: none;
+  background-color: transparent;
 }
 
 actionbar > revealer > box {
   padding: $container-padding;
   border-top: 1px solid divider($on-surface);
-  background-color: $base;
+  // background-color: $base;
 
   button:not(.suggested-action):not(.destructive-action) {
     @extend %button-flat;
@@ -3306,6 +3282,7 @@ actionbar > revealer > box {
 scrolledwindow {
   viewport.frame { // avoid double borders when viewport inside scrolled window
     border-style: none;
+    background-color: transparent;
   }
 
   // This is used when content is touch-dragged past boundaries.
@@ -3335,7 +3312,7 @@ scrolledwindow {
     border-style: solid none none solid;
     border-width: 1px;
     border-color: divider($on-surface);
-    background-color: $base;
+    // background-color: $background;
 
     &:dir(rtl) {
       border-style: solid solid none none;
@@ -3362,7 +3339,7 @@ separator {
 
 list {
   border-color: divider($on-surface);
-  background-color: $base;
+  // background-color: $base;
 
   row {
     padding: 2px;
@@ -3415,9 +3392,13 @@ row {
     }
   }
 
-  &.frame,
+  &.frame {
+    border-style: none;
+  }
+
   border {
     border-style: none;
+    background-color: transparent;
   }
 }
 
@@ -3462,6 +3443,7 @@ calendar {
   padding: 1px;
   border: 1px solid divider($on-surface);
   background-clip: padding-box;
+  background-color: $base;
   color: $on-surface;
 
   &:disabled {
@@ -3576,7 +3558,7 @@ filechooser {
 
   #pathbarbox {
     border-bottom: 1px solid divider($on-surface);
-    background-color: $background;
+    // background-color: $background;
 
     // The new folder button
     > stack > box > button {
@@ -3597,7 +3579,7 @@ filechooserbutton:drop(active) {
 
 .sidebar {
   border-style: none;
-  background-color: $base-alt;
+  background-color: transparent;
 
   &:not(separator) {
     @at-root %sidebar_left,
@@ -3617,7 +3599,7 @@ filechooserbutton:drop(active) {
   }
 
   list {
-    background-color: transparent;
+    // background-color: transparent;
   }
 
   paned & {
@@ -3657,7 +3639,7 @@ stacksidebar.sidebar {
 
   list {
     padding: 4px;
-    background-color: $base-alt; // This should not be necessary, but the parent stacksidebar ignores background-color.
+    // background-color: $background; // This should not be necessary, but the parent stacksidebar ignores background-color.
   }
 
   row {
@@ -3713,6 +3695,7 @@ row image.sidebar-icon {
 placessidebar.sidebar {
   > viewport.frame {
     border-style: none;
+    background-color: transparent;
   }
 
   list {
@@ -3823,7 +3806,7 @@ paned {
     &.wide {
       min-width: 6px;
       min-height: 6px;
-      background-color: $background;
+      // background-color: $background;
       background-image: image(divider($on-surface)), image(divider($on-surface));
       background-size: 1px 1px, 1px 1px;
     }
@@ -3881,7 +3864,7 @@ infobar {
   &.info > revealer > box,
   &.question > revealer > box {
     border-bottom: 1px solid divider($on-surface);
-    background-color: $base;
+    // background-color: $base;
 
     button {
       @extend %button-flat;
@@ -4104,7 +4087,7 @@ colorchooser .popover.osd {
 
 // content view (grid/list)
 .content-view {
-  background-color: $background;
+  // background-color: $background;
 
   &:hover {
     // -gtk-icon-effect: highlight;

@@ -10,7 +10,7 @@
 .nautilus-window,
 .nautilus-window notebook,
 .nautilus-window notebook > stack {
-  background-color: $base;
+  // background-color: $background;
 }
 
 .nautilus-canvas-item {
@@ -172,8 +172,6 @@
 .search-information {
   padding: 2px;
   border-bottom: 1px solid divider($on-surface);
-  background-color: $base;
-  color: $on-surface;
 }
 
 .documents-entry-tag {
@@ -264,7 +262,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 
 // Ensure paned separator rendering. See issue #84 for details.
 .nautilus-window paned > separator {
-  background-color: $base-alt;
+  background-color: $background;
 }
 
 
@@ -295,8 +293,6 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 }
 
 .gedit-document-panel {
-  background-color: $base-alt;
-
   // Try to look as the notebook tab close button
   row button.flat {
     margin-top: 8px;
@@ -409,7 +405,7 @@ frame.gedit-map-frame > border {
 .tweak-categories {
   // padding: 4px 0;
   // background-color: shade(@theme_bg_color, 0.99);
-  background-image: image($base-alt);
+  background-image: image($background);
 
   separator {
     @extend %hide_separators;
@@ -457,6 +453,8 @@ row#PrimaryWorkspaceTweak, // for 3.26.0
 row#workspaces-only-on-primary {
   padding: 0;
   border: 1px solid divider($on-surface);
+  background-clip: padding-box;
+  background-image: image($base);
 
   row:not(:last-child) {
     border-bottom: 1px solid divider($on-surface);
@@ -606,7 +604,7 @@ popover.omnibar list row:not(:last-child) {
 entry.preferences-search {
   border-bottom: 1px solid divider($on-surface);
   box-shadow: none;
-  background-color: $base;
+  background-color: transparent;
 
   // doesn't work properly
   &:dir(ltr) {
@@ -620,7 +618,7 @@ entry.preferences-search {
 
 preferences stacksidebar.sidebar {
   list {
-    background-color: $base-alt;
+    // background-color: $background;
   }
 
   &:dir(ltr),
@@ -983,9 +981,11 @@ GdMainIconView.content-view {
 
 .documents-scrolledwin.frame {
   border-style: none;
+  background-color: transparent;
 
   frame.content-view > border {
     border-style: none;
+    background-color: transparent;
   }
 }
 
@@ -1021,12 +1021,15 @@ button.photos-filter-preview {
 }
 
 overlay grid.horizontal > revealer > scrolledwindow.frame {
+  border-style: none;
+  background-color: transparent;
+
   &:dir(ltr) {
-    border-style: none none none solid;
+    border-left-style: solid;
   }
 
   &:dir(rtl) {
-    border-style: none solid none none;
+    border-right-style: solid;
   }
 }
 
@@ -1051,10 +1054,10 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
 
 .side-panel .view {
   // background-color: mix(@theme_fg_color, @theme_bg_color, 0.9);
-  background-image: image($base-alt);
+  background-image: image($background);
 
   &:hover {
-    background-image: image(mix($on-surface, $base-alt, percentage(.08)));
+    background-image: image(mix($on-surface, $background, percentage(.08)));
   }
 }
 
@@ -1204,10 +1207,12 @@ frame.commit-frame > border {
 
 box.dialog-vbox scrolledwindow.related {
   border: 1px solid divider($on-surface);
+  background-clip: padding-box;
+  background-color: $base;
 }
 
 list.categories {
-  background-image: image($base-alt);
+  background-image: image($background);
 }
 
 /**

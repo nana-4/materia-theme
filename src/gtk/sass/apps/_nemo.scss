@@ -32,9 +32,10 @@
 
   scrolledwindow.frame {
     border-style: none;
+    background-color: transparent;
 
     .view:not(:selected) {
-      background-color: transparent;
+      // background-color: transparent;
     }
   }
 
@@ -45,7 +46,7 @@
 
   // Inactive F3 pane shading
   .nemo-inactive-pane .view:not(:selected) {
-    background-color: $base-alt;
+    // background-color: $background;
   }
 
   // Rename entry styling in the icon view.
@@ -65,7 +66,7 @@
 
 // For Places Sidebar diskfull indicators
 .places-treeview {
-  -NemoPlacesTreeView-disk-full-bg-color: opacify(disabled-stroke($on-surface), $base-alt); // Can't use translucent colors
+  -NemoPlacesTreeView-disk-full-bg-color: opacify(disabled-stroke($on-surface), $background); // Can't use translucent colors
   -NemoPlacesTreeView-disk-full-fg-color: $primary;
   -NemoPlacesTreeView-disk-full-bar-width: 2px;
   -NemoPlacesTreeView-disk-full-bar-radius: 0;
