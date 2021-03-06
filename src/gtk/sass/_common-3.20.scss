@@ -81,11 +81,11 @@
   // color: $on-surface;
 
   &:hover {
-    box-shadow: inset 0 0 0 9999px overlay("hover", $on-surface);
+    box-shadow: inset 0 0 0 9999px overlay("hover-alt", $on-surface);
   }
 
   &:selected:hover {
-    box-shadow: inset 0 0 0 9999px overlay("hover", $primary);
+    box-shadow: inset 0 0 0 9999px overlay("hover-alt", $primary);
   }
 
   &:disabled {
@@ -1845,7 +1845,7 @@ treeview.view {
       border-radius: 0;
       background-clip: border-box;
       color: hint($on-surface);
-      @include ink-color($on-surface);
+      @include ink-color($on-surface, $hover-alt: true);
       @include list-item;
 
       &:disabled {
@@ -2267,7 +2267,7 @@ notebook {
       border-radius: 0;
       color: hint($on-surface);
       @extend %ripple;
-      @include ink-color($on-surface);
+      @include ink-color($on-surface, $hover-alt: true);
 
       &:disabled {
         color: disabled-hint($on-surface);
@@ -3354,7 +3354,7 @@ row {
 
   &.activatable {
     @extend %ripple;
-    @include ink-color($on-surface);
+    @include ink-color($on-surface, $hover-alt: true);
     @include list-item;
 
     // this is for indicathing which row generated a popover
@@ -3367,7 +3367,7 @@ row {
   &:selected {
     background-color: $overlay-selected;
 
-    @include ink-color($primary);
+    @include ink-color($primary, $hover-alt: true);
 
     &.has-open-popup {
       background-color: overlay("activated", $primary, $background: $overlay-selected);
@@ -3654,7 +3654,7 @@ stacksidebar.sidebar {
       background-color: overlay("activated", $primary);
       color: $primary;
       font-weight: 500;
-      @include ink-color($primary);
+      @include ink-color($primary, $hover-alt: true);
     }
 
     + row {
@@ -3722,7 +3722,7 @@ placessidebar.sidebar {
       background-color: overlay("activated", $primary);
       color: $primary;
       font-weight: 500;
-      @include ink-color($primary);
+      @include ink-color($primary, $hover-alt: true);
 
       image.sidebar-icon {
         color: $primary;

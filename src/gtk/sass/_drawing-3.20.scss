@@ -119,10 +119,10 @@ $ripple-active-transition-duration: $duration, $ripple-fade-in-duration, 0ms, 0m
   }
 }
 
-@mixin ink-color($color, $elevation: false, $opacity-modifier: 0) {
+@mixin ink-color($color, $elevation: false, $hover-alt: false, $opacity-modifier: 0) {
   $hover: "hover";
 
-  @if $elevation {
+  @if $hover-alt or $elevation {
     $hover: "hover-alt";
   }
 
