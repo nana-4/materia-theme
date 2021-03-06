@@ -3,7 +3,7 @@ gtk3_scss_depend_files = files([
   '../_colors.scss',
   '../_variables.scss',
   'sass/apps/_budgie.scss',
-  'sass/apps/_gnome-3.22.scss',
+  'sass/apps/_gnome.scss',
   'sass/apps/_libhandy.scss',
   'sass/apps/_lightdm.scss',
   'sass/apps/_mate.scss',
@@ -11,10 +11,10 @@ gtk3_scss_depend_files = files([
   'sass/apps/_nemo.scss',
   'sass/apps/_unity.scss',
   'sass/apps/_xfce.scss',
-  'sass/_apps-3.22.scss',
+  'sass/_apps.scss',
   'sass/_colors-public.scss',
-  'sass/_common-3.20.scss',
-  'sass/_drawing-3.20.scss',
+  'sass/_common.scss',
+  'sass/_drawing.scss',
 ])
 
 foreach theme: themes
