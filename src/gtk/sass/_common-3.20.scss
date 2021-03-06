@@ -1,6 +1,5 @@
 * {
   // padding: 0;
-  background-clip: padding-box;
 
   -GtkToolButton-icon-spacing: 0;
   -GtkTextView-error-underline-color: $error;
@@ -1019,6 +1018,7 @@ spinbutton {
 
       // margin: $container-padding;
       border: solid $container-padding transparent;
+      background-clip: padding-box;
 
       // Remove unwanted focus indicator
       &:focus:not(:hover):not(:active) {
@@ -1351,6 +1351,7 @@ toolbar {
   border-width: 0 1px 1px;
   border-color: divider($on-surface);
   background-color: $base;
+  background-clip: padding-box;
 }
 
 searchbar > revealer > box,
@@ -1360,7 +1361,6 @@ searchbar > revealer > box,
   border-width: 0 0 1px;
   border-color: divider($on-surface);
   background-color: $background;
-  background-clip: border-box;
 }
 
 searchbar > revealer > box {
@@ -1941,7 +1941,6 @@ menu,
   padding: 4px 0;
   box-shadow: inset 0 1px highlight($surface);
   background-color: $surface;
-  background-clip: border-box;
   border: 1px solid divider($on-surface); // adds borders in a non composited env
 
   .csd & {
@@ -2067,6 +2066,7 @@ popover.background {
     border-width: 1px;
     border-color: rgba(black, .1) rgba(black, .2) rgba(black, .3);
     border-radius: $corner-radius + 1px;
+    background-clip: padding-box;
   }
 
   > stack {
@@ -2146,7 +2146,6 @@ notebook {
     border-width: 1px;
     border-color: divider($on-surface);
     background-color: $background;
-    background-clip: border-box;
 
     &.top {
       border-bottom-style: solid;
@@ -2311,7 +2310,6 @@ notebook {
       background-repeat: no-repeat;
       background-position: center;
       background-size: 0% 0%;
-      background-clip: border-box;
 
       color: hint($on-surface);
       font-weight: 500;
@@ -2436,6 +2434,7 @@ scrollbar {
 
   transition: $transition;
   background-color: $base;
+  background-clip: padding-box;
 
   // scrollbar border
   &.top { border-bottom: 1px solid divider($on-surface); }
@@ -3257,6 +3256,7 @@ printdialog {
   paper {
     padding: 0;
     border: 1px solid divider($on-surface);
+    background-clip: padding-box;
     background-color: $base;
     color: $on-surface;
   }
@@ -3277,6 +3277,7 @@ frame > border,
   border: 1px solid divider($on-surface);
   border-radius: 0;
   box-shadow: none;
+  background-clip: padding-box;
 
   &.flat {
     border-style: none;
@@ -3292,7 +3293,6 @@ actionbar > revealer > box {
   padding: $container-padding;
   border-top: 1px solid divider($on-surface);
   background-color: $base;
-  background-clip: border-box;
 
   button:not(.suggested-action):not(.destructive-action) {
     @extend %button-flat;
@@ -3370,6 +3370,8 @@ list {
 }
 
 row {
+  background-clip: padding-box;
+
   &.activatable {
     @extend %ripple;
     @include ink-color($on-surface);
@@ -3459,6 +3461,7 @@ expander {
 calendar {
   padding: 1px;
   border: 1px solid divider($on-surface);
+  background-clip: padding-box;
   color: $on-surface;
 
   &:disabled {
@@ -3949,7 +3952,6 @@ tooltip {
   &:not(.csd):not(.unity-csd) {
     // border: 1px solid divider($on-surface);
     // border-radius: $corner-radius + 1px;
-    // background-clip: $background-clip-extra;
   }
 
   // FIXME: we need a border or tooltips vanish on black background.
@@ -4260,6 +4262,7 @@ cursor-handle {
   border: solid 1px divider($on-surface);
   border-radius: $corner-radius + 1px;
   box-shadow: inset 0 -2px divider($on-surface);
+  background-clip: padding-box;
   background-color: $surface;
   color: $on-surface;
   font-size: smaller;

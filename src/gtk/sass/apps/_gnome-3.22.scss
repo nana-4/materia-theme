@@ -119,6 +119,7 @@
   border-width: 1px;
   border-color: divider($on-surface);
   border-radius: ($corner-radius + 1px) ($corner-radius + 1px) 0 0;
+  background-clip: padding-box;
   background-color: $surface;
 
   // axes left border and border radius
@@ -370,6 +371,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
   .linked:not(.vertical) > button {
     border: solid $container-padding transparent;
     border-radius: $circular-radius;
+    background-clip: padding-box;
 
     @extend %button-flat-basic;
     @extend %button-small;
@@ -437,9 +439,10 @@ frame.gedit-map-frame > border {
 }
 
 .tweak-group-startup {
+  border: 1px solid divider($on-surface);
+  background-clip: padding-box;
   // background-color: @view_separators;
   background-image: image($base);
-  border: 1px solid divider($on-surface);
 }
 
 //
@@ -893,6 +896,7 @@ popover.messagepopover {
 
   list {
     border: 1px solid divider($on-surface);
+    background-clip: padding-box;
 
     row:not(:last-child) {
       border-bottom: 1px solid divider($on-surface);
@@ -1084,7 +1088,6 @@ frame.documents-dropdown {
 
 box.vertical > revealer > toolbar.search-bar {
   border-bottom: 1px solid divider($on-surface);
-  background-clip: border-box; // avoid black border
 
   button > widget {
     -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
