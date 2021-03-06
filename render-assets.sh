@@ -16,7 +16,7 @@ chrome() (
 )
 
 gtk() (
-  cd src/gtk
+  cd src/gtk-3.0
   ./render-assets.sh
 )
 

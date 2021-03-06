@@ -134,24 +134,21 @@ install() {
   cp -r "$SRC_DIR/gtk-2.0/assets${ELSE_DARK:-}"                                 "$THEME_DIR/gtk-2.0/assets"
   cp -r "$SRC_DIR/gtk-2.0/gtkrc$color"                                          "$THEME_DIR/gtk-2.0/gtkrc"
 
-  cp -r "$SRC_DIR/gtk/assets"                                                   "$THEME_DIR/gtk-assets"
-  cp -r "$SRC_DIR/gtk/icons"                                                    "$THEME_DIR/gtk-icons"
-
   local GTK_VARIANTS=('')
   [[ "$color" != '-dark' ]] && local GTK_VARIANTS+=('-dark')
 
   for version in "${GTK_VERSIONS[@]}"; do
     mkdir -p                                                                    "$THEME_DIR/gtk-$version"
-    ln -s ../gtk-assets                                                         "$THEME_DIR/gtk-$version/assets"
-    ln -s ../gtk-icons                                                          "$THEME_DIR/gtk-$version/icons"
+    cp -r "$SRC_DIR/gtk-3.0/assets"                                             "$THEME_DIR/gtk-$version"
+    cp -r "$SRC_DIR/gtk-3.0/icons"                                              "$THEME_DIR/gtk-$version"
 
     for variant in "${GTK_VARIANTS[@]}"; do
       sed \
         -e "s/@dark_theme@/$scss_dark_theme/g" \
         -e "s/@light_topbar@/$scss_light_topbar/g" \
         -e "s/@compact@/$scss_compact/g" \
-        "$SRC_DIR/gtk/gtk$variant.scss.in" > "$SRC_DIR/gtk/gtk$variant.gtk-$version.$name.scss"
-      sassc "${SASSC_OPT[@]}" "$SRC_DIR/gtk/gtk$variant.gtk-$version.$name.scss" "$THEME_DIR/gtk-$version/gtk$variant.css"
+        "$SRC_DIR/gtk-$version/gtk$variant.scss.in" > "$SRC_DIR/gtk-$version/gtk$variant.$name.scss"
+      sassc "${SASSC_OPT[@]}" "$SRC_DIR/gtk-$version/gtk$variant.$name.scss" "$THEME_DIR/gtk-$version/gtk$variant.css"
     done
   done
 

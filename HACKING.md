@@ -80,7 +80,7 @@ colors are defined.
 
 #### SVG
 
-- `src/gtk/assets.svg`
+- `src/gtk-3.0/assets.svg`
 - `src/gtk-2.0/assets{,-dark}.svg`
 - `src/gnome-shell/assets{,-dark}/*.svg`
 - `src/unity/*.svg`
@@ -90,7 +90,7 @@ colors are defined.
 - `src/chrome/chrome-theme{,-dark,-light}/*.svg`
 
 > Note: Do not forget to run `./render-assets.sh` after changing the colors of
-`src/gtk/assets.svg` and `src/gtk-2.0/assets{,-dark}.svg`.
+`src/gtk-3.0/assets.svg` and `src/gtk-2.0/assets{,-dark}.svg`.
 
 #### Misc
 
