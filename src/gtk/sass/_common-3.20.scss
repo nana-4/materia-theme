@@ -964,10 +964,18 @@ button.color {
 
 *:link {
   color: $primary;
+
+  &:disabled {
+    color: disabled($on-surface);
+  }
 }
 
 *:visited {
   color: $visited;
+
+  &:disabled {
+    color: disabled($on-surface);
+  }
 }
 
 button.link {
@@ -979,6 +987,10 @@ button.link {
   &:visited {
     color: $visited;
     @include ink-color($visited);
+  }
+
+  &:disabled {
+    color: disabled($on-surface);
   }
 
   > label {
