@@ -97,15 +97,27 @@ install() {
 
   echo "Installing '$THEME_DIR'..."
 
+  #
+  # COPYING & index.theme
+  #
+
   mkdir -p                                                                      "$THEME_DIR"
   cp -r "$REPO_DIR/COPYING"                                                     "$THEME_DIR"
   sed \
     -e "s/@theme_name@/$name/g" \
     "$SRC_DIR/index.theme.in" > "$THEME_DIR/index.theme"
 
+  #
+  # Chrome extensions
+  #
+
   mkdir -p                                                                      "$THEME_DIR/chrome"
   cp -r "$SRC_DIR/chrome/chrome-theme$color.crx"                                "$THEME_DIR/chrome/chrome-theme.crx"
   cp -r "$SRC_DIR/chrome/chrome-scrollbar${ELSE_DARK:-}.crx"                    "$THEME_DIR/chrome/chrome-scrollbar.crx"
+
+  #
+  # Cinnamon
+  #
 
   mkdir -p                                                                      "$THEME_DIR/cinnamon"
   cp -r "$SRC_DIR/cinnamon/assets"                                              "$THEME_DIR/cinnamon"
@@ -117,10 +129,17 @@ install() {
     "$SRC_DIR/cinnamon/cinnamon.scss.in" > "$SRC_DIR/cinnamon/cinnamon.$name.scss"
   sassc "${SASSC_OPT[@]}" "$SRC_DIR/cinnamon/cinnamon.$name.scss"               "$THEME_DIR/cinnamon/cinnamon.css"
 
+  #
+  # GNOME Shell
+  #
+
   mkdir -p                                                                      "$THEME_DIR/gnome-shell"
-  cp -r "$SRC_DIR/gnome-shell/"{*.svg,extensions,noise-texture.png,pad-osd.css} "$THEME_DIR/gnome-shell"
+  cp -r "$SRC_DIR/gnome-shell/extensions"                                       "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/gnome-shell-theme.gresource.xml"                  "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/icons"                                            "$THEME_DIR/gnome-shell"
+  cp -r "$SRC_DIR/gnome-shell/noise-texture.png"                                "$THEME_DIR/gnome-shell"
+  cp -r "$SRC_DIR/gnome-shell/pad-osd.css"                                      "$THEME_DIR/gnome-shell"
+  cp -r "$SRC_DIR/gnome-shell/process-working.svg"                              "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/README.md"                                        "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/assets${ELSE_DARK:-}"                             "$THEME_DIR/gnome-shell/assets"
   sed \
@@ -131,10 +150,20 @@ install() {
     "$SRC_DIR/gnome-shell/gnome-shell.scss.in" > "$SRC_DIR/gnome-shell/gnome-shell.$name.scss"
   sassc "${SASSC_OPT[@]}" "$SRC_DIR/gnome-shell/gnome-shell.$name.scss"         "$THEME_DIR/gnome-shell/gnome-shell.css"
 
+  #
+  # GTK 2
+  #
+
   mkdir -p                                                                      "$THEME_DIR/gtk-2.0"
-  cp -r "$SRC_DIR/gtk-2.0/"{apps.rc,hacks.rc,main.rc}                           "$THEME_DIR/gtk-2.0"
+  cp -r "$SRC_DIR/gtk-2.0/apps.rc"                                              "$THEME_DIR/gtk-2.0"
+  cp -r "$SRC_DIR/gtk-2.0/hacks.rc"                                             "$THEME_DIR/gtk-2.0"
+  cp -r "$SRC_DIR/gtk-2.0/main.rc"                                              "$THEME_DIR/gtk-2.0"
   cp -r "$SRC_DIR/gtk-2.0/assets${ELSE_DARK:-}"                                 "$THEME_DIR/gtk-2.0/assets"
   cp -r "$SRC_DIR/gtk-2.0/gtkrc$color"                                          "$THEME_DIR/gtk-2.0/gtkrc"
+
+  #
+  # GTK 3 & 4
+  #
 
   local GTK_VARIANTS=('')
   [[ "$color" != '-dark' ]] && local GTK_VARIANTS+=('-dark')
@@ -154,18 +183,35 @@ install() {
     done
   done
 
+  #
+  # Metacity
+  #
+
   mkdir -p                                                                      "$THEME_DIR/metacity-1"
-  cp -r "$SRC_DIR/metacity-1/"{assets,metacity-theme-3.xml}                     "$THEME_DIR/metacity-1"
+  cp -r "$SRC_DIR/metacity-1/assets"                                            "$THEME_DIR/metacity-1"
+  cp -r "$SRC_DIR/metacity-1/metacity-theme-3.xml"                              "$THEME_DIR/metacity-1"
   cp -r "$SRC_DIR/metacity-1/metacity-theme-2$color.xml"                        "$THEME_DIR/metacity-1/metacity-theme-2.xml"
+
+  #
+  # Plank
+  #
 
   mkdir -p                                                                      "$THEME_DIR/plank"
   cp -r "$SRC_DIR/plank/dock.theme"                                             "$THEME_DIR/plank"
+
+  #
+  # Unity
+  #
 
   mkdir -p                                                                      "$THEME_DIR/unity"
   cp -rT "$SRC_DIR/unity/dash-buttons"                                          "$THEME_DIR/unity"
   cp -r  "$SRC_DIR/unity/dash-widgets.json"                                     "$THEME_DIR/unity"
   cp -rT "$SRC_DIR/unity/launcher"                                              "$THEME_DIR/unity"
   cp -rT "$SRC_DIR/unity/window-buttons${ELSE_LIGHT:-}"                         "$THEME_DIR/unity"
+
+  #
+  # Xfwm4
+  #
 
   cp -r "$SRC_DIR/xfwm4/xfwm4$color"                                            "$THEME_DIR/xfwm4"
 }
