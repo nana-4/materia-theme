@@ -1,20 +1,21 @@
 gnome_shell = find_program('gnome-shell', required: false)
 
 if get_option('gnome_shell_version') != ''
-  gnome_shell_version = get_option('gnome_shell_version')
+  gnome_shell_full_version = get_option('gnome_shell_version')
+elif gnome_shell.found()
+  gnome_shell_full_version = run_command(gnome_shell, '--version').stdout().split()[-1]
 else
-  if gnome_shell.found()
-    gnome_shell_version_array = run_command([gnome_shell, '--version']).stdout().split('\n')[0].split(' ')[-1].strip().split('.')
+  message('gnome-shell not found, using styles for last gnome-shell version availible')
+  gnome_shell_full_version = '3.38'
+endif
 
-    if gnome_shell_version_array[1].to_int().is_even()
-      gnome_shell_version = '.'.join([gnome_shell_version_array[0], gnome_shell_version_array[1]])
-    else
-      gnome_shell_version = '.'.join([gnome_shell_version_array[0], (gnome_shell_version_array[1].to_int() + 1).to_string()])
-    endif
-  else
-    message('gnome-shell not found, using styles for last gnome-shell version availible')
-    gnome_shell_version = '3.36'
-  endif
+gnome_shell_version_array = gnome_shell_full_version.split('.')
+if gnome_shell_version_array[0].version_compare('>= 40')
+  gnome_shell_version = gnome_shell_version_array[0]
+elif gnome_shell_version_array[1].to_int().is_even()
+  gnome_shell_version = gnome_shell_version_array[0] + '.' + gnome_shell_version_array[1]
+else
+  gnome_shell_version = gnome_shell_version_array[0] + '.' + (gnome_shell_version_array[1].to_int() + 1).to_string()
 endif
 
 gnome_shell_scss_depend_files = files([
