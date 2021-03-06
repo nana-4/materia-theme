@@ -10,7 +10,23 @@ THEME_NAME="Materia"
 COLOR_VARIANTS=('' '-dark' '-light')
 SIZE_VARIANTS=('' '-compact')
 
-GTK_VERSIONS=('3.0')
+# Set a proper gtk4 theme version
+if [[ -z "${GTK4_VERSION:-}" ]]; then
+  if [[ "$(command -v gtk4-launch)" ]]; then
+    GTK4_FULL_VERSION="$(gtk4-launch --version)"
+    GTK4_MAJOR_VERSION="$(echo "$GTK4_FULL_VERSION" | cut -d . -f 1)"
+    GTK4_MINOR_VERSION="$(echo "$GTK4_FULL_VERSION" | cut -d . -f 2)"
+
+    if (( "$GTK4_MINOR_VERSION" % 2 == 0 )); then
+      GTK4_VERSION="$GTK4_MAJOR_VERSION.$GTK4_MINOR_VERSION"
+    else
+      GTK4_VERSION="$GTK4_MAJOR_VERSION.$((GTK4_MINOR_VERSION + 1))"
+    fi
+  else
+    echo "'gtk4-launch' not found, using styles for last gtk4 version available."
+    GTK4_VERSION="4.0"
+  fi
+fi
 
 # Set a proper gnome-shell theme version
 if [[ -z "${GS_VERSION:-}" ]]; then
@@ -168,7 +184,7 @@ install() {
   local GTK_VARIANTS=('')
   [[ "$color" != '-dark' ]] && local GTK_VARIANTS+=('-dark')
 
-  for version in "${GTK_VERSIONS[@]}"; do
+  for version in "3.0" "4.0"; do
     mkdir -p                                                                    "$THEME_DIR/gtk-$version"
     cp -r "$SRC_DIR/gtk-3.0/assets"                                             "$THEME_DIR/gtk-$version"
     cp -r "$SRC_DIR/gtk-3.0/icons"                                              "$THEME_DIR/gtk-$version"
@@ -178,6 +194,7 @@ install() {
         -e "s/@dark_theme@/$scss_dark_theme/g" \
         -e "s/@light_topbar@/$scss_light_topbar/g" \
         -e "s/@compact@/$scss_compact/g" \
+        -e "s/@version@/$GTK4_VERSION/g" \
         "$SRC_DIR/gtk-$version/gtk$variant.scss.in" > "$SRC_DIR/gtk-$version/gtk$variant.$name.scss"
       sassc "${SASSC_OPT[@]}" "$SRC_DIR/gtk-$version/gtk$variant.$name.scss" "$THEME_DIR/gtk-$version/gtk$variant.css"
     done
