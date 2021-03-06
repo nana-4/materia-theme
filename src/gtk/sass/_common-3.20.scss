@@ -635,9 +635,9 @@ button {
   @extend %button-flat-basic;
 
   &:checked {
-    background-color: overlay("activated", $on-surface);
-    color: $on-surface;
-    @include ink-color($on-surface);
+    background-color: overlay("activated", $primary);
+    color: $primary;
+    @include ink-color($primary);
 
     &:disabled {
       color: disabled($on-surface);
@@ -2105,10 +2105,6 @@ popover.background {
     min-height: 32px;
     padding: 0 8px;
     border-radius: $corner-radius;
-
-    &:checked {
-      // color: $primary;
-    }
   }
 
   separator {
@@ -4312,12 +4308,6 @@ popover.emoji-picker {
 
 button.emoji-section {
   margin: 4px;
-
-  &:checked {
-    background-color: overlay("activated", $primary);
-    color: $primary;
-    @include ink-color($primary);
-  }
 
   &:not(:last-child) {
     margin-right: 0;
