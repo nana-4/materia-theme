@@ -32,8 +32,11 @@ Supports **ripple animations** for GTK 3 and 4:
 [5]: ../images/Materia-light.png?raw=true
 [6]: ../images/Materia-light-compact.png?raw=true
 
-## Supported Desktop Environments
+## Supported Toolkits and Desktops
 
+- GTK 2
+- GTK 3 `>=3.20`
+- GTK 4 `>=4.0`
 - Budgie `>=10.4`
 - Cinnamon `>=3.x`
 - GNOME Shell `>=3.26`
@@ -41,25 +44,14 @@ Supports **ripple animations** for GTK 3 and 4:
 - Unity `>=7.4`
 - Xfce `>=4.13`
 
-## Unsupported
+## Unsupported Apps and Desktops
 
-- Downstream customized GNOME sessions
-  > e.g. "Ubuntu" session, "Pop" session. To properly use Materia on GNOME Shell, please install `gnome-session` and then switch to "GNOME" or "GNOME on Xorg" session from your display manager.
 - elementary apps
   > Because they are based on [their own stylesheet](https://github.com/elementary/stylesheet) that conflicts with GTK standards.
+- Downstream customized GNOME sessions
+  > E.g. "Ubuntu" session, "Pop" session. To properly use Materia on GNOME Shell, please install `gnome-session` and then switch to "GNOME" or "GNOME on Xorg" session from your display manager.
 
-## Requirements
-
-- GTK `>=3.20`
-- `gnome-themes-extra` (or `gnome-themes-standard`)
-- Murrine engine — The package name depends on the distro.
-  - `gtk-engine-murrine` on Arch Linux
-  - `gtk-murrine-engine` on Fedora
-  - `gtk2-engine-murrine` on openSUSE
-  - `gtk2-engines-murrine` on Debian, Ubuntu, etc.
-- `sassc` — build-time dependency
-
-## Package Installation
+## Installation
 
 ### Distro Packages
 
@@ -86,54 +78,9 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 flatpak install flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact}
 ```
 
-## Manual Installation
+### Manual Installation
 
-1. Clone the repository and move into the project directory in the terminal:
-
-```sh
-git clone --depth 1 https://github.com/nana-4/materia-theme
-cd materia-theme
-```
-
-2. Build and install it using Meson:
-
-```sh
-meson "build"
-sudo ninja -C "build" install
-```
-
-Alternatively, you can use `./install.sh` script without using Meson:
-
-```sh
-sudo ./install.sh
-```
-
-#### Build Options for Meson
-
-Option | Default Value | Description
---- | --- | ---
-`prefix` | `/usr` | Installation prefix
-`colors` | `default,light,dark` | Choose color variant(s)
-`sizes` | `default,compact` | Choose size variant(s)
-`gnome_shell_version` | n/a (auto) | Manually set gnome-shell version
-
-Example of usage:
-
-```sh
-meson "build" -Dprefix="$HOME/.local" -Dcolors=default,dark -Dsizes=compact
-```
-
-#### Build Options for `./install.sh`
-
-Run `./install.sh --help` for details.
-
-## Manual Uninstallation
-
-Delete the installed directories:
-
-```sh
-sudo rm -rf /usr/share/themes/Materia{,-dark,-light}{,-compact}
-```
+See [`INSTALL.md`](INSTALL.md) for details.
 
 ## Recommendations
 
