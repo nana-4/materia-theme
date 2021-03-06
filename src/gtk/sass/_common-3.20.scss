@@ -1913,7 +1913,8 @@ menubar,
     padding: 4px 8px;
     color: hint($on-titlebar);
 
-    &:hover { // Seems like it :hover even with keyboard focus
+    // Seems like it :hover even with keyboard focus
+    &:hover {
       transition: none;
       background-color: overlay("activated", $on-titlebar);
       color: $on-titlebar;
@@ -2058,7 +2059,8 @@ popover.background {
     box-shadow: $shadow-z2;
   }
 
-  &, .csd & {
+  &,
+  .csd & {
     border-style: solid;
     border-width: 1px;
     border-color: rgba(black, .1) rgba(black, .2) rgba(black, .3);
@@ -3285,7 +3287,8 @@ actionbar > revealer > box {
 }
 
 scrolledwindow {
-  viewport.frame { // avoid double borders when viewport inside scrolled window
+  // avoid double borders when viewport inside scrolled window
+  viewport.frame {
     border-style: none;
     background-color: transparent;
   }
@@ -3313,7 +3316,8 @@ scrolledwindow {
     // &.right { @include undershoot(right); }
   }
 
-  @at-root junction { // the small square between two scrollbars
+  // the small square between two scrollbars
+  @at-root junction {
     border-style: solid none none solid;
     border-width: 1px;
     border-color: divider($on-surface);
@@ -3508,7 +3512,8 @@ messagedialog {
     }
   }
 
-  &.csd { // rounded bottom border styling for csd version
+  &.csd {
+    // rounded bottom border styling for csd version
     &.background {
       // bigger radius for better antialiasing
       border-bottom-left-radius: $corner-radius;
