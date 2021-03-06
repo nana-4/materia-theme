@@ -518,10 +518,16 @@ StScrollView {
   }
 }
 .workspace-close-button, .window-close {
-  background-image: url(assets/close-window.svg);
+  background-image: url(assets/window-close.svg);
   height: 32px;
   width: 32px;
   -cinnamon-close-overlap: 20px;
+  &:hover {
+    background-image: url(assets/window-close-hover.svg);
+  }
+  &:active {
+    background-image: url(assets/window-close-active.svg);
+  }
   &:rtl {
     -st-background-image-shadow: 2px 2px 6px rgba(0,0,0,0.5);
   }
