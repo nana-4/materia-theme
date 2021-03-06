@@ -1135,13 +1135,18 @@ combobox {
     transition: none;
   }
 
+  // remove hard-coded 2px padding
+  cellview {
+    margin: -2px;
+  }
+
   button.combo cellview {
     &:dir(ltr) {
-      margin-left: 8px - ($medium-size - 16px) / 2;
+      margin-left: -2px + 8px - ($medium-size - 16px) / 2;
     }
 
     &:dir(rtl) {
-      margin-right: 8px - ($medium-size - 16px) / 2;
+      margin-right: -2px + 8px - ($medium-size - 16px) / 2;
     }
   }
 
