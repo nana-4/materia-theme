@@ -559,13 +559,13 @@ button {
   }
 
   &:checked {
-    background-color: overlay("activated", $primary, $background: $surface);
+    background-color: overlay("activated", $primary, $on: $surface);
     color: $primary;
     @include ink-color($primary, $elevation: true);
 
     &:disabled {
       box-shadow: none;
-      background-color: overlay("activated", $on-surface, $background: fill($on-surface));
+      background-color: overlay("activated", $on-surface, $on: fill($on-surface));
       color: disabled($on-surface);
     }
   }
@@ -715,7 +715,7 @@ button {
       }
 
       &:checked {
-        background-color: overlay("activated", on($color), $background: $color);
+        background-color: overlay("activated", on($color), $on: $color);
       }
 
       &.flat {
@@ -3376,7 +3376,7 @@ row {
     @include ink-color($primary, $hover-alt: true);
 
     &.has-open-popup {
-      background-color: overlay("activated", $primary, $background: $overlay-selected);
+      background-color: overlay("activated", $primary, $on: $overlay-selected);
     }
   }
 }

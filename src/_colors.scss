@@ -51,13 +51,13 @@ $on-dark: #fff;
 }
 
 // Make translucent color opaque by blending with the background color.
-@function opacify($color, $bg) {
-  @return mix(change-color($color, $alpha: 1), $bg, alpha($color) * 100%);
+@function opacify($color, $on) {
+  @return mix(change-color($color, $alpha: 1), $on, alpha($color) * 100%);
 }
 
 // Set the accessible opacity for the overlay depending on the given color.
-@function overlay($state, $color, $background: transparent, $opacity-modifier: 0) {
-  @if saturation($color) > 50% or saturation($background) > 50% {
+@function overlay($state, $color, $on: transparent, $opacity-modifier: 0) {
+  @if saturation($color) > 50% or saturation($on) > 50% {
     $opacity-modifier: .04;
   }
 
@@ -79,7 +79,7 @@ $on-dark: #fff;
     @error "Invalid type: '#{$state}'";
   }
 
-  @return mix(rgba($color, 1), $background, $opacity * 100%);
+  @return mix(rgba($color, 1), $on, $opacity * 100%);
 }
 
 // Private variables for dark background colors
