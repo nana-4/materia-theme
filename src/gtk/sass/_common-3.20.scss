@@ -2122,88 +2122,61 @@ popover.background {
 
 notebook {
   &:focus > header > tabs > tab:checked {
-    box-shadow: inset 0 0 0 9999px rgba($primary, .12);
+    background-color: overlay("focus", $primary);
   }
 
   > header {
-    border-width: 1px;
-    border-color: divider($on-surface);
-
     &.top {
-      border-bottom-style: solid;
+      box-shadow: inset 0 -1px divider($on-surface);
 
       > tabs {
-        margin-bottom: -1px;
-
         > tab {
-          border-image: linear-gradient(to top, transparent 2px, transparent 2px) 2 / 0 0 2px;
+          box-shadow: inset 0 -2px transparent;
 
           &:checked {
-            border-image-source: linear-gradient(to top, $primary 2px, divider($on-surface) 2px);
-          }
-
-          &.reorderable-page {
-            border-image-width: 0 1px 2px;
+            box-shadow: inset 0 -2px $primary;
           }
         }
       }
     }
 
     &.bottom {
-      border-top-style: solid;
+      box-shadow: inset 0 1px divider($on-surface);
 
       > tabs {
-        margin-top: -1px;
-
         > tab {
-          border-image: linear-gradient(to bottom, transparent 2px, transparent 2px) 2 / 2px 0 0;
+          box-shadow: inset 0 2px transparent;
 
           &:checked {
-            border-image-source: linear-gradient(to bottom, $primary 2px, divider($on-surface) 2px);
-          }
-
-          &.reorderable-page {
-            border-image-width: 2px 1px 0;
+            box-shadow: inset 0 2px $primary;
           }
         }
       }
     }
 
     &.left {
-      border-right-style: solid;
+      box-shadow: inset -1px 0 divider($on-surface);
 
       > tabs {
-        margin-right: -1px;
-
         > tab {
-          border-image: linear-gradient(to left, transparent 2px, transparent 2px) 2 / 0 2px 0 0;
+          box-shadow: inset -2px 0 transparent;
 
           &:checked {
-            border-image-source: linear-gradient(to left, $primary 2px, divider($on-surface) 2px);
-          }
-
-          &.reorderable-page {
-            border-image-width: 1px 2px 1px 0;
+            box-shadow: inset -2px 0 $primary;
           }
         }
       }
     }
 
     &.right {
-      border-left-style: solid;
+      box-shadow: inset 1px 0 divider($on-surface);
 
       > tabs {
-        margin-left: -1px;
-
         > tab {
-          border-image: linear-gradient(to right, transparent 2px, transparent 2px) 2 / 0 0 0 2px;
+          box-shadow: inset 2px 0 transparent;
 
           &:checked {
-            border-image-source: linear-gradient(to right, $primary 2px, divider($on-surface) 2px);
-          }
-
-          &.reorderable-page {
-            border-image-width: 1px 0 1px 2px;
+            box-shadow: inset 2px 0 $primary;
           }
         }
       }
@@ -2211,54 +2184,36 @@ notebook {
 
     &.top > tabs > arrow {
       @extend %notebook_vert_arrows;
-
-      border-top-style: none;
     }
 
     &.bottom > tabs > arrow {
       @extend %notebook_vert_arrows;
-
-      border-bottom-style: none;
     }
 
     @at-root %notebook_vert_arrows {
-      padding-left: 4px;
-      padding-right: 4px;
-
       &.down {
-        margin-left: -8px;
         -gtk-icon-source: -gtk-icontheme('pan-start-symbolic');
       }
 
       &.up {
-        margin-right: -8px;
         -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
       }
     }
 
     &.left > tabs > arrow {
       @extend %notebook_horz_arrows;
-
-      border-left-style: none;
     }
 
     &.right > tabs > arrow {
       @extend %notebook_horz_arrows;
-
-      border-right-style: none;
     }
 
     @at-root %notebook_horz_arrows {
-      padding-top: 4px;
-      padding-bottom: 4px;
-
       &.down {
-        margin-top: -8px;
         -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
       }
 
       &.up {
-        margin-bottom: -8px;
         -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
       }
     }
@@ -2266,6 +2221,7 @@ notebook {
     > tabs > arrow {
       min-height: 16px;
       min-width: 16px;
+      padding: 4px;
       border-radius: 0;
       color: hint($on-surface);
       @extend %ripple;
@@ -2276,23 +2232,18 @@ notebook {
       }
     }
 
-    tab {
+    > tabs > tab {
       transition: $transition,
                   background-size 0ms,
                   background-image 0ms;
       min-height: $small-size;
       min-width: $small-size;
-      padding: $container-padding 12px;
-
-      border-width: 1px;         // for reorderable tabs
-      border-color: transparent; //
-
+      padding: $container-padding 16px;
       outline: none;
       background-image: radial-gradient(circle, $primary 10%, transparent 0%);
       background-repeat: no-repeat;
       background-position: center;
       background-size: 0% 0%;
-
       color: hint($on-surface);
       font-weight: 500;
 
@@ -2311,24 +2262,23 @@ notebook {
         background-color: transparent;
         background-image: radial-gradient(circle, transparent 10%, transparent 0%);
         background-size: 1000% 1000%;
-        background-clip: padding-box;
-        color: $on-surface;
+        color: $primary;
 
         &:disabled {
           color: disabled($on-surface);
         }
 
         &.reorderable-page {
-          border-color: divider($on-surface);
-          background-color: $base;
+          // background-color: $base;
+          // color: $on-surface;
         }
       }
 
       // FIXME: The tab node doesn't have :drop(active), instead its child box has it.
       > box {
         transition: background-color $duration $ease-out;
-        margin: -$container-padding -12px;
-        padding: $container-padding 12px;
+        margin: -$container-padding -16px;
+        padding: $container-padding 16px;
 
         &:drop(active) {
           background-color: overlay("hover", $on-surface);
@@ -2341,56 +2291,12 @@ notebook {
 
         &:last-child {
           margin-left: $container-padding;
-          margin-right: $container-padding - 12px;
+          margin-right: $container-padding - 16px;
         }
 
         &:first-child {
-          margin-left: $container-padding - 12px;
+          margin-left: $container-padding - 16px;
           margin-right: $container-padding;
-        }
-      }
-    }
-
-    &.top,
-    &.bottom {
-      tabs {
-        padding-left: 8px;
-        padding-right: 8px;
-
-        &:not(:only-child) {
-          &:first-child {
-            margin-left: 0;
-          }
-
-          &:last-child {
-            margin-right: 0;
-          }
-        }
-
-        tab.reorderable-page {
-          border-style: none solid;
-        }
-      }
-    }
-
-    &.left,
-    &.right {
-      tabs {
-        padding-top: 8px;
-        padding-bottom: 8px;
-
-        &:not(:only-child) {
-          &:first-child {
-            margin-top: 0;
-          }
-
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-
-        tab.reorderable-page {
-          border-style: solid none;
         }
       }
     }
