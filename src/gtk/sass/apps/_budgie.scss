@@ -291,20 +291,21 @@ button.raven-trigger {
     min-width: 16px;
     padding: 0;
     border-radius: 0;
-    background-color: transparent;
     color: hint($on-panel);
-    @include ink-color($on-panel);
+    @include ink-color($on-panel, $button-style: "flat");
 
     &:disabled {
+      background-color: transparent;
       color: disabled-hint($on-panel);
     }
 
     &:checked {
-      background-color: overlay("activated", $on-panel);
+      $background-color: overlay("activated", $on-panel);
       color: $on-panel;
-      @include ink-color($on-panel);
+      @include ink-color($on-panel, $button-style: "flat", $on: $background-color);
 
       &:disabled {
+        background-color: overlay("activated", $on-panel);
         color: disabled($on-panel);
       }
     }
@@ -511,19 +512,17 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
 
     // Adopt Choice chips style
     stackswitcher.linked > button {
-      @extend %button-flat-activatable;
-
       margin: -2px 8px 9px;
       padding: 0 12px;
       min-height: 32px;
       border-radius: $circular-radius;
-      background-color: fill($on-surface);
+      color: hint($on-surface);
       font-weight: normal;
+      @include ink-color($on-surface, $button-style: "flat", $on: fill($on-surface));
 
       &:checked {
-        background-color: overlay("activated", $primary);
         color: $primary;
-        @include ink-color($primary);
+        @include ink-color($primary, $button-style: "flat", $on: overlay("activated", $primary));
       }
 
       &:not(:first-child) {
@@ -630,7 +629,7 @@ calendar.raven-calendar {
   button.image-button {
     padding: ($large-size - 24px) / 2;
     color: hint($on-scrim);
-    @include ink-color($on-scrim);
+    @include ink-color($on-scrim, $button-style: "flat");
   }
 }
 
@@ -683,7 +682,7 @@ calendar.raven-calendar {
 
     &.text-button:not(:disabled) {
       color: $primary;
-      @include ink-color($primary);
+      @include ink-color($primary, $button-style: "flat");
     }
   }
 
@@ -736,7 +735,7 @@ calendar.raven-calendar {
 
     &:not(:disabled) {
       color: $primary;
-      @include ink-color($primary);
+      @include ink-color($primary, $button-style: "flat");
     }
   }
 }

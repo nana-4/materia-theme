@@ -545,12 +545,11 @@ button {
   min-width: 16px;
   padding: ($medium-size - 24px) / 2 ($medium-size - 16px) / 2;
   border-radius: $corner-radius;
-  background-color: $surface;
   color: $on-surface;
   font-weight: 500;
 
   @extend %ripple;
-  @include ink-color($on-surface, $elevation: true);
+  @include ink-color($on-surface, $button-style: "raised", $on: $surface);
 
   &:disabled {
     box-shadow: none;
@@ -559,9 +558,9 @@ button {
   }
 
   &:checked {
-    background-color: overlay("activated", $primary, $on: $surface);
+    $background-color: overlay("activated", $primary, $on: $surface);
     color: $primary;
-    @include ink-color($primary, $elevation: true);
+    @include ink-color($primary, $button-style: "raised", $on: $background-color);
 
     &:disabled {
       box-shadow: none;
@@ -621,9 +620,8 @@ button {
 }
 
 %button-flat-basic {
-  background-color: transparent;
   color: hint($on-surface);
-  @include ink-color($on-surface);
+  @include ink-color($on-surface, $button-style: "flat");
 
   &:disabled {
     background-color: transparent;
@@ -635,9 +633,9 @@ button {
   @extend %button-flat-basic;
 
   &:checked {
-    background-color: overlay("activated", $primary);
+    $background-color: overlay("activated", $primary);
     color: $primary;
-    @include ink-color($primary);
+    @include ink-color($primary, $button-style: "flat", $on: $background-color);
 
     &:disabled {
       color: disabled($on-surface);
@@ -704,9 +702,8 @@ button {
   // Suggested and Destructive Action buttons
   @each $class, $color in (".suggested-action": $primary, ".destructive-action": $error) {
     &#{$class} {
-      background-color: $color;
       color: on($color);
-      @include ink-color(on($color), $elevation: true);
+      @include ink-color(on($color), $button-style: "raised", $on: $color);
 
       &:disabled {
         box-shadow: none;
@@ -715,13 +712,13 @@ button {
       }
 
       &:checked {
-        background-color: overlay("activated", on($color), $on: $color);
+        $background-color: overlay("activated", on($color), $on: $color);
+        @include ink-color(on($color), $button-style: "raised", $on: $background-color);
       }
 
       &.flat {
-        background-color: transparent;
         color: $color;
-        @include ink-color($color);
+        @include ink-color($color, $button-style: "flat");
 
         &:disabled {
           box-shadow: none;
@@ -730,7 +727,8 @@ button {
         }
 
         &:checked {
-          background-color: overlay("activated", $color);
+          $background-color: overlay("activated", $color);
+          @include ink-color($color, $button-style: "flat", $on: $background-color);
         }
       }
 
@@ -981,12 +979,12 @@ button.color {
 button.link {
   &:link {
     color: $primary;
-    @include ink-color($primary);
+    @include ink-color($primary, $button-style: "flat");
   }
 
   &:visited {
     color: $visited;
-    @include ink-color($visited);
+    @include ink-color($visited, $button-style: "flat");
   }
 
   &:disabled {
@@ -1031,7 +1029,7 @@ spinbutton {
 
       // Remove unwanted focus indicator
       &:focus:not(:hover):not(:active) {
-        box-shadow: inset 0 0 0 9999px transparent;
+        background-color: transparent;
       }
 
       &.up:dir(ltr),
@@ -1083,7 +1081,7 @@ spinbutton {
 
       // Remove unwanted focus indicator
       &:focus:not(:hover):not(:active) {
-        box-shadow: inset 0 0 0 9999px transparent;
+        background-color: transparent;
       }
 
       &.up {
@@ -1471,7 +1469,7 @@ searchbar > revealer > box {
       ) 0 0 0 / 0 0 0;
     background-color: transparent;
     color: hint($on-titlebar);
-    @include ink-color($on-titlebar);
+    @include ink-color($on-titlebar, $button-style: "flat");
 
     &:disabled {
       color: disabled-hint($on-titlebar);
@@ -1487,7 +1485,7 @@ searchbar > revealer > box {
         ) 0 0 2 / 0 0 2px;
       background-color: transparent;
       color: $on-titlebar;
-      @include ink-color($on-titlebar);
+      @include ink-color($on-titlebar, $button-style: "flat");
 
       &:disabled {
         background-color: transparent;
@@ -1857,16 +1855,12 @@ treeview.view {
       border-radius: 0;
       background-clip: border-box;
       color: hint($on-surface);
-      @include ink-color($on-surface, $hover-alt: true);
+      @include ink-color($on-surface, $button-style: "flat", $hover-alt: true);
       @include list-item;
 
       &:disabled {
-        color: disabled-hint($on-surface);
-      }
-
-      &,
-      &:disabled {
         background-color: transparent;
+        color: disabled-hint($on-surface);
       }
 
       &:last-child {
@@ -2644,7 +2638,6 @@ switch {
   min-width: 40px;
   margin: 0;
   padding: 0;
-  box-shadow: none;
   background-color: transparent;
   background-image: none;
   -gtk-icon-shadow: $icon-shadow-z2;
@@ -2713,7 +2706,7 @@ radio {
     &:active,
     &:disabled {
       transition: none; // FIXME: this is a workaround for a popover check/radio long transition issue
-      box-shadow: none;
+      background-color: transparent;
       background-image: none;
     }
 
@@ -2742,9 +2735,12 @@ radio {
     }
 
     &,
-    &:hover,
-    &:disabled {
-      box-shadow: none;
+    &:checked,
+    &:indeterminate {
+      &:hover,
+      &:focus {
+        background-color: transparent;
+      }
     }
   }
 }
@@ -3373,9 +3369,7 @@ row {
   }
 
   &:selected {
-    background-color: $overlay-selected;
-
-    @include ink-color($primary, $hover-alt: true);
+    @include ink-color($primary, $hover-alt: true, $on: $overlay-selected);
 
     &.has-open-popup {
       background-color: overlay("activated", $primary, $on: $overlay-selected);
@@ -3396,7 +3390,7 @@ row {
 
     &.text-button:not(:disabled) {
       color: $primary;
-      @include ink-color($primary);
+      @include ink-color($primary, $button-style: "flat");
     }
   }
 
@@ -3542,19 +3536,17 @@ messagedialog {
 
       &:not(:disabled) {
         color: $primary;
-        @include ink-color($primary);
+        @include ink-color($primary, $button-style: "flat");
       }
 
       &.suggested-action:not(:disabled) {
-        background-color: transparent;
         // color: $primary;
-        // @include ink-color($primary);
+        // @include ink-color($primary, $button-style: "flat");
       }
 
       &.destructive-action:not(:disabled) {
-        background-color: transparent;
         color: $error;
-        @include ink-color($error);
+        @include ink-color($error, $button-style: "flat");
       }
     }
   }
@@ -3657,10 +3649,10 @@ stacksidebar.sidebar {
     border-radius: $corner-radius;
 
     &:selected {
-      background-color: overlay("activated", $primary);
+      $background-color: overlay("activated", $primary);
       color: $primary;
       font-weight: 500;
-      @include ink-color($primary, $hover-alt: true);
+      @include ink-color($primary, $on: $background-color, $hover-alt: true);
     }
 
     + row {
@@ -3725,10 +3717,10 @@ placessidebar.sidebar {
     }
 
     &:selected {
-      background-color: overlay("activated", $primary);
+      $background-color: overlay("activated", $primary);
       color: $primary;
       font-weight: 500;
-      @include ink-color($primary, $hover-alt: true);
+      @include ink-color($primary, $on: $background-color, $hover-alt: true);
 
       image.sidebar-icon {
         color: $primary;
@@ -3880,7 +3872,7 @@ infobar {
 
       &.text-button:not(:disabled) {
         color: $primary;
-        @include ink-color($primary);
+        @include ink-color($primary, $button-style: "flat");
       }
     }
   }
@@ -3891,7 +3883,7 @@ infobar {
 
     button.flat {
       color: $on-warning;
-      @include ink-color($on-warning);
+      @include ink-color($on-warning, $button-style: "flat");
     }
 
     selection {
@@ -3908,7 +3900,7 @@ infobar {
 
     button.flat {
       color: $on-error;
-      @include ink-color($on-error);
+      @include ink-color($on-error, $button-style: "flat");
     }
 
     selection {

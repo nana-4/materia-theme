@@ -119,27 +119,57 @@ $ripple-active-transition-duration: $duration, $ripple-fade-in-duration, 0ms, 0m
   }
 }
 
-@mixin ink-color($color, $elevation: false, $hover-alt: false, $opacity-modifier: 0) {
+@mixin ink-color($color, $on: transparent, $button-style: "none", $hover-alt: false, $opacity-modifier: 0) {
   $hover: "hover";
 
-  @if $hover-alt or $elevation {
+  @if $hover-alt or $button-style == "raised" {
     $hover: "hover-alt";
   }
 
-  box-shadow: inset 0 0 0 9999px transparent, if($elevation, $shadow-z2, null);
+  @if $button-style == "flat" {
+    box-shadow: none;
+  } @else if $button-style == "outlined" {
+    box-shadow: inset 0 0 0 1px stroke($on-surface);
+  } @else if $button-style == "raised" {
+    box-shadow: $shadow-z2;
+  }
+
+  @if $button-style != "none" or $on != transparent {
+    background-color: $on;
+  }
 
   &:drop(active),
   &:hover {
-    box-shadow: inset 0 0 0 9999px overlay($hover, $color, $opacity-modifier: $opacity-modifier), if($elevation, $shadow-z4, null);
+    @if $button-style == "flat" {
+      box-shadow: none;
+    } @else if $button-style == "outlined" {
+      box-shadow: inset 0 0 0 1px stroke($on-surface);
+    } @else if $button-style == "raised" {
+      box-shadow: $shadow-z4;
+    }
+
+    background-color: overlay($hover, $color, $opacity-modifier: $opacity-modifier, $on: $on);
   }
 
   &:focus {
-    box-shadow: inset 0 0 0 9999px overlay("focus", $color, $opacity-modifier: $opacity-modifier), if($elevation, $shadow-z4, null);
+    @if $button-style == "flat" {
+      box-shadow: none;
+    } @else if $button-style == "outlined" {
+      box-shadow: inset 0 0 0 1px stroke($on-surface);
+    } @else if $button-style == "raised" {
+      box-shadow: $shadow-z4;
+    }
+
+    background-color: overlay("focus", $color, $opacity-modifier: $opacity-modifier, $on: $on);
   }
 
   &:active {
-    @if $elevation {
-      box-shadow: inset 0 0 0 9999px overlay("focus", $color, $opacity-modifier: $opacity-modifier), $shadow-z8;
+    @if $button-style == "flat" {
+      box-shadow: none;
+    } @else if $button-style == "outlined" {
+      box-shadow: inset 0 0 0 1px stroke($on-surface);
+    } @else if $button-style == "raised" {
+      box-shadow: $shadow-z8;
     }
 
     background-image: radial-gradient(circle, overlay("pressed", $color, $opacity-modifier: $opacity-modifier) 10%, transparent 0%);
@@ -149,7 +179,7 @@ $ripple-active-transition-duration: $duration, $ripple-fade-in-duration, 0ms, 0m
 @mixin list-item {
   &:drop(active):not(:active),
   &:hover:not(:active) {
-    transition-property: $ripple-transition-property, box-shadow;
+    transition-property: $ripple-transition-property, background-color;
     transition-duration: $ripple-transition-duration, 0ms;
   }
 }

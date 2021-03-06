@@ -24,20 +24,21 @@
     min-width: 16px;
     padding: 0;
     border-radius: 0;
-    background-color: transparent;
     color: hint($on-panel);
-    @include ink-color($on-panel);
+    @include ink-color($on-panel, $button-style: "flat");
 
     &:disabled {
+      background-color: transparent;
       color: disabled-hint($on-panel);
     }
 
     &:checked {
-      background-color: overlay("activated", $on-panel);
+      $background-color: overlay("activated", $on-panel);
       color: $on-panel;
-      @include ink-color($on-panel);
+      @include ink-color($on-panel, $button-style: "flat", $on: $background-color);
 
       &:disabled {
+        background-color: overlay("activated", $on-panel);
         color: disabled($on-panel);
       }
     }
@@ -125,7 +126,7 @@ XfdesktopIconView.view {
 
   buttonbox button:not(:disabled) {
     color: $primary;
-    @include ink-color($primary);
+    @include ink-color($primary, $button-style: "flat");
   }
 
   label#summary {
