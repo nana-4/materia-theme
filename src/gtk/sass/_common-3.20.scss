@@ -1936,9 +1936,12 @@ menu,
 .context-menu {
   margin: 4px 0; // See https://bugzilla.gnome.org/show_bug.cgi?id=591258
   padding: 4px 0;
+  border: 1px solid divider($on-surface); // adds borders in a non composited env
   box-shadow: inset 0 1px highlight($surface);
   background-color: $surface;
-  border: 1px solid divider($on-surface); // adds borders in a non composited env
+  color: $on-surface;
+  font: initial;
+  text-shadow: none;
 
   .csd & {
     border: none; // axes borders in a composited env
@@ -1950,9 +1953,6 @@ menu,
     min-height: 20px;
     min-width: 40px;
     padding: 4px 8px;
-    color: $on-surface;
-    font: initial;
-    text-shadow: none;
 
     &:hover {
       transition: none;
