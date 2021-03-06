@@ -1,4 +1,4 @@
-<img src="../images/materia-logo.svg" alt="materia-logo" align="right" />
+<img src="images/materia-logo.svg" alt="materia-logo" align="right" />
 
 # Materia
 
@@ -8,14 +8,14 @@ It supports GTK 2, GTK 3, GTK 4, GNOME Shell, Budgie, Cinnamon, MATE, Unity, Xfc
 
 ## Previews
 
-![widget-factory](../images/widget-factory.png?raw=true)
-![widget-factory-dark](../images/widget-factory-dark.png?raw=true)
+![widget-factory](images/widget-factory.png?raw=true)
+![widget-factory-dark](images/widget-factory-dark.png?raw=true)
 
 ## Features
 
 Supports **ripple animations** for GTK 3 and 4:
 
-![Button](../images/Button.gif?raw=true)
+![ripple](images/ripple.gif?raw=true)
 
 **3 color variants** and **2 size variants** are available:
 
@@ -25,12 +25,12 @@ Supports **ripple animations** for GTK 3 and 4:
 **dark** | ![Materia-dark][3] | ![Materia-dark-compact][4]
 **light** | ![Materia-light][5] | ![Materia-light-compact][6]
 
-[1]: ../images/Materia.png?raw=true
-[2]: ../images/Materia-compact.png?raw=true
-[3]: ../images/Materia-dark.png?raw=true
-[4]: ../images/Materia-dark-compact.png?raw=true
-[5]: ../images/Materia-light.png?raw=true
-[6]: ../images/Materia-light-compact.png?raw=true
+[1]: images/Materia.png?raw=true
+[2]: images/Materia-compact.png?raw=true
+[3]: images/Materia-dark.png?raw=true
+[4]: images/Materia-dark-compact.png?raw=true
+[5]: images/Materia-light.png?raw=true
+[6]: images/Materia-light-compact.png?raw=true
 
 ## Supported Toolkits and Desktops
 

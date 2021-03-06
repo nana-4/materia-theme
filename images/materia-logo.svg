@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192">
+  <defs>
+    <filter id="shadow" color-interpolation-filters="sRGB">
+      <feFlood flood-color="#000" flood-opacity=".2" result="flood"/>
+      <feComposite in="flood" in2="SourceGraphic" operator="in" result="composite1"/>
+      <feGaussianBlur in="composite1" result="blur" stdDeviation="4"/>
+      <feOffset dy="4" result="offset"/>
+      <feComposite in="SourceGraphic" in2="offset" result="composite2"/>
+    </filter>
+  </defs>
+  <circle cx="96" cy="96" r="88" fill="#fff" filter="url(#shadow)"/>
+  <path d="M48 64v64h96z" fill="#1a73e8"/>
+  <path d="M144 64v64H48z" fill="#8ab4f8"/>
+</svg>
