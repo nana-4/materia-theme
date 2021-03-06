@@ -55,31 +55,27 @@ $on-dark: #fff;
   @return mix(change-color($color, $alpha: 1), $on, alpha($color) * 100%);
 }
 
-// Set the accessible opacity for the overlay depending on the given color.
+$state-overlay-opacities: (
+  "hover": .08,
+  "hover-alt": .04,
+  "focus": .08,
+  "pressed": .12,
+  "dragged": .08,
+  "activated": .12,
+  "selected": .24,
+);
+
+// Determine the overlay color depending on the given state and color.
 @function overlay($state, $color, $on: transparent, $opacity-modifier: 0) {
+  @if not map-has-key($state-overlay-opacities, $state) {
+    @error "Invalid state: '#{$state}'. Choose one of: #{map-keys($state-overlay-opacities)}";
+  }
+
   @if saturation($color) > 50% or saturation($on) > 50% {
     $opacity-modifier: .04;
   }
 
-  $opacity: ();
-
-  @if $state == "hover" {
-    $opacity: .08 + $opacity-modifier;
-  } @else if $state == "hover-alt" {
-    $opacity: .04 + $opacity-modifier;
-  } @else if $state == "focus" {
-    $opacity: .08 + $opacity-modifier;
-  } @else if $state == "pressed" {
-    $opacity: .12 + $opacity-modifier;
-  } @else if $state == "dragged" {
-    $opacity: .08 + $opacity-modifier;
-  } @else if $state == "activated" {
-    $opacity: .12 + $opacity-modifier;
-  } @else if $state == "selected" {
-    @return rgba($color, .24);
-  } @else {
-    @error "Invalid type: '#{$state}'";
-  }
+  $opacity: map-get($state-overlay-opacities, $state) + $opacity-modifier;
 
   @return mix(rgba($color, 1), $on, $opacity * 100%);
 }
