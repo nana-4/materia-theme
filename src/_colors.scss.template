@@ -3,6 +3,9 @@
 
 @import 'color-palette';
 
+$dark-theme: false !default;
+$light-topbar: false !default;
+
 @function gtkalpha($color, $alpha) {
   @return unquote("alpha(#{$color}, #{$alpha})");
 }
@@ -147,7 +150,7 @@ $on-titlebar: %HDR_FG%;
 
 $titlebar-indicator: currentcolor;
 
-@if $variant == "dark" {
+@if $dark-theme {
   $background: if(tone(%BG%) == "dark", %BG%, $-dark-background);
   $base: if(tone(%BG%) == "dark", %MATERIA_VIEW%, $-dark-surface-1dp);
   $surface: if(tone(%BG%) == "dark", %MATERIA_SURFACE%, $-dark-surface-8dp);
@@ -174,7 +177,7 @@ $titlebar-indicator: currentcolor;
   $on-titlebar: if(tone(%BG%) == "dark", %HDR_FG%, on($titlebar));
 }
 
-@if $topbar == "light" {
+@if $light-topbar {
   $panel: $scrim;
   $on-panel: on($panel);
 

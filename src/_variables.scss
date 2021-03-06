@@ -1,14 +1,22 @@
-$asset-suffix: if($variant == 'dark', '-dark', '');
+$compact: false !default;
+
+$asset-suffix: if($dark-theme, "-dark", "");
 
 //
 // Sizes
 //
 
-$container-padding: if($compact == 'false', 6px, 4px);
+$container-padding: 6px;
+$small-size: 24px;
+$medium-size: 36px;
+$large-size: 48px;
 
-$small-size: if($compact == 'false', 24px, 24px);
-$medium-size: if($compact == 'false', 36px, 32px);
-$large-size: if($compact == 'false', 48px, 40px);
+@if $compact {
+  $container-padding: 4px;
+  $small-size: 24px;
+  $medium-size: 32px;
+  $large-size: 40px;
+}
 
 $bar-size: 4px;
 $menuitem-size: 28px;

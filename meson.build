@@ -17,16 +17,16 @@ foreach color: get_option('colors')
   foreach size: get_option('sizes')
     if color == 'default'
       color_suffix = ''
-      scss_variant = 'light'
-      scss_topbar = 'dark'
+      scss_dark_theme = 'false'
+      scss_light_topbar = 'false'
     elif color == 'light'
       color_suffix = '-light'
-      scss_variant = 'light'
-      scss_topbar = 'light'
+      scss_dark_theme = 'false'
+      scss_light_topbar = 'true'
     elif color == 'dark'
       color_suffix = '-dark'
-      scss_variant = 'dark'
-      scss_topbar = 'dark'
+      scss_dark_theme = 'true'
+      scss_light_topbar = 'false'
     endif
 
     if size == 'default'
@@ -42,8 +42,8 @@ foreach color: get_option('colors')
       'dir': theme_base_dir + color_suffix + size_suffix,
       'color': color_suffix,
       'size': size_suffix,
-      'scss_variant': scss_variant,
-      'scss_topbar': scss_topbar,
+      'scss_dark_theme': scss_dark_theme,
+      'scss_light_topbar': scss_light_topbar,
       'scss_compact': scss_compact,
     }
   endforeach

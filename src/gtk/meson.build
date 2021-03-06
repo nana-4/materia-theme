@@ -32,8 +32,8 @@ foreach theme: themes
   endif
 
   gtk_scss_conf = configuration_data()
-  gtk_scss_conf.set('variant', theme['scss_variant'])
-  gtk_scss_conf.set('topbar', theme['scss_topbar'])
+  gtk_scss_conf.set('dark_theme', theme['scss_dark_theme'])
+  gtk_scss_conf.set('light_topbar', theme['scss_light_topbar'])
   gtk_scss_conf.set('compact', theme['scss_compact'])
 
   foreach gtk_version: gtk_versions

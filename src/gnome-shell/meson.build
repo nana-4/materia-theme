@@ -102,8 +102,8 @@ foreach theme: themes
   #
 
   gnome_shell_scss_conf = configuration_data()
-  gnome_shell_scss_conf.set('variant', theme['scss_variant'])
-  gnome_shell_scss_conf.set('topbar', theme['scss_topbar'])
+  gnome_shell_scss_conf.set('dark_theme', theme['scss_dark_theme'])
+  gnome_shell_scss_conf.set('light_topbar', theme['scss_light_topbar'])
   gnome_shell_scss_conf.set('compact', theme['scss_compact'])
   gnome_shell_scss_conf.set('version', gnome_shell_version)
 

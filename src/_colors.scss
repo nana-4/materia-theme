@@ -3,6 +3,9 @@
 
 @import 'color-palette';
 
+$dark-theme: false !default;
+$light-topbar: false !default;
+
 @function gtkalpha($color, $alpha) {
   @return unquote("alpha(#{$color}, #{$alpha})");
 }
@@ -147,7 +150,7 @@ $on-titlebar: on($titlebar);
 
 $titlebar-indicator: currentcolor;
 
-@if $variant == "dark" {
+@if $dark-theme {
   $background: $-dark-background;
   $base: $-dark-surface-1dp;
   $surface: $-dark-surface-8dp;
@@ -174,7 +177,7 @@ $titlebar-indicator: currentcolor;
   $on-titlebar: on($titlebar);
 }
 
-@if $topbar == "light" {
+@if $light-topbar {
   $panel: $scrim;
   $on-panel: on($panel);
 

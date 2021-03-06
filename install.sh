@@ -69,14 +69,14 @@ install() {
   local size="$4"
 
   if [[ "$color" == '' ]]; then
-    local scss_variant="light"
-    local scss_topbar="dark"
+    local scss_dark_theme="false"
+    local scss_light_topbar="false"
   elif [[ "$color" == '-light' ]]; then
-    local scss_variant="light"
-    local scss_topbar="light"
+    local scss_dark_theme="false"
+    local scss_light_topbar="true"
   elif [[ "$color" == '-dark' ]]; then
-    local scss_variant="dark"
-    local scss_topbar="dark"
+    local scss_dark_theme="true"
+    local scss_light_topbar="false"
   fi
 
   if [[ "$size" == '' ]]; then
@@ -109,8 +109,8 @@ install() {
   cp -r "$SRC_DIR/cinnamon/assets"                                              "$THEME_DIR/cinnamon"
   cp -r "$SRC_DIR/cinnamon/thumbnail.png"                                       "$THEME_DIR/cinnamon"
   sed \
-    -e "s/@variant@/$scss_variant/g" \
-    -e "s/@topbar@/$scss_topbar/g" \
+    -e "s/@dark_theme@/$scss_dark_theme/g" \
+    -e "s/@light_topbar@/$scss_light_topbar/g" \
     -e "s/@compact@/$scss_compact/g" \
     "$SRC_DIR/cinnamon/cinnamon.scss.in" > "$SRC_DIR/cinnamon/cinnamon.$name.scss"
   sassc "${SASSC_OPT[@]}" "$SRC_DIR/cinnamon/cinnamon.$name.scss"               "$THEME_DIR/cinnamon/cinnamon.css"
@@ -122,8 +122,8 @@ install() {
   cp -r "$SRC_DIR/gnome-shell/README.md"                                        "$THEME_DIR/gnome-shell"
   cp -r "$SRC_DIR/gnome-shell/assets${ELSE_DARK:-}"                             "$THEME_DIR/gnome-shell/assets"
   sed \
-    -e "s/@variant@/$scss_variant/g" \
-    -e "s/@topbar@/$scss_topbar/g" \
+    -e "s/@dark_theme@/$scss_dark_theme/g" \
+    -e "s/@light_topbar@/$scss_light_topbar/g" \
     -e "s/@compact@/$scss_compact/g" \
     -e "s/@version@/$GS_VERSION/g" \
     "$SRC_DIR/gnome-shell/gnome-shell.scss.in" > "$SRC_DIR/gnome-shell/gnome-shell.$name.scss"
@@ -147,8 +147,8 @@ install() {
 
     for variant in "${GTK_VARIANTS[@]}"; do
       sed \
-        -e "s/@variant@/$scss_variant/g" \
-        -e "s/@topbar@/$scss_topbar/g" \
+        -e "s/@dark_theme@/$scss_dark_theme/g" \
+        -e "s/@light_topbar@/$scss_light_topbar/g" \
         -e "s/@compact@/$scss_compact/g" \
         "$SRC_DIR/gtk/gtk$variant.scss.in" > "$SRC_DIR/gtk/gtk$variant.gtk-$version.$name.scss"
       sassc "${SASSC_OPT[@]}" "$SRC_DIR/gtk/gtk$variant.gtk-$version.$name.scss" "$THEME_DIR/gtk-$version/gtk$variant.css"
