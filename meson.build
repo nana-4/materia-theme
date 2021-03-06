@@ -17,27 +17,12 @@ sh = find_program('sh')
 themes = []
 foreach color: get_option('colors')
   foreach size: get_option('sizes')
-    if color == 'default'
-      color_suffix = ''
-      scss_dark_theme = 'false'
-      scss_light_topbar = 'false'
-    elif color == 'light'
-      color_suffix = '-light'
-      scss_dark_theme = 'false'
-      scss_light_topbar = 'true'
-    elif color == 'dark'
-      color_suffix = '-dark'
-      scss_dark_theme = 'true'
-      scss_light_topbar = 'false'
-    endif
+    color_suffix = color == 'default' ? '' : '-@0@'.format(color)
+    size_suffix = size == 'default' ? '' : '-@0@'.format(size)
 
-    if size == 'default'
-      size_suffix = ''
-      scss_compact = 'false'
-    elif size == 'compact'
-      size_suffix = '-compact'
-      scss_compact = 'true'
-    endif
+    scss_dark_theme = color == 'dark' ? 'true' : 'false'
+    scss_light_topbar = color == 'light' ? 'true' : 'false'
+    scss_compact = size == 'compact' ? 'true' : 'false'
 
     themes += {
       'name': theme_base_name + color_suffix + size_suffix,
