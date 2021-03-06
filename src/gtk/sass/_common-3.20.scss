@@ -4151,19 +4151,19 @@ cursor-handle {
 // shortcut window keys
 .keycap {
   min-width: 28px - 8px * 2;
-  min-height: 28px - 2px;
-  margin-top: 2px;
-  padding-bottom: 2px;
+  min-height: 28px;
   padding-left: 8px;
   padding-right: 8px;
-
-  border: solid 1px divider($on-surface);
-  border-radius: $corner-radius + 1px;
-  box-shadow: inset 0 -2px divider($on-surface);
-  background-clip: padding-box;
+  border-radius: $corner-radius;
+  box-shadow: $shadow-z1;
   background-color: $surface-z8;
   color: $on-surface;
   font-size: smaller;
+}
+
+// workaround for clipped shadows of .keycap
+shortcut:last-child {
+  margin-bottom: 4px;
 }
 
 // FIXME needs to be done widget by widget, this wildcard should really die
