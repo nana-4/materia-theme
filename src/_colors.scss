@@ -46,7 +46,7 @@ $on-dark: #fff;
   } @else if lightness($color) >= 40% {
     @return rgba(white, .2);
   } @else {
-    @return rgba(white, .1);
+    @return rgba(white, .05);
   }
 }
 
@@ -93,14 +93,14 @@ $-dark-surface-switch: mix(white, $-dark-background, 60%);
 // Main colors
 //
 
-$background: #f2f2f2;
+$background: #f9f9f9;
 $base: #fff; // for views
-$base-alt: #fafafa;
+$base-alt: #fff;
 $surface: #fff;
 $switch-surface: #fff; // Special case for switches
 $on-surface: on($surface);
 
-$primary-on-light: #1a73e8;
+$primary-on-light: #1967d2;
 $primary-on-dark: #8ab4f8;
 $primary: $primary-on-light;
 $on-primary: on($primary);
@@ -110,18 +110,18 @@ $error-on-dark: #f28b82;
 $error: $error-on-light;
 $on-error: on($error);
 
-$warning-on-light: #f4b400;
-$warning-on-dark: #fdd633;
+$warning-on-light: #f9ab00;
+$warning-on-dark: #fdd663;
 $warning: $warning-on-light;
 $on-warning: on($warning);
 
-$success-on-light: #0f9d58;
+$success-on-light: #1e8e3e;
 $success-on-dark: #81c995;
 $success: $success-on-light;
 $on-success: on($success);
 
-$visited-on-light: $purple-500;
-$visited-on-dark: $purple-200;
+$visited-on-light: #9334e6;
+$visited-on-dark: #c58af9;
 $visited: $visited-on-light;
 $on-visited: on($visited);
 
@@ -137,14 +137,14 @@ $on-scrim: on($scrim);
 $scrim-alt: rgba(black, .3);
 $on-scrim-alt: on($scrim-alt);
 
-$panel: #1f1f1f;
+$panel: #212121;
 $on-panel: on($panel);
 
 // for Unity panel which doesn't allow translucent colors
 $panel-solid: $panel;
 $on-panel-solid: on($panel-solid);
 
-$titlebar: #383838;
+$titlebar: #424242;
 $titlebar-backdrop: #303030;
 $on-titlebar: on($titlebar);
 
@@ -182,11 +182,11 @@ $titlebar-indicator: currentcolor;
   $panel: $scrim;
   $on-panel: on($panel);
 
-  $panel-solid: #ccc;
+  $panel-solid: #e0e0e0;
   $on-panel-solid: on($panel-solid);
 
-  $titlebar: #e0e0e0;
-  $titlebar-backdrop: #d6d6d6;
+  $titlebar: #f0f0f0;
+  $titlebar-backdrop: #ebebeb;
   $on-titlebar: on($titlebar);
 
   $titlebar-indicator: $primary;
