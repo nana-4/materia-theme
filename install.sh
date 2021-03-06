@@ -12,17 +12,19 @@ SIZE_VARIANTS=('' '-compact')
 
 GTK_VERSIONS=('3.0')
 
+# Set a proper gnome-shell theme version
 if [[ -z "${GS_VERSION:-}" ]]; then
-  # Set a proper gnome-shell theme version
   if [[ "$(command -v gnome-shell)" ]]; then
-    CURRENT_GS_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -2)"
-    MAJOR_VER="$(echo "$CURRENT_GS_VERSION" | cut -d . -f 1)"
-    MINOR_VER="$(echo "$CURRENT_GS_VERSION" | cut -d . -f 2)"
+    GS_FULL_VERSION="$(gnome-shell --version | rev | cut -d ' ' -f 1 | rev)"
+    GS_MAJOR_VERSION="$(echo "$GS_FULL_VERSION" | cut -d . -f 1)"
+    GS_MINOR_VERSION="$(echo "$GS_FULL_VERSION" | cut -d . -f 2)"
 
-    if (( "$MINOR_VER" % 2 == 0 )); then
-      GS_VERSION="$MAJOR_VER.$MINOR_VER"
+    if (( "$GS_MAJOR_VERSION" >= 40 )); then
+      GS_VERSION="$GS_MAJOR_VERSION"
+    elif (( "$GS_MINOR_VERSION" % 2 == 0 )); then
+      GS_VERSION="$GS_MAJOR_VERSION.$GS_MINOR_VERSION"
     else
-      GS_VERSION="$MAJOR_VER.$(($MINOR_VER + 1))"
+      GS_VERSION="$GS_MAJOR_VERSION.$((GS_MINOR_VERSION + 1))"
     fi
   else
     echo "'gnome-shell' not found, using styles for last gnome-shell version available."
