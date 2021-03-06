@@ -1702,8 +1702,6 @@ window.devel .titlebar:not(.selection-mode) {
 
 %pathbar_button,
 .path-bar.linked:not(.vertical) > button {
-  @extend %button-flat-basic;
-
   padding-left: ($medium-size - 24px) / 2;
   padding-right: ($medium-size - 24px) / 2;
   border-image:
@@ -1713,6 +1711,13 @@ window.devel .titlebar:not(.selection-mode) {
       transparent 0%
     ) 0 0 0 / 0 0 0;
   border-radius: $corner-radius;
+  color: hint($on-surface);
+  @include ink-color($on-surface, $button-style: "flat");
+
+  &:disabled {
+    background-color: transparent;
+    color: disabled-hint($on-surface);
+  }
 
   &:checked {
     border-image:
@@ -1721,11 +1726,12 @@ window.devel .titlebar:not(.selection-mode) {
         $primary 100%,
         transparent 0%
       ) 0 0 2 / 0 0 2px;
-    color: $on-surface;
+    color: $primary;
+    @include ink-color($primary, $button-style: "flat");
 
-    &,
     &:disabled {
       background-color: transparent;
+      color: disabled($on-surface);
     }
   }
 
