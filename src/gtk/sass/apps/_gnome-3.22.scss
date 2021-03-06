@@ -1057,7 +1057,7 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
   background-image: image($surface-z0);
 
   &:hover {
-    background-image: image(mix($on-surface, $surface-z0, percentage(.08)));
+    background-image: image(overlay("hover", $on-surface, $on: $surface-z0));
   }
 }
 
@@ -1066,7 +1066,7 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
   background-image: image($primary);
 
   &:hover {
-    background-image: image(mix($on-primary, $primary, percentage(.08)));
+    background-image: image(overlay("hover", $on-primary, $on: $primary));
   }
 }
 
