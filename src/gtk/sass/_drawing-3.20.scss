@@ -43,18 +43,20 @@
         $fc 0%,
         transparent 0%
       ) 2 / 0 0 0;
-    box-shadow: inset 0 0 0 9999px transparent, inset 0 -1px if($fc == $primary, stroke($on-surface), $fc);
+    box-shadow: inset 0 -1px if($fc == $primary, stroke($on-surface), $fc);
     background-color: entry-fill($on-surface);
     color: $on-surface;
     caret-color: $fc;
   }
 
   @if $t == hover {
-    box-shadow: inset 0 0 0 9999px overlay("hover", $on-surface), inset 0 -1px if($fc == $primary, stroke($on-surface), $fc);
+    box-shadow: inset 0 -1px if($fc == $primary, stroke($on-surface), $fc);
+    background-color: overlay("hover-alt", $on-surface, $on: entry-fill($on-surface));
   }
 
   @if $t == focus {
-    box-shadow: inset 0 0 0 9999px overlay("focus", $on-surface), inset 0 -1px if($fc == $primary, stroke($on-surface), $fc);
+    box-shadow: inset 0 -1px if($fc == $primary, stroke($on-surface), $fc);
+    background-color: overlay("focus", $on-surface, $on: entry-fill($on-surface));
   }
 
   @if $t == checked {
@@ -64,10 +66,12 @@
         $fc 100%,
         transparent 0%
       ) 2 / 0 0 2px;
+    box-shadow: inset 0 -1px if($fc == $primary, stroke($on-surface), $fc);
+    background-color: overlay("focus", $on-surface, $on: entry-fill($on-surface));
   }
 
   @if $t == disabled {
-    box-shadow: inset 0 0 0 9999px transparent, inset 0 -1px disabled-stroke($on-surface);
+    box-shadow: inset 0 -1px disabled-stroke($on-surface);
     background-color: entry-fill($on-surface);
     color: disabled($on-surface);
   }
