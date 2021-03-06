@@ -60,7 +60,7 @@ foreach theme: themes
   gtk4_scss_conf.set('current_source_dir', meson.current_source_dir())
 
   foreach gtk4_variant: gtk4_variants
-    gtk4_temp_name = 'gtk@0@.@1@'.format(gtk4_variant, theme['name'])
+    gtk4_temp_name = '@0@.gtk@1@'.format(theme['name'], gtk4_variant)
 
     # Configure SCSS file
     gtk4_scss = configure_file(

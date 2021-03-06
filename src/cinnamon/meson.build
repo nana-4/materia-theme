@@ -32,18 +32,20 @@ foreach theme: themes
   cinnamon_scss_conf.set('compact', theme['scss_compact'])
   cinnamon_scss_conf.set('current_source_dir', meson.current_source_dir())
 
+  cinnamon_temp_name = '@0@.cinnamon'.format(theme['name'])
+
   # Configure SCSS file
   cinnamon_scss = configure_file(
     input: 'cinnamon.scss.in',
-    output: 'cinnamon.@0@.scss'.format(theme['name']),
+    output: '@0@.scss'.format(cinnamon_temp_name),
     configuration: cinnamon_scss_conf,
   )
 
   # Generate CSS file
   cinnamon_css = custom_target(
-    'cinnamon.@0@.css'.format(theme['name']),
+    '@0@.css'.format(cinnamon_temp_name),
     input: cinnamon_scss,
-    output: 'cinnamon.@0@.css'.format(theme['name']),
+    output: '@0@.css'.format(cinnamon_temp_name),
     command: [sassc, sassc_opts, '@INPUT@', '@OUTPUT@'],
     depend_files: cinnamon_scss_depend_files,
     build_by_default: true,

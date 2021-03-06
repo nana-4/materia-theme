@@ -50,7 +50,7 @@ foreach theme: themes
   gtk3_scss_conf.set('current_source_dir', meson.current_source_dir())
 
   foreach gtk3_variant: gtk3_variants
-    gtk3_temp_name = 'gtk@0@.@1@'.format(gtk3_variant, theme['name'])
+    gtk3_temp_name = '@0@.gtk@1@'.format(theme['name'], gtk3_variant)
 
     # Configure SCSS file
     gtk3_scss = configure_file(

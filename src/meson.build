@@ -4,7 +4,7 @@ foreach theme: themes
 
   index_theme = configure_file(
     input: 'index.theme.in',
-    output: 'index.@0@.theme'.format(theme['name']),
+    output: '@0@.index.theme'.format(theme['name']),
     configuration: index_theme_conf,
   )
 

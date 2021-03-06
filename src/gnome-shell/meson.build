@@ -110,18 +110,20 @@ foreach theme: themes
   gnome_shell_scss_conf.set('version', gnome_shell_version)
   gnome_shell_scss_conf.set('current_source_dir', meson.current_source_dir())
 
+  gnome_shell_temp_name = '@0@.gnome-shell'.format(theme['name'])
+
   # Configure SCSS file
   gnome_shell_scss = configure_file(
     input: 'gnome-shell.scss.in',
-    output: 'gnome-shell.@0@.scss'.format(theme['name']),
+    output: '@0@.scss'.format(gnome_shell_temp_name),
     configuration: gnome_shell_scss_conf,
   )
 
   # Generate CSS file
   gnome_shell_css = custom_target(
-    'gnome-shell.@0@.css'.format(theme['name']),
+    '@0@.css'.format(gnome_shell_temp_name),
     input: gnome_shell_scss,
-    output: 'gnome-shell.@0@.css'.format(theme['name']),
+    output: '@0@.css'.format(gnome_shell_temp_name),
     command: [sassc, sassc_opts, '@INPUT@', '@OUTPUT@'],
     depend_files: gnome_shell_scss_depend_files,
     build_by_default: true,
