@@ -1119,9 +1119,15 @@ spinbutton {
 
 combobox {
   arrow {
+    transition: -gtk-icon-transform $duration $ease-out;
     -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
     min-height: 16px;
     min-width: 16px;
+  }
+
+  button.combo:checked arrow {
+    // color: $primary;
+    -gtk-icon-transform: rotate(-.5turn);
   }
 
   // workaround for menuitem selection
@@ -1175,7 +1181,7 @@ combobox {
   }
 
   > .linked:not(.vertical) > button:not(:only-child) {
-    @extend %button-flat-activatable;
+    @extend %button-flat-basic;
     // @extend %button-small;
 
     min-height: 16px;
