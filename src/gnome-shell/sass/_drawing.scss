@@ -144,7 +144,7 @@
     color: $tc;
     background-color: $c;
     border-color: transparent;
-    box-shadow: $shadow-1;
+    box-shadow: $shadow-z2;
     text-shadow: none;
     icon-shadow: none;
     transition-duration: $duration;
@@ -154,14 +154,14 @@
     color: $tc;
     text-shadow: none;
     icon-shadow: none;
-    box-shadow: $shadow-2;
+    box-shadow: $shadow-z4;
   }
 
   @if $t == hover {
     color: $tc;
     background-color: $c;
     border-color: transparent;
-    box-shadow: $shadow-2;
+    box-shadow: $shadow-z4;
     text-shadow: none;
     icon-shadow: none;
   }
@@ -170,7 +170,7 @@
     color: $tc;
     background-color: mix($tc, $c, percentage(0.24));
     border-color: transparent;
-    box-shadow: $shadow-2;
+    box-shadow: $shadow-z8;
     text-shadow: none;
     icon-shadow: none;
     transition-duration: $duration-ripple;
@@ -180,7 +180,7 @@
     color: if($tc == $on-surface, disabled($on-surface), $tc);
     background-color: if($c == $surface-z8, fill($on-surface), $c);
     border-color: transparent;
-    box-shadow: $shadow-0;
+    box-shadow: $shadow-z0;
     text-shadow: none;
     icon-shadow: none;
   }
@@ -189,7 +189,7 @@
     color: if($tc != $on-dark, $primary, hint($on-dark));
     background-color: transparent;
     border-color: transparent;
-    box-shadow: $shadow-0;
+    box-shadow: $shadow-z0;
     text-shadow: none;
     icon-shadow: none;
     transition-duration: $duration;
@@ -200,14 +200,14 @@
     background-color: overlay("focus", if($tc != $on-dark, $primary, $on-dark));
     text-shadow: none;
     icon-shadow: none;
-    box-shadow: $shadow-0;
+    box-shadow: $shadow-z0;
   }
 
   @if $t == flat-hover {
     color: if($tc != $on-dark, $primary, hint($on-dark));
     background-color: overlay("hover", if($tc != $on-dark, $primary, $on-dark));
     border-color: transparent;
-    box-shadow: $shadow-0;
+    box-shadow: $shadow-z0;
     text-shadow: none;
     icon-shadow: none;
   }
@@ -216,7 +216,7 @@
     color: if($tc != $on-dark, $primary, hint($on-dark));
     background-color: overlay("pressed", if($tc != $on-dark, $primary, $on-dark));
     border-color: transparent;
-    box-shadow: $shadow-0;
+    box-shadow: $shadow-z0;
     text-shadow: none;
     icon-shadow: none;
     transition-duration: $duration-ripple;
@@ -226,7 +226,7 @@
     color: if($tc != $on-dark, disabled-hint($on-surface), disabled-hint($on-dark));
     background-color: transparent;
     border-color: transparent;
-    box-shadow: $shadow-0;
+    box-shadow: $shadow-z0;
     text-shadow: none;
     icon-shadow: none;
   }
