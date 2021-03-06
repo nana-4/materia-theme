@@ -95,7 +95,6 @@ $-dark-surface-switch: mix(white, $-dark-background, 60%);
 
 $background: %BG%;
 $base: %MATERIA_VIEW%; // for views
-$base-alt: %INACTIVE_MATERIA_VIEW%;
 $surface: %MATERIA_SURFACE%;
 $switch-surface: %MATERIA_SURFACE%; // Special case for switches
 $on-surface: %FG%;
@@ -153,7 +152,6 @@ $titlebar-indicator: currentcolor;
 @if $variant == "dark" {
   $background: if(tone(%BG%) == "dark", %BG%, $-dark-background);
   $base: if(tone(%BG%) == "dark", %MATERIA_VIEW%, $-dark-surface-1dp);
-  $base-alt: if(tone(%BG%) == "dark", %INACTIVE_MATERIA_VIEW%, $-dark-surface-1dp);
   $surface: if(tone(%BG%) == "dark", %MATERIA_SURFACE%, $-dark-surface-8dp);
   $switch-surface: if(tone(%BG%) == "dark", %MATERIA_SURFACE%, $-dark-surface-switch);
   $on-surface: if(tone(%BG%) == "dark", %FG%, on($surface));
