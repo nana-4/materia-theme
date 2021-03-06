@@ -78,8 +78,16 @@
       <stop offset="1" stop-color="#ffffff" stop-opacity=".08"/>
     </linearGradient>
 
+    <linearGradient id="theme-overlay-hover-alt-on-surface">
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".04"/>
+    </linearGradient>
+
+    <linearGradient id="theme-overlay-focus-on-surface">
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".08"/>
+    </linearGradient>
+
     <linearGradient id="theme-overlay-pressed-on-surface">
-      <stop offset="1" stop-color="#ffffff" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".12"/>
     </linearGradient>
 
     <linearGradient id="theme-overlay-hover-primary">
@@ -87,7 +95,7 @@
     </linearGradient>
 
     <linearGradient id="theme-overlay-pressed-primary">
-      <stop offset="1" stop-color="#8ab4f8" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#8ab4f8" stop-opacity=".16"/>
     </linearGradient>
 
     <filter id="z1" color-interpolation-filters="sRGB" x="0" y="0" width="1" height="1">
@@ -143,10 +151,12 @@
 
     <g id="base-button-hover">
       <use xlink:href="#base-button" filter="url(#z1)"/>
+      <use xlink:href="#base-button-box" fill="url(#theme-overlay-hover-alt-on-surface)"/>
     </g>
 
     <g id="base-button-active">
-      <use xlink:href="#base-button-hover"/>
+      <use xlink:href="#base-button" filter="url(#z1)"/>
+      <use xlink:href="#base-button-box" fill="url(#theme-overlay-hover-alt-on-surface)"/>
       <use xlink:href="#base-button-box" fill="url(#theme-overlay-pressed-on-surface)"/>
     </g>
 
@@ -166,16 +176,18 @@
 
     <g id="base-entry-hover">
       <use xlink:href="#base-entry"/>
-      <use xlink:href="#base-entry-box" fill="url(#theme-overlay-hover-on-surface)"/>
+      <use xlink:href="#base-entry-box" fill="url(#theme-overlay-hover-alt-on-surface)"/>
     </g>
 
     <g id="base-entry-active">
       <use xlink:href="#base-entry"/>
+      <use xlink:href="#base-entry-box" fill="url(#theme-overlay-hover-alt-on-surface)"/>
       <use xlink:href="#base-entry-box" fill="url(#theme-overlay-pressed-on-surface)"/>
     </g>
 
     <g id="base-entry-focus">
       <use xlink:href="#base-entry"/>
+      <use xlink:href="#base-entry-box" fill="url(#theme-overlay-focus-on-surface)"/>
       <rect x="2" y="16" width="36" height="2" fill="url(#theme-primary)"/>
     </g>
 
@@ -321,11 +333,20 @@
       <rect width="2" height="2" fill="url(#theme-surface-z1)"/>
       <rect width="2" height="2" fill="url(#theme-divider-on-surface)"/>
       <rect width="1" height="1" fill="url(#theme-surface-z1)"/>
+    </g>
+
+    <g id="base-treeview-ltr-button-overlay">
       <rect width="1" height="1"/>
     </g>
 
     <g id="base-treeview-rtl-button">
-      <use xlink:href="#base-treeview-ltr-button" transform="scale(-1 1)"/>
+      <rect width="2" height="2" fill="url(#theme-surface-z1)"/>
+      <rect width="2" height="2" fill="url(#theme-divider-on-surface)"/>
+      <rect x="1" width="1" height="1" fill="url(#theme-surface-z1)"/>
+    </g>
+
+    <g id="base-treeview-rtl-button-overlay">
+      <rect x="1" width="1" height="1"/>
     </g>
   </defs>
 
@@ -336,6 +357,7 @@
     <use xlink:href="#base-button-box" fill="url(#theme-overlay-hover-on-surface)"/>
   </g>
   <g id="flat-button-active" transform="translate(8 48)">
+    <use xlink:href="#base-button-box" fill="url(#theme-overlay-hover-on-surface)"/>
     <use xlink:href="#base-button-box" fill="url(#theme-overlay-pressed-on-surface)"/>
   </g>
   <g id="flat-button-disabled" transform="translate(8 68)">
@@ -462,6 +484,7 @@
     <use xlink:href="#base-checkbox-unchecked" fill="url(#theme-hint-on-surface)"/>
   </g>
   <g id="checkbox-unchecked-active" transform="translate(8 156)">
+    <use xlink:href="#button-fill" fill="url(#theme-overlay-hover-on-surface)"/>
     <use xlink:href="#button-fill" fill="url(#theme-overlay-pressed-on-surface)"/>
     <use xlink:href="#base-checkbox-unchecked" fill="url(#theme-hint-on-surface)"/>
   </g>
@@ -479,6 +502,7 @@
     <use xlink:href="#base-checkbox-checked" fill="url(#theme-primary)"/>
   </g>
   <g id="checkbox-checked-active" transform="translate(40 156)">
+    <use xlink:href="#button-fill" fill="url(#theme-overlay-hover-primary)"/>
     <use xlink:href="#button-fill" fill="url(#theme-overlay-pressed-primary)"/>
     <use xlink:href="#base-checkbox-checked" fill="url(#theme-primary)"/>
   </g>
@@ -496,6 +520,7 @@
     <use xlink:href="#base-checkbox-mixed" fill="url(#theme-primary)"/>
   </g>
   <g id="checkbox-mixed-active" transform="translate(72 156)">
+    <use xlink:href="#button-fill" fill="url(#theme-overlay-hover-primary)"/>
     <use xlink:href="#button-fill" fill="url(#theme-overlay-pressed-primary)"/>
     <use xlink:href="#base-checkbox-mixed" fill="url(#theme-primary)"/>
   </g>
@@ -513,6 +538,7 @@
     <use xlink:href="#base-radio-unchecked" fill="url(#theme-hint-on-surface)"/>
   </g>
   <g id="radio-unchecked-active" transform="translate(104 156)">
+    <use xlink:href="#button-fill" fill="url(#theme-overlay-hover-on-surface)"/>
     <use xlink:href="#button-fill" fill="url(#theme-overlay-pressed-on-surface)"/>
     <use xlink:href="#base-radio-unchecked" fill="url(#theme-hint-on-surface)"/>
   </g>
@@ -530,6 +556,7 @@
     <use xlink:href="#base-radio-checked" fill="url(#theme-primary)"/>
   </g>
   <g id="radio-checked-active" transform="translate(136 156)">
+    <use xlink:href="#button-fill" fill="url(#theme-overlay-hover-primary)"/>
     <use xlink:href="#button-fill" fill="url(#theme-overlay-pressed-primary)"/>
     <use xlink:href="#base-radio-checked" fill="url(#theme-primary)"/>
   </g>
@@ -547,6 +574,7 @@
     <use xlink:href="#base-radio-mixed" fill="url(#theme-primary)"/>
   </g>
   <g id="radio-mixed-active" transform="translate(168 156)">
+    <use xlink:href="#button-fill" fill="url(#theme-overlay-hover-primary)"/>
     <use xlink:href="#button-fill" fill="url(#theme-overlay-pressed-primary)"/>
     <use xlink:href="#base-radio-mixed" fill="url(#theme-primary)"/>
   </g>
@@ -606,6 +634,7 @@
     <circle cx="12" cy="12" r="6" fill="url(#theme-primary)"/>
   </g>
   <g id="scale-slider-active" transform="translate(8 332)">
+    <circle cx="12" cy="12" r="12" fill="url(#theme-overlay-hover-primary)"/>
     <circle cx="12" cy="12" r="12" fill="url(#theme-overlay-pressed-primary)"/>
     <circle cx="12" cy="12" r="6" fill="url(#theme-primary)"/>
   </g>
@@ -790,22 +819,28 @@
   </g>
 
   <g id="treeview-ltr-button" transform="translate(180 396)">
-    <use xlink:href="#base-treeview-ltr-button" fill="none"/>
+    <use xlink:href="#base-treeview-ltr-button"/>
   </g>
   <g id="treeview-ltr-button-hover" transform="translate(180 404)">
-    <use xlink:href="#base-treeview-ltr-button" fill="url(#theme-overlay-hover-on-surface)"/>
+    <use xlink:href="#base-treeview-ltr-button"/>
+    <use xlink:href="#base-treeview-ltr-button-overlay" fill="url(#theme-overlay-hover-alt-on-surface)"/>
   </g>
   <g id="treeview-ltr-button-active" transform="translate(180 412)">
-    <use xlink:href="#base-treeview-ltr-button" fill="url(#theme-overlay-pressed-on-surface)"/>
+    <use xlink:href="#base-treeview-ltr-button"/>
+    <use xlink:href="#base-treeview-ltr-button-overlay" fill="url(#theme-overlay-hover-alt-on-surface)"/>
+    <use xlink:href="#base-treeview-ltr-button-overlay" fill="url(#theme-overlay-pressed-on-surface)"/>
   </g>
 
-  <g id="treeview-rtl-button" transform="translate(190 396)">
-    <use xlink:href="#base-treeview-rtl-button" fill="none"/>
+  <g id="treeview-rtl-button" transform="translate(188 396)">
+    <use xlink:href="#base-treeview-rtl-button"/>
   </g>
-  <g id="treeview-rtl-button-hover" transform="translate(190 404)">
-    <use xlink:href="#base-treeview-rtl-button" fill="url(#theme-overlay-hover-on-surface)"/>
+  <g id="treeview-rtl-button-hover" transform="translate(188 404)">
+    <use xlink:href="#base-treeview-rtl-button"/>
+    <use xlink:href="#base-treeview-rtl-button-overlay" fill="url(#theme-overlay-hover-alt-on-surface)"/>
   </g>
-  <g id="treeview-rtl-button-active" transform="translate(190 412)">
-    <use xlink:href="#base-treeview-rtl-button" fill="url(#theme-overlay-pressed-on-surface)"/>
+  <g id="treeview-rtl-button-active" transform="translate(188 412)">
+    <use xlink:href="#base-treeview-rtl-button"/>
+    <use xlink:href="#base-treeview-rtl-button-overlay" fill="url(#theme-overlay-hover-alt-on-surface)"/>
+    <use xlink:href="#base-treeview-rtl-button-overlay" fill="url(#theme-overlay-pressed-on-surface)"/>
   </g>
 </svg>
