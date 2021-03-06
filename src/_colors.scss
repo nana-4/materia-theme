@@ -84,21 +84,21 @@ $state-overlay-opacities: (
 }
 
 // Private variables for dark background colors
-$-dark-background: #181818;
-$-dark-surface-1dp: mix(white, $-dark-background, 5%);
-$-dark-surface-4dp: mix(white, $-dark-background, 9%);
-$-dark-surface-8dp: mix(white, $-dark-background, 12%);
-$-dark-surface-switch: mix(white, $-dark-background, 60%);
+$-dark-surface-z0: #181818;
+$-dark-surface-z1: mix(white, $-dark-surface-z0, 5%);
+$-dark-surface-z4: mix(white, $-dark-surface-z0, 9%);
+$-dark-surface-z8: mix(white, $-dark-surface-z0, 12%);
+$-dark-surface-switch-thumb: mix(white, $-dark-surface-z0, 60%);
 
 //
 // Main colors
 //
 
-$background: #f9f9f9;
-$base: #fff; // for views
-$surface: #fff;
-$switch-surface: #fff; // Special case for switches
-$on-surface: on($surface);
+$surface-z0: #f9f9f9;
+$surface-z1: #fff;
+$surface-z8: #fff;
+$surface-switch-thumb: #fff;
+$on-surface: on($surface-z0);
 
 $primary-on-light: #1967d2;
 $primary-on-dark: #8ab4f8;
@@ -125,7 +125,7 @@ $visited-on-dark: #c58af9;
 $visited: $visited-on-light;
 $on-visited: on($visited);
 
-$os-background: $-dark-background;
+$os-background: $-dark-surface-z0;
 $on-os-background: on($os-background);
 
 $tooltip: rgba(#616161, .9);
@@ -151,11 +151,11 @@ $on-titlebar: on($titlebar);
 $titlebar-indicator: currentcolor;
 
 @if $dark-theme {
-  $background: $-dark-background;
-  $base: $-dark-surface-1dp;
-  $surface: $-dark-surface-8dp;
-  $switch-surface: $-dark-surface-switch;
-  $on-surface: on($surface);
+  $surface-z0: $-dark-surface-z0;
+  $surface-z1: $-dark-surface-z1;
+  $surface-z8: $-dark-surface-z8;
+  $surface-switch-thumb: $-dark-surface-switch-thumb;
+  $on-surface: on($surface-z0);
 
   $primary: $primary-on-dark;
   $on-primary: on($primary);
@@ -172,8 +172,8 @@ $titlebar-indicator: currentcolor;
   $visited: $visited-on-dark;
   $on-visited: on($visited);
 
-  $titlebar: $-dark-surface-4dp;
-  $titlebar-backdrop: $-dark-surface-1dp;
+  $titlebar: $-dark-surface-z4;
+  $titlebar-backdrop: $-dark-surface-z1;
   $on-titlebar: on($titlebar);
 }
 

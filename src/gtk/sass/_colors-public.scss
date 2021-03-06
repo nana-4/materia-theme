@@ -15,11 +15,11 @@ text color for entries, views and content in general */
 
 /*
 widget base background color */
-@define-color theme_bg_color #{"" + $background};
+@define-color theme_bg_color #{"" + $surface-z0};
 
 /*
 text widgets and the like base background color */
-@define-color theme_base_color #{"" + $base};
+@define-color theme_base_color #{"" + $surface-z1};
 
 /*
 base background color of selections */
@@ -31,7 +31,7 @@ text/foreground color of selections */
 
 /*
 base background color of insensitive widgets */
-@define-color insensitive_bg_color #{"" + $background};
+@define-color insensitive_bg_color #{"" + $surface-z0};
 
 /*
 text foreground color of insensitive widgets */
@@ -39,7 +39,7 @@ text foreground color of insensitive widgets */
 
 /*
 insensitive text widgets and the like base background color */
-@define-color insensitive_base_color #{"" + $base};
+@define-color insensitive_base_color #{"" + $surface-z1};
 
 /*
 widget text/foreground color on backdrop windows */
@@ -51,11 +51,11 @@ text color for entries, views and content in general on backdrop windows */
 
 /*
 widget base background color on backdrop windows */
-@define-color theme_unfocused_bg_color #{"" + $background};
+@define-color theme_unfocused_bg_color #{"" + $surface-z0};
 
 /*
 text widgets and the like base background color on backdrop windows */
-@define-color theme_unfocused_base_color #{"" + $base};
+@define-color theme_unfocused_base_color #{"" + $surface-z1};
 
 /*
 base background color of selections on backdrop windows */
@@ -100,11 +100,11 @@ read if you used those and something break with a version upgrade you're on your
 // FIXME this is really an API
 
 /* content view background such as thumbnails view in Photos or Boxes */
-@define-color content_view_bg #{"" + $background};
+@define-color content_view_bg #{"" + $surface-z0};
 
 /* Very contrasty background for text views (@theme_text_color foreground) */
-@define-color text_view_bg #{"" + $background};
+@define-color text_view_bg #{"" + $surface-z0};
 
 /* placeholder for entries */
 // NOTE: @placeholder_text_color doesn't allow translucent colors.
-@define-color placeholder_text_color #{"" + opacify(hint($on-surface), $base)};
+@define-color placeholder_text_color #{"" + opacify(hint($on-surface), $surface-z1)};

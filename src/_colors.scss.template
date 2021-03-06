@@ -84,20 +84,20 @@ $state-overlay-opacities: (
 }
 
 // Private variables for dark background colors
-$-dark-background: if(tone(%BG%) == "dark", %BG%, %FG%);
-$-dark-surface-1dp: mix(white, $-dark-background, 5%);
-$-dark-surface-4dp: mix(white, $-dark-background, 9%);
-$-dark-surface-8dp: mix(white, $-dark-background, 12%);
-$-dark-surface-switch: mix(white, $-dark-background, 60%);
+$-dark-surface-z0: if(tone(%BG%) == "dark", %BG%, %FG%);
+$-dark-surface-z1: mix(white, $-dark-surface-z0, 5%);
+$-dark-surface-z4: mix(white, $-dark-surface-z0, 9%);
+$-dark-surface-z8: mix(white, $-dark-surface-z0, 12%);
+$-dark-surface-switch-thumb: mix(white, $-dark-surface-z0, 60%);
 
 //
 // Main colors
 //
 
-$background: %BG%;
-$base: %MATERIA_VIEW%; // for views
-$surface: %MATERIA_SURFACE%;
-$switch-surface: %MATERIA_SURFACE%; // Special case for switches
+$surface-z0: %BG%;
+$surface-z1: %MATERIA_VIEW%;
+$surface-z8: %MATERIA_SURFACE%;
+$surface-switch-thumb: %MATERIA_SURFACE%;
 $on-surface: %FG%;
 
 $primary-on-light: %SEL_BG%;
@@ -151,11 +151,11 @@ $on-titlebar: %HDR_FG%;
 $titlebar-indicator: currentcolor;
 
 @if $dark-theme {
-  $background: if(tone(%BG%) == "dark", %BG%, $-dark-background);
-  $base: if(tone(%BG%) == "dark", %MATERIA_VIEW%, $-dark-surface-1dp);
-  $surface: if(tone(%BG%) == "dark", %MATERIA_SURFACE%, $-dark-surface-8dp);
-  $switch-surface: if(tone(%BG%) == "dark", %MATERIA_SURFACE%, $-dark-surface-switch);
-  $on-surface: if(tone(%BG%) == "dark", %FG%, on($surface));
+  $surface-z0: if(tone(%BG%) == "dark", %BG%, $-dark-surface-z0);
+  $surface-z1: if(tone(%BG%) == "dark", %MATERIA_VIEW%, $-dark-surface-z1);
+  $surface-z8: if(tone(%BG%) == "dark", %MATERIA_SURFACE%, $-dark-surface-z8);
+  $surface-switch-thumb: if(tone(%BG%) == "dark", %MATERIA_SURFACE%, $-dark-surface-switch-thumb);
+  $on-surface: if(tone(%BG%) == "dark", %FG%, on($surface-z0));
 
   $primary: $primary-on-dark;
   $on-primary: on($primary);
@@ -172,8 +172,8 @@ $titlebar-indicator: currentcolor;
   $visited: $visited-on-dark;
   $on-visited: on($visited);
 
-  $titlebar: if(tone(%BG%) == "dark", %HDR_BG%, $-dark-surface-4dp);
-  $titlebar-backdrop: if(tone(%BG%) == "dark", %HDR_BG2%, $-dark-surface-1dp);
+  $titlebar: if(tone(%BG%) == "dark", %HDR_BG%, $-dark-surface-z4);
+  $titlebar-backdrop: if(tone(%BG%) == "dark", %HDR_BG2%, $-dark-surface-z1);
   $on-titlebar: if(tone(%BG%) == "dark", %HDR_FG%, on($titlebar));
 }
 

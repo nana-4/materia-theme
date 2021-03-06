@@ -20,7 +20,7 @@ overlay > revealer {
 
 .terminix-session-sidebar, // for backward compatibility
 .tilix-session-sidebar {
-  background-image: image($surface);
+  background-image: image($surface-z8);
 }
 
 .terminal-titlebar button {
@@ -49,7 +49,7 @@ button.flat.tilix-small-button {
 
 .terminator-terminal-window {
   paned > separator {
-    background-color: $background;
+    background-color: $surface-z0;
   }
 
   // this should be fixed by the upstream
@@ -94,14 +94,14 @@ window.background > box.vertical > widget > widget > widget > widget > widget > 
     all: unset;
     padding: 5px;
     box-shadow: inset 0 0 0 1px $overlay-selected;
-    background-color: $base;
+    background-color: $surface-z1;
   }
 
   > widget > entry {
     all: unset;
     padding: 0 3px 1px;
     box-shadow: inset 0 0 0 1px $overlay-selected;
-    background-color: $base;
+    background-color: $surface-z1;
   }
 }
 
@@ -110,7 +110,7 @@ window.background > box.vertical > widget > widget > widget > widget > widget > 
  */
 
 window.background.chromium {
-  background-color: $surface;
+  background-color: $surface-z8;
 
   // FIXME: There is no way to change the color of the toolbar buttons
   toolbar button {
@@ -156,7 +156,7 @@ window.background.chromium {
   // For table header
   treeview.view button {
     border: 1px solid stroke($on-surface);
-    background-color: $base; // FIXME: This should not be necessary
+    background-color: $surface-z1; // FIXME: This should not be necessary
     // color: hint($on-surface);
   }
 }
@@ -173,7 +173,7 @@ tooltip.background.chromium {
   > widget {
     // For popover, entry in toolbar, etc.
     text {
-      background-color: $surface;
+      background-color: $surface-z8;
     }
 
     // For selection, active tab indicator, etc.
@@ -197,7 +197,7 @@ tooltip.background.chromium {
     > frame > border {
       // FIXME: On Wayland, translucent colors don't work well here.
       // See: https://github.com/nana-4/materia-theme/issues/467
-      border-color: opacify(stroke($on-surface), $background);
+      border-color: opacify(stroke($on-surface), $surface-z0);
     }
 
     > entry,
@@ -213,7 +213,7 @@ tooltip.background.chromium {
 
     > entry {
       min-height: 32px - 2px;
-      background-color: $base;
+      background-color: $surface-z1;
 
       &:focus {
         border-color: $primary;
@@ -221,7 +221,7 @@ tooltip.background.chromium {
       }
 
       &:disabled {
-        background-color: $base;
+        background-color: $surface-z1;
       }
     }
 

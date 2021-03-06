@@ -39,7 +39,7 @@
  */
 
 .background {
-  background-color: $background;
+  background-color: $surface-z0;
   color: $on-surface;
 }
 
@@ -55,15 +55,15 @@
 }
 
 .gtkstyle-fallback {
-  background-color: $background;
+  background-color: $surface-z0;
   color: $on-surface;
 
   &:hover {
-    background-color: darken($background, 5%);
+    background-color: darken($surface-z0, 5%);
   }
 
   &:active {
-    background-color: darken($background, 10%);
+    background-color: darken($surface-z0, 10%);
   }
 
   &:disabled {
@@ -77,7 +77,7 @@
 }
 
 .view {
-  // background-color: $background;
+  // background-color: $surface-z0;
   // color: $on-surface;
 
   &:hover {
@@ -106,12 +106,12 @@
 textview {
   // FIXME: we need to override background-color to ensure text rendering
   text {
-    background-color: $background;
+    background-color: $surface-z0;
     caret-color: $primary;
   }
 
   border {
-    // background-color: $background;
+    // background-color: $surface-z0;
     color: hint($on-surface); // FIXME: not working
   }
 }
@@ -465,7 +465,7 @@ entry {
 treeview entry {
   &,
   &.flat {
-    background-color: $base;
+    background-color: $surface-z1;
 
     &,
     &:focus {
@@ -549,7 +549,7 @@ button {
   font-weight: 500;
 
   @extend %ripple;
-  @include ink-color($on-surface, $button-style: "raised", $on: $surface);
+  @include ink-color($on-surface, $button-style: "raised", $on: $surface-z8);
 
   &:disabled {
     box-shadow: none;
@@ -558,7 +558,7 @@ button {
   }
 
   &:checked {
-    $background-color: overlay("activated", $primary, $on: $surface);
+    $background-color: overlay("activated", $primary, $on: $surface-z8);
     color: $primary;
     @include ink-color($primary, $button-style: "raised", $on: $background-color);
 
@@ -1340,11 +1340,11 @@ toolbar {
   transition: $transition-shadow;
   padding: $container-padding;
   border-radius: $corner-radius;
-  box-shadow: $shadow-z4, inset 0 1px highlight($surface);
-  background-color: $surface;
+  box-shadow: $shadow-z4, inset 0 1px highlight($surface-z8);
+  background-color: $surface-z8;
 
   &:backdrop {
-    box-shadow: $shadow-z2, inset 0 1px highlight($surface);
+    box-shadow: $shadow-z2, inset 0 1px highlight($surface-z8);
   }
 }
 
@@ -1354,7 +1354,7 @@ toolbar {
   border-style: solid;
   border-width: 0 1px 1px;
   border-color: divider($on-surface);
-  background-color: $base;
+  background-color: $surface-z1;
   background-clip: padding-box;
 }
 
@@ -1876,7 +1876,7 @@ treeview.view {
     border-radius: 0;
     box-shadow: none;
     background-clip: padding-box;
-    background-color: $surface;
+    background-color: $surface-z8;
     color: $primary;
   }
 
@@ -1938,8 +1938,8 @@ menu,
   margin: 4px 0; // See https://bugzilla.gnome.org/show_bug.cgi?id=591258
   padding: 4px 0;
   border: 1px solid divider($on-surface); // adds borders in a non composited env
-  box-shadow: inset 0 1px highlight($surface);
-  background-color: $surface;
+  box-shadow: inset 0 1px highlight($surface-z8);
+  background-color: $surface-z8;
   color: $on-surface;
   font: initial;
   text-shadow: none;
@@ -2000,7 +2000,7 @@ menu,
     min-height: 16px;
     min-width: 16px;
     padding: 4px;
-    background-color: $surface;
+    background-color: $surface-z8;
     color: hint($on-surface);
 
     &.top {
@@ -2053,7 +2053,7 @@ popover.background {
   transition: $transition-shadow;
   padding: 2px;
   box-shadow: $shadow-z4; // TODO: this should really have a highlight
-  background-color: $surface;
+  background-color: $surface-z8;
 
   &:backdrop {
     box-shadow: $shadow-z2;
@@ -2269,7 +2269,7 @@ notebook {
         }
 
         &.reorderable-page {
-          // background-color: $base;
+          // background-color: $surface-z1;
           // color: $on-surface;
         }
 
@@ -2321,7 +2321,7 @@ scrollbar {
   }
 
   transition: $transition;
-  // background-color: $background;
+  // background-color: $surface-z0;
   background-clip: padding-box;
 
   // scrollbar border
@@ -2381,14 +2381,14 @@ scrollbar {
         min-width: 4px;
         min-height: 4px;
         margin: 4px - 1px;
-        border: 1px solid rgba($base, .3);
+        border: 1px solid rgba($surface-z1, .3);
       }
 
       button {
         min-width: 4px;
         min-height: 4px;
         margin: 4px - 1px;
-        border: 1px solid rgba($base, .3);
+        border: 1px solid rgba($surface-z1, .3);
         border-radius: $circular-radius;
         background-color: scrollbar-thumb($on-surface);
         background-clip: padding-box;
@@ -2422,7 +2422,7 @@ scrollbar {
 
     &.dragging,
     &.hovering {
-      background-color: $surface;
+      background-color: $surface-z8;
     }
   }
 
@@ -2507,7 +2507,7 @@ switch {
     border-radius: $circular-radius;
     outline: none;
     box-shadow: 0 0 0 10px transparent, $shadow-z1;
-    background-color: $switch-surface;
+    background-color: $surface-switch-thumb;
   }
 
   &:hover slider {
@@ -2860,7 +2860,7 @@ scale {
     background-image: image($primary);
 
     &:disabled {
-      background-color: $background;
+      background-color: $surface-z0;
       background-image: image(disabled-hint($on-surface));
     }
   }
@@ -3147,7 +3147,7 @@ printdialog {
     padding: 0;
     border: 1px solid divider($on-surface);
     background-clip: padding-box;
-    background-color: $base;
+    background-color: $surface-z1;
     color: $on-surface;
   }
 
@@ -3168,7 +3168,7 @@ frame > border,
   border-radius: 0;
   box-shadow: none;
   background-clip: padding-box;
-  background-color: $base;
+  background-color: $surface-z1;
 
   &.flat {
     border-style: none;
@@ -3185,7 +3185,7 @@ frame.flat > border {
 actionbar > revealer > box {
   padding: $container-padding;
   border-top: 1px solid divider($on-surface);
-  // background-color: $base;
+  // background-color: $surface-z1;
 
   button:not(.suggested-action):not(.destructive-action) {
     @extend %button-flat;
@@ -3231,7 +3231,7 @@ scrolledwindow {
     border-style: solid none none solid;
     border-width: 1px;
     border-color: divider($on-surface);
-    // background-color: $background;
+    // background-color: $surface-z0;
 
     &:dir(rtl) {
       border-style: solid solid none none;
@@ -3258,7 +3258,7 @@ separator {
 
 list {
   border-color: divider($on-surface);
-  // background-color: $base;
+  // background-color: $surface-z1;
 
   row {
     padding: 2px;
@@ -3358,7 +3358,7 @@ calendar {
   padding: 1px;
   border: 1px solid divider($on-surface);
   background-clip: padding-box;
-  background-color: $base;
+  background-color: $surface-z1;
   color: $on-surface;
 
   &:disabled {
@@ -3406,18 +3406,18 @@ calendar {
 // Message Dialog styling
 messagedialog {
   &.background {
-    background-color: $surface;
+    background-color: $surface-z8;
   }
 
   .titlebar {
     min-height: $small-size;
     border-style: none;
-    box-shadow: inset 0 1px highlight($surface);
-    background-color: $surface;
+    box-shadow: inset 0 1px highlight($surface-z8);
+    background-color: $surface-z8;
     color: $on-surface;
 
     &:backdrop {
-      background-color: $surface;
+      background-color: $surface-z8;
       color: hint($on-surface);
     }
   }
@@ -3472,7 +3472,7 @@ filechooser {
 
   #pathbarbox {
     border-bottom: 1px solid divider($on-surface);
-    // background-color: $background;
+    // background-color: $surface-z0;
 
     // The new folder button
     > stack > box > button {
@@ -3553,7 +3553,7 @@ stacksidebar.sidebar {
 
   list {
     padding: 4px;
-    // background-color: $background; // This should not be necessary, but the parent stacksidebar ignores background-color.
+    // background-color: $surface-z0; // This should not be necessary, but the parent stacksidebar ignores background-color.
   }
 
   row {
@@ -3721,7 +3721,7 @@ paned {
     &.wide {
       min-width: 6px;
       min-height: 6px;
-      // background-color: $background;
+      // background-color: $surface-z0;
       background-image: image(divider($on-surface)), image(divider($on-surface));
       background-size: 1px 1px, 1px 1px;
     }
@@ -3779,7 +3779,7 @@ infobar {
   &.info > revealer > box,
   &.question > revealer > box {
     border-bottom: 1px solid divider($on-surface);
-    // background-color: $base;
+    // background-color: $surface-z1;
 
     button {
       @extend %button-flat;
@@ -3956,7 +3956,7 @@ colorswatch {
     }
 
     overlay {
-      background-color: $surface;
+      background-color: $surface-z8;
     }
   }
 
@@ -3988,11 +3988,11 @@ colorswatch {
 colorchooser .popover.osd {
   transition: $transition-shadow;
   border-radius: $corner-radius;
-  box-shadow: $shadow-z4, inset 0 1px highlight($surface);
-  background-color: $surface;
+  box-shadow: $shadow-z4, inset 0 1px highlight($surface-z8);
+  background-color: $surface-z8;
 
   &:backdrop {
-    box-shadow: $shadow-z2, inset 0 1px highlight($surface);
+    box-shadow: $shadow-z2, inset 0 1px highlight($surface-z8);
   }
 }
 
@@ -4002,7 +4002,7 @@ colorchooser .popover.osd {
 
 // content view (grid/list)
 .content-view {
-  // background-color: $background;
+  // background-color: $surface-z0;
 
   &:hover {
     // -gtk-icon-effect: highlight;
@@ -4161,7 +4161,7 @@ cursor-handle {
   border-radius: $corner-radius + 1px;
   box-shadow: inset 0 -2px divider($on-surface);
   background-clip: padding-box;
-  background-color: $surface;
+  background-color: $surface-z8;
   color: $on-surface;
   font-size: smaller;
 }

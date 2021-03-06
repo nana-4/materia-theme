@@ -76,7 +76,7 @@
     transition: $transition;
     border-image: none;
     box-shadow: $shadow-z1;
-    background-color: if($fc == $primary, $surface, $fc);
+    background-color: if($fc == $primary, $surface-z8, $fc);
     color: if($fc == $primary, $on-surface, on($fc));
     caret-color: if($fc == $primary, $fc, on($fc));
   }
@@ -92,7 +92,7 @@
 
   @if $t == raised-disabled {
     box-shadow: $shadow-z1;
-    background-color: $base;
+    background-color: $surface-z1;
     color: disabled($on-surface);
   }
 }

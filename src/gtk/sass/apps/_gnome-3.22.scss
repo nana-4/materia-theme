@@ -10,7 +10,7 @@
 .nautilus-window,
 .nautilus-window notebook,
 .nautilus-window notebook > stack {
-  // background-color: $background;
+  // background-color: $surface-z0;
 }
 
 .nautilus-canvas-item {
@@ -120,7 +120,7 @@
   border-color: divider($on-surface);
   border-radius: ($corner-radius + 1px) ($corner-radius + 1px) 0 0;
   background-clip: padding-box;
-  background-color: $surface;
+  background-color: $surface-z8;
 
   // axes left border and border radius
   &.bottom.left {
@@ -179,7 +179,7 @@
 }
 
 .conflict-row:not(:selected) {
-  background-color: mix($warning, $base, percentage(.3));
+  background-color: mix($warning, $surface-z1, percentage(.3));
 }
 
 // Icon view
@@ -262,7 +262,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 
 // Ensure paned separator rendering. See issue #84 for details.
 .nautilus-window paned > separator {
-  background-color: $background;
+  background-color: $surface-z0;
 }
 
 
@@ -351,7 +351,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
     }
 
     &:not(.error) {
-      background-color: $surface;
+      background-color: $surface-z8;
     }
 
     &.error ~ button {
@@ -405,7 +405,7 @@ frame.gedit-map-frame > border {
 .tweak-categories {
   // padding: 4px 0;
   // background-color: shade(@theme_bg_color, 0.99);
-  background-image: image($background);
+  background-image: image($surface-z0);
 
   separator {
     @extend %hide_separators;
@@ -425,20 +425,20 @@ frame.gedit-map-frame > border {
 .tweak-white,
 .tweak-white:hover {
   // background-color: white;
-  background-image: image($base);
+  background-image: image($surface-z1);
 }
 
 .tweak-startup,
 .tweak-startup:hover {
   // background-color: lighter(shade(@theme_bg_color, 0.9));
-  background-image: image($base);
+  background-image: image($surface-z1);
 }
 
 .tweak-group-startup {
   border: 1px solid divider($on-surface);
   background-clip: padding-box;
   // background-color: @view_separators;
-  background-image: image($base);
+  background-image: image($surface-z1);
 }
 
 //
@@ -454,7 +454,7 @@ row#workspaces-only-on-primary {
   padding: 0;
   border: 1px solid divider($on-surface);
   background-clip: padding-box;
-  background-image: image($base);
+  background-image: image($surface-z1);
 
   row:not(:last-child) {
     border-bottom: 1px solid divider($on-surface);
@@ -504,7 +504,7 @@ hdyleaflet.titlebar > .titlebar.tweak-titlebar-right {
 // The following makes the layout stack header look similar to a tab bar.
 layouttabbar {
   border-bottom: 1px solid divider($on-surface);
-  background-color: $background;
+  background-color: $surface-z0;
 
   button {
     @extend %button-flat-activatable;
@@ -522,7 +522,7 @@ layouttab {
   border-width: 1px;
   border-color: divider($on-surface);
   box-shadow: inset 0 -2px $primary;
-  background-color: $base;
+  background-color: $surface-z1;
 
   separator.vertical {
     margin: 8px 4px;
@@ -618,7 +618,7 @@ entry.preferences-search {
 
 preferences stacksidebar.sidebar {
   list {
-    // background-color: $background;
+    // background-color: $surface-z0;
   }
 
   &:dir(ltr),
@@ -693,13 +693,13 @@ dockpaned {
 eggsearchbar box.search-bar {
   padding: 0 8px;
   border-bottom: 1px solid divider($on-surface);
-  background-color: $background;
+  background-color: $surface-z0;
 }
 
 docktabstrip {
   padding: 0 8px;
   border-bottom: 1px solid divider($on-surface);
-  background-color: $background;
+  background-color: $surface-z0;
 }
 
 docktab {
@@ -740,7 +740,7 @@ docktab {
 }
 
 dockoverlayedge {
-  background-color: $background;
+  background-color: $surface-z0;
 
   docktabstrip {
     padding: 0;
@@ -757,7 +757,7 @@ dockoverlayedge {
 }
 
 pillbox {
-  background-color: $background;
+  background-color: $surface-z0;
   border-radius: $corner-radius;
 }
 
@@ -768,7 +768,7 @@ buildperspective row {
 layoutpane entry.search {
   border-bottom: 1px solid divider($on-surface);
   box-shadow: none;
-  background-color: $base;
+  background-color: $surface-z1;
 }
 
 editortweak entry.search {
@@ -842,7 +842,7 @@ idelayoutstackheader {
 // utilities stack switcher
 ideeditorutilities > dzldockpaned > box > stackswitcher {
   padding: 8px 0;
-  background-color: $background;
+  background-color: $surface-z0;
 
   &:dir(ltr) {
     border-right: 1px solid divider($on-surface);
@@ -1054,10 +1054,10 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
 
 .side-panel .view {
   // background-color: mix(@theme_fg_color, @theme_bg_color, 0.9);
-  background-image: image($background);
+  background-image: image($surface-z0);
 
   &:hover {
-    background-image: image(mix($on-surface, $background, percentage(.08)));
+    background-image: image(mix($on-surface, $surface-z0, percentage(.08)));
   }
 }
 
@@ -1207,11 +1207,11 @@ frame.commit-frame > border {
 box.dialog-vbox scrolledwindow.related {
   border: 1px solid divider($on-surface);
   background-clip: padding-box;
-  background-color: $base;
+  background-color: $surface-z1;
 }
 
 list.categories {
-  background-image: image($background);
+  background-image: image($surface-z0);
 }
 
 /**
