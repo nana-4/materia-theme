@@ -792,6 +792,7 @@ button {
 
   // force circular button shape
   &.close,
+  menubutton.circular > &,
   &.circular {
     border-radius: $circular-radius;
   }
@@ -963,6 +964,33 @@ button.color {
   min-width: $small-size;
   min-height: $small-size;
   padding: $container-padding;
+}
+
+menubutton {
+  > button > box > arrow {
+    min-height: 16px;
+    min-width: 16px;
+
+    &.none {
+      -gtk-icon-source: -gtk-icontheme('open-menu-symbolic');
+    }
+
+    &.down {
+      -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+    }
+
+    &.up {
+      -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
+    }
+
+    &.left {
+      -gtk-icon-source: -gtk-icontheme('pan-start-symbolic');
+    }
+
+    &.right {
+      -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+    }
+  }
 }
 
 /**
@@ -1848,6 +1876,19 @@ treeview.view {
 
       &:last-child {
         border-right-style: none;
+      }
+
+      > box > sort-indicator {
+        min-height: 16px;
+        min-width: 16px;
+
+        &.ascending {
+          -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
+        }
+
+        &.descending {
+          -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+        }
       }
     }
   }
