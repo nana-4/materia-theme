@@ -10,42 +10,45 @@
     -vertical-spacing: 16px;
   }
 
-  // Padding for container around window thumbnails
-  padding: 0 16px 32px;
+  @if $version < 40 {
+    // Padding for container around window thumbnails
+    padding: 0 16px 32px;
 
-  &.external-monitor {
-    padding: 16px;
+    &.external-monitor {
+      padding: 16px;
+    }
   }
 }
 
-// Borders on window thumbnails
-.window-clone-border {
-  border: 4px solid stroke($on-dark);
-  border-radius: $corner-radius;
-  // For window decorations with round corners we can't match
-  // the exact shape when the window is scaled. So apply a shadow
-  // to fix that case
-  box-shadow: inset 0 0 0 1px stroke($on-dark);
+@if $version < 40 {
+  // Borders on window thumbnails
+  .window-clone-border {
+    border: 4px solid stroke($on-dark);
+    border-radius: $corner-radius;
+    // For window decorations with round corners we can't match
+    // the exact shape when the window is scaled. So apply a shadow
+    // to fix that case
+    box-shadow: inset 0 0 0 1px stroke($on-dark);
+  }
 }
 
 // Window titles
 .window-caption {
-  spacing: 0;
   padding: 4px 8px;
-  border: 0;
   border-radius: $corner-radius;
   background-color: $scrim;
   color: $on-scrim;
-  font-size: 1em;
-  font-weight: normal;
+
+  @if $version < 40 {
+    spacing: 0;
+    border: 0;
+    font-size: 1em;
+    font-weight: normal;
+  }
 }
 
 // Close button
 .window-close {
-  @if $version < 3.38 {
-    -shell-close-overlap: $medium-size / 2;
-  }
-
   transition-duration: $duration;
   height: $medium-size;
   width: $medium-size;
@@ -56,8 +59,14 @@
   background-color: $error;
   color: $on-error;
 
-  background-image: url("assets/window-close.svg");
-  background-size: 24px;
+  @if $version < 40 {
+    background-image: url("assets/window-close.svg");
+    background-size: 24px;
+  }
+
+  @if $version < 3.38 {
+    -shell-close-overlap: $medium-size / 2;
+  }
 
   &:hover {
     box-shadow: $shadow-z4;
@@ -84,6 +93,18 @@
 
   StIcon {
     icon-size: 24px;
-    color: transparent;
+
+    @if $version < 40 {
+      color: transparent;
+    }
+  }
+}
+
+@if $version >= 40 {
+  .workspace-background {
+    // keep in sync with BACKGROUND_CORNER_RADIUS_PIXELS in workspace.js
+    border-radius: 30px;
+    background-color: black;
+    box-shadow: $shadow-z8;
   }
 }
