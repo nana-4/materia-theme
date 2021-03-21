@@ -114,9 +114,12 @@
 }
 
 .login-dialog-message-hint {
-  padding-top: 0;
-  padding-bottom: 20px;
   color: hint($on-system);
+
+  @if $version < 40 {
+    padding-top: 0;
+    padding-bottom: 20px;
+  }
 }
 
 .login-dialog-user-selection-box {
