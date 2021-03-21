@@ -80,7 +80,7 @@ Install specific theme variants with different name into ~/.themes
 EOF
 }
 
-install() {
+install_theme() {
   local dest="$1"
   local name="$2$3$4"
   local color="$3"
@@ -122,7 +122,7 @@ install() {
     "$REPO_DIR/COPYING" \
     "$THEME_DIR"
   sed \
-    -e "s/@theme_name@/$name/g" \
+    -e "s|@theme_name@|$name|g" \
     "$SRC_DIR/index.theme.in" > \
     "$THEME_DIR/index.theme"
 
@@ -150,10 +150,10 @@ install() {
     "$SRC_DIR/cinnamon/thumbnail.png" \
     "$THEME_DIR/cinnamon"
   sed \
-    -e "s/@dark_theme@/$scss_dark_theme/g" \
-    -e "s/@light_topbar@/$scss_light_topbar/g" \
-    -e "s/@compact@/$scss_compact/g" \
-    -e "s#@current_source_dir@#$SRC_DIR/cinnamon#g" \
+    -e "s|@dark_theme@|$scss_dark_theme|g" \
+    -e "s|@light_topbar@|$scss_light_topbar|g" \
+    -e "s|@compact@|$scss_compact|g" \
+    -e "s|@current_source_dir@|$SRC_DIR/cinnamon|g" \
     "$SRC_DIR/cinnamon/cinnamon.scss.in" | \
   sassc --stdin "${SASSC_OPT[@]}" \
     "$THEME_DIR/cinnamon/cinnamon.css"
@@ -178,11 +178,11 @@ install() {
     "$SRC_DIR/gnome-shell/process-working.svg" \
     "$THEME_DIR/gnome-shell"
   sed \
-    -e "s/@dark_theme@/$scss_dark_theme/g" \
-    -e "s/@light_topbar@/$scss_light_topbar/g" \
-    -e "s/@compact@/$scss_compact/g" \
-    -e "s/@version@/$GS_VERSION/g" \
-    -e "s#@current_source_dir@#$SRC_DIR/gnome-shell#g" \
+    -e "s|@dark_theme@|$scss_dark_theme|g" \
+    -e "s|@light_topbar@|$scss_light_topbar|g" \
+    -e "s|@compact@|$scss_compact|g" \
+    -e "s|@version@|$GS_VERSION|g" \
+    -e "s|@current_source_dir@|$SRC_DIR/gnome-shell|g" \
     "$SRC_DIR/gnome-shell/gnome-shell.scss.in" | \
   sassc --stdin "${SASSC_OPT[@]}" \
     "$THEME_DIR/gnome-shell/gnome-shell.css"
@@ -220,11 +220,11 @@ install() {
 
     for variant in "${GTK_VARIANTS[@]}"; do
       sed \
-        -e "s/@dark_theme@/$scss_dark_theme/g" \
-        -e "s/@light_topbar@/$scss_light_topbar/g" \
-        -e "s/@compact@/$scss_compact/g" \
-        -e "s/@version@/$GTK4_VERSION/g" \
-        -e "s#@current_source_dir@#$SRC_DIR/gtk-$version#g" \
+        -e "s|@dark_theme@|$scss_dark_theme|g" \
+        -e "s|@light_topbar@|$scss_light_topbar|g" \
+        -e "s|@compact@|$scss_compact|g" \
+        -e "s|@version@|$GTK4_VERSION|g" \
+        -e "s|@current_source_dir@|$SRC_DIR/gtk-$version|g" \
         "$SRC_DIR/gtk-$version/gtk$variant.scss.in" | \
       sassc --stdin "${SASSC_OPT[@]}" \
         "$THEME_DIR/gtk-$version/gtk$variant.css"
@@ -284,7 +284,7 @@ install() {
 }
 
 # Bakup and install files related to GDM theme
-install_gdm() {
+install_gdm_theme() {
   local THEME_DIR="$1/$2$3$4"
   local GS_THEME_FILE="/usr/share/gnome-shell/gnome-shell-theme.gresource"
   local UBUNTU_THEME_FILE="/usr/share/gnome-shell/theme/ubuntu.css"
@@ -401,12 +401,12 @@ if [[ "${#sizes[@]}" -eq 0 ]] ; then
 fi
 for color in "${colors[@]}"; do
   for size in "${sizes[@]}"; do
-    install "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$color" "$size"
+    install_theme "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$color" "$size"
   done
 done
 
 if [[ "${gdm:-}" == 'true' ]]; then
-  install_gdm "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$color" "$size"
+  install_gdm_theme "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$color" "$size"
 fi
 
 echo
