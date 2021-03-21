@@ -18,7 +18,7 @@
   }
 }
 
-@if $version <= 3.36 {
+@if $version < 3.38 {
   .app-display {
     // spacing: 20px;
   }
@@ -145,7 +145,7 @@
   }
 }
 
-@if $version <= 3.34 {
+@if $version < 3.36 {
   // expanded collection
   .app-folder-popup {
     -arrow-base: 24px;
@@ -242,8 +242,8 @@
 }
 
 // Some hacks I don't even know
-$search-display: if($version <= 3.32, ".search-display > StBoxLayout,", null);
-$frequent-apps: if($version <= 3.36, ".frequent-apps > StBoxLayout,", null);
+$search-display: if($version < 3.34, ".search-display > StBoxLayout,", null);
+$frequent-apps: if($version < 3.38, ".frequent-apps > StBoxLayout,", null);
 
 #{$search-display}
 #{$frequent-apps}
@@ -252,7 +252,7 @@ $frequent-apps: if($version <= 3.36, ".frequent-apps > StBoxLayout,", null);
   padding: 0 88px 10px;
 }
 
-@if $version <= 3.36 {
+@if $version < 3.38 {
   // Label when no frequent apps
   .no-frequent-applications-label {
     @extend %overview-status-text;
@@ -268,7 +268,7 @@ $frequent-apps: if($version <= 3.36, ".frequent-apps > StBoxLayout,", null);
   color: on($grey-900);
 }
 
-@if $version <= 3.36 {
+@if $version < 3.38 {
   /* Frequent | All toggle */
 
   // container

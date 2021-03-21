@@ -1,7 +1,7 @@
 /* Top Bar */
 
 #panel {
-  $background: if($version >= 3.26 and $version <= 3.30, $scrim, $panel);
+  $background: if($version >= 3.26 and $version < 3.32, $scrim, $panel);
 
   transition-duration: $duration-panel;
   height: $menuitem-size;
@@ -135,14 +135,14 @@
     @extend %transparent-panel;
   }
 
-  @if $version <= 3.34 {
+  @if $version < 3.36 {
     &.lock-screen {
       @extend %transparent-panel;
       background-color: $scrim-alt;
     }
   }
 
-  @if $version >= 3.26 and $version <= 3.30 {
+  @if $version >= 3.26 and $version < 3.32 {
     &.solid {
       transition-duration: $duration-panel;
       background-color: $panel;
@@ -173,7 +173,7 @@
 #appMenu {
   spacing: 4px;
 
-  @if $version <= 3.32 {
+  @if $version < 3.34 {
     spinner-image: url("process-working.svg");
   }
 
