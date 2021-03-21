@@ -46,37 +46,44 @@
     -shell-close-overlap: $medium-size / 2;
   }
 
-  // FIXME: unless disable the transition, button will distort when hovering
-  // transition-duration: $duration;
+  transition-duration: $duration;
   height: $medium-size;
   width: $medium-size;
   padding: 0;
   border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  background-color: transparent;
-  color: transparent;
+  border-radius: $medium-size / 2;
+  box-shadow: $shadow-z2;
+  background-color: $error;
+  color: $on-error;
 
-  -st-background-image-shadow: $shadow-z2;
   background-image: url("assets/window-close.svg");
-  background-size: $medium-size;
+  background-size: 24px;
 
   &:hover {
+    box-shadow: $shadow-z4;
     border-color: transparent;
-    background-color: transparent;
-    color: transparent;
+    background-color: overlay("hover", $on-error, $on: $error);
+    color: $on-error;
 
-    -st-background-image-shadow: $shadow-z4;
-    background-image: url("assets/window-close-hover.svg");
+    @if $version < 3.32 {
+      background-image: url("assets/window-close.svg");
+    }
   }
 
   &:active {
+    transition-duration: $duration-ripple;
+    box-shadow: $shadow-z8;
     border-color: transparent;
-    background-color: transparent;
-    color: transparent;
+    background-color: overlay("pressed", $on-error, $on: $error);
+    color: $on-error;
 
-    // transition-duration: $duration-ripple;
-    -st-background-image-shadow: $shadow-z8;
-    background-image: url("assets/window-close-active.svg");
+    @if $version < 3.32 {
+      background-image: url("assets/window-close.svg");
+    }
+  }
+
+  StIcon {
+    icon-size: 24px;
+    color: transparent;
   }
 }
