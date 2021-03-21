@@ -10,6 +10,11 @@
   selected-color: $on-dark;
   @include entry(normal, $fc: stroke($on-dark));
 
+  @if $version >= 40 {
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
   &:hover {
     @include entry(hover, $fc: stroke($on-dark));
     color: disabled($on-dark);
