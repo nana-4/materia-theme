@@ -45,7 +45,7 @@
 .app-well-app.app-folder {
   @extend %app-well-app;
   border-radius: $corner-radius; // same as .overview-icon
-  background-color: fill($on-dark);
+  background-color: transparent;
 }
 
 // expanded folder
@@ -160,9 +160,16 @@
 }
 
 .app-folder-icon {
-  padding: 5px;
-  spacing-rows: 10px;
-  spacing-columns: 10px;
+  padding: 8px;
+  spacing-rows: 4px;
+  spacing-columns: 4px;
+  border-radius: $corner-radius;
+  background-color: fill($on-dark);
+
+  // HACK: Force icon size to 32px
+  > StBin > StIcon {
+    padding: 2px;
+  }
 }
 
 // Running app indicator (also shown in dash)
