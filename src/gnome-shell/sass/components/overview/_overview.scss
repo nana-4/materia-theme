@@ -1,17 +1,33 @@
 /* OVERVIEW */
 
-#overview {
-  spacing: 24px;
-  background-color: transparent;
-  color: $on-dark;
-
-  StScrollBar {
-    @extend %scrollbar-on-dark;
+@if $version >= 40 {
+  .controls-manager,
+  .secondary-monitor-workspaces {
+    spacing: 16px;
   }
-}
 
-.overview-controls {
-  padding-bottom: 32px;
+  #overviewGroup {
+    background-color: $system;
+    color: $on-system;
+
+    StScrollBar {
+      @extend %scrollbar-on-dark;
+    }
+  }
+} @else {
+  #overview {
+    spacing: 24px;
+    background-color: transparent;
+    color: $on-dark;
+
+    StScrollBar {
+      @extend %scrollbar-on-dark;
+    }
+  }
+
+  .overview-controls {
+    padding-bottom: 32px;
+  }
 }
 
 %overview-panel {
