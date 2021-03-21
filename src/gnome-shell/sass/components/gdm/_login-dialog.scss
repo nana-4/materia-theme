@@ -11,29 +11,29 @@
   background-color: transparent;
 
   StEntry {
-    @include entry(normal, $fc: stroke($on-os-background));
-    color: $on-os-background;
-    selection-background-color: stroke($on-os-background);
-    selected-color: $on-os-background;
+    @include entry(normal, $fc: stroke($on-system));
+    color: $on-system;
+    selection-background-color: stroke($on-system);
+    selected-color: $on-system;
 
     &:focus {
-      @include entry(focus, $fc: $on-os-background);
+      @include entry(focus, $fc: $on-system);
     }
 
     &:insensitive {
-      @include entry(insensitive, $fc: disabled-stroke($on-os-background));
-      color: disabled($on-os-background);
+      @include entry(insensitive, $fc: disabled-stroke($on-system));
+      color: disabled($on-system);
     }
 
     StLabel.hint-text {
-      color: hint($on-os-background);
+      color: hint($on-system);
     }
 
     StIcon.peek-password {
-      color: hint($on-os-background);
+      color: hint($on-system);
 
       &:hover {
-        color: $on-os-background;
+        color: $on-system;
       }
     }
   }
@@ -43,22 +43,22 @@
   }
 
   .modal-dialog-button {
-    @include button(flat-normal, $tc: $on-os-background);
+    @include button(flat-normal, $tc: $on-system);
 
     &:focus {
-      @include button(flat-focus, $tc: $on-os-background);
+      @include button(flat-focus, $tc: $on-system);
     }
 
     &:hover {
-      @include button(flat-hover, $tc: $on-os-background);
+      @include button(flat-hover, $tc: $on-system);
     }
 
     &:active {
-      @include button(flat-active, $tc: $on-os-background);
+      @include button(flat-active, $tc: $on-system);
     }
 
     &:insensitive {
-      @include button(flat-insensitive, $tc: $on-os-background);
+      @include button(flat-insensitive, $tc: $on-system);
     }
 
     &:default {
@@ -79,7 +79,7 @@
       }
 
       &:insensitive {
-        @include button(insensitive, $c: fill($on-os-background), $tc: disabled($on-os-background));
+        @include button(insensitive, $c: fill($on-system), $tc: disabled($on-system));
       }
     }
   }
@@ -90,7 +90,7 @@
 }
 
 .login-dialog-banner {
-  color: hint($on-os-background);
+  color: hint($on-system);
 }
 
 .login-dialog-button-box {
@@ -109,13 +109,13 @@
 
 .caps-lock-warning-label,
 .login-dialog-message-warning {
-  color: error($on-os-background);
+  color: error($on-system);
 }
 
 .login-dialog-message-hint {
   padding-top: 0;
   padding-bottom: 20px;
-  color: hint($on-os-background);
+  color: hint($on-system);
 }
 
 .login-dialog-user-selection-box {
@@ -128,20 +128,20 @@
   padding: 0 8px;
   margin-top: 1em;
   border-radius: $corner-radius;
-  color: hint($on-os-background);
+  color: hint($on-system);
   @include type(button);
 
   &:focus {
-    background-color: overlay("focus", $on-os-background);
+    background-color: overlay("focus", $on-system);
   }
 
   &:hover {
-    background-color: overlay("hover", $on-os-background);
+    background-color: overlay("hover", $on-system);
   }
 
   &:active {
     transition-duration: $duration-ripple;
-    background-color: overlay("pressed", $on-os-background);
+    background-color: overlay("pressed", $on-system);
   }
 }
 
@@ -158,11 +158,11 @@
 
   &:expanded .login-dialog-user-list-item {
     &:selected {
-      background-color: overlay("focus", $on-os-background);
+      background-color: overlay("focus", $on-system);
     }
 
     &:logged-in {
-      border-right: 2px solid $on-os-background;
+      border-right: 2px solid $on-system;
     }
   }
 }
@@ -174,16 +174,16 @@
   color: inherit;
 
   &:focus {
-    background-color: overlay("focus", $on-os-background);
+    background-color: overlay("focus", $on-system);
   }
 
   &:hover {
-    background-color: overlay("hover", $on-os-background);
+    background-color: overlay("hover", $on-system);
   }
 
   &:active {
     transition-duration: $duration-ripple;
-    background-color: overlay("pressed", $on-os-background);
+    background-color: overlay("pressed", $on-system);
   }
 
   &:ltr .user-widget {
@@ -197,13 +197,13 @@
   .login-dialog-timed-login-indicator {
     height: 2px;
     margin-top: 6px;
-    background-color: $on-os-background;
+    background-color: $on-system;
   }
 }
 
 @if $version >= 3.36 {
   .login-dialog .user-icon StIcon {
-    background-color: fill($on-os-background);
+    background-color: fill($on-system);
   }
 
   .user-widget-label {
@@ -260,7 +260,7 @@
 }
 
 .login-dialog-prompt-label {
-  color: hint($on-os-background);
+  color: hint($on-system);
   font-size: 1em;
   padding-top: 1em;
 }
@@ -275,19 +275,19 @@
   min-height: 0;
   padding: 0;
   border-radius: $medium-size / 2;
-  color: hint($on-os-background);
+  color: hint($on-system);
 
   &:focus {
-    background-color: overlay("focus", $on-os-background);
+    background-color: overlay("focus", $on-system);
   }
 
   &:hover {
-    background-color: overlay("hover", $on-os-background);
+    background-color: overlay("hover", $on-system);
   }
 
   &:active {
     transition-duration: $duration-ripple;
-    background-color: overlay("pressed", $on-os-background);
+    background-color: overlay("pressed", $on-system);
   }
 
   StIcon {
