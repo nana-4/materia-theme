@@ -448,6 +448,17 @@
   icon-size: 64px;
 }
 
+@if $version >= 40 {
+  /* Welcome dialog */
+  .welcome-dialog-image {
+    // Reasonable maximum dimensions
+    height: 300px;
+    width: 300px;
+    background-image: url("gnome-shell-start.svg");
+    background-size: contain;
+  }
+}
+
 @if $version < 3.36 {
   /* ShellMountOperation Dialogs */
   .shell-mount-operation-icon {
