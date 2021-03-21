@@ -1,17 +1,29 @@
 /* Dash */
 
 $dash-spacing: 6px;
+$dash-margin: 12px;
 
 #dash {
-  @extend %overview-panel;
   font-size: 1em;
-  padding: ($dash-spacing / 2) 0;
-  border-left-width: 0;
-  border-radius: 0 $corner-radius $corner-radius 0;
 
-  &:rtl {
-    border-right-width: 0;
-    border-radius: $corner-radius 0 0 $corner-radius;
+  @if $version >= 40 {
+    margin-top: 0;
+    padding: $dash-margin $dash-margin 0;
+
+    .overview-icon {
+      // Same as normal .overview-icon
+      padding: 6px;
+    }
+  } @else {
+    @extend %overview-panel;
+    padding: ($dash-spacing / 2) 0;
+    border-left-width: 0;
+    border-radius: 0 $corner-radius $corner-radius 0;
+
+    &:rtl {
+      border-right-width: 0;
+      border-radius: $corner-radius 0 0 $corner-radius;
+    }
   }
 
   .placeholder {
@@ -26,9 +38,30 @@ $dash-spacing: 6px;
   }
 }
 
-// Dash Items
-.dash-item-container > StWidget {
-  padding: ($dash-spacing / 2) $dash-spacing;
+@if $version >= 40 {
+  .dash-background {
+    margin-bottom: 0;
+    padding: $dash-spacing ($dash-spacing / 2);
+    border-radius: $corner-radius $corner-radius 0 0;
+    background-color: fill($on-dark);
+  }
+
+  // Dash Items
+  .dash-item-container .app-well-app,
+  .show-apps {
+    padding: $dash-spacing ($dash-spacing / 2);
+  }
+
+  .dash-separator {
+    width: 1px;
+    margin: $dash-spacing ($dash-spacing / 2);
+    background-color: stroke($on-dark);
+  }
+} @else {
+  // Dash Items
+  .dash-item-container > StWidget {
+    padding: ($dash-spacing / 2) $dash-spacing;
+  }
 }
 
 // OSD Tooltip
@@ -41,7 +74,13 @@ $dash-spacing: 6px;
   background-color: $surface-z8;
   color: $on-surface;
   text-align: center;
-  -x-offset: 8px; // distance from the dash edge
+
+  // distance from the dash edge
+  @if $version >= 40 {
+    -y-offset: 8px;
+  } @else {
+    -x-offset: 8px;
+  }
 }
 
 // Show apps button
