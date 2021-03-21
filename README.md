@@ -67,8 +67,6 @@ Ubuntu 18.04 or later | `materia-gtk-theme` | [Link](https://packages.ubuntu.com
 
 > NOTE: Distro packages could be outdated and incompatible with your desktop environment. You can check the latest version [here](https://github.com/nana-4/materia-theme/releases).
 
-> **Warning for Ubuntu 19.04 & 19.10 users:** Ubuntu 19.04 (disco) & 19.10 (eoan) packages are very outdated and incompatible with their GNOME versions. If you're using GNOME on Ubuntu 19.04 or 19.10, [manual installation](#manual-installation) is highly recommended.
-
 ### Flatpak
 
 All 6 variants are available via Flathub:
