@@ -17,7 +17,7 @@ elif gnome_shell_version_array[1].to_int().is_even()
 else
   gnome_shell_version = gnome_shell_version_array[0] + '.' + (gnome_shell_version_array[1].to_int() + 1).to_string()
 endif
-message('Set GNOME Shell version to ' + gnome_shell_version)
+message('Set gnome-shell version to ' + gnome_shell_version)
 
 gnome_shell_scss_depend_files = files([
   '../_color-palette.scss',

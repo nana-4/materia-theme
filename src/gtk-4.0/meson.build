@@ -15,7 +15,7 @@ if gtk4_version_array[1].to_int().is_even()
 else
   gtk4_version = gtk4_version_array[0] + '.' + (gtk4_version_array[1].to_int() + 1).to_string()
 endif
-message('Set GTK 4 version to ' + gtk4_version)
+message('Set gtk4 version to ' + gtk4_version)
 
 gtk4_scss_depend_files = files([
   '../_color-palette.scss',
