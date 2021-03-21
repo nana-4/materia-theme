@@ -4,13 +4,10 @@
 #
 set -ueo pipefail
 
-BUILD_DIR="build_snapshot"
-PREFIX="$HOME/.local"
+BUILD_DIR="_build_snapshot"
 THEME_NAME="MateriaSnapshot"
 
-if [[ -d "$BUILD_DIR" ]]; then
-  meson "$BUILD_DIR" --prefix="$PREFIX" -Dtheme_name="$THEME_NAME" --reconfigure
-else
-  meson "$BUILD_DIR" --prefix="$PREFIX" -Dtheme_name="$THEME_NAME"
+if [[ ! -d "$BUILD_DIR" ]]; then
+  meson "$BUILD_DIR" -Dtheme_name="$THEME_NAME"
 fi
-ninja -C "$BUILD_DIR" install
+meson install -C "$BUILD_DIR"
