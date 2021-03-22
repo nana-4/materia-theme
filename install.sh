@@ -172,6 +172,7 @@ install_theme() {
     "$THEME_DIR/gnome-shell"
   cp \
     "$SRC_DIR/gnome-shell/README.md" \
+    "$SRC_DIR/gnome-shell/gnome-shell-start.svg" \
     "$SRC_DIR/gnome-shell/gnome-shell-theme.gresource.xml" \
     "$SRC_DIR/gnome-shell/noise-texture.png" \
     "$SRC_DIR/gnome-shell/pad-osd.css" \
