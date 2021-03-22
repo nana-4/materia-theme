@@ -36,7 +36,10 @@ endforeach
 
 foreach theme: themes
   install_data(
-    'COPYING',
+    [
+      'COPYING',
+      'INSTALL_GDM_THEME.md',
+    ],
     install_dir: theme['dir'],
   )
 endforeach

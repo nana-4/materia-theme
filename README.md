@@ -97,7 +97,7 @@ To improve the appearance of Chrome, you can install our Chrome extensions as fo
 ### GDM Theme
 
 You can change the GDM (lock/login screen) theme by replacing the default GNOME Shell theme.  
-See [`gnome-shell/README.md`](src/gnome-shell/README.md) for details.
+See [`INSTALL_GDM_THEME.md`](INSTALL_GDM_THEME.md) for details.
 
 ## Customization
 

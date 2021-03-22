@@ -114,12 +114,13 @@ install_theme() {
   echo "Installing '$THEME_DIR'..."
 
   #
-  # COPYING & index.theme
+  # COPYING, INSTALL_GDM_THEME.md & index.theme
   #
 
   mkdir -p "$THEME_DIR"
   cp \
     "$REPO_DIR/COPYING" \
+    "$REPO_DIR/INSTALL_GDM_THEME.md" \
     "$THEME_DIR"
   sed \
     -e "s|@theme_name@|$name|g" \
@@ -171,7 +172,6 @@ install_theme() {
     "$SRC_DIR/gnome-shell/icons" \
     "$THEME_DIR/gnome-shell"
   cp \
-    "$SRC_DIR/gnome-shell/README.md" \
     "$SRC_DIR/gnome-shell/gnome-shell-start.svg" \
     "$SRC_DIR/gnome-shell/gnome-shell-theme.gresource.xml" \
     "$SRC_DIR/gnome-shell/noise-texture.png" \

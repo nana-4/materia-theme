@@ -90,7 +90,6 @@ foreach theme: themes
 
   install_data(
     [
-      'README.md',
       'gnome-shell-start.svg',
       'gnome-shell-theme.gresource.xml',
       'noise-texture.png',
