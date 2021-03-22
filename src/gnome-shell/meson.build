@@ -54,7 +54,7 @@ gnome_shell_scss_depend_files = files([
   'sass/components/overview/_search-entry.scss',
   'sass/components/overview/_search-results.scss',
   'sass/components/overview/_window-picker.scss',
-  'sass/components/overview/_workspace-switcher.scss',
+  'sass/components/overview/_workspace-thumbnails.scss',
   'sass/components/panel/_panel.scss',
   'sass/components/panel/_ripple-box.scss',
   'sass/_components.scss',
