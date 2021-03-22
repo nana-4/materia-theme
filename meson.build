@@ -12,8 +12,6 @@ theme_base_dir = join_paths(get_option('datadir'), 'themes', theme_base_name)
 sassc = find_program('sassc')
 sassc_opts = ['-M', '-t', 'expanded']
 
-sh = find_program('sh')
-
 themes = []
 foreach color: get_option('colors')
   foreach size: get_option('sizes')
