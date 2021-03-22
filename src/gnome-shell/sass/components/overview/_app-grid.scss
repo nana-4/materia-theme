@@ -179,7 +179,12 @@
   }
 }
 
-@if $version < 40 {
+@if $version >= 40 {
+  .app-well-app.app-folder > .overview-icon > StBoxLayout > StBin > StWidget {
+    border-radius: $corner-radius;
+    background-color: fill($on-dark);
+  }
+} @else {
   .app-folder-icon {
     padding: 8px;
     spacing-rows: 4px;
