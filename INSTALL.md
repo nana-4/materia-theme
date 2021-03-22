@@ -37,6 +37,7 @@ Option | Default Value | Description
 `colors` | `default,light,dark` | Choose color variant(s)
 `sizes` | `default,compact` | Choose size variant(s)
 `gnome_shell_version` | n/a (auto) | Manually set gnome-shell version
+`gtk4_version` | n/a (auto) | Manually set gtk4 version
 
 Build options can be set at the configuration time, for example:
 
