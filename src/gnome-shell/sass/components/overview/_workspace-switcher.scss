@@ -2,17 +2,19 @@
 
 // thumbnails in overview
 .workspace-thumbnails {
-  visible-width: 32px; // amount visible before hover
-  spacing: 12px;
-  padding: 12px;
-
   @if $version >= 40 {
+    padding: 0;
+    spacing: 12px;
+
     .workspace-thumbnail {
       @extend %overview-panel;
       border-radius: $corner-radius;
     }
   } @else {
     @extend %overview-panel;
+    visible-width: 32px; // amount visible before hover
+    padding: 12px;
+    spacing: 12px;
     border-right-width: 0;
     border-radius: $corner-radius 0 0 $corner-radius;
 
@@ -37,13 +39,14 @@
 
 // selected indicator
 .workspace-thumbnail-indicator {
-  padding: 6px 10px;
   border: 0 solid $on-dark;
   border-radius: 0;
 
   @if $version >= 40 {
+    padding: 6px;
     border-bottom-width: 2px;
   } @else {
+    padding: 6px 10px;
     border-left-width: 2px;
   }
 }
