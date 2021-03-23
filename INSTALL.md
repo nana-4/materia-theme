@@ -45,16 +45,6 @@ Build options can be set at the configuration time, for example:
 meson _build -Dprefix="$HOME/.local" -Dcolors=default,dark -Dsizes=compact
 ```
 
-## Installation for older distributions
-
-If you can't use Meson `>= 0.47.0`, you can use `./install.sh` instead:
-
-```sh
-sudo ./install.sh
-```
-
-For installation options, run: `./install.sh --help`
-
 ## Uninstallation
 
 Delete the installed directories:
