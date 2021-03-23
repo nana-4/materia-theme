@@ -143,9 +143,9 @@ TERMINAL_COLOR10=${TERMINAL_COLOR10:-00C853}
 TERMINAL_COLOR11=${TERMINAL_COLOR11:-FF6D00}
 TERMINAL_COLOR12=${TERMINAL_COLOR12:-66BB6A}
 
-TARGET_DIR=${TARGET_DIR-$HOME/.local}
+TARGET_DIR=${TARGET_DIR-$HOME/.local/share/themes}
 OUTPUT_THEME_NAME=${OUTPUT_THEME_NAME-oomox-$THEME}
-DEST_PATH="$TARGET_DIR/share/themes/${OUTPUT_THEME_NAME/\//-}"
+DEST_PATH="$TARGET_DIR/${OUTPUT_THEME_NAME/\//-}"
 
 if [[ "$SRC_PATH" == "$DEST_PATH" ]]; then
   echo "can't do that"
@@ -300,16 +300,14 @@ fi
 echo "== Rendering GTK 3 assets..."
 FORCE_INKSCAPE="$OPTION_FORCE_INKSCAPE" ./render-assets.sh gtk
 
-meson _build -Dprefix="$TARGET_DIR" -Dtheme_name="${OUTPUT_THEME_NAME/\//-}" -Dcolors="$COLOR_VARIANT" -Dsizes="$SIZE_VARIANT"
+meson _build -Dprefix="$tempdir/change_color_build" -Dtheme_name="${OUTPUT_THEME_NAME/\//-}" -Dcolors="$COLOR_VARIANT" -Dsizes="$SIZE_VARIANT"
 meson install -C _build
-
-GENERATED_PATH="$DEST_PATH$(tr -d ',' <<< "$COLOR_VARIANTS")$(tr -d ',' <<< "$SIZE_VARIANTS")"
-if [[ "$GENERATED_PATH" != "$DEST_PATH" ]]; then
-  if [[ -d "$DEST_PATH" ]]; then
-    rm -r "$DEST_PATH"
-  fi
-  mv "$GENERATED_PATH" "$DEST_PATH"
+GENERATED_PATH="$tempdir/change_color_build/share/themes/$OUTPUT_THEME_NAME$(tr -d ',' <<< "$COLOR_VARIANTS")$(tr -d ',' <<< "$SIZE_VARIANTS")"
+if [[ -d "$DEST_PATH" ]]; then
+	rm -r "$DEST_PATH"
 fi
+mv "$GENERATED_PATH" "$DEST_PATH"
+
 
 echo
 echo "== SUCCESS"
