@@ -260,16 +260,16 @@ for FILEPATH in "${PATHLIST[@]}"; do
 done
 
 if [[ "$MATERIA_COLOR_VARIANT" == "default" ]]; then
-  COLOR_VARIANTS=","
   COLOR_VARIANT="default"
+  COLOR_SUFFIX=""
 fi
 if [[ "$MATERIA_COLOR_VARIANT" == "light" ]]; then
-  COLOR_VARIANTS="-light"
   COLOR_VARIANT="light"
+  COLOR_SUFFIX="-light"
 fi
 if [[ "$MATERIA_COLOR_VARIANT" == "dark" ]]; then
-  COLOR_VARIANTS="-dark"
   COLOR_VARIANT="dark"
+  COLOR_SUFFIX="-dark"
 fi
 if [[ "$OPTION_GTK2_HIDPI" == "true" ]]; then
   mv ./src/gtk-2.0/main.rc.hidpi ./src/gtk-2.0/main.rc
@@ -282,11 +282,11 @@ if [[ "$EXPORT_QT5CT" = 1 ]]; then
 fi
 
 if [[ "$MATERIA_STYLE_COMPACT" == "true" ]]; then
-  SIZE_VARIANTS="-compact"
   SIZE_VARIANT="compact"
+  SIZE_SUFFIX="-compact"
 else
-  SIZE_VARIANTS=","
   SIZE_VARIANT="default"
+  SIZE_SUFFIX=""
 fi
 
 # NOTE we use the functions we already have in render-assets.sh
@@ -300,9 +300,9 @@ fi
 echo "== Rendering GTK 3 assets..."
 FORCE_INKSCAPE="$OPTION_FORCE_INKSCAPE" ./render-assets.sh gtk
 
-meson _build -Dprefix="$tempdir/change_color_build" -Dtheme_name="${OUTPUT_THEME_NAME/\//-}" -Dcolors="$COLOR_VARIANT" -Dsizes="$SIZE_VARIANT"
+meson _build -Dprefix="$tempdir" -Dcolors="$COLOR_VARIANT" -Dsizes="$SIZE_VARIANT"
 meson install -C _build
-GENERATED_PATH="$tempdir/change_color_build/share/themes/$OUTPUT_THEME_NAME$(tr -d ',' <<< "$COLOR_VARIANTS")$(tr -d ',' <<< "$SIZE_VARIANTS")"
+GENERATED_PATH="$tempdir/share/themes/Materia$COLOR_SUFFIX$SIZE_SUFFIX"
 if [[ -d "$DEST_PATH" ]]; then
 	rm -r "$DEST_PATH"
 fi
