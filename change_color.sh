@@ -143,7 +143,7 @@ TERMINAL_COLOR10=${TERMINAL_COLOR10:-00C853}
 TERMINAL_COLOR11=${TERMINAL_COLOR11:-FF6D00}
 TERMINAL_COLOR12=${TERMINAL_COLOR12:-66BB6A}
 
-TARGET_DIR=${TARGET_DIR-$HOME/.themes}
+TARGET_DIR=${TARGET_DIR-$HOME/.local/share/themes}
 OUTPUT_THEME_NAME=${OUTPUT_THEME_NAME-oomox-$THEME}
 DEST_PATH="$TARGET_DIR/${OUTPUT_THEME_NAME/\//-}"
 
@@ -168,8 +168,8 @@ if [[ -z "$MATERIA_COLOR_VARIANT" ]]; then
     echo "== Dark background color detected. Setting color variant to dark."
     MATERIA_COLOR_VARIANT="dark"
   elif is_dark "$HDR_BG"; then
-    echo "== Dark headerbar background color detected. Setting color variant to standard."
-    MATERIA_COLOR_VARIANT="standard"
+    echo "== Dark headerbar background color detected. Setting color variant to default."
+    MATERIA_COLOR_VARIANT="default"
   else
     echo "== Light background color detected. Setting color variant to light."
     MATERIA_COLOR_VARIANT="light"
@@ -259,9 +259,9 @@ for FILEPATH in "${PATHLIST[@]}"; do
     {} \; ;
 done
 
-if [[ "$MATERIA_COLOR_VARIANT" == "standard" ]]; then
+if [[ "$MATERIA_COLOR_VARIANT" == "default" ]]; then
   COLOR_VARIANTS=","
-  COLOR_VARIANT="standard"
+  COLOR_VARIANT="default"
 fi
 if [[ "$MATERIA_COLOR_VARIANT" == "light" ]]; then
   COLOR_VARIANTS="-light"
@@ -286,7 +286,7 @@ if [[ "$MATERIA_STYLE_COMPACT" == "true" ]]; then
   SIZE_VARIANT="compact"
 else
   SIZE_VARIANTS=","
-  SIZE_VARIANT="standard"
+  SIZE_VARIANT="default"
 fi
 
 # NOTE we use the functions we already have in render-assets.sh
@@ -300,15 +300,14 @@ fi
 echo "== Rendering GTK 3 assets..."
 FORCE_INKSCAPE="$OPTION_FORCE_INKSCAPE" ./render-assets.sh gtk
 
-FORCE_INKSCAPE="$OPTION_FORCE_INKSCAPE" ./install.sh --dest "$TARGET_DIR" --name "${OUTPUT_THEME_NAME/\//-}" --color "$COLOR_VARIANT" --size "$SIZE_VARIANT"
-
-GENERATED_PATH="$DEST_PATH$(tr -d ',' <<< "$COLOR_VARIANTS")$(tr -d ',' <<< "$SIZE_VARIANTS")"
-if [[ "$GENERATED_PATH" != "$DEST_PATH" ]]; then
-  if [[ -d "$DEST_PATH" ]]; then
-    rm -r "$DEST_PATH"
-  fi
-  mv "$GENERATED_PATH" "$DEST_PATH"
+meson _build -Dprefix="$tempdir/change_color_build" -Dtheme_name="${OUTPUT_THEME_NAME/\//-}" -Dcolors="$COLOR_VARIANT" -Dsizes="$SIZE_VARIANT"
+meson install -C _build
+GENERATED_PATH="$tempdir/change_color_build/share/themes/$OUTPUT_THEME_NAME$(tr -d ',' <<< "$COLOR_VARIANTS")$(tr -d ',' <<< "$SIZE_VARIANTS")"
+if [[ -d "$DEST_PATH" ]]; then
+	rm -r "$DEST_PATH"
 fi
+mv "$GENERATED_PATH" "$DEST_PATH"
+
 
 echo
 echo "== SUCCESS"
