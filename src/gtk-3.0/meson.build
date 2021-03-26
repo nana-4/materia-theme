@@ -21,12 +21,12 @@ foreach theme: themes
   gtk3_dir = join_paths(theme['dir'], 'gtk-3.0')
 
   gtk3_variants = [
-    '',
+    'gtk',
   ]
 
   # Only non-dark themes need a dark variant.
   if theme['color'] != '-dark'
-    gtk3_variants += '-dark'
+    gtk3_variants += 'gtk-dark'
   endif
 
   install_subdir(
@@ -50,11 +50,11 @@ foreach theme: themes
   gtk3_scss_conf.set('current_source_dir', meson.current_source_dir())
 
   foreach gtk3_variant: gtk3_variants
-    gtk3_temp_name = '@0@.gtk@1@'.format(theme['name'], gtk3_variant)
+    gtk3_temp_name = '@0@.gtk3.@1@'.format(theme['name'], gtk3_variant)
 
     # Configure SCSS file
     gtk3_scss = configure_file(
-      input: 'gtk@0@.scss.in'.format(gtk3_variant),
+      input: '@0@.scss.in'.format(gtk3_variant),
       output: '@0@.scss'.format(gtk3_temp_name),
       configuration: gtk3_scss_conf,
     )
@@ -73,7 +73,7 @@ foreach theme: themes
     meson.add_install_script(
       sh, '-c', 'cp "@0@" "@1@"'.format(
         gtk3_css.full_path(),
-        join_paths('$MESON_INSTALL_DESTDIR_PREFIX', gtk3_dir, 'gtk@0@.css'.format(gtk3_variant)),
+        join_paths('$MESON_INSTALL_DESTDIR_PREFIX', gtk3_dir, '@0@.css'.format(gtk3_variant)),
       ),
     )
   endforeach

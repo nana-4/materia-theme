@@ -30,12 +30,12 @@ foreach theme: themes
   gtk4_dir = join_paths(theme['dir'], 'gtk-4.0')
 
   gtk4_variants = [
-    '',
+    'gtk',
   ]
 
   # Only non-dark themes need a dark variant.
   if theme['color'] != '-dark'
-    gtk4_variants += '-dark'
+    gtk4_variants += 'gtk-dark'
   endif
 
   install_subdir(
@@ -60,11 +60,11 @@ foreach theme: themes
   gtk4_scss_conf.set('current_source_dir', meson.current_source_dir())
 
   foreach gtk4_variant: gtk4_variants
-    gtk4_temp_name = '@0@.gtk@1@'.format(theme['name'], gtk4_variant)
+    gtk4_temp_name = '@0@.gtk4.@1@'.format(theme['name'], gtk4_variant)
 
     # Configure SCSS file
     gtk4_scss = configure_file(
-      input: 'gtk@0@.scss.in'.format(gtk4_variant),
+      input: '@0@.scss.in'.format(gtk4_variant),
       output: '@0@.scss'.format(gtk4_temp_name),
       configuration: gtk4_scss_conf,
     )
@@ -83,7 +83,7 @@ foreach theme: themes
     meson.add_install_script(
       sh, '-c', 'cp "@0@" "@1@"'.format(
         gtk4_css.full_path(),
-        join_paths('$MESON_INSTALL_DESTDIR_PREFIX', gtk4_dir, 'gtk@0@.css'.format(gtk4_variant)),
+        join_paths('$MESON_INSTALL_DESTDIR_PREFIX', gtk4_dir, '@0@.css'.format(gtk4_variant)),
       ),
     )
   endforeach
