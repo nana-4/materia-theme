@@ -9,6 +9,14 @@ project(
 theme_base_name = get_option('theme_name')
 theme_base_dir = join_paths(get_option('datadir'), 'themes', theme_base_name)
 
+# Avoid printing 'Program sh found' multiple times
+# if meson version is >= 0.55.0
+if meson.version().version_compare('>= 0.55.0')
+  sh = find_program('sh')
+else
+  sh = 'sh'
+endif
+
 sassc = find_program('sassc')
 sassc_opts = ['-M', '-t', 'expanded']
 

@@ -53,7 +53,7 @@ foreach theme: themes
 
   # Install it while renaming to a valid name
   meson.add_install_script(
-    'sh', '-c', 'cp "@0@" "@1@"'.format(
+    sh, '-c', 'cp "@0@" "@1@"'.format(
       cinnamon_css.full_path(),
       join_paths('$MESON_INSTALL_DESTDIR_PREFIX', cinnamon_dir, 'cinnamon.css'),
     ),

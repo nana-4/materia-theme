@@ -81,7 +81,7 @@ foreach theme: themes
 
     # Install it while renaming to a valid name
     meson.add_install_script(
-      'sh', '-c', 'cp "@0@" "@1@"'.format(
+      sh, '-c', 'cp "@0@" "@1@"'.format(
         gtk4_css.full_path(),
         join_paths('$MESON_INSTALL_DESTDIR_PREFIX', gtk4_dir, 'gtk@0@.css'.format(gtk4_variant)),
       ),
