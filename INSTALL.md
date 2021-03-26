@@ -5,7 +5,7 @@
 Materia requires the following build and runtime dependencies:
 
 - `meson` >= 0.47.0
-- `sassc`
+- `dart-sass` >= 1.23.0 (or `npm` if the former is not found)
 - `gnome-themes-extra` (or `gnome-themes-standard` for older distributions)
 - Murrine engine — The package name depends on the distro:
   - `gtk-engine-murrine` on Arch Linux

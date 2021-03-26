@@ -17,8 +17,21 @@ else
   sh = 'sh'
 endif
 
-sassc = find_program('sassc')
-sassc_opts = ['-M', '-t', 'expanded']
+sass = find_program('sass', required: false)
+sass_opts = ['--no-source-map']
+
+if sass.found()
+  sass_full_version = run_command(sass, '--version').stdout()
+  sass_is_ruby_sass = sass_full_version.contains('Ruby Sass')
+  sass_has_module_system = sass_full_version.version_compare('>= 1.23.0')
+endif
+
+if not sass.found() or sass_is_ruby_sass or not sass_has_module_system
+  message('dart-sass >= 1.23.0 not found, installing it locally via npm')
+  npm = find_program('npm')
+  run_command(npm, 'install')
+  sass = find_program('./node_modules/.bin/sass')
+endif
 
 themes = []
 foreach color: get_option('colors')
