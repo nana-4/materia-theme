@@ -83,13 +83,6 @@ $state-overlay-opacities: (
   @return mix(rgba($color, 1), $on, $opacity * 100%);
 }
 
-// Private variables for dark background colors
-$-dark-surface-z0: #121212;
-$-dark-surface-z1: mix(white, $-dark-surface-z0, 5%);
-$-dark-surface-z4: mix(white, $-dark-surface-z0, 9%);
-$-dark-surface-z8: mix(white, $-dark-surface-z0, 12%);
-$-dark-surface-switch-thumb: mix(white, $-dark-surface-z0, 60%);
-
 //
 // Main colors
 //
@@ -151,10 +144,10 @@ $on-titlebar: on($titlebar);
 $titlebar-indicator: currentcolor;
 
 @if $dark-theme {
-  $surface-z0: $-dark-surface-z0;
-  $surface-z1: $-dark-surface-z1;
-  $surface-z8: $-dark-surface-z8;
-  $surface-switch-thumb: $-dark-surface-switch-thumb;
+  $surface-z0: #121212;
+  $surface-z1: mix(white, $surface-z0, 5%);
+  $surface-z8: mix(white, $surface-z0, 12%);
+  $surface-switch-thumb: mix(white, $surface-z0, 60%);
   $on-surface: on($surface-z0);
 
   $primary: $primary-on-dark;
@@ -172,8 +165,8 @@ $titlebar-indicator: currentcolor;
   $visited: $visited-on-dark;
   $on-visited: on($visited);
 
-  $titlebar: $-dark-surface-z4;
-  $titlebar-backdrop: $-dark-surface-z1;
+  $titlebar: mix(white, $surface-z0, 9%);
+  $titlebar-backdrop: $surface-z1;
   $on-titlebar: on($titlebar);
 }
 

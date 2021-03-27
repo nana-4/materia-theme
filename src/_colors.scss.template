@@ -83,13 +83,6 @@ $state-overlay-opacities: (
   @return mix(rgba($color, 1), $on, $opacity * 100%);
 }
 
-// Private variables for dark background colors
-$-dark-surface-z0: if(tone(%BG%) == "dark", %BG%, %FG%);
-$-dark-surface-z1: mix(white, $-dark-surface-z0, 5%);
-$-dark-surface-z4: mix(white, $-dark-surface-z0, 9%);
-$-dark-surface-z8: mix(white, $-dark-surface-z0, 12%);
-$-dark-surface-switch-thumb: mix(white, $-dark-surface-z0, 60%);
-
 //
 // Main colors
 //
@@ -151,10 +144,10 @@ $on-titlebar: %HDR_FG%;
 $titlebar-indicator: currentcolor;
 
 @if $dark-theme {
-  $surface-z0: if(tone(%BG%) == "dark", %BG%, $-dark-surface-z0);
-  $surface-z1: if(tone(%BG%) == "dark", %MATERIA_VIEW%, $-dark-surface-z1);
-  $surface-z8: if(tone(%BG%) == "dark", %MATERIA_SURFACE%, $-dark-surface-z8);
-  $surface-switch-thumb: if(tone(%BG%) == "dark", %MATERIA_SURFACE%, $-dark-surface-switch-thumb);
+  $surface-z0: if(tone(%BG%) == "dark", %BG%, %FG%);
+  $surface-z1: if(tone(%BG%) == "dark", %MATERIA_VIEW%, mix(white, $surface-z0, 5%));
+  $surface-z8: if(tone(%BG%) == "dark", %MATERIA_SURFACE%, mix(white, $surface-z0, 12%));
+  $surface-switch-thumb: if(tone(%BG%) == "dark", %MATERIA_SURFACE%, mix(white, $surface-z0, 60%));
   $on-surface: if(tone(%BG%) == "dark", %FG%, on($surface-z0));
 
   $primary: $primary-on-dark;
@@ -172,8 +165,8 @@ $titlebar-indicator: currentcolor;
   $visited: $visited-on-dark;
   $on-visited: on($visited);
 
-  $titlebar: if(tone(%BG%) == "dark", %HDR_BG%, $-dark-surface-z4);
-  $titlebar-backdrop: if(tone(%BG%) == "dark", %HDR_BG2%, $-dark-surface-z1);
+  $titlebar: if(tone(%BG%) == "dark", %HDR_BG%, mix(white, $surface-z0, 9%));
+  $titlebar-backdrop: if(tone(%BG%) == "dark", %HDR_BG2%, $surface-z1);
   $on-titlebar: if(tone(%BG%) == "dark", %HDR_FG%, on($titlebar));
 }
 
