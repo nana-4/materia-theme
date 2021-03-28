@@ -90,6 +90,16 @@
   &:insensitive {
     color: disabled($on-surface);
   }
+
+  .toggle-switch {
+    width: 20px;
+    height: 20px;
+    background-image: url("assets/menu-item-toggle-off.svg");
+
+    &:checked {
+      background-image: url("assets/menu-item-toggle-on.svg");
+    }
+  }
 }
 
 // all icons and other graphical elements
@@ -201,7 +211,7 @@
   .popup-sub-menu .popup-menu-item > :first-child {
     // account for icons in submenus with padding
     &:ltr {
-      padding-left: 16px; 
+      padding-left: 16px;
       margin-left: 16px;
     }
 

@@ -1,4 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" viewBox="0 0 40 20">
-  <rect x="2" y="2" width="36" height="16" ry="8" fill="#8ab4f8"/>
-  <circle cx="30" cy="10" r="6" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="24" viewBox="0 0 40 24">
+  <defs>
+    <filter id="shadow-z1" color-interpolation-filters="sRGB">
+      <feFlood flood-color="#000" flood-opacity=".5" result="flood"/>
+      <feComposite in="flood" in2="SourceGraphic" operator="in" result="composite1"/>
+      <feGaussianBlur in="composite1" result="blur" stdDeviation="1.5"/>
+      <feOffset dy="1" result="offset"/>
+      <feComposite in="SourceGraphic" in2="offset" result="composite2"/>
+    </filter>
+  </defs>
+  <rect x="2" y="5" width="36" height="14" ry="7" fill="#8ab4f8" fill-opacity=".5"/>
+  <circle cx="28" cy="12" r="10" fill="#8ab4f8" filter="url(#shadow-z1)"/>
 </svg>
