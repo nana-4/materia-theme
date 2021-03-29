@@ -64,7 +64,7 @@ foreach theme: themes
       '@0@.css'.format(gtk3_temp_name),
       input: gtk3_scss,
       output: '@0@.css'.format(gtk3_temp_name),
-      command: [sassc, sassc_opts, '@INPUT@', '@OUTPUT@'],
+      command: [sass, sass_opts, '@INPUT@', '@OUTPUT@'],
       depend_files: gtk3_scss_depend_files,
       build_by_default: true,
     )

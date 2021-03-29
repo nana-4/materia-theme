@@ -46,7 +46,7 @@ foreach theme: themes
     '@0@.css'.format(cinnamon_temp_name),
     input: cinnamon_scss,
     output: '@0@.css'.format(cinnamon_temp_name),
-    command: [sassc, sassc_opts, '@INPUT@', '@OUTPUT@'],
+    command: [sass, sass_opts, '@INPUT@', '@OUTPUT@'],
     depend_files: cinnamon_scss_depend_files,
     build_by_default: true,
   )

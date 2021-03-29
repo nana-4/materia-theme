@@ -1,6 +1,6 @@
 ## Summary
 
-- To be able to use the latest/adequate version of Sass, install `sassc`.
+- To be able to use the latest/adequate version of Sass, install `dart-sass`.
 - `meson install` will regenerate the CSS every time you modify the SCSS files.
 - Note that Meson always builds out-of-tree, so the regenerated CSS files will
   appear in your builddir.
