@@ -5,12 +5,18 @@
 @use "../../../../st-theme";
 @use "../../gnome-shell";
 
-#panel {
-  $background: if(gnome-shell.$version >= 3.26 and gnome-shell.$version < 3.32, theme-color.$scrim, theme-color.$panel);
+$color: theme-color.$panel;
+$on-color: theme-color.$on-panel;
 
+@if gnome-shell.$version >= 3.26 and gnome-shell.$version < 3.32 {
+  $color: theme-color.$scrim;
+  $on-color: theme-color.$on-scrim;
+}
+
+#panel {
   transition-duration: st-theme.$duration-panel;
   height: st-theme.$menuitem-size;
-  background-color: $background;
+  background-color: $color;
   font-weight: bold;
   font-feature-settings: "tnum";
 
@@ -44,7 +50,7 @@
     transition-duration: st-theme.$duration;
     border: 0;
     border-radius: 0;
-    color: theme-color.hint(theme-color.on($background));
+    color: theme-color.hint($on-color);
     text-shadow: none;
     font-weight: bold;
 
@@ -66,7 +72,7 @@
 
     &:hover {
       box-shadow: none;
-      color: theme-color.on($background);
+      color: $on-color;
       text-shadow: none;
 
       @if gnome-shell.$version >= 3.36 {
@@ -87,10 +93,10 @@
     }
 
     &:active, &:overview, &:focus, &:checked {
-      box-shadow: inset 0 -2px theme-color.on($background);
+      box-shadow: inset 0 -2px $on-color;
       // Trick due to St limitations. It needs a background to draw a box-shadow
-      background-color: rgba($background, .01);
-      color: theme-color.on($background);
+      background-color: rgba($color, .01);
+      color: $on-color;
 
       @if gnome-shell.$version >= 3.36 {
         // The clock display needs to have the background on .clock because
@@ -100,8 +106,8 @@
           background-color: transparent;
 
           .clock {
-            box-shadow: inset 0 -2px theme-color.on($background);
-            background-color: rgba($background, .01);
+            box-shadow: inset 0 -2px $on-color;
+            background-color: rgba($color, .01);
           }
         }
       }

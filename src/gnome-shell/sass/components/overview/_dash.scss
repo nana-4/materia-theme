@@ -5,15 +5,15 @@
 @use "../../gnome-shell";
 @use "overview";
 
-$dash-spacing: 6px;
-$dash-margin: 12px;
+$spacing: 6px;
+$margin: 12px;
 
 #dash {
   font-size: 1em;
 
   @if gnome-shell.$version >= 40 {
     margin-top: 0;
-    padding: $dash-margin $dash-margin 0;
+    padding: $margin $margin 0;
 
     .overview-icon {
       // Same as normal .overview-icon
@@ -21,7 +21,7 @@ $dash-margin: 12px;
     }
   } @else {
     @include overview.panel;
-    padding: ($dash-spacing / 2) 0;
+    padding: ($spacing / 2) 0;
     border-left-width: 0;
     border-radius: 0 theme.$corner-radius theme.$corner-radius 0;
 
@@ -46,7 +46,7 @@ $dash-margin: 12px;
 @if gnome-shell.$version >= 40 {
   .dash-background {
     margin-bottom: 0;
-    padding: $dash-spacing ($dash-spacing / 2);
+    padding: $spacing ($spacing / 2);
     border-radius: theme.$corner-radius theme.$corner-radius 0 0;
     background-color: theme-color.fill(overview.$on-color);
   }
@@ -54,18 +54,18 @@ $dash-margin: 12px;
   // Dash Items
   .dash-item-container .app-well-app,
   .show-apps {
-    padding: $dash-spacing ($dash-spacing / 2);
+    padding: $spacing ($spacing / 2);
   }
 
   .dash-separator {
     width: 1px;
-    margin: $dash-spacing ($dash-spacing / 2);
+    margin: $spacing ($spacing / 2);
     background-color: theme-color.stroke(overview.$on-color);
   }
 } @else {
   // Dash Items
   .dash-item-container > StWidget {
-    padding: ($dash-spacing / 2) $dash-spacing;
+    padding: ($spacing / 2) $spacing;
   }
 }
 

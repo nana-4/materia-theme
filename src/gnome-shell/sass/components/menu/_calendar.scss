@@ -6,10 +6,10 @@
 @use "../../gnome-shell";
 @use "../../drawing";
 
-$calendar-column-spacing: 8px;
-$calendar-column-margin: 0 8px;
+$column-spacing: 8px;
+$column-margin: 0 8px;
 
-%calendar-item {
+@mixin item {
   margin: 0;
   border: 0;
   border-radius: theme.$corner-radius;
@@ -57,7 +57,7 @@ $calendar-column-margin: 0 8px;
 
 // Calendar menu side column
 .datemenu-calendar-column {
-  spacing: $calendar-column-spacing;
+  spacing: $column-spacing;
   padding: 0;
   border: 0 solid theme-color.divider(theme-color.$on-surface);
 
@@ -76,13 +76,13 @@ $calendar-column-margin: 0 8px;
   }
 
   .datemenu-displays-box {
-    spacing: $calendar-column-spacing;
-    margin: $calendar-column-margin;
+    spacing: $column-spacing;
+    margin: $column-margin;
   }
 }
 
 .events-section-title {
-  @extend %calendar-item;
+  @include item;
   min-height: st-theme.$menuitem-size - 8px * 2;
   padding: 8px;
   color: theme-color.hint(theme-color.$on-surface) !important;
@@ -91,8 +91,8 @@ $calendar-column-margin: 0 8px;
 
 /* today button (the date) */
 .datemenu-today-button {
-  @extend %calendar-item;
-  margin: $calendar-column-margin;
+  @include item;
+  margin: $column-margin;
   min-height: st-theme.$menuitem-size * 2 - 8px * 2;
   padding: 8px;
 
@@ -110,8 +110,8 @@ $calendar-column-margin: 0 8px;
 
 /* Calendar */
 .calendar {
-  @extend %calendar-item;
-  margin: $calendar-column-margin;
+  @include item;
+  margin: $column-margin;
   margin-bottom: 0;
   padding: 0;
 
@@ -325,7 +325,7 @@ $calendar-column-margin: 0 8px;
 @if gnome-shell.$version >= 3.38 {
   /* Events */
   .events-button {
-    @extend %calendar-item;
+    @include item;
     min-height: st-theme.$menuitem-size * 2 - 8px * 2;
     padding: 8px;
 
@@ -353,7 +353,7 @@ $calendar-column-margin: 0 8px;
 
 /* World clocks */
 .world-clocks-button {
-  @extend %calendar-item;
+  @include item;
   min-height: st-theme.$menuitem-size - 8px * 2;
   padding: 8px;
 
@@ -402,7 +402,7 @@ $calendar-column-margin: 0 8px;
 
 /* Weather */
 .weather-button {
-  @extend %calendar-item;
+  @include item;
   min-height: st-theme.$menuitem-size * 2 - 8px * 2;
   padding: 8px;
 

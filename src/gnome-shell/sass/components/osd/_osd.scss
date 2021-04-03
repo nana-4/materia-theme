@@ -5,7 +5,7 @@
 @use "../../gnome-shell";
 @use "../../drawing";
 
-%osd-panel {
+@mixin panel {
   padding: 12px;
   border: none;
   border-radius: theme.$corner-radius;
@@ -15,7 +15,7 @@
 }
 
 .osd-window {
-  @extend %osd-panel;
+  @include panel;
   text-align: center;
   font-weight: bold;
   spacing: 12px;
@@ -56,7 +56,7 @@
 }
 
 .resize-popup {
-  @extend %osd-panel;
+  @include panel;
 }
 
 /* Pad OSD */
