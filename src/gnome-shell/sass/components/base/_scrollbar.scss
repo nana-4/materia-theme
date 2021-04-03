@@ -42,21 +42,21 @@ StScrollBar {
   }
 }
 
-%scrollbar-on-dark {
+@mixin color($color) {
   StBin#trough {
-    background-color: theme-color.disabled-stroke(theme-color.$on-dark);
+    background-color: theme-color.disabled-stroke($color);
   }
 
   StButton#vhandle,
   StButton#hhandle {
-    background-color: theme-color.scrollbar-thumb(theme-color.$on-dark);
+    background-color: theme-color.scrollbar-thumb($color);
 
     &:hover {
-      background-color: theme-color.scrollbar-thumb(theme-color.$on-dark, "hover");
+      background-color: theme-color.scrollbar-thumb($color, "hover");
     }
 
     &:active {
-      background-color: theme-color.scrollbar-thumb(theme-color.$on-dark, "pressed");
+      background-color: theme-color.scrollbar-thumb($color, "pressed");
     }
   }
 }

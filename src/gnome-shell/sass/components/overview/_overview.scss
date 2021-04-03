@@ -18,7 +18,7 @@
     color: theme-color.$on-system;
 
     StScrollBar {
-      @extend %scrollbar-on-dark;
+      @include scrollbar.color(theme-color.$on-system);
     }
   }
 } @else {
@@ -28,7 +28,7 @@
     color: theme-color.$on-dark;
 
     StScrollBar {
-      @extend %scrollbar-on-dark;
+      @include scrollbar.color(theme-color.$on-dark);
     }
   }
 
