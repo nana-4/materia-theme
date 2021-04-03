@@ -1,7 +1,5 @@
 // generic drawing of more complex things
 
-@use "sass:color";
-@use "sass:math";
 @use "../../theme";
 @use "../../theme-color";
 @use "../../st-theme";
@@ -158,6 +156,7 @@
 
   @if $t == focus {
     color: $tc;
+    background-color: theme-color.focus-overlay($tc, $on: $c);
     text-shadow: none;
     icon-shadow: none;
     box-shadow: theme.$shadow-z4;
@@ -165,7 +164,7 @@
 
   @if $t == hover {
     color: $tc;
-    background-color: $c;
+    background-color: theme-color.hover-overlay($tc, $on: $c);
     border-color: transparent;
     box-shadow: theme.$shadow-z4;
     text-shadow: none;
@@ -174,7 +173,7 @@
 
   @if $t == active {
     color: $tc;
-    background-color: color.mix($tc, $c, math.percentage(0.24));
+    background-color: theme-color.pressed-overlay($tc, $on: $c);
     border-color: transparent;
     box-shadow: theme.$shadow-z8;
     text-shadow: none;
