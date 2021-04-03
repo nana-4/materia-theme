@@ -6,7 +6,6 @@ cinnamon_scss_depend_files = files([
   '../gnome-shell/sass/_drawing.scss',
   'sass/_common.scss',
   'sass/_extends.scss',
-  'sass/_over-rides.scss',
 ])
 
 foreach theme: themes
