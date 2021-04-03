@@ -1,4 +1,3 @@
-@use "sass:color";
 @use "../../theme";
 @use "../../theme-color";
 @use "drawing";
@@ -64,11 +63,11 @@
   color: theme-color.$on-surface;
 
   &:hover {
-    background-color: color.adjust(theme-color.$surface-z0, $lightness: -5%);
+    background-color: theme-color.hover-overlay(theme-color.$on-surface, $on: theme-color.$surface-z0);
   }
 
   &:active {
-    background-color: color.adjust(theme-color.$surface-z0, $lightness: -10%);
+    background-color: theme-color.pressed-overlay(theme-color.$on-surface, $on: theme-color.$surface-z0);
   }
 
   &:disabled {
