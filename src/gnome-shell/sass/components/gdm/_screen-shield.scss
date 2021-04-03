@@ -3,7 +3,7 @@
 @use "../../../../theme";
 @use "../../../../theme-color";
 @use "../../gnome-shell";
-@use "../../drawing";
+@use "../../typography";
 @use "../base/scrollbar";
 
 @if gnome-shell.$version >= 3.36 {
@@ -17,12 +17,12 @@
 
   .unlock-dialog-clock-time {
     padding-top: 42px;
-    @include drawing.type(headline1);
+    @include typography.headline1;
     font-feature-settings: "tnum";
   }
 
   .unlock-dialog-clock-date {
-    @include drawing.type(headline4);
+    @include typography.headline4;
   }
 
   .unlock-dialog-clock-hint {
@@ -103,13 +103,13 @@
   }
 
   .screen-shield-clock-time {
-    @include drawing.type(headline1);
+    @include typography.headline1;
     text-shadow: theme.$shadow-z2;
     font-feature-settings: "tnum";
   }
 
   .screen-shield-clock-date {
-    @include drawing.type(headline4);
+    @include typography.headline4;
   }
 
   .screen-shield-notifications-container {

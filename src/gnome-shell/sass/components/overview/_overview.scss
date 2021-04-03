@@ -4,7 +4,7 @@
 @use "../../../../theme-color";
 @use "../../../../st-theme";
 @use "../../gnome-shell";
-@use "../../drawing";
+@use "../../typography";
 @use "../base/scrollbar";
 
 $color: theme-color.$system;
@@ -53,7 +53,7 @@ $on-color: theme-color.$on-system;
 }
 
 @mixin status-text {
-  @include drawing.type(headline3);
+  @include typography.headline3;
   color: theme-color.disabled($on-color);
 }
 

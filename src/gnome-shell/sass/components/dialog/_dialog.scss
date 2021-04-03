@@ -4,12 +4,12 @@
 @use "../../../../theme-color";
 @use "../../../../st-theme";
 @use "../../gnome-shell";
-@use "../../drawing";
+@use "../../typography";
 @use "../base/button";
 @use "../base/entry";
 
 .headline {
-  @include drawing.type(headline6);
+  @include typography.headline6;
 }
 
 .modal-dialog {
@@ -63,7 +63,7 @@
   }
 
   .end-session-dialog-subject {
-    @include drawing.type(headline6);
+    @include typography.headline6;
   }
 
   .end-session-dialog-list {
@@ -152,13 +152,13 @@
     spacing: 18px;
 
     .message-dialog-title {
-      @include drawing.type(headline6);
+      @include typography.headline6;
       text-align: inherit;
 
       $lightweight: if(gnome-shell.$version >= 3.38, ".lightweight", ".leightweight");
 
       &#{$lightweight} {
-        @include drawing.type(headline6);
+        @include typography.headline6;
       }
     }
 
@@ -318,7 +318,7 @@
 
     .message-dialog-title {
       color: inherit;
-      @include drawing.type(headline6);
+      @include typography.headline6;
     }
   }
 
@@ -474,7 +474,7 @@
   }
 
   .mount-dialog-subject {
-    @include drawing.type(headline6);
+    @include typography.headline6;
   }
 
   .mount-dialog {

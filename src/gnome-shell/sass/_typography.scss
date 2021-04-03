@@ -1,0 +1,102 @@
+// Based on:
+// https://material.io/design/typography/the-type-system.html
+
+@use "../../theme";
+
+$font-family: "M+ 1c", Roboto, Cantarell, Sans-Serif;
+
+$_rem: 14px;
+$_subtitle-size: 16px;
+
+@if theme.$compact {
+  $_rem: 14px; // or should be 13px?
+  $_subtitle-size: 15px;
+}
+
+// provide font size in pt, with px fallback
+@function _pt($size) {
+  @return ($size * .75 / 1px) * 1pt;
+}
+
+// provide icon size in em, with px fallback
+@function icon-size($size: 16px) {
+  @return ($size / $_rem) * 1em;
+}
+
+@mixin headline1 {
+  font-size: 96px;
+  font-weight: 300;
+  // line-height: 1;
+}
+
+@mixin headline2 {
+  font-size: 60px;
+  font-weight: 300;
+  // line-height: 1;
+}
+
+@mixin headline3 {
+  font-size: 48px;
+  font-weight: 400;
+  // line-height: 50px;
+}
+
+@mixin headline4 {
+  font-size: 34px;
+  font-weight: 400;
+  // line-height: 40px;
+}
+
+@mixin headline5 {
+  font-size: _pt(24px);
+  font-weight: 400;
+  // line-height: 32px;
+}
+
+@mixin headline6 {
+  font-size: _pt(20px);
+  font-weight: 500;
+  // line-height: 32px;
+}
+
+@mixin subtitle1 {
+  font-size: _pt($_subtitle-size);
+  font-weight: 400;
+  // line-height: 28px;
+}
+
+@mixin subtitle2 {
+  font-size: _pt($_rem);
+  font-weight: 500;
+  // line-height: 22px;
+}
+
+@mixin body1 {
+  font-size: _pt($_subtitle-size);
+  font-weight: 400;
+  // line-height: 24px;
+}
+
+@mixin body2 {
+  font-size: _pt($_rem);
+  font-weight: 400;
+  // line-height: 20px;
+}
+
+@mixin caption {
+  font-size: _pt(12px);
+  font-weight: 400;
+  // line-height: 20px;
+}
+
+@mixin button {
+  font-size: _pt($_rem);
+  font-weight: 500;
+  // line-height: 36px;
+}
+
+@mixin overline {
+  font-size: _pt(12px);
+  font-weight: 400;
+  // line-height: 32px;
+}

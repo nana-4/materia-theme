@@ -3,7 +3,7 @@
 @use "../../../../theme";
 @use "../../../../theme-color";
 @use "../../gnome-shell";
-@use "../../drawing";
+@use "../../typography";
 
 @mixin panel {
   padding: 12px;
@@ -28,7 +28,7 @@
   }
 
   .osd-monitor-label {
-    @include drawing.type(headline3);
+    @include typography.headline3;
   }
 
   @if gnome-shell.$version >= 3.30 {

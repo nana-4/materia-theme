@@ -2,6 +2,7 @@
 
 @use "../../../../theme";
 @use "../../drawing";
+@use "../../typography";
 
 %button,
 .button {
@@ -11,7 +12,7 @@
   border: 0;
   border-radius: theme.$corner-radius;
 
-  @include drawing.type(button);
+  @include typography.button;
   @include drawing.button(flat-normal);
 
   &:focus {

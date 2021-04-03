@@ -4,6 +4,7 @@ cinnamon_scss_depend_files = files([
   '../_theme.scss',
   '../_theme-color.scss',
   '../gnome-shell/sass/_drawing.scss',
+  '../gnome-shell/sass/_typography.scss',
   'sass/_common.scss',
   'sass/_extends.scss',
 ])

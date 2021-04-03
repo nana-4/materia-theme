@@ -4,6 +4,7 @@
 @use "../../../../theme-color";
 @use "../../gnome-shell";
 @use "../../drawing";
+@use "../../typography";
 
 %entry,
 StEntry {
@@ -14,7 +15,7 @@ StEntry {
   color: theme-color.$on-surface;
   selection-background-color: theme-color.$selected-overlay;
   selected-color: theme-color.$on-surface;
-  @include drawing.type(body1);
+  @include typography.body1;
   @include drawing.entry(normal);
 
   &:hover {

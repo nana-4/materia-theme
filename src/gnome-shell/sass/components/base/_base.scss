@@ -21,7 +21,7 @@
 @use "../../../../theme-color";
 @use "../../../../st-theme";
 @use "../../gnome-shell";
-@use "../../drawing";
+@use "../../typography";
 
 // Stage
 stage {
@@ -30,8 +30,8 @@ stage {
   @if gnome-shell.$version >= 3.36 {
     font-size: 1em;
   } @else {
-    @include drawing.type(body2);
-    font-family: st-theme.$font-family;
+    @include typography.body2;
+    font-family: typography.$font-family;
   }
 }
 

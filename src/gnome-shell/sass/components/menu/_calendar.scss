@@ -4,7 +4,7 @@
 @use "../../../../theme-color";
 @use "../../../../st-theme";
 @use "../../gnome-shell";
-@use "../../drawing";
+@use "../../typography";
 
 $column-spacing: 8px;
 $column-margin: 0 8px;
@@ -104,7 +104,7 @@ $column-margin: 0 8px;
 
   // date label
   .date-label {
-    @include drawing.type(headline5);
+    @include typography.headline5;
   }
 }
 
@@ -186,7 +186,7 @@ $column-margin: 0 8px;
     padding: 0;
     border: 0;
     border-radius: st-theme.$menuitem-size / 2;
-    @include drawing.type(caption);
+    @include typography.caption;
     font-feature-settings: "tnum";
     text-align: center;
 
@@ -221,7 +221,7 @@ $column-margin: 0 8px;
       border-radius: st-theme.$menuitem-size / 2;
       background-color: transparent;
       color: theme-color.disabled(theme-color.$on-surface);
-      @include drawing.type(caption);
+      @include typography.caption;
       font-weight: bold;
       text-align: center;
 
@@ -345,7 +345,7 @@ $column-margin: 0 8px;
 
     .event-time {
       color: theme-color.hint(theme-color.$on-surface);
-      @include drawing.type(caption);
+      @include typography.caption;
       font-feature-settings: "tnum";
     }
   }
@@ -433,7 +433,7 @@ $column-margin: 0 8px;
     padding-top: 0;
     padding-bottom: 0;
     color: theme-color.hint(theme-color.$on-surface);
-    @include drawing.type(caption);
+    @include typography.caption;
     font-feature-settings: "tnum";
   }
 

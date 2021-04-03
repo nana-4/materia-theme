@@ -5,6 +5,7 @@
 @use "../../../../st-theme";
 @use "../../gnome-shell";
 @use "../../drawing";
+@use "../../typography";
 
 .login-dialog-banner-view {
   padding-top: 24px;
@@ -139,7 +140,7 @@
   margin-top: 1em;
   border-radius: theme.$corner-radius;
   color: theme-color.hint(theme-color.$on-system);
-  @include drawing.type(button);
+  @include typography.button;
 
   &:focus {
     background-color: theme-color.focus-overlay(theme-color.$on-system);
@@ -222,7 +223,7 @@
 
   .user-widget.horizontal .user-widget-label {
     padding-left: 16px;
-    @include drawing.type(headline6);
+    @include typography.headline6;
     text-align: left;
 
     &:ltr {
@@ -238,14 +239,14 @@
 
   .user-widget.vertical .user-widget-label {
     padding-top: 16px;
-    @include drawing.type(headline5);
+    @include typography.headline5;
     text-align: center;
   }
 } @else {
   .login-dialog-username,
   .user-widget-label {
     padding-left: 16px;
-    @include drawing.type(headline6);
+    @include typography.headline6;
     text-align: left;
   }
 
