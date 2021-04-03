@@ -1,82 +1,87 @@
-%button-shared {
-  @include button(normal);
-  @include type(button);
+@use "../../theme";
+@use "../../theme-color";
+@use "../../st-theme";
+@use "../../gnome-shell/sass/drawing";
 
-  min-height: $medium-size;
+%button-shared {
+  @include drawing.button(normal);
+  @include drawing.type(button);
+
+  min-height: theme.$medium-size;
   padding: 0 16px;
-  border-radius: $corner-radius;
-  &:focus { @include button(focus); }
-  &:hover, &:checked { @include button(hover); }
-  &:active { @include button(active);}
-  &:insensitive { @include button(insensitive);}
+  border-radius: theme.$corner-radius;
+  &:focus { @include drawing.button(focus); }
+  &:hover, &:checked { @include drawing.button(hover); }
+  &:active { @include drawing.button(active);}
+  &:insensitive { @include drawing.button(insensitive);}
 }
 %icon-button-shared {
-  @include button(normal);
+  @include drawing.button(normal);
 
-  min-height: $medium-size;
-  min-width: $medium-size;
+  min-height: theme.$medium-size;
+  min-width: theme.$medium-size;
   padding: 6px;
-  border-radius: $corner-radius;
-  &:focus { @include button(focus); }
-  &:hover, &:checked { @include button(hover); }
-  &:active { @include button(active);}
-  &:insensitive { @include button(insensitive);}
+  border-radius: theme.$corner-radius;
+  &:focus { @include drawing.button(focus); }
+  &:hover, &:checked { @include drawing.button(hover); }
+  &:active { @include drawing.button(active);}
+  &:insensitive { @include drawing.button(insensitive);}
 }
 %slider-shared {
    height: 20px;
-   color: $primary;
+   color: theme-color.$primary;
   -slider-height: 2px;
-  -slider-background-color: stroke($on-surface); //background of the trough
+  -slider-background-color: theme-color.stroke(theme-color.$on-surface); //background of the trough
   -slider-border-color: transparent; //trough border color
-  -slider-active-background-color: $primary; //active trough fill
+  -slider-active-background-color: theme-color.$primary; //active trough fill
   -slider-active-border-color: transparent; //active trough border
   -slider-border-width: 0;
   -slider-handle-radius: 6px;
 }
 %separator-shared {
   -gradient-height: 1px;
-  -gradient-start: divider($on-surface);
-  -gradient-end: divider($on-surface);
+  -gradient-start: theme-color.divider(theme-color.$on-surface);
+  -gradient-end: theme-color.divider(theme-color.$on-surface);
   -margin-horizontal: 4px;
   height: 1.5em;
 }
 %dialog-entry-shared {
-  @include entry(normal);
+  @include drawing.entry(normal);
 
   width: 250px;
-  min-height: $medium-size;
+  min-height: theme.$medium-size;
   padding: 0 8px;
-  border-radius: $corner-radius $corner-radius 0 0;
-  color: $on-surface;
-  caret-color: $on-surface;
-  selection-background-color: $selected-overlay;
-  selected-color: $on-surface;
+  border-radius: theme.$corner-radius theme.$corner-radius 0 0;
+  color: theme-color.$on-surface;
+  caret-color: theme-color.$on-surface;
+  selection-background-color: theme-color.$selected-overlay;
+  selected-color: theme-color.$on-surface;
   &:focus {
-    @include entry(focus);
+    @include drawing.entry(focus);
 
     padding: 0 8px;
     border-width: 0;
-    color: $on-surface;
+    color: theme-color.$on-surface;
   }
 }
 %desklet-shared {
-  color: $on-surface;
+  color: theme-color.$on-surface;
   border: none;
   padding: 12px;
-  box-shadow: $shadow-z8;
+  box-shadow: theme.$shadow-z8;
 }
 %calendar-shared {
   width: 16px;
   height: 16px;
   border-radius: 999px;
-  transition-duration: $duration;
-  &:active { background-color: stroke($on-surface);}
+  transition-duration: st-theme.$duration;
+  &:active { background-color: theme-color.stroke(theme-color.$on-surface);}
 }
 %menu-shared {
-  background-color: $surface-z8;
-  border-radius: $corner-radius;
-  color: $on-surface;
-  box-shadow: $shadow-z4;
+  background-color: theme-color.$surface-z8;
+  border-radius: theme.$corner-radius;
+  color: theme-color.$on-surface;
+  box-shadow: theme.$shadow-z4;
 }
 %menu-button-label-shared {
   &:ltr {
@@ -88,7 +93,7 @@
 }
 %dialogs-subject-shared {
   font-weight: bold;
-  color: $on-surface;
+  color: theme-color.$on-surface;
   padding-top: 10px;
   padding-left: 17px;
   padding-bottom: 6px;
@@ -98,42 +103,42 @@
   padding-right: 17px;
 }
 %dialogs-description-shared {
-  color: $on-surface;
+  color: theme-color.$on-surface;
   padding-left: 17px;
   width: 28em;
 }
 %check-box-shared {
   width: 24px;
   height: 24px;
-  padding: ($medium-size - 24px) / 2;
+  padding: (theme.$medium-size - 24px) / 2;
   border-radius: 100px;
   background-image: url(assets/checkbox-off.svg);
 }
 %radiobutton-shared {
   width: 20px;
   height: 20px;
-  padding: ($medium-size - 20px) / 2;
+  padding: (theme.$medium-size - 20px) / 2;
   border-radius: 100px;
   background-image: url(assets/radiobutton-off.svg);
 }
 %tile-shared {
-  background-color: $scrim-alt;
-  border: 2px solid divider($on-surface);
+  background-color: theme-color.$scrim-alt;
+  border: 2px solid theme-color.divider(theme-color.$on-surface);
 }
 %tile-shared-snap {
-  background-color: $scrim-alt;
-  border: 2px solid $primary;
+  background-color: theme-color.$scrim-alt;
+  border: 2px solid theme-color.$primary;
 }
 %osd-panel-shared {
-  color: $on-surface;
-  background-color: $surface-z8;
+  color: theme-color.$on-surface;
+  background-color: theme-color.$surface-z8;
   border: none;
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
   padding: 12px;
-  box-shadow: $shadow-z8;
+  box-shadow: theme.$shadow-z8;
 }
 %osd-info-workspace-shared {
-  @include type(headline6);
+  @include drawing.type(headline6);
   @extend %osd-panel-shared;
 
   text-align: center;

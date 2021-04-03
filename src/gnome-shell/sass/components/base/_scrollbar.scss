@@ -1,5 +1,9 @@
 /* Scrollbars */
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../../../st-theme";
+
 StScrollView {
   &.vfade { -st-vfade-offset: 32px; }
   &.hfade { -st-hfade-offset: 32px; }
@@ -16,43 +20,43 @@ StScrollBar {
   StBin#trough {
     margin: 4px;
     border-radius: (8px / 2);
-    background-color: disabled-stroke($on-surface);
+    background-color: theme-color.disabled-stroke(theme-color.$on-surface);
   }
 
   StButton#vhandle,
   StButton#hhandle {
-    transition-duration: $duration;
+    transition-duration: st-theme.$duration;
     margin: 4px;
     // would be nice to margin or at least to transparent
     // border: 4px solid transparent;
     border-radius: (8px / 2);
-    background-color: scrollbar-thumb($on-surface);
+    background-color: theme-color.scrollbar-thumb(theme-color.$on-surface);
 
     &:hover {
-      background-color: scrollbar-thumb($on-surface, "hover");
+      background-color: theme-color.scrollbar-thumb(theme-color.$on-surface, "hover");
     }
 
     &:active {
-      background-color: scrollbar-thumb($on-surface, "pressed");
+      background-color: theme-color.scrollbar-thumb(theme-color.$on-surface, "pressed");
     }
   }
 }
 
 %scrollbar-on-dark {
   StBin#trough {
-    background-color: disabled-stroke($on-dark);
+    background-color: theme-color.disabled-stroke(theme-color.$on-dark);
   }
 
   StButton#vhandle,
   StButton#hhandle {
-    background-color: scrollbar-thumb($on-dark);
+    background-color: theme-color.scrollbar-thumb(theme-color.$on-dark);
 
     &:hover {
-      background-color: scrollbar-thumb($on-dark, "hover");
+      background-color: theme-color.scrollbar-thumb(theme-color.$on-dark, "hover");
     }
 
     &:active {
-      background-color: scrollbar-thumb($on-dark, "pressed");
+      background-color: theme-color.scrollbar-thumb(theme-color.$on-dark, "pressed");
     }
   }
 }

@@ -1,3 +1,5 @@
+@use "theme";
+
 //
 // Font families
 //
@@ -12,7 +14,7 @@ $font-family-large: Roboto, "M+ 1c", Cantarell, Sans-Serif;
 $font-size: 14px;
 $font-size-subheading: 16px;
 
-@if $compact {
+@if theme.$compact {
   $font-size: 14px; // or should be 13px?
   $font-size-subheading: 15px;
 }
@@ -24,7 +26,7 @@ $font-size-subheading: 16px;
 $menuitem-size: 32px;
 $panel-button-hpadding: 12px;
 
-@if $compact {
+@if theme.$compact {
   $menuitem-size: 28px;
   $panel-button-hpadding: 8px;
 }

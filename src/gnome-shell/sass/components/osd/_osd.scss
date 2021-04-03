@@ -1,12 +1,17 @@
 /* OSD */
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../gnome-shell";
+@use "../../drawing";
+
 %osd-panel {
   padding: 12px;
   border: none;
-  border-radius: $corner-radius;
-  box-shadow: $shadow-z8;
-  background-color: $surface-z8;
-  color: $on-surface;
+  border-radius: theme.$corner-radius;
+  box-shadow: theme.$shadow-z8;
+  background-color: theme-color.$surface-z8;
+  color: theme-color.$on-surface;
 }
 
 .osd-window {
@@ -23,29 +28,29 @@
   }
 
   .osd-monitor-label {
-    @include type(headline3);
+    @include drawing.type(headline3);
   }
 
-  @if $version >= 3.30 {
+  @if gnome-shell.$version >= 3.30 {
     .level {
       height: 8px;
       -barlevel-height: 8px;
-      -barlevel-background-color: disabled-stroke($on-surface);
-      -barlevel-active-background-color: $primary;
-      -barlevel-overdrive-color: $error;
+      -barlevel-background-color: theme-color.disabled-stroke(theme-color.$on-surface);
+      -barlevel-active-background-color: theme-color.$primary;
+      -barlevel-overdrive-color: theme-color.$error;
       -barlevel-overdrive-separator-width: 2px;
     }
   } @else {
     .level {
       height: 8px;
       border-radius: 0;
-      background-color: disabled-stroke($on-surface);
-      color: $on-surface;
+      background-color: theme-color.disabled-stroke(theme-color.$on-surface);
+      color: theme-color.$on-surface;
     }
 
     .level-bar {
       border-radius: 0;
-      background-color: $primary;
+      background-color: theme-color.$primary;
     }
   }
 }
@@ -58,7 +63,7 @@
 
 .pad-osd-window {
   padding: 32px;
-  background-color: $scrim;
+  background-color: theme-color.$scrim;
 
   .pad-osd-title-box {
     spacing: 12px;

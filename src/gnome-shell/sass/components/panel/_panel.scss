@@ -1,10 +1,15 @@
 /* Top Bar */
 
-#panel {
-  $background: if($version >= 3.26 and $version < 3.32, $scrim, $panel);
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../../../st-theme";
+@use "../../gnome-shell";
 
-  transition-duration: $duration-panel;
-  height: $menuitem-size;
+#panel {
+  $background: if(gnome-shell.$version >= 3.26 and gnome-shell.$version < 3.32, theme-color.$scrim, theme-color.$panel);
+
+  transition-duration: st-theme.$duration-panel;
+  height: st-theme.$menuitem-size;
   background-color: $background;
   font-weight: bold;
   font-feature-settings: "tnum";
@@ -22,9 +27,9 @@
     -panel-corner-border-width: 0;
     -panel-corner-border-color: transparent;
 
-    @if $version >= 40 {
+    @if gnome-shell.$version >= 40 {
       -panel-corner-opacity: 0;
-      transition-duration: $duration-panel;
+      transition-duration: st-theme.$duration-panel;
     } @else {
       &:active, &:overview, &:focus {
         -panel-corner-border-color: transparent;
@@ -34,19 +39,19 @@
 
   // panel menus
   .panel-button {
-    -natural-hpadding: $panel-button-hpadding;
-    -minimum-hpadding: $panel-button-hpadding / 2;
-    transition-duration: $duration;
+    -natural-hpadding: st-theme.$panel-button-hpadding;
+    -minimum-hpadding: st-theme.$panel-button-hpadding / 2;
+    transition-duration: st-theme.$duration;
     border: 0;
     border-radius: 0;
-    color: hint(on($background));
+    color: theme-color.hint(theme-color.on($background));
     text-shadow: none;
     font-weight: bold;
 
-    @if $version >= 3.36 {
+    @if gnome-shell.$version >= 3.36 {
       &.clock-display {
         .clock {
-          transition-duration: $duration;
+          transition-duration: st-theme.$duration;
           border: 0;
           border-radius: 0;
         }
@@ -61,10 +66,10 @@
 
     &:hover {
       box-shadow: none;
-      color: on($background);
+      color: theme-color.on($background);
       text-shadow: none;
 
-      @if $version >= 3.36 {
+      @if gnome-shell.$version >= 3.36 {
         &.clock-display {
           box-shadow: none;
 
@@ -82,12 +87,12 @@
     }
 
     &:active, &:overview, &:focus, &:checked {
-      box-shadow: inset 0 -2px on($background);
+      box-shadow: inset 0 -2px theme-color.on($background);
       // Trick due to St limitations. It needs a background to draw a box-shadow
       background-color: rgba($background, .01);
-      color: on($background);
+      color: theme-color.on($background);
 
-      @if $version >= 3.36 {
+      @if gnome-shell.$version >= 3.36 {
         // The clock display needs to have the background on .clock because
         // we want to exclude the do-not-disturb indicator from the background
         &.clock-display {
@@ -95,7 +100,7 @@
           background-color: transparent;
 
           .clock {
-            box-shadow: inset 0 -2px on($background);
+            box-shadow: inset 0 -2px theme-color.on($background);
             background-color: rgba($background, .01);
           }
         }
@@ -111,12 +116,12 @@
       icon-size: 16px;
       padding: 0 4px;
 
-      @if $version >= 40 {
+      @if gnome-shell.$version >= 40 {
         margin: 0 4px;
       }
     }
 
-    @if $version >= 40 {
+    @if gnome-shell.$version >= 40 {
       .panel-status-indicators-box .system-status-icon,
       .panel-status-menu-box .system-status-icon {
         margin: 0;
@@ -128,15 +133,15 @@
       -st-icon-style: symbolic;
       // dimensions of the icon are hardcoded
 
-      @if $version < 40 {
+      @if gnome-shell.$version < 40 {
         margin-left: 4px;
         margin-right: 4px;
       }
     }
 
-    @if $version >= 40 {
+    @if gnome-shell.$version >= 40 {
       &#panelActivities {
-        -natural-hpadding: $panel-button-hpadding;
+        -natural-hpadding: st-theme.$panel-button-hpadding;
       }
     }
   }
@@ -154,7 +159,7 @@
   // indicator for active
   .screencast-indicator,
   .remote-access-indicator {
-    color: $warning;
+    color: theme-color.$warning;
   }
 
   // transparent panel on lock & login screens
@@ -162,7 +167,7 @@
     background-color: transparent;
 
     .panel-corner {
-      @if $version >= 40 {
+      @if gnome-shell.$version >= 40 {
         -panel-corner-opacity: 0;
       } @else {
         -panel-corner-radius: 0;
@@ -172,10 +177,10 @@
     }
 
     .panel-button {
-      color: hint($on-dark);
+      color: theme-color.hint(theme-color.$on-dark);
 
       &:hover, &:active, &:overview, &:focus, &:checked {
-        color: $on-dark;
+        color: theme-color.$on-dark;
       }
     }
   }
@@ -186,28 +191,28 @@
     @extend %transparent-panel;
   }
 
-  @if $version < 3.36 {
+  @if gnome-shell.$version < 3.36 {
     &.lock-screen {
       @extend %transparent-panel;
-      background-color: $scrim-alt;
+      background-color: theme-color.$scrim-alt;
     }
   }
 
-  @if $version >= 3.26 and $version < 3.32 {
+  @if gnome-shell.$version >= 3.26 and gnome-shell.$version < 3.32 {
     &.solid {
-      transition-duration: $duration-panel;
-      background-color: $panel;
+      transition-duration: st-theme.$duration-panel;
+      background-color: theme-color.$panel;
 
       .panel-corner {
         -panel-corner-background-color: transparent;
       }
 
       .panel-button {
-        color: hint($on-panel);
+        color: theme-color.hint(theme-color.$on-panel);
         text-shadow: none;
 
         &:hover, &:active, &:overview, &:focus, &:checked {
-          color: $on-panel;
+          color: theme-color.$on-panel;
         }
       }
 
@@ -224,7 +229,7 @@
 #appMenu {
   spacing: 4px;
 
-  @if $version < 3.34 {
+  @if gnome-shell.$version < 3.34 {
     spinner-image: url("process-working.svg");
   }
 
@@ -232,7 +237,7 @@
     color: transparent;
   }
 
-  @if $version >= 40 {
+  @if gnome-shell.$version >= 40 {
     .panel-status-menu-box {
       padding: 0;
       spacing: 4px;

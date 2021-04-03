@@ -1,21 +1,24 @@
 // When color definition differs for dark and light variant,
 // it gets @if ed depending on $variant
 
-@import 'color-palette';
+@use "sass:color";
+@use "sass:math";
+@use "sass:string";
+@use "theme";
 
 @function gtkalpha($color, $alpha) {
-  @return unquote("alpha(#{$color}, #{$alpha})");
+  @return string.unquote("alpha(#{$color}, #{$alpha})");
 }
 
 // Determine whether the color has alpha.
 @function _has-alpha($color) {
-  @return if(alpha($color) < 1, true, false);
+  @return if(color.alpha($color) < 1, true, false);
 }
 
 // Determine whether the color is dark.
 @function _is-dark($color) {
   // Calculate color brightness as per https://www.w3.org/TR/AERT/#color-contrast
-  $brightness: (red($color) * 299 + green($color) * 587 + blue($color) * 114) / 1000;
+  $brightness: (color.red($color) * 299 + color.green($color) * 587 + color.blue($color) * 114) / 1000;
 
   @return if($brightness < 128, true, false);
 }
@@ -28,7 +31,7 @@ $on-dark: #fff;
 @function on($color) {
   $contrast-color: if(_is-dark($color), $on-dark, $on-light);
 
-  @if saturation($color) > 50% or alpha($color) < 1 {
+  @if color.saturation($color) > 50% or color.alpha($color) < 1 {
     @return $contrast-color;
   } @else {
     @return rgba($contrast-color, .87);
@@ -37,9 +40,9 @@ $on-dark: #fff;
 
 // Determine the strength of highlight on top of given color.
 @function highlight($color) {
-  @if lightness($color) >= 80% {
+  @if color.lightness($color) >= 80% {
     @return rgba(white, .4);
-  } @else if lightness($color) >= 40% {
+  } @else if color.lightness($color) >= 40% {
     @return rgba(white, .2);
   } @else {
     @return rgba(white, .05);
@@ -48,7 +51,7 @@ $on-dark: #fff;
 
 // Make translucent color opaque by blending with the background color.
 @function opacify($color, $on) {
-  @return mix(change-color($color, $alpha: 1), $on, alpha($color) * 100%);
+  @return color.mix(color.change($color, $alpha: 1), $on, color.alpha($color) * 100%);
 }
 
 //
@@ -111,11 +114,11 @@ $on-titlebar: %HDR_FG%;
 
 $titlebar-indicator: currentcolor;
 
-@if $dark-theme {
+@if theme.$dark-theme {
   $surface-z0: if(_is-dark(%BG%), %BG%, %FG%);
-  $surface-z1: if(_is-dark(%BG%), %MATERIA_VIEW%, mix(white, $surface-z0, 5%));
-  $surface-z8: if(_is-dark(%BG%), %MATERIA_SURFACE%, mix(white, $surface-z0, 12%));
-  $surface-switch-thumb: if(_is-dark(%BG%), %MATERIA_SURFACE%, mix(white, $surface-z0, 60%));
+  $surface-z1: if(_is-dark(%BG%), %MATERIA_VIEW%, color.mix(white, $surface-z0, 5%));
+  $surface-z8: if(_is-dark(%BG%), %MATERIA_SURFACE%, color.mix(white, $surface-z0, 12%));
+  $surface-switch-thumb: if(_is-dark(%BG%), %MATERIA_SURFACE%, color.mix(white, $surface-z0, 60%));
   $on-surface: if(_is-dark(%BG%), %FG%, on($surface-z0));
 
   $primary: $primary-on-dark;
@@ -133,12 +136,12 @@ $titlebar-indicator: currentcolor;
   $visited: $visited-on-dark;
   $on-visited: on($visited);
 
-  $titlebar: if(_is-dark(%BG%), %HDR_BG%, mix(white, $surface-z0, 9%));
+  $titlebar: if(_is-dark(%BG%), %HDR_BG%, color.mix(white, $surface-z0, 9%));
   $titlebar-backdrop: if(_is-dark(%BG%), %HDR_BG2%, $surface-z1);
   $on-titlebar: if(_is-dark(%BG%), %HDR_FG%, on($titlebar));
 }
 
-@if $light-topbar {
+@if theme.$light-topbar {
   $panel: $scrim;
   $on-panel: on($panel);
 
@@ -153,11 +156,11 @@ $titlebar-indicator: currentcolor;
 @function _overlay($color, $opacity, $on) {
   $opacity-modifier: 0;
 
-  @if saturation($color) > 50% or saturation($on) > 50% {
+  @if color.saturation($color) > 50% or color.saturation($on) > 50% {
     $opacity-modifier: .04;
   }
 
-  @return mix(rgba($color, 1), $on, percentage($opacity + $opacity-modifier));
+  @return color.mix(rgba($color, 1), $on, math.percentage($opacity + $opacity-modifier));
 }
 
 @function hover-overlay($color, $opacity-modifier: 0, $on: transparent, $alt: false) {

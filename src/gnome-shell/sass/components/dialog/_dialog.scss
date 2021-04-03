@@ -1,17 +1,25 @@
 /* Modal Dialogs */
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../../../st-theme";
+@use "../../gnome-shell";
+@use "../../drawing";
+@use "../base/button";
+@use "../base/entry";
+
 .headline {
-  @include type(headline6);
+  @include drawing.type(headline6);
 }
 
 .modal-dialog {
   border: 0;
-  border-radius: $corner-radius;
-  box-shadow: $shadow-z8;
-  background-color: $surface-z8;
-  color: $on-surface;
+  border-radius: theme.$corner-radius;
+  box-shadow: theme.$shadow-z8;
+  background-color: theme-color.$surface-z8;
+  color: theme-color.$on-surface;
 
-  @if $version >= 3.36 {
+  @if gnome-shell.$version >= 3.36 {
     .modal-dialog-content-box {
       max-width: 28em;
       margin: 32px 40px;
@@ -27,7 +35,7 @@
     @extend %bubble_button;
   }
 
-  @if $version == 3.34 {
+  @if gnome-shell.$version == 3.34 {
     StEntry {
       @extend %entry;
     }
@@ -39,13 +47,13 @@
 }
 
 /* End Session Dialog */
-@if $version >= 3.36 {
+@if gnome-shell.$version >= 3.36 {
   .end-session-dialog {
     width: 30em;
 
     .end-session-dialog-battery-warning,
     .dialog-list-title {
-      color: $error;
+      color: theme-color.$error;
     }
   }
 } @else {
@@ -55,7 +63,7 @@
   }
 
   .end-session-dialog-subject {
-    @include type(headline6);
+    @include drawing.type(headline6);
   }
 
   .end-session-dialog-list {
@@ -82,7 +90,7 @@
   .end-session-dialog-warning {
     width: 28em;
     padding-top: 6px;
-    color: $error;
+    color: theme-color.$error;
 
     &:rtl {
       text-align: right;
@@ -92,14 +100,14 @@
   .end-session-dialog-logout-icon {
     width: 48px;
     height: 48px;
-    border-radius: $circular-radius;
+    border-radius: theme.$circular-radius;
     background-size: contain;
   }
 
   .end-session-dialog-shutdown-icon {
     width: 48px;
     height: 48px;
-    color: hint($on-surface);
+    color: theme-color.hint(theme-color.$on-surface);
   }
 
   .end-session-dialog-inhibitor-layout {
@@ -133,29 +141,29 @@
   }
 
   .end-session-dialog-app-list-item-description {
-    color: hint($on-surface);
+    color: theme-color.hint(theme-color.$on-surface);
     font-size: 1em;
   }
 }
 
 /* Message Dialog */
-@if $version >= 3.36 {
+@if gnome-shell.$version >= 3.36 {
   .message-dialog-content {
     spacing: 18px;
 
     .message-dialog-title {
-      @include type(headline6);
+      @include drawing.type(headline6);
       text-align: inherit;
 
-      $lightweight: if($version >= 3.38, ".lightweight", ".leightweight");
+      $lightweight: if(gnome-shell.$version >= 3.38, ".lightweight", ".leightweight");
 
       &#{$lightweight} {
-        @include type(headline6);
+        @include drawing.type(headline6);
       }
     }
 
     .message-dialog-description {
-      color: hint($on-surface);
+      color: theme-color.hint(theme-color.$on-surface);
       text-align: inherit;
     }
   }
@@ -180,7 +188,7 @@
   }
 
   .message-dialog-subtitle {
-    color: hint($on-surface);
+    color: theme-color.hint(theme-color.$on-surface);
     font-weight: normal;
   }
 }
@@ -209,7 +217,7 @@
       }
 
       .dialog-list-item-description {
-        color: hint($on-surface);
+        color: theme-color.hint(theme-color.$on-surface);
         font-size: 1em;
       }
     }
@@ -218,7 +226,7 @@
 
 /* Run Dialog */
 .run-dialog {
-  @if $version >= 3.36 {
+  @if gnome-shell.$version >= 3.36 {
     .modal-dialog-content-box {
       margin-top: 24px;
       margin-bottom: 16px;
@@ -230,13 +238,13 @@
 
     .run-dialog-description {
       text-align: inherit;
-      color: hint($on-surface);
+      color: theme-color.hint(theme-color.$on-surface);
       font-size: 1em;
     }
   } @else {
     .run-dialog-label {
       padding-bottom: .4em;
-      color: hint($on-surface);
+      color: theme-color.hint(theme-color.$on-surface);
       font-weight: normal;
       font-size: 1em;
     }
@@ -249,7 +257,7 @@
     .run-dialog-error-box {
       padding-top: 16px;
       spacing: 6px;
-      color: $error;
+      color: theme-color.$error;
     }
 
     .run-dialog-button-box {
@@ -260,7 +268,7 @@
 
 /* Password or Authentication Dialog */
 
-@if $version >= 3.36 {
+@if gnome-shell.$version >= 3.36 {
   .prompt-dialog {
     width: 28em;
 
@@ -310,7 +318,7 @@
 
     .message-dialog-title {
       color: inherit;
-      @include type(headline6);
+      @include drawing.type(headline6);
     }
   }
 
@@ -329,7 +337,7 @@
 .prompt-dialog-null-label {
   font-size: 1em;
 
-  @if $version >= 3.36 {
+  @if gnome-shell.$version >= 3.36 {
     text-align: inherit;
   } @else {
     padding-bottom: 8px;
@@ -337,10 +345,10 @@
 }
 
 .prompt-dialog-error-label {
-  color: $error;
+  color: theme-color.$error;
 }
 
-@if $version == 3.34 {
+@if gnome-shell.$version == 3.34 {
   .prompt-dialog-pim-box {
     spacing: 1em;
   }
@@ -363,7 +371,7 @@
 /* Polkit Dialog */
 
 .polkit-dialog-user-layout {
-  @if $version >= 3.36 {
+  @if gnome-shell.$version >= 3.36 {
     text-align: center;
     spacing: 8px;
     margin-bottom: 6px;
@@ -377,12 +385,12 @@
     }
   }
 
-  @if $version < 40 {
+  @if gnome-shell.$version < 40 {
     .polkit-dialog-user-icon {
-      border-radius: $circular-radius;
+      border-radius: theme.$circular-radius;
       background-size: contain;
 
-      @if $version < 3.36 {
+      @if gnome-shell.$version < 3.36 {
         width: 48px;
         height: 48px;
       }
@@ -390,13 +398,13 @@
   }
 
   .polkit-dialog-user-root-label {
-    color: $error;
+    color: theme-color.$error;
   }
 }
 
 /* Audio selection dialog */
 .audio-device-selection-dialog {
-  @if $version >= 3.36 {
+  @if gnome-shell.$version >= 3.36 {
     .modal-dialog-content-box {
       margin-bottom: 28px;
     }
@@ -420,21 +428,21 @@
 }
 
 .audio-selection-device {
-  transition-duration: $duration;
+  transition-duration: st-theme.$duration;
   border: 0;
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
 
   &:focus {
-    background-color: focus-overlay($on-surface);
+    background-color: theme-color.focus-overlay(theme-color.$on-surface);
   }
 
   &:hover {
-    background-color: hover-overlay($on-surface);
+    background-color: theme-color.hover-overlay(theme-color.$on-surface);
   }
 
   &:active {
-    transition-duration: $duration-ripple;
-    background-color: pressed-overlay($on-surface);
+    transition-duration: st-theme.$duration-ripple;
+    background-color: theme-color.pressed-overlay(theme-color.$on-surface);
     color: inherit;
   }
 }
@@ -448,7 +456,7 @@
   icon-size: 64px;
 }
 
-@if $version >= 40 {
+@if gnome-shell.$version >= 40 {
   /* Welcome dialog */
   .welcome-dialog-image {
     // Reasonable maximum dimensions
@@ -459,14 +467,14 @@
   }
 }
 
-@if $version < 3.36 {
+@if gnome-shell.$version < 3.36 {
   /* ShellMountOperation Dialogs */
   .shell-mount-operation-icon {
     icon-size: 48px;
   }
 
   .mount-dialog-subject {
-    @include type(headline6);
+    @include drawing.type(headline6);
   }
 
   .mount-dialog {
@@ -554,7 +562,7 @@
     }
 
     .message-dialog-title {
-      color: hint($on-surface);
+      color: theme-color.hint(theme-color.$on-surface);
       font-weight: normal;
     }
   }

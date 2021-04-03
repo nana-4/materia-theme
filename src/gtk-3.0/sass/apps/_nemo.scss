@@ -8,9 +8,13 @@
 // hard-coded css:
 // https://github.com/linuxmint/nemo/blob/master/gresources/nemo-style-application.css
 
+@use "../../../theme";
+@use "../../../theme-color";
+@use "../common";
+
 .nemo-window {
   .primary-toolbar {
-    border-bottom: 1px solid divider($on-surface);
+    border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
 
     // FIXME: workaround for hard-coded border-width of GtkEventBox for entry
     stack > box {
@@ -51,11 +55,11 @@
 
   // Rename entry styling in the icon view.
   .nemo-window-pane widget.entry {
-    border-radius: $corner-radius;
-    background-color: entry-fill($on-surface);
+    border-radius: theme.$corner-radius;
+    background-color: theme-color.entry-fill(theme-color.$on-surface);
 
     &:selected {
-      background-color: $selected-overlay;
+      background-color: theme-color.$selected-overlay;
     }
   }
 
@@ -66,8 +70,8 @@
 
 // For Places Sidebar diskfull indicators
 .places-treeview {
-  -NemoPlacesTreeView-disk-full-bg-color: opacify(disabled-stroke($on-surface), $surface-z0); // Can't use translucent colors
-  -NemoPlacesTreeView-disk-full-fg-color: $primary;
+  -NemoPlacesTreeView-disk-full-bg-color: theme-color.opacify(theme-color.disabled-stroke(theme-color.$on-surface), theme-color.$surface-z0); // Can't use translucent colors
+  -NemoPlacesTreeView-disk-full-fg-color: theme-color.$primary;
   -NemoPlacesTreeView-disk-full-bar-width: 2px;
   -NemoPlacesTreeView-disk-full-bar-radius: 0;
   -NemoPlacesTreeView-disk-full-bottom-padding: 1px; // There is already hard-coded 1px bottom-padding

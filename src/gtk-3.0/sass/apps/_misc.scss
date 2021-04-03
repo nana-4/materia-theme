@@ -1,3 +1,8 @@
+@use "../../../theme";
+@use "../../../theme-color";
+@use "../../../color-palette";
+@use "../common";
+
 /**
  * Tilix
  */
@@ -6,7 +11,7 @@ overlay > revealer {
   &.left > scrolledwindow.frame,
   &.right > scrolledwindow.frame {
     border-style: none;
-    box-shadow: $shadow-z16;
+    box-shadow: theme.$shadow-z16;
   }
 
   &.left > scrolledwindow.frame {
@@ -20,7 +25,7 @@ overlay > revealer {
 
 .terminix-session-sidebar, // for backward compatibility
 .tilix-session-sidebar {
-  background-image: image($surface-z8);
+  background-image: image(theme-color.$surface-z8);
 }
 
 .terminal-titlebar button {
@@ -28,7 +33,7 @@ overlay > revealer {
 }
 
 button.image-button.session-new-button {
-  min-width: $medium-size - 4px;
+  min-width: theme.$medium-size - 4px;
 }
 
 // Remove extra padding
@@ -39,8 +44,8 @@ notebook.tilix-background tab > box > stack {
 button.flat.tilix-small-button {
   // NOTE: padding is hard-coded with:
   // padding: 2px 4px;
-  min-height: $small-size - 2px * 2;
-  min-width: $small-size - 4px * 2;
+  min-height: theme.$small-size - 2px * 2;
+  min-width: theme.$small-size - 4px * 2;
 }
 
 /**
@@ -49,7 +54,7 @@ button.flat.tilix-small-button {
 
 .terminator-terminal-window {
   paned > separator {
-    background-color: $surface-z0;
+    background-color: theme-color.$surface-z0;
   }
 
   // this should be fixed by the upstream
@@ -65,7 +70,7 @@ button.flat.tilix-small-button {
 
 #live_installer .menubar progressbar trough {
   border-radius: 4px; // Adjust to hard-coded progress border-radius
-  background-color: disabled-stroke($on-titlebar);
+  background-color: theme-color.disabled-stroke(theme-color.$on-titlebar);
 }
 
 /**
@@ -81,7 +86,7 @@ window.background > box.vertical > scrolledwindow > widget toolbar {
   }
 
   button {
-    border-radius: $corner-radius;
+    border-radius: theme.$corner-radius;
   }
 }
 
@@ -93,15 +98,15 @@ window.background > box.vertical > widget > widget > widget > widget > widget > 
   > entry {
     all: unset;
     padding: 5px;
-    box-shadow: inset 0 0 0 1px $selected-overlay;
-    background-color: $surface-z1;
+    box-shadow: inset 0 0 0 1px theme-color.$selected-overlay;
+    background-color: theme-color.$surface-z1;
   }
 
   > widget > entry {
     all: unset;
     padding: 0 3px 1px;
-    box-shadow: inset 0 0 0 1px $selected-overlay;
-    background-color: $surface-z1;
+    box-shadow: inset 0 0 0 1px theme-color.$selected-overlay;
+    background-color: theme-color.$surface-z1;
   }
 }
 
@@ -110,7 +115,7 @@ window.background > box.vertical > widget > widget > widget > widget > widget > 
  */
 
 window.background.chromium {
-  background-color: $surface-z8;
+  background-color: theme-color.$surface-z8;
 
   // FIXME: There is no way to change the color of the toolbar buttons
   toolbar button {
@@ -121,25 +126,25 @@ window.background.chromium {
   // FIXME: Chrome's button border ignores theme's alpha value :(
   entry,
   > button {
-    border: 1px solid stroke($on-surface);
+    border: 1px solid theme-color.stroke(theme-color.$on-surface);
   }
 
   > button {
-    color: $primary;
+    color: theme-color.$primary;
 
     &:disabled {
-      color: disabled-hint($on-surface);
+      color: theme-color.disabled-hint(theme-color.$on-surface);
     }
   }
 
   menubar,
   headerbar {
-    color: hint($on-titlebar);
+    color: theme-color.hint(theme-color.$on-titlebar);
   }
 
   // Workaround for non-animatable buttons in headerbar
   headerbar button:active {
-    background-color: pressed-overlay($on-titlebar);
+    background-color: theme-color.pressed-overlay(theme-color.$on-titlebar);
   }
 
   // For text field
@@ -149,20 +154,20 @@ window.background.chromium {
 
   // For prominent button, starred icon, etc.
   treeview.view.cell:selected:focus {
-    background-color: $primary;
-    color: $on-primary;
+    background-color: theme-color.$primary;
+    color: theme-color.$on-primary;
   }
 
   // For table header
   treeview.view button {
-    border: 1px solid stroke($on-surface);
-    background-color: $surface-z1; // FIXME: This should not be necessary
+    border: 1px solid theme-color.stroke(theme-color.$on-surface);
+    background-color: theme-color.$surface-z1; // FIXME: This should not be necessary
     // color: hint($on-surface);
   }
 }
 
 tooltip.background.chromium {
-  background-color: rgba($tooltip, 1);
+  background-color: rgba(theme-color.$tooltip, 1);
 }
 
 /**
@@ -173,19 +178,19 @@ tooltip.background.chromium {
   > widget {
     // For popover, entry in toolbar, etc.
     text {
-      background-color: $surface-z8;
+      background-color: theme-color.$surface-z8;
     }
 
     // For selection, active tab indicator, etc.
     text:selected {
       // Use traditional selection style as workaround
-      background-color: $primary;
-      color: $on-primary;
+      background-color: theme-color.$primary;
+      color: theme-color.$on-primary;
     }
 
     // For separators in bookmark toolbar
     > separator {
-      color: divider($on-surface);
+      color: theme-color.divider(theme-color.$on-surface);
     }
 
     // avoid black border
@@ -197,31 +202,31 @@ tooltip.background.chromium {
     > frame > border {
       // FIXME: On Wayland, translucent colors don't work well here.
       // See: https://github.com/nana-4/materia-theme/issues/467
-      border-color: opacify(stroke($on-surface), $surface-z0);
+      border-color: theme-color.opacify(theme-color.stroke(theme-color.$on-surface), theme-color.$surface-z0);
     }
 
     > entry,
     > button > button {
-      border: 1px solid stroke($on-surface);
-      border-radius: $corner-radius;
+      border: 1px solid theme-color.stroke(theme-color.$on-surface);
+      border-radius: theme.$corner-radius;
       box-shadow: none;
 
       &:disabled {
-        border-color: disabled-stroke($on-surface);
+        border-color: theme-color.disabled-stroke(theme-color.$on-surface);
       }
     }
 
     > entry {
       min-height: 32px - 2px;
-      background-color: $surface-z1;
+      background-color: theme-color.$surface-z1;
 
       &:focus {
-        border-color: $primary;
-        box-shadow: inset 0 0 0 1px $primary;
+        border-color: theme-color.$primary;
+        box-shadow: inset 0 0 0 1px theme-color.$primary;
       }
 
       &:disabled {
-        background-color: $surface-z1;
+        background-color: theme-color.$surface-z1;
       }
     }
 
@@ -251,10 +256,10 @@ tooltip.background.chromium {
     // make check/radio visible regardless of whether the background is bright or dark
     > checkbutton > check:not(:checked):not(:indeterminate),
     > radiobutton > radio:not(:checked):not(:indeterminate) {
-      color: $grey-600;
+      color: color-palette.$grey-600;
 
       &:disabled {
-        color: rgba($grey-600, .5);
+        color: rgba(color-palette.$grey-600, .5);
       }
     }
   }
@@ -271,7 +276,7 @@ tooltip.background.chromium {
   // Workaround: Firefox doesn't properly read color from
   // menuitem:disabled, but from menuitem label:disabled.
   menuitem label:disabled {
-    color: disabled($on-surface);
+    color: theme-color.disabled(theme-color.$on-surface);
   }
 }
 
@@ -279,24 +284,24 @@ tooltip.background.chromium {
 #MozillaGtkWidget {
   > widget {
     > menubar {
-      color: hint($on-titlebar);
+      color: theme-color.hint(theme-color.$on-titlebar);
 
       &:hover {
-        color: $on-titlebar;
+        color: theme-color.$on-titlebar;
       }
 
       &:disabled {
-        color: disabled-hint($on-titlebar);
+        color: theme-color.disabled-hint(theme-color.$on-titlebar);
       }
     }
 
     > frame {
-      color: stroke($on-surface);
+      color: theme-color.stroke(theme-color.$on-surface);
     }
   }
 
   menu > separator {
-    color: divider($on-surface);
+    color: theme-color.divider(theme-color.$on-surface);
   }
 }
 
@@ -323,7 +328,7 @@ tooltip.background.chromium {
       min-height: 24px;
       min-width: 16px;
       padding: 4px 8px;
-      border-radius: $corner-radius;
+      border-radius: theme.$corner-radius;
     }
 
     spinbutton button {
@@ -338,7 +343,7 @@ tooltip.background.chromium {
       min-height: 24px;
       min-width: 24px;
       padding: 4px;
-      border-radius: $corner-radius;
+      border-radius: theme.$corner-radius;
     }
   }
 }
@@ -353,16 +358,16 @@ tooltip.background.chromium {
   }
 
   #HorizontalScrollbar {
-    border-top: 1px solid divider($on-surface);
+    border-top: 1px solid theme-color.divider(theme-color.$on-surface);
   }
 
   #VerticalScrollbar {
     &:dir(ltr) {
-      border-left: 1px solid divider($on-surface);
+      border-left: 1px solid theme-color.divider(theme-color.$on-surface);
     }
 
     &:dir(rtl) {
-      border-right: 1px solid divider($on-surface);
+      border-right: 1px solid theme-color.divider(theme-color.$on-surface);
     }
   }
 }
@@ -399,5 +404,5 @@ tooltip.background.chromium {
  */
 
 box.vertical > widget > widget:selected {
-  background-color: $selected-overlay;
+  background-color: theme-color.$selected-overlay;
 }

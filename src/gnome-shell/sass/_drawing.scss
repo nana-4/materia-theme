@@ -1,13 +1,19 @@
 // generic drawing of more complex things
 
+@use "sass:color";
+@use "sass:math";
+@use "../../theme";
+@use "../../theme-color";
+@use "../../st-theme";
+
 // provide font size in pt, with px fallback
-@function pt($size: $font-size) {
+@function pt($size: st-theme.$font-size) {
   @return ($size * 0.75 / 1px) * 1pt;
 }
 
 // provide icon size in em, with px fallback
 @function em($size: 16px) {
-  @return ($size / $font-size) * 1em;
+  @return ($size / st-theme.$font-size) * 1em;
 }
 
 // Typography
@@ -56,25 +62,25 @@
   }
 
   @if $style == subtitle1 {
-    font-size: pt($font-size-subheading);
+    font-size: pt(st-theme.$font-size-subheading);
     font-weight: 400;
     // line-height: 28px;
   }
 
   @if $style == subtitle2 {
-    font-size: pt($font-size);
+    font-size: pt(st-theme.$font-size);
     font-weight: 500;
     // line-height: 22px;
   }
 
   @if $style == body1 {
-    font-size: pt($font-size-subheading);
+    font-size: pt(st-theme.$font-size-subheading);
     font-weight: 400;
     // line-height: 24px;
   }
 
   @if $style == body2 {
-    font-size: pt($font-size);
+    font-size: pt(st-theme.$font-size);
     font-weight: 400;
     // line-height: 20px;
   }
@@ -86,7 +92,7 @@
   }
 
   @if $style == button {
-    font-size: pt($font-size);
+    font-size: pt(st-theme.$font-size);
     font-weight: 500;
     // line-height: 36px;
   }
@@ -99,7 +105,7 @@
 }
 
 
-@mixin entry($t, $fc: $primary) {
+@mixin entry($t, $fc: theme-color.$primary) {
 //
 // entry
 //
@@ -108,10 +114,10 @@
 //
 
   @if $t == normal {
-    transition-duration: $duration;
-    background-color: if($fc == $primary, entry-fill($on-surface), entry-fill($on-dark));
+    transition-duration: st-theme.$duration;
+    background-color: if($fc == theme-color.$primary, theme-color.entry-fill(theme-color.$on-surface), theme-color.entry-fill(theme-color.$on-dark));
     border-color: transparent;
-    box-shadow: inset 0 -1px if($fc == $primary, stroke($on-surface), $fc);
+    box-shadow: inset 0 -1px if($fc == theme-color.$primary, theme-color.stroke(theme-color.$on-surface), $fc);
   }
 
   @if $t == focus {
@@ -120,18 +126,18 @@
   }
 
   @if $t == hover {
-    box-shadow: inset 0 -1px if($fc == $primary, $on-surface, $fc);
+    box-shadow: inset 0 -1px if($fc == theme-color.$primary, theme-color.$on-surface, $fc);
   }
 
   @if $t == insensitive {
-    color: disabled($on-surface);
+    color: theme-color.disabled(theme-color.$on-surface);
     border-color: transparent;
-    box-shadow: inset 0 -1px if($fc == $primary, disabled-stroke($on-surface), $fc);
+    box-shadow: inset 0 -1px if($fc == theme-color.$primary, theme-color.disabled-stroke(theme-color.$on-surface), $fc);
   }
 }
 
 
-@mixin button($t, $c: $surface-z8, $tc: $on-surface) {
+@mixin button($t, $c: theme-color.$surface-z8, $tc: theme-color.$on-surface) {
 //
 // button
 //
@@ -144,89 +150,89 @@
     color: $tc;
     background-color: $c;
     border-color: transparent;
-    box-shadow: $shadow-z2;
+    box-shadow: theme.$shadow-z2;
     text-shadow: none;
     icon-shadow: none;
-    transition-duration: $duration;
+    transition-duration: st-theme.$duration;
   }
 
   @if $t == focus {
     color: $tc;
     text-shadow: none;
     icon-shadow: none;
-    box-shadow: $shadow-z4;
+    box-shadow: theme.$shadow-z4;
   }
 
   @if $t == hover {
     color: $tc;
     background-color: $c;
     border-color: transparent;
-    box-shadow: $shadow-z4;
+    box-shadow: theme.$shadow-z4;
     text-shadow: none;
     icon-shadow: none;
   }
 
   @if $t == active {
     color: $tc;
-    background-color: mix($tc, $c, percentage(0.24));
+    background-color: color.mix($tc, $c, math.percentage(0.24));
     border-color: transparent;
-    box-shadow: $shadow-z8;
+    box-shadow: theme.$shadow-z8;
     text-shadow: none;
     icon-shadow: none;
-    transition-duration: $duration-ripple;
+    transition-duration: st-theme.$duration-ripple;
   }
 
   @if $t == insensitive {
-    color: if($tc == $on-surface, disabled($on-surface), $tc);
-    background-color: if($c == $surface-z8, fill($on-surface), $c);
+    color: if($tc == theme-color.$on-surface, theme-color.disabled(theme-color.$on-surface), $tc);
+    background-color: if($c == theme-color.$surface-z8, theme-color.fill(theme-color.$on-surface), $c);
     border-color: transparent;
-    box-shadow: $shadow-z0;
+    box-shadow: st-theme.$shadow-z0;
     text-shadow: none;
     icon-shadow: none;
   }
 
   @if $t == flat-normal {
-    color: if($tc != $on-dark, $primary, hint($on-dark));
+    color: if($tc != theme-color.$on-dark, theme-color.$primary, theme-color.hint(theme-color.$on-dark));
     background-color: transparent;
     border-color: transparent;
-    box-shadow: $shadow-z0;
+    box-shadow: st-theme.$shadow-z0;
     text-shadow: none;
     icon-shadow: none;
-    transition-duration: $duration;
+    transition-duration: st-theme.$duration;
   }
 
   @if $t == flat-focus {
-    color: if($tc != $on-dark, $primary, hint($on-dark));
-    background-color: focus-overlay(if($tc != $on-dark, $primary, $on-dark));
+    color: if($tc != theme-color.$on-dark, theme-color.$primary, theme-color.hint(theme-color.$on-dark));
+    background-color: theme-color.focus-overlay(if($tc != theme-color.$on-dark, theme-color.$primary, theme-color.$on-dark));
     text-shadow: none;
     icon-shadow: none;
-    box-shadow: $shadow-z0;
+    box-shadow: st-theme.$shadow-z0;
   }
 
   @if $t == flat-hover {
-    color: if($tc != $on-dark, $primary, hint($on-dark));
-    background-color: hover-overlay(if($tc != $on-dark, $primary, $on-dark));
+    color: if($tc != theme-color.$on-dark, theme-color.$primary, theme-color.hint(theme-color.$on-dark));
+    background-color: theme-color.hover-overlay(if($tc != theme-color.$on-dark, theme-color.$primary, theme-color.$on-dark));
     border-color: transparent;
-    box-shadow: $shadow-z0;
+    box-shadow: st-theme.$shadow-z0;
     text-shadow: none;
     icon-shadow: none;
   }
 
   @if $t == flat-active {
-    color: if($tc != $on-dark, $primary, hint($on-dark));
-    background-color: pressed-overlay(if($tc != $on-dark, $primary, $on-dark));
+    color: if($tc != theme-color.$on-dark, theme-color.$primary, theme-color.hint(theme-color.$on-dark));
+    background-color: theme-color.pressed-overlay(if($tc != theme-color.$on-dark, theme-color.$primary, theme-color.$on-dark));
     border-color: transparent;
-    box-shadow: $shadow-z0;
+    box-shadow: st-theme.$shadow-z0;
     text-shadow: none;
     icon-shadow: none;
-    transition-duration: $duration-ripple;
+    transition-duration: st-theme.$duration-ripple;
   }
 
   @if $t == flat-insensitive {
-    color: if($tc != $on-dark, disabled-hint($on-surface), disabled-hint($on-dark));
+    color: if($tc != theme-color.$on-dark, theme-color.disabled-hint(theme-color.$on-surface), theme-color.disabled-hint(theme-color.$on-dark));
     background-color: transparent;
     border-color: transparent;
-    box-shadow: $shadow-z0;
+    box-shadow: st-theme.$shadow-z0;
     text-shadow: none;
     icon-shadow: none;
   }

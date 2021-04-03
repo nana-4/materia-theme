@@ -1,11 +1,14 @@
+@use "../../theme-color";
+@use "drawing";
+
 /* Dash to Dock */
 
 #dashtodockContainer #dash {
-  background-color: $scrim;
+  background-color: theme-color.$scrim;
 }
 
 #dashtodockContainer:overview #dash {
-  background-color: fill($on-dark);
+  background-color: theme-color.fill(theme-color.$on-dark);
 }
 
 #dashtodockContainer.extended:overview #dash {
@@ -64,7 +67,7 @@
 // Running and focused application style
 
 #dashtodockContainer .focused .overview-icon {
-  background-color: activated-overlay($on-dark);
+  background-color: theme-color.activated-overlay(theme-color.$on-dark);
 }
 
 // Remove background-color if the indicator style is default
@@ -95,35 +98,35 @@
 /* Simple Dock */
 
 #dash:desktop {
-  background-color: $scrim;
+  background-color: theme-color.$scrim;
 }
 
 /* GPaste */
 
 .popup-menu {
   .search-entry {
-    color: $on-surface;
-    selection-background-color: $selected-overlay;
-    selected-color: $on-surface;
-    @include entry(normal);
+    color: theme-color.$on-surface;
+    selection-background-color: theme-color.$selected-overlay;
+    selected-color: theme-color.$on-surface;
+    @include drawing.entry(normal);
 
     &:hover {
-      @include entry(hover);
+      @include drawing.entry(hover);
     }
 
     &:focus {
-      @include entry(focus);
-      color: $on-surface;
+      @include drawing.entry(focus);
+      color: theme-color.$on-surface;
     }
 
     .search-entry-icon {
-      color: hint($on-surface);
+      color: theme-color.hint(theme-color.$on-surface);
     }
 
     &:hover,
     &:focus {
       .search-entry-icon {
-        color: $on-surface;
+        color: theme-color.$on-surface;
       }
     }
   }

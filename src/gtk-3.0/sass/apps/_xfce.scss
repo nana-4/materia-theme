@@ -1,6 +1,11 @@
 // based css:
 // https://github.com/shimmerproject/Greybird/blob/master/gtk-3.0/_xfce.scss
 
+@use "../../../theme";
+@use "../../../theme-color";
+@use "../common";
+@use "../drawing";
+
 /**
  * Xfce4 Apps
  */
@@ -15,8 +20,8 @@
 
 .xfce4-panel.background {
   border: none; // Sadly the border is hard-coded
-  background-color: $panel;
-  color: hint($on-panel);
+  background-color: theme-color.$panel;
+  color: theme-color.hint(theme-color.$on-panel);
   font-weight: 500;
 
   button {
@@ -24,22 +29,22 @@
     min-width: 16px;
     padding: 0;
     border-radius: 0;
-    color: hint($on-panel);
-    @include ink-color($on-panel, $button-style: "flat");
+    color: theme-color.hint(theme-color.$on-panel);
+    @include drawing.ink-color(theme-color.$on-panel, $button-style: "flat");
 
     &:disabled {
       background-color: transparent;
-      color: disabled-hint($on-panel);
+      color: theme-color.disabled-hint(theme-color.$on-panel);
     }
 
     &:checked {
-      $background-color: activated-overlay($on-panel);
-      color: $on-panel;
-      @include ink-color($on-panel, $button-style: "flat", $on: $background-color);
+      $background-color: theme-color.activated-overlay(theme-color.$on-panel);
+      color: theme-color.$on-panel;
+      @include drawing.ink-color(theme-color.$on-panel, $button-style: "flat", $on: $background-color);
 
       &:disabled {
-        background-color: activated-overlay($on-panel);
-        color: disabled($on-panel);
+        background-color: theme-color.activated-overlay(theme-color.$on-panel);
+        color: theme-color.disabled(theme-color.$on-panel);
       }
     }
   }
@@ -71,11 +76,11 @@
 
   progressbar {
     progress {
-      background-color: primary($on-panel);
+      background-color: theme-color.primary(theme-color.$on-panel);
     }
 
     trough {
-      background-color: disabled-stroke($on-panel);
+      background-color: theme-color.disabled-stroke(theme-color.$on-panel);
     }
   }
 }
@@ -83,28 +88,28 @@
 // Workspace switcher provided by libwnck
 wnck-pager {
   &:hover {
-    background-color: hover-overlay($on-panel);
+    background-color: theme-color.hover-overlay(theme-color.$on-panel);
   }
 
   &:active {
-    background-color: pressed-overlay($on-panel);
+    background-color: theme-color.pressed-overlay(theme-color.$on-panel);
   }
 
   &:selected {
-    background-color: $primary;
+    background-color: theme-color.$primary;
   }
 }
 
 XfdesktopIconView.view {
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
   // background-color: transparent;
-  color: $on-dark;
-  text-shadow: $text-shadow;
+  color: theme-color.$on-dark;
+  text-shadow: theme.$text-shadow;
 
   // XfdesktopIconView uses :active instead of :selected for selection
   &:active {
     box-shadow: none;
-    background-color: $selected-overlay;
+    background-color: theme-color.$selected-overlay;
   }
 
   .label {
@@ -119,21 +124,21 @@ XfdesktopIconView.view {
 }
 
 #XfceNotifyWindow {
-  border-radius: $corner-radius;
-  box-shadow: $shadow-z4, inset 0 1px highlight($surface-z8);
-  background-color: $surface-z8;
-  color: $on-surface;
+  border-radius: theme.$corner-radius;
+  box-shadow: theme.$shadow-z4, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
+  background-color: theme-color.$surface-z8;
+  color: theme-color.$on-surface;
 
   buttonbox button:not(:disabled) {
-    color: $primary;
-    @include ink-color($primary, $button-style: "flat");
+    color: theme-color.$primary;
+    @include drawing.ink-color(theme-color.$primary, $button-style: "flat");
   }
 
   label#summary {
     font-weight: bold;
 
     + label {
-      color: hint($on-surface);
+      color: theme-color.hint(theme-color.$on-surface);
     }
   }
 
@@ -149,7 +154,7 @@ XfdesktopIconView.view {
 // Xfwm4's alt-tab dialog, aka "tabwin"
 #xfwm-tabwin {
   padding: 12px;
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
 
   // Set the application icon- and preview-size to 64px
   -XfwmTabwinWidget-icon-size: 64px;
@@ -165,13 +170,13 @@ XfdesktopIconView.view {
 
 .thunar {
   #location-toolbar {
-    border-bottom: 1px solid divider($on-surface);
+    border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
 
     // FIXME: This has no .image-button style class :(
     > toolitem > button {
       min-width: 24px;
-      padding: ($medium-size - 24px) / 2;
-      border-radius: $circular-radius;
+      padding: (theme.$medium-size - 24px) / 2;
+      border-radius: theme.$circular-radius;
     }
   }
 
@@ -188,6 +193,6 @@ XfdesktopIconView.view {
   statusbar {
     margin: 0 -10px;
     padding: 0 4px;
-    border-top: 1px solid divider($on-surface);
+    border-top: 1px solid theme-color.divider(theme-color.$on-surface);
   }
 }

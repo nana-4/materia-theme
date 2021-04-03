@@ -1,51 +1,56 @@
 /* Entries */
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../gnome-shell";
+@use "../../drawing";
+
 %entry,
 StEntry {
-  min-height: $medium-size;
+  min-height: theme.$medium-size;
   padding: 0 8px;
   border-width: 0;
-  border-radius: $corner-radius $corner-radius 0 0;
-  color: $on-surface;
-  selection-background-color: $selected-overlay;
-  selected-color: $on-surface;
-  @include type(body1);
-  @include entry(normal);
+  border-radius: theme.$corner-radius theme.$corner-radius 0 0;
+  color: theme-color.$on-surface;
+  selection-background-color: theme-color.$selected-overlay;
+  selected-color: theme-color.$on-surface;
+  @include drawing.type(body1);
+  @include drawing.entry(normal);
 
   &:hover {
-    @include entry(hover);
+    @include drawing.entry(hover);
   }
 
   &:focus {
-    @include entry(focus);
+    @include drawing.entry(focus);
 
-    @if $version == 3.34 {
+    @if gnome-shell.$version == 3.34 {
       border: 0;
     }
   }
 
   &:insensitive {
-    @include entry(insensitive);
+    @include drawing.entry(insensitive);
   }
 
   StIcon.capslock-warning {
     icon-size: 16px;
     padding: 0 4px;
-    warning-color: $warning;
+    warning-color: theme-color.$warning;
   }
 
   StIcon.peek-password {
     icon-size: 16px;
     padding: 0 4px;
-    color: hint($on-surface);
+    color: theme-color.hint(theme-color.$on-surface);
 
     &:hover {
-      color: $on-surface;
+      color: theme-color.$on-surface;
     }
   }
 
   StLabel.hint-text {
     margin-left: 2px;
-    color: hint($on-surface);
+    color: theme-color.hint(theme-color.$on-surface);
   }
 }

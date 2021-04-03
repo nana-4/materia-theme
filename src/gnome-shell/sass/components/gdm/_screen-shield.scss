@@ -1,27 +1,33 @@
 /* Screen Shield */
 
-@if $version >= 3.36 {
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../gnome-shell";
+@use "../../drawing";
+@use "../base/scrollbar";
+
+@if gnome-shell.$version >= 3.36 {
   .unlock-dialog-clock {
     padding-bottom: 2.5em;
     spacing: 24px;
-    color: $on-dark;
+    color: theme-color.$on-dark;
     font-weight: normal;
     text-align: center;
   }
 
   .unlock-dialog-clock-time {
     padding-top: 42px;
-    @include type(headline1);
+    @include drawing.type(headline1);
     font-feature-settings: "tnum";
   }
 
   .unlock-dialog-clock-date {
-    @include type(headline4);
+    @include drawing.type(headline4);
   }
 
   .unlock-dialog-clock-hint {
     padding-top: 48px;
-    color: hint($on-dark);
+    color: theme-color.hint(theme-color.$on-dark);
     font-weight: normal;
   }
 
@@ -40,13 +46,13 @@
     .unlock-dialog-notification-source {
       padding: 8px;
       border: 0;
-      border-radius: $corner-radius;
-      background-color: entry-fill($on-dark);
-      color: $on-dark;
+      border-radius: theme.$corner-radius;
+      background-color: theme-color.entry-fill(theme-color.$on-dark);
+      color: theme-color.$on-dark;
 
       &.critical {
-        background-color: entry-fill($on-dark);
-        color: error($on-dark);
+        background-color: theme-color.entry-fill(theme-color.$on-dark);
+        color: theme-color.error(theme-color.$on-dark);
       }
     }
   }
@@ -60,14 +66,14 @@
     margin-right: 12px;
     padding: 2px 8px;
     border-radius: 99px;
-    background-color: fill($on-dark);
-    color: $on-dark;
+    background-color: theme-color.fill(theme-color.$on-dark);
+    color: theme-color.$on-dark;
     // font-weight: bold;
   }
 
   #lockDialogGroup {
-    background-color: $system;
-    color: $on-system;
+    background-color: theme-color.$system;
+    color: theme-color.$on-system;
   }
 
   #unlockDialogNotifications {
@@ -83,27 +89,27 @@
   .screen-shield-arrows Gjs_Arrow {
     width: 80px;
     height: 48px;
-    color: $on-dark;
+    color: theme-color.$on-dark;
     -arrow-thickness: 12px;
-    -arrow-shadow: $shadow-z2;
+    -arrow-shadow: theme.$shadow-z2;
   }
 
   .screen-shield-clock {
     padding-bottom: 1.5em;
-    color: $on-dark;
-    text-shadow: $shadow-z2;
+    color: theme-color.$on-dark;
+    text-shadow: theme.$shadow-z2;
     font-weight: normal;
     text-align: center;
   }
 
   .screen-shield-clock-time {
-    @include type(headline1);
-    text-shadow: $shadow-z2;
+    @include drawing.type(headline1);
+    text-shadow: theme.$shadow-z2;
     font-feature-settings: "tnum";
   }
 
   .screen-shield-clock-date {
-    @include type(headline4);
+    @include drawing.type(headline4);
   }
 
   .screen-shield-notifications-container {
@@ -121,9 +127,9 @@
     .screen-shield-notification-source {
       padding: 8px;
       border: 0;
-      border-radius: $corner-radius;
-      background-color: $scrim-alt;
-      color: $on-scrim-alt;
+      border-radius: theme.$corner-radius;
+      background-color: theme-color.$scrim-alt;
+      color: theme-color.$on-scrim-alt;
     }
 
     // compensate for space allocated to the scrollbar
@@ -133,21 +139,21 @@
   }
 
   .screen-shield-notification-label {
-    min-height: $small-size - 2px;
+    min-height: theme.$small-size - 2px;
     padding: 2px 0 0 16px;
     font-weight: bold;
   }
 
   .screen-shield-notification-count-text {
-    min-height: $small-size - 2px;
+    min-height: theme.$small-size - 2px;
     padding: 2px 0 0 16px;
-    color: hint($on-scrim-alt);
+    color: theme-color.hint(theme-color.$on-scrim-alt);
   }
 
   #lockDialogGroup {
-    background-color: $system;
+    background-color: theme-color.$system;
     background-repeat: repeat;
-    color: $on-system;
+    color: theme-color.$on-system;
   }
 
   #screenShieldNotifications {
@@ -160,5 +166,5 @@
 // just the shadow, really
 .screen-shield-background {
   background: black;
-  box-shadow: $shadow-z16;
+  box-shadow: theme.$shadow-z16;
 }

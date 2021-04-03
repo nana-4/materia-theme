@@ -1,16 +1,21 @@
 /* Window Picker */
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../../../st-theme";
+@use "../../gnome-shell";
+
 // Window picker
 .window-picker {
   // Space between window thumbnails
-  @if $version >= 3.38 {
+  @if gnome-shell.$version >= 3.38 {
     spacing: 8px;
   } @else {
     -horizontal-spacing: 16px;
     -vertical-spacing: 16px;
   }
 
-  @if $version < 40 {
+  @if gnome-shell.$version < 40 {
     // Padding for container around window thumbnails
     padding: 0 16px 32px;
 
@@ -20,26 +25,26 @@
   }
 }
 
-@if $version < 40 {
+@if gnome-shell.$version < 40 {
   // Borders on window thumbnails
   .window-clone-border {
-    border: 4px solid stroke($on-dark);
-    border-radius: $corner-radius;
+    border: 4px solid theme-color.stroke(theme-color.$on-dark);
+    border-radius: theme.$corner-radius;
     // For window decorations with round corners we can't match
     // the exact shape when the window is scaled. So apply a shadow
     // to fix that case
-    box-shadow: inset 0 0 0 1px stroke($on-dark);
+    box-shadow: inset 0 0 0 1px theme-color.stroke(theme-color.$on-dark);
   }
 }
 
 // Window titles
 .window-caption {
   padding: 4px 8px;
-  border-radius: $corner-radius;
-  background-color: $scrim;
-  color: $on-scrim;
+  border-radius: theme.$corner-radius;
+  background-color: theme-color.$scrim;
+  color: theme-color.$on-scrim;
 
-  @if $version < 40 {
+  @if gnome-shell.$version < 40 {
     spacing: 0;
     border: 0;
     font-size: 1em;
@@ -49,42 +54,42 @@
 
 // Close button
 .window-close {
-  transition-duration: $duration;
-  height: $medium-size;
-  width: $medium-size;
+  transition-duration: st-theme.$duration;
+  height: theme.$medium-size;
+  width: theme.$medium-size;
   padding: 0;
   border: 0;
-  border-radius: $medium-size / 2;
-  box-shadow: $shadow-z2;
-  background-color: $error;
-  color: $on-error;
+  border-radius: theme.$medium-size / 2;
+  box-shadow: theme.$shadow-z2;
+  background-color: theme-color.$error;
+  color: theme-color.$on-error;
 
   background-image: url("assets/window-close.svg");
   background-size: 24px;
 
-  @if $version < 3.38 {
-    -shell-close-overlap: $medium-size / 2;
+  @if gnome-shell.$version < 3.38 {
+    -shell-close-overlap: theme.$medium-size / 2;
   }
 
   &:hover {
-    box-shadow: $shadow-z4;
+    box-shadow: theme.$shadow-z4;
     border-color: transparent;
-    background-color: hover-overlay($on-error, $on: $error);
-    color: $on-error;
+    background-color: theme-color.hover-overlay(theme-color.$on-error, $on: theme-color.$error);
+    color: theme-color.$on-error;
 
-    @if $version < 3.32 {
+    @if gnome-shell.$version < 3.32 {
       background-image: url("assets/window-close.svg");
     }
   }
 
   &:active {
-    transition-duration: $duration-ripple;
-    box-shadow: $shadow-z8;
+    transition-duration: st-theme.$duration-ripple;
+    box-shadow: theme.$shadow-z8;
     border-color: transparent;
-    background-color: pressed-overlay($on-error, $on: $error);
-    color: $on-error;
+    background-color: theme-color.pressed-overlay(theme-color.$on-error, $on: theme-color.$error);
+    color: theme-color.$on-error;
 
-    @if $version < 3.32 {
+    @if gnome-shell.$version < 3.32 {
       background-image: url("assets/window-close.svg");
     }
   }
@@ -95,11 +100,11 @@
   }
 }
 
-@if $version >= 40 {
+@if gnome-shell.$version >= 40 {
   .workspace-background {
     // keep in sync with BACKGROUND_CORNER_RADIUS_PIXELS in workspace.js
     border-radius: 30px;
     background-color: black;
-    box-shadow: $shadow-z4; // use z4 for the huge card
+    box-shadow: theme.$shadow-z4; // use z4 for the huge card
   }
 }

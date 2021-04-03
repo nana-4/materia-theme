@@ -1,6 +1,13 @@
 /* Message List */
 // a.k.a. notifications in the menu
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../../../st-theme";
+@use "../../gnome-shell";
+@use "../base/button";
+@use "calendar";
+
 // main list
 .message-list {
   width: 31.5em;
@@ -31,7 +38,7 @@
   }
 }
 
-@if $version >= 3.36 {
+@if gnome-shell.$version >= 3.36 {
   // do-not-disturb + clear button
   .message-list-controls {
     margin: 8px 8px 0;
@@ -49,7 +56,7 @@
 // message bubbles
 .message {
   @extend %calendar-item;
-  min-height: $menuitem-size * 2;
+  min-height: st-theme.$menuitem-size * 2;
 
   // icon container
   .message-icon-bin {
@@ -80,7 +87,7 @@
 
   // content
   .message-content {
-    min-height: $menuitem-size * 2 - 8px * 2;
+    min-height: st-theme.$menuitem-size * 2 - 8px * 2;
     padding: 8px;
     spacing: 0;
     color: inherit;
@@ -89,7 +96,7 @@
 
   // title
   .message-title {
-    min-height: $small-size - 2px;
+    min-height: theme.$small-size - 2px;
     padding-top: 2px;
     color: inherit;
     font-weight: bold;
@@ -102,9 +109,9 @@
 
     // notification time stamp
     > .event-time {
-      min-height: $small-size - 2px;
+      min-height: theme.$small-size - 2px;
       padding-top: 2px;
-      color: hint($on-surface);
+      color: theme-color.hint(theme-color.$on-surface);
       font-size: 1em;
       text-align: right;
 
@@ -127,48 +134,48 @@
   }
 
   // close button
-  $message-close-button: if($version >= 3.36, ".message-close-button", ".message-content > StBoxLayout > StButton");
+  $message-close-button: if(gnome-shell.$version >= 3.36, ".message-close-button", ".message-content > StBoxLayout > StButton");
 
   #{$message-close-button} {
-    transition-duration: $duration;
+    transition-duration: st-theme.$duration;
     icon-size: 16px;
-    padding: ($small-size - 16px) / 2;
-    border-radius: $small-size / 2;
+    padding: (theme.$small-size - 16px) / 2;
+    border-radius: theme.$small-size / 2;
 
     &,
     &:hover,
     &:active {
-      color: hint($on-surface);
+      color: theme-color.hint(theme-color.$on-surface);
     }
 
     &:focus {
-      background-color: focus-overlay($on-surface);
+      background-color: theme-color.focus-overlay(theme-color.$on-surface);
     }
 
     &:hover {
-      background-color: hover-overlay($on-surface);
+      background-color: theme-color.hover-overlay(theme-color.$on-surface);
     }
 
     &:active {
-      transition-duration: $duration-ripple;
-      background-color: pressed-overlay($on-surface);
+      transition-duration: st-theme.$duration-ripple;
+      background-color: theme-color.pressed-overlay(theme-color.$on-surface);
     }
   }
 
   // body
   .message-body {
-    color: hint($on-surface);
+    color: theme-color.hint(theme-color.$on-surface);
   }
 }
 
 // URLs in messages
 .url-highlighter {
-  link-color: $primary;
+  link-color: theme-color.$primary;
 }
 
 /* Media Controls */
 .message-media-control {
-  transition-duration: $duration;
+  transition-duration: st-theme.$duration;
   margin: 16px 0;
   padding: 8px;
   border-radius: 16px;
@@ -177,24 +184,24 @@
   &:focus,
   &:hover,
   &:active {
-    color: hint($on-surface);
+    color: theme-color.hint(theme-color.$on-surface);
   }
 
   &:focus {
-    background-color: focus-overlay($on-surface);
+    background-color: theme-color.focus-overlay(theme-color.$on-surface);
   }
 
   &:hover {
-    background-color: hover-overlay($on-surface);
+    background-color: theme-color.hover-overlay(theme-color.$on-surface);
   }
 
   &:active {
-    background-color: pressed-overlay($on-surface);
-    transition-duration: $duration-ripple;
+    background-color: theme-color.pressed-overlay(theme-color.$on-surface);
+    transition-duration: st-theme.$duration-ripple;
   }
 
   &:insensitive {
-    color: disabled-hint($on-surface);
+    color: theme-color.disabled-hint(theme-color.$on-surface);
   }
 
   &:last-child:ltr {
@@ -221,8 +228,8 @@
     icon-size: 16px !important;
     padding: 8px;
     border: 0;
-    border-radius: $corner-radius;
-    background-color: fill($on-surface);
-    color: disabled($on-surface) !important;
+    border-radius: theme.$corner-radius;
+    background-color: theme-color.fill(theme-color.$on-surface);
+    color: theme-color.disabled(theme-color.$on-surface) !important;
   }
 }

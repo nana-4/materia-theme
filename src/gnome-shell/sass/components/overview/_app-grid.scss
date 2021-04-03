@@ -1,8 +1,17 @@
 /* App Grid */
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../../../st-theme";
+@use "../../../../color-palette";
+@use "../../gnome-shell";
+@use "../../drawing";
+@use "../base/button";
+@use "overview";
+
 // app icons
 .icon-grid {
-  @if $version >= 40 {
+  @if gnome-shell.$version >= 40 {
     row-spacing: 12px;
     column-spacing: 12px;
     max-row-spacing: 72px;
@@ -11,7 +20,7 @@
     page-padding-bottom: 24px;
     page-padding-left: 12px;
     page-padding-right: 12px;
-  } @else if $version >= 3.38 {
+  } @else if gnome-shell.$version >= 3.38 {
     row-spacing: 48px;
     column-spacing: 48px;
     max-row-spacing: 96px;
@@ -27,7 +36,7 @@
   }
 }
 
-@if $version < 3.38 {
+@if gnome-shell.$version < 3.38 {
   .app-display {
     // spacing: 20px;
   }
@@ -53,20 +62,20 @@
 /* App Folders */
 .app-well-app.app-folder {
   @extend %app-well-app;
-  border-radius: $corner-radius; // same as .overview-icon
+  border-radius: theme.$corner-radius; // same as .overview-icon
   background-color: transparent;
 }
 
 // expanded folder
 .app-folder-dialog {
   border: 0;
-  border-radius: $corner-radius;
-  background-color: $surface-z8;
-  color: $on-surface;
+  border-radius: theme.$corner-radius;
+  background-color: theme-color.$surface-z8;
+  color: theme-color.$on-surface;
 
-  @if $version >= 40 {
+  @if gnome-shell.$version >= 40 {
     padding: 12px 0;
-  } @else if $version >= 3.38 {
+  } @else if gnome-shell.$version >= 3.38 {
     padding: 12px;
   } @else {
     spacing: 12px;
@@ -78,7 +87,7 @@
 
     .folder-name-label,
     .folder-name-entry {
-      @include type(headline6);
+      @include drawing.type(headline6);
     }
 
     .folder-name-entry {
@@ -94,12 +103,12 @@
     .edit-folder-button {
       @extend %button;
 
-      width: $medium-size;
-      height: $medium-size;
+      width: theme.$medium-size;
+      height: theme.$medium-size;
       min-width: 0;
       min-height: 0;
       padding: 0;
-      border-radius: $medium-size / 2;
+      border-radius: theme.$medium-size / 2;
 
       > StIcon {
         icon-size: 16px;
@@ -111,7 +120,7 @@
     row-spacing: 16px;
     column-spacing: 32px;
 
-    @if $version >= 40 {
+    @if gnome-shell.$version >= 40 {
       page-padding-top: 0;
       page-padding-bottom: 0;
       page-padding-left: 0;
@@ -122,7 +131,7 @@
   .page-indicators {
     margin-bottom: 16px;
 
-    @if $version < 40 {
+    @if gnome-shell.$version < 40 {
       .page-indicator {
         padding: 16px 12px;
       }
@@ -132,7 +141,7 @@
   .app-well-app {
     &:focus {
       .overview-icon {
-        background-color: focus-overlay($on-surface);
+        background-color: theme-color.focus-overlay(theme-color.$on-surface);
       }
     }
 
@@ -140,14 +149,14 @@
     &:hover,
     &:selected {
       .overview-icon {
-        background-color: hover-overlay($on-surface);
+        background-color: theme-color.hover-overlay(theme-color.$on-surface);
       }
     }
 
     &:active,
     &:checked {
       .overview-icon {
-        background-color: pressed-overlay($on-surface);
+        background-color: theme-color.pressed-overlay(theme-color.$on-surface);
       }
     }
   }
@@ -156,7 +165,7 @@
 .app-folder-dialog-container {
   padding: 12px;
 
-  @if $version >= 3.38 {
+  @if gnome-shell.$version >= 3.38 {
     width: 620px;
     height: 620px;
   } @else {
@@ -165,13 +174,13 @@
   }
 }
 
-@if $version < 3.36 {
+@if gnome-shell.$version < 3.36 {
   // expanded collection
   .app-folder-popup {
     -arrow-base: 24px;
     -arrow-rise: 12px;
-    -arrow-border-radius: $corner-radius;
-    -arrow-background-color: fill($on-dark);
+    -arrow-border-radius: theme.$corner-radius;
+    -arrow-background-color: theme-color.fill(theme-color.$on-dark);
   }
 
   .app-folder-popup-bin {
@@ -179,18 +188,18 @@
   }
 }
 
-@if $version >= 40 {
+@if gnome-shell.$version >= 40 {
   .app-well-app.app-folder > .overview-icon > StBoxLayout > StBin > StWidget {
-    border-radius: $corner-radius;
-    background-color: fill($on-dark);
+    border-radius: theme.$corner-radius;
+    background-color: theme-color.fill(theme-color.$on-dark);
   }
 } @else {
   .app-folder-icon {
     padding: 8px;
     spacing-rows: 4px;
     spacing-columns: 4px;
-    border-radius: $corner-radius;
-    background-color: fill($on-dark);
+    border-radius: theme.$corner-radius;
+    background-color: theme-color.fill(theme-color.$on-dark);
 
     // HACK: Force icon size to 32px
     > StBin > StIcon {
@@ -205,7 +214,7 @@
   width: 32px;
   margin-bottom: 0;
   border-radius: 0;
-  background-color: $on-dark;
+  background-color: theme-color.$on-dark;
 }
 
 // Rename popup for app folders
@@ -228,18 +237,18 @@
 
 // App Grid pagination indicators
 .page-indicator {
-  @if $version >= 40 {
+  @if gnome-shell.$version >= 40 {
     padding: 8px 12px 0;
   } @else {
     padding: 16px 20px;
   }
 
-  @if $version >= 3.36 {
+  @if gnome-shell.$version >= 3.36 {
     .page-indicator-icon {
       width: 12px;
       height: 12px;
       border-radius: 12px; // the same as height&width
-      background-color: $on-dark;
+      background-color: theme-color.$on-dark;
     }
   } @else {
     .page-indicator-icon {
@@ -248,27 +257,27 @@
       border: 0;
       border-radius: 12px;
       background-image: none;
-      background-color: disabled-hint($on-dark);
-      transition-duration: $duration;
+      background-color: theme-color.disabled-hint(theme-color.$on-dark);
+      transition-duration: st-theme.$duration;
     }
 
     &:hover .page-indicator-icon {
       border-color: transparent;
       background-image: none;
-      background-color: disabled($on-dark);
+      background-color: theme-color.disabled(theme-color.$on-dark);
     }
 
     &:active .page-indicator-icon {
       margin: 0;
       border: 0;
       background-image: none;
-      background-color: hint($on-dark);
+      background-color: theme-color.hint(theme-color.$on-dark);
     }
 
     &:checked .page-indicator-icon,
     &:checked:active .page-indicator-icon {
       background-image: none;
-      background-color: $on-dark;
+      background-color: theme-color.$on-dark;
       transition-duration: 0ms;
     }
 
@@ -279,16 +288,16 @@
   }
 }
 
-@if $version >= 40 {
+@if gnome-shell.$version >= 40 {
   .apps-scroll-view {
     padding: 0;
   }
-} @else if $version >= 3.38 {
+} @else if gnome-shell.$version >= 3.38 {
   .all-apps {
     // horizontal padding to make sure scrollbars or dash don't overlap content
     padding: 0 88px 10px;
   }
-} @else if $version >= 3.34 {
+} @else if gnome-shell.$version >= 3.34 {
   .all-apps,
   .frequent-apps > StBoxLayout {
     // horizontal padding to make sure scrollbars or dash don't overlap content
@@ -303,7 +312,7 @@
   }
 }
 
-@if $version < 3.38 {
+@if gnome-shell.$version < 3.38 {
   // Label when no frequent apps
   .no-frequent-applications-label {
     @extend %overview-status-text;
@@ -313,34 +322,34 @@
 // shutdown and other actions in the grid
 .system-action-icon {
   icon-size: 48px;
-  border-radius: $circular-radius;
+  border-radius: theme.$circular-radius;
   box-shadow: 0 4px 4px rgba(black, .2); // FIXME: this should really have a highlight
-  background-color: $grey-900;
-  color: on($grey-900);
+  background-color: color-palette.$grey-900;
+  color: theme-color.on(color-palette.$grey-900);
 }
 
-@if $version >= 40 {
+@if gnome-shell.$version >= 40 {
   .page-navigation-hint {
     width: 300px;
 
     &.dnd {
-      background: dragged-overlay($on-system);
+      background: theme-color.dragged-overlay(theme-color.$on-system);
     }
 
     &.next:ltr,
     &.previous:rtl {
-      background-gradient-start: fill($on-system);
-      background-gradient-end: fill($on-system);
+      background-gradient-start: theme-color.fill(theme-color.$on-system);
+      background-gradient-end: theme-color.fill(theme-color.$on-system);
       background-gradient-direction: horizontal;
-      border-radius: $corner-radius 0 0 $corner-radius;
+      border-radius: theme.$corner-radius 0 0 theme.$corner-radius;
     }
 
     &.previous:ltr,
     &.next:rtl {
-      background-gradient-start: fill($on-system);
-      background-gradient-end: fill($on-system);
+      background-gradient-start: theme-color.fill(theme-color.$on-system);
+      background-gradient-end: theme-color.fill(theme-color.$on-system);
       background-gradient-direction: horizontal;
-      border-radius: 0 $corner-radius $corner-radius 0;
+      border-radius: 0 theme.$corner-radius theme.$corner-radius 0;
     }
   }
 
@@ -351,7 +360,7 @@
   }
 }
 
-@if $version < 3.38 {
+@if gnome-shell.$version < 3.38 {
   /* Frequent | All toggle */
 
   // container
@@ -366,35 +375,35 @@
     padding: 0 8px;
 
     &, &:focus, &:hover, &:active, &:checked {
-      @include button(flat-normal, $tc: $on-dark);
+      @include drawing.button(flat-normal, $tc: theme-color.$on-dark);
     }
 
     &:hover {
-      background-color: hover-overlay($on-dark);
+      background-color: theme-color.hover-overlay(theme-color.$on-dark);
     }
 
     &:active {
-      background-color: pressed-overlay($on-dark);
-      transition-duration: $duration-ripple;
+      background-color: theme-color.pressed-overlay(theme-color.$on-dark);
+      transition-duration: st-theme.$duration-ripple;
     }
 
     &:checked {
-      box-shadow: inset 0 2px 0 $on-dark;
+      box-shadow: inset 0 2px 0 theme-color.$on-dark;
       background-color: rgba(black, .01);
-      color: $on-dark;
+      color: theme-color.$on-dark;
     }
 
     &:focus {
-      background-color: focus-overlay($on-dark);
+      background-color: theme-color.focus-overlay(theme-color.$on-dark);
     }
 
     &:first-child {
       border-right-width: 0;
-      border-radius: $corner-radius;
+      border-radius: theme.$corner-radius;
     }
 
     &:last-child {
-      border-radius: $corner-radius;
+      border-radius: theme.$corner-radius;
     }
 
     &:checked {

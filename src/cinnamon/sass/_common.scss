@@ -1,16 +1,22 @@
+@use "../../theme";
+@use "../../theme-color";
+@use "../../st-theme";
+@use "../../gnome-shell/sass/drawing";
+@use "extends";
+
 // defines font family and standard font size across the whole theme
 // em is preferred for better support for text scaling
 stage {
-  @include type(body2);
+  @include drawing.type(body2);
 
-  font-family: $font-family;
-  color: $on-surface;
+  font-family: st-theme.$font-family;
+  color: theme-color.$on-surface;
 }
 .cinnamon-link {
-  color: $primary;
+  color: theme-color.$primary;
   font-style: italic;
   &:hover {
-    color: $primary;
+    color: theme-color.$primary;
   }
 }
 .label-shadow {
@@ -21,18 +27,18 @@ StScrollBar {
   padding: 0px;
   StButton {
     &#vhandle, &#hhandle {
-      background-color: disabled($on-surface);
+      background-color: theme-color.disabled(theme-color.$on-surface);
       border-radius: 100px;
       margin: 4px;
       &:hover {
-        background-color: hint($on-surface);
+        background-color: theme-color.hint(theme-color.$on-surface);
       }
     }
   }
   StBin#trough {
     margin: 4px;
     border-radius: 100px;
-    background-color: divider($on-surface);
+    background-color: theme-color.divider(theme-color.$on-surface);
   }
 }
 StScrollView {
@@ -54,13 +60,13 @@ StScrollView {
   @extend %slider-shared;
 }
 #Tooltip {
-  @include type(caption);
+  @include drawing.type(caption);
 
   padding: 6px 8px;
-  color: $on-tooltip;
+  color: theme-color.$on-tooltip;
   text-align: center;
-  border-radius: $corner-radius;
-  background-color: $tooltip;
+  border-radius: theme.$corner-radius;
+  background-color: theme-color.$tooltip;
 }
 // applet menus. Note that cinnamon versions before 3.2 uses deprecated styles
 // .popup-menu and .popup-menu-boxpointer. These are excluded as it is not possible
@@ -78,7 +84,7 @@ StScrollView {
   padding: 10px;
 }
 .popup-sub-menu {
-  background-color: entry-fill($on-surface);
+  background-color: theme-color.entry-fill(theme-color.$on-surface);
 }
 .popup-menu-arrow {
   icon-size: 1.14em;
@@ -96,16 +102,16 @@ StScrollView {
 .popup-menu-item {
   padding: 0.4em 16px;
   spacing: 8px;
-  transition-duration: $duration;
+  transition-duration: st-theme.$duration;
   &:active {
-    background-color: hover-overlay($on-surface);
-    color: $on-surface;
+    background-color: theme-color.hover-overlay(theme-color.$on-surface);
+    color: theme-color.$on-surface;
     transition-duration: 0ms;
   }
-  &:insensitive { color: disabled($on-surface); }
+  &:insensitive { color: theme-color.disabled(theme-color.$on-surface); }
   }
 .popup-image-menu-item {
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
 }
 .popup-combobox-item {
   padding: 0.4em 16px;
@@ -121,11 +127,11 @@ StScrollView {
   spacing: .5em;
 }
 .popup-inactive-menu-item {
-  color: $on-surface;
-  &:insensitive { color: disabled($on-surface); }
+  color: theme-color.$on-surface;
+  &:insensitive { color: theme-color.disabled(theme-color.$on-surface); }
 }
 .popup-subtitle-menu-item {
-  @include type(subtitle2);
+  @include drawing.type(subtitle2);
 }
 .popup-menu-icon {
   icon-size: 1.14em;
@@ -135,7 +141,7 @@ StScrollView {
 .popup-submenu-menu-item:open {
 }
 .popup-alternating-menu-item:alternate {
-  @include type(subtitle2);
+  @include drawing.type(subtitle2);
 }
 // toggles in menus
 .toggle-switch {
@@ -158,12 +164,12 @@ StScrollView {
 // dnd is for panel edit mode
 // dummy is for adding or moving panels
 #panel {
-  color: hint($on-titlebar);
-  background-color: $scrim;
+  color: theme-color.hint(theme-color.$on-titlebar);
+  background-color: theme-color.$scrim;
   height: 2.5em;
   width: 3.2em;
   &:highlight {
-    background-color: stroke($on-titlebar);
+    background-color: theme-color.stroke(theme-color.$on-titlebar);
   }
 }
 .panel-dummy {
@@ -225,26 +231,26 @@ StScrollView {
 .panel-top {
   .window-list-item-box {
     &:hover {
-      box-shadow: 0 3px 0 0 $primary inset;
+      box-shadow: 0 3px 0 0 theme-color.$primary inset;
     }
     &:active, &:checked, &:focus {
       &:hover {
-        box-shadow: 0 3px 0 0 $primary inset;
+        box-shadow: 0 3px 0 0 theme-color.$primary inset;
       }
     }
   }
   .grouped-window-list-item-box {
     &:hover {
-      box-shadow: 0 3px 0 0 $primary inset;
+      box-shadow: 0 3px 0 0 theme-color.$primary inset;
     }
     &:active, &:checked {
       &:hover {
-        box-shadow: 0 3px 0 0 $primary inset;
+        box-shadow: 0 3px 0 0 theme-color.$primary inset;
       }
     }
     &:focus {
       &:hover {
-        box-shadow: 0 3px 0 0 $primary inset;
+        box-shadow: 0 3px 0 0 theme-color.$primary inset;
       }
     }
   }
@@ -256,50 +262,50 @@ StScrollView {
   }
   .workspace-graph, .workspace-button {;
     &:hover {
-      box-shadow: 0 3px 0 0 $primary inset;
+      box-shadow: 0 3px 0 0 theme-color.$primary inset;
     }
   }
   .applet-box {
     padding: 0 4px;
     &:hover {
-      box-shadow: 0 3px 0 0 $primary inset;
+      box-shadow: 0 3px 0 0 theme-color.$primary inset;
     }
   }
   .applet-label {
   }
   .panel-launchers .launcher:hover {
-    box-shadow: 0 3px 0 0 $primary inset;
+    box-shadow: 0 3px 0 0 theme-color.$primary inset;
   }
   .applet-separator {
     padding: 3px 4px;
   }
   .systray:hover {
-    box-shadow: 0 4px 0 0 $primary inset;
+    box-shadow: 0 4px 0 0 theme-color.$primary inset;
   }
 }
 .panel-bottom {
   .window-list-item-box {
     &:hover {
-      box-shadow: 0 -3px 0 0 $primary inset;
+      box-shadow: 0 -3px 0 0 theme-color.$primary inset;
     }
     &:active, &:checked, &:focus {
       &:hover {
-        box-shadow: 0 -3px 0 0 $primary inset;
+        box-shadow: 0 -3px 0 0 theme-color.$primary inset;
       }
     }
   }
   .grouped-window-list-item-box {
     &:hover {
-      box-shadow: 0 -3px 0 0 $primary inset;
+      box-shadow: 0 -3px 0 0 theme-color.$primary inset;
     }
     &:active, &:checked {
       &:hover {
-        box-shadow: 0 -3px 0 0 $primary inset;
+        box-shadow: 0 -3px 0 0 theme-color.$primary inset;
       }
     }
     &:focus {
       &:hover {
-        box-shadow: 0 -3px 0 0 $primary inset;
+        box-shadow: 0 -3px 0 0 theme-color.$primary inset;
       }
     }
   }
@@ -308,50 +314,50 @@ StScrollView {
   }
   .workspace-graph, .workspace-button {;
     &:hover {
-      box-shadow: 0 -3px 0 0 $primary inset;
+      box-shadow: 0 -3px 0 0 theme-color.$primary inset;
     }
   }
   .applet-box {
     padding: 0 4px;
     &:hover {
-      box-shadow: 0 -3px 0 0 $primary inset;
+      box-shadow: 0 -3px 0 0 theme-color.$primary inset;
     }
   }
   .applet-label {
   }
   .panel-launchers .launcher:hover {
-    box-shadow: 0 -3px 0 0 $primary inset;
+    box-shadow: 0 -3px 0 0 theme-color.$primary inset;
   }
   .applet-separator {
     padding: 3px 4px;
   }
   .systray:hover {
-    box-shadow: 0 4px 0 0 $primary inset;
+    box-shadow: 0 4px 0 0 theme-color.$primary inset;
   }
 }
 .panel-left {
   .window-list-item-box {
     &:hover {
-      box-shadow: 3px 0 0 0 $primary inset;
+      box-shadow: 3px 0 0 0 theme-color.$primary inset;
     }
     &:active, &:checked, &:focus {
       &:hover {
-        box-shadow: 3px 0 0 0 $primary inset;
+        box-shadow: 3px 0 0 0 theme-color.$primary inset;
       }
     }
   }
   .grouped-window-list-item-box {
     &:hover {
-      box-shadow: 3px 0 0 0 $primary inset;
+      box-shadow: 3px 0 0 0 theme-color.$primary inset;
     }
     &:active, &:checked {
       &:hover {
-        box-shadow: 3px 0 0 0 $primary inset;
+        box-shadow: 3px 0 0 0 theme-color.$primary inset;
       }
     }
     &:focus {
       &:hover {
-        box-shadow: 3px 0 0 0 $primary inset;
+        box-shadow: 3px 0 0 0 theme-color.$primary inset;
       }
     }
   }
@@ -364,50 +370,50 @@ StScrollView {
   }
   .workspace-graph, .workspace-button {;
     &:hover {
-      box-shadow: 3px 0 0 0 $primary inset;
+      box-shadow: 3px 0 0 0 theme-color.$primary inset;
     }
   }
   .applet-box {
     padding: 4px 0;
     &:hover {
-      box-shadow: 3px 0 0 0 $primary inset;
+      box-shadow: 3px 0 0 0 theme-color.$primary inset;
     }
   }
   .applet-label {
   }
   .panel-launchers .launcher:hover {
-    box-shadow: 3px 0 0 0 $primary inset;
+    box-shadow: 3px 0 0 0 theme-color.$primary inset;
   }
   .applet-separator {
     padding: 4px 3px;
   }
   .systray:hover {
-    box-shadow: 4px 0 0 0 $primary inset;
+    box-shadow: 4px 0 0 0 theme-color.$primary inset;
   }
 }
 .panel-right {
     .window-list-item-box {
     &:hover {
-      box-shadow: -3px 0 0 0 $primary inset;
+      box-shadow: -3px 0 0 0 theme-color.$primary inset;
     }
     &:active, &:checked, &:focus {
       &:hover {
-        box-shadow: -3px 0 0 0 $primary inset;
+        box-shadow: -3px 0 0 0 theme-color.$primary inset;
       }
     }
   }
   .grouped-window-list-item-box {
     &:hover {
-      box-shadow: -3px 0 0 0 $primary inset;
+      box-shadow: -3px 0 0 0 theme-color.$primary inset;
     }
     &:active, &:checked {
       &:hover {
-        box-shadow: -3px 0 0 0 $primary inset;
+        box-shadow: -3px 0 0 0 theme-color.$primary inset;
       }
     }
     &:focus {
       &:hover {
-        box-shadow: -3px 0 0 0 $primary inset;
+        box-shadow: -3px 0 0 0 theme-color.$primary inset;
       }
     }
   }
@@ -417,35 +423,35 @@ StScrollView {
   }
   .workspace-graph, .workspace-button {;
     &:hover {
-      box-shadow: -3px 0 0 0 $primary inset;
+      box-shadow: -3px 0 0 0 theme-color.$primary inset;
     }
   }
   .applet-box {
     padding: 4px 0;
     &:hover {
-      box-shadow: -3px 0 0 0 $primary inset;
+      box-shadow: -3px 0 0 0 theme-color.$primary inset;
     }
   }
   .applet-label {
   }
   .panel-launchers .launcher:hover {
-    box-shadow: -3px 0 0 0 $primary inset;
+    box-shadow: -3px 0 0 0 theme-color.$primary inset;
   }
   .applet-separator {
     padding: 4px 3px;
   }
   .systray:hover {
-    box-shadow: -4px 0 0 0 $primary inset;
+    box-shadow: -4px 0 0 0 theme-color.$primary inset;
   }
 }
 // keyboard layout applet
 .panel-status-button {
-  @include type(subtitle2);
+  @include drawing.type(subtitle2);
   -natural-hpadding: 4px;
   -minimum-hpadding: 4px;
-  color: hint($on-titlebar);
+  color: theme-color.hint(theme-color.$on-titlebar);
   &:hover {
-    color: $on-titlebar;
+    color: theme-color.$on-titlebar;
   }
 }
 // used by power applet to warn of low battery
@@ -454,10 +460,10 @@ StScrollView {
   padding: 0;
   spacing: 0;
   &.warning {
-    color: $warning;
+    color: theme-color.$warning;
   }
   &.error {
-    color: $error;
+    color: theme-color.$error;
   }
 }
 // a non feature - not worth themeing
@@ -478,29 +484,29 @@ StScrollView {
 
 }
 .window-caption {
-  @include type(caption);
+  @include drawing.type(caption);
 
   background-color: rgba(0, 0, 0, 0.01);
-  color: hint($on-titlebar);
+  color: theme-color.hint(theme-color.$on-titlebar);
   padding: 4px 6px;
   text-align: center;
   height: 1.5em;
   -cinnamon-caption-spacing: 12px;
   &#selected, &:focus {
-    color: $on-titlebar;
-    box-shadow: 0 -3px 0 0 $primary inset;
+    color: theme-color.$on-titlebar;
+    box-shadow: 0 -3px 0 0 theme-color.$primary inset;
   }
 }
 .workspace-controls {
   visible-height: 32px;
 }
 .workspace-thumbnails-background {
-  color: hint($on-titlebar);
-  background-color: fill($on-dark);
+  color: theme-color.hint(theme-color.$on-titlebar);
+  background-color: theme-color.fill(theme-color.$on-dark);
   border: none;
   padding: 8px;
-  border-radius: $corner-radius 0 0 $corner-radius;
-  &:rtl { border-radius: 0 $corner-radius $corner-radius 0;}
+  border-radius: theme.$corner-radius 0 0 theme.$corner-radius;
+  &:rtl { border-radius: 0 theme.$corner-radius theme.$corner-radius 0;}
 }
 .workspace-thumbnails {
   spacing: 32px;
@@ -533,13 +539,13 @@ StScrollView {
   }
 }
 .window-border {
-    border: 1px solid divider($on-surface);
+    border: 1px solid theme-color.divider(theme-color.$on-surface);
 }
 .window-close-area {
   background-image: url(assets/trash-icon.png);
   background-size: 100px;
-  background-color: $scrim-alt;
-  border: 1px solid divider($on-surface);
+  background-color: theme-color.$scrim-alt;
+  border: 1px solid theme-color.divider(theme-color.$on-surface);
   border-bottom-width: 0;
   border-radius: 20px 20px 0 0;
   height: 120px;
@@ -547,16 +553,16 @@ StScrollView {
 }
 // this is OK with solid or transparent backgrounds
 .expo-background {
-  background-color: $scrim;
+  background-color: theme-color.$scrim;
 }
 // this always looks better semi transparent
 .workspace-overview-background-shade {
-  background-color: $scrim;
+  background-color: theme-color.$scrim;
 }
 .expo-workspace-thumbnail-frame {
-  border: 1px solid divider($on-surface);
+  border: 1px solid theme-color.divider(theme-color.$on-surface);
   &#active {
-    border: 1px solid $primary;
+    border: 1px solid theme-color.$primary;
   }
 }
 // dialog box for the cinnamon debug utility
@@ -575,26 +581,26 @@ StScrollView {
 }
 // also covers the year label
 .datemenu-date-label {
-    @include type(headline6);
+    @include drawing.type(headline6);
 
-    height: $menuitem-size - 2px * 2;
+    height: st-theme.$menuitem-size - 2px * 2;
     margin: 2px;
     padding: 6px 16px;
-    border-radius: $corner-radius;
-    color: $on-surface;
+    border-radius: theme.$corner-radius;
+    color: theme-color.$on-surface;
     text-align: center;
-    &:focus { background-color: divider($on-surface) };
+    &:focus { background-color: theme-color.divider(theme-color.$on-surface) };
 }
 .calendar-month-label {
-    @include type(subtitle2);
+    @include drawing.type(subtitle2);
 
-    height: $menuitem-size - 6px * 2;
+    height: st-theme.$menuitem-size - 6px * 2;
     margin: 2px;
     padding: 6px 16px;
-    border-radius: $corner-radius;
-    color: $on-surface;
+    border-radius: theme.$corner-radius;
+    color: theme-color.$on-surface;
     text-align: center;
-    &:focus { background-color: divider($on-surface) };
+    &:focus { background-color: theme-color.divider(theme-color.$on-surface) };
 }
 .calendar-change-month-back {
   @extend %calendar-shared;
@@ -613,40 +619,40 @@ StScrollView {
   }
 }
 .calendar-day-base {
-  @include type(caption);
+  @include drawing.type(caption);
 
   text-align: center;
-  width: $menuitem-size; height: $menuitem-size;
+  width: st-theme.$menuitem-size; height: st-theme.$menuitem-size;
   padding: 0;
   margin: 2px;
   border-radius: 100px;
-  &:hover,&:focus { background-color: stroke($on-titlebar); }
+  &:hover,&:focus { background-color: theme-color.stroke(theme-color.$on-titlebar); }
   &:active {
-    color: $on-primary;
-    background-color: $primary;
+    color: theme-color.$on-primary;
+    background-color: theme-color.$primary;
     border-color: transparent;
   }
 }
 .calendar-week-number {
-  @include type(caption);
+  @include drawing.type(caption);
 
-  width: $menuitem-size - 7px; height: $menuitem-size;
+  width: st-theme.$menuitem-size - 7px; height: st-theme.$menuitem-size;
   margin: 2px;
   padding: 0;
   border-radius: 100px;
   background-color: transparent;
-  color: disabled($on-surface);
+  color: theme-color.disabled(theme-color.$on-surface);
   text-align: center;
 }
 .calendar-day-heading  {
-  @include type(caption);
+  @include drawing.type(caption);
 
-  width: $menuitem-size; height: $menuitem-size - 7px;
+  width: st-theme.$menuitem-size; height: st-theme.$menuitem-size - 7px;
   margin: 2px;
   padding: 0;
   border-radius: 100px;
   background-color: transparent;
-  color: disabled($on-surface);
+  color: theme-color.disabled(theme-color.$on-surface);
   text-align: center;
 }
 .calendar-day {
@@ -661,45 +667,45 @@ StScrollView {
 .calendar-work-day {
 }
 .calendar-nonwork-day {
-  color: $on-surface;
+  color: theme-color.$on-surface;
 }
 .calendar-today {
   font-weight: bold;
   border: none;
 }
 .calendar-day-with-events {
-  color: $primary;
+  color: theme-color.$primary;
   font-weight: normal;
   text-decoration: underline;
   background-image: none;
 }
 .calendar-other-month-day {
-  color: disabled-hint($on-surface);
+  color: theme-color.disabled-hint(theme-color.$on-surface);
   opacity: 0.5;
 }
 .calendar-week-number {
-  width: $menuitem-size; height: $menuitem-size - 7px;
+  width: st-theme.$menuitem-size; height: st-theme.$menuitem-size - 7px;
   margin: 2px;
   padding: 7px 0 0;
   border-radius: 100px;
   background-color: transparent;
-  color: disabled($on-surface);
+  color: theme-color.disabled(theme-color.$on-surface);
   font-size: inherit;
   font-weight: bold;
   text-align: center;
 }
 // notification system
 #notification {
-  background-color: $surface-z8;
-  border-radius: $corner-radius;
-  border: 1px solid divider($on-surface);
+  background-color: theme-color.$surface-z8;
+  border-radius: theme.$corner-radius;
+  border: 1px solid theme-color.divider(theme-color.$on-surface);
   padding: 8px;
   spacing-rows: 4px;
   spacing-columns: 8px;
   margin-from-right-edge-of-screen: 20px;
   width: 34em;
-  color: $on-surface;
-  box-shadow: $shadow-z4;
+  color: theme-color.$on-surface;
+  box-shadow: theme.$shadow-z4;
   &.multi-line-notification {
     padding-bottom: 8px;
   }
@@ -707,13 +713,13 @@ StScrollView {
     @extend %dialog-entry-shared;
   }
   .url-highlighter {
-    link-color: $primary;
+    link-color: theme-color.$primary;
   }
 }
 // min height 159px is required to avoid stretching/distortion of notification image
 .notification-with-image {
   min-height: 159px;
-  color: $on-surface;
+  color: theme-color.$on-surface;
 }
 #notification-scrollview {
   max-height: 10em;
@@ -756,12 +762,12 @@ StScrollView {
 .switcher-list {
   @extend %osd-panel-shared;
 
-  transition-duration: $duration;
+  transition-duration: st-theme.$duration;
   .item-box {
     padding: 8px;
-    border-radius: $corner-radius;
+    border-radius: theme.$corner-radius;
     &:selected {
-      background-color: divider($on-surface);
+      background-color: theme-color.divider(theme-color.$on-surface);
     }
   }
   .thumbnail-box {
@@ -773,7 +779,7 @@ StScrollView {
   }
   .separator {
     width: 1px;
-    background: divider($on-surface);
+    background: theme-color.divider(theme-color.$on-surface);
   }
 }
 .switcher-list-item-container {
@@ -783,7 +789,7 @@ StScrollView {
   background-gradient-direction: horizontal;
   background-gradient-start: rgba(51, 51, 51, 1.0);
   background-gradient-end: rgba(51, 51, 51, 0);
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
   border-radius-topright: 0;
   border-radius-bottomright: 0;
   width: 60px;
@@ -792,27 +798,27 @@ StScrollView {
   background-gradient-direction: horizontal;
   background-gradient-start: rgba(51, 51, 51, 0);
   background-gradient-end: rgba(51, 51, 51, 1.0);
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
   border-radius-topleft: 0;
   border-radius-bottomleft: 0;
   width: 60px;
 }
 .switcher-arrow {
   border-color: rgba(0,0,0,0);
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
   &:highlighted {
-    color: $on-surface;
+    color: theme-color.$on-surface;
   }
 }
 .switcher-preview-backdrop {
-  background-color: $scrim;
+  background-color: theme-color.$scrim;
 }
 // hot corners animation
 .ripple-box {
   width: 104px;
   height: 104px;
   background-image: url(assets/corner-ripple.png);
-  background-color: $primary;
+  background-color: theme-color.$primary;
   border-radius: 52px;
 }
 // on screen messages and input boxes
@@ -832,11 +838,11 @@ StScrollView {
 }
 // run dialog (ALT-F2)
 .run-dialog-label {
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
   padding-bottom: .4em;
 }
 .run-dialog-error-label {
-  color: $error;
+  color: theme-color.$error;
 }
 .run-dialog-error-box {
   padding-top: 16px;
@@ -849,19 +855,19 @@ StScrollView {
     @extend %dialog-entry-shared;
 }
 .run-dialog {
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
   padding: 16px 20px;
 }
 // this is an full screen overlay that is displayed with any cinnamon OSD or modal dialog which needs to always be semi transparent
 .lightbox {
-  background-color: $scrim-alt;
+  background-color: theme-color.$scrim-alt;
 }
 // removable media dialogs
 .cinnamon-mount-operation-icon {
   icon-size: 4.8em;
 }
 .mount-password-reask {
-  color: $warning;
+  color: theme-color.$warning;
 }
 .show-processes-dialog {
   spacing: 24px;
@@ -908,9 +914,9 @@ StScrollView {
   }
 }
 .show-processes-dialog-app-list-item {
-  color: $on-surface;
+  color: theme-color.$on-surface;
   &:hover {
-    color: $on-surface;
+    color: theme-color.$on-surface;
   }
   &:ltr {
     padding-right: 1em;
@@ -931,18 +937,18 @@ StScrollView {
 }
 // desktop zoom feature
 .magnifier-zoom-region {
-  border: 3px solid divider($on-surface);
+  border: 3px solid theme-color.divider(theme-color.$on-surface);
   &.full-screen {
     border-width: 0;
   }
 }
 // on screen keyboard
 #keyboard {
-  background-color: $scrim;
+  background-color: theme-color.$scrim;
 }
 .keyboard-key {
   @extend %icon-button-shared;
-  @include type(button);
+  @include drawing.type(button);
 }
 .keyboard-layout {
   spacing: 8px;
@@ -961,9 +967,9 @@ StScrollView {
   -arrow-base: 0;
   -arrow-rise: 0;
   -boxpointer-gap: 5px;
-  background-color: $surface-z8;
-  border-radius: $corner-radius;
-  box-shadow: $shadow-z4;
+  background-color: theme-color.$surface-z8;
+  border-radius: theme.$corner-radius;
+  box-shadow: theme.$shadow-z4;
 }
 // main menu applet
 .menu-favorites-box {
@@ -972,9 +978,9 @@ StScrollView {
 .menu-favorites-button {
   padding: 0.4em 4px;
   &:hover {
-     background-color: divider($on-surface);
-     border-radius: $corner-radius;
-     color: $on-surface;
+     background-color: theme-color.divider(theme-color.$on-surface);
+     border-radius: theme.$corner-radius;
+     color: theme-color.$on-surface;
   }
 }
 .menu-categories-box {
@@ -985,7 +991,7 @@ StScrollView {
 }
 .menu-applications-outer-box {
   padding: 8px;
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
 }
 .menu-application-button {
   padding: 0.4em 4px;
@@ -995,9 +1001,9 @@ StScrollView {
 }
 .menu-application-button-selected {
   padding: 0.4em 4px;
-  background-color: divider($on-surface);
-  border-radius: $corner-radius;
-  color: $on-surface;
+  background-color: theme-color.divider(theme-color.$on-surface);
+  border-radius: theme.$corner-radius;
+  color: theme-color.$on-surface;
   &:highlighted {
     font-weight: bold;
   }
@@ -1010,14 +1016,14 @@ StScrollView {
 }
 .menu-category-button-greyed {
   padding: 0.4em 4px;
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
   font-style: italic;
 }
 .menu-category-button-selected {
   padding: 0.4em 4px;
-  background-color: divider($on-surface);
-  border-radius: $corner-radius;
-  color: $on-surface;
+  background-color: theme-color.divider(theme-color.$on-surface);
+  border-radius: theme.$corner-radius;
+  color: theme-color.$on-surface;
   &:hover {
   }
 }
@@ -1034,10 +1040,10 @@ StScrollView {
   }
 }
 .menu-selected-app-title {
-  @include type(caption);
+  @include drawing.type(caption);
 }
 .menu-selected-app-description {
-  @include type(caption);
+  @include drawing.type(caption);
 
   max-width: 150px;
 }
@@ -1060,11 +1066,11 @@ StScrollView {
 .menu-search-entry-icon {
   icon-size: 1em;
   padding: 0 0;
-  color: disabled($on-surface);
+  color: theme-color.disabled(theme-color.$on-surface);
 }
 // the window list applet. Some third party applets inherit some of this theming.
 .window-list-box {
-  @include type(caption);
+  @include drawing.type(caption);
 
   spacing: 4px;
   padding: 0 3px;
@@ -1075,8 +1081,8 @@ StScrollView {
   #appMenuIcon {
   }
   &:highlight {
-    background: stroke($on-titlebar);
-    color: $on-titlebar;
+    background: theme-color.stroke(theme-color.$on-titlebar);
+    color: theme-color.$on-titlebar;
     }
 }
 .window-list-item-label {
@@ -1084,36 +1090,36 @@ StScrollView {
 // progress was added with cinnamon 3.6 and allows compatible applications to use the window list as a progress bar
 .window-list-item-box {
   background-color: rgba(0, 0, 0, 0.01);
-  transition-duration: $duration;
+  transition-duration: st-theme.$duration;
   &:hover {
-    color: $on-titlebar;
+    color: theme-color.$on-titlebar;
   }
   &:active, &:checked, &:focus {
-    background-color: stroke($on-titlebar);
-    color: $on-titlebar;
+    background-color: theme-color.stroke(theme-color.$on-titlebar);
+    color: theme-color.$on-titlebar;
     &:hover {
-      color: $on-titlebar;
+      color: theme-color.$on-titlebar;
     }
   }
   .progress {
-    background-color: $success;
+    background-color: theme-color.$success;
   }
 }
 .window-list-item-box.top StLabel, .window-list-item-box.bottom StLabel {
   padding-left: 3px;
 }
 .window-list-item-demands-attention {
-  background-color: $titlebar;
-  color: hint($on-titlebar);
+  background-color: theme-color.$titlebar;
+  color: theme-color.hint(theme-color.$on-titlebar);
 }
 // cinnamon 3.8 will support an improved window-list-thumbnail preview which now has it's own selector
 .window-list-preview {
-  background-color: $surface-z8;
-  border-radius: $corner-radius;
+  background-color: theme-color.$surface-z8;
+  border-radius: theme.$corner-radius;
   padding: 10px 15px;
   spacing: 1em;
-  color: $on-surface;
-  box-shadow: $shadow-z8;
+  color: theme-color.$on-surface;
+  box-shadow: theme.$shadow-z8;
 }
 // Cinnamon 4.0 has a new grouped window list applet with it's own selectors.
 // Initial theme support is defined here. Some theming is defined in the panel orientation specific section above.
@@ -1123,7 +1129,7 @@ StScrollView {
     padding-bottom: 6px;
   }
   &-number-label {
-    @include type(caption);
+    @include drawing.type(caption);
 
     z-index: 99;
   }
@@ -1131,56 +1137,56 @@ StScrollView {
     padding-left: 3px;
   }
   &-badge {
-    border-radius: $circular-radius;
-    background-color: $panel-solid;
+    border-radius: theme.$circular-radius;
+    background-color: theme-color.$panel-solid;
   }
   &-thumbnail-alert {
-    background: $warning;
+    background: theme-color.$warning;
   }
   &-item-box {
     background-color: rgba(0, 0, 0, 0.01);
-    transition-duration: $duration;
+    transition-duration: st-theme.$duration;
     &:hover {
-      color: $on-titlebar;
+      color: theme-color.$on-titlebar;
     }
     &:active, &:checked {
-      background-color: divider($on-titlebar);
+      background-color: theme-color.divider(theme-color.$on-titlebar);
       &:hover {
-        color: $on-titlebar;
+        color: theme-color.$on-titlebar;
       }
     }
     &:focus {
-      background-color: stroke($on-titlebar);
-      color: $on-titlebar;
+      background-color: theme-color.stroke(theme-color.$on-titlebar);
+      color: theme-color.$on-titlebar;
       &:hover {
-        color: $on-titlebar;
+        color: theme-color.$on-titlebar;
       }
     }
     .progress {
-      background-color: $success;
+      background-color: theme-color.$success;
     }
   }
   &-item-demands-attention {
-    background-color: $titlebar;
-    color: hint($on-titlebar);
+    background-color: theme-color.$titlebar;
+    color: theme-color.hint(theme-color.$on-titlebar);
   }
   &-thumbnail-menu {
     padding: 20px;
     border: none;
-    border-radius: $corner-radius;
-    color: hint($on-titlebar);
+    border-radius: theme.$corner-radius;
+    color: theme-color.hint(theme-color.$on-titlebar);
     background: none;
     .item-box {
       padding: 8px;
       spacing: 2px;
-      border-radius: $corner-radius;
+      border-radius: theme.$corner-radius;
        &:outlined {
-         border: 2px solid divider($on-surface);
-         color: $on-titlebar;
+         border: 2px solid theme-color.divider(theme-color.$on-surface);
+         color: theme-color.$on-titlebar;
        }
        &:selected {
-         background: divider($on-titlebar);
-         color: $on-titlebar;
+         background: theme-color.divider(theme-color.$on-titlebar);
+         color: theme-color.$on-titlebar;
        }
        > StBoxLayout { // icon and title
         &:ltr { margin: 1px 0 0 6px; }
@@ -1202,7 +1208,7 @@ StScrollView {
     }
     .separator {
       width: 1px;
-      background: divider($on-surface);
+      background: theme-color.divider(theme-color.$on-surface);
     }
   }
 }
@@ -1212,8 +1218,8 @@ StScrollView {
     @extend %icon-button-shared;
 
     &:small {
-      min-width: $small-size;
-      min-height: $small-size;
+      min-width: theme.$small-size;
+      min-height: theme.$small-size;
       padding: 4px;
       StIcon {
         icon-size: 1em;
@@ -1239,34 +1245,34 @@ StScrollView {
   background: rgba(0,0,0,0.2);
 }
 .sound-player-overlay {
-  background-color: $surface-z8;
+  background-color: theme-color.$surface-z8;
   min-width: 300px;
   padding: 12px 16px;
   spacing: 0.5em;
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
 }
 // workspace switcher applet simple button view
 .workspace-button {
-  background-color: $panel-solid;
+  background-color: theme-color.$panel-solid;
   width: 2em;
   height: 1em;
-  color: hint($on-titlebar);
+  color: theme-color.hint(theme-color.$on-titlebar);
   margin: 2px;
   &:outlined {
-    background-color: stroke($on-titlebar);
-    color: $on-titlebar;
+    background-color: theme-color.stroke(theme-color.$on-titlebar);
+    color: theme-color.$on-titlebar;
   }
 }
 // workspace switcher applet graph view
 .workspace-graph {
-   background-color: $scrim;
+   background-color: theme-color.$scrim;
   .workspace {
-    background-color: $panel-solid;
-    border: 1px solid divider($on-surface);
+    background-color: theme-color.$panel-solid;
+    border: 1px solid theme-color.divider(theme-color.$on-surface);
     &:active {
-      background-color: stroke($on-titlebar);
+      background-color: theme-color.stroke(theme-color.$on-titlebar);
 
-      border: 1px solid divider($on-surface);
+      border: 1px solid theme-color.divider(theme-color.$on-surface);
       .windows {
         -active-window-background: rgba(255, 255, 255, 0.8);
         -active-window-border: rgba(0, 0, 0, 0.9);
@@ -1286,7 +1292,7 @@ StScrollView {
 .panel-launchers {
   padding: 0 4px;
   spacing: 4px;
-  transition-duration: $duration;
+  transition-duration: st-theme.$duration;
   .launcher {
     background-color:rgba(0, 0, 0, 0.01);
   }
@@ -1301,43 +1307,43 @@ StScrollView {
 // applets in general
 .applet-separator-line, .applet-separator-line-vertical {
   width: 2px;
-  background: divider($on-titlebar);
+  background: theme-color.divider(theme-color.$on-titlebar);
 }
 .applet-spacer:highlight {
-  background: highlight($surface-z8);
+  background: theme-color.highlight(theme-color.$surface-z8);
 }
 .applet-box {
   background-color: rgba(0, 0, 0, 0.01);
-  color: hint($on-titlebar);
-  transition-duration: $duration;
+  color: theme-color.hint(theme-color.$on-titlebar);
+  transition-duration: st-theme.$duration;
   &:checked {
-    color: $on-titlebar;
+    color: theme-color.$on-titlebar;
     .applet-label {
-      color: $on-titlebar;
+      color: theme-color.$on-titlebar;
     }
   }
   &:hover {
-    color: $on-titlebar;
+    color: theme-color.$on-titlebar;
     .applet-label {
-      color: $on-titlebar;
+      color: theme-color.$on-titlebar;
     }
   }
   &:highlight {
-    background: stroke($on-titlebar);
-    color: $on-titlebar;
+    background: theme-color.stroke(theme-color.$on-titlebar);
+    color: theme-color.$on-titlebar;
     .applet-label {
-      color: $on-titlebar;
+      color: theme-color.$on-titlebar;
     }
   }
 }
 .applet-label {
-  @include type(subtitle2);
+  @include drawing.type(subtitle2);
 
-  color: hint($on-titlebar);
+  color: theme-color.hint(theme-color.$on-titlebar);
 }
 // icon-size set to 22 to match hard-coded menu icon size - applet-icon style is used for search provider results in menu
 .applet-icon {
-  color: hint($on-titlebar);
+  color: theme-color.hint(theme-color.$on-titlebar);
   padding: 0;
   spacing: 0;
   icon-size: 22px;
@@ -1345,61 +1351,61 @@ StScrollView {
 // desklets - the base .desklet selector is for 'undecorated' desklets however some subtle background themeing is desirable
 // to maintain visibility irrespctive of wallpaper and to allow for the highlighting scheme to work
 .desklet {
-  @include type(caption);
+  @include drawing.type(caption);
 
-  color: $on-titlebar;
+  color: theme-color.$on-titlebar;
   border: none;
-  box-shadow: $shadow-z8;
+  box-shadow: theme.$shadow-z8;
   padding: 12px;
-  background-color: $scrim-alt;
-  border-radius: $corner-radius
+  background-color: theme-color.$scrim-alt;
+  border-radius: theme.$corner-radius
 }
 // these do not inherit from .desklet
 .desklet-with-borders {
   @extend %desklet-shared;
-  @include type(caption);
+  @include drawing.type(caption);
 
-  background-color: $surface-z8;
-  border-radius: $corner-radius;
+  background-color: theme-color.$surface-z8;
+  border-radius: theme.$corner-radius;
   &:highlight {
-    background-color: highlight($surface-z8);
+    background-color: theme-color.highlight(theme-color.$surface-z8);
   }
 }
 .desklet-with-borders-and-header {
   @extend %desklet-shared;
-  @include type(caption);
+  @include drawing.type(caption);
 
-  background-color: $surface-z8;
+  background-color: theme-color.$surface-z8;
   border-radius-bottomleft: 2px;
   border-radius-bottomright: 2px;
   &:highlight {
-    background-color: highlight($surface-z8);
+    background-color: theme-color.highlight(theme-color.$surface-z8);
   }
 }
 .desklet-header {
-  @include type(headline6);
+  @include drawing.type(headline6);
   @extend %desklet-shared;
 
-  background-color: $surface-z8;
+  background-color: theme-color.$surface-z8;
   border-radius-topleft: 2px;
   border-radius-topright: 2px;
   &:highlight {
-    background-color: highlight($surface-z8);
+    background-color: theme-color.highlight(theme-color.$surface-z8);
   }
 }
 .photoframe-box {
   @extend %desklet-shared;
 
-  background-color: $surface-z8;
-  border-radius: $corner-radius;
+  background-color: theme-color.$surface-z8;
+  border-radius: theme.$corner-radius;
   &:highlight {
-    background-color: highlight($surface-z8);
+    background-color: theme-color.highlight(theme-color.$surface-z8);
   }
 }
 .desklet-drag-placeholder {
-  border: 2px solid $primary;
-  background-color: $scrim-alt;
-  border-radius: $corner-radius;
+  border: 2px solid theme-color.$primary;
+  background-color: theme-color.$scrim-alt;
+  border-radius: theme.$corner-radius;
 }
 .launcher {
   padding: 1px;
@@ -1415,17 +1421,17 @@ StScrollView {
   padding-bottom: 16px;
 }
 .about-title {
-  @include type(headline6);
+  @include drawing.type(headline6);
 }
 .about-uuid {
-  @include type(caption);
+  @include drawing.type(caption);
 }
 .about-icon {
   padding-right: 20px;
 }
 .about-scrollBox {
-  border: 1px solid divider($on-surface);
-  border-radius: $corner-radius;
+  border: 1px solid theme-color.divider(theme-color.$on-surface);
+  border-radius: theme.$corner-radius;
 }
 .about-scrollBox-innerBox {
   padding: 1.2em;
@@ -1441,28 +1447,28 @@ StScrollView {
   @extend %osd-info-workspace-shared;
 }
 .expo-workspaces-name-entry {
-  @include type(body1);
+  @include drawing.type(body1);
 
-  background-color: entry-fill($on-dark);
-  color: $on-dark;
+  background-color: theme-color.entry-fill(theme-color.$on-dark);
+  color: theme-color.$on-dark;
   padding: 0 8px;
-  selection-background-color: stroke($on-dark);
-  selected-color: $on-dark;
-  caret-color: $on-dark;
+  selection-background-color: theme-color.stroke(theme-color.$on-dark);
+  selected-color: theme-color.$on-dark;
+  caret-color: theme-color.$on-dark;
   text-align: center;
-  height: $medium-size;
-  border-radius: $corner-radius $corner-radius 0 0;
+  height: theme.$medium-size;
+  border-radius: theme.$corner-radius theme.$corner-radius 0 0;
   -cinnamon-caption-spacing: 12px;
   &#selected {
-    color: $on-dark;
-    background-color: stroke($on-dark);
+    color: theme-color.$on-dark;
+    background-color: theme-color.stroke(theme-color.$on-dark);
   }
   &:focus {
-    color: $on-dark;
-    box-shadow: inset 0 -2px $on-dark;
+    color: theme-color.$on-dark;
+    box-shadow: inset 0 -2px theme-color.$on-dark;
   }
   &:hover {
-    background-color: divider($on-dark);
+    background-color: theme-color.divider(theme-color.$on-dark);
   }
 }
 .notification-applet-padding {
@@ -1514,7 +1520,7 @@ StScrollView {
   }
 }
 .flashspot {
-  background-color: $primary;
+  background-color: theme-color.$primary;
 }
 // displayed when media keys are pressed.
 .osd-window {
@@ -1525,11 +1531,11 @@ StScrollView {
   .level {
     height: 0.7em;
     border-radius: 0.3em;
-    background-color: stroke($on-surface);
+    background-color: theme-color.stroke(theme-color.$on-surface);
   }
   .level-bar {
     border-radius: 0.3em;
-    background-color: $primary;
+    background-color: theme-color.$primary;
   }
 }
 // on screen preview of windows tiling placement
@@ -1554,7 +1560,7 @@ StScrollView {
   &:bottom {
     border-bottom-width: 0;
 
-    border-radius: $corner-radius $corner-radius 0 0;
+    border-radius: theme.$corner-radius theme.$corner-radius 0 0;
   }
   &:left {
     border-left-width: 0;
@@ -1604,7 +1610,7 @@ StScrollView {
   border: none;
 }
 .user-label {
-  @include type(subtitle2);
+  @include drawing.type(subtitle2);
 
-  color: $on-surface;
+  color: theme-color.$on-surface;
 }

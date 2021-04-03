@@ -1,21 +1,29 @@
 /* Looking Glass */
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../../../st-theme";
+@use "../../gnome-shell";
+@use "../../drawing";
+@use "../base/button";
+@use "../base/entry";
+
 // Dialog
 #LookingGlassDialog {
   spacing: 0;
   padding: 0;
   border: 0;
-  border-radius: $corner-radius;
-  box-shadow: $shadow-z8;
-  background-color: $surface-z8;
-  color: $on-surface;
+  border-radius: theme.$corner-radius;
+  box-shadow: theme.$shadow-z8;
+  background-color: theme-color.$surface-z8;
+  color: theme-color.$on-surface;
 
   & > #Toolbar {
     padding: 0 8px;
     border: 0;
     border-radius: 0;
-    box-shadow: inset 0 -1px divider($on-surface);
-    background-color: rgba($surface-z8, .01);
+    box-shadow: inset 0 -1px theme-color.divider(theme-color.$on-surface);
+    background-color: rgba(theme-color.$surface-z8, .01);
   }
 
   .labels {
@@ -25,30 +33,30 @@
   .notebook-tab {
     -natural-hpadding: 12px;
     -minimum-hpadding: 6px;
-    transition-duration: $duration;
-    min-height: $medium-size;
+    transition-duration: st-theme.$duration;
+    min-height: theme.$medium-size;
     padding-left: 16px * 2;
     padding-right: 16px * 2;
     border: 0;
-    color: hint($on-surface);
+    color: theme-color.hint(theme-color.$on-surface);
     font-weight: bold;
 
     &:hover {
-      background-color: hover-overlay($on-surface);
-      color: hint($on-surface);
+      background-color: theme-color.hover-overlay(theme-color.$on-surface);
+      color: theme-color.hint(theme-color.$on-surface);
       text-shadow: none;
     }
 
     &:active {
-      transition-duration: $duration-ripple;
-      background-color: pressed-overlay($on-surface);
+      transition-duration: st-theme.$duration-ripple;
+      background-color: theme-color.pressed-overlay(theme-color.$on-surface);
     }
 
     &:selected {
       border: 0;
-      box-shadow: inset 0 -2px $primary;
-      background-color: rgba($surface-z8, .01);
-      color: $on-surface;
+      box-shadow: inset 0 -2px theme-color.$primary;
+      background-color: rgba(theme-color.$surface-z8, .01);
+      color: theme-color.$on-surface;
       text-shadow: none;
     }
   }
@@ -72,11 +80,11 @@
     &,
     &:hover,
     &:active {
-      color: $primary;
+      color: theme-color.$primary;
     }
   }
 
-  @if $version >= 3.38 {
+  @if gnome-shell.$version >= 3.38 {
     .actor-link {
       &,
       &:hover,
@@ -128,7 +136,7 @@
 }
 
 .lg-extension-name {
-  @include type(headline6);
+  @include drawing.type(headline6);
 }
 
 .lg-extension-meta {
@@ -139,8 +147,8 @@
 #LookingGlassPropertyInspector {
   padding: 6px;
   border: 0;
-  border-radius: $corner-radius;
-  box-shadow: $shadow-z8;
-  background-color: $surface-z8;
-  color: $on-surface;
+  border-radius: theme.$corner-radius;
+  box-shadow: theme.$shadow-z8;
+  background-color: theme-color.$surface-z8;
+  color: theme-color.$on-surface;
 }

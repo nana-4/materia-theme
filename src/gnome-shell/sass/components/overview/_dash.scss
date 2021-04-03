@@ -1,12 +1,17 @@
 /* Dash */
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../gnome-shell";
+@use "overview";
+
 $dash-spacing: 6px;
 $dash-margin: 12px;
 
 #dash {
   font-size: 1em;
 
-  @if $version >= 40 {
+  @if gnome-shell.$version >= 40 {
     margin-top: 0;
     padding: $dash-margin $dash-margin 0;
 
@@ -18,11 +23,11 @@ $dash-margin: 12px;
     @extend %overview-panel;
     padding: ($dash-spacing / 2) 0;
     border-left-width: 0;
-    border-radius: 0 $corner-radius $corner-radius 0;
+    border-radius: 0 theme.$corner-radius theme.$corner-radius 0;
 
     &:rtl {
       border-right-width: 0;
-      border-radius: $corner-radius 0 0 $corner-radius;
+      border-radius: theme.$corner-radius 0 0 theme.$corner-radius;
     }
   }
 
@@ -38,12 +43,12 @@ $dash-margin: 12px;
   }
 }
 
-@if $version >= 40 {
+@if gnome-shell.$version >= 40 {
   .dash-background {
     margin-bottom: 0;
     padding: $dash-spacing ($dash-spacing / 2);
-    border-radius: $corner-radius $corner-radius 0 0;
-    background-color: fill($on-dark);
+    border-radius: theme.$corner-radius theme.$corner-radius 0 0;
+    background-color: theme-color.fill(theme-color.$on-dark);
   }
 
   // Dash Items
@@ -55,7 +60,7 @@ $dash-margin: 12px;
   .dash-separator {
     width: 1px;
     margin: $dash-spacing ($dash-spacing / 2);
-    background-color: stroke($on-dark);
+    background-color: theme-color.stroke(theme-color.$on-dark);
   }
 } @else {
   // Dash Items
@@ -69,14 +74,14 @@ $dash-margin: 12px;
   // min-height: 32px - 6px * 2;
   padding: 7px 8px;
   border: 0;
-  border-radius: $corner-radius;
-  box-shadow: $shadow-z4;
-  background-color: $surface-z8;
-  color: $on-surface;
+  border-radius: theme.$corner-radius;
+  box-shadow: theme.$shadow-z4;
+  background-color: theme-color.$surface-z8;
+  color: theme-color.$on-surface;
   text-align: center;
 
   // distance from the dash edge
-  @if $version >= 40 {
+  @if gnome-shell.$version >= 40 {
     -y-offset: 8px;
   } @else {
     -x-offset: 8px;
@@ -86,9 +91,9 @@ $dash-margin: 12px;
 // Show apps button
 .show-apps {
   @extend %overview-icon;
-  color: hint($on-dark);
+  color: theme-color.hint(theme-color.$on-dark);
 
   &:checked {
-    color: $on-dark;
+    color: theme-color.$on-dark;
   }
 }

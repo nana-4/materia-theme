@@ -1,7 +1,13 @@
 /* Search */
 
+@use "../../../../theme-color";
+@use "../../gnome-shell";
+@use "../../drawing";
+@use "overview";
+@use "app-grid";
+
 // search overview container
-$searchResultsContent: if($version >= 3.34, "#searchResultsContent", "#searchResultsBin");
+$searchResultsContent: if(gnome-shell.$version >= 3.34, "#searchResultsContent", "#searchResultsBin");
 
 #{$searchResultsContent} {
   max-width: 1024px;
@@ -21,7 +27,7 @@ $searchResultsContent: if($version >= 3.34, "#searchResultsContent", "#searchRes
   // separator
   .search-section-separator {
     height: 1px;
-    background-color: divider($on-dark);
+    background-color: theme-color.divider(theme-color.$on-dark);
   }
 
   &:last-child .search-section-separator {
@@ -49,7 +55,7 @@ $searchResultsContent: if($version >= 3.34, "#searchResultsContent", "#searchRes
   @extend %overview-status-text;
 }
 
-@if $version >= 3.38 {
+@if gnome-shell.$version >= 3.38 {
   .grid-search-results {
     spacing: 32px;
   }
@@ -72,7 +78,7 @@ $searchResultsContent: if($version >= 3.34, "#searchResultsContent", "#searchRes
     .list-search-provider-details {
       width: 150px;
       margin-top: 0;
-      color: hint($on-dark);
+      color: theme-color.hint(theme-color.$on-dark);
       // font-weight: bold;
     }
   }
@@ -96,11 +102,11 @@ $searchResultsContent: if($version >= 3.34, "#searchResultsContent", "#searchRes
   .list-search-result-title {
     spacing: 12px;
     color: inherit;
-    @include type(subtitle1);
+    @include drawing.type(subtitle1);
   }
 
   // list item description
   .list-search-result-description {
-    color: hint($on-dark);
+    color: theme-color.hint(theme-color.$on-dark);
   }
 }

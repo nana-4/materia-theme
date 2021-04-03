@@ -1,10 +1,12 @@
+@use "../../../../theme-color";
+
 // Pointer location
 .ripple-pointer-location {
   width: 50px;
   height: 50px;
   border-radius: (50px / 2); // radius equals the size of the box to give us the curve
   box-shadow: none;
-  background-color: $selected-overlay;
+  background-color: theme-color.$selected-overlay;
 }
 
 // Pointer accessibility notifications
@@ -13,12 +15,12 @@
   height: 60px;
   -pie-border-width: 0;
   -pie-border-color: transparent;
-  -pie-background-color: $selected-overlay;
+  -pie-background-color: theme-color.$selected-overlay;
 }
 
 // Screen zoom/Magnifier
 .magnifier-zoom-region {
-  border: 2px solid $primary;
+  border: 2px solid theme-color.$primary;
 
   &.full-screen {
     border-width: 0;

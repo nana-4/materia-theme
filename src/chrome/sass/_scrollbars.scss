@@ -1,9 +1,11 @@
+@use "../../theme-color";
+
 ::-webkit-scrollbar,
 ::-webkit-scrollbar-corner {
   width: 17px;
   height: 17px;
-  border: 0 solid divider($on-surface);
-  background-color: rgba($surface-z8, .9);
+  border: 0 solid theme-color.divider(theme-color.$on-surface);
+  background-color: rgba(theme-color.$surface-z8, .9);
 }
 
 ::-webkit-scrollbar:horizontal,
@@ -25,7 +27,7 @@
   height: 32px;
   border: 4px solid transparent;
   border-radius: 8px;
-  background-color: scrollbar-thumb($on-surface);
+  background-color: theme-color.scrollbar-thumb(theme-color.$on-surface);
   background-clip: padding-box;
 
   &:horizontal {
@@ -41,15 +43,15 @@
   }
 
   &:hover {
-    background-color: scrollbar-thumb($on-surface, "hover");
+    background-color: theme-color.scrollbar-thumb(theme-color.$on-surface, "hover");
   }
 
   &:active {
-    background-color: scrollbar-thumb($on-surface, "pressed");
+    background-color: theme-color.scrollbar-thumb(theme-color.$on-surface, "pressed");
   }
 
   &:disabled {
-    background-color: scrollbar-thumb($on-surface, "disabled");
+    background-color: theme-color.scrollbar-thumb(theme-color.$on-surface, "disabled");
   }
 }
 
@@ -58,5 +60,5 @@
 //
 
 ::selection {
-  background-color: rgba(primary($on-light), .24);
+  background-color: rgba(theme-color.primary(theme-color.$on-light), .24);
 }

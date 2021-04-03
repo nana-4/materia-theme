@@ -1,33 +1,41 @@
 /* Notifications & Message Tray */
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../../../st-theme";
+@use "../../gnome-shell";
+@use "../../drawing";
+@use "../base/button";
+@use "../base/entry";
+
 // Banner notifications
 .notification-banner {
-  min-height: $menuitem-size * 2;
+  min-height: st-theme.$menuitem-size * 2;
   width: 34em;
   margin: 5px;
   border: 0;
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
   font-size: 1em;
 
   &,
   &:focus,
   &:hover,
   &:active {
-    box-shadow: $shadow-z4;
-    background-color: $surface-z8;
-    color: $on-surface;
+    box-shadow: theme.$shadow-z4;
+    background-color: theme-color.$surface-z8;
+    color: theme-color.$on-surface;
   }
 
-  @if $version == 3.34 {
+  @if gnome-shell.$version == 3.34 {
     &,
     &:focus,
     &:active {
       .message-title {
-        color: $on-surface;
+        color: theme-color.$on-surface;
       }
 
       .message-content {
-        color: hint($on-surface);
+        color: theme-color.hint(theme-color.$on-surface);
       }
     }
 
@@ -61,9 +69,9 @@
   width: 1.6em;
   border: 0;
   border-radius: .8em;
-  box-shadow: $shadow-z4;
-  background-color: $primary;
-  color: $on-primary;
+  box-shadow: theme.$shadow-z4;
+  background-color: theme-color.$primary;
+  color: theme-color.$on-primary;
   font-weight: bold;
   font-size: 1em;
 }
@@ -78,7 +86,7 @@
 }
 
 .chat-log-message {
-  color: $on-surface;
+  color: theme-color.$on-surface;
 }
 
 .chat-new-group {
@@ -96,7 +104,7 @@
 
 .chat-sent {
   padding-left: 18pt;
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
 
   &:rtl {
     padding-left: 0;
@@ -106,8 +114,8 @@
 
 .chat-meta-message {
   padding-left: 4px;
-  color: hint($on-surface);
-  @include type(caption);
+  color: theme-color.hint(theme-color.$on-surface);
+  @include drawing.type(caption);
 
   &:rtl {
     padding-left: 0;

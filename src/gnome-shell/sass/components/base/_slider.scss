@@ -1,21 +1,24 @@
 /* Slider */
 
+@use "../../../../theme-color";
+@use "../../gnome-shell";
+
 $handle-size: 12px;
 
 .slider {
   height: 20px;
 
-  @if $version >= 3.30 {
+  @if gnome-shell.$version >= 3.30 {
     // slider trough
     -barlevel-height: 2px;
     -barlevel-border-width: 0;
     -barlevel-border-color: transparent;
-    -barlevel-background-color: stroke($on-surface);
+    -barlevel-background-color: theme-color.stroke(theme-color.$on-surface);
     // fill style
     -barlevel-active-border-color: transparent;
-    -barlevel-active-background-color: $primary;
+    -barlevel-active-background-color: theme-color.$primary;
     // overfill style
-    -barlevel-overdrive-color: $error;
+    -barlevel-overdrive-color: theme-color.$error;
     -barlevel-overdrive-border-color: transparent;
     -barlevel-overdrive-separator-width: 2px;
   } @else {
@@ -23,10 +26,10 @@ $handle-size: 12px;
     -slider-height: 2px;
     -slider-border-width: 0;
     -slider-border-color: transparent;
-    -slider-background-color: stroke($on-surface);
+    -slider-background-color: theme-color.stroke(theme-color.$on-surface);
     // fill style
     -slider-active-border-color: transparent;
-    -slider-active-background-color: $primary;
+    -slider-active-background-color: theme-color.$primary;
   }
 
   // slider handle
@@ -37,6 +40,6 @@ $handle-size: 12px;
   &,
   &:hover,
   &:active {
-    color: $primary;
+    color: theme-color.$primary;
   }
 }

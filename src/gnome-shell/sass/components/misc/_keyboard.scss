@@ -1,8 +1,13 @@
 /* On-screen Keyboard */
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../gnome-shell";
+@use "../../drawing";
+
 // draw keys using button function
 #keyboard {
-  background-color: $scrim-alt;
+  background-color: theme-color.$scrim-alt;
   box-shadow: none;
 
   .page-indicator {
@@ -16,7 +21,7 @@
 }
 
 // the container for individual keys
-@if $version >= 3.28 {
+@if gnome-shell.$version >= 3.28 {
   .key-container {
     padding: 4px;
     spacing: 4px;
@@ -41,50 +46,50 @@
   border: 0;
   border-width: 0;
   border-style: none;
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
 
   &,
   // non-character keys
   &.default-key {
-    @include button(normal);
+    @include drawing.button(normal);
 
     &:focus {
-      @include button(focus);
+      @include drawing.button(focus);
     }
 
     &:hover,
     &:checked {
-      @include button(hover);
+      @include drawing.button(hover);
     }
 
     &:active {
-      @include button(active);
+      @include drawing.button(active);
     }
   }
 
   &:grayed { //FIXMEy
     border-color: transparent;
-    background-color: $scrim-alt;
-    color: $on-scrim-alt;
+    background-color: theme-color.$scrim-alt;
+    color: theme-color.$on-scrim-alt;
   }
 
   // enter key is suggested-action
   &.enter-key {
-    @include button(normal, $c: $primary, $tc: $on-primary);
+    @include drawing.button(normal, $c: theme-color.$primary, $tc: theme-color.$on-primary);
 
     &:hover,
     &:checked {
-      @include button(hover, $c: $primary, $tc: $on-primary);
+      @include drawing.button(hover, $c: theme-color.$primary, $tc: theme-color.$on-primary);
     }
 
     &:active {
-      @include button(active, $c: $primary, $tc: $on-primary);
+      @include drawing.button(active, $c: theme-color.$primary, $tc: theme-color.$on-primary);
     }
   }
 
-  @if $version >= 3.36 {
+  @if gnome-shell.$version >= 3.36 {
     &.shift-key-uppercase {
-      color: $primary;
+      color: theme-color.$primary;
     }
 
     StIcon {
@@ -133,27 +138,27 @@
   -arrow-border-radius: 0;
   -arrow-background-color: transparent;
   padding: 5px;
-  border-radius: $corner-radius;
-  box-shadow: $shadow-z4;
-  background-color: $surface-z8;
-  color: $on-surface;
+  border-radius: theme.$corner-radius;
+  box-shadow: theme.$shadow-z4;
+  background-color: theme-color.$surface-z8;
+  color: theme-color.$on-surface;
 
   .keyboard-key {
-    border-radius: $corner-radius;
+    border-radius: theme.$corner-radius;
 
-    @include button(flat-normal);
+    @include drawing.button(flat-normal);
 
     &:focus {
-      @include button(flat-focus);
+      @include drawing.button(flat-focus);
     }
 
     &:hover,
     &:checked {
-      @include button(flat-hover);
+      @include drawing.button(flat-hover);
     }
 
     &:active {
-      @include button(flat-active);
+      @include drawing.button(flat-active);
     }
   }
 }
@@ -162,18 +167,18 @@
 .emoji-page {
   .keyboard-key {
     border: 0;
-    @include button(flat-normal, $tc: $on-scrim-alt);
+    @include drawing.button(flat-normal, $tc: theme-color.$on-scrim-alt);
 
     &:focus {
-      @include button(flat-focus, $tc: $on-scrim-alt);
+      @include drawing.button(flat-focus, $tc: theme-color.$on-scrim-alt);
     }
 
     &:hover {
-      @include button(flat-hover, $tc: $on-scrim-alt);
+      @include drawing.button(flat-hover, $tc: theme-color.$on-scrim-alt);
     }
 
     &:active {
-      @include button(flat-active, $tc: $on-scrim-alt);
+      @include drawing.button(flat-active, $tc: theme-color.$on-scrim-alt);
     }
   }
 }
@@ -181,14 +186,14 @@
 .emoji-panel {
   .keyboard-key:latched {
     border-color: transparent;
-    background-color: $primary;
-    color: $on-primary;
+    background-color: theme-color.$primary;
+    color: theme-color.$on-primary;
   }
 }
 
 // suggestions
 .word-suggestions {
-  @include type(subtitle1);
+  @include drawing.type(subtitle1);
   spacing: 12px;
   min-height: 20pt;
 }

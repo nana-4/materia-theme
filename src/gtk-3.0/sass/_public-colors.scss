@@ -3,108 +3,110 @@
    ----------------
    use responsibly! */
 
+@use "../../theme-color";
+
 // Sass thinks we're using the colors in the variables as strings and may shoot
 // warning, it's innocuous and can be defeated by using "" + $var
 /*
 widget text/foreground color */
-@define-color theme_fg_color #{"" + $on-surface};
+@define-color theme_fg_color #{"" + theme-color.$on-surface};
 
 /*
 text color for entries, views and content in general */
-@define-color theme_text_color #{"" + $on-surface};
+@define-color theme_text_color #{"" + theme-color.$on-surface};
 
 /*
 widget base background color */
-@define-color theme_bg_color #{"" + $surface-z0};
+@define-color theme_bg_color #{"" + theme-color.$surface-z0};
 
 /*
 text widgets and the like base background color */
-@define-color theme_base_color #{"" + $surface-z1};
+@define-color theme_base_color #{"" + theme-color.$surface-z1};
 
 /*
 base background color of selections */
-@define-color theme_selected_bg_color #{"" + $primary};
+@define-color theme_selected_bg_color #{"" + theme-color.$primary};
 
 /*
 text/foreground color of selections */
-@define-color theme_selected_fg_color #{"" + $on-primary};
+@define-color theme_selected_fg_color #{"" + theme-color.$on-primary};
 
 /*
 base background color of insensitive widgets */
-@define-color insensitive_bg_color #{"" + $surface-z0};
+@define-color insensitive_bg_color #{"" + theme-color.$surface-z0};
 
 /*
 text foreground color of insensitive widgets */
-@define-color insensitive_fg_color #{"" + disabled($on-surface)};
+@define-color insensitive_fg_color #{"" + theme-color.disabled(theme-color.$on-surface)};
 
 /*
 insensitive text widgets and the like base background color */
-@define-color insensitive_base_color #{"" + $surface-z1};
+@define-color insensitive_base_color #{"" + theme-color.$surface-z1};
 
 /*
 widget text/foreground color on backdrop windows */
-@define-color theme_unfocused_fg_color #{"" + $on-surface};
+@define-color theme_unfocused_fg_color #{"" + theme-color.$on-surface};
 
 /*
 text color for entries, views and content in general on backdrop windows */
-@define-color theme_unfocused_text_color #{"" + $on-surface};
+@define-color theme_unfocused_text_color #{"" + theme-color.$on-surface};
 
 /*
 widget base background color on backdrop windows */
-@define-color theme_unfocused_bg_color #{"" + $surface-z0};
+@define-color theme_unfocused_bg_color #{"" + theme-color.$surface-z0};
 
 /*
 text widgets and the like base background color on backdrop windows */
-@define-color theme_unfocused_base_color #{"" + $surface-z1};
+@define-color theme_unfocused_base_color #{"" + theme-color.$surface-z1};
 
 /*
 base background color of selections on backdrop windows */
-@define-color theme_unfocused_selected_bg_color #{"" + $primary};
+@define-color theme_unfocused_selected_bg_color #{"" + theme-color.$primary};
 
 /*
 text/foreground color of selections on backdrop windows */
-@define-color theme_unfocused_selected_fg_color #{"" + $on-primary};
+@define-color theme_unfocused_selected_fg_color #{"" + theme-color.$on-primary};
 
 /*
 insensitive color on backdrop windows */
-@define-color unfocused_insensitive_color #{"" + disabled($on-surface)};
+@define-color unfocused_insensitive_color #{"" + theme-color.disabled(theme-color.$on-surface)};
 
 /*
 widgets main borders color */
-@define-color borders #{"" + divider($on-surface)};
+@define-color borders #{"" + theme-color.divider(theme-color.$on-surface)};
 
 /*
 widgets main borders color on backdrop windows */
-@define-color unfocused_borders #{"" + divider($on-surface)};
+@define-color unfocused_borders #{"" + theme-color.divider(theme-color.$on-surface)};
 
 /*
 these are pretty self explicative */
-@define-color warning_color #{"" + $warning};
-@define-color error_color #{"" + $error};
-@define-color success_color #{"" + $success};
+@define-color warning_color #{"" + theme-color.$warning};
+@define-color error_color #{"" + theme-color.$error};
+@define-color success_color #{"" + theme-color.$success};
 // @define-color destructive_color #{"" + $error};
 
 /*
 these colors are exported for the window manager and shouldn't be used in applications,
 read if you used those and something break with a version upgrade you're on your own... */
-@define-color wm_title #{"" + $on-titlebar};
-@define-color wm_unfocused_title #{"" + hint($on-titlebar)};
-@define-color wm_highlight #{"" + highlight($titlebar)};
-@define-color wm_bg #{"" + $titlebar};
-@define-color wm_unfocused_bg #{"" + $titlebar-backdrop};
+@define-color wm_title #{"" + theme-color.$on-titlebar};
+@define-color wm_unfocused_title #{"" + theme-color.hint(theme-color.$on-titlebar)};
+@define-color wm_highlight #{"" + theme-color.highlight(theme-color.$titlebar)};
+@define-color wm_bg #{"" + theme-color.$titlebar};
+@define-color wm_unfocused_bg #{"" + theme-color.$titlebar-backdrop};
 
 // To export opaque text colors for xfwm4 themerc using Sass.
-@define-color xfwm4_title #{"" + opacify($on-titlebar, $titlebar)};
-@define-color xfwm4_unfocused_title #{"" + opacify(hint($on-titlebar), $titlebar-backdrop)};
+@define-color xfwm4_title #{"" + theme-color.opacify(theme-color.$on-titlebar, theme-color.$titlebar)};
+@define-color xfwm4_unfocused_title #{"" + theme-color.opacify(theme-color.hint(theme-color.$on-titlebar), theme-color.$titlebar-backdrop)};
 
 // FIXME this is really an API
 
 /* content view background such as thumbnails view in Photos or Boxes */
-@define-color content_view_bg #{"" + $surface-z0};
+@define-color content_view_bg #{"" + theme-color.$surface-z0};
 
 /* Very contrasty background for text views (@theme_text_color foreground) */
-@define-color text_view_bg #{"" + $surface-z0};
+@define-color text_view_bg #{"" + theme-color.$surface-z0};
 
 /* placeholder for entries */
 // NOTE: @placeholder_text_color doesn't allow translucent colors.
-@define-color placeholder_text_color #{"" + opacify(hint($on-surface), $surface-z1)};
+@define-color placeholder_text_color #{"" + theme-color.opacify(theme-color.hint(theme-color.$on-surface), theme-color.$surface-z1)};

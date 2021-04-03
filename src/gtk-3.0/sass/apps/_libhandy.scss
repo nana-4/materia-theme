@@ -5,6 +5,9 @@
  * libhandy
  */
 
+@use "../../../theme";
+@use "../../../theme-color";
+
 // HdyComboRow
 
 popover.combo {
@@ -139,9 +142,9 @@ viewswitcherbar actionbar > revealer > box {
 // Content list
 
 list.content {
-  border: 1px solid divider($on-surface);
+  border: 1px solid theme-color.divider(theme-color.$on-surface);
   background-clip: padding-box;
-  background-color: $surface-z1;
+  background-color: theme-color.$surface-z1;
 
   &,
   list {
@@ -184,7 +187,7 @@ list.content {
     // Top border
     &:not(:first-child) {
       // border-width: 1px 1px 0;
-      border-top: 1px solid divider($on-surface);
+      border-top: 1px solid theme-color.divider(theme-color.$on-surface);
     }
 
     // Rounded top
@@ -233,7 +236,7 @@ button.list-button {
 window.csd.unified:not(.solid-csd):not(.maximized):not(.fullscreen):not(.tiled):not(.tiled-top):not(.tiled-bottom):not(.tiled-left):not(.tiled-right) {
   // Remove the sheen on headerbar...
   headerbar {
-    box-shadow: $shadow-z1;
+    box-shadow: theme.$shadow-z1;
 
     &.selection-mode {
       // box-shadow: $shadow-z1;
@@ -242,12 +245,12 @@ window.csd.unified:not(.solid-csd):not(.maximized):not(.fullscreen):not(.tiled):
 
   // ...and add it on the window itself
   > decoration-overlay {
-    box-shadow: inset 0 1px highlight($titlebar);
+    box-shadow: inset 0 1px theme-color.highlight(theme-color.$titlebar);
   }
 
   &,
   > decoration,
   > decoration-overlay {
-    border-radius: $corner-radius;
+    border-radius: theme.$corner-radius;
   }
 }

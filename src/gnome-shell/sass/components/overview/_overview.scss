@@ -1,14 +1,21 @@
 /* OVERVIEW */
 
-@if $version >= 40 {
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../../../st-theme";
+@use "../../gnome-shell";
+@use "../../drawing";
+@use "../base/scrollbar";
+
+@if gnome-shell.$version >= 40 {
   .controls-manager,
   .secondary-monitor-workspaces {
     spacing: 16px;
   }
 
   #overviewGroup {
-    background-color: $system;
-    color: $on-system;
+    background-color: theme-color.$system;
+    color: theme-color.$on-system;
 
     StScrollBar {
       @extend %scrollbar-on-dark;
@@ -18,7 +25,7 @@
   #overview {
     spacing: 24px;
     background-color: transparent;
-    color: $on-dark;
+    color: theme-color.$on-dark;
 
     StScrollBar {
       @extend %scrollbar-on-dark;
@@ -31,15 +38,15 @@
 }
 
 %overview-panel {
-  transition-duration: $duration-panel;
+  transition-duration: st-theme.$duration-panel;
   border: 0;
-  background-color: fill($on-dark);
-  color: $on-dark;
+  background-color: theme-color.fill(theme-color.$on-dark);
+  color: theme-color.$on-dark;
 }
 
 %overview-status-text {
-  @include type(headline3);
-  color: disabled($on-dark);
+  @include drawing.type(headline3);
+  color: theme-color.disabled(theme-color.$on-dark);
 }
 
 %overview-item {
@@ -90,17 +97,17 @@
 %-overview-item {
   padding: 6px;
   border: 0;
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
   background-color: transparent;
   color: inherit;
   text-align: center;
-  transition-duration: $duration;
+  transition-duration: st-theme.$duration;
 }
 
 %-overview-item-focus {
   border-image: none;
   background-image: none;
-  background-color: focus-overlay($on-dark);
+  background-color: theme-color.focus-overlay(theme-color.$on-dark);
   color: inherit;
   transition-duration: 0ms;
 }
@@ -109,14 +116,14 @@
   border: 0;
   border-image: none;
   background-image: none;
-  background-color: hover-overlay($on-dark);
+  background-color: theme-color.hover-overlay(theme-color.$on-dark);
   color: inherit;
   transition-duration: 0ms;
 }
 
 %-overview-item-active {
   box-shadow: none;
-  background-color: pressed-overlay($on-dark);
+  background-color: theme-color.pressed-overlay(theme-color.$on-dark);
   color: inherit;
-  transition-duration: $duration-ripple;
+  transition-duration: st-theme.$duration-ripple;
 }

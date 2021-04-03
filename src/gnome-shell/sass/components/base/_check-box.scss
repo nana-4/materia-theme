@@ -1,16 +1,20 @@
 /* Check Boxes */
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../../../st-theme";
+
 .check-box {
   StBoxLayout {
     spacing: 8px;
   }
 
   StBin {
-    transition-duration: $duration;
+    transition-duration: st-theme.$duration;
     width: 24px;
     height: 24px;
-    padding: ($medium-size - 24px) / 2;
-    border-radius: $medium-size / 2;
+    padding: (theme.$medium-size - 24px) / 2;
+    border-radius: theme.$medium-size / 2;
   }
 
   StBin,
@@ -19,16 +23,16 @@
   }
 
   &:focus StBin {
-    background-color: focus-overlay($on-surface);
+    background-color: theme-color.focus-overlay(theme-color.$on-surface);
   }
 
   &:hover StBin {
-    background-color: hover-overlay($on-surface);
+    background-color: theme-color.hover-overlay(theme-color.$on-surface);
   }
 
   &:active StBin {
-    transition-duration: $duration-ripple;
-    background-color: pressed-overlay($on-surface);
+    transition-duration: st-theme.$duration-ripple;
+    background-color: theme-color.pressed-overlay(theme-color.$on-surface);
   }
 
   &:checked StBin,
@@ -37,14 +41,14 @@
   }
 
   &:checked:focus StBin {
-    background-color: focus-overlay($primary);
+    background-color: theme-color.focus-overlay(theme-color.$primary);
   }
 
   &:checked:hover StBin {
-    background-color: hover-overlay($primary);
+    background-color: theme-color.hover-overlay(theme-color.$primary);
   }
 
   &:checked:active StBin {
-    background-color: pressed-overlay($primary);
+    background-color: theme-color.pressed-overlay(theme-color.$primary);
   }
 }

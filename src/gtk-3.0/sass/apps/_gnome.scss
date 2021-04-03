@@ -1,3 +1,10 @@
+@use "sass:color";
+@use "sass:math";
+@use "../../../theme";
+@use "../../../theme-color";
+@use "../common";
+@use "../drawing";
+
 /**
  * Nautilus
  */
@@ -19,7 +26,7 @@
 
 .nautilus-canvas-item.dim-label,
 .nautilus-list-dim-label {
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
 }
 
 .nautilus-desktop.nautilus-canvas-item {
@@ -30,28 +37,28 @@
 
 @keyframes nautilus-operations-button-needs-attention {
   to {
-    background-color: focus-overlay($on-titlebar);
+    background-color: theme-color.focus-overlay(theme-color.$on-titlebar);
   }
 }
 
 .nautilus-operations-button-needs-attention {
-  animation: nautilus-operations-button-needs-attention $ripple-fade-out-duration $ease 2 alternate;
+  animation: nautilus-operations-button-needs-attention theme.$ripple-fade-out-duration theme.$ease 2 alternate;
 }
 
 .nautilus-operations-button-needs-attention-multiple {
-  animation: nautilus-operations-button-needs-attention $ripple-fade-out-duration $ease 6 alternate;
+  animation: nautilus-operations-button-needs-attention theme.$ripple-fade-out-duration theme.$ease 6 alternate;
 }
 
 .linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action):not(:only-child).disclosure-button {
-  border-radius: $circular-radius;
+  border-radius: theme.$circular-radius;
 }
 
 // Path bar
 
 .path-bar-box {
-  transition: background-color $duration $ease-out;
-  margin: $container-padding 0;
-  border-radius: $corner-radius;
+  transition: background-color theme.$duration theme.$ease-out;
+  margin: theme.$container-padding 0;
+  border-radius: theme.$corner-radius;
 
   // reset the margin
   button {
@@ -59,13 +66,13 @@
   }
 
   &.width-maximized {
-    background-color: entry-fill($on-titlebar);
+    background-color: theme-color.entry-fill(theme-color.$on-titlebar);
   }
 
   // workaround for 3.30.1
   &.background.frame {
     border-style: none;
-    background-color: entry-fill($on-titlebar);
+    background-color: theme-color.entry-fill(theme-color.$on-titlebar);
   }
 
   // for 3.30
@@ -83,8 +90,8 @@
 
   // for 3.32
   .nautilus-path-bar button:not(.suggested-action):not(.destructive-action) {
-    padding-left: ($medium-size - 24px) / 2;
-    padding-right: ($medium-size - 24px) / 2;
+    padding-left: (theme.$medium-size - 24px) / 2;
+    padding-right: (theme.$medium-size - 24px) / 2;
 
     &.text-button {
       min-width: 0;
@@ -117,10 +124,10 @@
   padding: 0;
   border-style: solid solid none;
   border-width: 1px;
-  border-color: divider($on-surface);
-  border-radius: ($corner-radius + 1px) ($corner-radius + 1px) 0 0;
+  border-color: theme-color.divider(theme-color.$on-surface);
+  border-radius: (theme.$corner-radius + 1px) (theme.$corner-radius + 1px) 0 0;
   background-clip: padding-box;
-  background-color: $surface-z8;
+  background-color: theme-color.$surface-z8;
 
   // axes left border and border radius
   &.bottom.left {
@@ -137,7 +144,7 @@
   }
 
   button {
-    margin: (32px - $small-size) / 2;
+    margin: (32px - theme.$small-size) / 2;
 
     @extend %button-small;
   }
@@ -148,18 +155,18 @@
   // border-width: 2px;
 
   &.unknown {
-    background-color: stroke($on-surface);
-    color: stroke($on-surface);
+    background-color: theme-color.stroke(theme-color.$on-surface);
+    color: theme-color.stroke(theme-color.$on-surface);
   }
 
   &.used {
-    background-color: $primary;
-    color: $primary;
+    background-color: theme-color.$primary;
+    color: theme-color.$primary;
   }
 
   &.free {
-    background-color: fill($on-surface);
-    color: fill($on-surface);
+    background-color: theme-color.fill(theme-color.$on-surface);
+    color: theme-color.fill(theme-color.$on-surface);
   }
 }
 
@@ -172,12 +179,12 @@
 
 .nautilus-empty-state-icon + .large-title {
   @extend .title-1;
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
 }
 
 .search-information {
   padding: 2px;
-  border-bottom: 1px solid divider($on-surface);
+  border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
 }
 
 .documents-entry-tag {
@@ -185,7 +192,7 @@
 }
 
 .conflict-row:not(:selected) {
-  background-color: mix($warning, $surface-z1, percentage(.3));
+  background-color: color.mix(theme-color.$warning, theme-color.$surface-z1, math.percentage(.3));
 }
 
 // Icon view
@@ -196,14 +203,14 @@
 
   .icon-item-background {
     padding: 4px;
-    border-radius: $corner-radius;
+    border-radius: theme.$corner-radius;
   }
 
   &:selected {
     background-color: transparent;
 
     .icon-item-background {
-      background-color: $selected-overlay;
+      background-color: theme-color.$selected-overlay;
     }
   }
 }
@@ -216,7 +223,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 
   > box.horizontal:last-child {
     margin: -6px 0 0 -6px;
-    border-top: 1px solid divider($on-surface);
+    border-top: 1px solid theme-color.divider(theme-color.$on-surface);
 
     > label {
       margin: 0 8px;
@@ -257,18 +264,18 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
   font-weight: 500;
 
   &:disabled {
-    color: hint($on-surface);
+    color: theme-color.hint(theme-color.$on-surface);
   }
 }
 
 // Make operations button circular
 .nautilus-window headerbar revealer > button {
-  border-radius: $circular-radius;
+  border-radius: theme.$circular-radius;
 }
 
 // Ensure paned separator rendering. See issue #84 for details.
 .nautilus-window paned > separator {
-  background-color: $surface-z0;
+  background-color: theme-color.$surface-z0;
 }
 
 
@@ -288,14 +295,14 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 
 // Only normal state is handle
 .open-document-selector-path-label {
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
   font-size: smaller;
 }
 
 // Only normal state is handle
 .open-document-selector-match {
-  background-color: $warning;
-  color: $on-warning;
+  background-color: theme-color.$warning;
+  color: theme-color.$on-warning;
 }
 
 .gedit-document-panel {
@@ -309,33 +316,33 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 }
 
 .gedit-document-panel-group-row:not(:first-child) {
-  border-top: 1px solid divider($on-surface);
+  border-top: 1px solid theme-color.divider(theme-color.$on-surface);
 }
 
 .gedit-side-panel-paned statusbar {
-  border-top: 1px solid divider($on-surface);
+  border-top: 1px solid theme-color.divider(theme-color.$on-surface);
 }
 
 .gedit-search-slider {
   margin: 4px 4px 8px;
 
   .linked:not(.vertical) > entry {
-    border-radius: $corner-radius;
+    border-radius: theme.$corner-radius;
     @extend %entry_raised;
 
     .gedit-search-entry-occurrences-tag {
       all: unset;
-      color: hint($on-surface);
+      color: theme-color.hint(theme-color.$on-surface);
     }
 
-    $buttons_width: $small-size * 2 + $container-padding * 3;
+    $buttons_width: theme.$small-size * 2 + theme.$container-padding * 3;
 
     &:dir(ltr) {
       margin-right: -$buttons_width;
       padding-right: $buttons_width;
 
       .gedit-search-entry-occurrences-tag {
-        margin-left: $container-padding;
+        margin-left: theme.$container-padding;
       }
 
       image.right {
@@ -348,7 +355,7 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
       padding-left: $buttons_width;
 
       .gedit-search-entry-occurrences-tag {
-        margin-right: $container-padding;
+        margin-right: theme.$container-padding;
       }
 
       image.left {
@@ -357,22 +364,22 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
     }
 
     &:not(.error) {
-      background-color: $surface-z8;
+      background-color: theme-color.$surface-z8;
     }
 
     &.error ~ button {
-      color: hint($on-error);
-      @include ink-color($on-error, $button-style: "flat");
+      color: theme-color.hint(theme-color.$on-error);
+      @include drawing.ink-color(theme-color.$on-error, $button-style: "flat");
 
       &:disabled {
-        color: disabled-hint($on-error);
+        color: theme-color.disabled-hint(theme-color.$on-error);
       }
     }
   }
 
   .linked:not(.vertical) > button {
-    border: solid $container-padding transparent;
-    border-radius: $circular-radius;
+    border: solid theme.$container-padding transparent;
+    border-radius: theme.$circular-radius;
     background-clip: padding-box;
 
     @extend %button-flat-basic;
@@ -380,12 +387,12 @@ dialog.background > box.dialog-vbox.vertical > grid.horizontal {
 
     &:last-child:dir(ltr),
     &:not(:first-child):dir(rtl) {
-      margin-left: -$container-padding / 2;
+      margin-left: -(theme.$container-padding) / 2;
     }
 
     &:first-child:dir(rtl),
     &:not(:last-child):dir(ltr) {
-      margin-right: -$container-padding / 2;
+      margin-right: -(theme.$container-padding) / 2;
     }
   }
 }
@@ -411,7 +418,7 @@ frame.gedit-map-frame > border {
 .tweak-categories {
   // padding: 4px 0;
   // background-color: shade(@theme_bg_color, 0.99);
-  background-image: image($surface-z0);
+  background-image: image(theme-color.$surface-z0);
 
   separator {
     @extend %hide_separators;
@@ -431,20 +438,20 @@ frame.gedit-map-frame > border {
 .tweak-white,
 .tweak-white:hover {
   // background-color: white;
-  background-image: image($surface-z1);
+  background-image: image(theme-color.$surface-z1);
 }
 
 .tweak-startup,
 .tweak-startup:hover {
   // background-color: lighter(shade(@theme_bg_color, 0.9));
-  background-image: image($surface-z1);
+  background-image: image(theme-color.$surface-z1);
 }
 
 .tweak-group-startup {
-  border: 1px solid divider($on-surface);
+  border: 1px solid theme-color.divider(theme-color.$on-surface);
   background-clip: padding-box;
   // background-color: @view_separators;
-  background-image: image($surface-z1);
+  background-image: image(theme-color.$surface-z1);
 }
 
 //
@@ -458,12 +465,12 @@ row#dynamic-workspaces,
 row#PrimaryWorkspaceTweak, // for 3.26.0
 row#workspaces-only-on-primary {
   padding: 0;
-  border: 1px solid divider($on-surface);
+  border: 1px solid theme-color.divider(theme-color.$on-surface);
   background-clip: padding-box;
-  background-image: image($surface-z1);
+  background-image: image(theme-color.$surface-z1);
 
   row:not(:last-child) {
-    border-bottom: 1px solid divider($on-surface);
+    border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
   }
 
   &.tweak > list {
@@ -489,11 +496,11 @@ hdyleaflet.titlebar > .titlebar.tweak-titlebar-right {
   box-shadow: inherit;
   // Remove only background-color transition.
   // This shouldn't be necessary, but otherwise it gets lag...
-  transition: color $duration $ease-out;
+  transition: color theme.$duration theme.$ease-out;
 
   + separator {
     background-color: inherit;
-    background-image: image(divider($on-titlebar));
+    background-image: image(theme-color.divider(theme-color.$on-titlebar));
   }
 }
 
@@ -511,15 +518,15 @@ hdyleaflet.titlebar > .titlebar.tweak-titlebar-right {
 // Layout tab and tab bar tweaks
 // The following makes the layout stack header look similar to a tab bar.
 layouttabbar {
-  border-bottom: 1px solid divider($on-surface);
-  background-color: $surface-z0;
+  border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
+  background-color: theme-color.$surface-z0;
 
   button {
     @extend %button-flat-activatable;
   }
 
   > box > button {
-    margin: (40px - $medium-size) / 2 0;
+    margin: (40px - theme.$medium-size) / 2 0;
     // border-radius: 0;
   }
 }
@@ -528,9 +535,9 @@ layouttab {
   margin: 0 8px; // not working
   border-style: none solid;
   border-width: 1px;
-  border-color: divider($on-surface);
-  box-shadow: inset 0 -2px $primary;
-  background-color: $surface-z1;
+  border-color: theme-color.divider(theme-color.$on-surface);
+  box-shadow: inset 0 -2px theme-color.$primary;
+  background-color: theme-color.$surface-z1;
 
   separator.vertical {
     margin: 8px 4px;
@@ -553,25 +560,25 @@ layouttab {
 }
 
 layout {
-  border: 1px solid divider($on-surface);
+  border: 1px solid theme-color.divider(theme-color.$on-surface);
   -PnlDockBin-handle-size: 1;
 }
 
 entry.search-missing {
-  background-color: $error;
-  color: $on-error;
+  background-color: theme-color.$error;
+  color: theme-color.$on-error;
 }
 
 // tweak icons for treeviews
 window.workbench treeview.image {
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
 }
 
 popover.popover-selector list {
   padding: 8px - 2px;
 
   row {
-    border-radius: $corner-radius;
+    border-radius: theme.$corner-radius;
 
     image {
       &:dir(ltr) {
@@ -597,20 +604,20 @@ popover.popover-selector list {
 
 omnibar {
   &.linked:not(.vertical) entry {
-    border-radius: $corner-radius;
+    border-radius: theme.$corner-radius;
   }
 
   entry {
-    color: hint($on-surface);
+    color: theme-color.hint(theme-color.$on-surface);
   }
 }
 
 popover.omnibar list row:not(:last-child) {
-  border-bottom: 1px solid divider($on-surface);
+  border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
 }
 
 entry.preferences-search {
-  border-bottom: 1px solid divider($on-surface);
+  border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
   box-shadow: none;
   background-color: transparent;
 
@@ -643,11 +650,11 @@ preferences stacksidebar.sidebar {
 
 preferences > box > box {
   &:dir(ltr) {
-    border-right: 1px solid divider($on-surface);
+    border-right: 1px solid theme-color.divider(theme-color.$on-surface);
   }
 
   &:dir(rtl) {
-    border-left: 1px solid divider($on-surface);
+    border-left: 1px solid theme-color.divider(theme-color.$on-surface);
   }
 }
 
@@ -660,15 +667,15 @@ popover.messagepopover {
     @extend %button-flat-basic;
 
     padding: 8px 16px;
-    border-top: 1px solid divider($on-surface);
+    border-top: 1px solid theme-color.divider(theme-color.$on-surface);
     border-radius: 0;
 
     &:first-child {
-      border-bottom-left-radius: $corner-radius;
+      border-bottom-left-radius: theme.$corner-radius;
     }
 
     &:last-child {
-      border-bottom-right-radius: $corner-radius;
+      border-bottom-right-radius: theme.$corner-radius;
     }
   }
 
@@ -681,7 +688,7 @@ popover.transfers list {
   background-color: transparent;
 
   row:not(:first-child) {
-    border-top: 1px solid divider($on-surface);
+    border-top: 1px solid theme-color.divider(theme-color.$on-surface);
   }
 
   row > box {
@@ -690,65 +697,65 @@ popover.transfers list {
 }
 
 dockbin {
-  border: 1px solid divider($on-surface);
+  border: 1px solid theme-color.divider(theme-color.$on-surface);
   -PnlDockBin-handle-size: 1;
 }
 
 dockpaned {
-  border: 1px solid divider($on-surface);
+  border: 1px solid theme-color.divider(theme-color.$on-surface);
 }
 
 eggsearchbar box.search-bar {
   padding: 0 8px;
-  border-bottom: 1px solid divider($on-surface);
-  background-color: $surface-z0;
+  border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
+  background-color: theme-color.$surface-z0;
 }
 
 docktabstrip {
   padding: 0 8px;
-  border-bottom: 1px solid divider($on-surface);
-  background-color: $surface-z0;
+  border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
+  background-color: theme-color.$surface-z0;
 }
 
 docktab {
-  transition: $transition,
+  transition: theme.$transition,
               background-size 0ms,
               background-image 0ms;
-  min-height: $small-size;
-  min-width: $small-size;
+  min-height: theme.$small-size;
+  min-width: theme.$small-size;
   margin-bottom: -1px;
-  padding: $container-padding 6px;
+  padding: theme.$container-padding 6px;
 
   border-width: 1px;         // for reorderable tabs
   border-color: transparent; //
 
   box-shadow: inset 0 -2px transparent;
-  background-image: radial-gradient(circle, $primary 10%, transparent 0%);
+  background-image: radial-gradient(circle, theme-color.$primary 10%, transparent 0%);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 0% 0%;
 
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
   font-weight: 500;
 
   &:hover {
-    background-color: hover-overlay($on-surface);
+    background-color: theme-color.hover-overlay(theme-color.$on-surface);
   }
 
   &:checked {
-    transition: $transition,
-                background-size $ripple-fade-in-duration $ease-out,
-                background-image $ripple-fade-in-duration + $ripple-fade-out-duration $ease-out;
-    box-shadow: inset 0 -2px $primary;
+    transition: theme.$transition,
+                background-size theme.$ripple-fade-in-duration theme.$ease-out,
+                background-image theme.$ripple-fade-in-duration + theme.$ripple-fade-out-duration theme.$ease-out;
+    box-shadow: inset 0 -2px theme-color.$primary;
     background-color: transparent;
     background-image: radial-gradient(circle, transparent 10%, transparent 0%);
     background-size: 1000% 1000%;
-    color: $on-surface;
+    color: theme-color.$on-surface;
   }
 }
 
 dockoverlayedge {
-  background-color: $surface-z0;
+  background-color: theme-color.$surface-z0;
 
   docktabstrip {
     padding: 0;
@@ -756,17 +763,17 @@ dockoverlayedge {
   }
 
   &.left-edge docktab:checked {
-    box-shadow: inset -2px 0 $primary;
+    box-shadow: inset -2px 0 theme-color.$primary;
   }
 
   &.right-edge docktab:checked {
-    box-shadow: inset 2px 0 $primary;
+    box-shadow: inset 2px 0 theme-color.$primary;
   }
 }
 
 pillbox {
-  background-color: $surface-z0;
-  border-radius: $corner-radius;
+  background-color: theme-color.$surface-z0;
+  border-radius: theme.$corner-radius;
 }
 
 buildperspective row {
@@ -774,9 +781,9 @@ buildperspective row {
 }
 
 layoutpane entry.search {
-  border-bottom: 1px solid divider($on-surface);
+  border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
   box-shadow: none;
-  background-color: $surface-z1;
+  background-color: theme-color.$surface-z1;
 }
 
 editortweak entry.search {
@@ -814,8 +821,8 @@ window.workbench preferences preferencesgroup list entry {
 
 button.run-arrow-button {
   // min-width: 12px;
-  padding-left: ($medium-size - 16px) / 2;
-  padding-right: ($medium-size - 16px) / 2;
+  padding-left: (theme.$medium-size - 16px) / 2;
+  padding-right: (theme.$medium-size - 16px) / 2;
 }
 
 //
@@ -823,41 +830,41 @@ button.run-arrow-button {
 //
 
 button.dzlmenubutton image {
-  min-width: $medium-size - 6px;
+  min-width: theme.$medium-size - 6px;
 
   &.arrow {
-    min-width: $medium-size - 9px;
+    min-width: theme.$medium-size - 9px;
   }
 }
 
 button.dzlmenubuttonitem {
-  color: $on-surface;
+  color: theme-color.$on-surface;
   font-weight: normal;
 
   &:disabled {
-    color: disabled($on-surface);
+    color: theme-color.disabled(theme-color.$on-surface);
   }
 }
 
 idelayoutstackheader {
-  border-bottom: 1px solid divider($on-surface);
+  border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
 
   button:checked {
-    color: $on-surface;
+    color: theme-color.$on-surface;
   }
 }
 
 // utilities stack switcher
 ideeditorutilities > dzldockpaned > box > stackswitcher {
   padding: 8px 0;
-  background-color: $surface-z0;
+  background-color: theme-color.$surface-z0;
 
   &:dir(ltr) {
-    border-right: 1px solid divider($on-surface);
+    border-right: 1px solid theme-color.divider(theme-color.$on-surface);
   }
 
   &:dir(rtl) {
-    border-left: 1px solid divider($on-surface);
+    border-left: 1px solid theme-color.divider(theme-color.$on-surface);
   }
 
   button {
@@ -866,19 +873,19 @@ ideeditorutilities > dzldockpaned > box > stackswitcher {
     background-color: transparent;
 
     &:active {
-      background-image: radial-gradient(circle, rgba($primary, .7) 10%, transparent 0%);
+      background-image: radial-gradient(circle, rgba(theme-color.$primary, .7) 10%, transparent 0%);
     }
 
     &:checked {
       background-color: transparent;
-      color: $on-surface;
+      color: theme-color.$on-surface;
     }
 
     &:dir(ltr) {
       margin-right: -1px;
 
       &:checked {
-        box-shadow: inset -2px 0 $primary;
+        box-shadow: inset -2px 0 theme-color.$primary;
       }
     }
 
@@ -886,7 +893,7 @@ ideeditorutilities > dzldockpaned > box > stackswitcher {
       margin-left: -1px;
 
       &:checked {
-        box-shadow: inset 2px 0 $primary;
+        box-shadow: inset 2px 0 theme-color.$primary;
       }
     }
   }
@@ -901,11 +908,11 @@ popover.messagepopover {
   // padding: 0;
 
   list {
-    border: 1px solid divider($on-surface);
+    border: 1px solid theme-color.divider(theme-color.$on-surface);
     background-clip: padding-box;
 
     row:not(:last-child) {
-      border-bottom: 1px solid divider($on-surface);
+      border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
     }
   }
 }
@@ -916,8 +923,8 @@ dzlsuggestionpopover > revealer > box > elastic > scrolledwindow > viewport > li
     // color: @theme_selected_fg_color;
   }
 
-  background-color: $primary;
-  color: $on-primary;
+  background-color: theme-color.$primary;
+  color: theme-color.$on-primary;
 }
 
 // Workaround for hard-coded button background
@@ -927,33 +934,33 @@ dzlsuggestionpopover > revealer > box > elastic > scrolledwindow > viewport > li
 
   padding: 0;
   border-radius: 0;
-  box-shadow: inset 0 0 0 9999px $titlebar;
+  box-shadow: inset 0 0 0 9999px theme-color.$titlebar;
 
   &:backdrop {
-    box-shadow: inset 0 0 0 9999px $titlebar-backdrop;
+    box-shadow: inset 0 0 0 9999px theme-color.$titlebar-backdrop;
   }
 
   // For some reason background-image doesn't work well with transition :(
   image {
     transition:
-      box-shadow $duration $ease-out,
-      background-color $ripple-fade-in-duration $ease-out;
-    min-width: $medium-size;
-    min-height: $medium-size;
-    border-radius: $circular-radius;
+      box-shadow theme.$duration theme.$ease-out,
+      background-color theme.$ripple-fade-in-duration theme.$ease-out;
+    min-width: theme.$medium-size;
+    min-height: theme.$medium-size;
+    border-radius: theme.$circular-radius;
     box-shadow: inset 0 0 0 9999px transparent;
   }
 
   &:hover image {
-    box-shadow: inset 0 0 0 9999px hover-overlay($on-titlebar);
+    box-shadow: inset 0 0 0 9999px theme-color.hover-overlay(theme-color.$on-titlebar);
   }
 
   &:focus image {
-    box-shadow: inset 0 0 0 9999px focus-overlay($on-titlebar);
+    box-shadow: inset 0 0 0 9999px theme-color.focus-overlay(theme-color.$on-titlebar);
   }
 
   &:active image {
-    background-color: pressed-overlay($on-titlebar);
+    background-color: theme-color.pressed-overlay(theme-color.$on-titlebar);
   }
 }
 
@@ -976,10 +983,10 @@ GdMainIconView.content-view {
 
 .documents-counter {
   margin: 8px;
-  border-radius: $circular-radius;
-  box-shadow: $shadow-z4;
-  background-color: $primary;
-  color: $on-primary;
+  border-radius: theme.$circular-radius;
+  box-shadow: theme.$shadow-z4;
+  background-color: theme-color.$primary;
+  color: theme-color.$on-primary;
   font-weight: bold;
 }
 
@@ -1002,28 +1009,28 @@ GdMainIconView.content-view {
 
 .photos-fade-in {
   opacity: 1;
-  transition: opacity $duration $ease-out;
+  transition: opacity theme.$duration theme.$ease-out;
 }
 
 .photos-fade-out {
   opacity: 0;
-  transition: opacity $duration $ease-out;
+  transition: opacity theme.$duration theme.$ease-out;
 }
 
 .photos-collection-icon {
 }
 
 button.photos-filter-preview {
-  color: $on-surface;
+  color: theme-color.$on-surface;
   font-weight: normal;
 
   &:checked {
-    background-color: $selected-overlay;
-    color: $on-surface;
+    background-color: theme-color.$selected-overlay;
+    color: theme-color.$on-surface;
 
     image {
-      color: $on-dark;
-      -gtk-icon-shadow: $text-shadow;
+      color: theme-color.$on-dark;
+      -gtk-icon-shadow: theme.$text-shadow;
     }
   }
 }
@@ -1051,30 +1058,30 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
 .side-panel:dir(ltr) {
   // border-width: 0 1px 0 0;
   border-style: solid;
-  border-color: divider($on-surface);
+  border-color: theme-color.divider(theme-color.$on-surface);
 }
 
 .side-panel:dir(rtl) {
   // border-width: 0 0 0 1px;
   border-style: solid;
-  border-color: divider($on-surface);
+  border-color: theme-color.divider(theme-color.$on-surface);
 }
 
 .side-panel .view {
   // background-color: mix(@theme_fg_color, @theme_bg_color, 0.9);
-  background-image: image($surface-z0);
+  background-image: image(theme-color.$surface-z0);
 
   &:hover {
-    background-image: image(hover-overlay($on-surface, $on: $surface-z0));
+    background-image: image(theme-color.hover-overlay(theme-color.$on-surface, $on: theme-color.$surface-z0));
   }
 }
 
 .side-panel .view:selected {
   // background-color: mix(@theme_fg_color, @theme_bg_color, 0.5);
-  background-image: image($primary);
+  background-image: image(theme-color.$primary);
 
   &:hover {
-    background-image: image(hover-overlay($on-primary, $on: $primary));
+    background-image: image(theme-color.hover-overlay(theme-color.$on-primary, $on: theme-color.$primary));
   }
 }
 
@@ -1083,7 +1090,7 @@ overlay grid.horizontal > revealer > scrolledwindow.frame {
   // background-color: @theme_bg_color;
 
   &:hover {
-    background-image: image(hover-overlay($on-surface));
+    background-image: image(theme-color.hover-overlay(theme-color.$on-surface));
   }
 }
 
@@ -1098,7 +1105,7 @@ frame.documents-dropdown {
 }
 
 box.vertical > revealer > toolbar.search-bar {
-  border-bottom: 1px solid divider($on-surface);
+  border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
 
   button > widget {
     -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
@@ -1126,7 +1133,7 @@ terminal-window notebook > header > box {
 // less than 3.28
 task-list-view {
   taskrow {
-    transition: $transition;
+    transition: theme.$transition;
     margin: 0 -8px;
 
     &:hover {
@@ -1143,7 +1150,7 @@ task-list-view {
   }
 
   > box > revealer > box > button {
-    margin: (12px * 2 - $medium-size) / 2;
+    margin: (12px * 2 - theme.$medium-size) / 2;
 
     .dim-label {
       color: inherit;
@@ -1170,7 +1177,7 @@ tasklistview {
   }
 
   > box > revealer > box > button {
-    margin: (12px * 2 - $medium-size) / 2;
+    margin: (12px * 2 - theme.$medium-size) / 2;
 
     .dim-label {
       color: inherit;
@@ -1213,13 +1220,13 @@ frame.commit-frame > border {
  */
 
 box.dialog-vbox scrolledwindow.related {
-  border: 1px solid divider($on-surface);
+  border: 1px solid theme-color.divider(theme-color.$on-surface);
   background-clip: padding-box;
-  background-color: $surface-z1;
+  background-color: theme-color.$surface-z1;
 }
 
 list.categories {
-  background-image: image($surface-z0);
+  background-image: image(theme-color.$surface-z0);
 }
 
 /**
@@ -1229,9 +1236,9 @@ list.categories {
 .transparent-bg + stack overlay > label {
   min-height: 24px;
   padding: 0 4px;
-  border-radius: $corner-radius;
-  background-color: $scrim;
-  color: $on-scrim;
+  border-radius: theme.$corner-radius;
+  background-color: theme-color.$scrim;
+  color: theme-color.$on-scrim;
 }
 
 /**
@@ -1241,8 +1248,8 @@ list.categories {
 // Color is needed for Evince to match hardcoded background-color,
 // since Documents app is also uses this style, background-color needs to be set accordingly.
 evview.content-view.view:selected {
-  background-color: $primary;
-  color: $on-primary;
+  background-color: theme-color.$primary;
+  color: theme-color.$on-primary;
 }
 
 /**
@@ -1255,7 +1262,7 @@ evview.content-view.view:selected {
 // background-color is needed to match hard-coded row colors.
 // Just $primary is too harsh for activated rows, so add transparency.
 .polari-room-list row:selected {
-  background-color: rgba($primary, .5);
+  background-color: rgba(theme-color.$primary, .5);
 }
 
 /**

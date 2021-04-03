@@ -1,12 +1,7 @@
-$toolkit: "st";
-$dark-theme: @dark_theme@;
-$light-topbar: @light_topbar@;
-$compact: @compact@;
-
-@import "@current_source_dir@/../theme";
-@import "@current_source_dir@/../theme-color";
-@import "@current_source_dir@/../st-theme";
-@import "@current_source_dir@/../gnome-shell/sass/drawing";
-@import "@current_source_dir@/sass/over-rides";
-@import "@current_source_dir@/sass/extends";
-@import "@current_source_dir@/sass/common";
+@use "@current_source_dir@/../theme" with (
+  $dark-theme: @dark_theme@,
+  $light-topbar: @light_topbar@,
+  $compact: @compact@,
+  $toolkit: "st"
+);
+@use "@current_source_dir@/sass/common";

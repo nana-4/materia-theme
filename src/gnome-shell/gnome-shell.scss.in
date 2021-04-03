@@ -1,13 +1,9 @@
-$toolkit: "st";
-$dark-theme: @dark_theme@;
-$light-topbar: @light_topbar@;
-$compact: @compact@;
-$version: @version@;
-
-@import "@current_source_dir@/../theme";
-@import "@current_source_dir@/../theme-color";
-@import "@current_source_dir@/../st-theme";
-@import "@current_source_dir@/sass/gnome-shell";
-@import "@current_source_dir@/sass/drawing";
-@import "@current_source_dir@/sass/components";
-@import "@current_source_dir@/sass/extensions";
+@use "@current_source_dir@/../theme" with (
+  $dark-theme: @dark_theme@,
+  $light-topbar: @light_topbar@,
+  $compact: @compact@,
+  $toolkit: "st"
+);
+@use "@current_source_dir@/sass/gnome-shell" with ($version: @version@);
+@use "@current_source_dir@/sass/components";
+@use "@current_source_dir@/sass/extensions";

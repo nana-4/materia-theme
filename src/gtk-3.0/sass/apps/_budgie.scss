@@ -5,6 +5,11 @@
  * Budgie Desktop
  */
 
+@use "../../../theme";
+@use "../../../theme-color";
+@use "../common";
+@use "../drawing";
+
 // Container for both the "panel" area and the shadow. Wise to keep
 // this transparent..
 .budgie-container {
@@ -15,7 +20,7 @@
   border-style: none none solid;
 
   button {
-    border-radius: $corner-radius;
+    border-radius: theme.$corner-radius;
 
     @extend %button-flat-basic;
   }
@@ -25,10 +30,10 @@
   border-style: solid;
   border-width: 1px;
   border-color: rgba(black, .1) rgba(black, .2) rgba(black, .3);
-  border-radius: $corner-radius + 1px;
-  box-shadow: $shadow-z4;
+  border-radius: theme.$corner-radius + 1px;
+  box-shadow: theme.$shadow-z4;
   background-clip: padding-box;
-  background-color: $surface-z8;
+  background-color: theme-color.$surface-z8;
 
   .container {
     padding: 2px;
@@ -52,13 +57,13 @@
   }
 
   button.flat:not(.image-button) {
-    min-height: $menuitem-size;
+    min-height: theme.$menuitem-size;
     padding: 0 8px;
-    color: $on-surface;
+    color: theme-color.$on-surface;
     font-weight: normal;
 
     &:disabled {
-      color: disabled($on-surface);
+      color: theme-color.disabled(theme-color.$on-surface);
     }
   }
 
@@ -74,7 +79,7 @@
     }
 
     entry.search {
-      border-bottom: 1px solid divider($on-surface);
+      border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
       border-image: none;
       border-radius: 0;
       box-shadow: none;
@@ -86,10 +91,10 @@
       padding: 0 8px;
       border-radius: 0;
 
-      @include list-item;
+      @include drawing.list-item;
 
       &:checked {
-        background-color: $selected-overlay;
+        background-color: theme-color.$selected-overlay;
       }
 
       // remove pointless indicator
@@ -144,7 +149,7 @@
     }
 
     .unmount-button {
-      margin: ($menuitem-size - $small-size) / 2;
+      margin: (theme.$menuitem-size - theme.$small-size) / 2;
       padding: 0;
     }
 
@@ -154,7 +159,7 @@
     .places-list:not(.always-expand) {
       margin-top: 4px;
       padding-top: 4px;
-      border-top: 1px solid divider($on-surface);
+      border-top: 1px solid theme-color.divider(theme-color.$on-surface);
     }
 
     // FIXME: untested
@@ -191,7 +196,7 @@
 // FIXME: workspace has unnecessary/unknown margin
 .workspace-switcher {
   .workspace-layout {
-    border: 0 solid divider($on-panel);
+    border: 0 solid theme-color.divider(theme-color.$on-panel);
 
     .top &,
     .bottom & {
@@ -212,7 +217,7 @@
 
   .workspace-item,
   .workspace-add-button {
-    border: 0 solid divider($on-panel);
+    border: 0 solid theme-color.divider(theme-color.$on-panel);
 
     .top &,
     .bottom & {
@@ -232,10 +237,10 @@
   }
 
   .workspace-item {
-    transition: $transition;
+    transition: theme.$transition;
 
     &.current-workspace {
-      background-color: activated-overlay($on-panel);
+      background-color: theme-color.activated-overlay(theme-color.$on-panel);
     }
   }
 
@@ -259,7 +264,7 @@
       min-height: 24px;
       min-width: 24px;
       padding: 0;
-      border-radius: $corner-radius;
+      border-radius: theme.$corner-radius;
     }
   }
 }
@@ -276,14 +281,14 @@ button.raven-trigger {
 
 // Panel
 .budgie-panel {
-  transition: background-color $duration $ease-out;
-  background-color: $panel;
-  color: hint($on-panel);
+  transition: background-color theme.$duration theme.$ease-out;
+  background-color: theme-color.$panel;
+  color: theme-color.hint(theme-color.$on-panel);
   font-weight: 500;
 
   &.transparent {
-    background-color: $scrim;
-    color: hint($on-scrim);
+    background-color: theme-color.$scrim;
+    color: theme-color.hint(theme-color.$on-scrim);
   }
 
   button {
@@ -291,22 +296,22 @@ button.raven-trigger {
     min-width: 16px;
     padding: 0;
     border-radius: 0;
-    color: hint($on-panel);
-    @include ink-color($on-panel, $button-style: "flat");
+    color: theme-color.hint(theme-color.$on-panel);
+    @include drawing.ink-color(theme-color.$on-panel, $button-style: "flat");
 
     &:disabled {
       background-color: transparent;
-      color: disabled-hint($on-panel);
+      color: theme-color.disabled-hint(theme-color.$on-panel);
     }
 
     &:checked {
-      $background-color: activated-overlay($on-panel);
-      color: $on-panel;
-      @include ink-color($on-panel, $button-style: "flat", $on: $background-color);
+      $background-color: theme-color.activated-overlay(theme-color.$on-panel);
+      color: theme-color.$on-panel;
+      @include drawing.ink-color(theme-color.$on-panel, $button-style: "flat", $on: $background-color);
 
       &:disabled {
-        background-color: activated-overlay($on-panel);
-        color: disabled($on-panel);
+        background-color: theme-color.activated-overlay(theme-color.$on-panel);
+        color: theme-color.disabled(theme-color.$on-panel);
       }
     }
   }
@@ -320,12 +325,12 @@ button.raven-trigger {
   }
 
   separator {
-    background-color: stroke($on-panel);
+    background-color: theme-color.stroke(theme-color.$on-panel);
   }
 
   // used to indicate unread notifications
   .alert {
-    color: error($on-panel);
+    color: theme-color.error(theme-color.$on-panel);
   }
 
   // End Section needs to be fancy
@@ -339,10 +344,10 @@ button.raven-trigger {
     padding: 0;
     box-shadow: none;
     background-color: transparent;
-    color: $on-panel;
+    color: theme-color.$on-panel;
 
     button:not(.suggested-action):not(.destructive-action) {
-      color: hint($on-panel);
+      color: theme-color.hint(theme-color.$on-panel);
     }
   }
 
@@ -365,10 +370,10 @@ button.raven-trigger {
 
     // for indicator colors
     &:not(:checked) {
-      color: disabled($on-panel);
+      color: theme-color.disabled(theme-color.$on-panel);
 
       &:disabled {
-        color: disabled-hint($on-panel);
+        color: theme-color.disabled-hint(theme-color.$on-panel);
       }
     }
   }
@@ -412,7 +417,7 @@ $underscores-list:
 
 frame.raven-frame > border {
   border-style: none;
-  box-shadow: $shadow-z16;
+  box-shadow: theme.$shadow-z16;
 }
 
 $pos_list: (top: bottom, bottom: top, left: right, right: left);
@@ -437,7 +442,7 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
 
 // Raven
 .raven {
-  background-color: $surface-z8;
+  background-color: theme-color.$surface-z8;
 
   list {
     // background-color: transparent;
@@ -449,24 +454,24 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
   }
 
   .raven-header {
-    min-height: $medium-size;
+    min-height: theme.$medium-size;
     padding: 3px;
 
     // Adopt tabs style only for .top
     &.top {
       padding: 0;
-      border-bottom: 1px solid divider($on-surface);
+      border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
 
       stackswitcher.linked > button {
         @extend %button-flat-activatable;
 
         margin: -4px 0 -5px; // remove unwanted vertical margins
         padding: 0 16px;
-        min-height: $large-size;
+        min-height: theme.$large-size;
         border-image:
           radial-gradient(
             circle closest-corner at center calc(100% - 1px),
-            $primary 0%,
+            theme-color.$primary 0%,
             transparent 0%
           ) 0 0 0 / 0 0 0;
         border-radius: 0;
@@ -475,7 +480,7 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
           border-image:
             radial-gradient(
               circle closest-corner at center calc(100% - 1px),
-              $primary 100%,
+              theme-color.$primary 100%,
               transparent 0%
             ) 0 0 2 / 0 0 2px;
           background-color: transparent;
@@ -484,7 +489,7 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
     }
 
     &.bottom {
-      border-top: 1px solid divider($on-surface);
+      border-top: 1px solid theme-color.divider(theme-color.$on-surface);
     }
   }
 
@@ -501,7 +506,7 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
   }
 
   .expander-button {
-    border-radius: $circular-radius;
+    border-radius: theme.$circular-radius;
   }
 
   .raven-background {
@@ -515,14 +520,14 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
       margin: -2px 8px 9px;
       padding: 0 12px;
       min-height: 32px;
-      border-radius: $circular-radius;
-      color: hint($on-surface);
+      border-radius: theme.$circular-radius;
+      color: theme-color.hint(theme-color.$on-surface);
       font-weight: normal;
-      @include ink-color($on-surface, $button-style: "flat", $on: fill($on-surface));
+      @include drawing.ink-color(theme-color.$on-surface, $button-style: "flat", $on: theme-color.fill(theme-color.$on-surface));
 
       &:checked {
-        color: $primary;
-        @include ink-color($primary, $button-style: "flat", $on: activated-overlay($primary));
+        color: theme-color.$primary;
+        @include drawing.ink-color(theme-color.$primary, $button-style: "flat", $on: theme-color.activated-overlay(theme-color.$primary));
       }
 
       &:not(:first-child) {
@@ -532,16 +537,16 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
 
     // Default music icon
     > overlay > widget > image {
-      color: fill($on-surface);
+      color: theme-color.fill(theme-color.$on-surface);
     }
   }
 
   revealer > .raven-background {
-    border-bottom: 1px solid divider($on-surface);
+    border-bottom: 1px solid theme-color.divider(theme-color.$on-surface);
   }
 
   .raven-header + .raven-background {
-    border-top: 1px solid divider($on-surface);
+    border-top: 1px solid theme-color.divider(theme-color.$on-surface);
   }
 
   // Application block in Notifications stack
@@ -552,7 +557,7 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
     background: none;
 
     &:not(:first-child) {
-      border-top: 1px solid divider($on-surface);
+      border-top: 1px solid theme-color.divider(theme-color.$on-surface);
     }
 
     > box {
@@ -597,7 +602,7 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
 
   .powerstrip button {
     margin: 2px 0 1px;
-    padding: ($large-size - 24px) / 2;
+    padding: (theme.$large-size - 24px) / 2;
   }
 
   .option-subtitle {
@@ -612,24 +617,24 @@ calendar.raven-calendar {
   background-color: transparent;
 
   &:selected {
-    border-radius: $corner-radius;
-    background-color: $selected-overlay;
+    border-radius: theme.$corner-radius;
+    background-color: theme-color.$selected-overlay;
   }
 }
 
 // MPRIS Applet
 .raven-mpris {
-  background-color: $scrim;
-  color: $on-scrim;
+  background-color: theme-color.$scrim;
+  color: theme-color.$on-scrim;
 
   label {
     min-height: 24px;
   }
 
   button.image-button {
-    padding: ($large-size - 24px) / 2;
-    color: hint($on-scrim);
-    @include ink-color($on-scrim, $button-style: "flat");
+    padding: (theme.$large-size - 24px) / 2;
+    color: theme-color.hint(theme-color.$on-scrim);
+    @include drawing.ink-color(theme-color.$on-scrim, $button-style: "flat");
   }
 }
 
@@ -644,7 +649,7 @@ calendar.raven-calendar {
   }
 
   .notification-body {
-    color: hint($on-surface);
+    color: theme-color.hint(theme-color.$on-surface);
   }
 }
 
@@ -673,31 +678,31 @@ calendar.raven-calendar {
 .drop-shadow {
   margin: 5px 9px;
   padding: 3px;
-  border-radius: $corner-radius;
-  box-shadow: $shadow-z4, inset 0 1px highlight($surface-z8);
-  background-color: $surface-z8;
+  border-radius: theme.$corner-radius;
+  box-shadow: theme.$shadow-z4, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
+  background-color: theme-color.$surface-z8;
 
   button {
     @extend %button-flat;
 
     &.text-button:not(:disabled) {
-      color: $primary;
-      @include ink-color($primary, $button-style: "flat");
+      color: theme-color.$primary;
+      @include drawing.ink-color(theme-color.$primary, $button-style: "flat");
     }
   }
 
   .linked > button {
-    margin-right: $container-padding;
+    margin-right: theme.$container-padding;
   }
 }
 
 %budgie_dialog {
-  border-radius: $corner-radius;
-  box-shadow: inset 0 1px highlight($surface-z8);
-  background-color: $surface-z8;
+  border-radius: theme.$corner-radius;
+  box-shadow: inset 0 1px theme-color.highlight(theme-color.$surface-z8);
+  background-color: theme-color.$surface-z8;
 
   decoration {
-    border-radius: $corner-radius;
+    border-radius: theme.$corner-radius;
   }
 }
 
@@ -723,7 +728,7 @@ calendar.raven-calendar {
   }
 
   .dialog-title + label {
-    color: hint($on-surface);
+    color: theme-color.hint(theme-color.$on-surface);
   }
 
   .linked.horizontal > button {
@@ -734,8 +739,8 @@ calendar.raven-calendar {
     }
 
     &:not(:disabled) {
-      color: $primary;
-      @include ink-color($primary, $button-style: "flat");
+      color: theme-color.$primary;
+      @include drawing.ink-color(theme-color.$primary, $button-style: "flat");
     }
   }
 }
@@ -745,11 +750,11 @@ calendar.raven-calendar {
   @extend %budgie_dialog;
 
   .message {
-    color: hint($on-surface);
+    color: theme-color.hint(theme-color.$on-surface);
   }
 
   .failure {
-    color: $error;
+    color: theme-color.$error;
   }
 }
 
@@ -759,7 +764,7 @@ calendar.raven-calendar {
 
   entry.search {
     font-size: 120%;
-    padding: $container-padding 8px + $container-padding;
+    padding: theme.$container-padding 8px + theme.$container-padding;
     border-image: none;
     box-shadow: none;
     background-color: transparent;
@@ -775,18 +780,18 @@ calendar.raven-calendar {
   }
 
   scrolledwindow {
-    border-top: 1px solid divider($on-surface);
+    border-top: 1px solid theme-color.divider(theme-color.$on-surface);
   }
 
   scrollbar {
     &.right,
     &.bottom {
-      border-bottom-right-radius: $corner-radius;
+      border-bottom-right-radius: theme.$corner-radius;
     }
 
     &.left,
     &.bottom {
-      border-bottom-left-radius: $corner-radius;
+      border-bottom-left-radius: theme.$corner-radius;
     }
   }
 }

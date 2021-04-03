@@ -1,14 +1,19 @@
 /* Workspace pager */
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../gnome-shell";
+@use "overview";
+
 // thumbnails in overview
 .workspace-thumbnails {
-  @if $version >= 40 {
+  @if gnome-shell.$version >= 40 {
     padding: 0;
     spacing: 12px;
 
     .workspace-thumbnail {
       @extend %overview-panel;
-      border-radius: $corner-radius;
+      border-radius: theme.$corner-radius;
     }
   } @else {
     @extend %overview-panel;
@@ -16,11 +21,11 @@
     padding: 12px;
     spacing: 12px;
     border-right-width: 0;
-    border-radius: $corner-radius 0 0 $corner-radius;
+    border-radius: theme.$corner-radius 0 0 theme.$corner-radius;
 
     &:rtl {
       border-left-width: 0;
-      border-radius: 0 $corner-radius $corner-radius 0;
+      border-radius: 0 theme.$corner-radius theme.$corner-radius 0;
     }
   }
 
@@ -29,7 +34,7 @@
     background-image: url("assets/dash-placeholder.svg");
     background-size: contain;
 
-    @if $version >= 40 {
+    @if gnome-shell.$version >= 40 {
       width: 24px;
     } @else {
       height: 24px;
@@ -39,10 +44,10 @@
 
 // selected indicator
 .workspace-thumbnail-indicator {
-  border: 0 solid $on-dark;
+  border: 0 solid theme-color.$on-dark;
   border-radius: 0;
 
-  @if $version >= 40 {
+  @if gnome-shell.$version >= 40 {
     padding: 6px;
     border-bottom-width: 2px;
   } @else {

@@ -1,15 +1,19 @@
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../gnome-shell";
+
 // Rubberband for select-area screenshots
 .select-area-rubberband {
-  border: 1px solid primary($on-dark);
-  background-color: rgba(primary($on-dark), .3);
+  border: 1px solid theme-color.primary(theme-color.$on-dark);
+  background-color: rgba(theme-color.primary(theme-color.$on-dark), .3);
 }
 
 // User icon
-$user-icon: if($version >= 3.32, ".user-icon", ".framed-user-icon");
+$user-icon: if(gnome-shell.$version >= 3.32, ".user-icon", ".framed-user-icon");
 
 #{$user-icon} {
   border: 0;
-  border-radius: $circular-radius;
+  border-radius: theme.$circular-radius;
   background-size: contain;
   color: inherit;
 
@@ -29,14 +33,14 @@ $user-icon: if($version >= 3.32, ".user-icon", ".framed-user-icon");
   }
 }
 
-@if $version >= 3.36 {
+@if gnome-shell.$version >= 3.36 {
   .user-icon {
     StIcon {
-      background-color: fill($on-surface);
-      border-radius: $circular-radius;
+      background-color: theme-color.fill(theme-color.$on-surface);
+      border-radius: theme.$circular-radius;
     }
 
-    @if $version >= 40 {
+    @if gnome-shell.$version >= 40 {
       @include user-icon-size(64px);
 
       &.user-avatar {
@@ -49,7 +53,7 @@ $user-icon: if($version >= 3.32, ".user-icon", ".framed-user-icon");
     @include user-icon-size(128px);
   }
 
-  @if $version < 40 {
+  @if gnome-shell.$version < 40 {
     .user-widget.horizontal .user-icon {
       @include user-icon-size(64px);
     }
@@ -76,13 +80,13 @@ $user-icon: if($version >= 3.32, ".user-icon", ".framed-user-icon");
   text-align: center;
   padding-bottom: 8px;
   font-size: 1em;
-  color: $warning;
+  color: theme-color.$warning;
 }
 
-@if $version >= 40 {
+@if gnome-shell.$version >= 40 {
   /* Workspace animation */
 
   .workspace-animation {
-    background-color: $system;
+    background-color: theme-color.$system;
   }
 }

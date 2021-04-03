@@ -1,5 +1,10 @@
 // IBus Candidate Popup
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../../../st-theme";
+@use "menu";
+
 .candidate-popup-boxpointer {
   @extend .popup-menu-boxpointer;
 }
@@ -12,35 +17,35 @@
 
 .candidate-index {
   padding: 0 4px 0 0;
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
 }
 
 .candidate-box {
-  transition-duration: $duration;
-  min-height: $menuitem-size;
+  transition-duration: st-theme.$duration;
+  min-height: st-theme.$menuitem-size;
   padding: 0 8px;
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
 
   &:hover {
-    background-color: hover-overlay($on-surface);
+    background-color: theme-color.hover-overlay(theme-color.$on-surface);
     color: inherit;
     transition-duration: 0ms;
   }
 
   &:active {
-    background-color: pressed-overlay($on-surface);
-    transition-duration: $duration-ripple;
+    background-color: theme-color.pressed-overlay(theme-color.$on-surface);
+    transition-duration: st-theme.$duration-ripple;
   }
 
   &:selected {
-    background-color: $selected-overlay;
+    background-color: theme-color.$selected-overlay;
     color: inherit;
     transition-duration: 0ms;
   }
 }
 
 .candidate-page-button-box {
-  height: $menuitem-size;
+  height: st-theme.$menuitem-size;
 
   .vertical & {
     padding-top: 0;
@@ -52,18 +57,18 @@
 }
 
 .candidate-page-button {
-  min-width: $menuitem-size;
-  min-height: $menuitem-size;
+  min-width: st-theme.$menuitem-size;
+  min-height: st-theme.$menuitem-size;
   padding: 0;
 }
 
 .candidate-page-button-previous {
   border-right-width: 0;
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
 }
 
 .candidate-page-button-next {
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
 }
 
 .candidate-page-button-icon {

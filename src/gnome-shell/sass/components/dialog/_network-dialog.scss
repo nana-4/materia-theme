@@ -1,4 +1,10 @@
 /* Network Dialogs */
+
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../../../st-theme";
+@use "../../drawing";
+
 .nm-dialog {
   max-height: 34em;
   min-height: 31em;
@@ -20,21 +26,21 @@
 }
 
 .nm-dialog-airplane-text {
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
 }
 
 // header
 .nm-dialog-header {
-  @include type(headline6);
+  @include drawing.type(headline6);
 }
 
 .nm-dialog-subheader {
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
 }
 
 .nm-dialog-header-icon {
   icon-size: 32px;
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
 }
 
 .nm-dialog-header-hbox {
@@ -50,36 +56,36 @@
 
 // list item
 .nm-dialog-item {
-  transition-duration: $duration;
+  transition-duration: st-theme.$duration;
   padding: 12px;
   spacing: 20px;
   border-bottom: 0;
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
   font-size: 1em;
 
   &:focus {
-    background-color: focus-overlay($on-surface);
+    background-color: theme-color.focus-overlay(theme-color.$on-surface);
   }
 
   &:hover {
-    background-color: hover-overlay($on-surface);
+    background-color: theme-color.hover-overlay(theme-color.$on-surface);
   }
 
   &:active {
-    transition-duration: $duration-ripple;
-    background-color: pressed-overlay($on-surface);
+    transition-duration: st-theme.$duration-ripple;
+    background-color: theme-color.pressed-overlay(theme-color.$on-surface);
   }
 
   &:selected {
-    background-color: $selected-overlay;
-    color: $on-surface;
+    background-color: theme-color.$selected-overlay;
+    color: theme-color.$on-surface;
   }
 }
 
 // icons in list
 .nm-dialog-icon {
   icon-size: 16px;
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
 }
 
 .nm-dialog-icons {
@@ -88,7 +94,7 @@
 
 // no networks
 .no-networks-label {
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
 }
 
 .no-networks-box {

@@ -1,5 +1,10 @@
 /* Popovers/Menus */
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../../../st-theme";
+@use "../../gnome-shell";
+
 // the popover itself
 .popup-menu-boxpointer {
   -arrow-base: 0;
@@ -32,10 +37,10 @@
 .popup-menu-content {
   margin: 8px;
   padding: 8px 0;
-  border-radius: $corner-radius;
-  box-shadow: $shadow-z4;
-  background-color: $surface-z8;
-  color: $on-surface;
+  border-radius: theme.$corner-radius;
+  box-shadow: theme.$shadow-z4;
+  background-color: theme-color.$surface-z8;
+  color: theme-color.$on-surface;
 }
 
 // menu items
@@ -43,7 +48,7 @@
   // min-height: $menuitem-size - 4px * 2;
   spacing: 8px;
   padding: 0;
-  transition-duration: $duration;
+  transition-duration: st-theme.$duration;
 
   &:ltr {
     padding: 0.4em;
@@ -58,37 +63,37 @@
   }
 
   &.selected {
-    background-color: hover-overlay($on-surface);
+    background-color: theme-color.hover-overlay(theme-color.$on-surface);
     transition-duration: 0ms;
 
     &,
     &:active {
-      color: $on-surface;
+      color: theme-color.$on-surface;
     }
   }
 
   &:active {
-    background-color: pressed-overlay($on-surface);
-    color: $on-surface;
-    transition-duration: $duration-ripple;
+    background-color: theme-color.pressed-overlay(theme-color.$on-surface);
+    color: theme-color.$on-surface;
+    transition-duration: st-theme.$duration-ripple;
   }
 
   &:checked {
     box-shadow: none;
-    background-color: $selected-overlay;
+    background-color: theme-color.$selected-overlay;
     font-weight: normal;
 
     &.selected {
-      background-color: hover-overlay($primary, $on: $selected-overlay);
+      background-color: theme-color.hover-overlay(theme-color.$primary, $on: theme-color.$selected-overlay);
     }
 
     &:active {
-      background-color: pressed-overlay($primary, $on: $selected-overlay);
+      background-color: theme-color.pressed-overlay(theme-color.$primary, $on: theme-color.$selected-overlay);
     }
   }
 
   &:insensitive {
-    color: disabled($on-surface);
+    color: theme-color.disabled(theme-color.$on-surface);
   }
 
   .toggle-switch {
@@ -104,17 +109,17 @@
 
 // all icons and other graphical elements
 .popup-inactive-menu-item {
-  color: $on-surface;
+  color: theme-color.$on-surface;
 
   &:insensitive {
-    color: disabled($on-surface);
+    color: theme-color.disabled(theme-color.$on-surface);
   }
 }
 
 // symbolic icons in popover
 
 .popup-menu-arrow {
-  @if $version >= 3.32 {
+  @if gnome-shell.$version >= 3.32 {
     icon-size: 16px;
   } @else {
     width: 16px;
@@ -122,13 +127,13 @@
   }
 
   .popup-menu-content & {
-    color: hint($on-surface);
+    color: theme-color.hint(theme-color.$on-surface);
   }
 }
 
 .popup-menu-icon {
   icon-size: 16px;
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
 }
 
 // popover submenus
@@ -137,7 +142,7 @@
   border-bottom: 0;
   padding-bottom: 0;
   box-shadow: none;
-  background-color: entry-fill($on-surface);
+  background-color: theme-color.entry-fill(theme-color.$on-surface);
 }
 
 // container for radio and check boxes
@@ -156,7 +161,7 @@
 }
 
 // separator
-@if $version >= 3.36 {
+@if gnome-shell.$version >= 3.36 {
   .popup-separator-menu-item {
     padding: 0;
 
@@ -164,12 +169,12 @@
       // -margin-horizontal: 24px;
       height: 1px; // not really the whole box
       margin: 8px 0;
-      background-color: divider($on-surface);
+      background-color: theme-color.divider(theme-color.$on-surface);
 
       // submenu separators
       .popup-sub-menu & {
         margin: 8px 0;
-        background-color: divider($on-surface);
+        background-color: theme-color.divider(theme-color.$on-surface);
 
         &:ltr {
           margin-right: 32px;
@@ -187,7 +192,7 @@
     height: 1px; // not really the whole box
     margin: 8px 64px - 24px;
     border: 0;
-    background-color: divider($on-surface);
+    background-color: theme-color.divider(theme-color.$on-surface);
   }
 }
 
@@ -222,12 +227,12 @@
   }
 }
 
-@if $version == 3.32 {
+@if gnome-shell.$version == 3.32 {
   .system-switch-user-submenu-icon {
     icon-size: 16px;
     padding: 0 4px;
   }
-} @else if $version < 3.32 {
+} @else if gnome-shell.$version < 3.32 {
   .system-switch-user-submenu-icon.user-icon {
     icon-size: 20px;
     padding: 0 2px;
@@ -239,34 +244,34 @@
   }
 }
 
-@if $version < 3.36 {
+@if gnome-shell.$version < 3.36 {
   .system-menu-action {
     -st-icon-style: symbolic; // >= 3.30
-    padding: ($large-size - 16px) / 2;
+    padding: (theme.$large-size - 16px) / 2;
     border: 0;
-    border-radius: $large-size / 2; // wish we could do 50%
-    color: hint($on-surface);
-    transition-duration: $duration;
+    border-radius: theme.$large-size / 2; // wish we could do 50%
+    color: theme-color.hint(theme-color.$on-surface);
+    transition-duration: st-theme.$duration;
 
     &:hover,
     &:focus {
-      padding: ($large-size - 16px) / 2;
+      padding: (theme.$large-size - 16px) / 2;
       border: 0;
-      color: hint($on-surface);
+      color: theme-color.hint(theme-color.$on-surface);
     }
 
     &:focus {
-      background-color: focus-overlay($on-surface);
+      background-color: theme-color.focus-overlay(theme-color.$on-surface);
     }
 
     &:hover {
-      background-color: hover-overlay($on-surface);
+      background-color: theme-color.hover-overlay(theme-color.$on-surface);
     }
 
     &:active {
-      background-color: pressed-overlay($on-surface);
-      color: hint($on-surface);
-      transition-duration: $duration-ripple;
+      background-color: theme-color.pressed-overlay(theme-color.$on-surface);
+      color: theme-color.hint(theme-color.$on-surface);
+      transition-duration: st-theme.$duration-ripple;
     }
 
     > StIcon {

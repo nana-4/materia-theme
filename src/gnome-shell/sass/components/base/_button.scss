@@ -1,48 +1,51 @@
 /* Buttons */
 
+@use "../../../../theme";
+@use "../../drawing";
+
 %button,
 .button {
-  min-height: $medium-size;
+  min-height: theme.$medium-size;
   min-width: 64px - 8px * 2;
   padding: 0 8px;
   border: 0;
-  border-radius: $corner-radius;
+  border-radius: theme.$corner-radius;
 
-  @include type(button);
-  @include button(flat-normal);
+  @include drawing.type(button);
+  @include drawing.button(flat-normal);
 
   &:focus {
-    @include button(flat-focus);
+    @include drawing.button(flat-focus);
   }
 
   &:hover {
-    @include button(flat-hover);
+    @include drawing.button(flat-hover);
   }
 
   &:active {
-    @include button(flat-active);
+    @include drawing.button(flat-active);
   }
 
   &:insensitive {
-    @include button(flat-insensitive);
+    @include drawing.button(flat-insensitive);
   }
 }
 
 // buttons in dialogs and notifications
 %bubble_button {
   @extend %button;
-  margin: $container-padding;
+  margin: theme.$container-padding;
   margin-right: 0;
 
   &:first-child,
   &:last-child,
   &:first-child:last-child {
-    border-radius: $corner-radius;
+    border-radius: theme.$corner-radius;
   }
 
   &:last-child,
   &:first-child:last-child {
-    margin-right: $container-padding;
+    margin-right: theme.$container-padding;
     border-right-width: 0;
   }
 }

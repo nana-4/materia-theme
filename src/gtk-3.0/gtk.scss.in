@@ -1,11 +1,9 @@
-$toolkit: "gtk3";
-$dark-theme: @dark_theme@;
-$light-topbar: @light_topbar@;
-$compact: @compact@;
-
-@import "@current_source_dir@/../theme";
-@import "@current_source_dir@/../theme-color";
-@import "@current_source_dir@/sass/drawing";
-@import "@current_source_dir@/sass/common";
-@import "@current_source_dir@/sass/apps";
-@import "@current_source_dir@/sass/public-colors";
+@use "@current_source_dir@/../theme" with (
+  $dark-theme: @dark_theme@,
+  $light-topbar: @light_topbar@,
+  $compact: @compact@,
+  $toolkit: "gtk3"
+);
+@use "@current_source_dir@/sass/common";
+@use "@current_source_dir@/sass/apps";
+@use "@current_source_dir@/sass/public-colors";

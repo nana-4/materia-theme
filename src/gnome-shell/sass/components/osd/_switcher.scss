@@ -1,5 +1,11 @@
 /* App Switcher */
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../../../st-theme";
+@use "../../drawing";
+@use "osd";
+
 .switcher-popup {
   padding: 8px;
   spacing: 16px;
@@ -14,21 +20,21 @@
   }
 
   .item-box {
-    transition-duration: $duration;
+    transition-duration: st-theme.$duration;
     padding: 8px;
     border: 0;
-    border-radius: $corner-radius;
+    border-radius: theme.$corner-radius;
 
     &:outlined {
       padding: 8px;
       border: 0;
       box-shadow: none;
-      background-color: activated-overlay($on-surface);
+      background-color: theme-color.activated-overlay(theme-color.$on-surface);
       color: inherit;
     }
 
     &:selected {
-      background-color: $selected-overlay;
+      background-color: theme-color.$selected-overlay;
       color: inherit;
     }
   }
@@ -45,17 +51,17 @@
 
   .separator {
     width: 1px;
-    background: divider($on-surface);
+    background: theme-color.divider(theme-color.$on-surface);
   }
 }
 
 .switcher-arrow {
-  transition-duration: $duration;
+  transition-duration: st-theme.$duration;
   border-color: transparent;
-  color: hint($on-surface);
+  color: theme-color.hint(theme-color.$on-surface);
 
   &:highlighted {
-    color: $on-surface;
+    color: theme-color.$on-surface;
   }
 }
 
@@ -63,10 +69,10 @@
 .input-source-switcher-symbol {
   width: 96px;
   height: 96px;
-  @include type(headline3);
+  @include drawing.type(headline3);
 }
 
 // Window cycler highlight
 .cycler-highlight {
-  border: 4px solid $primary;
+  border: 4px solid theme-color.$primary;
 }

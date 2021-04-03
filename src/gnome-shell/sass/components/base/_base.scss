@@ -17,33 +17,39 @@
  * Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../../../st-theme";
+@use "../../gnome-shell";
+@use "../../drawing";
+
 // Stage
 stage {
-  color: $on-surface;
+  color: theme-color.$on-surface;
 
-  @if $version >= 3.36 {
+  @if gnome-shell.$version >= 3.36 {
     font-size: 1em;
   } @else {
-    @include type(body2);
-    font-family: $font-family;
+    @include drawing.type(body2);
+    font-family: st-theme.$font-family;
   }
 }
 
 // Links
 .shell-link {
-  transition-duration: $duration;
-  border-radius: $corner-radius;
-  color: $primary;
+  transition-duration: st-theme.$duration;
+  border-radius: theme.$corner-radius;
+  color: theme-color.$primary;
 
   &:hover {
-    background-color: hover-overlay($primary);
-    color: $primary;
+    background-color: theme-color.hover-overlay(theme-color.$primary);
+    color: theme-color.$primary;
   }
 
   &:active {
-    transition-duration: $duration-ripple;
-    background-color: pressed-overlay($primary);
-    color: $primary;
+    transition-duration: st-theme.$duration-ripple;
+    background-color: theme-color.pressed-overlay(theme-color.$primary);
+    color: theme-color.$primary;
   }
 }
 

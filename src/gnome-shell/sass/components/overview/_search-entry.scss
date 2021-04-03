@@ -1,46 +1,51 @@
 // Search entry
 
+@use "../../../../theme";
+@use "../../../../theme-color";
+@use "../../gnome-shell";
+@use "../../drawing";
+
 %search-entry,
 .search-entry {
   width: 320px - 8px * 2;
   padding: 0 8px;
-  border-radius: $corner-radius $corner-radius 0 0;
-  color: disabled($on-dark);
-  selection-background-color: stroke($on-dark);
-  selected-color: $on-dark;
-  @include entry(normal, $fc: stroke($on-dark));
+  border-radius: theme.$corner-radius theme.$corner-radius 0 0;
+  color: theme-color.disabled(theme-color.$on-dark);
+  selection-background-color: theme-color.stroke(theme-color.$on-dark);
+  selected-color: theme-color.$on-dark;
+  @include drawing.entry(normal, $fc: theme-color.stroke(theme-color.$on-dark));
 
-  @if $version >= 40 {
+  @if gnome-shell.$version >= 40 {
     margin-top: 16px;
     margin-bottom: 8px;
   }
 
   &:hover {
-    @include entry(hover, $fc: stroke($on-dark));
-    color: disabled($on-dark);
+    @include drawing.entry(hover, $fc: theme-color.stroke(theme-color.$on-dark));
+    color: theme-color.disabled(theme-color.$on-dark);
   }
 
   &:focus {
-    @include entry(focus, $fc: $on-dark);
+    @include drawing.entry(focus, $fc: theme-color.$on-dark);
     padding: 0 8px;
     border: 0;
-    color: $on-dark;
+    color: theme-color.$on-dark;
   }
 
   StLabel.hint-text {
-    color: hint($on-dark);
+    color: theme-color.hint(theme-color.$on-dark);
   }
 
   .search-entry-icon {
     icon-size: 16px;
     padding: 0 4px;
-    color: hint($on-dark);
+    color: theme-color.hint(theme-color.$on-dark);
   }
 
   &:hover,
   &:focus {
     .search-entry-icon {
-      color: $on-dark;
+      color: theme-color.$on-dark;
     }
   }
 }

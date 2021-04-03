@@ -5,10 +5,15 @@
  * LightDM GTK+ Greeter
  */
 
+@use "../../../theme";
+@use "../../../theme-color";
+@use "../common";
+@use "../drawing";
+
 // the panel widget at the top
 #panel_window {
-  background-color: $scrim-alt;
-  color: $on-scrim-alt;
+  background-color: theme-color.$scrim-alt;
+  color: theme-color.$on-scrim-alt;
   // font-weight: bold;
 
   // the menubars/menus of the panel, i.e. indicators
@@ -26,15 +31,15 @@
   }
 
   menubar > menuitem {
-    color: hint($on-scrim-alt);
+    color: theme-color.hint(theme-color.$on-scrim-alt);
 
     &:hover {
-      background-color: activated-overlay($on-scrim-alt);
-      color: $on-scrim-alt;
+      background-color: theme-color.activated-overlay(theme-color.$on-scrim-alt);
+      color: theme-color.$on-scrim-alt;
     }
 
     &:disabled {
-      color: disabled-hint($on-scrim-alt);
+      color: theme-color.disabled-hint(theme-color.$on-scrim-alt);
     }
   }
 }
@@ -44,10 +49,10 @@
 #shutdown_dialog,
 #restart_dialog {
   margin: 8px;
-  border-radius: $corner-radius;
-  box-shadow: $shadow-z6, inset 0 1px highlight($surface-z8);
-  background-color: $surface-z8;
-  color: $on-surface;
+  border-radius: theme.$corner-radius;
+  box-shadow: theme.$shadow-z6, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
+  background-color: theme-color.$surface-z8;
+  color: theme-color.$on-surface;
 }
 
 // the top half of the login-window, in GtkDialog terms, the content
@@ -95,8 +100,8 @@
     @extend %button-flat;
 
     &:not(:disabled) {
-      color: $primary;
-      @include ink-color($primary, $button-style: "flat");
+      color: theme-color.$primary;
+      @include drawing.ink-color(theme-color.$primary, $button-style: "flat");
     }
   }
 }
