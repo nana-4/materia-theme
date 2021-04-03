@@ -74,7 +74,7 @@ $column-margin: 0 8px;
 
 .events-section-title {
   @include item;
-  min-height: st-theme.$menuitem-size - 8px * 2;
+  min-height: theme.$menu-item-height - 8px * 2;
   padding: 8px;
   color: theme-color.hint(theme-color.$on-surface) !important;
   font-weight: bold;
@@ -84,7 +84,7 @@ $column-margin: 0 8px;
 .datemenu-today-button {
   @include item;
   margin: $column-margin;
-  min-height: st-theme.$menuitem-size * 2 - 8px * 2;
+  min-height: theme.$menu-item-height * 2 - 8px * 2;
   padding: 8px;
 
   // weekday label
@@ -109,7 +109,7 @@ $column-margin: 0 8px;
   // month
   .calendar-month-label {
     transition-duration: st-theme.$duration;
-    min-height: st-theme.$menuitem-size - 6px * 2;
+    min-height: theme.$menu-item-height - 6px * 2;
     margin: 2px;
     padding: 6px 8px;
     border-radius: theme.$corner-radius;
@@ -148,10 +148,10 @@ $column-margin: 0 8px;
 
   .pager-button {
     transition-duration: st-theme.$duration;
-    width: st-theme.$menuitem-size;
-    height: st-theme.$menuitem-size;
+    width: theme.$menu-item-height;
+    height: theme.$menu-item-height;
     margin: 2px;
-    border-radius: st-theme.$menuitem-size / 2;
+    border-radius: theme.$menu-item-height / 2;
     background-color: transparent;
     color: theme-color.hint(theme-color.$on-surface);
 
@@ -171,12 +171,12 @@ $column-margin: 0 8px;
 
   .calendar-day-base {
     transition-duration: st-theme.$duration;
-    width: st-theme.$menuitem-size;
-    height: st-theme.$menuitem-size;
+    width: theme.$menu-item-height;
+    height: theme.$menu-item-height;
     margin: 2px;
     padding: 0;
     border: 0;
-    border-radius: st-theme.$menuitem-size / 2;
+    border-radius: theme.$menu-item-height / 2;
     @include typography.caption;
     font-feature-settings: "tnum";
     text-align: center;
@@ -205,11 +205,11 @@ $column-margin: 0 8px;
 
     // day of week heading
     &.calendar-day-heading {
-      width: st-theme.$menuitem-size;
-      height: st-theme.$menuitem-size - 7px;
+      width: theme.$menu-item-height;
+      height: theme.$menu-item-height - 7px;
       margin-top: 2px;
       padding: 7px 0 0;
-      border-radius: st-theme.$menuitem-size / 2;
+      border-radius: theme.$menu-item-height / 2;
       background-color: transparent;
       color: theme-color.disabled(theme-color.$on-surface);
       @include typography.caption;
@@ -296,10 +296,10 @@ $column-margin: 0 8px;
   }
 
   .calendar-week-number {
-    width: st-theme.$menuitem-size;
-    height: st-theme.$menuitem-size;
+    width: theme.$menu-item-height;
+    height: theme.$menu-item-height;
     margin: 2px;
-    border-radius: st-theme.$menuitem-size / 2;
+    border-radius: theme.$menu-item-height / 2;
     background-color: transparent;
     color: theme-color.disabled(theme-color.$on-surface);
     font-weight: bold;
@@ -307,7 +307,7 @@ $column-margin: 0 8px;
     text-align: center;
 
     @if gnome-shell.$version < 3.38 {
-      height: st-theme.$menuitem-size - 7px;
+      height: theme.$menu-item-height - 7px;
       padding: 7px 0 0;
     }
   }
@@ -317,7 +317,7 @@ $column-margin: 0 8px;
   /* Events */
   .events-button {
     @include item;
-    min-height: st-theme.$menuitem-size * 2 - 8px * 2;
+    min-height: theme.$menu-item-height * 2 - 8px * 2;
     padding: 8px;
 
     .events-box {
@@ -345,7 +345,7 @@ $column-margin: 0 8px;
 /* World clocks */
 .world-clocks-button {
   @include item;
-  min-height: st-theme.$menuitem-size - 8px * 2;
+  min-height: theme.$menu-item-height - 8px * 2;
   padding: 8px;
 
   .world-clocks-grid {
@@ -394,7 +394,7 @@ $column-margin: 0 8px;
 /* Weather */
 .weather-button {
   @include item;
-  min-height: st-theme.$menuitem-size * 2 - 8px * 2;
+  min-height: theme.$menu-item-height * 2 - 8px * 2;
   padding: 8px;
 
   .weather-box {
