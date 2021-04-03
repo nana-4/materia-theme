@@ -20,10 +20,10 @@ right place for a drive by stylesheet fix:
 
 File | Description
 :-- | :--
-`_variables.scss` | Variables to allow easier definition of widget sizing/styling.
+`_theme.scss` | Variables to allow easier definition of widget sizing/styling.
 `_color-palette.scss` | Material Design color palette definitions. We don't recommend editing this unless Google updates the color scheme.
-`_colors.scss` | Global color definitions. We keep the number of defined colors to a necessary minimum. It covers both the light variant and the dark variant.
-`_colors-public.scss` | SCSS colors exported through GTK to allow for 3rd party apps color mixing.
+`_theme-color.scss` | Global color definitions. We keep the number of defined colors to a necessary minimum. It covers both the light variant and the dark variant.
+`_public-colors.scss` | SCSS colors exported through GTK to allow for 3rd party apps color mixing.
 `_drawing.scss` | Drawing helper mixings/functions to allow easier definition of widget drawing under specific context.
 `_common.scss` | Actual definitions of style for each widget. This is where you are likely to add/remove your changes.
 `_apps.scss` <br> `_extensions.scss` | App/extension specific stylings.
@@ -76,7 +76,7 @@ colors are defined.
 #### SCSS
 
 - `src/_sass/_color-palette.scss`
-- `src/_sass/_colors.scss`
+- `src/_sass/_theme-color.scss`
 
 #### SVG
 

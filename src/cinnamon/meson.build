@@ -1,9 +1,9 @@
 cinnamon_scss_depend_files = files([
   '../_color-palette.scss',
-  '../_colors.scss',
-  '../_variables.scss',
+  '../_st-theme.scss',
+  '../_theme.scss',
+  '../_theme-color.scss',
   '../gnome-shell/sass/_drawing.scss',
-  '../gnome-shell/sass/_variables.scss',
   'sass/_common.scss',
   'sass/_extends.scss',
   'sass/_over-rides.scss',

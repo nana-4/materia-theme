@@ -19,9 +19,9 @@ message('Set gtk4 version to ' + gtk4_version)
 
 gtk4_scss_depend_files = files([
   '../_color-palette.scss',
-  '../_colors.scss',
-  '../_variables.scss',
-  '../gtk-3.0/sass/_colors-public.scss',
+  '../_theme.scss',
+  '../_theme-color.scss',
+  '../gtk-3.0/sass/_public-colors.scss',
   'sass/_common.scss',
   'sass/_drawing.scss',
 ])

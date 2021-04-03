@@ -21,8 +21,9 @@ message('Set gnome-shell version to ' + gnome_shell_version)
 
 gnome_shell_scss_depend_files = files([
   '../_color-palette.scss',
-  '../_colors.scss',
-  '../_variables.scss',
+  '../_st-theme.scss',
+  '../_theme.scss',
+  '../_theme-color.scss',
   'sass/components/base/_base.scss',
   'sass/components/base/_button.scss',
   'sass/components/base/_check-box.scss',
@@ -60,7 +61,6 @@ gnome_shell_scss_depend_files = files([
   'sass/_components.scss',
   'sass/_drawing.scss',
   'sass/_extensions.scss',
-  'sass/_variables.scss',
 ])
 
 foreach theme: themes
