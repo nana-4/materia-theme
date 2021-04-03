@@ -108,8 +108,10 @@ StScrollView {
     color: theme-color.$on-surface;
     transition-duration: 0ms;
   }
-  &:insensitive { color: theme-color.disabled(theme-color.$on-surface); }
+  &:insensitive {
+    color: theme-color.disabled(theme-color.$on-surface);
   }
+}
 .popup-image-menu-item {
   color: theme-color.hint(theme-color.$on-surface);
 }
@@ -128,7 +130,9 @@ StScrollView {
 }
 .popup-inactive-menu-item {
   color: theme-color.$on-surface;
-  &:insensitive { color: theme-color.disabled(theme-color.$on-surface); }
+  &:insensitive {
+    color: theme-color.disabled(theme-color.$on-surface);
+  }
 }
 .popup-subtitle-menu-item {
   @include drawing.type(subtitle2);
@@ -260,7 +264,7 @@ StScrollView {
   .workspace-switcher, .workspace-graph, .workspace-button {
     padding: 1px 4px;
   }
-  .workspace-graph, .workspace-button {;
+  .workspace-graph, .workspace-button {
     &:hover {
       box-shadow: 0 3px 0 0 theme-color.$primary inset;
     }
@@ -312,7 +316,7 @@ StScrollView {
   .workspace-switcher, .workspace-graph, .workspace-button {
     padding: 1px 4px;
   }
-  .workspace-graph, .workspace-button {;
+  .workspace-graph, .workspace-button {
     &:hover {
       box-shadow: 0 -3px 0 0 theme-color.$primary inset;
     }
@@ -368,7 +372,7 @@ StScrollView {
     padding: 4px 1px;
     min-height: 1.2em;
   }
-  .workspace-graph, .workspace-button {;
+  .workspace-graph, .workspace-button {
     &:hover {
       box-shadow: 3px 0 0 0 theme-color.$primary inset;
     }
@@ -421,7 +425,7 @@ StScrollView {
     padding: 4px 1px;
     min-height: 1.2em;
   }
-  .workspace-graph, .workspace-button {;
+  .workspace-graph, .workspace-button {
     &:hover {
       box-shadow: -3px 0 0 0 theme-color.$primary inset;
     }
@@ -506,7 +510,9 @@ StScrollView {
   border: none;
   padding: 8px;
   border-radius: theme.$corner-radius 0 0 theme.$corner-radius;
-  &:rtl { border-radius: 0 theme.$corner-radius theme.$corner-radius 0;}
+  &:rtl {
+    border-radius: 0 theme.$corner-radius theme.$corner-radius 0;
+  }
 }
 .workspace-thumbnails {
   spacing: 32px;
@@ -589,7 +595,9 @@ StScrollView {
     border-radius: theme.$corner-radius;
     color: theme-color.$on-surface;
     text-align: center;
-    &:focus { background-color: theme-color.divider(theme-color.$on-surface) };
+    &:focus {
+      background-color: theme-color.divider(theme-color.$on-surface);
+    }
 }
 .calendar-month-label {
     @include drawing.type(subtitle2);
@@ -600,7 +608,9 @@ StScrollView {
     border-radius: theme.$corner-radius;
     color: theme-color.$on-surface;
     text-align: center;
-    &:focus { background-color: theme-color.divider(theme-color.$on-surface) };
+    &:focus {
+      background-color: theme-color.divider(theme-color.$on-surface);
+    }
 }
 .calendar-change-month-back {
   @extend %calendar-shared;
@@ -622,11 +632,15 @@ StScrollView {
   @include drawing.type(caption);
 
   text-align: center;
-  width: st-theme.$menuitem-size; height: st-theme.$menuitem-size;
+  width: st-theme.$menuitem-size;
+  height: st-theme.$menuitem-size;
   padding: 0;
   margin: 2px;
   border-radius: 100px;
-  &:hover,&:focus { background-color: theme-color.stroke(theme-color.$on-titlebar); }
+  &:hover,
+  &:focus {
+    background-color: theme-color.stroke(theme-color.$on-titlebar);
+  }
   &:active {
     color: theme-color.$on-primary;
     background-color: theme-color.$primary;
@@ -636,7 +650,8 @@ StScrollView {
 .calendar-week-number {
   @include drawing.type(caption);
 
-  width: st-theme.$menuitem-size - 7px; height: st-theme.$menuitem-size;
+  width: st-theme.$menuitem-size - 7px;
+  height: st-theme.$menuitem-size;
   margin: 2px;
   padding: 0;
   border-radius: 100px;
@@ -647,7 +662,8 @@ StScrollView {
 .calendar-day-heading  {
   @include drawing.type(caption);
 
-  width: st-theme.$menuitem-size; height: st-theme.$menuitem-size - 7px;
+  width: st-theme.$menuitem-size;
+  height: st-theme.$menuitem-size - 7px;
   margin: 2px;
   padding: 0;
   border-radius: 100px;
@@ -684,7 +700,8 @@ StScrollView {
   opacity: 0.5;
 }
 .calendar-week-number {
-  width: st-theme.$menuitem-size; height: st-theme.$menuitem-size - 7px;
+  width: st-theme.$menuitem-size;
+  height: st-theme.$menuitem-size - 7px;
   margin: 2px;
   padding: 7px 0 0;
   border-radius: 100px;
