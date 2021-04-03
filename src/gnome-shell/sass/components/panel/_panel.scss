@@ -14,6 +14,12 @@ $on-color: theme-color.$on-panel;
   $on-color: theme-color.$on-scrim;
 }
 
+$button-hpadding: 12px;
+
+@if theme.$compact {
+  $button-hpadding: 8px;
+}
+
 #panel {
   transition-duration: overview.$transition-duration;
   height: st-theme.$menuitem-size;
@@ -46,8 +52,8 @@ $on-color: theme-color.$on-panel;
 
   // panel menus
   .panel-button {
-    -natural-hpadding: st-theme.$panel-button-hpadding;
-    -minimum-hpadding: st-theme.$panel-button-hpadding / 2;
+    -natural-hpadding: $button-hpadding;
+    -minimum-hpadding: $button-hpadding / 2;
     transition-duration: st-theme.$duration;
     border: 0;
     border-radius: 0;
@@ -148,7 +154,7 @@ $on-color: theme-color.$on-panel;
 
     @if gnome-shell.$version >= 40 {
       &#panelActivities {
-        -natural-hpadding: st-theme.$panel-button-hpadding;
+        -natural-hpadding: $button-hpadding;
       }
     }
   }
@@ -249,5 +255,14 @@ $on-color: theme-color.$on-panel;
       padding: 0;
       spacing: 4px;
     }
+  }
+}
+
+.clock-display-box {
+  spacing: 0;
+
+  .clock {
+    padding-left: $button-hpadding;
+    padding-right: $button-hpadding;
   }
 }
