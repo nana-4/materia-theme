@@ -3,7 +3,6 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
-@use "../../../../st-theme";
 @use "../../gnome-shell";
 @use "../base/button";
 @use "calendar";
@@ -137,7 +136,7 @@
   $message-close-button: if(gnome-shell.$version >= 3.36, ".message-close-button", ".message-content > StBoxLayout > StButton");
 
   #{$message-close-button} {
-    transition-duration: st-theme.$duration;
+    transition-duration: theme.$state-duration;
     icon-size: 16px;
     padding: (theme.$small-size - 16px) / 2;
     border-radius: theme.$small-size / 2;
@@ -157,7 +156,7 @@
     }
 
     &:active {
-      transition-duration: st-theme.$duration-ripple;
+      transition-duration: theme.$ripple-duration;
       background-color: theme-color.pressed-overlay(theme-color.$on-surface);
     }
   }
@@ -175,7 +174,7 @@
 
 /* Media Controls */
 .message-media-control {
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
   margin: 16px 0;
   padding: 8px;
   border-radius: 16px;
@@ -197,7 +196,7 @@
 
   &:active {
     background-color: theme-color.pressed-overlay(theme-color.$on-surface);
-    transition-duration: st-theme.$duration-ripple;
+    transition-duration: theme.$ripple-duration;
   }
 
   &:insensitive {

@@ -2,7 +2,6 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
-@use "../../../../st-theme";
 
 .check-box {
   StBoxLayout {
@@ -10,7 +9,7 @@
   }
 
   StBin {
-    transition-duration: st-theme.$duration;
+    transition-duration: theme.$state-duration;
     width: 24px;
     height: 24px;
     padding: (theme.$medium-size - 24px) / 2;
@@ -31,7 +30,7 @@
   }
 
   &:active StBin {
-    transition-duration: st-theme.$duration-ripple;
+    transition-duration: theme.$ripple-duration;
     background-color: theme-color.pressed-overlay(theme-color.$on-surface);
   }
 

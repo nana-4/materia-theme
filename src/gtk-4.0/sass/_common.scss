@@ -227,7 +227,7 @@ spinner {
   opacity: 0; // non spinning spinner makes no sense
   color: theme-color.$primary;
   -gtk-icon-source: -gtk-icontheme('process-working-symbolic');
-  transition: opacity theme.$duration * 4 theme.$ease-out;
+  transition: opacity theme.$state-duration * 4 theme.$ease-out;
   animation: spin 1s linear infinite;
 
   &:checked {
@@ -811,7 +811,7 @@ button {
 }
 
 %needs-attention {
-  animation: needs-attention theme.$ripple-fade-in-duration theme.$ease-out forwards;
+  animation: needs-attention theme.$ripple-duration theme.$ease-out forwards;
   background-repeat: no-repeat;
   background-position: right 3px;
   background-size: 6px 6px;
@@ -1138,7 +1138,7 @@ combobox {
     min-width: 16px;
     min-height: 16px;
     -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
-    transition: -gtk-icon-transform theme.$duration theme.$ease-out;
+    transition: -gtk-icon-transform theme.$state-duration theme.$ease-out;
   }
 
   button:checked arrow {
@@ -1275,7 +1275,7 @@ button.combo:only-child {
   }
 
   arrow {
-    transition: color theme.$duration theme.$ease-out;
+    transition: color theme.$state-duration theme.$ease-out;
     color: theme-color.hint(theme-color.$on-surface);
 
     &:disabled {
@@ -1408,7 +1408,7 @@ windowcontrols {
  */
 
 .titlebar {
-  transition: background-color theme.$duration theme.$ease-out, color theme.$duration theme.$ease-out;
+  transition: background-color theme.$state-duration theme.$ease-out, color theme.$state-duration theme.$ease-out;
   border-radius: theme.$corner-radius theme.$corner-radius 0 0;
   box-shadow: theme.$shadow-z2, inset 0 1px theme-color.highlight(theme-color.$titlebar);
   background-color: theme-color.$titlebar;
@@ -1446,7 +1446,7 @@ windowcontrols {
 
   .subtitle,
   .dim-label {
-    transition: color theme.$duration theme.$ease-out;
+    transition: color theme.$state-duration theme.$ease-out;
     color: theme-color.hint(theme-color.$on-titlebar);
 
     &:backdrop {
@@ -1559,8 +1559,8 @@ windowcontrols {
   &.selection-mode {
     // 0.1ms was a workaround for https://gitlab.gnome.org/GNOME/gtk/issues/698
     // but let's keep it for backwards compatibility.
-    transition: background-color 0.1ms theme.$ripple-fade-in-duration, color theme.$duration theme.$ease-out;
-    animation: ripple-on-headerbar theme.$ripple-fade-in-duration theme.$ease-out;
+    transition: background-color 0.1ms theme.$ripple-duration, color theme.$state-duration theme.$ease-out;
+    animation: ripple-on-headerbar theme.$ripple-duration theme.$ease-out;
     box-shadow: theme.$shadow-z2, inset 0 1px theme-color.highlight(theme-color.$primary);
     background-color: theme-color.$primary;
     color: theme-color.$on-primary;
@@ -1984,7 +1984,7 @@ popover.menu {
   }
 
   modelbutton {
-    // transition: background-color $duration $ease-out;
+    // transition: background-color $state-duration $ease-out;
     min-height: 30px - 4px * 2;
     min-width: 40px;
     padding: 4px 32px;
@@ -2321,7 +2321,7 @@ notebook {
 
       // FIXME: The tab node doesn't have :drop(active), instead its child box has it.
       > box {
-        transition: background-color theme.$duration theme.$ease-out;
+        transition: background-color theme.$state-duration theme.$ease-out;
         margin: -(theme.$container-padding) -12px;
         padding: theme.$container-padding 12px;
 
@@ -2367,7 +2367,7 @@ scrollbar {
 
   // slider
   > range > trough > slider {
-    transition: background-color theme.$duration theme.$ease-out;
+    transition: background-color theme.$state-duration theme.$ease-out;
     min-width: 10px;
     min-height: 10px;
     border: 3px solid transparent;
@@ -2448,7 +2448,7 @@ scrollbar {
  */
 
 switch {
-  transition: all theme.$duration theme.$ease-out;
+  transition: all theme.$state-duration theme.$ease-out;
   margin: theme.$container-padding 0;
   padding: 0 2px;
   border: 5px solid transparent;
@@ -2472,7 +2472,7 @@ switch {
   }
 
   > slider {
-    transition: all theme.$duration theme.$ease-out;
+    transition: all theme.$state-duration theme.$ease-out;
     min-width: 20px;
     min-height: 20px;
     margin: -3px -2px;
@@ -2760,7 +2760,7 @@ scale {
 
   // the backing bit
   > trough {
-    transition: background-color theme.$duration theme.$ease-out;
+    transition: background-color theme.$state-duration theme.$ease-out;
     background-color: theme-color.stroke(theme-color.$on-surface);
 
     &:disabled {
@@ -2769,7 +2769,7 @@ scale {
 
     // the colored part of the backing bit
     > highlight {
-      transition: background-image theme.$duration theme.$ease-out;
+      transition: background-image theme.$state-duration theme.$ease-out;
       background-image: image(theme-color.$primary);
 
       &:disabled {
@@ -2781,7 +2781,7 @@ scale {
     // this is another differently styled part of the backing bit, the most relevant use case is for example
     // in media player to indicate how much video stream as been cached
     > fill {
-      transition: background-color theme.$duration theme.$ease-out;
+      transition: background-color theme.$state-duration theme.$ease-out;
       background-color: theme-color.stroke(theme-color.$on-surface);
 
       &:disabled {
@@ -2790,9 +2790,9 @@ scale {
     }
 
     > slider {
-      transition: background-color theme.$duration theme.$ease-out,
+      transition: background-color theme.$state-duration theme.$ease-out,
                   background-size theme.$ripple-fade-out-duration theme.$ease-out,
-                  background-image theme.$ripple-fade-out-opacity-duration theme.$ease-out;
+                  background-image theme.$ripple-opacity-fade-out-duration theme.$ease-out;
       min-width: $slider_size;
       min-height: $slider_size;
       // the slider is inside the trough, so to have make it bigger there's a negative margin
@@ -2823,10 +2823,10 @@ scale {
       &:active {
         $_url: 'assets/scale-slider#{theme.$asset-suffix}';
 
-        transition: background-color theme.$duration theme.$ease-out,
+        transition: background-color theme.$state-duration theme.$ease-out,
                     background-size 0ms,
                     background-image 0ms;
-        animation: ripple-on-slider theme.$ripple-fade-in-duration theme.$ease-out forwards;
+        animation: ripple-on-slider theme.$ripple-duration theme.$ease-out forwards;
         background-image: -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png')),
                           radial-gradient(circle, theme-color.pressed-overlay(theme-color.$primary) 10%, transparent 10%);
         background-size: auto, 0% 0%;
@@ -3307,7 +3307,7 @@ columnview {
  */
 
 expander {
-  transition: all theme.$duration theme.$ease-out;
+  transition: all theme.$state-duration theme.$ease-out;
   min-width: 16px;
   min-height: 16px;
   padding: 4px;
@@ -3351,7 +3351,7 @@ expander-widget {
 
   > box > title:active > expander {
     transition-duration: drawing.$ripple-active-transition-duration;
-    animation: ripple theme.$ripple-fade-in-duration theme.$ease-out forwards;
+    animation: ripple theme.$ripple-duration theme.$ease-out forwards;
     background-size: 0% 0%;
     background-image: radial-gradient(circle, theme-color.pressed-overlay(theme-color.$on-surface) 10%, transparent 10%);
   }
@@ -3617,7 +3617,7 @@ separator.sidebar {
 
 // dim the sidebar icons, see bug #786613 for details on this oddity
 row image.sidebar-icon {
-  transition: color theme.$duration theme.$ease-out;
+  transition: color theme.$state-duration theme.$ease-out;
   color: theme-color.hint(theme-color.$on-surface);
 
   &:disabled {

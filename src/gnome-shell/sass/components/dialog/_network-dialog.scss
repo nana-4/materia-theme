@@ -2,7 +2,6 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
-@use "../../../../st-theme";
 @use "../../typography";
 
 .nm-dialog {
@@ -56,7 +55,7 @@
 
 // list item
 .nm-dialog-item {
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
   padding: 12px;
   spacing: 20px;
   border-bottom: 0;
@@ -72,7 +71,7 @@
   }
 
   &:active {
-    transition-duration: st-theme.$duration-ripple;
+    transition-duration: theme.$ripple-duration;
     background-color: theme-color.pressed-overlay(theme-color.$on-surface);
   }
 

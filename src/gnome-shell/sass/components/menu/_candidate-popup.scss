@@ -2,7 +2,6 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
-@use "../../../../st-theme";
 @use "menu";
 
 .candidate-popup-boxpointer {
@@ -21,7 +20,7 @@
 }
 
 .candidate-box {
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
   min-height: theme.$menu-item-height;
   padding: 0 8px;
   border-radius: theme.$corner-radius;
@@ -34,7 +33,7 @@
 
   &:active {
     background-color: theme-color.pressed-overlay(theme-color.$on-surface);
-    transition-duration: st-theme.$duration-ripple;
+    transition-duration: theme.$ripple-duration;
   }
 
   &:selected {

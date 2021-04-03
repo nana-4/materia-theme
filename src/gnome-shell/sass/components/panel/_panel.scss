@@ -2,7 +2,6 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
-@use "../../../../st-theme";
 @use "../../gnome-shell";
 @use "../overview/overview";
 
@@ -54,7 +53,7 @@ $button-hpadding: 12px;
   .panel-button {
     -natural-hpadding: $button-hpadding;
     -minimum-hpadding: $button-hpadding / 2;
-    transition-duration: st-theme.$duration;
+    transition-duration: theme.$state-duration;
     border: 0;
     border-radius: 0;
     color: theme-color.hint($on-color);
@@ -64,7 +63,7 @@ $button-hpadding: 12px;
     @if gnome-shell.$version >= 3.36 {
       &.clock-display {
         .clock {
-          transition-duration: st-theme.$duration;
+          transition-duration: theme.$state-duration;
           border: 0;
           border-radius: 0;
         }

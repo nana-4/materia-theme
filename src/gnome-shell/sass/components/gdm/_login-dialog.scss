@@ -2,7 +2,6 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
-@use "../../../../st-theme";
 @use "../../gnome-shell";
 @use "../../drawing";
 @use "../../typography";
@@ -134,7 +133,7 @@
 }
 
 .login-dialog-not-listed-button {
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
   min-height: 32px;
   padding: 0 8px;
   margin-top: 1em;
@@ -151,7 +150,7 @@
   }
 
   &:active {
-    transition-duration: st-theme.$duration-ripple;
+    transition-duration: theme.$ripple-duration;
     background-color: theme-color.pressed-overlay(theme-color.$on-system);
   }
 }
@@ -179,7 +178,7 @@
 }
 
 .login-dialog-user-list-item {
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
   padding: 6px;
   border-radius: theme.$corner-radius;
   color: inherit;
@@ -193,7 +192,7 @@
   }
 
   &:active {
-    transition-duration: st-theme.$duration-ripple;
+    transition-duration: theme.$ripple-duration;
     background-color: theme-color.pressed-overlay(theme-color.$on-system);
   }
 
@@ -279,7 +278,7 @@
 .cancel-button,
 .switch-user-button,
 .login-dialog-session-list-button {
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
   width: theme.$medium-size;
   height: theme.$medium-size;
   min-width: 0;
@@ -297,7 +296,7 @@
   }
 
   &:active {
-    transition-duration: st-theme.$duration-ripple;
+    transition-duration: theme.$ripple-duration;
     background-color: theme-color.pressed-overlay(theme-color.$on-system);
   }
 

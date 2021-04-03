@@ -40,7 +40,7 @@
 //
 
   @if $t == normal {
-    transition: theme.$transition, border-image theme.$ripple-fade-in-duration theme.$ease-out;
+    transition: theme.$transition, border-image theme.$ripple-duration theme.$ease-out;
     border-image:
       radial-gradient(
         circle closest-corner at center calc(100% - 1px),
@@ -107,8 +107,8 @@
 
 
 $ripple-transition-property: all, border-image, background-size, background-image;
-$ripple-transition-duration: theme.$duration, theme.$ripple-fade-in-duration, theme.$ripple-fade-out-duration, theme.$ripple-fade-out-opacity-duration;
-$ripple-active-transition-duration: theme.$duration, theme.$ripple-fade-in-duration, 0ms, 0ms;
+$ripple-transition-duration: theme.$state-duration, theme.$ripple-duration, theme.$ripple-fade-out-duration, theme.$ripple-opacity-fade-out-duration;
+$ripple-active-transition-duration: theme.$state-duration, theme.$ripple-duration, 0ms, 0ms;
 
 %ripple {
   transition-property: $ripple-transition-property;
@@ -121,7 +121,7 @@ $ripple-active-transition-duration: theme.$duration, theme.$ripple-fade-in-durat
 
   &:active {
     transition-duration: $ripple-active-transition-duration;
-    animation: ripple theme.$ripple-fade-in-duration theme.$ease-out forwards;
+    animation: ripple theme.$ripple-duration theme.$ease-out forwards;
     background-size: 0% 0%;
   }
 }

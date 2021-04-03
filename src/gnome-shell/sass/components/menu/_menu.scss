@@ -2,7 +2,6 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
-@use "../../../../st-theme";
 @use "../../gnome-shell";
 
 // the popover itself
@@ -48,7 +47,7 @@
   // min-height: $menuitem-size - 4px * 2;
   spacing: 8px;
   padding: 0;
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
 
   &:ltr {
     padding: 0.4em;
@@ -75,7 +74,7 @@
   &:active {
     background-color: theme-color.pressed-overlay(theme-color.$on-surface);
     color: theme-color.$on-surface;
-    transition-duration: st-theme.$duration-ripple;
+    transition-duration: theme.$ripple-duration;
   }
 
   &:checked {
@@ -251,7 +250,7 @@
     border: 0;
     border-radius: theme.$large-size / 2; // wish we could do 50%
     color: theme-color.hint(theme-color.$on-surface);
-    transition-duration: st-theme.$duration;
+    transition-duration: theme.$state-duration;
 
     &:hover,
     &:focus {
@@ -271,7 +270,7 @@
     &:active {
       background-color: theme-color.pressed-overlay(theme-color.$on-surface);
       color: theme-color.hint(theme-color.$on-surface);
-      transition-duration: st-theme.$duration-ripple;
+      transition-duration: theme.$ripple-duration;
     }
 
     > StIcon {

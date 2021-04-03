@@ -19,7 +19,6 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
-@use "../../../../st-theme";
 @use "../../gnome-shell";
 @use "../../typography";
 
@@ -37,7 +36,7 @@ stage {
 
 // Links
 .shell-link {
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
   border-radius: theme.$corner-radius;
   color: theme-color.$primary;
 
@@ -47,7 +46,7 @@ stage {
   }
 
   &:active {
-    transition-duration: st-theme.$duration-ripple;
+    transition-duration: theme.$ripple-duration;
     background-color: theme-color.pressed-overlay(theme-color.$primary);
     color: theme-color.$primary;
   }

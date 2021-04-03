@@ -2,7 +2,6 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
-@use "../../../../st-theme";
 @use "../../gnome-shell";
 @use "../../typography";
 
@@ -24,7 +23,7 @@ $column-margin: 0 8px;
     color: inherit;
     text-shadow: none;
     icon-shadow: none;
-    transition-duration: st-theme.$duration;
+    transition-duration: theme.$state-duration;
   }
 
   &:focus {
@@ -37,7 +36,7 @@ $column-margin: 0 8px;
 
   &:active {
     background-color: theme-color.pressed-overlay(theme-color.$on-surface);
-    transition-duration: st-theme.$duration-ripple;
+    transition-duration: theme.$ripple-duration;
   }
 }
 
@@ -108,7 +107,7 @@ $column-margin: 0 8px;
 
   // month
   .calendar-month-label {
-    transition-duration: st-theme.$duration;
+    transition-duration: theme.$state-duration;
     min-height: theme.$menu-item-height - 6px * 2;
     margin: 2px;
     padding: 6px 8px;
@@ -147,7 +146,7 @@ $column-margin: 0 8px;
   }
 
   .pager-button {
-    transition-duration: st-theme.$duration;
+    transition-duration: theme.$state-duration;
     width: theme.$menu-item-height;
     height: theme.$menu-item-height;
     margin: 2px;
@@ -165,12 +164,12 @@ $column-margin: 0 8px;
 
     &:active {
       background-color: theme-color.pressed-overlay(theme-color.$on-surface);
-      transition-duration: st-theme.$duration-ripple;
+      transition-duration: theme.$ripple-duration;
     }
   }
 
   .calendar-day-base {
-    transition-duration: st-theme.$duration;
+    transition-duration: theme.$state-duration;
     width: theme.$menu-item-height;
     height: theme.$menu-item-height;
     margin: 2px;
@@ -190,7 +189,7 @@ $column-margin: 0 8px;
     }
 
     &:active {
-      transition-duration: st-theme.$duration-ripple;
+      transition-duration: theme.$ripple-duration;
       border-color: transparent;
       background-color: theme-color.pressed-overlay(theme-color.$on-surface);
       color: inherit;

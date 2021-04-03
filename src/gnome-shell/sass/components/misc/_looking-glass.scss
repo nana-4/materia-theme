@@ -2,7 +2,6 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
-@use "../../../../st-theme";
 @use "../../gnome-shell";
 @use "../../typography";
 @use "../base/button";
@@ -33,7 +32,7 @@
   .notebook-tab {
     -natural-hpadding: 12px;
     -minimum-hpadding: 6px;
-    transition-duration: st-theme.$duration;
+    transition-duration: theme.$state-duration;
     min-height: theme.$medium-size;
     padding-left: 16px * 2;
     padding-right: 16px * 2;
@@ -48,7 +47,7 @@
     }
 
     &:active {
-      transition-duration: st-theme.$duration-ripple;
+      transition-duration: theme.$ripple-duration;
       background-color: theme-color.pressed-overlay(theme-color.$on-surface);
     }
 

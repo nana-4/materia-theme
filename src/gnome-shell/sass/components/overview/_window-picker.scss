@@ -2,7 +2,6 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
-@use "../../../../st-theme";
 @use "../../gnome-shell";
 @use "overview";
 
@@ -55,7 +54,7 @@
 
 // Close button
 .window-close {
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
   height: theme.$medium-size;
   width: theme.$medium-size;
   padding: 0;
@@ -84,7 +83,7 @@
   }
 
   &:active {
-    transition-duration: st-theme.$duration-ripple;
+    transition-duration: theme.$ripple-duration;
     box-shadow: theme.$shadow-z8;
     border-color: transparent;
     background-color: theme-color.pressed-overlay(theme-color.$on-error, $on: theme-color.$error);

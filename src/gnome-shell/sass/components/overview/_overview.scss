@@ -2,7 +2,6 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
-@use "../../../../st-theme";
 @use "../../gnome-shell";
 @use "../../typography";
 @use "../base/scrollbar";
@@ -112,7 +111,7 @@ $on-color: theme-color.$on-system;
   background-color: transparent;
   color: inherit;
   text-align: center;
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
 }
 
 @mixin _item-focus {
@@ -136,5 +135,5 @@ $on-color: theme-color.$on-system;
   box-shadow: none;
   background-color: theme-color.pressed-overlay($on-color);
   color: inherit;
-  transition-duration: st-theme.$duration-ripple;
+  transition-duration: theme.$ripple-duration;
 }

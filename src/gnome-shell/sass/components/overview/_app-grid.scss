@@ -2,7 +2,6 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
-@use "../../../../st-theme";
 @use "../../../../color-palette";
 @use "../../gnome-shell";
 @use "../../drawing";
@@ -259,7 +258,7 @@
       border-radius: 12px;
       background-image: none;
       background-color: theme-color.disabled-hint(overview.$on-color);
-      transition-duration: st-theme.$duration;
+      transition-duration: theme.$state-duration;
     }
 
     &:hover .page-indicator-icon {
@@ -385,7 +384,7 @@
 
     &:active {
       background-color: theme-color.pressed-overlay(overview.$on-color);
-      transition-duration: st-theme.$duration-ripple;
+      transition-duration: theme.$ripple-duration;
     }
 
     &:checked {

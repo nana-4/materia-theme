@@ -21,7 +21,6 @@ message('Set gnome-shell version to ' + gnome_shell_version)
 
 gnome_shell_scss_depend_files = files([
   '../_color-palette.scss',
-  '../_st-theme.scss',
   '../_theme.scss',
   '../_theme-color.scss',
   'sass/components/base/_base.scss',

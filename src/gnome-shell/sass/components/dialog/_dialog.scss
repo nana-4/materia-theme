@@ -2,7 +2,6 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
-@use "../../../../st-theme";
 @use "../../gnome-shell";
 @use "../../typography";
 @use "../base/button";
@@ -428,7 +427,7 @@
 }
 
 .audio-selection-device {
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
   border: 0;
   border-radius: theme.$corner-radius;
 
@@ -441,7 +440,7 @@
   }
 
   &:active {
-    transition-duration: st-theme.$duration-ripple;
+    transition-duration: theme.$ripple-duration;
     background-color: theme-color.pressed-overlay(theme-color.$on-surface);
     color: inherit;
   }

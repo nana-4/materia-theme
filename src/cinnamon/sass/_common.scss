@@ -1,6 +1,5 @@
 @use "../../theme";
 @use "../../theme-color";
-@use "../../st-theme";
 @use "../../gnome-shell/sass/drawing";
 @use "../../gnome-shell/sass/typography";
 @use "extends";
@@ -103,7 +102,7 @@ StScrollView {
 .popup-menu-item {
   padding: 0.4em 16px;
   spacing: 8px;
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
   &:active {
     background-color: theme-color.hover-overlay(theme-color.$on-surface);
     color: theme-color.$on-surface;
@@ -780,7 +779,7 @@ StScrollView {
 .switcher-list {
   @extend %osd-panel-shared;
 
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
   .item-box {
     padding: 8px;
     border-radius: theme.$corner-radius;
@@ -1108,7 +1107,7 @@ StScrollView {
 // progress was added with cinnamon 3.6 and allows compatible applications to use the window list as a progress bar
 .window-list-item-box {
   background-color: rgba(0, 0, 0, 0.01);
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
   &:hover {
     color: theme-color.$on-titlebar;
   }
@@ -1163,7 +1162,7 @@ StScrollView {
   }
   &-item-box {
     background-color: rgba(0, 0, 0, 0.01);
-    transition-duration: st-theme.$duration;
+    transition-duration: theme.$state-duration;
     &:hover {
       color: theme-color.$on-titlebar;
     }
@@ -1310,7 +1309,7 @@ StScrollView {
 .panel-launchers {
   padding: 0 4px;
   spacing: 4px;
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
   .launcher {
     background-color:rgba(0, 0, 0, 0.01);
   }
@@ -1333,7 +1332,7 @@ StScrollView {
 .applet-box {
   background-color: rgba(0, 0, 0, 0.01);
   color: theme-color.hint(theme-color.$on-titlebar);
-  transition-duration: st-theme.$duration;
+  transition-duration: theme.$state-duration;
   &:checked {
     color: theme-color.$on-titlebar;
     .applet-label {

@@ -39,10 +39,16 @@ $circular-radius: 9999px;
 // Durations
 //
 
-$duration: 75ms;
-$ripple-fade-in-duration: 225ms;
+$state-duration: 75ms;
+$ripple-duration: 225ms;
 $ripple-fade-out-duration: 300ms;
-$ripple-fade-out-opacity-duration: 1200ms;
+$ripple-opacity-fade-out-duration: 1200ms;
+
+@if $toolkit == "st" {
+  // Tweak transition durations since St does not support transition-timing-function
+  $state-duration: 100ms;
+  $ripple-duration: 200ms;
+}
 
 //
 // Timing functions
@@ -57,8 +63,8 @@ $ease-in-out: cubic-bezier(.4, 0, .6, 1);
 // Transition shorthands
 //
 
-$transition: all $duration $ease-out;
-$transition-shadow: box-shadow $duration $ease-out;
+$transition: all $state-duration $ease-out;
+$transition-shadow: box-shadow $state-duration $ease-out;
 
 //
 // Shadows
@@ -67,6 +73,10 @@ $transition-shadow: box-shadow $duration $ease-out;
 // Values are based on:
 // https://github.com/material-components/material-components-web/blob/master/packages/mdc-elevation/_elevation-theme.scss
 
+$shadow-z0:
+  0 0 0 0 rgba(black, .2),
+  0 0 0 0 rgba(black, .14),
+  0 0 0 0 rgba(black, .12);
 $shadow-z1:
   0 2px 1px -1px rgba(black, .2),
   0 1px 1px 0 rgba(black, .14),
@@ -123,6 +133,10 @@ $icon-shadow-z4:
 // and its blur is huge compared to web rendering.
 // See: https://gitlab.gnome.org/GNOME/gtk/issues/511
 @if $toolkit == "gtk3" {
+  $shadow-z0:
+    0 0 0 0 rgba(black, .2),
+    0 0 0 0 rgba(black, .14),
+    0 0 0 0 rgba(black, .12);
   $shadow-z1:
     0 2px 2px -2px rgba(black, .3),
     0 1px 2px -1px rgba(black, .24),
@@ -176,6 +190,11 @@ $icon-shadow-z4:
 }
 
 @if $toolkit == "st" {
+  // This should be none, but it's creating some issues with borders, so to
+  // workaround it for now, use inset wich goes through a different code path.
+  // see https://bugzilla.gnome.org/show_bug.cgi?id=752934
+  $shadow-z0: 0 0 transparent;
+
   $shadow-z1: 0 1px 1px rgba(black, .36);
   $shadow-z2: 0 1px 2px rgba(black, .4);
   $shadow-z4: 0 2px 8px rgba(black, .44);
