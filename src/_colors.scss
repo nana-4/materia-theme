@@ -11,7 +11,7 @@ $light-topbar: false !default;
 }
 
 // Determine whether the color has alpha.
-@function has-alpha($color) {
+@function _has-alpha($color) {
   @return if(alpha($color) < 1, true, false);
 }
 
@@ -203,46 +203,46 @@ $overlay-selected: rgba($primary, .24);
 }
 
 @function hint($color) {
-  @return rgba($color, if(has-alpha($color), .6, .7));
+  @return if(_has-alpha($color), rgba($color, .6), rgba($color, .7));
 }
 
 @function disabled($color) {
-  @return rgba($color, if(has-alpha($color), .38, .5));
+  @return if(_has-alpha($color), rgba($color, .38), rgba($color, .5));
 }
 
 @function disabled-hint($color) {
-  @return rgba($color, if(has-alpha($color), .26, .3));
+  @return if(_has-alpha($color), rgba($color, .26), rgba($color, .3));
 }
 
 @function stroke($color) {
-  @return rgba($color, if(has-alpha($color), .26, .3));
+  @return if(_has-alpha($color), rgba($color, .26), rgba($color, .3));
 }
 
 @function disabled-stroke($color) {
-  @return rgba($color, if(has-alpha($color), .12, .2));
+  @return if(_has-alpha($color), rgba($color, .12), rgba($color, .2));
 }
 
 @function divider($color) {
-  @return rgba($color, if(has-alpha($color), .12, .2));
+  @return if(_has-alpha($color), rgba($color, .12), rgba($color, .2));
 }
 
 @function fill($color) {
-  @return rgba($color, if(has-alpha($color), .08, .08));
+  @return if(_has-alpha($color), rgba($color, .08), rgba($color, .08));
 }
 
 @function entry-fill($color) {
-  @return rgba($color, if(has-alpha($color), .04, .04));
+  @return if(_has-alpha($color), rgba($color, .04), rgba($color, .04));
 }
 
 @function scrollbar-thumb($color, $state: null) {
   @if $state == null {
-    @return rgba($color, if(has-alpha($color), .38, .5));
+    @return if(_has-alpha($color), rgba($color, .38), rgba($color, .5));
   } @else if $state == "hover" {
-    @return rgba($color, if(has-alpha($color), .48, .6));
+    @return if(_has-alpha($color), rgba($color, .48), rgba($color, .6));
   } @else if $state == "pressed" {
-    @return rgba($color, if(has-alpha($color), .6, .7));
+    @return if(_has-alpha($color), rgba($color, .6), rgba($color, .7));
   } @else if $state == "disabled" {
-    @return rgba($color, if(has-alpha($color), .26, .3));
+    @return if(_has-alpha($color), rgba($color, .26), rgba($color, .3));
   } @else {
     @error "Invalid type: '#{$state}'";
   }
