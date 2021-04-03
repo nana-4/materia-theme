@@ -36,11 +36,11 @@ image:disabled {
   }
 
   &:selected {
-    background-color: $overlay-selected;
+    background-color: $selected-overlay;
   }
 
     > .cell:selected:hover {
-      background-color: hover-overlay($primary, $alt: true, $on: $overlay-selected);
+      background-color: hover-overlay($primary, $alt: true, $on: $selected-overlay);
     }
 }
 
@@ -49,7 +49,7 @@ textview {
 
   > text {
     > selection {
-      background-color: $overlay-selected;
+      background-color: $selected-overlay;
     }
   }
 
@@ -101,9 +101,9 @@ flowbox {
     @include ink-color($on-surface, $hover-alt: true);
 
     &:selected {
-      background-color: $overlay-selected;
+      background-color: $selected-overlay;
 
-      @include ink-color($primary, $hover-alt: true, $on: $overlay-selected);
+      @include ink-color($primary, $hover-alt: true, $on: $selected-overlay);
     }
   }
 }
@@ -120,9 +120,9 @@ gridview {
     @include ink-color($on-surface, $hover-alt: true);
 
     &:selected {
-      background-color: $overlay-selected;
+      background-color: $selected-overlay;
 
-      @include ink-color($primary, $hover-alt: true, $on: $overlay-selected);
+      @include ink-color($primary, $hover-alt: true, $on: $selected-overlay);
     }
   }
 }
@@ -156,7 +156,7 @@ label {
   }
 
   > selection {
-    background-color: $overlay-selected;
+    background-color: $selected-overlay;
   }
 
   &:disabled {
@@ -335,7 +335,7 @@ entry {
     }
 
     > selection {
-      background-color: $overlay-selected;
+      background-color: $selected-overlay;
     }
 
     > block-cursor {
@@ -938,7 +938,7 @@ modelbutton.flat {
   @include ink-color($on-surface);
 
   &:selected {
-    // background-color: $overlay-selected;
+    // background-color: $selected-overlay;
   }
 }
 
@@ -1080,7 +1080,7 @@ spinbutton {
       padding: 0;
 
       > selection {
-        background-color: $overlay-selected;
+        background-color: $selected-overlay;
       }
     }
 
@@ -1775,7 +1775,7 @@ treeview.view {
   // FIXME: Avoid transparency background-color being slightly darker
   &:selected {
     // background-color: $surface-z1;
-    // background-image: image($overlay-selected);
+    // background-image: image($selected-overlay);
   }
 
   &:hover,
@@ -3214,12 +3214,12 @@ row {
   }
 
   &:selected {
-    background-color: $overlay-selected;
+    background-color: $selected-overlay;
 
-    @include ink-color($primary, $hover-alt: true, $on: $overlay-selected);
+    @include ink-color($primary, $hover-alt: true, $on: $selected-overlay);
 
     &.has-open-popup {
-      background-color: activated-overlay($primary, $on: $overlay-selected);
+      background-color: activated-overlay($primary, $on: $selected-overlay);
     }
   }
 }
@@ -3232,9 +3232,9 @@ listview {
   }
 
   &:selected {
-    background-color: $overlay-selected;
+    background-color: $selected-overlay;
 
-    @include ink-color($primary, $hover-alt: true, $on: $overlay-selected);
+    @include ink-color($primary, $hover-alt: true, $on: $selected-overlay);
   }
 }
 
@@ -3418,9 +3418,9 @@ calendar {
       }
 
       &:selected {
-        background-color: $overlay-selected;
+        background-color: $selected-overlay;
         box-shadow: inset 0 0 0 1px transparent;
-        @include ink-color($primary, $on: $overlay-selected);
+        @include ink-color($primary, $on: $selected-overlay);
       }
     }
   }
@@ -4057,7 +4057,7 @@ window {
 // catch all extend :)
 
 %selected_items {
-  background-color: $overlay-selected;
+  background-color: $selected-overlay;
 }
 
 .monospace {

@@ -85,7 +85,7 @@
   }
 
   &:selected:hover {
-    background-color: hover-overlay($primary, $alt: true, $on: $overlay-selected);
+    background-color: hover-overlay($primary, $alt: true, $on: $selected-overlay);
   }
 
   &:disabled {
@@ -99,7 +99,7 @@
 
   selection,
   &:selected {
-    background-color: $overlay-selected;
+    background-color: $selected-overlay;
   }
 }
 
@@ -162,7 +162,7 @@ flowbox {
     border-radius: $corner-radius;
 
     &:selected {
-      background-color: $overlay-selected;
+      background-color: $selected-overlay;
     }
   }
 }
@@ -190,7 +190,7 @@ label {
   }
 
   selection {
-    background-color: $overlay-selected;
+    background-color: $selected-overlay;
   }
 
   &:disabled {
@@ -391,7 +391,7 @@ entry {
   }
 
   selection {
-    background-color: $overlay-selected;
+    background-color: $selected-overlay;
   }
 
   // entry error and warning style
@@ -935,7 +935,7 @@ modelbutton.flat,
   @include ink-color($on-surface);
 
   &:selected {
-    background-color: $overlay-selected;
+    background-color: $selected-overlay;
   }
 }
 
@@ -3294,10 +3294,10 @@ row {
   }
 
   &:selected {
-    @include ink-color($primary, $hover-alt: true, $on: $overlay-selected);
+    @include ink-color($primary, $hover-alt: true, $on: $selected-overlay);
 
     &.has-open-popup {
-      background-color: activated-overlay($primary, $on: $overlay-selected);
+      background-color: activated-overlay($primary, $on: $selected-overlay);
     }
   }
 }
@@ -3380,7 +3380,7 @@ calendar {
 
   &:selected {
     border-radius: $corner-radius + 1px;
-    background-color: $overlay-selected;
+    background-color: $selected-overlay;
   }
 
   &.header {
