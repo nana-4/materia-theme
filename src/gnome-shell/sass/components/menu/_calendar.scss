@@ -22,15 +22,15 @@ $calendar-column-margin: 0 8px;
   }
 
   &:focus {
-    background-color: overlay("focus", $on-surface);
+    background-color: focus-overlay($on-surface);
   }
 
   &:hover {
-    background-color: overlay("hover", $on-surface);
+    background-color: hover-overlay($on-surface);
   }
 
   &:active {
-    background-color: overlay("pressed", $on-surface);
+    background-color: pressed-overlay($on-surface);
     transition-duration: $duration-ripple;
   }
 }
@@ -121,7 +121,7 @@ $calendar-column-margin: 0 8px;
     text-align: center;
 
     &:focus {
-      background-color: overlay("focus", $on-surface);
+      background-color: focus-overlay($on-surface);
     }
   }
 
@@ -159,15 +159,15 @@ $calendar-column-margin: 0 8px;
     color: hint($on-surface);
 
     &:focus {
-      background-color: overlay("focus", $on-surface);
+      background-color: focus-overlay($on-surface);
     }
 
     &:hover {
-      background-color: overlay("hover", $on-surface);
+      background-color: hover-overlay($on-surface);
     }
 
     &:active {
-      background-color: overlay("pressed", $on-surface);
+      background-color: pressed-overlay($on-surface);
       transition-duration: $duration-ripple;
     }
   }
@@ -185,17 +185,17 @@ $calendar-column-margin: 0 8px;
     text-align: center;
 
     &:focus {
-      background-color: overlay("focus", $on-surface);
+      background-color: focus-overlay($on-surface);
     }
 
     &:hover {
-      background-color: overlay("hover", $on-surface);
+      background-color: hover-overlay($on-surface);
     }
 
     &:active {
       transition-duration: $duration-ripple;
       border-color: transparent;
-      background-color: overlay("pressed", $on-surface);
+      background-color: pressed-overlay($on-surface);
       color: inherit;
     }
 
@@ -220,7 +220,7 @@ $calendar-column-margin: 0 8px;
       text-align: center;
 
       &:focus {
-        background-color: overlay("focus", $on-surface);
+        background-color: focus-overlay($on-surface);
       }
     }
   }
@@ -254,12 +254,12 @@ $calendar-column-margin: 0 8px;
     font-weight: normal;
 
     &:focus {
-      background-color: overlay("focus", $on-surface);
+      background-color: focus-overlay($on-surface);
       color: inherit;
     }
 
     &:hover {
-      background-color: overlay("hover", $on-surface);
+      background-color: hover-overlay($on-surface);
       color: inherit;
     }
 
@@ -267,7 +267,7 @@ $calendar-column-margin: 0 8px;
       &,
       &:hover,
       &:focus {
-        background-color: overlay("pressed", $on-surface);
+        background-color: pressed-overlay($on-surface);
         color: inherit;
       }
     }

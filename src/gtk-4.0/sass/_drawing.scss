@@ -51,12 +51,12 @@
 
   @if $t == hover {
     box-shadow: inset 0 -1px if($fc == $primary, stroke($on-surface), $fc);
-    background-color: overlay("hover-alt", $on-surface, $on: entry-fill($on-surface));
+    background-color: hover-overlay($on-surface, $on: entry-fill($on-surface), $alt: true);
   }
 
   @if $t == focus {
     box-shadow: inset 0 -1px if($fc == $primary, stroke($on-surface), $fc);
-    background-color: overlay("focus", $on-surface, $on: entry-fill($on-surface));
+    background-color: focus-overlay($on-surface, $on: entry-fill($on-surface));
   }
 
   @if $t == checked {
@@ -67,7 +67,7 @@
         transparent 100%
       ) 2 / 0 0 2px;
     box-shadow: inset 0 -1px if($fc == $primary, stroke($on-surface), $fc);
-    background-color: overlay("focus", $on-surface, $on: entry-fill($on-surface));
+    background-color: focus-overlay($on-surface, $on: entry-fill($on-surface));
   }
 
   @if $t == disabled {
@@ -123,10 +123,8 @@ $ripple-active-transition-duration: $duration, $ripple-fade-in-duration, 0ms, 0m
 }
 
 @mixin ink-color($color, $on: transparent, $button-style: "none", $hover-alt: false, $opacity-modifier: 0) {
-  $hover: "hover";
-
-  @if $hover-alt or $button-style == "raised" {
-    $hover: "hover-alt";
+  @if $button-style == "raised" {
+    $hover-alt: true;
   }
 
   @if $button-style == "flat" {
@@ -151,7 +149,7 @@ $ripple-active-transition-duration: $duration, $ripple-fade-in-duration, 0ms, 0m
       box-shadow: $shadow-z4;
     }
 
-    background-color: overlay($hover, $color, $opacity-modifier: $opacity-modifier, $on: $on);
+    background-color: hover-overlay($color, $opacity-modifier: $opacity-modifier, $on: $on, $alt: $hover-alt);
   }
 
   &:focus {
@@ -163,7 +161,7 @@ $ripple-active-transition-duration: $duration, $ripple-fade-in-duration, 0ms, 0m
       box-shadow: $shadow-z4;
     }
 
-    background-color: overlay("focus", $color, $opacity-modifier: $opacity-modifier, $on: $on);
+    background-color: focus-overlay($color, $opacity-modifier: $opacity-modifier, $on: $on);
   }
 
   &:active {
@@ -175,7 +173,7 @@ $ripple-active-transition-duration: $duration, $ripple-fade-in-duration, 0ms, 0m
       box-shadow: $shadow-z8;
     }
 
-    background-image: radial-gradient(circle, overlay("pressed", $color, $opacity-modifier: $opacity-modifier) 10%, transparent 10%);
+    background-image: radial-gradient(circle, pressed-overlay($color, $opacity-modifier: $opacity-modifier) 10%, transparent 10%);
   }
 }
 

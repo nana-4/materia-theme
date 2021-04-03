@@ -31,12 +31,12 @@
     }
 
     &:checked {
-      $background-color: overlay("activated", $on-panel);
+      $background-color: activated-overlay($on-panel);
       color: $on-panel;
       @include ink-color($on-panel, $button-style: "flat", $on: $background-color);
 
       &:disabled {
-        background-color: overlay("activated", $on-panel);
+        background-color: activated-overlay($on-panel);
         color: disabled($on-panel);
       }
     }
@@ -89,7 +89,7 @@ MatePanelAppletFrameDBus > MatePanelAppletFrameDBus {
     color: hint($on-panel);
 
     &:hover {
-      background-color: overlay("activated", $on-panel);
+      background-color: activated-overlay($on-panel);
       color: $on-panel;
     }
 
@@ -173,11 +173,11 @@ PanelApplet.wnck-applet .wnck-pager {
   color: primary($on-panel);
 
   &:hover {
-    background-color: overlay("hover", $on-panel);
+    background-color: hover-overlay($on-panel);
   }
 
   &:active {
-    background-color: overlay("pressed", $on-panel);
+    background-color: pressed-overlay($on-panel);
   }
 
   &:selected {
@@ -281,7 +281,7 @@ na-tray-applet widget box widget {
   }
 
   &:selected > box {
-    background-color: overlay("activated", $on-panel);
+    background-color: activated-overlay($on-panel);
     color: $on-panel;
   }
 }
@@ -303,7 +303,7 @@ na-tray-applet widget box widget {
     font-weight: normal;
 
     &:not(.flat) {
-      background-color: overlay("activated", $on-surface);
+      background-color: activated-overlay($on-surface);
     }
 
     image,

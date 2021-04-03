@@ -55,7 +55,7 @@ StScrollView {
 }
 #Tooltip {
   @include type(caption);
-  
+
   padding: 6px 8px;
   color: $on-tooltip;
   text-align: center;
@@ -98,7 +98,7 @@ StScrollView {
   spacing: 8px;
   transition-duration: $duration;
   &:active {
-    background-color: overlay("hover", $on-surface);
+    background-color: hover-overlay($on-surface);
     color: $on-surface;
     transition-duration: 0ms;
   }
@@ -475,7 +475,7 @@ StScrollView {
 }
 .overview-empty-placeholder {
     @extend %osd-info-workspace-shared;
-    
+
 }
 .window-caption {
   @include type(caption);
@@ -583,7 +583,7 @@ StScrollView {
     border-radius: $corner-radius;
     color: $on-surface;
     text-align: center;
-    &:focus { background-color: divider($on-surface) }; 
+    &:focus { background-color: divider($on-surface) };
 }
 .calendar-month-label {
     @include type(subtitle2);
@@ -594,7 +594,7 @@ StScrollView {
     border-radius: $corner-radius;
     color: $on-surface;
     text-align: center;
-    &:focus { background-color: divider($on-surface) }; 
+    &:focus { background-color: divider($on-surface) };
 }
 .calendar-change-month-back {
   @extend %calendar-shared;
@@ -624,7 +624,7 @@ StScrollView {
   &:active {
     color: $on-primary;
     background-color: $primary;
-    border-color: transparent; 
+    border-color: transparent;
   }
 }
 .calendar-week-number {
@@ -652,11 +652,11 @@ StScrollView {
 .calendar-day {
   border-width: 0;
 }
-.calendar-day-top { 
-  border-top-width: 0; 
+.calendar-day-top {
+  border-top-width: 0;
 }
 .calendar-day-left {
-  border-left-width: 0; 
+  border-left-width: 0;
 }
 .calendar-work-day {
 }
@@ -1065,7 +1065,7 @@ StScrollView {
 // the window list applet. Some third party applets inherit some of this theming.
 .window-list-box {
   @include type(caption);
-  
+
   spacing: 4px;
   padding: 0 3px;
   &.vertical {
@@ -1124,7 +1124,7 @@ StScrollView {
   }
   &-number-label {
     @include type(caption);
-    
+
     z-index: 99;
   }
   &-list-button-label {
@@ -1132,7 +1132,7 @@ StScrollView {
   }
   &-badge {
     border-radius: $circular-radius;
-    background-color: $panel-solid; 
+    background-color: $panel-solid;
   }
   &-thumbnail-alert {
     background: $warning;
@@ -1346,7 +1346,7 @@ StScrollView {
 // to maintain visibility irrespctive of wallpaper and to allow for the highlighting scheme to work
 .desklet {
   @include type(caption);
-  
+
   color: $on-titlebar;
   border: none;
   box-shadow: $shadow-z8;
@@ -1368,7 +1368,7 @@ StScrollView {
 .desklet-with-borders-and-header {
   @extend %desklet-shared;
   @include type(caption);
-  
+
   background-color: $surface-z8;
   border-radius-bottomleft: 2px;
   border-radius-bottomright: 2px;
@@ -1389,7 +1389,7 @@ StScrollView {
 }
 .photoframe-box {
   @extend %desklet-shared;
-  
+
   background-color: $surface-z8;
   border-radius: $corner-radius;
   &:highlight {
@@ -1438,13 +1438,13 @@ StScrollView {
   padding-left: 7px;
 }
 .workspace-osd {
-  @extend %osd-info-workspace-shared;  
+  @extend %osd-info-workspace-shared;
 }
 .expo-workspaces-name-entry {
   @include type(body1);
 
   background-color: entry-fill($on-dark);
-  color: $on-dark; 
+  color: $on-dark;
   padding: 0 8px;
   selection-background-color: stroke($on-dark);
   selected-color: $on-dark;
@@ -1605,6 +1605,6 @@ StScrollView {
 }
 .user-label {
   @include type(subtitle2);
-  
+
   color: $on-surface;
 }

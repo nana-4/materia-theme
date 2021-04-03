@@ -136,16 +136,16 @@
   @include type(button);
 
   &:focus {
-    background-color: overlay("focus", $on-system);
+    background-color: focus-overlay($on-system);
   }
 
   &:hover {
-    background-color: overlay("hover", $on-system);
+    background-color: hover-overlay($on-system);
   }
 
   &:active {
     transition-duration: $duration-ripple;
-    background-color: overlay("pressed", $on-system);
+    background-color: pressed-overlay($on-system);
   }
 }
 
@@ -162,7 +162,7 @@
 
   &:expanded .login-dialog-user-list-item {
     &:selected {
-      background-color: overlay("focus", $on-system);
+      background-color: focus-overlay($on-system);
     }
 
     &:logged-in {
@@ -178,16 +178,16 @@
   color: inherit;
 
   &:focus {
-    background-color: overlay("focus", $on-system);
+    background-color: focus-overlay($on-system);
   }
 
   &:hover {
-    background-color: overlay("hover", $on-system);
+    background-color: hover-overlay($on-system);
   }
 
   &:active {
     transition-duration: $duration-ripple;
-    background-color: overlay("pressed", $on-system);
+    background-color: pressed-overlay($on-system);
   }
 
   &:ltr .user-widget {
@@ -282,16 +282,16 @@
   color: hint($on-system);
 
   &:focus {
-    background-color: overlay("focus", $on-system);
+    background-color: focus-overlay($on-system);
   }
 
   &:hover {
-    background-color: overlay("hover", $on-system);
+    background-color: hover-overlay($on-system);
   }
 
   &:active {
     transition-duration: $duration-ripple;
-    background-color: overlay("pressed", $on-system);
+    background-color: pressed-overlay($on-system);
   }
 
   StIcon {

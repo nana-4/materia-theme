@@ -30,7 +30,7 @@
   -gtk-outline-radius: $corner-radius;
 
   &:focus {
-    outline-color: overlay("focus", $on-surface);
+    outline-color: focus-overlay($on-surface);
   }
 }
 
@@ -81,11 +81,11 @@
   // color: $on-surface;
 
   &:hover {
-    background-color: overlay("hover-alt", $on-surface);
+    background-color: hover-overlay($on-surface, $alt: true);
   }
 
   &:selected:hover {
-    background-color: overlay("hover-alt", $primary, $on: $overlay-selected);
+    background-color: hover-overlay($primary, $alt: true, $on: $overlay-selected);
   }
 
   &:disabled {
@@ -229,7 +229,7 @@ assistant {
     font-weight: 500;
 
     &.highlight {
-      background-color: overlay("activated", $primary);
+      background-color: activated-overlay($primary);
       color: $primary;
     }
   }
@@ -496,7 +496,7 @@ treeview entry {
   color: $on-surface;
 
   &:hover {
-    background-image: image(overlay("hover", $on-surface));
+    background-image: image(hover-overlay($on-surface));
   }
 
   // side margins: compensate the entry padding with a negative margin
@@ -571,13 +571,13 @@ button {
   }
 
   &:checked {
-    $background-color: overlay("activated", $primary, $on: $surface-z8);
+    $background-color: activated-overlay($primary, $on: $surface-z8);
     color: $primary;
     @include ink-color($primary, $button-style: "raised", $on: $background-color);
 
     &:disabled {
       box-shadow: none;
-      background-color: overlay("activated", $on-surface, $on: fill($on-surface));
+      background-color: activated-overlay($on-surface, $on: fill($on-surface));
       color: disabled($on-surface);
     }
   }
@@ -646,7 +646,7 @@ button {
   @extend %button-flat-basic;
 
   &:checked {
-    $background-color: overlay("activated", $primary);
+    $background-color: activated-overlay($primary);
     color: $primary;
     @include ink-color($primary, $button-style: "flat", $on: $background-color);
 
@@ -725,7 +725,7 @@ button {
       }
 
       &:checked {
-        $background-color: overlay("activated", on($color), $on: $color);
+        $background-color: activated-overlay(on($color), $on: $color);
         @include ink-color(on($color), $button-style: "raised", $on: $background-color);
       }
 
@@ -740,7 +740,7 @@ button {
         }
 
         &:checked {
-          $background-color: overlay("activated", $color);
+          $background-color: activated-overlay($color);
           @include ink-color($color, $button-style: "flat", $on: $background-color);
         }
       }
@@ -1802,7 +1802,7 @@ treeview.view {
     // FIXME: box-shadow, background-color and background-image are not available here.
     border-style: solid none;
     border-width: 9999px;
-    border-color: overlay("hover", $on-surface);
+    border-color: hover-overlay($on-surface);
 
     &.after {
       border-top-style: none;
@@ -1929,7 +1929,7 @@ menubar,
     // Seems like it :hover even with keyboard focus
     &:hover {
       transition: none;
-      background-color: overlay("activated", $on-titlebar);
+      background-color: activated-overlay($on-titlebar);
       color: $on-titlebar;
     }
 
@@ -1970,7 +1970,7 @@ menu,
 
     &:hover {
       transition: none;
-      background-color: overlay("hover", $on-surface);
+      background-color: hover-overlay($on-surface);
     }
 
     &:disabled {
@@ -2032,7 +2032,7 @@ menu,
     }
 
     &:hover {
-      background-image: image(overlay("hover", $on-surface));
+      background-image: image(hover-overlay($on-surface));
     }
 
     &:disabled {
@@ -2135,7 +2135,7 @@ popover.background {
 
 notebook {
   &:focus > header > tabs > tab:checked {
-    background-color: overlay("focus", $primary);
+    background-color: focus-overlay($primary);
   }
 
   > header {
@@ -2261,7 +2261,7 @@ notebook {
       font-weight: 500;
 
       &:hover {
-        background-color: overlay("hover-alt", $on-surface);
+        background-color: hover-overlay($on-surface, $alt: true);
       }
 
       &:disabled {
@@ -2287,7 +2287,7 @@ notebook {
         }
 
         &.dnd {
-          background-color: overlay("dragged", $primary);
+          background-color: dragged-overlay($primary);
         }
       }
 
@@ -2298,7 +2298,7 @@ notebook {
         padding: $container-padding 16px;
 
         &:drop(active) {
-          background-color: overlay("hover", $on-surface);
+          background-color: hover-overlay($on-surface);
         }
       }
 
@@ -2524,11 +2524,11 @@ switch {
   }
 
   &:hover slider {
-    box-shadow: 0 0 0 10px overlay("hover", $on-surface), $shadow-z1;
+    box-shadow: 0 0 0 10px hover-overlay($on-surface), $shadow-z1;
   }
 
   &:focus slider {
-    box-shadow: 0 0 0 10px overlay("focus", $on-surface), $shadow-z1;
+    box-shadow: 0 0 0 10px focus-overlay($on-surface), $shadow-z1;
   }
 
   &:checked slider {
@@ -2536,11 +2536,11 @@ switch {
   }
 
   &:checked:hover slider {
-    box-shadow: 0 0 0 10px overlay("hover", $primary), $shadow-z1;
+    box-shadow: 0 0 0 10px hover-overlay($primary), $shadow-z1;
   }
 
   &:checked:focus slider {
-    box-shadow: 0 0 0 10px overlay("focus", $primary), $shadow-z1;
+    box-shadow: 0 0 0 10px focus-overlay($primary), $shadow-z1;
   }
 
   row:selected & {
@@ -2910,11 +2910,11 @@ scale {
     }
 
     &:hover {
-      background-color: overlay("hover", $primary);
+      background-color: hover-overlay($primary);
     }
 
     &:focus {
-      background-color: overlay("focus", $primary);
+      background-color: focus-overlay($primary);
     }
 
     &:active {
@@ -2926,7 +2926,7 @@ scale {
       animation: ripple-on-slider $ripple-fade-in-duration $ease-out forwards;
       background-image:
         -gtk-scaled(url('#{$_url}.png'), url('#{$_url}@2.png')),
-        radial-gradient(circle, overlay("pressed", $primary) 10%, transparent 0%);
+        radial-gradient(circle, pressed-overlay($primary) 10%, transparent 0%);
       background-size: auto, 0% 0%;
     }
   }
@@ -2999,7 +2999,7 @@ scale {
 
             background-image:
               -gtk-scaled(url('#{$_scale_asset}.png'), url('#{$_scale_asset}@2.png')),
-              radial-gradient(circle, overlay("pressed", $primary) 10%, transparent 0%);
+              radial-gradient(circle, pressed-overlay($primary) 10%, transparent 0%);
           }
         }
       }
@@ -3289,7 +3289,7 @@ row {
     // this is for indicathing which row generated a popover
     // see https://bugzilla.gnome.org/show_bug.cgi?id=754411
     &.has-open-popup {
-      background-color: overlay("activated", $on-surface);
+      background-color: activated-overlay($on-surface);
     }
   }
 
@@ -3297,7 +3297,7 @@ row {
     @include ink-color($primary, $hover-alt: true, $on: $overlay-selected);
 
     &.has-open-popup {
-      background-color: overlay("activated", $primary, $on: $overlay-selected);
+      background-color: activated-overlay($primary, $on: $overlay-selected);
     }
   }
 }
@@ -3394,7 +3394,7 @@ calendar {
     color: hint($on-surface);
 
     &:hover {
-      background-image: image(overlay("hover", $on-surface));
+      background-image: image(hover-overlay($on-surface));
     }
 
     &:disabled {
@@ -3577,7 +3577,7 @@ stacksidebar.sidebar {
     font-weight: 500;
 
     &:selected {
-      $background-color: overlay("activated", $primary);
+      $background-color: activated-overlay($primary);
       color: $primary;
       @include ink-color($primary, $on: $background-color, $hover-alt: true);
     }
@@ -3644,7 +3644,7 @@ placessidebar.sidebar {
     }
 
     &:selected {
-      $background-color: overlay("activated", $primary);
+      $background-color: activated-overlay($primary);
       color: $primary;
       font-weight: 500;
       @include ink-color($primary, $on: $background-color, $hover-alt: true);
@@ -3684,7 +3684,7 @@ placessidebar.sidebar {
     }
 
     &.sidebar-placeholder-row {
-      background-color: overlay("hover", $on-surface);
+      background-color: hover-overlay($on-surface);
     }
 
     &.sidebar-new-bookmark-row {
@@ -3786,7 +3786,7 @@ infobar {
   border-style: none;
 
   &.action:hover > revealer > box {
-    background-image: image(overlay("hover", $on-surface));
+    background-image: image(hover-overlay($on-surface));
   }
 
   &.info > revealer > box,
@@ -4250,7 +4250,7 @@ popover.emoji-picker .emoji {
     border-radius: $corner-radius;
 
     &:hover {
-      background-color: overlay("hover", $on-surface);
+      background-color: hover-overlay($on-surface);
     }
   }
 }
@@ -4269,6 +4269,6 @@ popover.emoji-completion {
   }
 
   .emoji:hover {
-    background-color: overlay("hover", $on-surface);
+    background-color: hover-overlay($on-surface);
   }
 }

@@ -235,7 +235,7 @@
     transition: $transition;
 
     &.current-workspace {
-      background-color: overlay("activated", $on-panel);
+      background-color: activated-overlay($on-panel);
     }
   }
 
@@ -300,12 +300,12 @@ button.raven-trigger {
     }
 
     &:checked {
-      $background-color: overlay("activated", $on-panel);
+      $background-color: activated-overlay($on-panel);
       color: $on-panel;
       @include ink-color($on-panel, $button-style: "flat", $on: $background-color);
 
       &:disabled {
-        background-color: overlay("activated", $on-panel);
+        background-color: activated-overlay($on-panel);
         color: disabled($on-panel);
       }
     }
@@ -522,7 +522,7 @@ $pos_list: (top: bottom, bottom: top, left: right, right: left);
 
       &:checked {
         color: $primary;
-        @include ink-color($primary, $button-style: "flat", $on: overlay("activated", $primary));
+        @include ink-color($primary, $button-style: "flat", $on: activated-overlay($primary));
       }
 
       &:not(:first-child) {

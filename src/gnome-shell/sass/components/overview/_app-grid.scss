@@ -132,7 +132,7 @@
   .app-well-app {
     &:focus {
       .overview-icon {
-        background-color: overlay("focus", $on-surface);
+        background-color: focus-overlay($on-surface);
       }
     }
 
@@ -140,14 +140,14 @@
     &:hover,
     &:selected {
       .overview-icon {
-        background-color: overlay("hover", $on-surface);
+        background-color: hover-overlay($on-surface);
       }
     }
 
     &:active,
     &:checked {
       .overview-icon {
-        background-color: overlay("pressed", $on-surface);
+        background-color: pressed-overlay($on-surface);
       }
     }
   }
@@ -324,7 +324,7 @@
     width: 300px;
 
     &.dnd {
-      background: overlay("dragged", $on-system);
+      background: dragged-overlay($on-system);
     }
 
     &.next:ltr,
@@ -370,11 +370,11 @@
     }
 
     &:hover {
-      background-color: overlay("hover", $on-dark);
+      background-color: hover-overlay($on-dark);
     }
 
     &:active {
-      background-color: overlay("pressed", $on-dark);
+      background-color: pressed-overlay($on-dark);
       transition-duration: $duration-ripple;
     }
 
@@ -385,7 +385,7 @@
     }
 
     &:focus {
-      background-color: overlay("focus", $on-dark);
+      background-color: focus-overlay($on-dark);
     }
 
     &:first-child {

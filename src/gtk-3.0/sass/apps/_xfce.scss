@@ -33,12 +33,12 @@
     }
 
     &:checked {
-      $background-color: overlay("activated", $on-panel);
+      $background-color: activated-overlay($on-panel);
       color: $on-panel;
       @include ink-color($on-panel, $button-style: "flat", $on: $background-color);
 
       &:disabled {
-        background-color: overlay("activated", $on-panel);
+        background-color: activated-overlay($on-panel);
         color: disabled($on-panel);
       }
     }
@@ -83,11 +83,11 @@
 // Workspace switcher provided by libwnck
 wnck-pager {
   &:hover {
-    background-color: overlay("hover", $on-panel);
+    background-color: hover-overlay($on-panel);
   }
 
   &:active {
-    background-color: overlay("pressed", $on-panel);
+    background-color: pressed-overlay($on-panel);
   }
 
   &:selected {

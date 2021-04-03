@@ -69,7 +69,7 @@
   &:hover {
     box-shadow: $shadow-z4;
     border-color: transparent;
-    background-color: overlay("hover", $on-error, $on: $error);
+    background-color: hover-overlay($on-error, $on: $error);
     color: $on-error;
 
     @if $version < 3.32 {
@@ -81,7 +81,7 @@
     transition-duration: $duration-ripple;
     box-shadow: $shadow-z8;
     border-color: transparent;
-    background-color: overlay("pressed", $on-error, $on: $error);
+    background-color: pressed-overlay($on-error, $on: $error);
     color: $on-error;
 
     @if $version < 3.32 {

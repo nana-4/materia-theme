@@ -54,31 +54,6 @@ $on-dark: #fff;
   @return mix(change-color($color, $alpha: 1), $on, alpha($color) * 100%);
 }
 
-$state-overlay-opacities: (
-  "hover": .08,
-  "hover-alt": .04,
-  "focus": .08,
-  "pressed": .12,
-  "dragged": .08,
-  "activated": .12,
-  "selected": .24,
-);
-
-// Determine the overlay color depending on the given state and color.
-@function overlay($state, $color, $on: transparent, $opacity-modifier: 0) {
-  @if not map-has-key($state-overlay-opacities, $state) {
-    @error "Invalid state: '#{$state}'. Choose one of: #{map-keys($state-overlay-opacities)}";
-  }
-
-  @if saturation($color) > 50% or saturation($on) > 50% {
-    $opacity-modifier: .04;
-  }
-
-  $opacity: map-get($state-overlay-opacities, $state) + $opacity-modifier;
-
-  @return mix(rgba($color, 1), $on, $opacity * 100%);
-}
-
 //
 // Main colors
 //
@@ -176,6 +151,61 @@ $titlebar-indicator: currentcolor;
 //
 // Overlay state colors
 //
+
+// Determine the overlay color depending on the given color and opacity.
+@function _overlay($color, $opacity, $on) {
+  $opacity-modifier: 0;
+
+  @if saturation($color) > 50% or saturation($on) > 50% {
+    $opacity-modifier: .04;
+  }
+
+  @return mix(rgba($color, 1), $on, percentage($opacity + $opacity-modifier));
+}
+
+@function hover-overlay($color, $opacity-modifier: 0, $on: transparent, $alt: false) {
+  $opacity: .08;
+
+  @if $alt {
+    $opacity: .04;
+  }
+
+  @return _overlay($color: $color, $opacity: $opacity + $opacity-modifier, $on: $on);
+}
+
+@function focus-overlay($color, $opacity-modifier: 0, $on: transparent) {
+  $opacity: .08;
+
+  @return _overlay($color: $color, $opacity: $opacity + $opacity-modifier, $on: $on);
+}
+
+@function pressed-overlay($color, $opacity-modifier: 0, $on: transparent) {
+  $opacity: .12;
+
+  @return _overlay($color: $color, $opacity: $opacity + $opacity-modifier, $on: $on);
+}
+
+@function dragged-overlay($color, $opacity-modifier: 0, $on: transparent) {
+  $opacity: .08;
+
+  @return _overlay($color: $color, $opacity: $opacity + $opacity-modifier, $on: $on);
+}
+
+@function activated-overlay($color, $opacity-modifier: 0, $on: transparent) {
+  $opacity: .12;
+
+  @return _overlay($color: $color, $opacity: $opacity + $opacity-modifier, $on: $on);
+}
+
+@function selected-overlay($color, $opacity-modifier: 0) {
+  $opacity: %MATERIA_SELECTION_OPACITY%;
+
+  @if $color == $on-surface {
+    $color: $primary;
+  }
+
+  @return rgba($color, $opacity + $opacity-modifier);
+}
 
 $overlay-selected: rgba($primary, %MATERIA_SELECTION_OPACITY%);
 

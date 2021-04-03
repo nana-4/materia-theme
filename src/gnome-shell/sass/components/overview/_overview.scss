@@ -100,7 +100,7 @@
 %-overview-item-focus {
   border-image: none;
   background-image: none;
-  background-color: overlay("focus", $on-dark);
+  background-color: focus-overlay($on-dark);
   color: inherit;
   transition-duration: 0ms;
 }
@@ -109,14 +109,14 @@
   border: 0;
   border-image: none;
   background-image: none;
-  background-color: overlay("hover", $on-dark);
+  background-color: hover-overlay($on-dark);
   color: inherit;
   transition-duration: 0ms;
 }
 
 %-overview-item-active {
   box-shadow: none;
-  background-color: overlay("pressed", $on-dark);
+  background-color: pressed-overlay($on-dark);
   color: inherit;
   transition-duration: $duration-ripple;
 }
