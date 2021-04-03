@@ -61,6 +61,7 @@ gnome_shell_scss_depend_files = files([
   'sass/components/_index.scss',
   'sass/_drawing.scss',
   'sass/_extensions.scss',
+  'sass/_gnome-shell.scss',
 ])
 
 foreach theme: themes

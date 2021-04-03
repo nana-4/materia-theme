@@ -24,6 +24,7 @@ gtk4_scss_depend_files = files([
   '../gtk-3.0/sass/_public-colors.scss',
   'sass/_common.scss',
   'sass/_drawing.scss',
+  'sass/_gtk.scss',
 ])
 
 foreach theme: themes
