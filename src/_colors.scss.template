@@ -15,16 +15,12 @@ $light-topbar: false !default;
   @return if(alpha($color) < 1, true, false);
 }
 
-// Determine whether the color is "light" or "dark".
-@function tone($color) {
+// Determine whether the color is dark.
+@function _is-dark($color) {
   // Calculate color brightness as per https://www.w3.org/TR/AERT/#color-contrast
   $brightness: (red($color) * 299 + green($color) * 587 + blue($color) * 114) / 1000;
 
-  @if $brightness >= 128 {
-    @return "light";
-  } @else {
-    @return "dark";
-  }
+  @return if($brightness < 128, true, false);
 }
 
 $on-light: #000;
@@ -33,7 +29,7 @@ $on-dark: #fff;
 // Determine whether to use dark or light color on top of given color
 // to meet accessibility standards for contrast.
 @function on($color) {
-  $contrast-color: if(tone($color) == "dark", $on-dark, $on-light);
+  $contrast-color: if(_is-dark($color), $on-dark, $on-light);
 
   @if saturation($color) > 50% or alpha($color) < 1 {
     @return $contrast-color;
@@ -144,11 +140,11 @@ $on-titlebar: %HDR_FG%;
 $titlebar-indicator: currentcolor;
 
 @if $dark-theme {
-  $surface-z0: if(tone(%BG%) == "dark", %BG%, %FG%);
-  $surface-z1: if(tone(%BG%) == "dark", %MATERIA_VIEW%, mix(white, $surface-z0, 5%));
-  $surface-z8: if(tone(%BG%) == "dark", %MATERIA_SURFACE%, mix(white, $surface-z0, 12%));
-  $surface-switch-thumb: if(tone(%BG%) == "dark", %MATERIA_SURFACE%, mix(white, $surface-z0, 60%));
-  $on-surface: if(tone(%BG%) == "dark", %FG%, on($surface-z0));
+  $surface-z0: if(_is-dark(%BG%), %BG%, %FG%);
+  $surface-z1: if(_is-dark(%BG%), %MATERIA_VIEW%, mix(white, $surface-z0, 5%));
+  $surface-z8: if(_is-dark(%BG%), %MATERIA_SURFACE%, mix(white, $surface-z0, 12%));
+  $surface-switch-thumb: if(_is-dark(%BG%), %MATERIA_SURFACE%, mix(white, $surface-z0, 60%));
+  $on-surface: if(_is-dark(%BG%), %FG%, on($surface-z0));
 
   $primary: $primary-on-dark;
   $on-primary: on($primary);
@@ -165,9 +161,9 @@ $titlebar-indicator: currentcolor;
   $visited: $visited-on-dark;
   $on-visited: on($visited);
 
-  $titlebar: if(tone(%BG%) == "dark", %HDR_BG%, mix(white, $surface-z0, 9%));
-  $titlebar-backdrop: if(tone(%BG%) == "dark", %HDR_BG2%, $surface-z1);
-  $on-titlebar: if(tone(%BG%) == "dark", %HDR_FG%, on($titlebar));
+  $titlebar: if(_is-dark(%BG%), %HDR_BG%, mix(white, $surface-z0, 9%));
+  $titlebar-backdrop: if(_is-dark(%BG%), %HDR_BG2%, $surface-z1);
+  $on-titlebar: if(_is-dark(%BG%), %HDR_FG%, on($titlebar));
 }
 
 @if $light-topbar {
@@ -188,11 +184,11 @@ $overlay-selected: rgba($primary, %MATERIA_SELECTION_OPACITY%);
 //
 
 @function primary($color) {
-  @return if(tone($color) == "dark", $primary-on-light, $primary-on-dark);
+  @return if(_is-dark($color), $primary-on-light, $primary-on-dark);
 }
 
 @function error($color) {
-  @return if(tone($color) == "dark", $error-on-light, $error-on-dark);
+  @return if(_is-dark($color), $error-on-light, $error-on-dark);
 }
 
 @function hint($color) {

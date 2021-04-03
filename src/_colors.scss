@@ -15,16 +15,12 @@ $light-topbar: false !default;
   @return if(alpha($color) < 1, true, false);
 }
 
-// Determine whether the color is "light" or "dark".
-@function tone($color) {
+// Determine whether the color is dark.
+@function _is-dark($color) {
   // Calculate color brightness as per https://www.w3.org/TR/AERT/#color-contrast
   $brightness: (red($color) * 299 + green($color) * 587 + blue($color) * 114) / 1000;
 
-  @if $brightness >= 128 {
-    @return "light";
-  } @else {
-    @return "dark";
-  }
+  @return if($brightness < 128, true, false);
 }
 
 $on-light: #000;
@@ -33,7 +29,7 @@ $on-dark: #fff;
 // Determine whether to use dark or light color on top of given color
 // to meet accessibility standards for contrast.
 @function on($color) {
-  $contrast-color: if(tone($color) == "dark", $on-dark, $on-light);
+  $contrast-color: if(_is-dark($color), $on-dark, $on-light);
 
   @if saturation($color) > 50% or alpha($color) < 1 {
     @return $contrast-color;
@@ -195,11 +191,11 @@ $overlay-selected: rgba($primary, .24);
 //
 
 @function primary($color) {
-  @return if(tone($color) == "dark", $primary-on-light, $primary-on-dark);
+  @return if(_is-dark($color), $primary-on-light, $primary-on-dark);
 }
 
 @function error($color) {
-  @return if(tone($color) == "dark", $error-on-light, $error-on-dark);
+  @return if(_is-dark($color), $error-on-light, $error-on-dark);
 }
 
 @function hint($color) {
