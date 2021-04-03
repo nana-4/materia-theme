@@ -4,6 +4,7 @@
 @use "../../../../theme-color";
 @use "../../../../st-theme";
 @use "../../gnome-shell";
+@use "../overview/overview";
 
 $color: theme-color.$panel;
 $on-color: theme-color.$on-panel;
@@ -14,7 +15,7 @@ $on-color: theme-color.$on-panel;
 }
 
 #panel {
-  transition-duration: st-theme.$duration-panel;
+  transition-duration: overview.$transition-duration;
   height: st-theme.$menuitem-size;
   background-color: $color;
   font-weight: bold;
@@ -35,7 +36,7 @@ $on-color: theme-color.$on-panel;
 
     @if gnome-shell.$version >= 40 {
       -panel-corner-opacity: 0;
-      transition-duration: st-theme.$duration-panel;
+      transition-duration: overview.$transition-duration;
     } @else {
       &:active, &:overview, &:focus {
         -panel-corner-border-color: transparent;
@@ -206,7 +207,7 @@ $on-color: theme-color.$on-panel;
 
   @if gnome-shell.$version >= 3.26 and gnome-shell.$version < 3.32 {
     &.solid {
-      transition-duration: st-theme.$duration-panel;
+      transition-duration: overview.$transition-duration;
       background-color: theme-color.$panel;
 
       .panel-corner {

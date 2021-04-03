@@ -7,6 +7,9 @@
 @use "../../typography";
 @use "../base/scrollbar";
 
+// Same as the ANIMATION_TIME in overview.js
+$transition-duration: 250ms;
+
 $color: theme-color.$system;
 $on-color: theme-color.$on-system;
 
@@ -46,7 +49,7 @@ $on-color: theme-color.$on-system;
 }
 
 @mixin panel {
-  transition-duration: st-theme.$duration-panel;
+  transition-duration: $transition-duration;
   border: 0;
   background-color: theme-color.fill($on-color);
   color: $on-color;
