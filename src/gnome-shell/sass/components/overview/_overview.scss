@@ -7,6 +7,14 @@
 @use "../../drawing";
 @use "../base/scrollbar";
 
+$color: theme-color.$system;
+$on-color: theme-color.$on-system;
+
+@if gnome-shell.$version < 40 {
+  $color: transparent;
+  $on-color: theme-color.$on-dark;
+}
+
 @if gnome-shell.$version >= 40 {
   .controls-manager,
   .secondary-monitor-workspaces {
@@ -14,21 +22,21 @@
   }
 
   #overviewGroup {
-    background-color: theme-color.$system;
-    color: theme-color.$on-system;
+    background-color: $color;
+    color: $on-color;
 
     StScrollBar {
-      @include scrollbar.color(theme-color.$on-system);
+      @include scrollbar.color($on-color);
     }
   }
 } @else {
   #overview {
     spacing: 24px;
-    background-color: transparent;
-    color: theme-color.$on-dark;
+    background-color: $color;
+    color: $on-color;
 
     StScrollBar {
-      @include scrollbar.color(theme-color.$on-dark);
+      @include scrollbar.color($on-color);
     }
   }
 
@@ -40,13 +48,13 @@
 @mixin panel {
   transition-duration: st-theme.$duration-panel;
   border: 0;
-  background-color: theme-color.fill(theme-color.$on-dark);
-  color: theme-color.$on-dark;
+  background-color: theme-color.fill($on-color);
+  color: $on-color;
 }
 
 @mixin status-text {
   @include drawing.type(headline3);
-  color: theme-color.disabled(theme-color.$on-dark);
+  color: theme-color.disabled($on-color);
 }
 
 @mixin item {
@@ -107,7 +115,7 @@
 @mixin _item-focus {
   border-image: none;
   background-image: none;
-  background-color: theme-color.focus-overlay(theme-color.$on-dark);
+  background-color: theme-color.focus-overlay($on-color);
   color: inherit;
   transition-duration: 0ms;
 }
@@ -116,14 +124,14 @@
   border: 0;
   border-image: none;
   background-image: none;
-  background-color: theme-color.hover-overlay(theme-color.$on-dark);
+  background-color: theme-color.hover-overlay($on-color);
   color: inherit;
   transition-duration: 0ms;
 }
 
 @mixin _item-active {
   box-shadow: none;
-  background-color: theme-color.pressed-overlay(theme-color.$on-dark);
+  background-color: theme-color.pressed-overlay($on-color);
   color: inherit;
   transition-duration: st-theme.$duration-ripple;
 }

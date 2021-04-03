@@ -4,6 +4,7 @@
 @use "../../../../theme-color";
 @use "../../../../st-theme";
 @use "../../gnome-shell";
+@use "overview";
 
 // Window picker
 .window-picker {
@@ -28,12 +29,12 @@
 @if gnome-shell.$version < 40 {
   // Borders on window thumbnails
   .window-clone-border {
-    border: 4px solid theme-color.stroke(theme-color.$on-dark);
+    border: 4px solid theme-color.stroke(overview.$on-color);
     border-radius: theme.$corner-radius;
     // For window decorations with round corners we can't match
     // the exact shape when the window is scaled. So apply a shadow
     // to fix that case
-    box-shadow: inset 0 0 0 1px theme-color.stroke(theme-color.$on-dark);
+    box-shadow: inset 0 0 0 1px theme-color.stroke(overview.$on-color);
   }
 }
 

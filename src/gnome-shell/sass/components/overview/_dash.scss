@@ -48,7 +48,7 @@ $dash-margin: 12px;
     margin-bottom: 0;
     padding: $dash-spacing ($dash-spacing / 2);
     border-radius: theme.$corner-radius theme.$corner-radius 0 0;
-    background-color: theme-color.fill(theme-color.$on-dark);
+    background-color: theme-color.fill(overview.$on-color);
   }
 
   // Dash Items
@@ -60,7 +60,7 @@ $dash-margin: 12px;
   .dash-separator {
     width: 1px;
     margin: $dash-spacing ($dash-spacing / 2);
-    background-color: theme-color.stroke(theme-color.$on-dark);
+    background-color: theme-color.stroke(overview.$on-color);
   }
 } @else {
   // Dash Items
@@ -91,9 +91,9 @@ $dash-margin: 12px;
 // Show apps button
 .show-apps {
   @include overview.icon;
-  color: theme-color.hint(theme-color.$on-dark);
+  color: theme-color.hint(overview.$on-color);
 
   &:checked {
-    color: theme-color.$on-dark;
+    color: overview.$on-color;
   }
 }

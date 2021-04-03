@@ -180,7 +180,7 @@
     -arrow-base: 24px;
     -arrow-rise: 12px;
     -arrow-border-radius: theme.$corner-radius;
-    -arrow-background-color: theme-color.fill(theme-color.$on-dark);
+    -arrow-background-color: theme-color.fill(overview.$on-color);
   }
 
   .app-folder-popup-bin {
@@ -191,7 +191,7 @@
 @if gnome-shell.$version >= 40 {
   .app-well-app.app-folder > .overview-icon > StBoxLayout > StBin > StWidget {
     border-radius: theme.$corner-radius;
-    background-color: theme-color.fill(theme-color.$on-dark);
+    background-color: theme-color.fill(overview.$on-color);
   }
 } @else {
   .app-folder-icon {
@@ -199,7 +199,7 @@
     spacing-rows: 4px;
     spacing-columns: 4px;
     border-radius: theme.$corner-radius;
-    background-color: theme-color.fill(theme-color.$on-dark);
+    background-color: theme-color.fill(overview.$on-color);
 
     // HACK: Force icon size to 32px
     > StBin > StIcon {
@@ -214,7 +214,7 @@
   width: 32px;
   margin-bottom: 0;
   border-radius: 0;
-  background-color: theme-color.$on-dark;
+  background-color: overview.$on-color;
 }
 
 // Rename popup for app folders
@@ -248,7 +248,7 @@
       width: 12px;
       height: 12px;
       border-radius: 12px; // the same as height&width
-      background-color: theme-color.$on-dark;
+      background-color: overview.$on-color;
     }
   } @else {
     .page-indicator-icon {
@@ -257,27 +257,27 @@
       border: 0;
       border-radius: 12px;
       background-image: none;
-      background-color: theme-color.disabled-hint(theme-color.$on-dark);
+      background-color: theme-color.disabled-hint(overview.$on-color);
       transition-duration: st-theme.$duration;
     }
 
     &:hover .page-indicator-icon {
       border-color: transparent;
       background-image: none;
-      background-color: theme-color.disabled(theme-color.$on-dark);
+      background-color: theme-color.disabled(overview.$on-color);
     }
 
     &:active .page-indicator-icon {
       margin: 0;
       border: 0;
       background-image: none;
-      background-color: theme-color.hint(theme-color.$on-dark);
+      background-color: theme-color.hint(overview.$on-color);
     }
 
     &:checked .page-indicator-icon,
     &:checked:active .page-indicator-icon {
       background-image: none;
-      background-color: theme-color.$on-dark;
+      background-color: overview.$on-color;
       transition-duration: 0ms;
     }
 
@@ -333,21 +333,21 @@
     width: 300px;
 
     &.dnd {
-      background: theme-color.dragged-overlay(theme-color.$on-system);
+      background: theme-color.dragged-overlay(overview.$on-color);
     }
 
     &.next:ltr,
     &.previous:rtl {
-      background-gradient-start: theme-color.fill(theme-color.$on-system);
-      background-gradient-end: theme-color.fill(theme-color.$on-system);
+      background-gradient-start: theme-color.fill(overview.$on-color);
+      background-gradient-end: theme-color.fill(overview.$on-color);
       background-gradient-direction: horizontal;
       border-radius: theme.$corner-radius 0 0 theme.$corner-radius;
     }
 
     &.previous:ltr,
     &.next:rtl {
-      background-gradient-start: theme-color.fill(theme-color.$on-system);
-      background-gradient-end: theme-color.fill(theme-color.$on-system);
+      background-gradient-start: theme-color.fill(overview.$on-color);
+      background-gradient-end: theme-color.fill(overview.$on-color);
       background-gradient-direction: horizontal;
       border-radius: 0 theme.$corner-radius theme.$corner-radius 0;
     }
@@ -375,26 +375,26 @@
     padding: 0 8px;
 
     &, &:focus, &:hover, &:active, &:checked {
-      @include drawing.button(flat-normal, $tc: theme-color.$on-dark);
+      @include drawing.button(flat-normal, $tc: overview.$on-color);
     }
 
     &:hover {
-      background-color: theme-color.hover-overlay(theme-color.$on-dark);
+      background-color: theme-color.hover-overlay(overview.$on-color);
     }
 
     &:active {
-      background-color: theme-color.pressed-overlay(theme-color.$on-dark);
+      background-color: theme-color.pressed-overlay(overview.$on-color);
       transition-duration: st-theme.$duration-ripple;
     }
 
     &:checked {
-      box-shadow: inset 0 2px 0 theme-color.$on-dark;
+      box-shadow: inset 0 2px 0 overview.$on-color;
       background-color: rgba(black, .01);
-      color: theme-color.$on-dark;
+      color: overview.$on-color;
     }
 
     &:focus {
-      background-color: theme-color.focus-overlay(theme-color.$on-dark);
+      background-color: theme-color.focus-overlay(overview.$on-color);
     }
 
     &:first-child {
