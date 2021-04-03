@@ -47,7 +47,7 @@
 // Icon tiles in the app grid
 .app-well-app,
 %app-well-app {
-  @extend %overview-icon;
+  @include overview.icon;
 
   .overview-icon.overview-icon-with-label {
     padding: 8px;
@@ -315,7 +315,7 @@
 @if gnome-shell.$version < 3.38 {
   // Label when no frequent apps
   .no-frequent-applications-label {
-    @extend %overview-status-text;
+    @include overview.status-text;
   }
 }
 

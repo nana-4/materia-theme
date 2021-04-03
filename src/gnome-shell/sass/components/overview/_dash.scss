@@ -20,7 +20,7 @@ $dash-margin: 12px;
       padding: 6px;
     }
   } @else {
-    @extend %overview-panel;
+    @include overview.panel;
     padding: ($dash-spacing / 2) 0;
     border-left-width: 0;
     border-radius: 0 theme.$corner-radius theme.$corner-radius 0;
@@ -90,7 +90,7 @@ $dash-margin: 12px;
 
 // Show apps button
 .show-apps {
-  @extend %overview-icon;
+  @include overview.icon;
   color: theme-color.hint(theme-color.$on-dark);
 
   &:checked {

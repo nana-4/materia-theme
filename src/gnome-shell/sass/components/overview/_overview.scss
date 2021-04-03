@@ -37,44 +37,44 @@
   }
 }
 
-%overview-panel {
+@mixin panel {
   transition-duration: st-theme.$duration-panel;
   border: 0;
   background-color: theme-color.fill(theme-color.$on-dark);
   color: theme-color.$on-dark;
 }
 
-%overview-status-text {
+@mixin status-text {
   @include drawing.type(headline3);
   color: theme-color.disabled(theme-color.$on-dark);
 }
 
-%overview-item {
-  @extend %-overview-item;
+@mixin item {
+  @include _item;
 
   &:focus {
-    @extend %-overview-item-focus;
+    @include _item-focus;
   }
 
   &:hover,
   &:selected {
-    @extend %-overview-item-hover;
+    @include _item-hover;
   }
 
   &:active,
   &:checked {
-    @extend %-overview-item-active;
+    @include _item-active;
   }
 }
 
-%overview-icon {
+@mixin icon {
   .overview-icon {
-    @extend %-overview-item;
+    @include _item;
   }
 
   &:focus {
     .overview-icon {
-      @extend %-overview-item-focus;
+      @include _item-focus;
     }
   }
 
@@ -82,19 +82,19 @@
   &:hover,
   &:selected {
     .overview-icon {
-      @extend %-overview-item-hover;
+      @include _item-hover;
     }
   }
 
   &:active,
   &:checked {
     .overview-icon {
-      @extend %-overview-item-active;
+      @include _item-active;
     }
   }
 }
 
-%-overview-item {
+@mixin _item {
   padding: 6px;
   border: 0;
   border-radius: theme.$corner-radius;
@@ -104,7 +104,7 @@
   transition-duration: st-theme.$duration;
 }
 
-%-overview-item-focus {
+@mixin _item-focus {
   border-image: none;
   background-image: none;
   background-color: theme-color.focus-overlay(theme-color.$on-dark);
@@ -112,7 +112,7 @@
   transition-duration: 0ms;
 }
 
-%-overview-item-hover {
+@mixin _item-hover {
   border: 0;
   border-image: none;
   background-image: none;
@@ -121,7 +121,7 @@
   transition-duration: 0ms;
 }
 
-%-overview-item-active {
+@mixin _item-active {
   box-shadow: none;
   background-color: theme-color.pressed-overlay(theme-color.$on-dark);
   color: inherit;

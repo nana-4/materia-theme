@@ -52,7 +52,7 @@ $searchResultsContent: if(gnome-shell.$version >= 3.34, "#searchResultsContent",
 
 // "no results" text
 .search-statustext {
-  @extend %overview-status-text;
+  @include overview.status-text;
 }
 
 @if gnome-shell.$version >= 3.38 {
@@ -68,7 +68,7 @@ $searchResultsContent: if(gnome-shell.$version >= 3.34, "#searchResultsContent",
 
 // search result provider
 .search-provider-icon {
-  @extend %overview-item;
+  @include overview.item;
 
   // content
   .list-search-provider-content {
@@ -91,7 +91,7 @@ $searchResultsContent: if(gnome-shell.$version >= 3.34, "#searchResultsContent",
 
 // search result listitem
 .list-search-result {
-  @extend %overview-item;
+  @include overview.item;
 
   // content
   .list-search-result-content {
