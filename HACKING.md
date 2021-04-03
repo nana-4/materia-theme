@@ -26,7 +26,6 @@ File | Description
 `_public-colors.scss` | SCSS colors exported through GTK to allow for 3rd party apps color mixing.
 `_drawing.scss` | Drawing helper mixings/functions to allow easier definition of widget drawing under specific context.
 `_common.scss` | Actual definitions of style for each widget. This is where you are likely to add/remove your changes.
-`_apps.scss` <br> `_extensions.scss` | App/extension specific stylings.
 
 You can read about Sass on its [web page](http://sass-lang.com/documentation/).
 Once you make your changes to the SCSS files, you can run `meson install`
