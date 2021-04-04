@@ -1,0 +1,135 @@
+// Based on:
+// https://github.com/material-components/material-components-web/blob/master/packages/mdc-elevation/_elevation-theme.scss
+
+@use "sass:color";
+@use "theme";
+
+$_umbra-color: rgba(black, .2);
+$_penumbra-color: rgba(black, .14);
+$_ambient-color: rgba(black, .12);
+
+$z0:
+  0 0 0 0 $_umbra-color,
+  0 0 0 0 $_penumbra-color,
+  0 0 0 0 $_ambient-color;
+$z1:
+  0 2px 1px -1px $_umbra-color,
+  0 1px 1px 0 $_penumbra-color,
+  0 1px 3px 0 $_ambient-color;
+$z2:
+  0 3px 1px -2px $_umbra-color,
+  0 2px 2px 0 $_penumbra-color,
+  0 1px 5px 0 $_ambient-color;
+$z3:
+  0 3px 3px -2px $_umbra-color,
+  0 3px 4px 0 $_penumbra-color,
+  0 1px 8px 0 $_ambient-color;
+$z4:
+  0 2px 4px -1px $_umbra-color,
+  0 4px 5px 0 $_penumbra-color,
+  0 1px 10px 0 $_ambient-color;
+$z6:
+  0 3px 5px -1px $_umbra-color,
+  0 6px 10px 0 $_penumbra-color,
+  0 1px 18px 0 $_ambient-color;
+$z8:
+  0 5px 5px -3px $_umbra-color,
+  0 8px 10px 1px $_penumbra-color,
+  0 3px 14px 2px $_ambient-color;
+$z12:
+  0 7px 8px -4px $_umbra-color,
+  0 12px 17px 2px $_penumbra-color,
+  0 5px 22px 4px $_ambient-color;
+$z16:
+  0 8px 10px -5px $_umbra-color,
+  0 16px 24px 2px $_penumbra-color,
+  0 6px 30px 5px $_ambient-color;
+$z24:
+  0 11px 15px -7px $_umbra-color,
+  0 24px 38px 3px $_penumbra-color,
+  0 9px 46px 8px $_ambient-color;
+
+$text-shadow:
+  0 1px 1px $_umbra-color,
+  0 1px 2px $_penumbra-color,
+  0 1px 3px $_ambient-color;
+
+// workaround for selection-mode checkboxes
+$icon-shadow-z2:
+  0 1px 1px $_umbra-color,
+  0 2px 2px $_penumbra-color,
+  0 1px 5px $_ambient-color;
+$icon-shadow-z4:
+  0 2px 3px $_umbra-color,
+  0 4px 5px $_penumbra-color,
+  0 1px 10px $_ambient-color;
+
+// Note that GTK 3 does not support blur below 2px,
+// and its blur is huge compared to web rendering.
+// See: https://gitlab.gnome.org/GNOME/gtk/issues/511
+@if theme.$toolkit == "gtk3" {
+  $z1:
+    0 2px 2px -2px color.adjust($_umbra-color, $alpha: .1),
+    0 1px 2px -1px color.adjust($_penumbra-color, $alpha: .1),
+    0 1px 2px -.6px color.adjust($_ambient-color, $alpha: .05);
+  $z2:
+    0 3px 2px -3px color.adjust($_umbra-color, $alpha: .1),
+    0 2px 2px -1px color.adjust($_penumbra-color, $alpha: .1),
+    0 1px (5px * .6) 0 $_ambient-color;
+  $z3:
+    0 3px 2px -2px $_umbra-color,
+    0 3px (4px * .6) 0 $_penumbra-color,
+    0 1px (8px * .6) 0 $_ambient-color;
+  $z4:
+    0 2px (4px * .6) -1px $_umbra-color,
+    0 4px (5px * .6) 0 $_penumbra-color,
+    0 1px (10px * .6) 0 $_ambient-color;
+  $z6:
+    0 3px (5px * .6) -1px $_umbra-color,
+    0 6px (10px * .6) 0 $_penumbra-color,
+    0 1px (18px * .6) 0 $_ambient-color;
+  $z8:
+    0 5px (5px * .6) -3px $_umbra-color,
+    0 8px (10px * .6) 1px $_penumbra-color,
+    0 3px (14px * .6) 2px $_ambient-color;
+  $z12:
+    0 7px (8px * .6) -4px $_umbra-color,
+    0 12px (17px * .6) 2px $_penumbra-color,
+    0 5px (22px * .6) 4px $_ambient-color;
+  $z16:
+    0 8px (10px * .6) -5px $_umbra-color,
+    0 16px (24px * .6) 2px $_penumbra-color,
+    0 6px (30px * .6) 5px $_ambient-color;
+  $z24:
+    0 11px (15px * .6) -7px $_umbra-color,
+    0 24px (38px * .6) 3px $_penumbra-color,
+    0 9px (46px * .6) 8px $_ambient-color;
+
+  $text-shadow:
+    0 1px 1px $_umbra-color,
+    0 1px 2px $_penumbra-color,
+    0 1px 3px $_ambient-color;
+
+  $icon-shadow-z2:
+    0 1px 1px $_umbra-color,
+    0 2px 2px $_penumbra-color,
+    0 1px (5px * .6) $_ambient-color;
+  $icon-shadow-z4:
+    0 2px 2px $_umbra-color,
+    0 4px (5px * .6) $_penumbra-color,
+    0 1px (10px * .6) $_ambient-color;
+}
+
+// Note that St does not support multiple box shadows.
+@if theme.$toolkit == "st" {
+  // This should be none, but it's creating some issues with borders, so to
+  // workaround it for now, use inset wich goes through a different code path.
+  // see https://bugzilla.gnome.org/show_bug.cgi?id=752934
+  $z0: 0 0 transparent;
+
+  $z1: 0 1px 1px rgba(black, .36);
+  $z2: 0 1px 2px rgba(black, .4);
+  $z4: 0 2px 8px rgba(black, .44);
+  $z8: 0 5px 16px rgba(black, .5);
+  $z16: 0 8px 24px rgba(black, .68); // TODO
+}

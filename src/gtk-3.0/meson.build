@@ -1,5 +1,6 @@
 gtk3_scss_depend_files = files([
   '../_color-palette.scss',
+  '../_shadow.scss',
   '../_theme.scss',
   '../_theme-color.scss',
   'sass/apps/_budgie.scss',

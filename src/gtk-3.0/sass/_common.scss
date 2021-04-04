@@ -1,5 +1,6 @@
 @use "../../theme";
 @use "../../theme-color";
+@use "../../shadow";
 @use "drawing";
 
 * {
@@ -140,7 +141,7 @@ iconview {
 %iconview-desktop {
   // background-color: $scrim;
   color: theme-color.$on-dark;
-  text-shadow: theme.$text-shadow;
+  text-shadow: shadow.$text-shadow;
 
   .rubberband,
   rubberband {
@@ -1357,11 +1358,11 @@ toolbar {
   transition: theme.$transition-shadow;
   padding: theme.$container-padding;
   border-radius: theme.$corner-radius;
-  box-shadow: theme.$shadow-z4, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
+  box-shadow: shadow.$z4, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
   background-color: theme-color.$surface-z8;
 
   &:backdrop {
-    box-shadow: theme.$shadow-z2, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
+    box-shadow: shadow.$z2, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
   }
 }
 
@@ -1396,7 +1397,7 @@ searchbar > revealer > box {
 .titlebar {
   transition: background-color theme.$state-duration theme.$ease-out, color theme.$state-duration theme.$ease-out;
   border-radius: theme.$corner-radius theme.$corner-radius 0 0;
-  box-shadow: theme.$shadow-z1, inset 0 1px theme-color.highlight(theme-color.$titlebar);
+  box-shadow: shadow.$z1, inset 0 1px theme-color.highlight(theme-color.$titlebar);
   background-color: theme-color.$titlebar;
   color: theme-color.$on-titlebar;
 
@@ -1551,7 +1552,7 @@ searchbar > revealer > box {
     // but let's keep it for backwards compatibility.
     transition: background-color .1ms theme.$ripple-duration, color theme.$state-duration theme.$ease-out;
     animation: ripple-on-headerbar theme.$ripple-duration theme.$ease-out;
-    box-shadow: theme.$shadow-z1, inset 0 1px theme-color.highlight(theme-color.$primary);
+    box-shadow: shadow.$z1, inset 0 1px theme-color.highlight(theme-color.$primary);
     background-color: theme-color.$primary;
     color: theme-color.$on-primary;
 
@@ -1635,7 +1636,7 @@ searchbar > revealer > box {
   .maximized &,
   .fullscreen & {
     border-radius: 0;
-    box-shadow: theme.$shadow-z1;
+    box-shadow: shadow.$z1;
   }
 
   &.default-decoration {
@@ -1665,7 +1666,7 @@ searchbar > revealer > box {
   .solid-csd & {
     &:dir(rtl), &:dir(ltr) { // specificity bump
       border-radius: 0;
-      box-shadow: theme.$shadow-z1; // just remove the highlight
+      box-shadow: shadow.$z1; // just remove the highlight
     }
   }
 }
@@ -2069,11 +2070,11 @@ menuitem {
 popover.background {
   transition: theme.$transition-shadow;
   padding: 2px;
-  box-shadow: theme.$shadow-z4; // TODO: this should really have a highlight
+  box-shadow: shadow.$z4; // TODO: this should really have a highlight
   background-color: theme-color.$surface-z8;
 
   &:backdrop {
-    box-shadow: theme.$shadow-z2;
+    box-shadow: shadow.$z2;
   }
 
   &,
@@ -2523,16 +2524,16 @@ switch {
     margin: -3px -2px;
     border-radius: theme.$circular-radius;
     outline: none;
-    box-shadow: 0 0 0 10px transparent, theme.$shadow-z1;
+    box-shadow: 0 0 0 10px transparent, shadow.$z1;
     background-color: theme-color.$surface-switch-thumb;
   }
 
   &:hover slider {
-    box-shadow: 0 0 0 10px theme-color.hover-overlay(theme-color.$on-surface), theme.$shadow-z1;
+    box-shadow: 0 0 0 10px theme-color.hover-overlay(theme-color.$on-surface), shadow.$z1;
   }
 
   &:focus slider {
-    box-shadow: 0 0 0 10px theme-color.focus-overlay(theme-color.$on-surface), theme.$shadow-z1;
+    box-shadow: 0 0 0 10px theme-color.focus-overlay(theme-color.$on-surface), shadow.$z1;
   }
 
   &:checked slider {
@@ -2540,11 +2541,11 @@ switch {
   }
 
   &:checked:hover slider {
-    box-shadow: 0 0 0 10px theme-color.hover-overlay(theme-color.$primary), theme.$shadow-z1;
+    box-shadow: 0 0 0 10px theme-color.hover-overlay(theme-color.$primary), shadow.$z1;
   }
 
   &:checked:focus slider {
-    box-shadow: 0 0 0 10px theme-color.focus-overlay(theme-color.$primary), theme.$shadow-z1;
+    box-shadow: 0 0 0 10px theme-color.focus-overlay(theme-color.$primary), shadow.$z1;
   }
 
   row:selected & {
@@ -2567,11 +2568,11 @@ switch {
   padding: 0;
   background-color: transparent;
   background-image: none;
-  -gtk-icon-shadow: theme.$icon-shadow-z2;
+  -gtk-icon-shadow: shadow.$icon-shadow-z2;
 
   &:hover,
   &:active {
-    -gtk-icon-shadow: theme.$icon-shadow-z4;
+    -gtk-icon-shadow: shadow.$icon-shadow-z4;
   }
 
   @each $class, $suffix in ("": "-unchecked", ":checked": "-checked") {
@@ -3956,11 +3957,11 @@ colorswatch {
 
   overlay {
     transition: theme.$transition-shadow;
-    box-shadow: theme.$shadow-z1;
+    box-shadow: shadow.$z1;
 
     &:drop(active),
     &:hover {
-      box-shadow: theme.$shadow-z3;
+      box-shadow: shadow.$z3;
     }
   }
 
@@ -4005,11 +4006,11 @@ colorswatch {
 colorchooser .popover.osd {
   transition: theme.$transition-shadow;
   border-radius: theme.$corner-radius;
-  box-shadow: theme.$shadow-z4, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
+  box-shadow: shadow.$z4, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
   background-color: theme-color.$surface-z8;
 
   &:backdrop {
-    box-shadow: theme.$shadow-z2, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
+    box-shadow: shadow.$z2, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
   }
 }
 
@@ -4052,7 +4053,7 @@ colorchooser .popover.osd {
 decoration {
   transition: theme.$transition-shadow;
   border-radius: theme.$corner-radius theme.$corner-radius 0 0;
-  box-shadow: theme.$shadow-z16, 0 16px (24px * .6) 2px transparent, 0 6px (30px * .6) 5px transparent;
+  box-shadow: shadow.$z16, 0 16px (24px * .6) 2px transparent, 0 6px (30px * .6) 5px transparent;
 
   // FIXME rationalize shadows
 
@@ -4064,7 +4065,7 @@ decoration {
     // change when we go to backdrop, to prevent jumping windows.
     // The biggest shadow should be in the same order then in the active state
     // or the jumping will happen during the transition.
-    box-shadow: theme.$shadow-z4, 0 16px (24px * .6) 2px transparent, 0 6px (30px * .6) 5px transparent;
+    box-shadow: shadow.$z4, 0 16px (24px * .6) 2px transparent, 0 6px (30px * .6) 5px transparent;
   }
 
   .maximized &,
@@ -4088,7 +4089,7 @@ decoration {
 
   .csd.popup & {
     border-radius: theme.$corner-radius;
-    box-shadow: theme.$shadow-z4;
+    box-shadow: shadow.$z4;
   }
 
   tooltip.csd & {
@@ -4172,7 +4173,7 @@ cursor-handle {
   padding-left: 8px;
   padding-right: 8px;
   border-radius: theme.$corner-radius;
-  box-shadow: theme.$shadow-z1;
+  box-shadow: shadow.$z1;
   background-color: theme-color.$surface-z8;
   color: theme-color.$on-surface;
   font-size: smaller;

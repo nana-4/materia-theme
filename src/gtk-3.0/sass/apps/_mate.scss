@@ -3,6 +3,7 @@
 
 @use "../../../theme";
 @use "../../../theme-color";
+@use "../../../shadow";
 @use "../common";
 @use "../drawing";
 
@@ -477,7 +478,7 @@ na-tray-applet widget box widget {
 .caja-desktop.view .entry {
   background-color: theme-color.$scrim-alt;
   color: theme-color.$on-dark;
-  text-shadow: theme.$text-shadow;
+  text-shadow: shadow.$text-shadow;
   caret-color: currentcolor; // this shouldn't be needed.
 
   &:selected {
@@ -600,7 +601,7 @@ na-tray-applet widget box widget {
 .lock-dialog {
   border: 1px solid theme-color.divider(theme-color.$on-surface);
   border-radius: theme.$corner-radius + 1px;
-  box-shadow: theme.$shadow-z6, inset 0 1px theme-color.highlight(theme-color.$surface-z8); // not sure if box-shadow works here
+  box-shadow: shadow.$z6, inset 0 1px theme-color.highlight(theme-color.$surface-z8); // not sure if box-shadow works here
   background-clip: padding-box;
   background-color: theme-color.$surface-z8;
 

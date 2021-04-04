@@ -2,6 +2,7 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
+@use "../../../../shadow";
 @use "../../gnome-shell";
 @use "overview";
 
@@ -60,7 +61,7 @@
   padding: 0;
   border: 0;
   border-radius: theme.$medium-size / 2;
-  box-shadow: theme.$shadow-z2;
+  box-shadow: shadow.$z2;
   background-color: theme-color.$error;
   color: theme-color.$on-error;
 
@@ -72,7 +73,7 @@
   }
 
   &:hover {
-    box-shadow: theme.$shadow-z4;
+    box-shadow: shadow.$z4;
     border-color: transparent;
     background-color: theme-color.hover-overlay(theme-color.$on-error, $on: theme-color.$error);
     color: theme-color.$on-error;
@@ -84,7 +85,7 @@
 
   &:active {
     transition-duration: theme.$ripple-duration;
-    box-shadow: theme.$shadow-z8;
+    box-shadow: shadow.$z8;
     border-color: transparent;
     background-color: theme-color.pressed-overlay(theme-color.$on-error, $on: theme-color.$error);
     color: theme-color.$on-error;
@@ -105,6 +106,6 @@
     // keep in sync with BACKGROUND_CORNER_RADIUS_PIXELS in workspace.js
     border-radius: 30px;
     background-color: black;
-    box-shadow: theme.$shadow-z4; // use z4 for the huge card
+    box-shadow: shadow.$z4; // use z4 for the huge card
   }
 }

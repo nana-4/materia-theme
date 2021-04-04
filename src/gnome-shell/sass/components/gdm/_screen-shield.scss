@@ -2,6 +2,7 @@
 
 @use "../../../../theme";
 @use "../../../../theme-color";
+@use "../../../../shadow";
 @use "../../gnome-shell";
 @use "../../typography";
 @use "../base/scrollbar";
@@ -91,20 +92,20 @@
     height: 48px;
     color: theme-color.$on-dark;
     -arrow-thickness: 12px;
-    -arrow-shadow: theme.$shadow-z2;
+    -arrow-shadow: shadow.$z2;
   }
 
   .screen-shield-clock {
     padding-bottom: 1.5em;
     color: theme-color.$on-dark;
-    text-shadow: theme.$shadow-z2;
+    text-shadow: shadow.$z2;
     font-weight: normal;
     text-align: center;
   }
 
   .screen-shield-clock-time {
     @include typography.headline1;
-    text-shadow: theme.$shadow-z2;
+    text-shadow: shadow.$z2;
     font-feature-settings: "tnum";
   }
 
@@ -166,5 +167,5 @@
 // just the shadow, really
 .screen-shield-background {
   background: black;
-  box-shadow: theme.$shadow-z16;
+  box-shadow: shadow.$z16;
 }

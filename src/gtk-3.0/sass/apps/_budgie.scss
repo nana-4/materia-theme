@@ -7,6 +7,7 @@
 
 @use "../../../theme";
 @use "../../../theme-color";
+@use "../../../shadow";
 @use "../common";
 @use "../drawing";
 
@@ -31,7 +32,7 @@
   border-width: 1px;
   border-color: rgba(black, .1) rgba(black, .2) rgba(black, .3);
   border-radius: theme.$corner-radius + 1px;
-  box-shadow: theme.$shadow-z4;
+  box-shadow: shadow.$z4;
   background-clip: padding-box;
   background-color: theme-color.$surface-z8;
 
@@ -417,7 +418,7 @@ $underscores-list:
 
 frame.raven-frame > border {
   border-style: none;
-  box-shadow: theme.$shadow-z16;
+  box-shadow: shadow.$z16;
 }
 
 $pos_list: (top: bottom, bottom: top, left: right, right: left);
@@ -679,7 +680,7 @@ calendar.raven-calendar {
   margin: 5px 9px;
   padding: 3px;
   border-radius: theme.$corner-radius;
-  box-shadow: theme.$shadow-z4, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
+  box-shadow: shadow.$z4, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
   background-color: theme-color.$surface-z8;
 
   button {

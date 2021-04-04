@@ -1,5 +1,6 @@
 @use "../../theme";
 @use "../../theme-color";
+@use "../../shadow";
 @use "gtk";
 @use "drawing";
 
@@ -81,7 +82,7 @@ iconview {
 %iconview-desktop {
   // background-color: $scrim;
   color: theme-color.$on-dark;
-  text-shadow: theme.$text-shadow;
+  text-shadow: shadow.$text-shadow;
 
   > rubberband {
     border: 1px solid theme-color.primary(theme-color.$on-dark);
@@ -133,7 +134,7 @@ gridview {
 }
 
 coverflow > cover {
-  box-shadow: theme.$shadow-z2;
+  box-shadow: shadow.$z2;
   background-color: theme-color.$surface-z8;
   color: theme-color.$on-surface;
 }
@@ -1346,11 +1347,11 @@ button.combo:only-child {
   padding: theme.$container-padding;
   border-spacing: theme.$container-padding;
   border-radius: theme.$corner-radius;
-  box-shadow: theme.$shadow-z4, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
+  box-shadow: shadow.$z4, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
   background-color: theme-color.$surface-z8;
 
   &:backdrop {
-    box-shadow: theme.$shadow-z2, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
+    box-shadow: shadow.$z2, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
   }
 }
 
@@ -1410,7 +1411,7 @@ windowcontrols {
 .titlebar {
   transition: background-color theme.$state-duration theme.$ease-out, color theme.$state-duration theme.$ease-out;
   border-radius: theme.$corner-radius theme.$corner-radius 0 0;
-  box-shadow: theme.$shadow-z2, inset 0 1px theme-color.highlight(theme-color.$titlebar);
+  box-shadow: shadow.$z2, inset 0 1px theme-color.highlight(theme-color.$titlebar);
   background-color: theme-color.$titlebar;
   color: theme-color.$on-titlebar;
 
@@ -1561,7 +1562,7 @@ windowcontrols {
     // but let's keep it for backwards compatibility.
     transition: background-color 0.1ms theme.$ripple-duration, color theme.$state-duration theme.$ease-out;
     animation: ripple-on-headerbar theme.$ripple-duration theme.$ease-out;
-    box-shadow: theme.$shadow-z2, inset 0 1px theme-color.highlight(theme-color.$primary);
+    box-shadow: shadow.$z2, inset 0 1px theme-color.highlight(theme-color.$primary);
     background-color: theme-color.$primary;
     color: theme-color.$on-primary;
 
@@ -1637,7 +1638,7 @@ windowcontrols {
   .maximized &,
   .fullscreen & {
     border-radius: 0;
-    box-shadow: theme.$shadow-z2;
+    box-shadow: shadow.$z2;
   }
 
   &.default-decoration {
@@ -1667,7 +1668,7 @@ windowcontrols {
   .solid-csd & {
     &:dir(rtl), &:dir(ltr) { // specificity bump
       border-radius: 0;
-      box-shadow: theme.$shadow-z2; // just remove the highlight
+      box-shadow: shadow.$z2; // just remove the highlight
     }
   }
 }
@@ -2091,12 +2092,12 @@ popover {
   > arrow,
   > contents {
     transition: theme.$transition-shadow;
-    box-shadow: theme.$shadow-z4;
+    box-shadow: shadow.$z4;
     background-color: theme-color.$surface-z8;
     color: theme-color.$on-surface;
 
     &:backdrop {
-      box-shadow: theme.$shadow-z2;
+      box-shadow: shadow.$z2;
     }
   }
 
@@ -2480,7 +2481,7 @@ switch {
     box-shadow:
       0 0 0 10px transparent,
       0 0 0 -10px theme-color.pressed-overlay(theme-color.$on-surface),
-      theme.$shadow-z1;
+      shadow.$z1;
     background-color: theme-color.$surface-switch-thumb;
   }
 
@@ -2488,21 +2489,21 @@ switch {
     box-shadow:
       0 0 0 10px theme-color.hover-overlay(theme-color.$on-surface),
       0 0 0 -10px theme-color.pressed-overlay(theme-color.$on-surface),
-      theme.$shadow-z1;
+      shadow.$z1;
   }
 
   &:focus > slider {
     box-shadow:
       0 0 0 10px theme-color.focus-overlay(theme-color.$on-surface),
       0 0 0 -10px theme-color.pressed-overlay(theme-color.$on-surface),
-      theme.$shadow-z1;
+      shadow.$z1;
   }
 
   &:active > slider {
     box-shadow:
       0 0 0 10px theme-color.hover-overlay(theme-color.$on-surface),
       0 0 0 10px theme-color.pressed-overlay(theme-color.$on-surface),
-      theme.$shadow-z1;
+      shadow.$z1;
   }
 
   &:checked > slider {
@@ -2513,21 +2514,21 @@ switch {
     box-shadow:
       0 0 0 10px theme-color.hover-overlay(theme-color.$primary),
       0 0 0 -10px theme-color.pressed-overlay(theme-color.$primary),
-      theme.$shadow-z1;
+      shadow.$z1;
   }
 
   &:checked:focus > slider {
     box-shadow:
       0 0 0 10px theme-color.focus-overlay(theme-color.$primary),
       0 0 0 -10px theme-color.pressed-overlay(theme-color.$primary),
-      theme.$shadow-z1;
+      shadow.$z1;
   }
 
   &:checked:active > slider {
     box-shadow:
       0 0 0 10px theme-color.hover-overlay(theme-color.$primary),
       0 0 0 10px theme-color.pressed-overlay(theme-color.$primary),
-      theme.$shadow-z1;
+      shadow.$z1;
   }
 
   row:selected & {
@@ -2550,11 +2551,11 @@ switch {
   padding: 0;
   background-color: transparent;
   background-image: none;
-  -gtk-icon-shadow: theme.$icon-shadow-z2;
+  -gtk-icon-shadow: shadow.$icon-shadow-z2;
 
   &:hover,
   &:active {
-    -gtk-icon-shadow: theme.$icon-shadow-z4;
+    -gtk-icon-shadow: shadow.$icon-shadow-z4;
   }
 
   @each $class, $suffix in ("": "-unchecked", ":checked": "-checked") {
@@ -3072,7 +3073,7 @@ window.dialog.print {
     // padding: 0;
     // border: 1px solid divider($on-surface);
     border-radius: theme.$corner-radius;
-    box-shadow: theme.$shadow-z1;
+    box-shadow: shadow.$z1;
     background-color: theme-color.$surface-z1;
     color: theme-color.$on-surface;
   }
@@ -3090,7 +3091,7 @@ frame,
 .frame {
   // border: 1px solid divider($on-surface);
   border-radius: theme.$corner-radius;
-  box-shadow: theme.$shadow-z1;
+  box-shadow: shadow.$z1;
   background-color: theme-color.$surface-z1;
   color: theme-color.$on-surface;
 
@@ -3364,7 +3365,7 @@ expander-widget {
 calendar {
   // border: 1px solid divider($on-surface);
   border-radius: theme.$corner-radius;
-  box-shadow: theme.$shadow-z1;
+  box-shadow: shadow.$z1;
   background-color: theme-color.$surface-z1;
   color: theme-color.$on-surface;
 
@@ -3912,11 +3913,11 @@ colorswatch {
   // nth-child is needed by the custom color strip.
 
   transition: theme.$transition-shadow;
-  box-shadow: theme.$shadow-z1;
+  box-shadow: shadow.$z1;
 
   &:drop(active),
   &.activatable:hover {
-    box-shadow: theme.$shadow-z3;
+    box-shadow: shadow.$z3;
   }
 
   &:disabled {
@@ -3976,11 +3977,11 @@ colorswatch {
 colorchooser .popover.osd {
   transition: theme.$transition-shadow;
   border-radius: theme.$corner-radius;
-  box-shadow: theme.$shadow-z4, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
+  box-shadow: shadow.$z4, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
   background-color: theme-color.$surface-z8;
 
   &:backdrop {
-    box-shadow: theme.$shadow-z2, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
+    box-shadow: shadow.$z2, inset 0 1px theme-color.highlight(theme-color.$surface-z8);
   }
 }
 
@@ -4019,14 +4020,14 @@ window {
     transition: theme.$transition-shadow;
     border-radius: theme.$corner-radius theme.$corner-radius 0 0;
     border-radius: theme.$corner-radius;
-    box-shadow: theme.$shadow-z16, 0 16px 24px 2px transparent, 0 6px 30px 5px transparent;
+    box-shadow: shadow.$z16, 0 16px 24px 2px transparent, 0 6px 30px 5px transparent;
 
     &:backdrop {
       // the transparent shadow here is to enforce that the shadow extents don't
       // change when we go to backdrop, to prevent jumping windows.
       // The biggest shadow should be in the same order then in the active state
       // or the jumping will happen during the transition.
-      box-shadow: theme.$shadow-z4, 0 16px 24px 2px transparent, 0 6px 30px 5px transparent;
+      box-shadow: shadow.$z4, 0 16px 24px 2px transparent, 0 6px 30px 5px transparent;
     }
   }
 
@@ -4127,7 +4128,7 @@ shortcut > .keycap {
   // border-radius: $corner-radius + 1px;
   border-radius: theme.$corner-radius;
   // box-shadow: inset 0 -2px divider($on-surface);
-  box-shadow: theme.$shadow-z1;
+  box-shadow: shadow.$z1;
   background-color: theme-color.$surface-z8;
   color: theme-color.$on-surface;
   font-size: smaller;
