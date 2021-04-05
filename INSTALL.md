@@ -4,8 +4,13 @@
 
 Materia requires the following build and runtime dependencies:
 
+#### Build dependencies
+
 - `meson` >= 0.47.0
 - `dart-sass` >= 1.23.0 (or `npm` if the former is not found)
+
+#### Runtime dependencies
+
 - `gnome-themes-extra` (or `gnome-themes-standard` for older distributions)
 - Murrine engine — The package name depends on the distro:
   - `gtk-engine-murrine` on Arch Linux
@@ -22,10 +27,15 @@ git clone https://github.com/nana-4/materia-theme
 cd materia-theme
 ```
 
-2. Configure and install it using Meson:
+2. Configure the project using Meson (you can specify build options [as below](#build-options)):
 
 ```sh
 meson _build
+```
+
+3. Build and install it using Meson:
+
+```sh
 meson install -C _build
 ```
 
