@@ -27,7 +27,7 @@ git clone https://github.com/nana-4/materia-theme
 cd materia-theme
 ```
 
-2. Configure the project using Meson (you can specify build options [as below](#build-options)):
+2. Configure the project using Meson (you can optionally set build options [as below](#build-options)):
 
 ```sh
 meson _build
@@ -44,10 +44,10 @@ meson install -C _build
 Option | Default Value | Description
 --- | --- | ---
 `prefix` | `/usr` | Installation prefix
-`colors` | `default,light,dark` | Choose color variant(s)
-`sizes` | `default,compact` | Choose size variant(s)
-`gnome_shell_version` | n/a (auto) | Manually set gnome-shell version
-`gtk4_version` | n/a (auto) | Manually set gtk4 version
+`colors` | `default,light,dark` | List of color variants to build
+`sizes` | `default,compact` | List of size variants to build
+`gnome_shell_version` | n/a (auto) | Build GNOME Shell theme for specific version
+`gtk4_version` | n/a (auto) | Build GTK 4 theme for specific version
 
 Build options can be set at the configuration time, for example:
 
