@@ -55,6 +55,8 @@ Build options can be set at the configuration time, for example:
 meson _build -Dprefix="$HOME/.local" -Dcolors=default,dark -Dsizes=compact
 ```
 
+> Note: If you are a package maintainer, you should always set `gnome_shell_version` and `gtk4_version` in your package script based on the `gnome-shell` and `gtk4` package versions in your distribution. Otherwise, the corresponding themes may be built for wrong versions.
+
 ## Uninstallation
 
 Delete the installed directories:
