@@ -305,6 +305,8 @@ meson install -C _build
 GENERATED_PATH="$tempdir/share/themes/Materia$COLOR_SUFFIX$SIZE_SUFFIX"
 if [[ -d "$DEST_PATH" ]]; then
 	rm -r "$DEST_PATH"
+elif [[ ! -d "$DEST_PATH"/.. ]]; then
+	mkdir -p "$DEST_PATH"/..
 fi
 mv "$GENERATED_PATH" "$DEST_PATH"
 
