@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -ueo pipefail
 
 if [[ ! "$(command -v sass)" ]]; then
