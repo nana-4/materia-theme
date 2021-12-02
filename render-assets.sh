@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -ueo pipefail
 
 if [[ ! "$(command -v inkscape || command -v rendersvg)" ]]; then
@@ -31,31 +31,31 @@ gtk2_dark() (
 )
 
 case "${1:-}" in
-  "")
-    chrome
-    gtk
-    gtk2_light
-    gtk2_dark
-    ;;
-  chrome)
-    chrome
-    ;;
-  gtk)
-    gtk
-    ;;
-  gtk2)
-    gtk2_light
-    gtk2_dark
-    ;;
-  gtk2-light)
-    gtk2_light
-    ;;
-  gtk2-dark)
-    gtk2_dark
-    ;;
-  *)
-    echo "Unknown argument '$1'"
-    echo "Use 'chrome', 'gtk', 'gtk2', 'gtk2-light' or 'gtk2-dark' as an argument."
-    exit 1
-    ;;
+"")
+  chrome
+  gtk
+  gtk2_light
+  gtk2_dark
+  ;;
+chrome)
+  chrome
+  ;;
+gtk)
+  gtk
+  ;;
+gtk2)
+  gtk2_light
+  gtk2_dark
+  ;;
+gtk2-light)
+  gtk2_light
+  ;;
+gtk2-dark)
+  gtk2_dark
+  ;;
+*)
+  echo "Unknown argument '$1'"
+  echo "Use 'chrome', 'gtk', 'gtk2', 'gtk2-light' or 'gtk2-dark' as an argument."
+  exit 1
+  ;;
 esac

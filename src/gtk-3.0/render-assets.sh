@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -ueo pipefail
 
 # Make sure that parallel is GNU parallel and not moreutils.
@@ -9,4 +9,4 @@ else
   cmd=(xargs -n1)
 fi
 
-"${cmd[@]}" ./render-asset.sh < assets.txt
+"${cmd[@]}" ./render-asset.sh <assets.txt
