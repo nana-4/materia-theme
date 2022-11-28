@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../../../theme";
 @use "../../../theme-color";
 @use "../../../shadow";
@@ -132,6 +133,10 @@ window.background.chromium {
 
   > button {
     color: theme-color.$primary;
+
+    // Source: https://github.com/heldplayer/materia-theme-custom/commit/93af85f1c775745e46f92673bc55edf39b179579
+    $this-border-color: theme-color.stroke(theme-color.$on-surface);
+    border-color: color.mix(rgba($this-border-color, 1), theme-color.$surface-z8, color.alpha($this-border-color) * 100%);
 
     &:disabled {
       color: theme-color.disabled-hint(theme-color.$on-surface);
