@@ -5,7 +5,8 @@ set -ueo pipefail
 darker_channel() {
   value="$1"
   light_delta="$2"
-  result="$(bc <<< "ibase=16; $value - $light_delta")"
+  value_int="$(bc <<< "ibase=16; $value")"
+  result="$(bc <<< "$value_int - $light_delta")"
   if [[ "$result" -lt 0 ]]; then
     result=0
   fi
