@@ -1,0 +1,41 @@
+name: Build Materia Theme
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install meson npm
+          
+      - name: Build
+        run: |
+          meson _build -Dprefix="${PWD}/usr"
+          meson install -C _build
+          
+          for theme in ./usr/share/themes/*/; do
+            name=$(basename "$theme")
+            tar_name=$(echo "$name" | tr '[:upper:]' '[:lower:]').tar.gz
+            tar -czf "$tar_name" -C ./usr/share/themes "$name"
+            echo "ARTIFACT=$tar_name" >> "$GITHUB_ENV"
+          done
+    
+      - name: Get date
+        run: |
+          echo "DATE=$(date --rfc-3339=date)" >> "$GITHUB_ENV"
+          
+      - name: Release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: "*.tar.gz"
+          tag_name: v${{ env.DATE }}
